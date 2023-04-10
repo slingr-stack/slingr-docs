@@ -13,6 +13,14 @@ weight: 100
 toc: true
 ---
 
+{{< callout type="warning" contend="" >}}
+hola
+{{< /callout >}}
+
+{{< box>}}
+hola
+{{< /box>}}
+
 ## Get started
 
 There are two main ways to get started with Doks:
