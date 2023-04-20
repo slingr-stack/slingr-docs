@@ -1,14 +1,12 @@
 .footer {
-  bottom: 0;
+
   border-top: 1px solid $gray-200;
   padding-top: 1.125rem;
-  padding-bottom: 1.125rem;
+  padding-bottom: 0;
   width: 100%;
   text-align: center;
   display: flex;
   justify-content: center;
-  background-color: #ffffff;
-
 }
 
 .footer ul {
@@ -24,6 +22,6 @@
   height: 30px; /* ajuste la altura según sus necesidades */
 }
 
-body {
-  margin-bottom: 70px; /* altura del pie de página + un margen de seguridad */
+body, html {
+  margin-bottom: 0;
 }
