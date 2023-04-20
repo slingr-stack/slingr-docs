@@ -1,5 +1,61 @@
 
 
+.footer img {
+  max-width: 150px; 
+  height: auto; 
+  margin-top: 10px; 
+  padding: 10px;
+  margin-bottom: 0px;
+}
+.frontbox .image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+
+.frontbox .title {
+    text-align: center;
+  }
+
+.col {
+    max-width: 250px; /* establece un ancho máximo para evitar que los bloques se hagan demasiado grandes */
+    max-height: 250px; /* establece una altura fija para crear bloques cuadrados */
+  }
+  
+
+
+
+@media screen and (min-width: 0px) {
+  .frontbox .image {
+    max-width: 70%;
+  }
+
+  }
+  
+  @media screen and (min-width: 480px) {
+    .frontbox .image {
+      max-width: 70%;
+    }
+
+    }
+@media screen and (min-width: 984px) {
+  .frontbox .image {
+    max-width: 70%;
+  }
+
+  }
+
+  
+@media screen and (min-width: 1280px) {
+  .frontbox .image {
+    max-width: 80%;
+  }
+
+    
+}
+
+
 .bs-callout {
     padding: 10px;
     margin: 15px 0;
@@ -76,6 +132,19 @@
     font-size: 120%;
     color: #808080;
     margin: 20px 0 20px 0;
-    border-left: 5px solid #ED1951;
+    border-left: 5px solid #808080;
     padding-left: 10px;
 }
+
+
+
+.index-img .img {
+  max-width: 100%;
+  height: auto;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  max-height: 600px; /* set a maximum height for the image */
+}
+
+

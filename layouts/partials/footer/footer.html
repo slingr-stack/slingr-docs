@@ -1,16 +1,44 @@
 <footer class="footer text-muted">
   <div class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }}">
-    <div class="row">
-      <div class="col-lg-8 order-last order-lg-first">
-        <ul class="list-inline">
-          <li class="list-inline-item">{{ .Site.Params.footer | safeHTML }}</li>
+    <div class="row justify-content-center">
+      <div class="col-lg-4" >
+        <ul class="list-unstyled">
+          <img src="/images/vendor/slingr_blue.png">
+          <li>©2023 Slingr. All rights reserved. </li>
+          <li>Site last generated: Apr 11, 2023</li>
+
         </ul>
       </div>
-      <div class="col-lg-8 order-first order-lg-last text-lg-end">
-        <ul class="list-inline">
-          {{ range .Site.Menus.footer -}}
-            <li class="list-inline-item"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
-          {{ end -}}
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Get started</h6>
+        <ul class="list-unstyled">
+          <li><a href="https://platform-docs.slingr.io/getting-started-where-to-start.html">Where to start</a></li>
+          <li><a href="https://platform-docs.slingr.io/getting-started-whats-slingr-stack.html">What's Slingr?</a></li>
+          <li><a href="https://platform-docs.slingr.io/getting-started-first-steps.html">Take your first steps</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Platform <br> reference</h6>
+        <ul class="list-unstyled">
+          <li><a href="https://platform-docs.slingr.io/platform-overview.html">Platform concepts</a></li>
+          <li><a href="https://platform-docs.slingr.io/platform-developer-portal-overview.html">Developer portal</a></li>
+          <li><a href="https://platform-docs.slingr.io/platform-managing-apps.html">Managing apps</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Developer's reference</h6>
+        <ul class="list-unstyled">
+          <li><a href="https://platform-docs.slingr.io/app-development-overview.html">Overview</a></li>
+          <li><a href="https://platform-docs.slingr.io/app-development-scripting.html">Javascript API</a></li>
+          <li><a href="https://platform-docs.slingr.io/app-development-apps-rest-api.html">REST API</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Extensions</h6>
+        <ul class="list-unstyled">
+          <li><a href="https://platform-docs.slingr.io/extensions-overview.html">Overview</a></li>
+          <li><a href="https://platform-docs.slingr.io/extensions-official-endpoints.html">Official endpoints</a></li>
+          <li><a href="https://platform-docs.slingr.io/extensions-create-your-own-endpoints.html">Create your endpoints</a></li>
         </ul>
       </div>
     </div>

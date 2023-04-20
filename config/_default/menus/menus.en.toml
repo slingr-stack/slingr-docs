@@ -28,11 +28,6 @@
   identifier = "lorem"
   url = "/tutorial/lorem/"
 
-[[main]]
-  name = "Docs"
-  url = "/docs/prologue/introduction/"
-# url = "/docs/1.0/prologue/introduction/"
-  weight = 10
 
 # [[main]]
 #   name = "Tutorial"
@@ -40,29 +35,43 @@
 #   weight = 15
 
 [[main]]
-  name = "Blog"
-  url = "/blog/"
+  name = "Documentation"
   weight = 20
-
-[[main]]
-  name = "Get Started"
-  weight = 30
-  identifier = "get-started"
+  identifier = "documentation"
   url = "/docs/prologue/introduction/"
 
-[[main]]
-  name = "Quick Start"
-  weight = 40
-  identifier = "quick-start"
-  url = "/docs/prologue/quick-start/"
-  parent = "get-started"
 
 [[main]]
-  name = "Tutorial"
+  name = "Getting Started"
+  url = "/docs/prologue/introduction"
+  weight = 10
+
+
+
+[[main]]
+  name = "Platform reference"
+  weight = 30
+  identifier = "platform"
+  url = "https://getdoks.org/tutorial/introduction/"
+  parent = "documentation"
+[[main]]
+  name = "Developer's reference"
+  weight = 40
+  identifier = "dev-reference"
+  url = "https://getdoks.org/tutorial/introduction/"
+  parent = "documentation"
+
+[[main]]
+  name = "Extending the platform"
   weight = 50
   identifier = "tutorial"
   url = "https://getdoks.org/tutorial/introduction/"
-  parent = "get-started"
+  parent = "documentation"
+
+
+
+
+
 
 [[social]]
   name = "GitHub"
@@ -78,6 +87,6 @@
   weight = 20
 
 # [[footer]]
-#   name = "Privacy"
-#   url = "/privacy-policy/"
-#   weight = 10
+ #  name = "Privacy"
+  # url = "/privacy-policy/"
+   #weight = 10

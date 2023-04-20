@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Where to start"
 description: "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
 lead: "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize."
 date: 2020-10-06T08:48:57+00:00
@@ -13,13 +13,14 @@ weight: 100
 toc: true
 ---
 
+{{< summary >}}
+If you are new to Slingr, this is the place to start. It will provide guidance to learn and use the platform.
+{{< /summary>}}
+
 {{< callout type="warning" contend="" >}}
 hola
 {{< /callout >}}
 
-{{< box>}}
-hola
-{{< /box>}}
 
 ## Get started
 

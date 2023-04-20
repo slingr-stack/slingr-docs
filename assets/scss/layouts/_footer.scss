@@ -1,20 +1,29 @@
 .footer {
+  bottom: 0;
   border-top: 1px solid $gray-200;
   padding-top: 1.125rem;
   padding-bottom: 1.125rem;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+
 }
 
 .footer ul {
-  margin-bottom: 0;
+  margin-bottom: 50px;
 }
 
 .footer li {
   font-size: $font-size-sm;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
-@include media-breakpoint-up(md) {
-  .footer li {
-    font-size: $font-size-base;
-  }
+.footer h6.text-uppercase {
+  height: 30px; /* ajuste la altura según sus necesidades */
+}
+
+body {
+  margin-bottom: 70px; /* altura del pie de página + un margen de seguridad */
 }

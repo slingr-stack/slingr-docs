@@ -1,3 +1,11 @@
+
+.navbar-img {
+
+  margin-left: 10px; /* adjust the margin as needed */
+  max-height: 50px; /* adjust the height as needed */
+
+}
+
 .banner .nav li {
   @extend .nav-item;
 }
@@ -52,6 +60,7 @@
   .navbar-text {
     margin-left: 1.25rem;
   }
+
 }
 
 .navbar-nav {
@@ -139,8 +148,8 @@ button#doks-versions {
 */
 
 .header-bar {
-  border-top: 4px solid;
-  border-image-source: linear-gradient(90deg, $primary, #8ed6fb 50%, #d32e9d);
+  border-top: 6px solid;
+  border-image-source: linear-gradient(90deg, $primary, #8ed6fb 50%, $primary);
   border-image-slice: 1;
 }
 

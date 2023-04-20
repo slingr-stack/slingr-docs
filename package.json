@@ -20,6 +20,7 @@
     "start": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender",
     "prebuild": "npm run clean",
     "build": "exec-bin node_modules/.bin/hugo/hugo --gc --minify",
+    "local": "live-server ./public",
     "build:preview": "npm run build -D -F",
     "clean": "shx rm -rf public resources",
     "clean:install": "shx rm -rf package-lock.json node_modules ",
@@ -63,7 +64,8 @@
     "purgecss-whitelister": "^2.4",
     "shx": "^0.3.4",
     "stylelint": "^14.9",
-    "stylelint-config-standard-scss": "^4.0"
+    "stylelint-config-standard-scss": "^4.0",
+    "live-server": "^1.2.2"
   },
   "otherDependencies": {
     "hugo": "0.107.0"
