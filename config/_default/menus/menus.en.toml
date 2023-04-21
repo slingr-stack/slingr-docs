@@ -1,20 +1,10 @@
 [[docs]]
-  name = "Prologue"
+  name = "Getting Started"
   weight = 10
-  identifier = "prologue"
-  url = "/docs/prologue/"
+  identifier = "getting-started"
+  url = "/docs/getting-started/"
 
-[[docs]]
-  name = "Help"
-  weight = 60
-  identifier = "help"
-  url = "/docs/help/"
 
-# [[docs]]
-#   name = "Lorem"
-#   weight = 70
-#   identifier = "lorem"
-#   url = "/docs/lorem/"
 
 [[guide]]
   name = "Lorem"
@@ -38,12 +28,12 @@
   name = "Documentation"
   weight = 20
   identifier = "documentation"
-  url = "/docs/prologue/introduction/"
+  url = "/docs/getting-started/introduction/"
 
 
 [[main]]
   name = "Getting Started"
-  url = "/docs/prologue/introduction"
+  url = "/docs/getting-started/where-to-start/"
   weight = 10
 
 
@@ -54,6 +44,7 @@
   identifier = "platform"
   url = "https://getdoks.org/tutorial/introduction/"
   parent = "documentation"
+
 [[main]]
   name = "Developer's reference"
   weight = 40
@@ -67,7 +58,6 @@
   identifier = "tutorial"
   url = "https://getdoks.org/tutorial/introduction/"
   parent = "documentation"
-
 
 
 
