@@ -14,19 +14,19 @@ toc: true
 
 Slingr is a platform to create cloud apps that can easily integrate with other SaaS solutions out there.
 
-The approach followed by Slingr is that you describe your data model and business rules, and that information will be used to create your application. The idea behind this is that you can focus on solving business problems instead of technical issues, what is usually what you end up doing when creating business apps using more low level tools like Java or .Net. Our goal is to incredibly increase productivity when creating apps.
+The approach followed by Slingr is that you describe your data model and business rules, and that information will be used to create your application. The idea behind this is that you can **focus on solving business problems instead of technical issues**, what is usually what you end up doing when creating business apps using more low level tools like Java or .Net. Our goal is to incredibly **increase productivity** when creating apps.
 
 On the other hand, we know that there are a lot of great SaaS solutions that were built with one specific purpose in mind, making them very efficient for the problem they solve. Trying to reproduce that on Slingr makes no sense, so our approach is to provide tools so you can easily integrate those existing cloud apps and put your efforts on creating those custom workflows your business needs.
 
 ![Alt Text](/images/vendor/whats-slingr-stack.png)
 
-This means that you define the business rules and data model, and you automatically get a working app with a UI together with a REST API that allows to use your app from other apps. Slingr has a lot of features that let you model your business requirements; we built it to create real-world apps, and not just some toy apps.
+This means that you define the business rules and data model, and you automatically get a working app with a **UI together with a REST API** that allows to use your app from other apps. Slingr has a lot of features that let you model your business requirements; we built it to create real-world apps, and not just some toy apps.
 
-As every developer knows, businesses evolve and apps need to do so. Slingr provides mechanisms that allow to evolve your apps quickly and with a low cost and risk. When you change something, the app is automatically refactored to reflect those changes, making evolution as simple as possible.
+As every developer knows, businessesevolve and apps need to do so. Slingr provides mechanisms that allow to **evolve your apps quickly and with a low cost and risk.** When you change something, the app is automatically refactored to reflect those changes, making evolution as simple as possible.
 
 Additionally, Slingr provides tools to monitor your apps, keep your data safe and make sure everything is controlled all the time.
 
-Finally, everything happens on the cloud, which means you don’t need to setup or maintain any server, have to configure development environments or worry about user terminals. It means an end-to-end cloud solution.
+Finally, everything happens on the cloud, which means you don’t need to setup or maintain any server, have to configure development environments or worry about user terminals. It means an **end-to-end cloud solution.**
 
 ### Highlights
 
