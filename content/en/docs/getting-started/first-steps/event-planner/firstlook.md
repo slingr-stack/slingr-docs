@@ -12,10 +12,14 @@ weight: 30
 toc: true
 ---
 
-In this section, we are going to see the changes that we did to our app in the previous section. First, we need to open the runtime. Open the developer portal and click on the runtime button (The one with the square) to open the runtime in a new tab. Great! Go to All events and click on an event. It should open a read-only view. Let’s click on `Edit` and change the status of the event to `Cancel`.
+In this section, we'll review the changes made to our app in the previous section. 
+
+First, open the developer portal and click on the runtime button (the square icon) to open the runtime in a new tab. Then, go to the ```All Events``` section and click on an event to open a read-only view. Click on ```Edit``` and change the status of the event to ```Cancel```.
+
+Great job! With a small step, we've successfully added a new field to our events. In the next section, we'll create some actions to change the status of an event without having to enter the edit view.
+
 
 ![Alt Text](/images/vendor/event-planner/firstlook/ww_event_planner_readonly_no_delete.png)
+
 ![Alt Text](/images/vendor/event-planner/firstlook/ww_event_planner_status_field.png)
-
-
-Great right? With a small step, we have added a new field to our events. In the next section, we are going to create some actions to change the status of an event without having to enter the edit view. 
+ 

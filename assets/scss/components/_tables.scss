@@ -1,5 +1,16 @@
 table {
-  @extend .table;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 15px;
+  padding: 3rem 0;
+}
 
-  margin: 3rem 0;
+code {
+  font-size: 14px;
+}
+pre {
+  margin: 0;
 }

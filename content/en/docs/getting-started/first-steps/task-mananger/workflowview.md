@@ -12,28 +12,23 @@ weight: 130
 toc: true
 ---
 
-Welcome back, in this section we are going to take a look at the new workflow view. You should be on the runtime of your app, otherwise, you can open it through the developer portal. Let's take a look at what we have done.
+Welcome back! In this section, let's take a look at the new workflow view. If you are not on the runtime of your app yet, you can open it through the developer portal.
 
 ![Alt Text](/images/vendor/task-mananger/wf-view/wv.png)
 
-
-This is how it should look in the new workflow view. With a few configurations, we have built an awesome app. Try it out, and check that the actions and transitions are working as expected.
+As you can see from the first image, we have built an awesome app with just a few configurations. Try it out and make sure that the actions and transitions are working as expected.
 
 ![Alt Text](/images/vendor/task-mananger/wf-view/wvv.png)
 
+To execute actions, you can click the button on the top-right of the card. In this case, only the Archive action is available since we configured it that way. You should also be able to execute other actions by moving the card through the different columns.
 
-To execute actions you can click the button on the tight-top of the card, in this case only the action `Archive` is available as we configured it. Also, you should be able to execute other actions by moving the card through the different columns.
 
 ![Alt Text](/images/vendor/task-mananger/wf-view/wvvv.png)
+To create new tasks, click on the Create button and a pop-up will open. You can move the cards through the different columns, but keep in mind that only the movements we configured will be allowed. For example, moving a card from the To do column to the Done column should not be possible.
 
-
-To create new tasks click on the button `Create` and a pop-up will open.
 ![Alt Text](/images/vendor/task-mananger/wf-view/wvvvv.png)
 
 
-You can move the cards through the different columns. Keep in mind that only the movements that we configured are going to be allowed. So in our app moving a card from the column `To do` to the column `Done`, should not be possible.
-
 ![Alt Text](/images/vendor/task-mananger/wf-view/wvvvvv.png)
 
-
-Finally, you can also rank tasks (move them up and down). Pretty awesome right? I think our app is starting to look amazing. In the next section, we are going to create different roles for the users of our app and assign them permissions. See you in the next section .
+Lastly, you can also rank tasks (move them up and down) in the workflow view. Pretty awesome, right? Our app is starting to look amazing. In the next section, we will create different roles for the app's users and assign them appropriate permissions. See you in the next section!

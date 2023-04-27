@@ -12,18 +12,20 @@ weight: 50
 toc: true
 ---
 
-In this section, we are going to see how the actions we implemented in the previous section work. To do so, let's go to the all events page, and click on a record. You should see the read-only view but this time the header has a new button called `Actions`, click on it and you should be able to see both actions. Remember that you will only see them if the status of the event is `Active`. Click on `Cancel Event`. A confirmation popup should appear. Click on `Cancel Event`. 
+In this section, we will explore how the actions we implemented in the previous section work. Let's navigate to the All Events page and select a record. You should see a read-only view with a new `Actions` button in the header. Click on it to see both actions. Remember that the actions are only visible if the status of the event is `Active`. Click on `Cancel Event`. A confirmation popup will appear. Click on `Cancel Event`.
 
 ![Alt Text](/images/vendor/event-planner/action-in-actions/ww_event_planner_cancel_event_action_runtime.png)
-Once the action has finished the status of the event should be `Cancel` and the actions should not appear. Something like this:
+
+Once the action has completed, the status of the event should be `Cancel`, and the actions should no longer be visible. It should look something like this:
 
 ![Alt Text](/images/vendor/event-planner/action-in-actions/ww_event_planner_event_cancelled.png)
-Now let's go to another active event to execute the other action. In the read-only view of the other event, click on `Actions`, and then on `End Event`.
+
+Now let's select another active event to execute the other action. In the read-only view of the other event, click on `Actions`, and then on `End Event`.
 
 ![Alt Text](/images/vendor/event-planner/action-in-actions/ww_event_planner_end_event_action_runtime.png)
 
-
-The confirm popup will be shown, click on `End Event`. When the action finishes the status of the event should be `Done`. Something like this:
+A confirmation popup will appear, click on `End Event`. When the action completes, the status of the event should be `Done`. It should look something like this:
 
 ![Alt Text](/images/vendor/event-planner/action-in-actions/ww_event_planner_event_ended.png)
-That is it! We have finished this small tutorial. The idea of this tutorial was to guide you with your first steps with Slingr. If you want, there is an extra section where we do a small improvement to our app. Hope you join me in the next section.
+
+That's it! We have completed this small tutorial. The purpose of this tutorial was to guide you through your first steps with Slingr. If you're interested, there is an extra section where we make a small improvement to our app. Hope you join me in the next section.

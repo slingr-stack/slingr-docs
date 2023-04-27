@@ -11,12 +11,17 @@ menu:
 weight: 10
 toc: true
 ---
-In this tutorial, we are going to be working with the default app created for all Slingr developers the “Event planner” app. This is an application, that is created when you create a new account and is designed to let new users understand the power of Slingr, and with this tutorial, help them take their first steps into Slingr. If you don't have a slingr account, [create one here](). In this brief tutorial, we are going to make some small improvements to the existing event planner app, like creating an extra field and adding some actions to improve the functionality of the app. But first, we need to understand what our app currently does. As the pretty obvious name indicates, this is an app to help a company plan events. It has the following features:
-  - You can create, edit and delete events, and you can see them in a table or a calendar.
-  - It has a To-Do board to help the staff organize their tasks for an event.
-  - It has a section where you can upload services that then can be used in all your events.
-  - Some administration features, to upload customers and staff.
-  - And finally, it has some metrics about previous events and customers.
 
-Awesome right? Well, let's improve it. Let's see how in the next section
+In this tutorial, we will work with the default app created for all Slingr developers, the "Event Planner" app. This application is created when you sign up for a new account and is designed to help new users understand the power of Slingr. If you don't have a Slingr account yet, you can [create one here](). 
 
+Our goal in this tutorial is to make some small improvements to the existing event planner app, such as adding an extra field and some actions to enhance its functionality. But before we dive into the improvements, let's understand what our app currently does. 
+
+As the name suggests, the app helps companies plan events and includes the following features:
+
+- Creation, editing, and deletion of events, with the ability to view them in a table or a calendar format
+- A To-Do board to help staff organize their tasks for events
+- A section to upload services that can be used across all events
+- Administration features for uploading customers and staff
+- Metrics on previous events and customers
+
+Sounds awesome, right? Let's make it even better. Check out the next section to see how!

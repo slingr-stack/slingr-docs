@@ -11,9 +11,9 @@ menu:
 weight: 110
 toc: true
 ---
-In this section, we are going to see how the actions which we implemented in the previous section are working. 
+In this section, we will learn how to use the actions we implemented in the previous section. We added a new column called Actions to the grid view, which allows us to execute the actions from there or from other places in the app.
 
-As you can see in the grid view, a new column called `Actions` has been added. You can execute the actions from there or from these places:
+
 
 ![Alt Text](/images/vendor/task-mananger/testing-actions/t.png)
 
@@ -21,6 +21,8 @@ As you can see in the grid view, a new column called `Actions` has been added. Y
 
 ![Alt Text](/images/vendor/task-mananger/testing-actions/ttt.png)
 
-Awesome! We have our actions running. Review that the preconditions are working as expected. Also, inspect that in the edit view, the status can not be changed. 
-I hope everything is working as expected, if not, read the previous section to see if there is something you miss. 
-That's it for this section, in the next one, we are going to create a new type of view that will work perfectly with what we are doing. If you want to learn more, let's go to the next section .
+To test the actions, make sure to check that the preconditions are working as expected. Also, verify that the status cannot be changed in the edit view.
+
+If you encounter any issues, review the previous section to see if you missed anything.
+
+In the next section, we will create a new type of view that will work perfectly with the actions we implemented. If you want to learn more, let's proceed to the next section.

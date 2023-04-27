@@ -12,19 +12,18 @@ weight: 160
 toc: true
 ---
 
-We are done with the development of the app, but it is good to mention that you can see what’s going on in your app on the app monitor.
-To access the app monitor you should click on the `Monitor` button (the one with the eye) on the developer portal.
+Here's the improved version of the text:
+
+We have completed the development of our app, but it's important to mention that you can monitor its activity using the app monitor. To access the monitor, click on the `Monitor` button (the one with an eye) on the developer portal.
 
 ![Alt Text](/images/vendor/task-mananger/app-monitor/ap.png)
 
-
-On the monitor, you can have information about your running apps. For example, you can see the logs of your app in the `Logs` section:
+On the app monitor, you can view information about your running apps. For example, you can see the logs of your app in the `Logs` section:
 
 ![Alt Text](/images/vendor/task-mananger/app-monitor/app.png)
 
-Also, you can manage the users of your app, from the section `Users`:
+You can also manage the users of your app from the `Users` section:
+
 ![Alt Text](/images/vendor/task-mananger/app-monitor/app.png)
 
-
-
-The monitor is really useful, check out the different features that it has. Hopefully, you have learned a lot about slingr during this tutorial. Now is your turn to build something great! 
+The app monitor is a valuable tool, and we encourage you to explore its different features. We hope you've learned a lot about Slingr during this tutorial. Now it's your turn to build something great!
