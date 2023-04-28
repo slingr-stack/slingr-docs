@@ -13,6 +13,9 @@ weight: 90
 toc: true
 ---
 
+
+![hola](/images/vendor/where-to.png)
+
 Welcome to Slingr! On this page, we will guide you through the process of getting started with our platform.
 
 First of all, you might be wondering, what exactly is Slingr? Slingr is a cloud app creation platform that seamlessly integrates with other SaaS solutions available. You can learn more about Slingr [here](../../getting-started/what_is_slingr). Additionally, if you want to understand how our platform works, you can take a look [here](https://platform-docs.slingr.io/platform-overview.html).

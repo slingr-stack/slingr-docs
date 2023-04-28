@@ -16,10 +16,17 @@ toc: true
 ![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_open_builder.png)
 
 
+![Alt Text](/images/vendor/1.gif)
+
+
 ![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes.png)
 
 
 ![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes_arrow.png)
+
+
+
+
 
 
 ![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_status_form.png)

@@ -78,6 +78,9 @@
           {{ end -}}
         </ul>
 
+
+        
+
         {{- $showFlexSearch := .Site.Params.options.flexSearch }}
         {{- if $showFlexSearch }}
         {{- if and (isset .Site.Params.options "searchsectionsshow") (not (eq .Site.Params.options.searchSectionsShow "ALL")) }}
@@ -94,13 +97,18 @@
         {{ end -}}
 
         <hr class="text-black-50 my-4 d-lg-none">
+
+        
+        
         <ul class="nav flex-column flex-lg-row">
           {{ range .Site.Menus.social -}}
             <li class="nav-item">
               <a class="nav-link social-link" href="{{ .URL | relURL }}">{{ .Pre | safeHTML }}<small class="ms-2 d-lg-none">{{ .Name | safeHTML }}</small></a>
             </li>
+            
           {{ end -}}
         </ul>
+        
 
         {{ if .Site.Params.options.darkMode -}}
         <hr class="text-black-50 my-4 d-lg-none">
@@ -117,6 +125,7 @@
             {{ .Site.Params.languageName }}
             <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
           </button>
+          
           <ul class="dropdown-menu dropdown-menu-lg-end me-lg-2 shadow rounded border-0" aria-labelledby="doks-languages">
 
             <li><a class="dropdown-item current" aria-current="true" href="{{ .RelPermalink }}">{{ .Site.Language.LanguageName }}</a></li>

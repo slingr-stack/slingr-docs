@@ -148,3 +148,56 @@
 }
 
 
+
+.getting-started-courses {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+}
+
+.getting-started-course {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-width: 47%;
+  padding: 30px;
+  text-align: center;
+}
+
+.getting-started-course-image {
+  margin-bottom: 30px;
+}
+
+.getting-started-course-image img {
+  max-width: 60%;
+}
+
+.getting-started-course-title {
+  color: #222;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.getting-started-course-description {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.getting-started-course-link {
+  background-color: #11a4eb;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.getting-started-course-link:hover {
+  background-color: #0d8ad2;
+}

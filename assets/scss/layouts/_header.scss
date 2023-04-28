@@ -176,6 +176,7 @@ button#doks-versions {
   .main-nav .nav-item:first-child .nav-link,
   .social-nav .nav-item:first-child .nav-link {
     padding-left: 0;
+
   }
 
   .main-nav .nav-item:last-child .nav-link,
@@ -490,7 +491,6 @@ button#doks-versions {
 
 .social-link {
   padding-left: 0.5rem;
-
   @include media-breakpoint-up(md) {
     padding-left: 0;
   }
@@ -500,3 +500,4 @@ button#doks-versions {
     padding-left: 0.5rem;
   }
 }
+
