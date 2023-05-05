@@ -42,7 +42,7 @@
   name = "Platform reference"
   weight = 30
   identifier = "platform"
-  url = "https://getdoks.org/tutorial/introduction/"
+  url = "/docs/platform-ref"
   parent = "documentation"
 
 [[main]]

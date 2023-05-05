@@ -1,0 +1,12 @@
+<div class="notes notes-{{ .Params.type }}">
+  {{ if eq .Params.type "note" }}
+      <span class="notes-emoji">ℹ️</span>{{/* add the default emoji */}}
+  {{ else if eq .Params.type "important" }}
+      <span class="notes-emoji">&#x26A0;&#xFE0F;</span>{{/* add the warning emoji */}}
+  {{ else if eq .Params.type "tip" }}
+      <span class="notes-emoji">✅</span>{{/* add the tip emoji */}}
+  {{ else if eq .Params.type "warning" }}
+      <span class="notes-emoji">🚨</span>{{/* add the warning emoji */}}
+  {{ end }}
+  {{ .Inner }}
+</div>
