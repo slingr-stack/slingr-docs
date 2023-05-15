@@ -1,0 +1,207 @@
+name: url
+overview: |
+  This type can store a URL, for example `http://www.test.com/path`. This field will be rendered as a link.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+displayOptions:
+- name: Open in current tab
+  description: |
+    If this flag is set the link will be open in the same tab. Otherwise it will be open in a new tab.
+restApi:
+  readFormat: |
+    The format is a simple string with the URL:
+
+    ```js
+    "homepage": "http://www.test.com"
+    ```
+  writeFormat: |
+    You should pass a string with the URL:
+
+    ```js
+    "homepage": "http://www.test.com"
+    ```
+    
+    The value of a URL could be just a URL, but we also can use a markdown to make it more readable.
+
+    ```js
+    "homepage": "(http://www.test.com)<Test>"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a plain string with the URL:
+
+    ```js
+    // this will print something like "url: http://www.test.com"
+    log('url: '+record.field('homepage').val());
+    ```
+    
+    Otherwise it will return the markdown value:
+
+    ```js
+    // this will print something like "url+label: (http://www.test.com)<Test>"
+    log('url+label: '+record.field('homepage').val());
+    ```
+    
+    If we want to read just the URL:
+
+    ```js
+    // this will print something like "url: http://www.test.com"
+    log('url: '+record.field('homepage').url());
+    ```
+    
+    If we want to read just the label:
+
+    ```js
+    // this will print something like "label: Test"
+    log('label: '+record.field('homepage').text());
+    ```
+  writeFormat: |
+    You should pass a plain string with the URL to set the value:
+
+    ```js
+    record.field('homepage').val('http://www.test1.com');
+    ```
+    
+    You can also use a markdown to set the URL and the label:
+
+    ```js
+    record.field('homepage').val('(http://www.test1.com)<Test>');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a simple string:
+
+    ```
+    "urlField1","urlField2"
+    "http://www.google.com","www.google.com"
+    ```
+  importFormat: |
+    The import format is a simple string:
+
+    ```
+    "urlField1","urlField2"
+    "http://www.google.com","www.google.com"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the URL as a plain string. For example:
+
+    {% include query_sample.html
+    id="3242397923uwehhu"
+    description="finds companies with homepage like 'test'"
+    entity="companies"
+    jsQueryMap="{'homepage': 'like(test)'}"
+    jsQueryBuilder=".field('homepage').like('test')"
+    restApi="homepage=like(test)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: no
+      notes:

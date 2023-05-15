@@ -1,0 +1,171 @@
+name: color
+overview: |
+  This type can store a color. It is stored in hexadecimal, however in the UI is displayed usually as a color.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: no
+    notes:
+typeRules:
+displayOptions:
+restApi:
+  readFormat: |
+    The format is a simple string with the hexadecimal code of the color:
+
+    ```js
+    "tagColor": "#f5a9a9"
+    ```
+  writeFormat: |
+    You should pass a string with the hexadecimal code of the color:
+
+    ```js
+    "tagColor": "#f5a9a9"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a string with the hexadecimal code of the color:
+
+    ```js
+    // this will print something like "color: #f5a9a9"
+    log('color: '+record.field('tagColor').val());
+    ```
+  writeFormat: |
+    You should pass a string with the hexadecimal code of the color:
+
+    ```js
+    record.field('tagColor').val('#f5a9a9');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a simple string with the hex code:
+
+    ```
+    "tagColor"
+    "#f5a9a9"
+    ```
+  importFormat: |
+    The import format is a simple string with the hex code:
+
+    ```
+    "tagColor"
+    "#f5a9a9"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: no
+      notes:
+    greaterOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:
+  format: |
+    You should pass the hexadecimal code of the color. For example:
+
+    {% include query_sample.html
+    id="11198891njdjfjweuorwe"
+    description="finds skills with tag color '#f5a9a9'"
+    entity="skills"
+    jsQueryMap="{'tagColor': 'like(#f5a9a9)'}"
+    jsQueryBuilder=".field('tagColor').like('#f5a9a9')"
+    restApi="tagColor=like(#f5a9a9)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: no
+      notes:
+    greatOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:

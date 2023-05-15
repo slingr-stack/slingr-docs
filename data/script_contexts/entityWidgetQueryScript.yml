@@ -1,0 +1,24 @@
+params:
+  - name: query
+    type: sys.data.Query
+    description: |
+      Allows to build more complex quieries easily.
+returnType: object
+returnDescription: |
+  Return query parameter or queryMap. The query map object used to filter records. Check the [Query language]({{site.baseurl}}/app-development-query-language.html) documentation for the query map version.
+samples:
+  - title: Filter using query
+    code: |
+      var query = sys.data.createQuery('contacts').query(function(q) {
+          return q.or(
+            q.field('firstName').like('William'),
+            q.field('firstName').equals('John')
+          );
+        });
+        return query;
+  - title: Filter using query map
+    code: |
+      var queryMap = {
+        'firstName': 'like(John)'
+      };
+      return  queryMap;

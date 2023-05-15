@@ -1,0 +1,17 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the current record affected by the event.
+  - name: oldRecord
+    type: sys.data.Record
+    description: |
+      If the event is of type `On record change`, `On action performed` or `On condition met`, this variable
+      will hold the version of the record before the event happened.
+returnType: boolean
+returnDescription: |
+  You should return `true` if the action has to be executed, `false` otherwise.
+samples:
+  - title: only match the event if the field 'type' was modifed
+    code: |
+      return record.field('type').val() != oldRecord.field('type').val();

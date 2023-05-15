@@ -1,0 +1,35 @@
+params:
+  - name: event
+    type: object
+    description: |
+      Contains information of the event. It has the following structure:
+
+      ```js
+      {
+        "type": "ENDPOINT",
+        "date": 1486673333420,
+        "endpoint": "sample",
+        "endpointEvent": "inboundEvent",
+        "data": {
+          "token": "123456",
+          "number": 4468
+        }
+      }
+      ```
+
+      `date` is the timestamp when the event was sent.
+
+      `endpoint` is the name of the endpoint.
+
+      `endpointEvent` is the name of the event.
+
+      `data` is data sent by the endpoint which is specific for each event and you should check the documentation
+      for each endpoint.
+returnType: null
+returnDescription: null
+samples:
+  - title: logs the data sent by the endpoint
+    code: |
+      sys.logs.info('*** ENDPONT: '+event.endpoint);
+      sys.logs.info('*** EVENT: '+event.endpointEvent);
+      sys.logs.info('*** DATA: '+event.data);

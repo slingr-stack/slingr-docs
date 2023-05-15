@@ -1,0 +1,17 @@
+params:
+  - name: event
+    type: object
+    description: |
+      Contains information of the event. It has the following structure:
+
+      ```js
+      {
+        "type": "TIME"
+      }
+      ```
+returnType: null
+returnDescription: null
+samples:
+  - title: logs something when the timer is triggered
+    code: |
+      sys.logs.info('*** TIME LISTENER!');

@@ -1,0 +1,25 @@
+params:
+  - name: event
+    type: object
+    description: |
+      Contains information of the event. It has the following structure:
+
+      ```js
+      {
+        "type": "CUSTOM",
+        "customEvent": "newNote",
+        "customData": {
+          "noteId": "589cdb2ae201af1d75ec2d83"
+        }
+      }
+      ```
+
+      `customEvent` is the name of custom event that triggered the listener.
+
+      `customData` is an object sent by user as data opf this custom event.
+returnType: null
+returnDescription: null
+samples:
+  - title: log note ID create
+    code: |
+      sys.logs.info('*** NOTE CREATED: '+customData.noteId);

@@ -1,0 +1,187 @@
+name: boolean
+overview: |
+  This type can store a boolean value. This fields cannot be `null`; the value is either `false` or `true`.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: no
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: yes
+    notes:
+  calculatedInitialValue:
+    supported: yes
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+displayOptions:
+- name: Representation
+  description: |
+    How this field should be displayed. Options are:
+
+    - `Switcher`: in edit mode a switch will be displayed, while in read-only mode a box with the label will be displayed.
+      When this option is enabled you can choose the labels to be `Yes/No` or `On/Off`.
+    - `Check box`: a check box will be shown in edit mode, while in read-only mode a check or a cross will be displayed based on the value.
+restApi:
+  readFormat: |
+    The format is a boolean value:
+
+    ```js
+    "isCustomer": false
+    ```
+  writeFormat: |
+    You should pass a boolean:
+
+    ```js
+    "isCustomer": true
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a boolean:
+
+    ```js
+    // this will print something like "customer: true"
+    log('customer: '+record.field('isCustomer').val());
+    ```
+  writeFormat: |
+    You should pass a boolean to set the value:
+
+    ```js
+    record.field('isCustomer').val(true);
+    ```
+
+    If you pass `null` it will be coerced to `false`.
+exportImport:
+  exportFormat: |
+    The export format is a string where the value could be `true` or `false`:
+
+    ```
+    "booleanField1","booleanField2"
+    "true","false"
+    ```
+  importFormat: |
+    The import format supports different representations for `true` and `false`:
+
+    - **True values**: `true`, `1`, `yes` (case insensitive)
+    - **False values**: `false`, `0`, `no` (case insensitive)
+
+    ```
+    "booleanField1","booleanField2"
+    "true","false"
+    "1","0"
+    "yes","no"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: no
+      notes:
+    notEmpty:
+      supported: no
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: no
+      notes:
+    greaterOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:
+  format: |
+    You should pass the boolean value. For example:
+
+    {% include query_sample.html
+    id="sdf32234324looooo"
+    description="finds companies that are customers"
+    entity="companies"
+    jsQueryMap="{'isCustomer': true}"
+    jsQueryBuilder=".field('isCustomer').equals(true)"
+    restApi="name=true"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes: |
+      Strings `true`, `yes` and `1` are understood as the value `true`, while strings `false`, `no` and `0` are
+      interpreted as `false`.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: no
+      notes:
+    greatOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:

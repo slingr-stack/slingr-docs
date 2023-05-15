@@ -1,0 +1,210 @@
+name: decimal
+overview: |
+  This type can store decimal numbers. It supports options for rounding and number of decimals.
+
+  Right now this type does not support more than 4 decimals. This limitation will be solved soon.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: false
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: yes
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+- name: Minimum value
+  description: |
+    The minimum value (inclusive).
+- name: Maximum value
+  description: |
+    The maximum value (inclusive).
+- name: Limit decimals
+  description: |
+    Allows to limit the number of decimals. This will be done at the data level, so numbers will be stored in
+    the database with the specified number of decimals and the rest will be lost. If you don't want to loose
+    other decimals but still want to show less decimals, you should set these settings in display options.
+
+    When you limit the number of decimals the following options will be displayed:
+
+    - `Number of decimals`: this is the number of decimals to store. It can be from 0 to 4.
+    - `Extra decimals action`: indicates what to do when there are more decimals than the limit. These are the options:
+      - `Round`: uses rounding to limit decimals.
+      - `Truncate`: truncates the trailing decimals.
+      - `Throw error`: an error will be thrown if you try to set more decimals than it is allowed.
+displayOptions:
+- name: Show thousands separator
+  description: |
+    If this flag is set the thousands separator will be displayed in read-only mode. This flag has no effect
+    in edit mode.
+- name: Limit number of decimals
+  description: |
+    Allows to limit the number of decimals to show. This is at the UI level and doesn't have any effect on validation
+    rules or when the number is stored in the database. For this reason this options are only taken into account in
+    read-only mode.
+
+    When you limit the number of decimals the following options will be displayed:
+
+    - `Number of decimals`: this is the number of decimals to store. It can be from 0 to 4.
+    - `Extra decimals action`: indicates what to do when there are more decimals than the limit. These are the options:
+      - `Round`: uses rounding to limit decimals.
+      - `Truncate`: truncates the trailing decimals.
+restApi:
+  readFormat: |
+    The format is a number:
+
+    ```js
+    "rating": 3.2
+    ```
+  writeFormat: |
+    You should pass a number:
+
+    ```js
+    "rating": 4.5
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a number:
+
+    ```js
+    // this will print something like "rating: 2.5"
+    log('rating: '+record.field('rating').val());
+    ```
+  writeFormat: |
+    You should pass a number to set the value:
+
+    ```js
+    record.field('raiting').val(4.5);
+    ```
+
+    If you pass something that isn't a number, the field will be set to `null`.
+exportImport:
+  exportFormat: |
+    The export format is a string with a decimal number:
+
+    ```
+    "decimalField1","decimalField2"
+    "0.872","27810.0028"
+    ```
+  importFormat: |
+    The import format is a string with a decimal number:
+
+    ```
+    "decimalField1","decimalField2"
+    "0.872","27810.0028"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the number. For example:
+
+    {% include query_sample.html
+    id="oofewofWERWER23423kmf"
+    description="finds companies with rating grater or equals than 3.0"
+    entity="companies"
+    jsQueryMap="{'rating': 'greaterOrEquals(3.0)'}"
+    jsQueryBuilder=".field('rating').greaterOrEquals(3.0)"
+    restApi="rating=greaterOrEquals(3.0)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: yes
+      notes:
+    avg:
+      supported: yes
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:

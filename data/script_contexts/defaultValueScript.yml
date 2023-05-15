@@ -1,0 +1,40 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the record associated to the operation. If default value is for an entity field, this will be the record
+      that contains the field. Keep in mind that in this case, as the default value is usually calculated before
+      creating the record, most fields could be empty. The only case where other fields will be set is when this is
+      a new field or the required flag was added, so when calculating the default value other fields will be already
+      there.
+
+      If the field is an action parameter, this will be the record where the action is being executed. In this case
+      the record will have values and it will more useful.
+  - name: parentField
+    type: sys.data.Record
+    description: |
+      This variable is only available when this is a field inside a nested field and it is based on the
+      variable `record` or `action` (the same rules apply then it is an action parameter or an entity field).
+
+      It is a <<<sys.data.Record>>> object with the difference that the root of the record is set to the
+      nested fields containing it. This way it is possible to access fields in the nested group like
+      `parentField.field('fieldA')` instead of `record.field('nested.fieldA')` or `action.field('nested.fieldA')`,
+      which is specially needed when nested fields are multi-valued as you don't know the index.
+  - name: action
+    type: sys.data.Action
+    description: |
+      This variable will be available only if the field is an action parameter. It will provide access to other parameters,
+      but keep in mind that they might be empty (except that they have an initial value set).
+returnType: any|any[]
+returnDescription: |
+  You should return the calculated value in the format used in the Javascript API for the type of the field. If the
+  field is multi-valued, you should return an array.
+samples:
+  - title: if current user has an email with 'slingr.io', set this field to 'true'
+    code: |
+      let flag = false;
+      const currentUser = sys.context.getCurrentUserRecord();
+      if (currentUser.field('email').val().indexOf('@slingr.io') != -1) {
+        flag = true;
+      }
+      return flag;

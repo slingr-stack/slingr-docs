@@ -1,0 +1,179 @@
+name: rank
+overview: |
+  This type is basically a string with some special features that make it useful when you need to allow users
+  to rank records using drag and drop in the UI. For example you can use fields of this type in grid views or
+  workflow views so users can rank records there.
+
+  Rank fields are automatically populated with a value. When users rank records, if the view is configured to
+  use the field as rank, the value will be automatically updated so the lexical order is what the user sees in
+  the UI. In order to make it possible the rank type provides three methods in the Javascript API: `rankBefore()`,
+  `rankAfter()` and `rankBetween()`. This methods will automatically calculate the new value of the rank so the
+  record stays in the desired position.
+features:
+  manyMultiplicity:
+    supported: no
+    notes:
+  defaultValue:
+    supported: no
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: no
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: no
+    notes:
+  automaticInitialization:
+    supported: yes
+    notes:
+  calculatedInitialValue:
+    supported: yes
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: no
+    notes:
+typeRules:
+displayOptions:
+restApi:
+  readFormat: |
+    The format is a simple string with the rank value:
+
+    ```js
+    "rank": "iiiii00000"
+    ```
+  writeFormat: |
+    You should pass a string with the rank value:
+
+    ```js
+    "rank": "iiiii00000"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a string with the rank value:
+
+    ```js
+    // this will print something like "rank: iiiii00000"
+    log('rank: '+record.field('rank').val());
+    ```
+  writeFormat: |
+    You should pass a string with the rank value:
+
+    ```js
+    record.field('rank').val('iiiii00000');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a simple string:
+
+    ```
+    "rankField1","rankField2"
+    "iiiii0001s","iiiii00za8"
+    ```
+  importFormat: |
+    The import format is a simple string:
+
+    ```
+    "rankField1","rankField2"
+    "iiiii0001s","iiiii00za8"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the rank value. For example:
+
+    {% include query_sample.html
+    id="asd2128sadjasjdjasd"
+    description="finds a task with rank 'iiiii00000'"
+    entity="tasks"
+    jsQueryMap="{'rank': 'iiiii00000'}"
+    jsQueryBuilder=".field('rank').equals('iiiii00000')"
+    restApi="rank=iiiii00000"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: no
+      notes:

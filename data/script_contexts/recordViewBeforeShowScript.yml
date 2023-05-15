@@ -1,0 +1,14 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the record that will be displayed in the view. You can make changes to it and they will be applied
+      in the UI. You don't need to save those changes. If you do, those changes will be made permanent.
+returnType: null
+returnDescription: null
+samples:
+  - title: suggests a new value for a field
+    code: |
+      sys.logs.info('attempt to set a task as urgent');
+      record.field('urgent').val(true);
+      record.field('assignee').val(sys.context.getCurrentUser());

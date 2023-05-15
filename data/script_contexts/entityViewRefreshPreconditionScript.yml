@@ -1,0 +1,13 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record being rendered on the view.
+returnType: boolean
+returnDescription: |
+  `true` if preconditions are met, `false` otherwise.
+samples:
+  - title: preconditions for automatic refresh are met if type is 'a' and current
+      user is in group 'test'
+    code: |
+      return record.field('type').val() == 'a' && sys.context.getCurrentUser().containsGroup('test');

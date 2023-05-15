@@ -1,0 +1,35 @@
+params:
+  - name: event
+    type: object
+    description: |
+      Contains information of the event. It has the following structure:
+
+      ```js
+      {
+        "type": "DATA",
+        "dataEvent": "RECORD_CHANGED"
+      }
+      ```
+
+      Possible values for `dataEvent` are: `RECORD_CREATED`, `RECORD_CHANGED`, `RECORD_DELETED`,
+      `CONDITION_MET`, `ACTION_PERFORMED`.
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record involved in the data operation.
+
+      There is one case where this variable will be empty, which when the `event.dataEvent` is
+      `ACTION_PERFORMED` and the action executed was of type `Many records`. In this case, as the
+      action is executed over a group of records, it isn't possible to set a single record.
+  - name: oldRecord
+    type: sys.data.Record
+    description: |
+      If the event is of type `RECORD_CHANGED`, `ACTION_PERFORMED` or `CONDITION_MET`, this variable
+      will hold the version of the record before the event happened.
+returnType: null
+returnDescription: null
+samples:
+  - title: logs a message when there is a data event (the listener is configured accordingly)
+    code: |
+      sys.logs.info('*** EVENT: '+event.dataEvent);
+      sys.logs.info('*** RECORD: '+record.label());

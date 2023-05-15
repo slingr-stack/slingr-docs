@@ -1,0 +1,14 @@
+returnType: boolean
+returnDescription: |
+  You should return `true` if you want to run the script for re-generate all the records. `false` otherwise.
+samples:
+  - title: based on a property retrieved by an endpoind we decide if data regeneratrion
+      script should run
+    code: |
+      var shouldRegenerate = app.endpoints.http.get({
+        path: '/newRecords',
+        headers: {
+          token: token
+        }
+      });
+      return shouldRegenerate;

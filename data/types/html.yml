@@ -1,0 +1,236 @@
+name: html
+overview: |
+  This type can store HTML code. It will show a nice text editor in edit mode and will render in HTML in read-only
+  mode.
+
+  One important thing to keep in mind is that for security reasons HTML code will be stripped. These tags are allowed:
+
+  ```
+  <a href="ftp|http|https|mailto" title="">
+  <b>
+  <blockquote cite="http|https">
+  <br>
+  <caption>
+  <cite>
+  <code>
+  <col span="" width="">
+  <colgroup span="" width="">
+  <dd>
+  <div>
+  <dl>
+  <dt>
+  <em>
+  <h1>
+  <h2>
+  <h3>
+  <h4>
+  <h5>
+  <h6>
+  <i>
+  <img align="" alt="" height="" src="http|https" title="" width="">
+  <li>
+  <ol start="" type="">
+  <p>
+  <pre>
+  <q cite="http|https">
+  <small>
+  <strike>
+  <strong
+  <sub>
+  <sup>
+  <table summary="" width="">
+  <tbody>
+  <td abbr="" axis="" colspan="" rowspan="" width="">
+  <tfoot>
+  <th abbr="" axis="" colspan="" rowspan="" scope="" width="">
+  <thead>
+  <tr>
+  <u>
+  <ul type="">
+  <span>
+  <div>
+  <hr>
+  ```
+
+  Appart for thos specific attributes, `class` is allowed for all tags.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+displayOptions:
+- name: Limit number of characters
+  description: |
+    This will limit the number of characters to display, showing a `More` button to expand the content.
+
+    Keep in mind that this option only has effect when the field is read-only.
+restApi:
+  readFormat: |
+    The format is the plain HTML code:
+
+    ```js
+    "notes": "<p>test <span style=\"background-color: yellow; font-weight: bold;\">html</span> text</p>"
+    ```
+  writeFormat: |
+    You should pass HTML code:
+
+    ```js
+    "notes": "<p>test <span style=\"background-color: yellow; font-weight: bold;\">html</span> text</p>"
+    ```
+
+    Keep in mind that HTML code sent will be stripped out as explained above in the overview.
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a plain HTML code:
+
+    ```js
+    // this will print something like "<p>test</p>"
+    log('notes: '+record.field('notes').val());
+    ```
+  writeFormat: |
+    You should pass a plain string to set the value:
+
+    ```js
+    record.field('notes').val('<p>test <span style="background-color: yellow; font-weight: bold;">html</span> text</p>');
+    ```
+
+    Keep in mind that HTML code sent will be stripped out as explained above in the overview.
+exportImport:
+  exportFormat: |
+    The export format is a string with the HTML code:
+
+    ```
+    "htmlField"
+    "<strong>title</strong><p>blah blah</p>"
+    ```
+  importFormat: |
+    The import format is a string with the HTML code:
+
+    ```
+    "htmlField"
+    "<strong>title</strong><p>blah blah</p>"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the text as a plain HTML. For example:
+
+    {% include query_sample.html
+    id="ddddduuuuuueeeeeee224"
+    description="finds companies where notes have the word 'test'"
+    entity="companies"
+    jsQueryMap="{'notes': 'like(test)'}"
+    jsQueryBuilder=".field('notes').like('test')"
+    restApi="notes=like(test)"
+    %}
+
+    There is one important thing to keep in mind. Searches will be done against the plain text version of the field.
+    For example if you have a tag with a class name `test`, the query above will not match it because it is not part
+    of the visible text of the HTML.
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: no
+      notes:

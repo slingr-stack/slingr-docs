@@ -1,0 +1,265 @@
+name: dynamic_choice
+overview: |
+  Allows to specify a set of possible dynamic values that the field can hold. In the UI the user can pick a value
+  from the possible ones using a dropdown, a list, a box or a switcher, depending on the representation. The main
+  difference with regular choices is that you cannot configure the possible values when configuring the field in
+  the app builder. Instead possible values can set on using JS API, usually in events like before show or on record
+  change. This way, this field can have different possible values (and a different selected value) depending on the
+  current status of the record, the user or any other condition.
+
+  Keep in mind that the raw value of the field will store all possible values and the current selected value.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: no
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+displayOptions:
+- name: Representation
+  description: |
+    How this field should be displayed. Options are:
+
+    - `Dropdown`: a dropdown with possible values will be displayed.
+    - `List`: a list with all values will be displayed.
+    - `Switcher`: a switcher with all values will be displayed. If there are many possible values this might
+      not be the best representation.
+    - `Boxes`: all records that can be selected as the value of the field will be displayed in boxes so the user
+      can easily pick one. Only use this representation when there aren't many possible options. The max size of
+      records that this representation support is 100.
+restApi:
+  readFormat: |
+    The format is a json with the name of the value and the possible options for the selected value:
+
+    ```js
+    {
+      "options": [{
+          "label": "Alabama",
+          "name": "AL"
+        }, {
+          "label": "Alaska",
+          "name": "AK"
+        }, {
+          "label": "Arizona",
+          "name": "AZ"
+        }],
+      "selectedValue": "AZ"
+    }
+    ```
+  writeFormat: |
+    You should pass a json with the name of the value as the selected value and the possible values as options:
+
+    ```js
+    record.field('dynamicChoice').val({
+      "options": [{
+          "label": "Alabama",
+          "name": "AL"
+        }, {
+          "label": "Alaska",
+          "name": "AK"
+        }, {
+          "label": "Arizona",
+          "name": "AZ"
+        }],
+      "selectedValue": "AZ"
+    });
+    ```
+
+    If you pass only a string, this will be taken as the selected value and the possible values will be constructed
+    automatically with one option with the selected value as `name` and `label`:
+
+    ```js
+    record.field('dynamicChoice').val('AZ');
+    ```
+
+    This will be converted internally to:
+
+    ```
+    {
+      "options": [{
+          "label": "AZ",
+          "name": "AZ"
+        }],
+      "selectedValue": "AZ"
+    }
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a JSON with the name of the value as selected value and the possible
+    values as options:
+
+    ```js
+    // this will print something like
+    // "state: {options: [{label: Alabama, name: AL}, {label: Alaska, name: AK},{label: Arizona, name: AZ}], selectedValue: AZ}"
+    log('state: ' + JSON.stringify(record.field('state').val()));
+    ```
+    The `selectedValue()` method in the wrapper will return a string with the name of the value or `null` if no value is set:
+
+    ```js
+    // this will print something like "state: AZ"
+    log('state: ' + record.field('state').selectedValue());
+    ```
+    The `selectedLabel()` method in the wrapper will return a string with the label of the selected value or `null` if no value is set:
+
+    ```js
+    // this will print something like "state: Arizona"
+    log('state: ' + record.field('state').selectedLabel());
+    ```
+    The `options()` method in the wrapper return an array with the possible options for the value:
+
+    ```js
+    // this will print something like
+    // "state options: [{"label": "Alabama", "name": "AL"},{"label": "Alaska", "name": "AK"},{"label": "Arizona", "name": "AZ"}]"
+    log('state options: ' + JSON.stringify(record.field('state').options()));
+    ```
+  writeFormat: |
+    For `val()` you can pass a json with the name of the value as selected value and an array with the possible values as options:
+
+    ```js
+    record.field('state').val({"options": [{"label": "Alabama", "name": "AL"},{"label": "Alaska", "name": "AK"},{"label": "Arizona", "name": "AZ"}], "selectedValue": "AZ"});
+    ```
+
+    You can also pass a string and it will taken as the `selectedValue`:
+
+    ```js
+    record.field('state').val("AZ");
+    //this value will be converted to {"options": [{"label": "AZ", "name": "AZ"}], "selectedValue": "AZ"}
+    ```
+
+    The `selectedValue()` method in the wrapper will save a selected value and return a string with the name of the value:
+
+    ```js
+    // this will save the name option "AZ" as selected value
+    record.field('state').selectedValue('AZ');
+    ```
+
+    The `options()` method in the wrapper will save the possible options for the value:
+
+    ```js
+    // this will save the options to be used as possible values:
+    record.field('state').options([{"label": "Alabama", "name": "AL"},{"label": "Alaska", "name": "AK"},{"label": "Arizona", "name": "AZ"}]);
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a string representation of a json with the name of the selected value and his possible values as
+    options:
+
+    ```
+    "{options: [{label: Alabama, name: AL}, {label: Alaska, name: AK},{label: Arizona, name: AZ}], selectedValue: AZ}"
+    ```
+  importFormat: |
+    The import format is a string representation of a json with the name of the selected value and his possible values
+    as options:
+
+    ```
+    "{options: [{label: Alabama, name: AL}, {label: Alaska, name: AK},{label: Arizona, name: AZ}], selectedValue: AZ}"
+    ```
+
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: no
+      notes:
+    greaterOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:
+
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: no
+      notes:
+    last:
+      supported: no
+      notes:
+    min:
+      supported: no
+      notes:
+    max:
+      supported: no
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes: |
+      UI queries will try to match either the label or the name.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: no
+      notes:
+    greatOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:

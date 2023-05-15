@@ -59,28 +59,12 @@ Now we are ready to create the columns in the workflow view:
 
 Repeat the same process to create these two additional columns:
 
-<table class="table">
-    <thead>
-    <tr class="header">
-        <th align="left">Label</th>
-        <th align="left">Filters</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td align="left">In progress</td>
-<td align="left" markdown="1">
-`Status` equals to `In progress`
-</td>
-    </tr>
-    <tr>
-        <td align="left">Done</td>
-<td align="left" markdown="1">
-`Status` equals to `Done`
-</td>
-    </tr>
-    </tbody>
-</table>
+| Label        | Filters                               |
+| ------------ | ------------------------------------- |
+| In progress  | `Status` equals to `In progress`       |
+| Done         | `Status` equals to `Done`              |
+
+<br>
 
 ![Alt Text](/images/vendor/task-mananger/creating-wf/www.png)
 
@@ -96,6 +80,7 @@ Repeat the same process to create these two additional columns:
 5. Click on Create to save the transition.
 
 Repeat the same process to create these other transitions:
+
 
 | Label              | Source column | Target column | Action                   |
 | ------------------| -------------| --------------| -------------------------|

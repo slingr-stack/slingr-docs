@@ -1,0 +1,183 @@
+name: integer
+overview: |
+  This type can store integer numbers.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: yes
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+- name: Minimum value
+  description: |
+    The minimum value (inclusive).
+- name: Maximum value
+  description: |
+    The maximum value (inclusive).
+displayOptions:
+- name: Show thousands separator
+  description: |
+    If this flag is set the thousands separator will be displayed in read-only mode. This flag has no effect
+    in edit mode.
+restApi:
+  readFormat: |
+    The format is a number:
+
+    ```js
+    "numberOfEmployees": 8
+    ```
+  writeFormat: |
+    You should pass an integer:
+
+    ```js
+    "numberOfEmployees": 10
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a number:
+
+    ```js
+    // this will print something like "numberOfEmployees: 8"
+    log('numberOfEmployees: '+record.field('numberOfEmployees').val());
+    ```
+  writeFormat: |
+    You should pass a number to set the value:
+
+    ```js
+    record.field('numberOfEmployees').val(10);
+    ```
+
+    If you pass something that isn't a number, the field will be set to `null`.
+exportImport:
+  exportFormat: |
+    The export format is the integer number:
+
+    ```
+    "integerField1","integerField2"
+    "1383","-37"
+    ```
+  importFormat: |
+    The import format is the integer number:
+
+    ```
+    "integerField1","integerField2"
+    "1383","-37"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the number. For example:
+
+    {% include query_sample.html
+    id="io898932husnjdvnnsnnjwe"
+    description="finds companies with more than 10 employees"
+    entity="companies"
+    jsQueryMap="{'numberOfEmployees': 'greater(10)'}"
+    jsQueryBuilder=".field('numberOfEmployees').greater(10)"
+    restApi="numberOfEmployees=greater(10)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: yes
+      notes:
+    avg:
+      supported: yes
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:

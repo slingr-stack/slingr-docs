@@ -1,0 +1,14 @@
+params: null
+returnType: string
+returnDescription: |
+  The ID of the record that should be displayed in the record view.
+samples:
+  - title: finds one record based on current user
+    code: |
+      var settings;
+      if (sys.context.getCurrentUser().isPrimaryGroup('Testing')) {
+        settings = sys.data.findOne('settings', {type: 'test'});
+      } else {
+        settings = sys.data.findOne('settings', {type: 'prod'});
+      }
+      return settings.id();

@@ -1,0 +1,215 @@
+name: masked_text
+overview: |
+  A mask can be specified so the text stored in this field follows a specific pattern.
+
+  Only the text entered by the user will be stored, which means that if there are characters coming from the mask
+  those won't be saved. For example if the mask is `999-aaa` and the value is `123-ABC`, value stored
+  in the database will be `123ABC`.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: no
+    notes:
+typeRules:
+- name: Mask
+  description: |
+    This is the mask that will be used to validate values. Special characters in the mask are:
+
+    - `9`: must be a number.
+    - `a`: must be a letter.
+    - `w`: must be a number or a letter.
+
+    You could also put other characters that will be fixed in the mask. For example the mask `999-aaa`
+    will accept the following values: `123-ABC`, `123ABC`. As you can see you can skip the dash because
+    that's part of the mask.
+
+    In the UI special characters like `9`, `a` and `w` will be displayed as empty spaces where you can
+    type something. Other characters will be displayed as they are and will be read-only.
+displayOptions:
+restApi:
+  readFormat: |
+    The format is a simple string, which will be already formatted with the mask:
+
+    ```js
+    "taxId": "862-SKB"
+    ```
+  writeFormat: |
+    You should pass a string with the value:
+
+    ```js
+    "taxId": "123-ABC"
+    ```
+
+    You can skip fixed characters in the mask:
+
+
+    ```js
+    "taxId": "123ABC"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return an already formatted string:
+
+    ```js
+    // this will print something like "taxId: 123-ABC"
+    log('taxId: '+record.field('taxId').val());
+    ```
+  writeFormat: |
+    You can pass the value with the mask format or without it:
+
+    ```js
+    // all these lines are equivalent
+    record.field('taxId').val('123-ABC');
+    record.field('taxId').val('123ABC');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a simple string:
+
+    ```
+    "maskedTextField1","maskedTextField2"
+    "abc-123","udl-860"
+    ```
+  importFormat: |
+    The import format is a simple string:
+
+    ```
+    "maskedTextField1","maskedTextField2"
+    "abc-123","udl-860"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes: |
+        It is important to note that in this case the matching will be done with the value stored in the database,
+        which means that fixed characters in the mask won't be taken into account. For example if the mask is `999-aaa`
+        and the value is `123-ABC`, if you query with `like(3-A)` it won't match, but `like(3A)` will.
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    For equality queries you can pass the value with the mask format or without it. For example:
+
+    {% include query_sample.html
+    id="dsfs89233423232mnnccc"
+    description="finds companies with tax ID '123-ABC'"
+    entity="companies"
+    jsQueryMap="{'taxId': '123-ABC'}"
+    jsQueryBuilder=".field('taxId').equals('123-ABC')"
+    restApi="name=123-ABC"
+    %}
+
+    You could skip the fixed characters in the mask as well:
+
+    {% include query_sample.html
+    id="sdsffddsdsdsdfmkmmmmmmmcccc"
+    description="finds companies with tax ID '123-ABC'"
+    entity="companies"
+    jsQueryMap="{'taxId': '123ABC'}"
+    jsQueryBuilder=".field('taxId').equals('123ABC')"
+    restApi="name=123ABC"
+    %}
+
+    Keep in mind that you cannot use the formatted form when using the `like` operator as the match
+    will be done with the value stored in the database.
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes: Keep in mind that you cannot use the formatted value. See the notes in the `like` query operator.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: no
+      notes:

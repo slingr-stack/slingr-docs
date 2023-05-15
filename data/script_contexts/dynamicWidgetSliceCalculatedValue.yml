@@ -1,0 +1,20 @@
+params:
+  - name: query
+    type: sys.data.Query
+    description: |
+      It is a filter by grouping defined in slice configurations.
+returnType: object
+returnDescription: |
+  You should return a value in which the type is the defined in slice configurations.
+samples:
+  - title: displays a invoices by state
+    code: |
+      var dataRS = sys.data.find(query);
+      var total = 0;
+      if (dataRS) {
+        while (dataRS.hasNext()) {
+          var saleInvoice = dataRS.next();
+          total = total + saleInvoice.field('total').val();
+        }
+      }
+      return total;

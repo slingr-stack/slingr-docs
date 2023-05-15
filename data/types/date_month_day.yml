@@ -1,0 +1,197 @@
+name: date_month_day
+overview: |
+  This type can store a day of the year. It doesn't store the year or time, just the month and day.
+
+  The default format is `MM-dd` but you can change it to something else.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+displayOptions:
+- name: Representation
+  description: |
+    This is the format to display the day. Default is `yyyy-MM` but it can be changed to something else.
+
+    There are a few predefined formats that are common, but you can choose `Custom` and define your own format
+    based on the following rules:
+
+    - Era designator: G (AD)
+    - Year: yy (16), yyyy (2016)
+    - Month: MMMM (July), MMM (Jul), MM (07)
+    - Day in month: d (9), dd (09)
+restApi:
+  readFormat: |
+    The format is a string with the day in format `MM-dd`:
+
+    ```js
+    "birthday": "04-16"
+    ```
+  writeFormat: |
+    You should pass a string with the day in format `MM-dd`:
+
+    ```js
+    "birthday": "04-16"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a `Date` object.
+
+    ```js
+    // this will print something like "birthday: Wed Jan 11 2017 00:00:00 GMT-0000 (UTC)"
+    log('birthday: '+record.field('birthday').val());
+    ```
+
+    As the `Date` obect has year and time, it will be set to current year and `00:00` using
+    the time zone of the server.
+  writeFormat: |
+    When writing the value you could either use a `Date` object or use a string in the format `MM-dd`.
+
+    ```js
+    record.field('birthday').val(new Date());
+    record.field('birthday').val('04-26');
+    ```
+
+    If the value is not valid, the field will be set to `null` silently.
+exportImport:
+  exportFormat: |
+    The export format is `MM-dd`, no matter the display options for that field:
+
+    ```
+    "monthDayField1","monthDayField2"
+    "02-10","05-24"
+    ```
+  importFormat: |
+    The import format is `MM-dd`, no matter the display options for that field:
+
+    ```
+    "monthDayField1","monthDayField2"
+    "02-10","05-24"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the a string with the format `MM-dd`. For example:
+
+    {% include query_sample.html
+    id="sdfasd32143423423sdfsd"
+    description="finds contacts with birthday on '04-13'"
+    entity="contacts"
+    jsQueryMap="{'birthday': '04-13'}"
+    jsQueryBuilder=".field('birthday').equals('04-13')"
+    restApi="birthday=04-13"
+    %}
+
+    When using the query builder you can use a `Date` object:
+
+    ```js
+    query.field('birthday').equals(new Date());
+    ```
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes: |
+      UI queries will try to match using the format defined in the default display options of the field.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:

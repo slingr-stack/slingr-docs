@@ -1,0 +1,236 @@
+name: big_number
+overview: |
+  This type store big numbers. It supports up to 34 significant digits.
+
+  Big number uses [bignumber.js](http://mikemcl.github.io/bignumber.js/) to in the Javascript API. You can
+  check bignumber.js's documentation to perfom operations using this data type.
+
+  In order to set the value use string, number or big number obejct. The BigNumber class is available in
+  `sys.utils.numbers`.
+
+  For example:
+
+  ```js
+  // retrieve the big number instance
+  var bigNumber = record.field('raiting').val();
+  // perform some operation. Check documentation http://mikemcl.github.io/bignumber.js
+  bigNumber = bigNumber.plus(3); // objects are immutable
+  // set value before save it
+  record.field('raiting').val(bigNumber);
+
+  // or
+  var bigNumber = new sys.utils.numbers.BigNumber(1011, 2);
+  bigNumber = bigNumber.plus(5);
+  record.field('raiting').val(bigNumber);
+  ```
+
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: false
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: yes
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+- name: Minimum value
+  description: |
+    The minimum value (inclusive).
+- name: Maximum value
+  description: |
+    The maximum value (inclusive).
+- name: Limit decimals
+  description: |
+    Allows to limit the number of decimals. This will be done at the data level, so numbers will be stored in
+    the database with the specified number of decimals and the rest will be lost. If you don't want to loose
+    other decimals but still want to show less decimals, you should set these settings in display options.
+
+    When you limit the number of decimals the following options will be displayed:
+
+    - `Number of decimals`: this is the number of decimals to store. It can be from 0 to 4.
+    - `Extra decimals action`: indicates what to do when there are more decimals than the limit. These are the options:
+      - `Round`: uses rounding to limit decimals.
+      - `Truncate`: truncates the trailing decimals.
+      - `Throw error`: an error will be thrown if you try to set more decimals than it is allowed.
+displayOptions:
+- name: Show thousands separator
+  description: |
+    If this flag is set the thousands separator will be displayed in read-only mode. This flag has no effect
+    in edit mode.
+- name: Limit number of decimals
+  description: |
+    Allows to limit the number of decimals to show. This is at the UI level and doesn't have any effect on validation
+    rules or when the number is stored in the database. For this reason this options are only taken into account in
+    read-only mode.
+
+    When you limit the number of decimals the following options will be displayed:
+
+    - `Number of decimals`: this is the number of decimals to store. It can be from 0 to 4.
+    - `Extra decimals action`: indicates what to do when there are more decimals than the limit. These are the options:
+      - `Round`: uses rounding to limit decimals.
+      - `Truncate`: truncates the trailing decimals.
+restApi:
+  readFormat: |
+    The format is an string with big number:
+
+    ```js
+    "amount": "8.997738199773819977381"
+    ```
+  writeFormat: |
+    You should pass a string with big number:
+
+    ```js
+    "amount": "8.997738199773819977381"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return an instance of big number:
+
+    ```js
+    // this will print something like "energy: 0.123465789"
+    log('energy: '+record.field('energy').val());
+
+    var value = record.field('energy').val();
+    log('energy: '+ value.toFormat(2)); // toFormat is a BigNumber function and limit to two decimals
+    ```
+  writeFormat: |
+    You should pass a number, string or big number to set the value:
+
+    ```js
+    var number = new sys.utils.numbers.BigNumber('zz.9', 36);   // Number base 36 -> "1295.25"
+    var n1 = new sys.utils.numbers.BigNumber(1011, 2);          // Number base 2  -> "11"
+    number = number.plus(n1);
+    log(number);  // print -> 1306.25
+    record.field('energy').val(number); // set before seved it
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a string with a big number:
+
+    ```
+    "bigNumberField1","bigNumberField2"
+    "0.872","27810.0028"
+    ```
+  importFormat: |
+    The import format is a string with a big number:
+
+    ```
+    "bigNumberField1","bigNumberField2"
+    "0.872","27810.0028"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the number. For example:
+
+    {% include query_sample.html
+    id="oofewofWERWER23423kmf"
+    description="finds companies with rating grater or equals than 3.0"
+    entity="companies"
+    jsQueryMap="{'rating': 'greaterOrEquals(3.0)'}"
+    jsQueryBuilder=".field('rating').greaterOrEquals('3.0')"
+    restApi="rating=greaterOrEquals(3.0)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: yes
+      notes:
+    avg:
+      supported: yes
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:

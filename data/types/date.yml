@@ -1,0 +1,210 @@
+name: date
+overview: |
+  This type can store a date. It doesn't store the time, just the date.
+
+  The default format is `yyyy-MM-dd` but you can change it to something else.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+displayOptions:
+- name: Representation
+  description: |
+    This is the format to display the date. Default is `yyyy-MM-dd` but it can be changed to something else.
+
+    There are a few predefined formats that are common, but you can choose `Custom` and define your own format
+    based on the following rules:
+
+    - Era designator: G (AD)
+    - Year: yy (16), yyyy (2016)
+    - Month: MMMM (July), MMM (Jul), MM (07)
+    - Week in year: w (27)
+    - Day in year: D (189)
+    - Day in month: d (9), dd (09)
+    - Day name in week: EEE (Tue), EEEE (Tuesday)
+restApi:
+  readFormat: |
+    The format is a string with the date in format `yyyy-MM-dd`:
+
+    ```js
+    "startDate": "2016-07-12"
+    ```
+  writeFormat: |
+    You should pass a string with the date in format `yyyy-MM-dd`:
+
+    ```js
+    "startDate": "2016-07-12"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a `Date` object.
+
+    ```js
+    // this will print something like "date: Sat Jun 15 2013 00:00:00 GMT-0000 (UTC)"
+    log('date: '+record.field('startDate').val());
+    ```
+
+    As the `Date` obect has time, it will be set to `00:00` of the time zone of the server. This
+    way the date will be the date set in the field and the time will be `00:00`.
+  writeFormat: |
+    When writing the value you could either use a `Date` object or use a string in the format `yyyy-MM-dd`.
+
+    ```js
+    record.field('startDate').val(new Date());
+    record.field('startDate').val('2016-07-09');
+    ```
+
+    If the value is not valid, the field will be set to `null` silently.
+exportImport:
+  exportFormat: |
+    The export format is `yyyy-MM-dd`, no matter the display options for that field:
+
+    ```
+    "dateField1","dateField2"
+    "2017-02-10","2017-05-24"
+    ```
+  importFormat: |
+    The import format is `yyyy-MM-dd`, no matter the display options for that field:
+
+    ```
+    "dateField1","dateField2"
+    "2017-02-10","2017-05-24"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the a string with the format `yyyy-MM-dd`. For example:
+
+    {% include query_sample.html
+    id="sdf324234sdfsdf"
+    description="finds companies with start date '2016-07-12'"
+    entity="companies"
+    jsQueryMap="{'startDate': '2016-07-12'}"
+    jsQueryBuilder=".field('startDate').equals('2016-07-12')"
+    restApi="startDate=2016-07-12"
+    %}
+
+    When using the query builder you can use a `Date` object:
+
+    ```js
+    query.field('startDate').equals(new Date());
+    ```
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes: |
+      UI queries will try to match using the format defined in the default display options of the field.
+    specialValues: |
+      There are some special values you can use:
+
+      - `now`: same as today.
+      - `today`: same as writting today's date.
+      - `yesterday`: same as writting yesterday's date.
+      - `tomorrow`: same as writting tomorrow's date.
+      - `last week/month/year`: it is a range that includes all days in last week/month/year
+      - `this week/month/year`: it is a range that includes all days in current week/month/year
+      - `last X weeks/months/years`: it is a range that includes all days in the last `X` number of weeks/months/years
+      - `next X weeks/months/years`: it is a range that includes all days in the next `X` number of weeks/months/years
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:

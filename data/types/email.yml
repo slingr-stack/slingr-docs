@@ -1,0 +1,175 @@
+name: email
+overview: |
+  This type can store an email, for example `user@test.com`. This field will be rendered as a `mailto` link.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: no
+    notes:
+typeRules:
+displayOptions:
+restApi:
+  readFormat: |
+    The format is a simple string with the email:
+
+    ```js
+    "contactInformation": {
+      "email": "user@test.com"
+    }
+    ```
+  writeFormat: |
+    You should pass a string with the email:
+
+    ```js
+    "contactInformation": {
+      "email": "user@test.com"
+    }
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a plain string with the email address:
+
+    ```js
+    // this will print something like "email: user@test.com"
+    log('email: '+record.field('contactInformation.email').val());
+    ```
+  writeFormat: |
+    You should pass a plain string with the email to set the value:
+
+    ```js
+    record.field('contactInformation.email').val('user@test.com');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a simple string with the email:
+
+    ```
+    "emailField1","emailField2"
+    "user1@test.com","user2@test.com"
+    ```
+  importFormat: |
+    The import format is a simple string with the email:
+
+    ```
+    "emailField1","emailField2"
+    "user1@test.com","user2@test.com"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the email as a plain string. For example:
+
+    {% include query_sample.html
+    id="3wweuoo3u434"
+    description="finds companies with contact email like 'test'"
+    entity="companies"
+    jsQueryMap="{'contactInformation.email': 'like(test)'}"
+    jsQueryBuilder=".field('contactInformation.email').like('test')"
+    restApi="contactInformation.email=like(test)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: no
+      notes:

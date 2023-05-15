@@ -1,0 +1,16 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the just created record from the view.
+returnType: null
+returnDescription: null
+samples:
+  - title: logs message and navigate to other view
+    code: |
+      sys.logs.info('Record '+record.field('name').val()+' created successfully');
+      sys.ui.sendMessage({
+            scope: 'global',
+            name: 'navigate',
+            view: 'dashboard'
+      });

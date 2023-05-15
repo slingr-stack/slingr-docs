@@ -1,0 +1,249 @@
+name: group
+overview: |
+  This type allows to reference a group in the application.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: no
+    notes:
+typeRules:
+- name: Filtering
+  description: |
+    Allows to indicate which groups can be set in this field. Options are:
+
+    - `None`: all groups will be listed.
+    - `By groups`: it is possible to indicate which groups will be available for this field.
+displayOptions:
+restApi:
+  readFormat: |
+    It's a JSON with the following fields:
+
+    - `id`: that's the ID of the referenced group.
+    - `label`: that's the label of the referenced group.
+
+    Sample group field in JSON format:
+
+    ```js
+    "group": {
+      "id": "57fe5269e4b0f6600fdfbdba",
+      "label": "Read-only user"
+    }
+    ```
+  writeFormat: |
+    You can pass only the ID and avoid the `label` field:
+
+    ```js
+    "group": {"id": "57fe5269e4b0f6600fdfbdba"}
+    ```
+
+    You can also pass the ID directly as a string:
+
+    ```js
+    "group": "57fe5269e4b0f6600fdfbdba"
+    ```
+
+    Finally you can pass the group's label:
+
+    ```js
+    "group": "Read-only user"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return an object like this:
+
+    ```js
+    {
+      "id": "57fe5269e4b0f6600fdfbdba",
+      "label": "Read-only user"
+    }
+    ```
+
+    Where:
+
+    - `id`: that's the ID of the referenced group.
+    - `label`: that's the label of the referenced group.
+
+    However instead of getting the raw value of the relationship in most
+    cases you will use the methods available in the wrapper to access the
+    ID or the label directly.
+  writeFormat: |
+    There are several ways to pass the value of a group in the Javascript API.
+
+    You can pass only the ID:
+
+    ```js
+    record.field("group").val({id: "57fe5269e4b0f6600fdfbdba"});
+    ```
+
+    You can also pass the ID directly as a string:
+
+    ```js
+    record.field("group").val("57fe5269e4b0f6600fdfbdba");
+    ```
+
+    You can pass the group's label:
+
+    ```js
+    record.field("group").val("Read-only user");
+    ```
+
+    The Javascript API also allows to set a group wrapper like this:
+
+    ```js
+    task1.field('group').val(task2.field('group'));
+    ```
+exportImport:
+  exportFormat: |
+    The export format is the label of the group:
+
+    ```
+    "groupField1","groupField2"
+    "Group A","Group B"
+    ```
+  importFormat: |
+    The import format is either the name or the label of the group:
+
+    ```
+    "groupField1","groupField2"
+    "Group A","groupB"
+    ```
+
+    The name has precedence over the label (if it is ambiguous).
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes: Matching will be done by either group's ID, name or label, in that order of precedence.
+    notEquals:
+      supported: yes
+      notes: Matching will be done by either group's ID, name or label, in that order of precedence.
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes: Matching will be done using the group's label.
+    greater:
+      supported: no
+      notes:
+    greaterOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:
+  format: |
+    By default the label will be used for the different query operators.
+
+    For example this will query tasks where assignee's label is 'Read-only user':
+
+    {% include query_sample.html
+    id="ew12343124wedfwerf"
+    description="finds a task by group's label"
+    entity="tasks"
+    jsQueryMap="{group: 'Read-only user'}"
+    jsQueryBuilder=".field('group').equals('Read-only user')"
+    restApi="group=Read-only user"
+    %}
+
+    You could also query by the ID:
+
+    {% include query_sample.html
+    id="dssdfsd2435ghjjweryter456"
+    description="finds a task by group's ID"
+    entity="tasks"
+    jsQueryMap="{'group.id': '57fe5269e4b0f6600fdfbdba'}"
+    jsQueryBuilder=".field('group').equals('57fe5269e4b0f6600fdfbdba')"
+    restApi="group.id=57fe5269e4b0f6600fdfbdba"
+    %}
+
+    Notice again that query builder will automatically detect the ID and you don't
+    need to use the `id` suffix there.
+
+    Remeber that when using the query builder you can use any of the formats
+    available in the [Javascript API](#write-format-1).
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: no
+      notes:
+    max:
+      supported: no
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes: The label of the referenced group will be used for matching.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: no
+      notes:
+    greatOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:

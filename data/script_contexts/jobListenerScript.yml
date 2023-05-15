@@ -1,0 +1,27 @@
+params:
+  - name: event
+    type: object
+    description: |
+      Contains information of the event. It has the following structure:
+
+      ```js
+      {
+        "type": "JOB",
+        "jobType": "IMPORT_RECORDS",
+        "jobEvent": "FINISHED",
+        "jobId": "589cdb2ae201af1d75ec2d83"
+      }
+      ```
+
+      `jobType` is the type of job.
+
+      `jobEvent` is the event of the job that triggered the listener.
+
+      `jobId` is the ID of the job. You can use it to find the job and get more information about it.
+returnType: null
+returnDescription: null
+samples:
+  - title: finds job and checks if it had errors
+    code: |
+      var job = sys.jobs.findById(event.jobId);
+      sys.logs.info('*** ERRORS: '+job.hasErrors());

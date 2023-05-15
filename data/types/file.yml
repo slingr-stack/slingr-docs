@@ -1,0 +1,258 @@
+name: file
+overview: |
+  This type allows to store a reference to a file. The UI and APIs allow to upload files using the field as well.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: no
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: no
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: no
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+displayOptions:
+- name: Enable preview
+  description: |
+    If this flag is set, a button to preview the file will be shown in the UI. Otherwise the only option will be
+    to download the file.
+restApi:
+  readFormat: |
+    It's a JSON with the following fields:
+
+    - `id`: that's the ID of the referenced file.
+    - `name`: that's the name of the referenced file. It might includes the size as well.
+
+    Sample user field in JSON format:
+
+    ```js
+    "file": {
+        "id": "58866b5d3b063a0007604eab",
+        "name": "logo.png (41.5kB)"
+    }
+    ```
+  writeFormat: |
+    You can pass only the ID and avoid the `name` field:
+
+    ```js
+    "file": {"id": "57fe52ade4b0ce322b0cea32"}
+    ```
+
+    You can also pass the ID directly as a string:
+
+    ```js
+    "file": "57fe52ade4b0ce322b0cea32"
+    ```
+
+    Finally you can pass the file encoded in Base 64 and it will be uploaded:
+
+    ```js
+    "file": {
+      "name": "test1.txt",
+      "contentType": "text/plain",
+      "content": "dGVzdCBmaWxlIQ=="
+    }
+    ```
+
+    Where:
+
+    - `name`: is the name of the file.
+    - `contentType`: is the content type of the file.
+    - `content`: is the content of the file encoded in Base 64.
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return an object like this:
+
+    ```js
+    {
+      "id": "58866b5d3b063a0007604eab",
+      "name": "logo.png (41.5kB)"
+    }
+    ```
+
+    Where:
+
+    - `id`: that's the ID of the referenced file.
+    - `name`: that's the name of the referenced user. It might include the size of the file.
+
+    However instead of getting the raw value of the relationship in most
+    cases you will use the methods available in the wrapper to access the
+    ID or the full name directly.
+  writeFormat: |
+    There are several ways to pass the value of a user in the Javascript API.
+
+    You can pass only the ID:
+
+    ```js
+    record.field("file").val({id: "58866b5d3b063a0007604eab"});
+    ```
+
+    You can also pass the ID directly as a string:
+
+    ```js
+    record.field("file").val("58866b5d3b063a0007604eab");
+    ```
+
+    The Javascript API also allows to set a user wrapper like this:
+
+    ```js
+    file1.field('file').val(file2.field('file'));
+    ```
+
+    Or you can pass a new file that will be created:
+
+    ```js
+    var file = sys.data.createRecord('files');
+    file.field('code').val('test-b');
+    file.field('file').val({
+      name: 'test1.txt',
+      contentType: 'text/plain',
+      content: 'dGVzdCBmaWxlIQ=='
+    });
+    sys.data.save(file);
+    ```
+exportImport:
+  exportFormat: |
+    The export format is the name of the file:
+
+    ```
+    "fileField1","fileField2"
+    "logo.png (4kB)","data.zip (41.5kB)"
+    ```
+  importFormat: |
+    It is not possible to import file fields.
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: no
+      notes:
+    greaterOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:
+  format: |
+    By default the file name will be used for the different query operators.
+
+    For example this will query tasks with an attachment with name is like 'logo.png'. We use `like`
+    because the name can contain the size of the file so `equals` might not work:
+
+    {% include query_sample.html
+    id="sdfsd42354356rthnvbnfgjhuiiiui"
+    description="finds a task with attachment 'logo.png'"
+    entity="tasks"
+    jsQueryMap="{attachments: 'like(logo.png)'}"
+    jsQueryBuilder=".field('attachments').like('logo.png')"
+    restApi="attachments=like(logo.png)"
+    %}
+
+    You could also query by the ID:
+
+    {% include query_sample.html
+    id="gghhyuuy777775r4434rfree"
+    description="finds a task by attachment's ID"
+    entity="tasks"
+    jsQueryMap="{'attachments.id': '58866b5d3b063a0007604eab'}"
+    jsQueryBuilder=".field('attachments').equals('58866b5d3b063a0007604eab')"
+    restApi="attachments.id=58866b5d3b063a0007604eab"
+    %}
+
+    Notice again that query builder will automatically detect the ID and you don't
+    need to use the `id` suffix there.
+
+    Remeber that when using the query builder you can use any of the formats
+    available in the [Javascript API](#write-format-1).
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: no
+      notes:
+    max:
+      supported: no
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes: The name of the referenced file will be used for matching.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: no
+      notes:
+    greatOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:

@@ -1,0 +1,171 @@
+name: time
+overview: |
+  This type can store a time of the day.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: false
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: false
+    notes:
+  defaultTypeRules:
+    supported: false
+    notes:
+  defaultDisplayOptions:
+    supported: false
+    notes:
+typeRules:
+displayOptions:
+restApi:
+  readFormat: |
+    The format is a string with the format `HH:mm`:
+
+    ```js
+    "openingHours": "08:00"
+    ```
+  writeFormat: |
+    You should pass a string with the format `HH:mm`:
+
+    ```js
+    "openingHours": "08:00"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a string with the format `HH:mm`:
+
+    ```js
+    // this will print something like "time: 08:00"
+    log('time: '+record.field('openingHours').val());
+    ```
+  writeFormat: |
+    You should pass a string with the format `HH:mm`:
+
+    ```js
+    record.field('openingHours').val('HH:mm');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is `HH:mm`:
+
+    ```
+    "timeField1","timeField2"
+    "20:30","10:15"
+    ```
+  importFormat: |
+    The import format is `HH:mm`:
+
+    ```
+    "timeField1","timeField2"
+    "20:30","10:15"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass a string with the format `HH:mm`. For example:
+
+    {% include query_sample.html
+    id="sdrewerwerwersdfsd"
+    description="finds companies opening after 10:00"
+    entity="companies"
+    jsQueryMap="{'openingHours': 'greater(10:00)'}"
+    jsQueryBuilder=".field('openingHours').greater('10:00')"
+    restApi="openingHours=greater(10:00)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:

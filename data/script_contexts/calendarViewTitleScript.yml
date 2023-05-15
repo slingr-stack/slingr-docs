@@ -1,0 +1,12 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the event title is being calculated.
+returnType: string
+returnDescription: |
+  You should return a `string` to be used as event title.
+samples:
+  - title: builds the title using last name and description
+    code: |
+      return record.field('lastName').val() + ': ' + record.field('description').val();

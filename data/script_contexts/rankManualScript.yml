@@ -1,0 +1,36 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the record that is being moved. You will usually update the rank field in this record
+      using the methods in the [wrapper methods]({{site.baseurl}}/app-development-type-rank.html#wrapper).
+
+      Keep in mind that you need to save the record after you update the rank field, otherwise rank won't
+      be updated and record won't be moved.
+  - name: recordBefore
+    type: sys.data.Record
+    description: |
+      This is the record that is before the position we want to move the record. It could be `null`
+      if we are moving the record to the first position so there is no record before.
+  - name: recordAfter
+    type: sys.data.Record
+    description: |
+      This is the record that is after the position we want to move the record. It could be `null`
+      if we are moving the record to the last position so there is no record after.
+returnType: null
+returnDescription: null
+samples:
+  - title: rank records in a way that urgent ones are always at the top
+    code: "var fieldName = 'rank';\nvar moved = false;\nif (!recordBefore && recordAfter)\
+      \ { // the record is moved to the top\n\tif (!recordAfter.field('urgent').val()\
+      \ || record.field('urgent').val()) {\n  \trecord.field(fieldName).rankBefore(recordAfter.field(fieldName));\n\
+      \  \tmoved = true;\n\t}\n} else if (recordBefore && !recordAfter) { // the record\
+      \ is moved to the bottom\n\tif (recordBefore.field('urgent').val() || !record.field('urgent').val())\
+      \ {\n\t  record.field(fieldName).rankAfter(recordBefore.field(fieldName));\n\
+      \t  moved = true;\n\t}\n} else if (recordBefore && recordAfter) { // the record\
+      \ is placed between two other records\n\tif ((!recordAfter.field('urgent').val()\
+      \ || record.field('urgent').val()) &&\n\t    (recordBefore.field('urgent').val()\
+      \ || !record.field('urgent').val())) {\n\t  record.field(fieldName).rankBetween(recordBefore.field(fieldName),\
+      \ recordAfter.field(fieldName));\n\t  moved = true;\n\t}\n}\n// IMPORTANT!!!\
+      \ You need to save the record to make the new rank value permanent\nif (moved)\
+      \ {\n  sys.data.save(record);\n}\n"

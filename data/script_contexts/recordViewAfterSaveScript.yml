@@ -1,0 +1,16 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      Updated record from the view.
+returnType: null
+returnDescription: null
+samples:
+  - title: logs message and navigate to the dashboard view
+    code: |
+      sys.logs.info('Record '+record.field('name').val()+' saved successfully');
+      sys.ui.sendMessage({
+            scope: 'global',
+            name: 'navigate',
+            view: 'dashboard'
+      });

@@ -1,0 +1,52 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record that contains the field to validate.
+  - name: parentField
+    type: sys.data.Record
+    description: |
+      This variable is only available when this is a field inside a nested field and it is based on the
+      variable `record` or `action` (the same rules apply then it is an action parameter or an entity field).
+
+      It is a <<<sys.data.Record>>> object with the difference that the root of the record is set to the
+      nested fields containing it. This way it is possible to access fields in the nested group like
+      `parentField.field('fieldA')` instead of `record.field('nested.fieldA')` or `action.field('nested.fieldA')`,
+      which is specially needed when nested fields are multi-valued as you don't know the index.
+  - name: field
+    type: sys.data.Wrapper
+    description: |
+      The field wrapper to validate. Check <<<sys.data.Wrapper>>> docs for more info about how to manipulate it.
+  - name: action
+    type: sys.data.Action
+    description: |
+      This variable will be available only if the field is an action parameter. It will provide access to other parameters,
+      but keep in mind that they might be empty (except that they have an initial value set).
+returnType: object
+returnDescription: |
+  You should return an object representing the error, something like this:
+
+  ```js
+  {code: 'invalid', message: 'This is not a valid US zip code'}
+  ```
+  Where `code` is the error code. You can put whatever makes sense to you and it will be sent in
+  the response when trying to create/update a record using the REST API or the exception info when
+  saving a record with the Javascript API.
+
+  `message` is what will be displayed in the UI and also sent as response together
+  with the `code`.
+
+  In case that field is valid, we should not return anything.
+samples:
+  - title: validates the zip code using an expression
+    code: |
+      var zipValue = field.val();
+      if (zipValue && !/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipValue)) {
+          return {code: 'invalid', message: 'This is not a valid US zip code'};
+      }
+  - title: validates the zip code using an external service
+    code: |
+      var zipValue = field.val();
+      if (!app.endpoints.addressValidator.isValidZipCode(zipValue)) {
+          return {code: 'invalid', message: 'This is not a valid US zip code'};
+      }

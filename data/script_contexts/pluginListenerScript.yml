@@ -1,0 +1,41 @@
+params:
+  - name: event
+    type: object
+    description: |
+      Contains information of the event. It has the following structure:
+
+      ```js
+      {
+        "type": "PLUGIN",
+        "date": 1486673333420,
+        "plugin": "sample",
+        "event": "event1",
+        "callback": "callback1",
+        "data": {
+          "originalMessage": {
+            "companyId": "ABC"
+          },
+          "callbackData": {
+            "number": 1234,
+            "text": "hello"
+          }
+        }
+      }
+      ```
+
+      `date` is the timestamp when the event was sent.
+
+      `plugin` is the name of the plugin.
+
+      `event` is the name of the event.
+
+      `callback` is the name of the callback.
+
+      `data` is data sent by the callback request.
+returnType: null
+returnDescription: null
+samples:
+  - title: logs the data sent by the plugin
+    code: |
+      sys.logs.info('*** PLUGIN: '+event.plugin);
+      sys.logs.info('*** DATA: '+event.data);

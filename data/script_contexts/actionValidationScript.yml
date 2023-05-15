@@ -1,0 +1,49 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the action is executed. You can use this information on your validation rules. This parameter
+      is only available when action type is `ONE_RECORD`
+  - name: query
+    type: sys.data.Query
+    description: |
+      A query object with filters to find all records afected by this action. This parameter  is only available
+      when action type is `MANY_RECORDS`
+  - name: action
+    type: sys.data.Action
+    description: |
+      The action to validate.
+returnType: object[]
+returnDescription: |2
+
+  You should return an array of errors, something like this:
+
+  ```js
+  [
+    {path: 'addressLine', code: 'invalid', message: 'Not a valid address when running this action'},
+    {path: 'zipCode', code: 'invalid', message: 'Wrong zip code'}
+  ]
+  ```
+
+  Where `path` is the path of the field with issues. You need to put the full path if it is
+  a nested field like `address.zipCode`. If it is a multi-valued field you need to indicate
+  the index like `addresses[1].zipCode`.
+
+  `code` is the error code. You can put whatever makes sense to you and it will be sent in
+  the response when trying to run the action using the REST API or the Javascript API.
+
+  Finally the `message` is what will be displayed in the UI and also sent as response together
+  with the `code`.
+samples:
+  - title: validates the zip code using an external service
+    code: |
+      var errors = [];
+      var zipCode = action.field('address.zipCode').val();
+      if (!app.endpoints.addressValidator.isValidZipCode(zipCode)) {
+          errors.push({
+          path: 'address.zipCode',
+          code: 'invalid',
+          message: 'Wrong zip code'
+        });
+      }
+      return errors;

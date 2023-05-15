@@ -1,0 +1,225 @@
+name: date_time_no_timezone
+overview: |
+  This type can store a date and time, but won't store the timezone at all so the date and time will look the same
+  no matter what's the timezone of the user looking at the record. For example let's suppose you have an events
+  entity and you want all people to see the event date and time using the local timezone of the event, you could
+  use this type so every one sees the same.
+
+  The default format is `yyyy-MM-dd HH:mm` but you can change it to something else.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+displayOptions:
+- name: Representation
+  description: |
+    This is the format to display the date and time. Default is `yyyy-MM-dd HH:mm` but it can be changed to something else.
+
+    There are a few predefined formats that are common, but you can choose `Custom` and define your own format
+    based on the following rules:
+
+    - Era designator: G (AD)
+    - Year: yy (16), yyyy (2016)
+    - Month: MMMM (July), MMM (Jul), MM (07)
+    - Week in year: w (27)
+    - Day in year: D (189)
+    - Day in month: d (9), dd (09)
+    - Day name in week: EEE (Tue), EEEE (Tuesday)
+    - Am/pm marker: a (PM)
+    - Hour in 24h: H (0), HH (00)
+    - Hour in am/pm: h (1), hh (01)
+    - Minute in hour: m (5), mm (05)
+    - Second in minute: s (9), ss(09)
+    - Millisecond: SSS (123)
+
+    It is possible to define a format for the date-time picker as well.
+restApi:
+  readFormat: |
+    The format is a string with format `yyyy-MM-dd HH:mm`:
+
+    ```js
+    "eventDateTime": "2016-11-05 19:00"
+    ```
+  writeFormat: |
+    You should pass a string in format `yyyy-MM-dd HH:mm`:
+
+    ```js
+    "eventDateTime": "2016-11-05 19:00"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a `Date` object.
+
+    ```js
+    // this will print something like "date: Mon Jan 16 2017 14:53:00 GMT-0000 (UTC)"
+    log('date: '+record.field('eventDateTime').val());
+    ```
+
+    Keep in mind that the `Date` object does have a timezone. The date time will be set so it is what's stored
+    in the field in the default timezone.
+  writeFormat: |
+    When writing the value you could either use a `Date` object, a string with the format `yyyy-MM-dd HH:mm` or
+    milliseconds since Epoch:
+
+    ```js
+    record.field('eventDateTime').val(new Date());
+    record.field('eventDateTime').val('2016-07-09 11:00');
+    ```
+
+    If the value is not valid, the field will be set to `null` silently.
+
+    Also keep in mind that when you use a `Date` object the timezone will be lost.
+exportImport:
+  exportFormat: |
+    The export format is `yyyy-MM-dd HH:mm`, no matter the display options for that field:
+
+    ```
+    "dateTimeField1","dateTimeField2"
+    "2017-05-14 13:20","2015-07-14 08:20"
+    ```
+  importFormat: |
+    The import format is `yyyy-MM-dd HH:mm`, no matter the display options for that field:
+
+    ```
+    "dateTimeField1","dateTimeField2"
+    "2017-05-14 13:20","2015-07-14 08:20"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass a string in format `yyyy-MM-dd HH:mm`:
+
+    {% include query_sample.html
+    id="SDFLwer324SDFSD324234"
+    description="finds events after '2016-11-05 11:00'"
+    entity="events"
+    jsQueryMap="{'eventDateTime': 'greater(2016-11-05 11:00)'}"
+    jsQueryBuilder=".field('eventDateTime').greater('2016-11-05 11:00')"
+    restApi="eventDateTime=greater(2016-11-05 11:00)"
+    %}
+
+    When using the query builder you can use a `Date` object or a string in format 'yyyy-MM-dd HH:mm':
+
+    ```js
+    query.field('eventDateTime').less(new Date());
+    query.field('eventDateTime').less('2016-03-20 03:16');
+    ```
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes: |
+      UI queries will try to match using the format defined in the default display options of the field.
+    specialValues: |
+      There are some special values you can use:
+
+      - `now`: translates to now. It is the same as writting the current date-time.
+      - `today`: it is a range that includes all day today.
+      - `yesterday`: it is a range that includes the whole day yesterday.
+      - `tomorrow`: it is a range that includes the whole day tomorrow.
+      - `last hour/day/week/month/year`: it is a range that includes all in last hour/day/week/month/year
+      - `this hour/day/week/month/year`: it is a range that includes all in current hour/day/week/month/year
+      - `last X hours/days/weeks/months/years`: it is a range that includes all in the last `X` number of hours/days/weeks/months/years
+      - `next X hours/days/weeks/months/years`: it is a range that includes all in the next `X` number of hours/days/weeks/months/years
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:

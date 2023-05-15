@@ -1,0 +1,12 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the record in the main grid view.
+returnType: boolean
+returnDescription: |
+  You should return `true` if the sub-grid has to be displayed, `false` otherwise.
+samples:
+  - title: only show contacts if customer is active
+    code: |
+      return record.field('state').val() == 'active';

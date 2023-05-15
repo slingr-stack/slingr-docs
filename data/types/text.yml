@@ -1,0 +1,220 @@
+name: text
+overview: |
+  This type can store free text up to 300 characters. If you need more than that please use the type
+  [Long text]({{site.baseurl}}/app-development-type-long-text.html).
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+- name: Minimum length
+  description: |
+    The minimum number of characters that values can have.
+- name: Maximum length
+  description: |
+    The maximum number of characters that values can have.
+- name: Exact length
+  description: |
+    The value must have exactly this number of characters.
+- name: Regular expression
+  description: |
+    If set you can write a regular expression to validate the value of the field. This expression should follow
+    [regular expressions in Java](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html).
+
+    You will see the following options:
+
+    - `Expression`: this is the regular expression to validate values.
+    - `Hint`: if there is a validation error, here you can write a message that will be displayed to the user to help him.
+    - `Case insensitive`: if this flag is set, matching will be case insensitive. Keep in mind this is only taken into
+      account for simple characters in the expression. For example if you have `[a-z]` it will require the letter to be
+      in lower case even when this flag is set, but if you put `ab` in the expression, things like `Ab` or `AB` will work.
+displayOptions:
+- name: Representation
+  description: |
+    How this field should be displayed. This only has effect on edit view. Options are:
+
+    - `Input box`: a single-line input box will be displayed.
+    - `Text area`: a text area will be displayed. There is another option to indicate the number of rows the
+      text area should have.
+- name: Limit number of characters
+  description: |
+    This will limit the number of characters to display, showing a `More` button to expand the content.
+
+    Keep in mind that this option only has effect when the field is read-only.
+- name: Background Color
+  description: |
+    Define that text value should display as label in read only view. By default this value is null, it means that value is displayed as without label.
+    It is possible to define many conditional background color rules. For each one a color must be selected and a expression must be defined. All fields matching the expression will use the selected color.
+    Alternatively you can use a script instead of an expression. The available paramenters for this script are:
+
+    - `record`: the current record the field is part of.
+    - `parentField`: used when the field is an inner field of a nested field type. You can use this paramenter to refer to the sibling fields as well.
+    - `action`: used when the field is a paramenter of an action.
+
+    Keep in mind that this option only has effect when the field is read-only.
+- name: Password type
+  description: |
+    Represents an edit control for entering a password.
+
+restApi:
+  readFormat: |
+    The format is a simple string:
+
+    ```js
+    "name": "test1"
+    ```
+  writeFormat: |
+    You should pass a string:
+
+    ```js
+    "name": "new name"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a plain string:
+
+    ```js
+    // this will print something like "name: test1"
+    log('name: '+record.field('name').val());
+    ```
+  writeFormat: |
+    You should pass a plain string to set the value:
+
+    ```js
+    record.field('name').val('new name');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a simple string:
+
+    ```
+    "textField1","textField2"
+    "value1","this is a long text"
+    ```
+  importFormat: |
+    The import format is a simple string:
+
+    ```
+    "textField1","textField2"
+    "value1","this is a long text"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the text as a plain string. For example:
+
+    {% include query_sample.html
+    id="sdew423lldsflsd"
+    description="finds companies with name like 'ae'"
+    entity="companies"
+    jsQueryMap="{'name': 'like(ae)'}"
+    jsQueryBuilder=".field('name').like('ae')"
+    restApi="name=like(ae)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: no
+      notes:

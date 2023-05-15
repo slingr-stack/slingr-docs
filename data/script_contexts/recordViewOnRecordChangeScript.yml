@@ -1,0 +1,19 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the record that will be displayed in the view. You can make changes to it and they will be applied
+      in the UI. You don't need to save those changes. If you do, those changes will be made permanent.
+  - name: modifiedField
+    type: string
+    description: |
+      This is the field path that fires the record refresh in the view.
+returnType: null
+returnDescription: null
+samples:
+  - title: suggests a new value for a field
+    code: |
+      if (!record.field('myLabel').isEmpty() && record.field('name').isEmpty()) {
+        record.field('name').val(record.field('myLabel').val());
+        sys.logs.info('Since name is empty and myLabel is not, we will set the value using the one from myLabel field: ' + record.field('myLabel'));
+      }

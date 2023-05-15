@@ -1,0 +1,36 @@
+params:
+  - name: exports
+    type: object
+    description: |
+      You should put inside this object all things that you want to expose from the library.
+      For example:
+
+      ```js
+      var privateFunction = function(msg) {
+        return '['+msg+']';
+      };
+
+      exports.logSomething = function(msg) {
+        sys.logs.info('*** logged from library: '+privateFunction(msg));
+      };
+
+      exports.MAX_AMOUNT = 50000;
+      ```
+
+      In this case function `logSomething` and constant `MAX_AMOUNT` will be exposed and
+      will be available at `app.utils.logSomething()` and `app.utils.MAX_AMOUNT` assuming
+      that the name of the library is `utils`.
+returnType: null
+returnDescription: null
+samples:
+  - title: library that exports function 'logSomething' and constant 'MAX_AMOUNT'
+    code: |
+      var privateFunction = function(msg) {
+        return '['+msg+']';
+      };
+
+      exports.logSomething = function(msg) {
+        sys.logs.info('*** logged from library: '+privateFunction(msg));
+      };
+
+      exports.MAX_AMOUNT = 50000;

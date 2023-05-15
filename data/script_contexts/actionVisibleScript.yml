@@ -1,0 +1,12 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the action will be executed. This variable is only available if the type of the action is `One record`.
+returnType: boolean
+returnDescription: |
+  `true` if conditions are met, `false` otherwise.
+samples:
+  - title: make the action visible if the type is 'a'
+    code: |
+      return record.field('type').val() == 'a';

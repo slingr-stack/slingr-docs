@@ -1,0 +1,11 @@
+returnType: string
+returnDescription: |
+  You should return a string value as result
+samples:
+  - title: displays a label based on the status of the contract
+    code: |
+      var contract = sys.data.findOne('contracts', {number: '001'});
+      if (contract.field('status').val() === 'deployed') {
+          return 'Active';
+      }
+      return 'Inactive';

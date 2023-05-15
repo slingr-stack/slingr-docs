@@ -1,0 +1,100 @@
+params: null
+returnType: object[]
+returnDescription: |
+  An array of menu items. Each item should have the following things:
+
+  - `label`: this is the label to show in the menu.
+  - `icon`: this is the name of the icon ([you can check icon names here]({{site.baseurl}}/app-development-misc-icons.html)).
+  - `view`: this is the ID or the name of the view to load when the menu entry is selected.
+  - `filters`: if the view allows filters, here is where you can define them. See the [docs
+    for filters]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html#query-format)
+    for more information.
+samples:
+  - title: returns a list of menu items that point to Companies view
+    code: |
+      var menuEntries = [];
+
+      //this entry shows only active companies
+      menuEntries.push({
+        label: 'Active Companies',
+        icon: 'account-circle',
+        view: 'companies',
+        filters: {
+          active: 'true'
+        }
+      });
+
+      // this entry shows only inactive companies
+      menuEntries.push({
+        label: 'Inactive Companies',
+        icon: 'flower',
+        view: 'companies',
+        filters: {
+          active: 'false'
+        }
+      });
+
+      // this entry shows all the companies (no filter applyed)
+      menuEntries.push({
+        label: 'All the Companies',
+        icon: 'case',
+        view: 'companies'
+      });
+
+      return menuEntries;
+  - title: return a list of menu items. Each menu entry points to contacts grid view
+      and the contacts are filtered by company
+    code: |
+      var companies = sys.data.find('companies', {});
+      var entries = [];
+      while (companies.hasNext()) {
+        var company = companies.next();
+        entries.push({
+          label: company.label(),
+          view: 'contacts',
+          icon: 'case-check',
+          filters: {
+            company: company.label()
+          }
+        });
+      }
+
+      return entries;
+  - title: return one menu item for Contacts view that shows only contacts with a
+      value on ipAddress field
+    code: |
+      return [{
+          label: 'Contacts with IP Address',
+          view: 'contacts',
+          filters: {
+            ipAddress: 'notEmpty()'
+          }
+      }];
+  - title: return one menu item for Contacts view that shows only contacts for company
+      test A and company ABC
+    code: |
+      var menuEntries = [];
+
+      menuEntries.push({
+        label: "Contacts for test A and ABC",
+        icon: "account-circle",
+        view: "contacts",
+        filters: {
+            company: ["test A", "ABC"]
+         }
+      });
+
+      return menuEntries;
+  - title: return one menu item for for Companies view that shows the related company
+      for current logged user
+    code: |
+      var menuEntries = [];
+
+      menuEntries.push({
+        label: 'User company',
+        icon: 'account-circle',
+        view: 'companies',
+        filters: {name: 'currentUserField(company.name)'}
+      });
+
+      return menuEntries;

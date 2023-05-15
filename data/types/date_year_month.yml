@@ -1,0 +1,196 @@
+name: date_year_month
+overview: |
+  This type can store a year and month. It doesn't store the day or time, just the year and month.
+
+  The default format is `yyyy-MM` but you can change it to something else.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+displayOptions:
+- name: Representation
+  description: |
+    This is the format to display the year-month. Default is `yyyy-MM` but it can be changed to something else.
+
+    There are a few predefined formats that are common, but you can choose `Custom` and define your own format
+    based on the following rules:
+
+    - Era designator: G (AD)
+    - Year: yy (16), yyyy (2016)
+    - Month: MMMM (July), MMM (Jul), MM (07)
+restApi:
+  readFormat: |
+    The format is a string with the date in format `yyyy-MM`:
+
+    ```js
+    "nextHolidays": "2016-07"
+    ```
+  writeFormat: |
+    You should pass a string with the date in format `yyyy-MM`:
+
+    ```js
+    "nextHolidays": "2016-07"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a `Date` object.
+
+    ```js
+    // this will print something like "holidays: Thu Jun 01 2017 00:00:00 GMT-0000 (UTC)"
+    log('holidays: '+record.field('nextHolidays').val());
+    ```
+
+    As the `Date` obect has day time, it will be set to `00:00` of the first day of the month using
+    the time zone of the server.
+  writeFormat: |
+    When writing the value you could either use a `Date` object or use a string in the format `yyyy-MM`.
+
+    ```js
+    record.field('nextHolidays').val(new Date());
+    record.field('nextHolidays').val('2016-07');
+    ```
+
+    If the value is not valid, the field will be set to `null` silently.
+exportImport:
+  exportFormat: |
+    The export format is `yyyy-MM`, no matter the display options for that field:
+
+    ```
+    "yearMonthField1","yearMonthField2"
+    "02-10","05-24"
+    ```
+  importFormat: |
+    The import format is `yyyy-MM`, no matter the display options for that field:
+
+    ```
+    "yearMonthField1","yearMonthField2"
+    "02-10","05-24"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the a string with the format `yyyy-MM`. For example:
+
+    {% include query_sample.html
+    id="sdfsad2343423423ppppppp"
+    description="finds contacts with holidays in '2017-07'"
+    entity="contacts"
+    jsQueryMap="{'nextHolidays': '2017-07'}"
+    jsQueryBuilder=".field('nextHolidays').equals('2017-07')"
+    restApi="nextHolidays=2017-07"
+    %}
+
+    When using the query builder you can use a `Date` object:
+
+    ```js
+    query.field('nextHolidays').equals(new Date());
+    ```
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes: |
+      UI queries will try to match using the format defined in the default display options of the field.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:

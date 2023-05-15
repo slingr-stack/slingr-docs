@@ -1,0 +1,214 @@
+name: long_text
+overview: |
+  This type can store free text. Fields of this type are useful for storing long-form text string.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+- name: Minimum length
+  description: |
+    The minimum number of characters that values can have.
+- name: Maximum length
+  description: |
+    The maximum number of characters that values can have.
+- name: Exact length
+  description: |
+    The value must have exactly this number of characters.
+displayOptions:
+- name: Representation
+  description: |
+    How this field should be displayed. Options are:
+
+    - `Text area`: a text area will be displayed. There is another option to indicate the number of rows the
+         text area should have.
+    - `Code editor`: a codemirror code editor will be displayed in case to edit and display text with format in read only mode.
+- name: Number of rows
+  description: |
+    The number of rows in the text area used for this field. Minimum is 1 and maximum 100.
+- name: Limit number of characters
+  description: |
+    This will limit the number of characters to display, showing a `More` button to expand the content.
+
+    Keep in mind that this option only has effect when the field is read-only.
+- name: Language
+  description: |
+    Allow select the language to style when select code editor representation. The availabe languages are:
+
+    - Java
+    - Javascript
+    - HTML
+    - CSS
+    - Shell
+    - Markdown
+    - SQL
+    - YAML
+- name: Size
+  description: |
+    Allow select size when select code editor representation. There are a predefined list:
+    `small`, `medium`, `large` `x`, `auto` and `custom`.
+
+    If you chose custom you need set width and height in pixels.
+
+restApi:
+  readFormat: |
+    The format is a simple string:
+
+    ```js
+    "notes": "test notes"
+    ```
+  writeFormat: |
+    You should pass a string:
+
+    ```js
+    "notes": "new notes"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a plain string:
+
+    ```js
+    // this will print something like "notes: test notes"
+    log('notes: '+record.field('notes').val());
+    ```
+  writeFormat: |
+    You should pass a plain string to set the value:
+
+    ```js
+    record.field('notes').val('new notes');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a simple string:
+
+    ```
+    "longTextField1","longTextField2"
+    "line1\nline2","this is a long text"
+    ```
+  importFormat: |
+    The import format is a simple string:
+
+    ```
+    "longTextField1","longTextField2"
+    "line1\nline2","this is a long text"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the text as a plain string. For example:
+
+    {% include query_sample.html
+    id="sdew423lldsflsd"
+    description="finds companies with notes like 'ae'"
+    entity="companies"
+    jsQueryMap="{'notes': 'like(ae)'}"
+    jsQueryBuilder=".field('notes').like('ae')"
+    restApi="notes=like(ae)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: no
+      notes:

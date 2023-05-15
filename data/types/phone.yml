@@ -1,0 +1,198 @@
+name: phone
+overview: |
+  This type can store a phone number, for example `111-222-3333`. You could also store an international phone
+  number if you want. In both cases characters other than numbers are stripped out and the phone number is
+  formatted when it is read and displayed on the UI.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: no
+    notes:
+typeRules:
+- name: International
+  description: |
+    Indicates if the field supports international phone number. In this case validation will be a lot more flexible
+    and you will be able to enter international phone numbers.
+- name: Default international prefix
+  description: |
+    If field is set as international and + sign is not indicated at the beginning of the value, then add a default prefix automatically.
+displayOptions:
+restApi:
+  readFormat: |
+    The format is a simple string, which will be already formatted as a phone number:
+
+    ```js
+    "contactInformation": {
+      "phoneNumber": "1-702-845-9380"
+    }
+    ```
+  writeFormat: |
+    You should pass a string with the value:
+
+    ```js
+    "contactInformation": {
+      "phoneNumber": "1-702-845-9380"
+    }
+    ```
+
+    You could also pass it without format:
+
+    ```js
+    "contactInformation": {
+      "phoneNumber": "17028459380"
+    }
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a the formatted phone number (with dashes):
+
+    ```js
+    // this will print something like "phone number: 1-405-298-5885"
+    log('phone: '+record.field('contactInformation.phoneNumber').val());
+    ```
+  writeFormat: |
+    You can pass the phone number in different ways, just keep in mind that only numbers are kept
+    and other characters will be discarded. Then the phone number will be formatted when reading
+    it. Here are some samples:
+
+    ```js
+    // all this lines are equivalent
+    record.field('contactInformation.phone').val('1-405-298-5885');
+    record.field('contactInformation.phone').val('+1-405-298-5885');
+    record.field('contactInformation.phone').val('14052985885');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a string with the phone number (including dashes):
+
+    ```
+    "phoneField1","phoneField2"
+    "111-222-3333","549-261-654-9862"
+    ```
+  importFormat: |
+    The import format is a string with the phone number (dashes are optional):
+
+    ```
+    "phoneField1","phoneField2"
+    "111-222-3333","549-261-654-9862"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the phone number as a plain string. Keep in mind that non-number will be
+    stripped out before running the query. For example:
+
+    {% include query_sample.html
+    id="3223sdfsdfsd"
+    description="finds companies with contact phone number like '123'"
+    entity="companies"
+    jsQueryMap="{'contactInformation.phoneNumber': 'like(123)'}"
+    jsQueryBuilder=".field('contactInformation.phoneNumber').like('123')"
+    restApi="contactInformation.phoneNumber=like(123)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes:
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: no
+      notes:

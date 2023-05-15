@@ -1,0 +1,186 @@
+name: time_duration
+overview: |
+  This type can store a duration of time, for example "3 hours" or "2 days and 2 hours". Time duration is stored
+  in milliseconds, but in order to make it more usable in the UI the user can use a simple language  where something
+  like `Xd Xh Xm Xs` can be specified, where `d` stands for "days", `h` for "hours", `m` for "minutes" and
+  `s` for "seconds".
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: yes
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+displayOptions:
+- name: Format up to
+  description: |
+    The bigger unit of time to use. For example if the bigger unit of time is hours, you could see it as `40h`. However
+    if the bigger unit of time is days, then you will see `1d 16h`.
+- name: Format down to
+  description: |
+    The smaller unit of time to use, where the rest will be truncated. For example if the value is `2h 30m 15s` and
+    the smaller unit of time is minutes, then the value will be displayed as `2h 30m`.
+- name: Default unit
+  description: |
+    If no unit is specified when entering a value, this will be the default. For example if the value `3` is entered
+    without a unit and the default unit is hours, then it will be taken as `3d`.
+restApi:
+  readFormat: |
+    The format is the number of milliseconds:
+
+    ```js
+    "hoursPerWeek": 10800000
+    ```
+  writeFormat: |
+    You should pass the number of milliseconds:
+
+    ```js
+    "hoursPerWeek": 10800000
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return the number of milliseconds:
+
+    ```js
+    // this will print something like "hoursPerWeek: 10800000"
+    log('hoursPerWeek: '+record.field('hoursPerWeek').val());
+    ```
+  writeFormat: |
+    You should pass the number of milliseconds:
+
+    ```js
+    record.field('hoursPerWeek').val(10800000);
+    ```
+exportImport:
+  exportFormat: |
+    The export format uses the form explained in the overview of the duration type:
+
+    ```
+    "durationField1","durationField2"
+    "4h 30m","3d"
+    ```
+  importFormat: |
+    The import format uses the form explained in the overview of the duration type:
+
+    ```
+    "durationField1","durationField2"
+    "4h 30m","3d"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: yes
+      notes:
+    greaterOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:
+  format: |
+    You should pass the number of milliseconds. For example:
+
+    {% include query_sample.html
+    id="dsafOEWRWELRKCVCsdfsdqwer322"
+    description="finds contacts that worked more than 40 hours per week"
+    entity="contacts"
+    jsQueryMap="{'hoursPerWeek': 'greater(144000000)'}"
+    jsQueryBuilder=".field('hoursPerWeek').greater(144000000)"
+    restApi="hoursPerWeek=greater(144000000)"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: yes
+      notes:
+    avg:
+      supported: yes
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: equals
+    notes: The format is like `Xd Xh Xm Xs`, where `d` is days, `h` hours, `m` minutes, and `s` seconds.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: yes
+      notes:
+    greatOrEquals:
+      supported: yes
+      notes:
+    less:
+      supported: yes
+      notes:
+    lessOrEquals:
+      supported: yes
+      notes:
+    between:
+      supported: yes
+      notes:

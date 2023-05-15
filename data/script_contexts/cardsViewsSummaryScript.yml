@@ -1,0 +1,28 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record that the card is representing.
+returnType: string
+returnDescription: |
+  HTML code that will be rendered in the body of the card. Keep in mind that HTML tags allowed are the
+  same as for [HTML type]({{site.baseurl}}/app-development-type-html.html).
+samples:
+  - title: builds the summary using different fields
+    code: |
+      var summary = '';
+      if (record.field('description').isEmpty()) {
+        summary += '<p>No description</p>';
+      } else {
+        summary += record.field('description').val();
+      }
+      if (!record.field('attachments').isEmpty()) {
+        summary += '<strong>Attachments</strong><br/>'
+        summary += '<ul>';
+        record.field('attachments').each(function(attachment) {
+          var url = sys.app.getUrl()+'/api/files/'+attachment.id();
+          summary += '<a href="'+url+'">'+attachment.name()+'</a>'
+        });
+        summary += '</ul>';
+      }
+      return summary;

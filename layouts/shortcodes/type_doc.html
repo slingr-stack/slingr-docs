@@ -1,0 +1,31 @@
+
+
+{{- $typeName := .Get "type" -}}
+{{- $filePath := printf "data/types/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $typeData := $yamlContent | unmarshal -}}
+
+## Available features
+<table class="table">
+
+    <thead>
+        <tr class="header">
+            <th align="left" width="30%">Name</th>
+            <th align="left" width="20%">Supported</th>
+            <th align="left" width="50%">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"><p>Many multiplicity</p></td>
+            <td align="left"><p>{{ if $typeData.features.manyMultiplicity.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.manyMultiplicity.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Default values</p></td>
+            <td align="left"><p>{{ if $typeData.features.defaultValue.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.defaultValue.notes | markdownify }}</p></td>
+        </tr>
+        <!-- Add similar code blocks for other features -->
+    </tbody>
+</table>

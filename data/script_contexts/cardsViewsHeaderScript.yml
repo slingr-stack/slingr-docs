@@ -1,0 +1,12 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record that the card is representing.
+returnType: string
+returnDescription: |
+  Plain text that will be used as the header.
+samples:
+  - title: builds the header using the task number and summary
+    code: |
+      return record.field('number').val() + '. ' + record.field('summary').val();

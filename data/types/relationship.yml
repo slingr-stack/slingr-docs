@@ -1,0 +1,536 @@
+name: relationship
+overview: |
+  The relationship type allows to store a reference to another record in the app. It offers several features
+  to control which records can be referenced as well as how to display the reference in the UI.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: yes
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: no
+    notes:
+typeRules:
+- name: Related entity
+  description: |
+    Indicates the entity of the records that can be referenced by this field. It
+    is possible to point to the same entity the field belongs to.
+- name: Filtering
+  description: |
+    A filter that specifies which records can be referenced by this field. If the
+    record doesn't meet the criteria, a validation error will be thrown.
+
+    Keep in mind that the UI will automatically filter out those records that
+    doesn't meet the criteria.
+
+    If there is another record specified in displayed options, filters will
+    be combined so both are met.
+- name: Copied fields
+  description: |
+    Due to restrictions on how the database works, in some cases you might need
+    to not only store the reference to the record, but also some information from
+    that record as well. For example an entity `contacts` could have a relationship
+    field to entity `companies`, which has a field named `type`. Then you
+    want to run a query to get all contacts where the field `type` in the company they
+    point is `a`. In order to make that query possible, you should make `type` a copied
+    field of the relationship field pointing to `company`. This way you could do a
+    query like this (assuming that `company` is the name of the relationship field):
+
+    {% include query_sample.html
+    id="3werfwe23"
+    description="filter contacts by company type"
+    entity="contacts"
+    jsQueryMap="{'company.type': 'a'}"
+    jsQueryBuilder=".field('company.type').equals('a')"
+    restApi="company.type=a"
+    %}
+
+    Once you mark it as a copied field you will be able to use that field in different
+    places. For example if you are defining permissions over entity `contacts`, you could
+    use the field `company.type` to filter accessible records.
+
+    Notice that you don't need to always add copied fields when trying to create expressions
+    based on fields in related records. For example if you are defining an expression to
+    highlight records in a grid view, you don't need to copy fields. For instance, if you
+    want to highlight all contacts where `type` is `b`, then you don't need to make field
+    `type` a copied field.
+
+    The rule is that when there are queries involved (by you or internally by the app),
+    you will need to make a copy of the field. If a query is not needed, you won't need
+    to copy the field. In the app builder you will notice that because in some cases you
+    can select any field in related records and in other cases you can only select copied
+    fields.
+
+    It is important to understand the overhead and behavior of copied fields. In the above
+    example the field `type` will be copied from the company record to the contact record.
+    Then, if you edit the company and update the field `type`, when the record is saved
+    the new value will be automatically propagated to contacts that were pointing to this
+    company. This cascade update will be done in a background job asynchronously, so depending
+    on how many records have to be updated, this process can have some significant delay.
+
+    As you probably see adding many copied fields can have a negative impact on the performance
+    of an application, so you should use them only when there is no other solution to the problem.
+
+    Finally, you can modify the propagation default behavior with the
+    [Copied fields update policy](#copied-fields-update-policy) option.
+
+    {% include callout.html content="It is recommended that copied fields do not change its value very often to avoid performance issues. Also, if a change in the copied field triggers too many updates, you should consider an alternative to using copied fields." type="info" %}
+- name: Delete policy
+  description: |
+    Indicates what to do if the record referenced by the field is deleted. These
+    are the options:
+
+    - `None`: nothing will be done, which is the default. The field will still point
+      to that record, but it will be a broken relationship. If you try to save the
+      record a validation error will be thrown.
+    - `Remove relationship`: the value of the field will be set to `null` and if it
+      is a multi-valued field, it will be removed from the list.
+    - `Delete record`: the record referencing the deleted record will be deleted
+      as well. This could be useful for master-detail relationships where you want
+      to delete all associated records when the master is deleted.
+- name: Label update policy
+  description: |
+    By default if the label of a record changes and there are other records pointing
+    to it, a job will be triggered to update the label on those records, similar to
+    what happens with copied fields.
+
+    It is important that the label is updated so it is shown correctly to the
+    user in the UI and also when you are making queries filtering by the relationship
+    field using the label of the record.
+
+    However updating the label in all fields referencing the record where the
+    label was modified has a performance penalty so there are some options to
+    control that behavior:
+
+    - `Yes`: field's value will be updated automatically when the label of
+      the record is modified.
+    - `No`: field's value won't be updated if the label of the record is modified.
+      Keep in mind that in this case you might see a label that doesn't match with
+      the one in the referenced record.
+
+    {% include callout.html content="To avoid performance issues, try to make labels as stable as possible so they don't change often causing many cascade updates." type="info" %}
+- name: Copied fields update policy
+  description: |
+    Allows to specify if copied fields have to be automatically updated
+    when the values changes. Options are:
+
+    - `Yes`: if the value of any copied field changes in the referenced
+      record, those will be updated in the relationship field's value.
+    - `No`: if the value of any copied field changes in the referenced
+      record, those won't be updated in the relationship field's value. This
+      means queries using those copied fields could return inconsistent
+      results.
+displayOptions:
+- name: Representation
+  description: |
+    How the value will be displayed:
+
+    - `Drop down`: a drop down will be used when selecting the value of the field.
+    - `Boxes`: all records that can be selected as the value of the field
+      will be displayed in boxes so the user can easily pick one. Only use this
+      representation when there aren't many possible options. The max size of records
+      that this representation support is 100.
+
+    In both cases these representation only affect the field in edit mode.
+- name: Filtering
+  description: |
+    A filter that specifies which records can be referenced by this field. The
+    difference between this option and the one available in type rules is that
+    this filter is only at the UI level and won't throw any validation error.
+
+    This is useful if for one specific view you want to narrow the records that
+    can be selected.
+- name: Enable link
+  description: |
+    If this flag is set, when in read-only mode a link to the reference record
+    will be rendered.
+
+    Keep in mind you will need to select a view where the referenced record
+    can be displayed.
+- name: Allow to create new records
+  description: |
+    If this flag is set, when in edit mode a button to create a new record
+    will be rendered. If the record is created through this button it will
+    be automatically selected as the value of the field.
+
+    Keep in mind you will need to select a view to use to create the new
+    record.
+- name: Allow to edit record
+  description: |
+    If this flag is set, when in edit mode a button to edit the referenced record
+    will be rendered.
+
+    Keep in mind you will need to select a view to use to edit the referenced
+    record.
+- name: Sort field
+  description: |
+    Allow to sort possible records by a specific field.
+- name: Sort type
+  description: |
+    The sort direction that could be ascending or descending.
+- name: Visible fields
+  description: |
+    If you need to show more information of the referenced record than just
+    the label, you can use visible fields. These will be displayed in the
+    read-only view of the field together with the label of the record.
+
+    It is important to notice that these visible fields are not stored in
+    the database, which is different from copied fields. They are just
+    merged on the fly when the record is read.
+- name: Visible fields layout
+  description: |
+    Allows to control the layout of visible fields, which is especially useful
+    when there isn't much space. Options are:
+
+    - `Automatic`: based on the context of the view it will selected the fixed
+      or the dynamic layout. For example in the grid view the dynamic layout
+      will be used, while in read-only views the fixed one will be selected.
+    - `Fixed`: labels are assigned a fixed amount of space and the rest is
+      for the values of the visible fields.
+    - `Dynamic`: the spaced allocated for labels and values of visible fields
+      is adjusted based on the amount of content on each column.
+    - `Custom`: in this case you can specify the width allocated for the
+      label of visible fields, while the rest will be assigned to the value.
+- name: Allow to wrap label
+  description: |
+    Set in true when labels of relationship fields are very long the context is wrapped
+    adding ellipsis. This should only apply when we show the field using the
+    label class, this is as visible fields. The default value is false.
+restApi:
+  readFormat: |
+    It's a JSON with the following fields:
+
+    - `id`: that's the ID of the referenced record.
+    - `label`: that's the label of the referenced record.
+    - Copied fields: any copied field will be in the map. In the sample
+      below fields `type` and `isCustomer` are copied fields.
+
+    Sample relationship field in JSON format:
+
+    ```js
+    "company": {
+      "id": "57fd2d61e4b0ce322b0c55af",
+      "label": "Fivechat",
+      "type": "c",
+      "isCustomer": false
+    }
+    ```
+  writeFormat: |
+    There are several ways to pass the value of a relationship in the REST API.
+
+    You can pass only the ID:
+
+    ```js
+    "company": {"id": "57fd2d61e4b0ce322b0c55af"}
+    ```
+
+    You can also pass the ID directly as a string:
+
+    ```js
+    "company": "57fd2d61e4b0ce322b0c55af"
+    ```
+
+    You can pass the label of the record:
+
+    ```js
+    "company": {"label": "Fivechat"}
+    ```
+
+    You can pass the label of the record directly as a string:
+
+    ```js
+    "company": "Fivechat"
+    ```
+
+    One important thing when using the label is that it must be unique. If
+    there are more than one record with the same label it will throw a
+    validation error.
+
+    Finally, it is also possible to use a lookup field. For example if
+    field `code` in entity `companies` has been set as lookup field, you can use this form:
+
+    ```js
+    "company": {"code": "fivechat-co"}
+    ```
+
+    Or you can pass the code field value directly:
+
+    ```js
+    "company": "fivechat-co"
+    ```
+
+    If you send all the fields, the `id` will have precedence, then `label`
+    and finally any lookup fields field.
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return an object like this:
+
+    ```js
+    {
+      "id": "57fd2d61e4b0ce322b0c55af",
+      "label": "Fivechat",
+      "link": "/data/companies/57fd2d61e4b0ce322b0c55af",
+      "type": "c",
+      "isCustomer": false
+    }
+    ```
+
+    Where:
+
+    - `id`: that's the ID of the referenced record.
+    - `label`: that's the label of the referenced record.
+    - `link`: that's the URL in the REST API for the record.
+    - Copied fields: any copied field will be in the map. In the sample
+      below fields `type` and `isCustomer` are copied fields.
+
+    However instead of getting the raw value of the relationship in most
+    cases you will use the methods available in the wrapper to access the
+    ID or the label directly.
+  writeFormat: |
+    There are several ways to pass the value of a relationship in the Javascript API.
+
+    You can pass only the ID:
+
+    ```js
+    record.field("company").val({id: "57fd2d61e4b0ce322b0c55af"});
+    ```
+
+    You can also pass the ID directly as a string:
+
+    ```js
+    record.field("company").val("57fd2d61e4b0ce322b0c55af");
+    ```
+
+    You can pass the label of the record:
+
+    ```js
+    record.field("company").val({label: "Fivechat"});
+    ```
+
+    You can pass the label of the record directly as a string:
+
+    ```js
+    record.field("company").val("Fivechat");
+    ```
+
+    One important thing when using the label is that it must be unique. If
+    there are more than one record with the same label it will throw a
+    validation error.
+
+    It is also possible to use a lookup field. For example if
+    field `code` in entity `companies` has been set as lookup field, you can use this form:
+
+    ```js
+    record.field("company").val({code: "fivechat-co"});
+    ```
+
+    Or you can pass the lookup field value directly as a string:
+
+    ```js
+    record.field("company").val("fivechat-co");
+    ```
+
+    If you send all the fields, the `id` will have precedence, then `label`
+    and finally any configured lookup field.
+
+    The Javascript API also allows to set a relationship wrapper like this:
+
+    ```js
+    contact1.field('company').val(contact2.field('company'));
+    ```
+
+    Or you can pass a record object:
+
+    ```js
+    var company = sys.data.findOne('companies', {name: 'Browsetype'});
+    contact.field('company').val(company);
+    ```
+exportImport:
+  exportFormat: |
+    The export format is the label of the related record:
+
+    ```
+    "relationshipField","relationshipField.type"
+    "Record label","a"
+    ```
+
+    Notice that it is possible to export fields from the related record.
+  importFormat: |
+    There are different way to import relationship fields. One of the (the simplest one) is to
+    use the label:
+
+    ```
+    "relationshipField"
+    "Record label"
+    ```
+
+    Additionally it is possible to indicate a a lookup field:
+
+    ```
+    "relationshipField.lookupField"
+    "abc-123"
+    ```
+
+    This way the related record will be matched using the lookup field (will throw an error if more
+    than one record is matched).
+
+    Finally keep in mind that if you provide the related fields, the record could be created or
+    updated automatically:
+
+    ```
+    "relationshipField.code","relationshipField.name"
+    "abc-123","test"
+    ```
+
+    This will create a new record with fields `code` and `name` set to `abc-123` and `test`. If one
+    of those fields is marked as unique, the import process will first try to match an existing
+    record. If one is found, the record will be updated; otherwise a new record will be created.
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: yes
+      notes:
+    greater:
+      supported: no
+      notes:
+    greaterOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:
+  format: |
+    By default the label will be used for the different query operators.
+
+    For example this will query contacts where company's label is 'Blogpad':
+
+    {% include query_sample.html
+    id="82njwf9723ewdf"
+    description="finds a contact by company label"
+    entity="contacts"
+    jsQueryMap="{company: 'Blogpad'}"
+    jsQueryBuilder=".field('company').equals('Blogpad')"
+    restApi="company=Blogpad"
+    %}
+
+    However you can also use the label explicitly:
+
+    {% include query_sample.html
+    id="345dfgaqwe5r345te"
+    description="finds a contact by company label"
+    entity="contacts"
+    jsQueryMap="{'company.label': 'Blogpad'}"
+    jsQueryBuilder=".field('company').equals('Blogpad')"
+    restApi="company.label=Blogpad"
+    %}
+
+    Notice that you don't need to explicitly add `label` in the path for the query builder. It
+    is automatically detected based on what you send to the `equals` method.
+
+    You could also query by the ID:
+
+    {% include query_sample.html
+    id="fgdsf34tjDFRTG345"
+    description="finds a company by exact name"
+    entity="contacts"
+    jsQueryMap="{'company.id': '57fd2d65e4b0ce322b0c8565'}"
+    jsQueryBuilder=".field('company').equals('57fd2d65e4b0ce322b0c8565')"
+    restApi="company.id=57fd2d65e4b0ce322b0c8565"
+    %}
+
+    Notice again that query builder will automatically detect the ID and you don't
+    need to use the `id` suffix there.
+
+    Remeber that when using the query builder you can use any of the formats
+    available in the [Javascript API](#write-format-1).
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: no
+      notes:
+    max:
+      supported: no
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes: The label of the referenced record will be used for matching.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: no
+      notes:
+    greatOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:

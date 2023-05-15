@@ -1,0 +1,15 @@
+params:
+  - name: event
+    type: object
+    description: |
+      This event object contains information about where was the refresh fired, it can be when user click
+      the refresh button of the UI or when send UI messages from other side.
+returnType: null
+returnDescription: null
+samples:
+  - title: register external messages
+    code: |
+      sys.logs.info(JSON.stringify(event));
+      if(event.sourceType == 'UI_MESSAGE') {
+        // register action
+      }

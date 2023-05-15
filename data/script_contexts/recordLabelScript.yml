@@ -1,0 +1,12 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the label is being calculated.
+returnType: string
+returnDescription: |
+  You should return the label of the record.
+samples:
+  - title: builds the label using first and last names
+    code: |
+      return record.field('firstName').val()+' '+record.field('lastName').val();

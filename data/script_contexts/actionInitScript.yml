@@ -1,0 +1,23 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the action will be executed.
+
+      This variable is only available if the type of the action is `One record` or if you are appliying the
+      action to many records.
+  - name: query
+    type: sys.data.Query
+    description: |
+      A query object with filters to find all records afected by this action. Only for type `Many records`.
+  - name: action
+    type: sys.data.Action
+    description: |
+      This allows access to the parameters of the action. When the action is executed from the UI, changes made here
+      will be reflected in the UI.
+returnType: null
+returnDescription: null
+samples:
+  - title: sets the default value as the email of the current user
+    code: |
+      action.field('sendTo').val(sys.context.getCurrentUser().email());

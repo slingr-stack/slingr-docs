@@ -1,0 +1,39 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the action will be executed.
+
+      This variable is only available if the type of the action is `One record`.
+  - name: oldRecord
+    type: sys.data.Record
+    description: |
+      The record before linked parameters are merged.
+
+      This variable is only available if the type of the action is `One record`.
+  - name: query
+    type: sys.data.Query
+    description: |
+      A query object with filters to find all records afected by this action.
+
+      This variable is only available if the type of the action is `Many records`.
+  - name: action
+    type: sys.data.Action
+    description: |
+      This allows access to the parameters of the action.
+returnType: null
+returnDescription: null
+samples:
+  - title: updates some values in the record and save it
+    code: |
+      var newValue = action.field('param1') * 10;
+      record.field('field').val(newValue);
+      sys.data.save(newValue);
+  - title: many records actions that sums up the number of employees on selected companies
+    code: |
+      var total = 0;
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        total += records.next().field('numberOfEmployees').val();
+      }
+      return total;

@@ -50,7 +50,8 @@ To enforce the workflow we just created, we need to prevent people from changing
 
 
 ![Alt Text](/images/vendor/task-mananger/adding-actions/aa.png)
-
+<br>
+<br>
 <table class="table">
     <thead>
     <tr class="header">
@@ -99,7 +100,7 @@ To enforce the workflow we just created, we need to prevent people from changing
     </tr>
     </tbody>
 </table>
-
+<br>
 
 {{< callout type="warning" contend="" >}}
 To properly enforce this restriction, we should remove permissions to change that field, which will be enforced at the API level, not just the UI. We will see how to do this later.

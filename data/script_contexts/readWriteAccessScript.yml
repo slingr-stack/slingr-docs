@@ -1,0 +1,30 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the record associated to the operation. If field is inside an entity field, this will be the record
+      that contains the field.
+
+      If the field is an action parameter, this will be the record where the action is being executed.
+  - name: parentField
+    type: sys.data.Record
+    description: |
+      This variable is only available when this is a field inside a nested field and it is based on the
+      variable `record` or `action` (the same rules apply then it is an action parameter or an entity field).
+
+      It is a <<<sys.data.Record>>> object with the difference that the root of the record is set to the
+      nested fields containing it. This way it is possible to access fields in the nested group like
+      `parentField.field('fieldA')` instead of `record.field('nested.fieldA')` or `action.field('nested.fieldA')`,
+      which is specially needed when nested fields are multi-valued as you don't know the index.
+  - name: action
+    type: sys.data.Action
+    description: |
+      This variable will be available only if the field is an action parameter. It will provide access to other
+      parameters.
+returnType: boolean
+returnDescription: |
+  You should return `true` if there is access to the field, `false` otherwise.
+samples:
+  - title: if 'numberOfExmployees' is bigger than 10, then this field is visible
+    code: |
+      return record.field('numberOfEmployees').val() > 10;

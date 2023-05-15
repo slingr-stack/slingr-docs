@@ -1,0 +1,33 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record the field belongs to.
+  - name: nested
+    type: sys.data.Record
+    description: |
+      This is a <<<sys.data.Record>>> object with the difference that the root of the record is set to the
+      nested fields. For example let's suppose you have the following structure:
+
+      - name
+      - email
+      - addresses
+        - addressLine
+        - zipCode
+        - state
+
+      Field `addresses` is multi-valued and you want the label to be the state. You cannot use the `record`
+      variable because you don't know which is the address you are generating the label for. The solution is
+      to use the `nested` variable which already points to the address you are calculating the label. Something
+      like this:
+
+      ```js
+      return nested.field('state').name();
+      ```
+returnType: string
+returnDescription: |
+  You should return the label.
+samples:
+  - title: uses the state and zip code as the label
+    code: |
+      return nested.field('state').val()+' - '+nested.field('zipCode').val();

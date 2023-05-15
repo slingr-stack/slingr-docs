@@ -1,0 +1,212 @@
+name: choice
+overview: |
+  Allows to specify a set of possible values that the field can hold. In the UI the user can pick a value
+  from the possible ones using a dropdown, a list or a switcher, depending on the representation.
+
+  Each possible value has a label and a name, but only the name is stored in the database.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: yes
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: yes
+    notes:
+  sensitiveFlag:
+    supported: yes
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: yes
+    notes:
+  defaultDisplayOptions:
+    supported: yes
+    notes:
+typeRules:
+- name: Values
+  description: |
+    These are the possible values that can set for the field. For each possible value has the following properties:
+
+    - `Label`: this is the string that will be displayed to the user.
+    - `Code`: this is what's stored in the database and it is used by the REST and Javascript APIs.
+    - `Color`: This is the color used for the choice. These colors are theme-aware.
+    - `Condition`: allows to set a conditional expression to indicate when this option is available. Options are:
+      - `None`: the option will always be available.
+      - `Expression`: the option will be available only the the expression evaluates to true. See the documentation
+        for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html) for more information.
+      - `Script`: the option will be available only when the script evaluates to true. The context of the script is:
+        {% include js_script_context.html context=site.data.script_contexts.choiceConditionScript indent=4 %}
+displayOptions:
+- name: Representation
+  description: |
+    How this field should be displayed. Options are:
+
+    - `Dropdown`: a dropdown with possible values will be displayed.
+    - `List`: a list with all values will be displayed.
+    - `Switcher`: a switcher with all values will be displayed. If there are many possible values this might
+      not be the best representation.
+restApi:
+  readFormat: |
+    The format is a string with the name of the value:
+
+    ```js
+    "state": "active"
+    ```
+  writeFormat: |
+    You should pass a string with the name of the value:
+
+    ```js
+    "state": "inactive"
+    ```
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return a string with the name of the value:
+
+    ```js
+    // this will print something like "state: active"
+    log('state: '+record.field('state').val());
+    ```
+    The `label()` method in the wrapper will return a string with the label of the value:
+
+    ```js
+    // this will print something like "state: Active"
+    log('state: ' + record.field('state').label());
+    ```
+  writeFormat: |
+    You should pass a string with the name of the value:
+
+    ```js
+    record.field('state').val('active');
+    ```
+exportImport:
+  exportFormat: |
+    The export format is a string with the name of the value:
+
+    ```
+    "choiceField1","choiceField2"
+    "active","inProgress"
+    ```
+  importFormat: |
+    The import format is a string with the name of the value:
+
+    ```
+    "choiceField1","choiceField2"
+    "active","inProgress"
+    ```
+
+    However it will also accept the label of the value:
+
+    ```
+    "choiceField1","choiceField2"
+    "Active","In Progress"
+    ```
+
+    It will first try to match by name. If there isn't any match it will try using the label. In
+    both cases match is case insensitive.
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: yes
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: no
+      notes:
+    greaterOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:
+  format: |
+    You should pass the a string with the name of value. For example:
+
+    {% include query_sample.html
+    id="KKKKKJJJJUUUUUWWWQQQQ"
+    description="finds active companies"
+    entity="companies"
+    jsQueryMap="{'state': 'active'}"
+    jsQueryBuilder=".field('state').equals('active')"
+    restApi="state=active"
+    %}
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: yes
+      notes:
+    max:
+      supported: yes
+      notes:
+uiQueries:
+  matching:
+    operator: like
+    notes: |
+      UI queries will try to match either the label or the name.
+    specialValues:
+  operators:
+    manyValues:
+      supported: yes
+      notes:
+    great:
+      supported: no
+      notes:
+    greatOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:

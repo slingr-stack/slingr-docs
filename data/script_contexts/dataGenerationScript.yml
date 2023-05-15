@@ -1,0 +1,58 @@
+returnType: object[]
+returnDescription: |
+  You should return an array of `sys.data.Record` or `JSON`. Otherwise an error will be logged.
+samples:
+  - title: based on an entity called 'Companies' we construct every record of 'Sales
+      Vs Marketing'
+    code: |
+      var companies = sys.data.find('companies', {});
+      var response = [];
+      var companyMap = {};
+      while (companies.hasNext()) {
+        var company = companies.next();
+        var companyId = company.id().toString();
+        companyMap[companyId] = {};
+        var companySalesAmountByPeriod = {};
+        var companyMaketingExpensesAmountByPeriod = {};
+        var companySales = sys.data.find('sales', {company: company.label()});
+
+        while(companySales.hasNext()) {
+          var cs = companySales.next();
+          var period = cs.field('period').format();
+          if (!companyMap[companyId][period]) {
+            companyMap[companyId][period] = {'sales': null, 'marketing': null};
+          }
+
+          if (companyMap[companyId][period].sales) {
+            companyMap[companyId][period].sales = companyMap[companyId][period].sales + cs.field('amount').val();
+          } else {
+            companyMap[companyId][period].sales = cs.field('amount').val();
+          }
+        }
+
+        var companyMaketingExpenses = sys.data.find('marketingExpenses', {company: company.label()});
+        while(companyMaketingExpenses.hasNext()) {
+          var cme = companyMaketingExpenses.next();
+          var period = cme.field('period').format();
+          if (!companyMap[companyId][period]) {
+            companyMap[companyId][period] = {'sales': null, 'marketing': null};
+          }
+
+          if (companyMap[companyId][period].marketing) {
+            companyMap[companyId][period].marketing = companyMap[companyId][period].marketing + cme.field('amount').val();
+          } else {
+            companyMap[companyId][period].marketing = cme.field('amount').val();
+          }
+        }
+      }
+
+      for (var companyId in companyMap) {
+        for (var period in companyMap[companyId]) {
+          var svm = sys.data.createRecord('salesVsMarketing');
+          svm.field('period').val(period);
+          svm.field('marketing').val(companyMap[companyId][period].marketing);
+          svm.field('sales').val(companyMap[companyId][period].sales);
+          response.push(svm);
+        }
+      }
+      return response; // we return an array of sys.data.Record

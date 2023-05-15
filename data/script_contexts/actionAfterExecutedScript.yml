@@ -1,0 +1,35 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the action will be executed.
+
+      This variable is only available if the type of the action is `One record` or if you are appliying the
+      action to many records.
+  - name: query
+    type: sys.data.Query
+    description: |
+      A query object with filters to find all records afected by this action. Only for type `Many records`.
+  - name: action
+    type: sys.data.Action
+    description: |
+      Action object to access parameters of the action.
+  - name: job
+    type: sys.jobs.Job
+    description: |
+      This is the job object, which is only available when the action is executed in background.
+
+      Keep in mind that the after action executed script is executed right after you triggered the
+      action from the UI and the job might be still pending or running.
+returnType: null
+returnDescription: null
+samples:
+  - title: after action is executed redirect to read only view of given record
+    code: |
+      var record = sys.data.findOne(query);
+      sys.ui.sendMessage({
+          scope: 'global',
+          name: 'navigate',
+          view: '590ce2e38a2....',
+          recordId: record.id()
+        });

@@ -99,30 +99,10 @@ It's time to create a few users (make sure you have pushed the changes before):
 
 Then repeat the same process for these users:
 
-<table class="table">
-    <thead>
-    <tr class="header">
-        <th align="left">First name</th>
-        <th align="left">Last name</th>
-        <th align="left">Email</th>
-        <th align="left">Primary group</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td align="left">Support1</td>
-        <td align="left">Test</td>
-        <td align="left">support1@test.com</td>
-        <td align="left">Support</td>
-    </tr>
-    <tr>
-        <td align="left">Support2</td>
-        <td align="left">Test</td>
-        <td align="left">support2@test.com</td>
-        <td align="left">Support</td>
-    </tr>
-    </tbody>
-</table>
+| First name | Last name | Email              | Primary group |
+| ---------- | --------- | ------------------| ------------- |
+| Support1   | Test      | support1@test.com | Support       |
+| Support2   | Test      | support2@test.com | Support       |
 
 {{< callout type="warning" content="" >}}
 You don't need to push changes when working with users because users are modified directly in the runtime as they aren't part of the metadata of the app.

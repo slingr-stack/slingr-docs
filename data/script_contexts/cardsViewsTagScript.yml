@@ -1,0 +1,13 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record that the card is representing.
+returnType: string|string[]
+returnDescription: |
+  This is the text to show in the tag. If the script returns a string, it will considered one tag. If the script
+  returns an array of strings, many tags will be added.
+samples:
+  - title: adds the company state as tag
+    code: |
+      return record.field('company').fetch().field('state').val();

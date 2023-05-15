@@ -1,0 +1,50 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the record associated to the operation. If field is inside an entity field, this will be the record
+      that contains the field.
+
+      If the field is an action parameter, this will be the record where the action is being executed.
+  - name: parentField
+    type: sys.data.Record
+    description: |
+      This variable is only available when this is a field inside a nested field and it is based on the
+      variable `record` or `action` (the same rules apply then it is an action parameter or an entity field).
+
+      It is a <<<sys.data.Record>>> object with the difference that the root of the record is set to the
+      nested fields containing it. This way it is possible to access fields in the nested group like
+      `parentField.field('fieldA')` instead of `record.field('nested.fieldA')` or `action.field('nested.fieldA')`,
+      which is specially needed when nested fields are multi-valued as you don't know the index.
+  - name: action
+    type: sys.data.Action
+    description: |
+      This variable will be available only if the field is an action parameter. It will provide access to other
+      parameters.
+returnType: any|any[]
+returnDescription: |
+  You should return the calculated value in the format used in the Javascript API for the type of the field. If the
+  field is multi-valued, you should return an array.
+samples:
+  - title: calculate the total price from the unit price and quantity
+    code: |
+      return record.field('unitPrice').val() * record.field('quantity').val();
+notes: |
+  The correct order of calculation of fields is performed automatically in the scope of the current entity.
+  This means if you call a script outside of the entity scope those dependencies won't be tracked. E.g.: if you
+  use a library to calculate the value you should call it in this way:
+
+  ```js
+  var field1 = record.field('fiedl1').val();
+  var field2 = record.field('field2').val();
+  app.utils.foo(field1, field2);
+  ```
+  instead of:
+
+  ```js
+  app.utils.foo(record);
+  ```
+
+  Otherwise, if you modify `field1` the value of the calculated field won't be updated automatically because
+  dependency of the calculated field on `field1` won't be tracked (it is not referenced inside the script in the
+  calculated field).

@@ -1,0 +1,39 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record to validate.
+returnType: object[]
+returnDescription: |
+  You should return an array of errors, something like this:
+
+  ```js
+  [
+    {path: 'addressLine', code: 'invalid', message: 'This is not a valid US address'},
+    {path: 'zipCode', code: 'invalid', message: 'This is not a valid US zip code'}
+  ]
+  ```
+
+  Where `path` is the path of the field with issues. You need to put the full path if it is
+  a nested field like `address.zipCode`. If it is a multi-valued field you need to indicate
+  the index like `addresses[1].zipCode`.
+
+  `code` is the error code. You can put whatever makes sense to you and it will be sent in
+  the response when trying to create/update a record using the REST API or the exception info when
+  saving a record with the Javascript API.
+
+  Finally the `message` is what will be displayed in the UI and also sent as response together
+  with the `code`.
+samples:
+  - title: validates the zip code using an external service
+    code: |
+      var errors = [];
+      var zipCode = record.field('address.zipCode').val();
+      if (!app.endpoints.addressValidator.isValidZipCode(zipCode)) {
+        errors.push({
+          path: 'address.zipCode',
+          code: 'invalid',
+          message: 'This is not a valid US zip code'
+        });
+      }
+      return errors;

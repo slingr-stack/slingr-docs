@@ -1,0 +1,12 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the event color is being calculated.
+returnType: boolean
+returnDescription: |
+  You should return a `boolean` to know if the color should be applied.
+samples:
+  - title: apply the color only to the records that has a description
+    code: |
+      return record.field('description').val() !== '';

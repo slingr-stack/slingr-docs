@@ -1,0 +1,337 @@
+name: nested_fields
+overview: |
+  Allows to nest other fields inside it. This way you can create levels with many levels of nesting, enabling
+  complex data structures in entities.
+
+  For example, you could have an structure like this:
+
+  - name
+  - email
+  - address
+    - addressLine
+    - zipCode
+    - state
+
+  In this case `address` is a field of type nested fields and contains the fields `addressLine`, `zipCode` and
+  `state`.
+
+  These nested structures could be multi-valued as well, for example:
+
+  - name
+  - email
+  - addresses
+    - addressLine
+    - zipCode
+    - state
+    - primary
+
+  In this case you could store many addresses in the field `addresses`.
+features:
+  manyMultiplicity:
+    supported: yes
+    notes:
+  defaultValue:
+    supported: no
+    notes:
+  uniqueFlag:
+    supported: no
+    notes:
+  requiredFlag:
+    supported: yes
+    notes:
+  indexableFlag:
+    supported: no
+    notes:
+  sensitiveFlag:
+    supported: no
+    notes:
+  calculatedValue:
+    supported: yes
+    notes:
+  automaticInitialization:
+    supported: no
+    notes:
+  calculatedInitialValue:
+    supported: no
+    notes:
+  aggregation:
+    supported: no
+    notes:
+  defaultTypeRules:
+    supported: no
+    notes:
+  defaultDisplayOptions:
+    supported: no
+    notes:
+typeRules:
+- name: Label
+  description: |
+    With this option you can assign a label to the group of fields. This could be used across the app to show
+    a preview of the nested fields or to perform some searches over records.
+
+    There are three options:
+
+    - `None`: label won't be generated. In the UI you might see an auto-generated label based on the name of the
+      field and the index if it is a multi-valued field.
+    - `Field`: a nested field can be selected so its value is used as the label.
+    - `Script`: a script can be used to generate the label.
+      {% include js_script_context.html context=site.data.script_contexts.nestedFieldsLabelScript indent=2 %}
+displayOptions:
+- name: Show as accordion
+  description: |
+    If this option is set, the group of fields can be collapsed and expanded. In this case the label will
+    be displayed as the title of the accordion.
+- name: Indent fields
+  description: |
+    When this option is set, inner fields will be indented in the UI so they will be aligned at the right of
+    the label of the parent field.
+
+    If this options isn't set, label of the parent field will be displayed at the top while inner fields will be
+    rendered below without indentation.
+- name: Inner fields layout
+  description: |
+    Allows to control the layout of inner fields, which is especially useful
+    when there isn't much space. Options are:
+
+    - `Automatic`: based on the context of the view it will selected the fixed
+      or the dynamic layout. For example in the grid view the dynamic layout
+      will be used, while in read-only views the fixed one will be selected.
+    - `Fixed`: labels are assigned a fixed amount of space and the rest is
+      for the values of the inner fields.
+    - `Dynamic`: the spaced allocated for labels and values of inner fields
+      is adjusted based on the amount of content on each column.
+    - `Custom`: in this case you can specify the width allocated for the
+      label of inner fields, while the rest will be assigned to the value.
+restApi:
+  readFormat: |
+    It's a JSON with the following fields:
+
+    - `id`: that's the ID of the nested group. It's for internal usage.
+    - `label`: the label of the nested group.
+    - Inner fields: any inner field will be in the map. In the sample
+      below fields `addressLine`, `zipCode`, `city` and `state`.
+
+    Sample nested field in JSON format:
+
+    ```js
+    "address": {
+      "id": "5877e2bd41058800079d11cc",
+      "label": "WV - 25335",
+      "addressLine": "3351 Harper Center",
+      "zipCode": "25335",
+      "city": "Charleston",
+      "state": "WV"
+    }
+    ```
+  writeFormat: |
+    You can set a nested field by passing it's inner fields:
+
+    ```js
+    "address": {
+      "addressLine": "3351 Harper Center",
+      "zipCode": "25335",
+      "city": "Charleston",
+      "state": "WV"
+    }
+    ```
+
+    If you are updating a multi-valued nested field it is important to pass the `id`:
+
+    ```js
+    "addresses": [
+      {
+        "id": "57fd45aee4b0ce322b0c86ac",
+        "addressLine": "4 Crownhardt Plaza",
+        "zipCode": "73157",
+        "city": "Oklahoma City",
+        "state": "OK"
+      },
+      {
+        "id": "57fd45aee4b0ce322b0c86aa",
+        "addressLine": "4 Magdeline Place",
+        "zipCode": "89145",
+        "city": "Las Vegas",
+        "state": "NV"
+      }
+    ]
+    ```
+
+    If you don't send the `id` it will be detected as deleted and added, assigning a new ID to it.
+
+    Notice that `label` shouldn't be sent as it is calculated.
+jsApi:
+  readFormat: |
+    The `val()` method in the wrapper will return an object like this:
+
+    ```js
+    {
+      "addressLine": "803 Anthes Pass",
+      "zipCode": "08608",
+      "city": "Trenton",
+      "state": "NJ"
+    }
+    ```
+
+    Which is basically an object with inner fields inside.
+
+    However instead of getting the raw value of the relationship in most
+    cases you will use the methods available in the wrapper to access the
+    ID or the label directly.
+  writeFormat: |
+    In order to set nested fields, you should use the same format as when reading:
+
+    ```js
+    {
+      "addressLine": "803 Anthes Pass",
+      "zipCode": "08608",
+      "city": "Trenton",
+      "state": "NJ"
+    }
+    ```
+
+    For example:
+
+    ```js
+    contact.field('address').val({
+      "addressLine": "803 Anthes Pass",
+      "zipCode": "08608",
+      "city": "Trenton",
+      "state": "NJ"
+    });
+    ```
+
+    If it is a multi-valued field you can specify the index:
+
+    ```js
+    company.field('addresses[1]').val({
+      "addressLine": "803 Anthes Pass",
+      "zipCode": "08608",
+      "city": "Trenton",
+      "state": "NJ"
+    });
+    ```
+
+    For multi-valued fields you could also use the utilities available at <<<sys.data.ManyWrapper>>>.
+exportImport:
+  exportFormat: |
+    Nested fields itself cannot be export. What is exported are inner fields:
+
+    ```
+    "nested.innerField1","nested.innerField2"
+    "value1","value2"
+    ```
+  importFormat: |
+    Nested fields itself cannot be imported. What is imported are inner fields:
+
+    ```
+    "nested.innerField1","nested.innerField2"
+    "value1","value2"
+    ```
+queries:
+  operators:
+    equals:
+      supported: yes
+      notes:
+    notEquals:
+      supported: no
+      notes:
+    empty:
+      supported: yes
+      notes:
+    notEmpty:
+      supported: yes
+      notes:
+    like:
+      supported: no
+      notes:
+    greater:
+      supported: no
+      notes:
+    greaterOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:
+  format: |
+    Queries on parent nested fields are not supported. However you can query using inner fields: 
+     
+    {% include query_sample.html id="jdasIWQE9123d" description="filters by state" entity="contacts" jsQueryMap="{'address.state': 'NY'}" jsQueryBuilder=".field('address.state').equals('NY')" restApi="address.state=NY" %}
+     
+    In this cases the format and operators of the type of inner fields should be used.
+
+    You can even query when you have multi-valued nested fields:
+
+    {% include query_sample.html
+    id="sdf32898sdjoqwhjonnn"
+    description="filters by state"
+    entity="companies"
+    jsQueryMap="{'addresses.state': 'NY'}"
+    jsQueryBuilder=".field('addresses.state').equals('NY')"
+    restApi="addresses.state=NY"
+    %}
+
+    In this case as `addresses` is multi-valued, any company that has at least one address with value
+    `NY` in `state` will be included in the results.
+
+    Finally, to query nested record fields simultaneously:
+
+    {% include query_sample.html
+    id="sfg32898sdjoqwhjon2n"
+    description="filters by street and zip code"
+    entity="companies"
+    jsQueryMap="{'addresses': {'street': 'Street 123', 'zipCode': '1234'}}"
+    jsQueryBuilder=".field('addresses').equals({'street': 'Street 123', 'zipCode': '1234'})"
+    restApi="addresses={\"street\": \"Street 123\", \"zipCode\": \"1234\"}"
+    %}
+
+aggregateQueries:
+  operators:
+    sum:
+      supported: no
+      notes:
+    avg:
+      supported: no
+      notes:
+    first:
+      supported: yes
+      notes:
+    last:
+      supported: yes
+      notes:
+    min:
+      supported: no
+      notes:
+    max:
+      supported: no
+      notes:
+uiQueries:
+  matching:
+    operator: none
+    notes: Nested fields do not support UI queries.
+    specialValues:
+  operators:
+    manyValues:
+      supported: no
+      notes:
+    great:
+      supported: no
+      notes:
+    greatOrEquals:
+      supported: no
+      notes:
+    less:
+      supported: no
+      notes:
+    lessOrEquals:
+      supported: no
+      notes:
+    between:
+      supported: no
+      notes:

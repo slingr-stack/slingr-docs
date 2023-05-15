@@ -1,0 +1,6 @@
+description: |
+  This is a script that will be executed during start up process and after every clear cache in `runtime`. It can access all JS API.
+samples:
+  - title: initialize some settings of the app
+    code: |-
+      app.settings.init();

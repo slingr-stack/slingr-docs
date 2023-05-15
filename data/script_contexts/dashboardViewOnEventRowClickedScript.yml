@@ -1,0 +1,25 @@
+params:
+  - name: event
+    type: object
+    description: |
+      This event object contains information about where was the refresh fired, it can be when user click
+      the refresh button of the UI or when send UI messages from other side.
+returnType: null
+returnDescription: null
+samples:
+  - title: React to a table widget row clicked event
+    code: |
+      // event payload contains all the specific event information
+      var eventPayload = event.payload;
+      if (eventPayload) {
+        // reacting to the event 'TABLE_ROW_CLICKED'
+          if (eventPayload.eventName == 'TABLE_ROW_CLICKED') {
+            sys.ui.sendMessage({
+                scope: 'global',
+                name: 'navigate',
+                view: 'projects',
+                target: 'caller',
+                recordId: eventPayload.recordId
+            });
+          }
+      }

@@ -1,0 +1,12 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      This is the record that will be evaluated to see if it has to be highlighted.
+returnType: boolean
+returnDescription: |
+  You should return `true` if the record has to be highlighted, `false` otherwise.
+samples:
+  - title: the task will be highlighted if it is urgent
+    code: |
+      return record.field('urgent').val() == true;
