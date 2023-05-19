@@ -1,0 +1,75 @@
+package: sys.data.types.RankWrapper
+page: app-development-type-rank.html
+description:
+methods:
+- name: rankBefore
+  summary: Updates the rank value so it is before the given value
+  description: |
+    Updates the rank value so it is before the given value.
+  parameters:
+  - name: rank
+    type: string
+    required: yes
+    description: This is the rank value that will be used as referenced so the value is updated to be before it.
+  returnType: string
+  returnDescription: The new rank value.
+  throws:
+    - code: badRequest
+      description: If `rank` is invalid.
+  samples:
+  - title: moves a record to be before another one (when sorting by rank)
+    code: |
+      var task1 = sys.data.findOne('tasks', {number: 1});
+      var task2 = sys.data.findOne('tasks', {number: 2});
+      var newRank = task1.field('rank').rankBefore(task2.field('rank').val());
+      sys.data.save(task1);
+      log('new rank: '+newRank);
+- name: rankAfter
+  summary: Updates the rank value so it is after the given value
+  description: |
+    Updates the rank value so it is after the given value.
+  parameters:
+  - name: rank
+    type: string
+    required: yes
+    description: This is the rank value that will be used as referenced so the value is updated to be after it.
+  returnType: string
+  returnDescription: The new rank value.
+  throws:
+    - code: badRequest
+      description: If `rank` is invalid.
+  samples:
+  - title: moves a record to be after another one (when sorting by rank)
+    code: |
+      var task1 = sys.data.findOne('tasks', {number: 1});
+      var task2 = sys.data.findOne('tasks', {number: 2});
+      var newRank = task1.field('rank').rankAfter(task2.field('rank').val());
+      sys.data.save(task1);
+      log('new rank: '+newRank);
+- name: rankBetween
+  summary: Updates the rank value so it is between the two given values
+  description: |
+    Updates the rank value so it is between the two given values.
+  parameters:
+  - name: before
+    type: string
+    required: yes
+    description: This is the rank value that will be used as referenced so the value is updated to be after it.
+  - name: after
+    type: string
+    required: yes
+    description: This is the rank value that will be used as referenced so the value is updated to be before it.
+  returnType: string
+  returnDescription: The new rank value.
+  throws:
+    - code: badRequest
+      description: If `before` or `after` are invalid.
+  samples:
+  - title: puts a task in between other two tasks
+    code: |
+      var task1 = sys.data.findOne('tasks', {number: 1});
+      var task2 = sys.data.findOne('tasks', {number: 2});
+      var task3 = sys.data.findOne('tasks', {number: 3});
+      var newRank = task1.field('rank').rankBetween(task2.field('rank').val(), task3.field('rank').val());
+      sys.data.save(task1);
+      log('new rank: '+newRank);

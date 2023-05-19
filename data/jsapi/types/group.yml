@@ -1,0 +1,40 @@
+package: sys.data.types.GroupWrapper
+page: app-development-type-group.html
+description:
+methods:
+- name: id
+  summary: Returns the ID of the referenced group
+  description: |
+    Returns the ID of the referenced group or `null` if the field is empty.
+  parameters:
+  returnType: string
+  returnDescription: The ID of the referenced group.
+  samples:
+  - title: prints the ID of the referenced group in the field
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      log('group id: '+record.field('group').id());
+- name: label
+  summary: Returns the label of the referenced group
+  description: |
+    Returns the label of the referenced group or `null` if the field is empty.
+  parameters:
+  returnType: string
+  returnDescription: The label of the referenced group.
+  samples:
+  - title: prints the label of the referenced group in the field
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      log('group label: '+record.field('group').label());
+- name: name
+  summary: Returns the name of the referenced group
+  description: |
+    Returns the name of the referenced group or `null` if the field is empty.
+  parameters:
+  returnType: string
+  returnDescription: The name of the referenced group.
+  samples:
+  - title: prints the name of the referenced group in the field
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      log('group name: '+record.field('group').name());

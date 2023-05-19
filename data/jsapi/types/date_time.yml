@@ -1,0 +1,60 @@
+package: sys.data.types.DateTimeWrapper
+page: app-development-type-date-time.html
+description:
+methods:
+- name: toMillis
+  summary: Returns the date-time in milliseconds from Epoch
+  description: |
+    Returns the date-time in milliseconds from Epoch.
+  parameters:
+  returnType: number
+  returnDescription: The milliseconds from Epoch.
+  throws:
+  samples:
+  - title: printds the number of milliseconds from Epoch
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      log('last update millis: '+company.field('lastUpdate').toMillis());
+- name: format
+  summary: Formats the date-time to a string
+  description: |
+    Formats the date-time to a string. If a format pattern and time zone id are given, they will be used. Otherwise format set in
+    the default display options of the field will be used.
+  parameters:
+  - name: pattern
+    type: string
+    required: no
+    description: |
+      The pattern to format the date-time. Please check the docs for display options to know which are
+      the options to set the format.
+
+      If no pattern is provided, the default display options of the field will be used.
+  - name: timeZoneId
+    type: string
+    required: no
+    description: |
+      The ID for a time zone. Valid time zone codes are:
+
+      - US/Hawaii
+      - US/Alaska
+      - US/Pacific
+      - US/Mountain
+      - US/Central
+      - US/Eastern
+      - Canada/Atlantic
+      - America/Buenos_Aires
+      - [See more available Timezones here](http://joda-time.sourceforge.net/timezones.html)
+  returnType: string
+  returnDescription: The formatted date.
+  throws:
+    - code: badRequest
+      description: If `pattern` or `timeZoneId` is invalid.
+  samples:
+  - title: formats date using 'MM-dd-yyyy HH:mm' pattern
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      log('last update millis: '+company.field('lastUpdate').format('MM-dd-yyyy HH:mm'));
+  - title: formats date-time using default display options
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      log('last update millis: '+company.field('lastUpdate').format());

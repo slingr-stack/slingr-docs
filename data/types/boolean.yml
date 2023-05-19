@@ -130,15 +130,15 @@ queries:
       notes:
   format: |
     You should pass the boolean value. For example:
+    {{< query_sample
+        id="sdf32234324looooo"
+        description="finds companies that are customers"
+        entity="companies"
+        jsQueryMap="{'isCustomer': true}"
+        jsQueryBuilder=".field('isCustomer').equals(true)"
+        restApi="name=true"
+    >}}
 
-    {% include query_sample.html
-    id="sdf32234324looooo"
-    description="finds companies that are customers"
-    entity="companies"
-    jsQueryMap="{'isCustomer': true}"
-    jsQueryBuilder=".field('isCustomer').equals(true)"
-    restApi="name=true"
-    %}
 aggregateQueries:
   operators:
     sum:

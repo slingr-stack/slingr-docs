@@ -1,0 +1,38 @@
+package: sys.data.types.PercentageWrapper
+page: app-development-type-percentage.html
+description:
+methods:
+- name: toHex
+  summary: Returns hex representation
+  description: |
+    Returns string of hexadecimal representation of the value or empty (`''`) if null.
+  parameters:
+  returnType: string
+  returnDescription: Hex value of number.
+  samples:
+  - title: prints the hex value of a percentage field
+    code: |
+      var record = sys.data.findOne('projects', {name: 'Point-to-point link'});
+      sys.logs.debug('project progress hex: '+record.field('progress').toHex());
+- name: format
+  summary: Returns formatted number
+  description: |
+    Returns string of formatted number of the value or string without format.
+  parameters:
+    - name: options
+      type: object
+      required: no
+      description: |
+        Display options parameters used to format value. If it is empty the default display options are used to format.
+
+        - **thousandsSeparator** if show thousands separator. ie: `true` or `false`.
+        - **limitNumberOfDecimals** if limit number of decimals. ie: `true` or `false`.
+        - **numberOfDecimals** decimals to be displayed. Default `2`
+        - **limitRuleType** rule to use when limit decimal. ie: `TRUNCATE` or `ROUND`. Default `TRUNCATE`
+  returnType: string
+  returnDescription: String of formatted value of number.
+  samples:
+  - title: prints the formated value of a percentage field
+    code: |
+      var inv = sys.data.findById('invoices', '579f5929e4b043b8ce4519b6');
+      sys.logs.debug('total: ' + inv.field('total').format({thousandsSeparator: true, limitNumberOfDecimals: true, numberOfDecimals: 2}));

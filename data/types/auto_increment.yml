@@ -77,7 +77,7 @@ exportImport:
     The export format is a simple number:
 
     ```
-    "id","tittle"
+    "id","title"
     "1","task A"
     "2","task B"
     ```
@@ -117,15 +117,15 @@ queries:
       notes:
   format: |
     You should pass the number. For example:
+    {{< query_sample
+        id="23WfdsijdjisdijiwqwbbvvQQ"
+        description="finds tickets with field number higher than 10"
+        entity="tickets"
+        jsQueryMap="{'number': 'greater(10)'}"
+        jsQueryBuilder=".field('tickets').greater(10)"
+        restApi="tickets=greater(10)"
+    >}}
 
-    {% include query_sample.html
-    id="23WfdsijdjisdijiwqwbbvvQQ"
-    description="finds tickets with field number higjer than 10"
-    entity="tickets"
-    jsQueryMap="{'number': 'greater(10)'}"
-    jsQueryBuilder=".field('tickets').greater(10)"
-    restApi="tickets=greater(10)"
-    %}
 aggregateQueries:
   operators:
     sum:

@@ -1,0 +1,33 @@
+  
+  {{- $id := .Get "id" -}}
+  {{- $description := .Get "description" -}}
+  {{- $entity := .Get "entity" -}}
+  {{- $jsQueryMap := .Get "jsQueryMap" -}}
+  {{- $jsQueryBuilder := .Get "jsQueryBuilder" -}}
+  {{- $restApi := .Get "restApi" -}}
+  
+  <div>
+    <pre><code>// {{ $description }} 
+var records_{{ $id }} = sys.data.find('{{ $entity }}', {{ $jsQueryMap }});
+log('total: '+records_{{ $id }}.count());
+while (records_{{ $id }}.hasNext()) {
+    log(records_{{ $id }}.next().label());
+  }</code></pre>
+  </div>
+  
+  <div>
+    <pre><code>// {{ $description }} 
+var query_{{ $id }} = sys.data.createQuery('{{ $entity }}')
+    {{ $jsQueryBuilder }}
+var records_{{ $id }} = sys.data.find(query_{{ $id }});
+log('total: '+records_{{ $id }}.count());
+while (records_{{ $id }}.hasNext()) {
+    log(records_{{ $id }}.next().label());
+  }</code></pre>
+  </div>
+  
+  <div >
+    <pre><code>// {{ $description }} 
+GET /data/contacts?{{ $restApi }}</code></pre>
+  </div>
+  

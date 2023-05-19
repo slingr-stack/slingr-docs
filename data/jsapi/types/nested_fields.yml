@@ -1,0 +1,49 @@
+package: sys.data.types.NestedFieldsWrapper
+page: app-development-type-nested-fields.html
+description:
+methods:
+- name: field
+  summary: Returns the wrapper of an inner field
+  description: |
+    Returns the wrapper of an inner field.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the inner field to get the wrapper.
+  returnType: sys.data.Wrapper|sys.data.ManyWrapper
+  returnDescription: The wrapper of the inner field.
+  throws:
+    - code: badRequest
+      description: If `path` is invalid.
+  samples:
+  - title: gets the wrapper of the inner field and prints its value
+    code: |
+      var contact = sys.data.findOne('contacts', {email: 'djohnstonb0@behance.net'});
+      var stateWrapper = contact.field('address').field('state');
+      log('state: '+stateWrapper.val());
+- name: id
+  summary: Returns the ID of the field
+  description: |
+    Returns a unique ID of the nested field instance.
+  parameters:
+  returnType: string
+  returnDescription: The ID of the nested field instance.
+  samples:
+    - title: prints the ID of the nested field
+      code: |
+        var record = sys.data.findOne('contacts', {email: 'djohnstonb0@behance.net'});
+        log('address id: '+record.field('address').id());
+- name: label
+  summary: Returns the nested field's label
+  description: |
+    Returns the nested field's label as configured in type rules, or `null` if field is empty.
+  parameters:
+  returnType: string
+  returnDescription: The label of the nested field as configured in type rules.
+  samples:
+  - title: gets the wrapper of a nested field and prints its label
+    code: |
+      var contact = sys.data.findOne('contacts', {email: 'djohnstonb0@behance.net'});
+      var addressWrapper = contact.field('address');
+      log('state: '+addressWrapper.label());

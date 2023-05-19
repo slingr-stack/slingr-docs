@@ -259,37 +259,37 @@ queries:
     between:
       supported: no
       notes:
-  format: |
-    Queries on parent nested fields are not supported. However you can query using inner fields: 
-     
-    {% include query_sample.html id="jdasIWQE9123d" description="filters by state" entity="contacts" jsQueryMap="{'address.state': 'NY'}" jsQueryBuilder=".field('address.state').equals('NY')" restApi="address.state=NY" %}
-     
-    In this cases the format and operators of the type of inner fields should be used.
+  format: | 
+    Queries on parent nested fields are not supported. However, you can query using inner fields:
+
+    {{< query_sample id="jdasIWQE9123d" description="filters by state" entity="contacts" jsQueryMap="{'address.state': 'NY'}" jsQueryBuilder=".field('address.state').equals('NY')" restApi="address.state=NY" >}}
+
+    In this case, the format and operators of the type of inner fields should be used.
 
     You can even query when you have multi-valued nested fields:
 
-    {% include query_sample.html
+    {{< query_sample
     id="sdf32898sdjoqwhjonnn"
     description="filters by state"
     entity="companies"
     jsQueryMap="{'addresses.state': 'NY'}"
     jsQueryBuilder=".field('addresses.state').equals('NY')"
     restApi="addresses.state=NY"
-    %}
+    >}}
 
-    In this case as `addresses` is multi-valued, any company that has at least one address with value
-    `NY` in `state` will be included in the results.
+    In this case, as `addresses` is multi-valued, any company that has at least one address with the value `NY` in `state` will be included in the results.
 
     Finally, to query nested record fields simultaneously:
 
-    {% include query_sample.html
+    {{< query_sample
     id="sfg32898sdjoqwhjon2n"
     description="filters by street and zip code"
     entity="companies"
     jsQueryMap="{'addresses': {'street': 'Street 123', 'zipCode': '1234'}}"
     jsQueryBuilder=".field('addresses').equals({'street': 'Street 123', 'zipCode': '1234'})"
     restApi="addresses={\"street\": \"Street 123\", \"zipCode\": \"1234\"}"
-    %}
+    >}}
+
 
 aggregateQueries:
   operators:

@@ -1,0 +1,53 @@
+package: sys.data.types.DateWrapper
+page: app-development-type-date.html
+description:
+methods:
+- name: addDays
+  summary: Adds days to the value set to the field
+  description: |
+    Adds days to the value set to the field.
+  parameters:
+  - name: numberOfDays
+    type: number
+    required: yes
+    description: The number of days to add. It could be a negative number.
+  returnType: sys.data.Wrapper
+  returnDescription: Returns itself.
+  throws:
+    - code: badRequest
+      description: If `numberOfDays` is not a number.
+  samples:
+  - title: adds 2 days to the start date
+    code: |
+      var company = sys.data.findOne('companies', {name:'Oodoo'});
+      log('start date: '+company.field('startDate').format());
+      company.field('startDate').addDays(2);
+      log('start date: '+company.field('startDate').format());
+- name: format
+  summary: Formats the date to a string
+  description: |
+    Formats the date to a string. If a format pattern is given, it will be used. Otherwise format set in
+    the default display options of the field will be used.
+  parameters:
+  - name: pattern
+    type: string
+    required: no
+    description: |
+      The pattern to format the date. Please check the docs for display options to know which are
+      the options to set the format.
+
+      If no pattern is provided, the default display options of the field will be used.
+  returnType: string
+  returnDescription: The formatted date.
+  throws:
+    - code: badRequest
+      description: If `pattern` is invalid.
+  samples:
+  - title: formats date using 'MM-dd-yyyy' pattern
+    code: |
+      var company = sys.data.findOne('companies', {name:'Oodoo'});
+      log('start date: '+company.field('startDate').format('MM-dd-yyyy'));
+  - title: formats date using default display options
+    code: |
+      var company = sys.data.findOne('companies', {name:'Oodoo'});
+      log('start date: '+company.field('startDate').format());

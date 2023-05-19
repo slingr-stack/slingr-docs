@@ -52,9 +52,10 @@ typeRules:
     - `Condition`: allows to set a conditional expression to indicate when this option is available. Options are:
       - `None`: the option will always be available.
       - `Expression`: the option will be available only the the expression evaluates to true. See the documentation
-        for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html) for more information.
+      *************************
       - `Script`: the option will be available only when the script evaluates to true. The context of the script is:
-        {% include js_script_context.html context=site.data.script_contexts.choiceConditionScript indent=4 %}
+        {{< js_script_context context="choiceConditionScript">}}
+
 displayOptions:
 - name: Representation
   description: |
@@ -157,14 +158,15 @@ queries:
   format: |
     You should pass the a string with the name of value. For example:
 
-    {% include query_sample.html
-    id="KKKKKJJJJUUUUUWWWQQQQ"
-    description="finds active companies"
-    entity="companies"
-    jsQueryMap="{'state': 'active'}"
-    jsQueryBuilder=".field('state').equals('active')"
-    restApi="state=active"
-    %}
+    {{< query_sample
+        id="KKKKKJJJJUUUUUWWWQQQQ"
+        description="finds active companies"
+        entity="companies"
+        jsQueryMap="{'state': 'active'}"
+        jsQueryBuilder=".field('state').equals('active')"
+        restApi="state=active"
+    >}}
+
 aggregateQueries:
   operators:
     sum:

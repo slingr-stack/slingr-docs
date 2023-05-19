@@ -181,15 +181,15 @@ queries:
       notes:
   format: |
     You should pass the number. For example:
+    {{< query_sample
+        id="oofewofWERWER23423kmf"
+        description="finds companies with rating greater or equals than 3.0"
+        entity="companies"
+        jsQueryMap="{'rating': 'greaterOrEquals(3.0)'}"
+        jsQueryBuilder=".field('rating').greaterOrEquals('3.0')"
+        restApi="rating=greaterOrEquals(3.0)"
+    >}}
 
-    {% include query_sample.html
-    id="oofewofWERWER23423kmf"
-    description="finds companies with rating grater or equals than 3.0"
-    entity="companies"
-    jsQueryMap="{'rating': 'greaterOrEquals(3.0)'}"
-    jsQueryBuilder=".field('rating').greaterOrEquals('3.0')"
-    restApi="rating=greaterOrEquals(3.0)"
-    %}
 aggregateQueries:
   operators:
     sum:

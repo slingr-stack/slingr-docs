@@ -1,0 +1,53 @@
+package: sys.data.types.DateMonthDayWrapper
+page: app-development-type-date-month-day.html
+description:
+methods:
+- name: addDays
+  summary: Adds days to the value set to the field
+  description: |
+    Adds days to the value set to the field.
+  parameters:
+  - name: numberOfDays
+    type: number
+    required: yes
+    description: The number of days to add. It could be a negative number.
+  returnType: sys.data.Wrapper
+  returnDescription: Returns itself.
+  throws:
+    - code: badRequest
+      description: If `numberOfDays` is not a number.
+  samples:
+  - title: adds 2 days to the birthday
+    code: |
+      var contact = sys.data.findOne('contacts', {email:'apetersonay@guardian.co.uk'});
+      log('birthday: '+contact.field('birthday').format());
+      contact.field('birthday').addDays(2);
+      log('birthday: '+contact.field('birthday').format());
+- name: format
+  summary: Formats the day to a string
+  description: |
+    Formats the day to a string. If a format pattern is given, it will be used. Otherwise format set in
+    the default display options of the field will be used.
+  parameters:
+  - name: pattern
+    type: string
+    required: no
+    description: |
+      The pattern to format the day. Please check the docs for display options to know which are
+      the options to set the format.
+
+      If no pattern is provided, the default display options of the field will be used.
+  returnType: string
+  returnDescription: The formatted day.
+  throws:
+    - code: badRequest
+      description: If `pattern` is invalid.
+  samples:
+  - title: formats day using 'dd-MM' pattern
+    code: |
+      var contact = sys.data.findOne('contacts', {email:'apetersonay@guardian.co.uk'});
+      log('birthday: '+contact.field('birthday').format('dd-MM'));
+  - title: formats day using default display options
+    code: |
+      var contact = sys.data.findOne('contacts', {email:'apetersonay@guardian.co.uk'});
+      log('birthday: '+contact.field('birthday').format());

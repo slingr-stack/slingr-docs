@@ -1,12 +1,13 @@
 ---
-title: "Data model and logic"
-lead: "Brief explanation of Slingr and use cases for it."
+title: "Date record created type"
+lead: "Date record created type documentation.
+"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
 images: []
 menu:
   docs:
-    parent: "dev-reference"
+    parent: "field-types"
 toc: true
 ---

@@ -65,14 +65,7 @@ typeRules:
     field of the relationship field pointing to `company`. This way you could do a
     query like this (assuming that `company` is the name of the relationship field):
 
-    {% include query_sample.html
-    id="3werfwe23"
-    description="filter contacts by company type"
-    entity="contacts"
-    jsQueryMap="{'company.type': 'a'}"
-    jsQueryBuilder=".field('company.type').equals('a')"
-    restApi="company.type=a"
-    %}
+    {{< query_sample id="3werfwe23" description="filter contacts by company type" entity="contacts" jsQueryMap="{'company.type': 'a'}" jsQueryBuilder=".field('company.type').equals('a')" restApi="company.type=a" >}}
 
     Once you mark it as a copied field you will be able to use that field in different
     places. For example if you are defining permissions over entity `contacts`, you could
@@ -102,8 +95,7 @@ typeRules:
 
     Finally, you can modify the propagation default behavior with the
     [Copied fields update policy](#copied-fields-update-policy) option.
-
-    {% include callout.html content="It is recommended that copied fields do not change its value very often to avoid performance issues. Also, if a change in the copied field triggers too many updates, you should consider an alternative to using copied fields." type="info" %}
+    {{<callout type="info">}} It is recommended that copied fields do not change its value very often to avoid performance issues. Also, if a change in the copied field triggers too many updates, you should consider an alternative to using copied fields. {{</callout>}}
 - name: Delete policy
   description: |
     Indicates what to do if the record referenced by the field is deleted. These
@@ -136,8 +128,8 @@ typeRules:
     - `No`: field's value won't be updated if the label of the record is modified.
       Keep in mind that in this case you might see a label that doesn't match with
       the one in the referenced record.
+    {{<callout type="info">}}To avoid performance issues, try to make labels as stable as possible so they don't change often causing many cascade updates. {{</callout>}}
 
-    {% include callout.html content="To avoid performance issues, try to make labels as stable as possible so they don't change often causing many cascade updates." type="info" %}
 - name: Copied fields update policy
   description: |
     Allows to specify if copied fields have to be automatically updated
@@ -447,43 +439,43 @@ queries:
       supported: no
       notes:
   format: |
+
     By default the label will be used for the different query operators.
 
     For example this will query contacts where company's label is 'Blogpad':
 
-    {% include query_sample.html
-    id="82njwf9723ewdf"
-    description="finds a contact by company label"
-    entity="contacts"
-    jsQueryMap="{company: 'Blogpad'}"
-    jsQueryBuilder=".field('company').equals('Blogpad')"
-    restApi="company=Blogpad"
-    %}
+    {{< query_sample
+      id="82njwf9723ewdf"
+      description="finds a contact by company label"
+      entity="contacts"
+      jsQueryMap="{company: 'Blogpad'}"
+      jsQueryBuilder=".field('company').equals('Blogpad')"
+      restApi="company=Blogpad"
+    >}} 
 
     However you can also use the label explicitly:
 
-    {% include query_sample.html
-    id="345dfgaqwe5r345te"
-    description="finds a contact by company label"
-    entity="contacts"
-    jsQueryMap="{'company.label': 'Blogpad'}"
-    jsQueryBuilder=".field('company').equals('Blogpad')"
-    restApi="company.label=Blogpad"
-    %}
+    {{< query_sample
+        id="345dfgaqwe5r345te"
+        description="finds a contact by company label"
+        entity="contacts"
+        jsQueryMap="{'company.label': 'Blogpad'}"
+        jsQueryBuilder=".field('company').equals('Blogpad')"
+        restApi="company.label=Blogpad"
+    >}}
 
     Notice that you don't need to explicitly add `label` in the path for the query builder. It
     is automatically detected based on what you send to the `equals` method.
 
     You could also query by the ID:
-
-    {% include query_sample.html
-    id="fgdsf34tjDFRTG345"
-    description="finds a company by exact name"
-    entity="contacts"
-    jsQueryMap="{'company.id': '57fd2d65e4b0ce322b0c8565'}"
-    jsQueryBuilder=".field('company').equals('57fd2d65e4b0ce322b0c8565')"
-    restApi="company.id=57fd2d65e4b0ce322b0c8565"
-    %}
+    {{< query_sample
+        id="fgdsf34tjDFRTG345"
+        description="finds a company by exact name"
+        entity="contacts"
+        jsQueryMap="{'company.id': '57fd2d65e4b0ce322b0c8565'}"
+        jsQueryBuilder=".field('company').equals('57fd2d65e4b0ce322b0c8565')"
+        restApi="company.id=57fd2d65e4b0ce322b0c8565"
+    >}}
 
     Notice again that query builder will automatically detect the ID and you don't
     need to use the `id` suffix there.

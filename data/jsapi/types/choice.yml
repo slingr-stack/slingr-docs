@@ -1,0 +1,16 @@
+package: sys.data.types.ChoiceWrapper
+page: app-development-type-choice.html
+description:
+methods:
+- name: label
+  summary: Returns the label of the current value
+  description: |
+    Returns the label of the current value or `null` if no value is set.
+  parameters:
+  returnType: string
+  returnDescription: The label of the current value.
+  samples:
+  - title: prints the label of the current value of the field
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      log('status label: '+record.field('status').label());

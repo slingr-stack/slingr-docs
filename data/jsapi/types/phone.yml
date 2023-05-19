@@ -1,0 +1,16 @@
+package: sys.data.types.PhoneWrapper
+page: app-development-type-phone.html
+description:
+methods:
+- name: format
+  summary: Returns the phone number formatted.
+  description: |
+    Returns the phone number formatted with dashes.
+  parameters:
+  returnType: string
+  returnDescription: The formatted phone number.
+  samples:
+  - title: logs the formatted phone number
+    code: |
+      var record = sys.data.findOne('contacts', {number: 1});
+      sys.logs.info(record.field('phoneNumber').format());

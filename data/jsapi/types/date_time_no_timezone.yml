@@ -1,0 +1,32 @@
+package: sys.data.types.DateTimeNoTimezoneWrapper
+page: app-development-type-date-time-no-timezone.html
+description:
+methods:
+- name: format
+  summary: Formats the date-time to a string
+  description: |
+    Formats the date-time to a string. If a format pattern is given, it will be used. Otherwise format set in
+    the default display options of the field will be used.
+  parameters:
+  - name: pattern
+    type: string
+    required: no
+    description: |
+      The pattern to format the date-time. Please check the docs for display options to know which are
+      the options to set the format.
+
+      If no pattern is provided, the default display options of the field will be used.
+  returnType: string
+  returnDescription: The formatted date.
+  throws:
+    - code: badRequest
+      description: If `pattern` is invalid.
+  samples:
+  - title: formats date using 'MM-dd-yyyy HH:mm' pattern
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      log('last update millis: '+company.field('lastUpdate').format('MM-dd-yyyy HH:mm'));
+  - title: formats date-time using default display options
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      log('last update millis: '+company.field('lastUpdate').format());

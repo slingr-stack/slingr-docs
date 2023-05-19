@@ -1,0 +1,181 @@
+package: sys.data.types.FileWrapper
+page: app-development-type-file.html
+description:
+methods:
+- name: id
+  summary: Returns the ID of the referenced file
+  description: |
+    Returns the ID of the referenced file or `null` if the field is empty.
+  parameters:
+  returnType: string
+  returnDescription: The ID of the referenced file.
+  samples:
+  - title: prints the ID of attachements of a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments').each(function(attachment) {
+        log('file id: '+attachment.id());
+      });
+- name: name
+  summary: Returns the name of the referenced file
+  description: |
+    Returns the name of the referenced file or `null` if the field is empty.
+  parameters:
+  returnType: string
+  returnDescription: The name of the referenced file.
+  samples:
+  - title: prints the name of attachments of a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments').each(function(attachment) {
+        log('file name: '+attachment.name());
+      });
+- name: name
+  summary: Sets the name of the file
+  description: |
+    Sets the name of the file. This only works if you are uploading a new file, otherwise an exception
+    will be thrown.
+  parameters:
+  - name: name
+    type: string
+    required: yes
+    description: The name of the file.
+  returnType:
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: |
+        If the file already exists.
+  samples:
+  - title: adds a new attachment to a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments[1]').name('test1.txt');
+      record.field('attachments[1]').contentType('text/plain');
+      record.field('attachments[1]').content('dGVzdCBmaWxlIQ==');
+      record = sys.data.save(record);
+      log('file id: '+record.field('attachments').last().id());
+- name: hash
+  summary: Returns the hash of the referenced file
+  description: |
+    Returns the hash code of the referenced file.
+  parameters:
+  returnType: string
+  returnDescription: The hash code of the referenced file.
+  samples:
+  - title: prints the hash of attachements of a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments').each(function(attachment) {
+        log('file hash: '+attachment.hash());
+      });
+- name: contentType
+  summary: Returns the content type of the referenced file
+  description: |
+    Returns the content type of the referenced file or `null` if the field is empty.
+  parameters:
+  returnType: string
+  returnDescription: The content type of the referenced file.
+  samples:
+  - title: prints the content type of attachments of a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments').each(function(attachment) {
+        log('content type: '+attachment.contentType());
+      });
+- name: contentType
+  summary: Sets the content type of the file
+  description: |
+    Sets the content type of the file. This only works if you are uploading a new file, otherwise an exception
+    will be thrown.
+  parameters:
+  - name: contentType
+    type: string
+    required: yes
+    description: The content type of the file.
+  returnType:
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: |
+        If the file already exists.
+  samples:
+  - title: adds a new attachment to a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments[1]').name('test1.txt');
+      record.field('attachments[1]').contentType('text/plain');
+      record.field('attachments[1]').content('dGVzdCBmaWxlIQ==');
+      record = sys.data.save(record);
+      log('file id: '+record.field('attachments').last().id());
+- name: content
+  summary: Returns the content of the file encoded in Base 64.
+  description: |
+    Returns the content of the file encoded in Base 64. If the file is bigger than 10MB this method will throw an exception.
+  parameters:
+  returnType: string
+  returnDescription: The content of the referenced file encoded in Base 64.
+  throws:
+    - code: systemException
+      description: |
+        If the content of the file is bigger than 10MB.
+  samples:
+  - title: prints the content of attachments of a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments').each(function(attachment) {
+        log('content in base 64: '+attachment.content());
+      });
+- name: content
+  summary: Sets the content of the file
+  description: |
+    Sets the content type of the file (it should be encoded in Base 64). This only works if you are uploading
+    a new file, otherwise an exception will be thrown.
+  parameters:
+  - name: content
+    type: string
+    required: yes
+    description: The content of the file in Base 64.
+  returnType:
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: |
+        If the file already exists.
+  samples:
+  - title: adds a new attachment to a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments[1]').name('test1.txt');
+      record.field('attachments[1]').contentType('text/plain');
+      record.field('attachments[1]').content('dGVzdCBmaWxlIQ==');
+      record = sys.data.save(record);
+      log('file id: '+record.field('attachments').last().id());
+- name: size
+  summary: Returns the size of the file in bytes.
+  description: |
+    Returns the size of the file in bytes.
+  parameters:
+  returnType: number
+  returnDescription: The size of the referenced file.
+  samples:
+  - title: prints the size of attachments of a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments').each(function(attachment) {
+        log('file size: '+attachment.size());
+      });
+- name: link
+  summary: Returns the URL of the file.
+  description: |
+    Returns an absolute URL of the file.
+  parameters:
+  returnType: string
+  returnDescription: The URL of the referenced file.
+  samples:
+  - title: prints the url of attachments of a task
+    code: |
+      var record = sys.data.findOne('tasks', {number: 1});
+      record.field('attachments').each(function(attachment) {
+        log('file url: ' + attachment.link());
+      });

@@ -1,0 +1,55 @@
+package: sys.data.types.DynamicChoiceWrapper
+page: app-development-type-dynamic-choice.html
+description:
+methods:
+- name: selectedLabel
+  summary: Returns the label of the current value
+  description: |
+    Returns the label of the current value or `null` if no value is set.
+  parameters:
+  returnType: string
+  returnDescription: The label of the current value.
+  samples:
+  - title: prints the label of the current value of the field
+    code: |
+      // this will print something like "state: Arizona"
+      log('state: ' + record.field('state').selectedLabel());
+- name: selectedValue
+  summary: Returns the name of the current value. You can pass a new value and it will be set it.
+  description: |
+    Returns the name of the current value or `null` if no value is set.
+  parameters:
+    - name: newValue
+      type: string
+      required: no
+      description: The new value to be selected.
+  returnType: string
+  returnDescription: The name of the current value.
+  samples:
+  - title: prints the name of the current value of the field
+    code: |
+      // this will print something like "state: AZ"
+      log('state: ' + record.field('state').selectedValue());
+
+      // this will set "AL" as selected value and it will print something like "state: AL"
+      log('state: ' + record.field('state').selectedValue('AL'));
+- name: options
+  summary: Returns an array with possible options for the value. You can pass a new value and it will be set the possible options for the value.
+  description: |
+    Returns an array with the possible options for the value.
+  parameters:
+    - name: newOptions
+      type: object[]
+      required: no
+      description: The new possible options for the value.
+  returnType: object[]
+  returnDescription: The possible options for the value.
+  samples:
+  - title: prints the possible options
+    code: |
+      // this will print something like
+      // "state options: [{"label": "Alabama", "name": "AL"},{"label": "Alaska", "name": "AK"},{"label": "Arizona", "name": "AZ"}]"
+      log('state options: ' + JSON.stringify(record.field('state').options()));
+
+      // this will save the options to be used as possible values:
+      record.field('state').options([{"label": "Alabama", "name": "AL"},{"label": "Alaska", "name": "AK"},{"label": "Arizona", "name": "AZ"}]);

@@ -1,0 +1,35 @@
+package: sys.data.types.IntegerWrapper
+page: app-development-type-integer.html
+description:
+methods:
+- name: toHex
+  summary: Returns hex representation
+  description: |
+    Returns string of hexadecimal representation of the value or empty (`''`) if null.
+  parameters:
+  returnType: string
+  returnDescription: Hex value of number.
+  samples:
+  - title: prints the hex value of a integer field
+    code: |
+      var record = sys.data.findOne('projects', {name: 'Point-to-point link'});
+      sys.logs.debug('project number of people hex: '+record.field('numberOfPeople').toHex());
+- name: format
+  summary: Returns formatted number
+  description: |
+    Returns string of formatted number of the value or string without format.
+  parameters:
+  - name: options
+    type: object
+    required: no
+    description: |
+      Display options parameters used to format value. If it is empty the default display options are used to format.
+
+      - **thousandsSeparator** if show thousands separator. ie: `true` or `false`.
+  returnType: string
+  returnDescription: String of formatted value of number.
+  samples:
+  - title: prints the formated value of a integer field
+    code: |
+      var record = sys.data.findOne('projects', {name: 'Point-to-point link'});
+      sys.logs.debug('project number of people: '+record.field('numberOfPeople').format({thousandsSeparator: true}));
