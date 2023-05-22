@@ -159,15 +159,15 @@ queries:
       notes:
   format: |
     You should pass the number. For example:
+    {{< query_sample
+        id="oofewofWERWER23423kmf"
+        description="finds skills with an average salary greater or equals to 80000.00"
+        entity="skills"
+        jsQueryMap="{'averageSalary': 'greaterOrEquals(80000.00)'}"
+        jsQueryBuilder=".field('averageSalary').greaterOrEquals(80000.00)"
+        restApi="averageSalary=greaterOrEquals(80000.00)"
+    >}}
 
-    {% include query_sample.html
-    id="oofewofWERWER23423kmf"
-    description="finds skills with an average salary greater or equals to 80000.00"
-    entity="skills"
-    jsQueryMap="{'averageSalary': 'greaterOrEquals(80000.00)'}"
-    jsQueryBuilder=".field('averageSalary').greaterOrEquals(80000.00)"
-    restApi="averageSalary=greaterOrEquals(80000.00)"
-    %}
 aggregateQueries:
   operators:
     sum:

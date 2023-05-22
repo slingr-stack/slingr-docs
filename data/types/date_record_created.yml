@@ -132,14 +132,14 @@ queries:
   format: |
     You should pass the milliseconds since Epoch:
 
-    {% include query_sample.html
-    id="asdfa2332423dsfsdfs"
-    description="finds companies where last meeting is after '1458443760000' which is Sun Mar 20 2016 03:16:00 GMT-0000 (UTC)"
-    entity="companies"
-    jsQueryMap="{'lastMeeting': 'greater(1458443760000)'}"
-    jsQueryBuilder=".field('lastMeeting').greater(1458443760000)"
-    restApi="lastMetting=greater(1458443760000)"
-    %}
+    {{< query_sample
+        id="asdfa2332423dsfsdfs"
+        description="finds companies where last meeting is after '1458443760000' which is Sun Mar 20 2016 03:16:00 GMT-0000 (UTC)"
+        entity="companies"
+        jsQueryMap="{'lastMeeting': 'greater(1458443760000)'}"
+        jsQueryBuilder=".field('lastMeeting').greater(1458443760000)"
+        restApi="lastMeeting=greater(1458443760000)"
+    >}}
 
     When using the query builder you can use a `Date` object or a string in format 'yyyy-MM-dd HH:mm':
 

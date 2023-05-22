@@ -1,7 +1,7 @@
 name: text
 overview: |
   This type can store free text up to 300 characters. If you need more than that please use the type
-  [Long text]({{site.baseurl}}/app-development-type-long-text.html).
+  ************  
 features:
   manyMultiplicity:
     supported: yes
@@ -166,14 +166,15 @@ queries:
   format: |
     You should pass the text as a plain string. For example:
 
-    {% include query_sample.html
-    id="sdew423lldsflsd"
-    description="finds companies with name like 'ae'"
-    entity="companies"
-    jsQueryMap="{'name': 'like(ae)'}"
-    jsQueryBuilder=".field('name').like('ae')"
-    restApi="name=like(ae)"
-    %}
+    {{< query_sample
+        id="sdew423lldsflsd"
+        description="finds companies with name like 'ae'"
+        entity="companies"
+        jsQueryMap="{'name': 'like(ae)'}"
+        jsQueryBuilder=".field('name').like('ae')"
+        restApi="name=like(ae)"
+    >}}
+
 aggregateQueries:
   operators:
     sum:

@@ -128,15 +128,16 @@ queries:
       notes:
   format: |
     You should pass the number. For example:
-
-    {% include query_sample.html
+    {{< query_sample
     id="io898932husnjdvnnsnnjwe"
     description="finds companies with more than 10 employees"
     entity="companies"
     jsQueryMap="{'numberOfEmployees': 'greater(10)'}"
     jsQueryBuilder=".field('numberOfEmployees').greater(10)"
     restApi="numberOfEmployees=greater(10)"
-    %}
+    }}
+
+
 aggregateQueries:
   operators:
     sum:

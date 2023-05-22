@@ -136,14 +136,9 @@ queries:
   format: |
     You should pass the a string with the format `MM-dd`. For example:
 
-    {% include query_sample.html
-    id="sdfasd32143423423sdfsd"
-    description="finds contacts with birthday on '04-13'"
-    entity="contacts"
-    jsQueryMap="{'birthday': '04-13'}"
-    jsQueryBuilder=".field('birthday').equals('04-13')"
-    restApi="birthday=04-13"
-    %}
+    {{< query_sample id="sdfasd32143423423sdfsd" description="finds contacts with birthday on '04-13'" entity="contacts" jsQueryMap="{'birthday': '04-13'}" jsQueryBuilder=".field('birthday').equals('04-13')" restApi="birthday=04-13" >}}
+
+
 
     When using the query builder you can use a `Date` object:
 

@@ -187,25 +187,27 @@ queries:
     For example this will query tasks with an attachment with name is like 'logo.png'. We use `like`
     because the name can contain the size of the file so `equals` might not work:
 
-    {% include query_sample.html
-    id="sdfsd42354356rthnvbnfgjhuiiiui"
-    description="finds a task with attachment 'logo.png'"
-    entity="tasks"
-    jsQueryMap="{attachments: 'like(logo.png)'}"
-    jsQueryBuilder=".field('attachments').like('logo.png')"
-    restApi="attachments=like(logo.png)"
-    %}
+    {{< query_sample
+        id="sdfsd42354356rthnvbnfgjhuiiiui"
+        description="finds a task with attachment 'logo.png'"
+        entity="tasks"
+        jsQueryMap="{attachments: 'like(logo.png)'}"
+        jsQueryBuilder=".field('attachments').like('logo.png')"
+        restApi="attachments=like(logo.png)"
+    >}}
+
 
     You could also query by the ID:
 
-    {% include query_sample.html
-    id="gghhyuuy777775r4434rfree"
-    description="finds a task by attachment's ID"
-    entity="tasks"
-    jsQueryMap="{'attachments.id': '58866b5d3b063a0007604eab'}"
-    jsQueryBuilder=".field('attachments').equals('58866b5d3b063a0007604eab')"
-    restApi="attachments.id=58866b5d3b063a0007604eab"
-    %}
+    {{< query_sample
+        id="gghhyuuy777775r4434rfree"
+        description="finds a task by attachment's ID"
+        entity="tasks"
+        jsQueryMap="{'attachments.id': '58866b5d3b063a0007604eab'}"
+        jsQueryBuilder=".field('attachments').equals('58866b5d3b063a0007604eab')"
+        restApi="attachments.id=58866b5d3b063a0007604eab"
+    >}}
+
 
     Notice again that query builder will automatically detect the ID and you don't
     need to use the `id` suffix there.

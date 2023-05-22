@@ -144,14 +144,15 @@ queries:
     You should pass the phone number as a plain string. Keep in mind that non-number will be
     stripped out before running the query. For example:
 
-    {% include query_sample.html
-    id="3223sdfsdfsd"
-    description="finds companies with contact phone number like '123'"
-    entity="companies"
-    jsQueryMap="{'contactInformation.phoneNumber': 'like(123)'}"
-    jsQueryBuilder=".field('contactInformation.phoneNumber').like('123')"
-    restApi="contactInformation.phoneNumber=like(123)"
-    %}
+    {{< query_sample
+        id="3223sdfsdfsd"
+        description="finds companies with contact phone number like '123'"
+        entity="companies"
+        jsQueryMap="{'contactInformation.phoneNumber': 'like(123)'}"
+        jsQueryBuilder=".field('contactInformation.phoneNumber').like('123')"
+        restApi="contactInformation.phoneNumber=like(123)"
+    >}}
+
 aggregateQueries:
   operators:
     sum:

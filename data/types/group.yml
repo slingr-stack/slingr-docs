@@ -178,25 +178,25 @@ queries:
 
     For example this will query tasks where assignee's label is 'Read-only user':
 
-    {% include query_sample.html
-    id="ew12343124wedfwerf"
-    description="finds a task by group's label"
-    entity="tasks"
-    jsQueryMap="{group: 'Read-only user'}"
-    jsQueryBuilder=".field('group').equals('Read-only user')"
-    restApi="group=Read-only user"
-    %}
+    {{< query_sample
+        id="ew12343124wedfwerf"
+        description="finds a task by group's label"
+        entity="tasks"
+        jsQueryMap="{group: 'Read-only user'}"
+        jsQueryBuilder=".field('group').equals('Read-only user')"
+        restApi="group=Read-only user"
+    >}}
 
     You could also query by the ID:
 
-    {% include query_sample.html
-    id="dssdfsd2435ghjjweryter456"
-    description="finds a task by group's ID"
-    entity="tasks"
-    jsQueryMap="{'group.id': '57fe5269e4b0f6600fdfbdba'}"
-    jsQueryBuilder=".field('group').equals('57fe5269e4b0f6600fdfbdba')"
-    restApi="group.id=57fe5269e4b0f6600fdfbdba"
-    %}
+    {{< query_sample
+        id="dssdfsd2435ghjjweryter456"
+        description="finds a task by group's ID"
+        entity="tasks"
+        jsQueryMap="{'group.id': '57fe5269e4b0f6600fdfbdba'}"
+        jsQueryBuilder=".field('group').equals('57fe5269e4b0f6600fdfbdba')"
+        restApi="group.id=57fe5269e4b0f6600fdfbdba"
+    >}}
 
     Notice again that query builder will automatically detect the ID and you don't
     need to use the `id` suffix there.

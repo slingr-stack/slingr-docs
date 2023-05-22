@@ -132,14 +132,15 @@ queries:
   format: |
     You should pass the number of milliseconds. For example:
 
-    {% include query_sample.html
+    {{< query_sample
     id="dsafOEWRWELRKCVCsdfsdqwer322"
     description="finds contacts that worked more than 40 hours per week"
     entity="contacts"
     jsQueryMap="{'hoursPerWeek': 'greater(144000000)'}"
     jsQueryBuilder=".field('hoursPerWeek').greater(144000000)"
     restApi="hoursPerWeek=greater(144000000)"
-    %}
+    >}}
+
 aggregateQueries:
   operators:
     sum:

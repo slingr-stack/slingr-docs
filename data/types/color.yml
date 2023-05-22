@@ -116,15 +116,8 @@ queries:
       notes:
   format: |
     You should pass the hexadecimal code of the color. For example:
+    {{< query_sample id="11198891njdjfjweuorwe" description="finds skills with tag color '#f5a9a9'" entity="skills" jsQueryMap="{'tagColor': 'like(#f5a9a9)'}" jsQueryBuilder=".field('tagColor').like('#f5a9a9')" restApi="tagColor=like(#f5a9a9)" >}}
 
-    {% include query_sample.html
-    id="11198891njdjfjweuorwe"
-    description="finds skills with tag color '#f5a9a9'"
-    entity="skills"
-    jsQueryMap="{'tagColor': 'like(#f5a9a9)'}"
-    jsQueryBuilder=".field('tagColor').like('#f5a9a9')"
-    restApi="tagColor=like(#f5a9a9)"
-    %}
 aggregateQueries:
   operators:
     sum:

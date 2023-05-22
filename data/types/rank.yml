@@ -125,14 +125,15 @@ queries:
   format: |
     You should pass the rank value. For example:
 
-    {% include query_sample.html
-    id="asd2128sadjasjdjasd"
-    description="finds a task with rank 'iiiii00000'"
-    entity="tasks"
-    jsQueryMap="{'rank': 'iiiii00000'}"
-    jsQueryBuilder=".field('rank').equals('iiiii00000')"
-    restApi="rank=iiiii00000"
-    %}
+    {{< query_sample
+        id="asd2128sadjasjdjasd"
+        description="finds a task with rank 'iiiii00000'"
+        entity="tasks"
+        jsQueryMap="{'rank': 'iiiii00000'}"
+        jsQueryBuilder=".field('rank').equals('iiiii00000')"
+        restApi="rank=iiiii00000"
+    >}}
+
 aggregateQueries:
   operators:
     sum:

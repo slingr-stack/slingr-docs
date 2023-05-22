@@ -164,14 +164,15 @@ queries:
   format: |
     You should pass the number. For example:
 
-    {% include query_sample.html
-    id="asd213123ikiifiiiifiiifiifi"
-    description="finds contacts with availability rate grater or equals than 50"
-    entity="companies"
-    jsQueryMap="{'availabilityRate': 'greaterOrEquals(50)'}"
-    jsQueryBuilder=".field('availabilityRate').greaterOrEquals(50)"
-    restApi="availabilityRate=greaterOrEquals(50)"
-    %}
+    {{< query_sample
+        id="asd213123ikiifiiiifiiifiifi"
+        description="finds contacts with availability rate greater or equals than 50"
+        entity="companies"
+        jsQueryMap="{'availabilityRate': 'greaterOrEquals(50)'}"
+        jsQueryBuilder=".field('availabilityRate').greaterOrEquals(50)"
+        restApi="availabilityRate=greaterOrEquals(50)"
+    >}}
+
 aggregateQueries:
   operators:
     sum:

@@ -160,14 +160,17 @@ queries:
   format: |
     You should pass the text as a plain string. For example:
 
-    {% include query_sample.html
+    {{< query_sample
     id="sdew423lldsflsd"
     description="finds companies with notes like 'ae'"
     entity="companies"
     jsQueryMap="{'notes': 'like(ae)'}"
     jsQueryBuilder=".field('notes').like('ae')"
     restApi="notes=like(ae)"
-    %}
+
+    }}
+
+
 aggregateQueries:
   operators:
     sum:

@@ -120,15 +120,15 @@ queries:
       notes:
   format: |
     You should pass the email as a plain string. For example:
+    {{< query_sample
+        id="3wweuoo3u434"
+        description="finds companies with contact email like 'test'"
+        entity="companies"
+        jsQueryMap="{'contactInformation.email': 'like(test)'}"
+        jsQueryBuilder=".field('contactInformation.email').like('test')"
+        restApi="contactInformation.email=like(test)"
+    >}}
 
-    {% include query_sample.html
-    id="3wweuoo3u434"
-    description="finds companies with contact email like 'test'"
-    entity="companies"
-    jsQueryMap="{'contactInformation.email': 'like(test)'}"
-    jsQueryBuilder=".field('contactInformation.email').like('test')"
-    restApi="contactInformation.email=like(test)"
-    %}
 aggregateQueries:
   operators:
     sum:

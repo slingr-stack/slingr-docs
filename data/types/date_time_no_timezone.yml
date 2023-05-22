@@ -153,14 +153,15 @@ queries:
   format: |
     You should pass a string in format `yyyy-MM-dd HH:mm`:
 
-    {% include query_sample.html
-    id="SDFLwer324SDFSD324234"
-    description="finds events after '2016-11-05 11:00'"
-    entity="events"
-    jsQueryMap="{'eventDateTime': 'greater(2016-11-05 11:00)'}"
-    jsQueryBuilder=".field('eventDateTime').greater('2016-11-05 11:00')"
-    restApi="eventDateTime=greater(2016-11-05 11:00)"
-    %}
+    {{< query_sample
+        id="SDFLwer324SDFSD324234"
+        description="finds events after '2016-11-05 11:00'"
+        entity="events"
+        jsQueryMap="{'eventDateTime': 'greater(2016-11-05 11:00)'}"
+        jsQueryBuilder=".field('eventDateTime').greater('2016-11-05 11:00')"
+        restApi="eventDateTime=greater(2016-11-05 11:00)"
+    >}}
+
 
     When using the query builder you can use a `Date` object or a string in format 'yyyy-MM-dd HH:mm':
 

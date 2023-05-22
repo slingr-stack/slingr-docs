@@ -117,14 +117,15 @@ queries:
   format: |
     You should pass a string with the format `HH:mm`. For example:
 
-    {% include query_sample.html
-    id="sdrewerwerwersdfsd"
-    description="finds companies opening after 10:00"
-    entity="companies"
-    jsQueryMap="{'openingHours': 'greater(10:00)'}"
-    jsQueryBuilder=".field('openingHours').greater('10:00')"
-    restApi="openingHours=greater(10:00)"
-    %}
+    {{< query_sample
+        id="sdrewerwerwersdfsd"
+        description="finds companies opening after 10:00"
+        entity="companies"
+        jsQueryMap="{'openingHours': 'greater(10:00)'}"
+        jsQueryBuilder=".field('openingHours').greater('10:00')"
+        restApi="openingHours=greater(10:00)"
+    >}}
+
 aggregateQueries:
   operators:
     sum:

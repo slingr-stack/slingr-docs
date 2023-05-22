@@ -154,13 +154,15 @@ queries:
     You should pass the URL as a plain string. For example:
 
     {% include query_sample.html
-    id="3242397923uwehhu"
-    description="finds companies with homepage like 'test'"
-    entity="companies"
-    jsQueryMap="{'homepage': 'like(test)'}"
-    jsQueryBuilder=".field('homepage').like('test')"
-    restApi="homepage=like(test)"
-    %}
+    {{< query_sample
+        id="3242397923uwehhu"
+        description="finds companies with homepage like 'test'"
+        entity="companies"
+        jsQueryMap="{'homepage': 'like(test)'}"
+        jsQueryBuilder=".field('homepage').like('test')"
+        restApi="homepage=like(test)"
+    >}}
+
 aggregateQueries:
   operators:
     sum:

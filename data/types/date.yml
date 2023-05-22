@@ -139,14 +139,14 @@ queries:
   format: |
     You should pass the a string with the format `yyyy-MM-dd`. For example:
 
-    {% include query_sample.html
-    id="sdf324234sdfsdf"
-    description="finds companies with start date '2016-07-12'"
-    entity="companies"
-    jsQueryMap="{'startDate': '2016-07-12'}"
-    jsQueryBuilder=".field('startDate').equals('2016-07-12')"
-    restApi="startDate=2016-07-12"
-    %}
+    {{< query_sample
+        id="sdf324234sdfsdf"
+        description="finds companies with start date '2016-07-12'"
+        entity="companies"
+        jsQueryMap="{'startDate': '2016-07-12'}"
+        jsQueryBuilder=".field('startDate').equals('2016-07-12')"
+        restApi="startDate=2016-07-12"
+    >}}
 
     When using the query builder you can use a `Date` object:
 

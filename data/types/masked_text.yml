@@ -146,27 +146,25 @@ queries:
       notes:
   format: |
     For equality queries you can pass the value with the mask format or without it. For example:
-
-    {% include query_sample.html
-    id="dsfs89233423232mnnccc"
-    description="finds companies with tax ID '123-ABC'"
-    entity="companies"
-    jsQueryMap="{'taxId': '123-ABC'}"
-    jsQueryBuilder=".field('taxId').equals('123-ABC')"
-    restApi="name=123-ABC"
-    %}
+    {{< query_sample
+        id="dsfs89233423232mnnccc"
+        description="finds companies with tax ID '123-ABC'"
+        entity="companies"
+        jsQueryMap="{'taxId': '123-ABC'}"
+        jsQueryBuilder=".field('taxId').equals('123-ABC')"
+        restApi="name=123-ABC"
+    >}}
 
     You could skip the fixed characters in the mask as well:
 
-    {% include query_sample.html
-    id="sdsffddsdsdsdfmkmmmmmmmcccc"
-    description="finds companies with tax ID '123-ABC'"
-    entity="companies"
-    jsQueryMap="{'taxId': '123ABC'}"
-    jsQueryBuilder=".field('taxId').equals('123ABC')"
-    restApi="name=123ABC"
-    %}
-
+    {{< query_sample
+        id="sdsffddsdsdsdfmkmmmmmmmcccc"
+        description="finds companies with tax ID '123-ABC'"
+        entity="companies"
+        jsQueryMap="{'taxId': '123ABC'}"
+        jsQueryBuilder=".field('taxId').equals('123ABC')"
+        restApi="name=123ABC"
+    >}}
     Keep in mind that you cannot use the formatted form when using the `like` operator as the match
     will be done with the value stored in the database.
 aggregateQueries:
