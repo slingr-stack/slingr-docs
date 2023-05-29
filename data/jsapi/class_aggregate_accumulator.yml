@@ -1,0 +1,108 @@
+package: sys.data.AggregateAccumulator
+page: app-development-js-api-data.html
+description: |
+  Allows to define accumulation operations for groups created using <<<sys.data.AggregatedGroup>>>
+  like sum, average, etc.
+
+  Please check the documentation on [Group]({{site.baseurl}}/app-development-aggregate-queries.html#group) for more
+  information on how to use aggregations.
+methods:
+- name: sum
+  summary: 	Sums all the numeric values in the group for the given field
+  description: |
+    Sums all the numeric values in the group for the given field.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field to sum up
+  returnType: sys.data.AggregatedGroup
+  returnDescription: The group object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the path is invalid or not a numeric field.
+  samples:
+- name: count
+  summary: 	Counts the number of elements in the group
+  description: |
+    Counts the number of elements in the group.
+  parameters:
+  returnType: sys.data.AggregatedGroup
+  returnDescription: The group object so you can chain more operations.
+  throws:
+  samples:
+- name: avg
+  summary: 	Calculates the average of all the numeric values in the group for the given field
+  description: |
+    Calculates the average of all the numeric values in the group for the given field.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field to calculate average
+  returnType: sys.data.AggregatedGroup
+  returnDescription: The group object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the path is invalid or not a numeric field.
+  samples:
+- name: first
+  summary: 	Selects the value of the first element in the group for the given field
+  description: |
+    Selects the value of the first element in the group for the given field.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field to select its value
+  returnType: sys.data.AggregatedGroup
+  returnDescription: The group object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the path is invalid or not a numeric field.
+  samples:
+- name: last
+  summary: 	Selects the value of the last element in the group for the given field
+  description: |
+    Selects the value of the last element in the group for the given field.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field to select its value
+  returnType: sys.data.AggregatedGroup
+  returnDescription: The group object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the path is invalid or not a numeric field.
+  samples:
+- name: min
+  summary: 	Selects the minimum value in the group for the given field
+  description: |
+    Selects the minimum value in the group for the given field.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field to select its minimum value
+  returnType: sys.data.AggregatedGroup
+  returnDescription: The group object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the path is invalid or not a numeric field.
+  samples:
+- name: max
+  summary: 	Selects the maximum value in the group for the given field
+  description: |
+    Selects the maximum value in the group for the given field.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field to select its maximum value
+  returnType: sys.data.AggregatedGroup
+  returnDescription: The group object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the path is invalid or not a numeric field.
+  samples:

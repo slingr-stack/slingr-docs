@@ -1,3 +1,79 @@
-{{ if ne .format "small" }}
-<h2 id="{{ .api.package }}">{{ .api.package }}</h2>
-{{ end }}
+{{- $context := .Get "context" -}}
+{{- $format := .Get "format" -}}
+{{- $filePath := printf "data/jsapi/%s.yml" $context -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $api := $yamlContent | unmarshal -}}
+
+{{- if ne $format "small" -}}
+  <h2 id="{{ $api.package }}">{{ $api.package }}</h2>
+{{- end -}}
+
+{{- $api.description | markdownify }}
+
+{{- range $method := $api.methods -}}
+  {{- $anchor := "" -}}
+  {{- if $method.parameters -}}
+    {{- $paramList := "" -}}
+    {{- range $index, $param := $method.parameters -}}
+      {{- $paramList = printf "%s_%s" $paramList $param.name -}}
+    {{- end -}}
+    {{- $anchor = printf "%s.%s%s" $api.package $method.name $paramList -}}
+  {{- else -}}
+    {{- $anchor = printf "%s.%s" $api.package $method.name -}}
+  {{- end -}}
+
+  {{- if eq $format "small" -}}
+    <h4 id="{{ $anchor }}">{{ $method.name }}({{ range $index, $param := $method.parameters }}{{ if $index }}, {{ end }}{{ $param.name }}{{ end }})</h4>
+  {{- else -}}
+    <h3 id="{{ $anchor }}">{{ $method.name }}({{ range $index, $param := $method.parameters }}{{ if $index }}, {{ end }}{{ $param.name }}{{ end }})</h3>
+  {{- end -}}
+
+  {{- $method.description | markdownify }}
+
+  {{- if $method.parameters -}}
+
+  <h6>Parameters</h6>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{- range $param := $method.parameters -}}
+      <tr>
+        <td>{{ $param.name | markdownify }}</td>
+        <td>{{ $param.type | markdownify }}</td>
+        <td>{{ $param.description | markdownify }}</td>
+      </tr>
+      {{- end -}}
+    </tbody>
+  </table>
+  {{- end -}}
+
+  {{- if and $method.returnType $method.returnDescription -}}
+  <h6>Returns</h6>
+
+  <code>{{ $method.returnType }}</code> - {{ $method.returnDescription | markdownify }}
+  {{- end -}}
+
+  {{- if $method.throws -}}
+  <h6>Exceptions</h6>
+  {{- range $exception := $method.throws -}}
+  <code>{{ $exception.code }}</code>
+  {{- $exception.description | markdownify }}
+  {{- end -}}
+  {{- end -}}
+
+  {{- if $method.samples -}}
+  <h6>Samples</h6>
+  {{- range $sample := $method.samples -}}
+  <pre><code>// {{ $sample.title | markdownify }}
+<br>
+{{- $sample.code | safeHTML }}</code></pre>
+  {{- end -}}
+  {{- end -}}
+{{- end -}}

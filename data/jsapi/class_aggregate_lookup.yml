@@ -1,0 +1,54 @@
+package: sys.data.AggregatedLookup
+page: app-development-js-api-data.html
+description: |
+  Allows to lookup elements with other collections elemtents making an equivalent SQL left join. You
+  should never create an object of this class manually. Instead use <<<sys.data.AggregateQuery.lookup()>>> method.
+
+  Please check the documentation on [Lookup]({{site.baseurl}}/app-development-aggregate-queries.html#lookup) for more
+  information on how to use the lookup operator.
+methods:
+- name: localField
+  summary: 	Indicates the local field
+  description: |
+    Indicates selected attribute from current entity elements that will be matched with foreign elements.
+  parameters:
+  - name: fieldPath
+    type: string
+    required: yes
+    description: Field into current entity used as local field.
+  returnType: sys.data.AggregatedLookup
+  returnDescription: The lookup object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the `fieldPath` is invalid.
+  samples:
+- name: foreignField
+  summary: 	Indicates the foreing field
+  description: |
+    Indicates selected attribute from foreign entity elements that will be matched with current elements.
+  parameters:
+  - name: fieldPath
+    type: string
+    required: yes
+    description: Field into foreign entity used as foreign field.
+  returnType: sys.data.AggregatedLookup
+  returnDescription: The lookup object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the `fieldPath` is invalid.
+  samples:
+- name: foreignEntity
+  summary: 	Indicates the foreing entity
+  description: |
+    Indicates the foreign entity name whose elements will be matched.
+  parameters:
+  - name: entityName
+    type: string
+    required: yes
+    description: Name of an existing entity.
+  returnType: sys.data.AggregatedLookup
+  returnDescription: The lookup object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the `entityName` is invalid.
+  samples:

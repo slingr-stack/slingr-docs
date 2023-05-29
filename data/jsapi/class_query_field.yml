@@ -1,0 +1,331 @@
+package: sys.data.QueryField
+page: app-development-js-api-data.html
+description: |
+  This object is returned by the method <<<sys.data.Query.field()>>> and allows to
+  apply filters to the field.
+
+  Please check [Filters by field]({{site.baseurl}}/app-development-query-language.html#filters-by-field) for more
+  information on filter data.
+methods:
+- name: equals
+  summary: Adds a filter using equals operator
+  description: |
+    Adds a filter using equals operator.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to compare to. Please check the field's type documentation to see which values are allowed.
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type. Keep
+        in mind that some invalid values might be detected only once the query is executed.
+  samples:
+  - title: print the name of 10 active companies
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('state');
+      queryField.equals('active');
+      query.size(10);
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: notEquals
+  summary: Adds a filter using not equals operator
+  description: |
+    Adds a filter using not equals operator.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to compare to. Please check the field's type documentation to see which values are allowed.
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type. Keep
+        in mind that some invalid values might be detected only once the query is executed.
+  samples:
+  - title: print the name of 10 companies where type is not 'a'
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('type');
+      queryField.notEquals('a');
+      query.size(10);
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: empty
+  summary: Adds a filter using empty operator
+  description: |
+    Adds a filter using empty operator.
+  parameters:
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type.
+  samples:
+  - title: print the name of companies where notes are empty
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('notes');
+      queryField.empty();
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: notEmpty
+  summary: Adds a filter using not empty operator
+  description: |
+    Adds a filter using not empty operator.
+  parameters:
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type.
+  samples:
+  - title: print the name of 10 companies where notes are not empty
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('notes');
+      queryField.notEmpty();
+      query.size(10);
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: like
+  summary: Adds a filter using like operator
+  description: |
+    Adds a filter using like operator. This filter type has support for regular expressions and also provide shortcuts for filtering by `starts with` and `ends with`.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to compare to. Please check the field's type documentation to see which values are allowed.
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type. Keep
+        in mind that some invalid values might be detected only once the query is executed.
+  samples:
+  - title: print the name of companies where name contains 'odo'
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('name');
+      queryField.like('odo');
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+  - title: print the name of companies where name starts with 't', can have something else in the middle and ends with 'e' using a regular expression
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('name');
+      queryField.like('/^t.*e$/');
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+  - title: print the name of companies where name starts with 't' using the `starts with` shortcut
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('name');
+      queryField.like('/t');
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+  - title: print the name of companies where name ends with 'e' using the `ends with` shortcut
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('name');
+      queryField.like('e/');
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: greater
+  summary: Adds a filter using greater operator
+  description: |
+    Adds a filter using greater operator.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to compare to. Please check the field's type documentation to see which values are allowed.
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type. Keep
+        in mind that some invalid values might be detected only once the query is executed.
+  samples:
+  - title: print the name of companies with more than 500 employees
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('numberOfEmployees');
+      queryField.greater(500);
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: greaterOrEquals
+  summary: Adds a filter using greater or equals operator
+  description: |
+    Adds a filter using greater or equals operator.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to compare to. Please check the field's type documentation to see which values are allowed.
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type. Keep
+        in mind that some invalid values might be detected only once the query is executed.
+  samples:
+  - title: print the name of companies with more than 500 employees or exactly 500 employees
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('numberOfEmployees');
+      queryField.greaterOrEquals(500);
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: less
+  summary: Adds a filter using less operator
+  description: |
+    Adds a filter using less operator.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to compare to. Please check the field's type documentation to see which values are allowed.
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type. Keep
+        in mind that some invalid values might be detected only once the query is executed.
+  samples:
+  - title: print the name of companies with less than 500 employees
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('numberOfEmployees');
+      queryField.less(500);
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: lessOrEquals
+  summary: Adds a filter using less or equals operator
+  description: |
+    Adds a filter using less or equals operator.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to compare to. Please check the field's type documentation to see which values are allowed.
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type. Keep
+        in mind that some invalid values might be detected only once the query is executed.
+  samples:
+  - title: print the name of companies with less than 500 employees or exactly 500 employees
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('numberOfEmployees');
+      queryField.lessOrEquals(500);
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: between
+  summary: Adds a filter using between operator
+  description: |
+    Adds a filter using between operator.
+  parameters:
+  - name: from
+    type: any
+    required: yes
+    description: The minimum value to match (inclusive).
+  - name: to
+    type: any
+    required: yes
+    description: The maximum value to match (inclusive).
+  returnType: sys.data.Query|sys.data.QueryField
+  returnDescription: |
+    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    you are using it in a complex query.
+  throws:
+    - code: badRequest
+      description: |
+        If operation is not supported for the field's type or if the value is not valid for this type. Keep
+        in mind that some invalid values might be detected only once the query is executed.
+  samples:
+  - title: print the name of companies with a number of employees between 300 and 600 (inclusive)
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('numberOfEmployees');
+      queryField.between(300, 600);
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }

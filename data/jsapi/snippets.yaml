@@ -1,0 +1,13 @@
+params:
+- name: entityName
+  type: string
+  description: The name of the entity
+- name: queryMap
+  type: object
+  description: The query map object used to filter records. Check the [Query language]({{site.baseurl}}/app-development-query-language.html) documentation for the query map version.
+- name: queryBuilder
+  type: sys.data.Query
+  description: The query builder object used to filter records. Check the [Query language]({{site.baseurl}}/app-development-query-language.html) documentation for the query builder version.
+- name: record
+  type: sys.data.Record
+  description: The record object.

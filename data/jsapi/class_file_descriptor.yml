@@ -1,0 +1,55 @@
+package: sys.files.FileDescriptor
+page: app-development-js-api-files.html
+description: |
+  Handles metadata of the file.
+methods:
+- name: id
+  summary: Returns the ID of the file in the app
+  description: |
+    Returns the ID of the file in the app.
+  parameters:
+  returnType: string
+  returnDescription: The ID of the file in the app
+  throws:
+  samples:
+- name: name
+  summary: Returns the name of the file
+  description: |
+    Returns the name of the file.
+  parameters:
+  returnType: string
+  returnDescription: The name of the file.
+  throws:
+  samples:
+- name: hash
+  summary: Returns the hash code of the file
+  description: |
+    Returns the hash code of the file.
+  parameters:
+  returnType: string
+  returnDescription: The hash code of the file.
+  throws:
+  samples:
+- name: type
+  summary: Returns the type of the file
+  description: |
+    Returns the content type of the file. Some valid types are:
+
+    - `text/plain`
+    - `text/csv`
+    - `text/richtext`
+    - `text/html`
+  parameters:
+  returnType: string
+  returnDescription: The type of the file
+  throws:
+  samples:
+- name: size
+  summary: Returns the size of the file in bytes
+  description: |
+    Returns the size of the file in bytes.
+  parameters:
+  returnType: number
+  returnDescription: The size of the file in bytes.
+  throws:
+  samples:

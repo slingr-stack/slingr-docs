@@ -1,0 +1,96 @@
+package: sys.logs
+page: app-development-js-api-logs.html
+description: |
+  This package contains methods to log events of the application. These logs can be seen in the app monitor so
+  they are a great tool to know what your app is doing.
+
+  You can configure your app to trigger alerts when error or warning messages are logged to proactively
+  monitor your app.
+methods:
+- name: info
+  summary: Logs a message with the `INFO` level
+  description: |
+    Logs a message with the `INFO` level.
+  parameters:
+  - name: message
+    type: string
+    required: yes
+    description: The message to log.
+  - name: exception
+    type: sys.exceptions.ScriptException|Error
+    required: no
+    description: An optional exception, which is useful to log the stack trace and information about the exception.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: logs something in the app
+    code: |
+      sys.logs.info('this is a test info log');
+- name: warn
+  summary: Logs a message with the `WARN` level
+  description: |
+    Logs a message with the `WARN` level.
+  parameters:
+  - name: message
+    type: string
+    required: yes
+    description: The message to log.
+  - name: exception
+    type: sys.exceptions.ScriptException|Error
+    required: no
+    description: An optional exception, which is useful to log the stack trace and information about the exception.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: logs something in the app
+    code: |
+      sys.logs.warn('this is a test warn log');
+- name: error
+  summary: Logs a message with the `ERROR` level
+  description: |
+    Logs a message with the `ERROR` level.
+  parameters:
+  - name: message
+    type: string
+    required: yes
+    description: The message to log.
+  - name: exception
+    type: sys.exceptions.ScriptException|Error
+    required: no
+    description: An optional exception, which is useful to log the stack trace and information about the exception.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: logs something in the app
+    code: |
+      sys.logs.error('this is a test error log');
+  - title: catches an exception and logs a message with the exception
+    code: |
+      try {
+        sys.data.find('entityThatDoesNotExist', {});
+      } catch (e) {
+        sys.logs.error('there was an error when doing query', e);
+      }
+- name: debug
+  summary: Logs a message for development purposes
+  description: |
+    Logs a message with the `INFO` level for development purposes. This service only works on Development environment.
+  parameters:
+    - name: message
+      type: string
+      required: yes
+      description: The message to log.
+    - name: exception
+      type: sys.exceptions.ScriptException|Error
+      required: no
+      description: An optional exception, which is useful to log the stack trace and information about the exception.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+    - title: logs something in the app
+      code: |
+        sys.logs.debug('this is a test debug log');

@@ -1,0 +1,42 @@
+package: sys.jobs.JobLog
+page: app-development-js-api-jobs.html
+description: |
+  Contains information about a line of log.
+methods:
+- name: timestamp
+  summary: Returns the date in which log has been recorded
+  description: |
+    Returns the date in which log has been recorded.
+  parameters:
+  returnType: Date
+  returnDescription: The date in which log has been recorded
+  throws:
+  samples:
+- name: level
+  summary: Returns the level of the log
+  description: |
+    Returns the level of the log. It could be `INFO` or `ERROR`.
+  parameters:
+  returnType: string
+  returnDescription: The level of the log.
+  throws:
+  samples:
+- name: message
+  summary: Returns the message of the log
+  description: |
+    Returns the message of the log.
+  parameters:
+  returnType: string
+  returnDescription: The message of the log
+  throws:
+  samples:
+- name: additionalInfo
+  summary: Returns additional information of the log
+  description: |
+    Returns additional information of the log. This is specific for the log and the information can vary. Use it
+    only to get more information to diagnose problems, but don't base your code on information here.
+  parameters:
+  returnType: object
+  returnDescription: An object with additional info. Could be `null`.
+  throws:
+  samples:

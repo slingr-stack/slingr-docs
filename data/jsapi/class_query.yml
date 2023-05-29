@@ -1,0 +1,237 @@
+package: sys.data.Query
+page: app-development-js-api-data.html
+description: |
+  Allows to build more complex quieries easily. Here you will find information about the methods
+  provided by this class. If you want to understand how to use and write queries, please check
+  the documentation on [Query language]({{site.baseurl}}/app-development-query-language.html).
+
+  Usually you will create query objects using the method <<<sys.data.createQuery()>>>
+  instead of using the constructor directly.
+methods:
+- name: field
+  summary: Returns a <<<sys.data.QueryField>>> object for the given field
+  description: |
+    Returns a <<<sys.data.QueryField>>> object for the given field. With this object
+    you can add filters to the field.
+
+    Please check [Filter by field]({{site.baseurl}}/app-development-query-language.html#filters-by-field) for more information
+    on how it works.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field. It could be a nested or multi-valued field.
+  returnType: sys.data.QueryField
+  returnDescription: A field object for the given path.
+  throws:
+  - code: badRequest
+    description: If `path` is invalid.
+  samples:
+  - title: print the name of 10 active companies
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      var queryField = query.field('state');
+      queryField.equals('active');
+      query.size(10);
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+  - title: this is the same as the sample above, but using a more compact format
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies')
+          .field('state').equals('active')
+          .size(10);
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: size
+  summary: Sets the maximum number of records to be retrieved
+  description: |
+    Sets the maximum number of records to be retrieved.
+
+    Please check [Limit size]({{site.baseurl}}/app-development-query-language.html#limit-size) for more information
+    on how it works.
+  parameters:
+  - name: size
+    type: number
+    required: yes
+    description: Maximum number of records to be retrieved.
+  returnType: sys.data.Query
+  returnDescription: The same query object. This is to allow to chain more operations easily.
+  throws:
+    - code: badRequest
+      description: If it is not a number.
+  samples:
+  - title: print the name of 10 companies
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      query.size(10);
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: offset
+  summary: Skips records
+  description: |
+    Sets the number of records to be skipped.
+
+    Please check [Skip records]({{site.baseurl}}/app-development-query-language.html#skip-records) for more information
+    on how it works.
+  parameters:
+  - name: size
+    type: number
+    required: yes
+    description: Maximum number of records to be retrieved.
+  returnType: sys.data.Query
+  returnDescription: The same query object. This is to allow to chain more operations easily.
+  throws:
+    - code: badRequest
+      description: If it is not a number or string.
+  samples:
+  - title: print the name of 10 companies
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      query.size(10);
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: sortBy
+  summary: Sets the field and direction to sort results
+  description: |
+    Sets the field and direction to sort results.
+
+    Please check [Sorting]({{site.baseurl}}/app-development-query-language.html#sorting) for more information
+    on how it works.
+  parameters:
+  - name: sortField
+    type: string
+    required: yes
+    description: The path of the field to be used for sorting.
+  - name: sortType
+    type: string
+    required: yes
+    description: Sort direction. Possible values are `asc` and `desc`.
+  returnType: sys.data.Query
+  returnDescription: The same query object. This is to allow to chain more operations easily.
+  throws:
+    - code: badRequest
+      description: If `sortField` is not a valid path or `sortType` is different from `asc` or `desc`.
+  samples:
+  - title: print the name of the first 10 companies sorted by name
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      query.sortBy('name', 'asc');
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: includeFields
+  summary: Allows to select which fields should be fetched
+  description: |
+    Allows to select which fields should be fetched.
+
+    Please check [Select fields to fetch]({{site.baseurl}}/app-development-query-language.html#select-fields-to-fetch)
+    for more information on how it works.
+  parameters:
+  - name: paths
+    type: string...
+    required: yes
+    description: The path of the fields that have to be fetched.
+  returnType: sys.data.Query
+  returnDescription: The same query object. This is to allow to chain more operations easily.
+  throws:
+    - code: badRequest
+      description: If any of the paths provided is not a valid field.
+  samples:
+  - title: only name and email fields will be fetched
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      query.includeFields('name', 'type');
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: globalSearch
+  summary: Tries to match the string in any field on the entity instead of trying to match one specific field
+  description: |
+    Tries to match the string in any field on the entity instead of trying to match one specific field. Notice
+    that in order to match the whole sentence you need to enclose it with double quotes. This is only allowed for
+    entities with global search enabled.
+
+    Please check [Global search]({{site.baseurl}}/app-development-query-language.html#global-search)
+    for more information on how it works.
+  parameters:
+  - name: value
+    type: string
+    required: yes
+    description: The value to search globally.
+  returnType: sys.data.Query
+  returnDescription: The same query object. This is to allow to chain more operations easily.
+  throws:
+    - code: badRequest
+      description: If `value` is not a string.
+  samples:
+  - title: finds records where any field has either the word 'lacinia'' or 'erat'
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      query.globalSearch('lacinia erat');
+      var records = sys.data.find(query);
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: query
+  summary: Allows to specify a complex query where it is possible to mix AND and OR expressions
+  description: |
+    Allows to specify a complex query where it is possible to mix AND and OR expressions.
+
+    Please check [Complex queries]({{site.baseurl}}/app-development-query-language.html#complex-queries)
+    for more information on how it works.
+  parameters:
+  - name: complexQueryOrFunction
+    type: function|string
+    required: yes
+    description: A string representing a complex query or an anonymous function returning a <<<sys.data.ComplexQueryCriteria>>>.
+  returnType: sys.data.Query
+  returnDescription: The same query object. This is to allow to chain more operations easily.
+  throws:
+    - code: badRequest
+      description: If the query is invalid.
+  samples:
+  - title: finds companies with type 'a' or with type 'b' where they are also customers
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      query.query(function(q) {
+        return q.or(
+          q.field('type').equals('a'),
+          q.and(
+            q.field('type').equals('b'),
+            q.field('isCustomer').equals(true)
+          )
+        );
+      });
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+  - title: same query as above, but using a complex query string instead
+    code: |
+      // create a new sys.data.Query object
+      var query = sys.data.createQuery('companies');
+      query.query("or(filter('type','a'),and(filter('type','b'),filter('isCustomer','true')))");
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }

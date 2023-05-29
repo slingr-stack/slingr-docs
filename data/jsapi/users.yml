@@ -1,0 +1,328 @@
+package: sys.users
+page: app-development-js-api-users.html
+description: |
+  This package contains some utilities to manage system user records.
+methods:
+- name: activate
+  summary: Changes the status of the user to active
+  description: |
+    Changes the status of the user to active. If the user was active already, nothing will be done.
+  parameters:
+  - name: user
+    type: sys.data.Record
+    required: yes
+    description: The user to activate.
+  returnType: sys.data.Record
+  returnDescription: The activated user object.
+  throws:
+    - code: badRequest
+      description: If `user` is not a valid object.
+    - code: notFound
+      description: If no user is found in the database for the given user object.
+  samples:
+  - title: creates a user, deactivate, activate and deletes it
+    code: |
+      var user = sys.data.createRecord('sys.users');
+      user.field('firstName').val('User1');
+      user.field('lastName').val('Test');
+      user.field('email').val('user1@test.com');
+      user.field('sendWelcomeEmail').val(false);
+      sys.users.addGroup(user, 'Group1', true);
+      // if we want to save the user's password we need to add
+      user.field('authentication.passwordExpired').val(false);
+      user.field('authentication.generatePassword').val(false);
+      // otherwise those fields values will be TRUE by default, and the API will skip the password fields
+      var userPassword = '1234567890'
+      user.field('authentication.password').val(userPassword);
+      user.field('authentication.passwordConfirmation').val(userPassword);
+      user.field('authentication.newPassword').val(userPassword);
+      // now we save the user and it will be created in the app at this point
+      user = sys.data.save(user);
+      log('user id: '+user.id());
+      // deactivate user
+      user = sys.users.deactivate(user);
+      log('user status: '+user.status());
+      // activate user
+      user = sys.users.activate(user);
+      log('user status: '+user.status());
+      // finally remove the user
+      sys.data.remove(user);
+- name: deactivate
+  summary: Changes the status of the user to inactive
+  description: |
+    Changes the status of the user to inactive. If user was inactive already, nothing will be done.
+  parameters:
+  - name: user
+    type: sys.data.Record
+    required: yes
+    description: The user to deactivate.
+  returnType: sys.data.Record
+  returnDescription: The deactivated user object.
+  throws:
+    - code: badRequest
+      description: If `user` is not a valid user object.
+    - code: notFound
+      description: If no user is found in the database for the given user object.
+  samples:
+  - title: creates a user, deactivates and deletes it
+    code: |
+      var user = sys.data.createRecord();
+      user.field('firstName').val('User1');
+      user.field('lastName').val('Test');
+      user.field('email').val('user1@test.com');
+      user.field('sendWelcomeEmail').val(false);
+      sys.users.addGroup(user, 'Group1', true);
+      // now we save the user and it will be created in the app at this point
+      user = sys.data.save(user);
+      log('user id: '+user.id());
+      // deactivate user
+      user = sys.users.deactivate(user);
+      log('user status: '+user.status());
+      // finally remove the user
+      sys.data.remove(user);
+- name: resetPassword
+  summary: Resets the password of a specific user
+  description: |
+    Resets the password of a specific user. In case the user is blocked then it will be reactivated.
+  parameters:
+    - name: user
+      type: sys.data.Record
+      required: yes
+      description: The user to reset password.
+    - name: options
+      type: object
+      required: no
+      description: |
+        These options allow to configure operation. Available option is:
+
+        - `notifyUser`: flag to set if the user should be notified by email.
+  returnType: object
+  returnDescription: |
+    The following object is returned:
+
+    ```js
+    {
+      userId: '...',
+      userEmail: '...',
+      resetCode: '...',
+      link: '...'
+    }
+    ```
+
+    Where `userId` and `userEmail` are fields related to the affected user in the operation.
+
+    `resetCode` is the code auto-generated to reset password and `link` is the URL in which
+    user needs to set password settings.
+  throws:
+  samples:
+    - title: reset password for user and notified about it by email
+      code: |
+        var user = sys.data.findOne('sys.users', 'user@company.com');
+        var result = sys.users.resetPassword(user, {notify: true});
+        log('Reset password result: ' + JSON.stringify(result));
+- name: addIdentityProvider
+  summary: Enables an identity provider to the given user
+  description: |
+    Enables an identity provider to the given user. If the identity provider was already enabled for that
+    user, the external ID will be updated.
+  parameters:
+  - name: userId
+    type: string
+    required: yes
+    description: The ID of the user to enable the identity provider.
+  - name: identityProviderIdOrName
+    type: string
+    required: yes
+    description: The ID or name of the identity provider to enable.
+  - name: externalId
+    type: string
+    required: no
+    description: The ID of the user in the identity provider. It is optional.
+  returnType: sys.data.Record
+  returnDescription: The updated user object.
+  throws:
+    - code: badRequest
+      description: If `userId` or `identityProviderIdOrName` are not valid.
+    - code: notFound
+      description: If no user is found in the database for the given user ID or no identity provider with the given ID or name.
+  samples:
+  - title: creates a user, adds an identity provider, and deletes it
+    code: |
+      var user = sys.data.createRecord();
+      user.field('firstName').val('User1');
+      user.field('lastName').val('Test');
+      user.field('email').val('user1@test.com');
+      user.field('sendWelcomeEmail').val(false);
+      sys.users.addGroup(user, 'Group1', true);
+      // now we save the user and it will be created in the app at this point
+      user = sys.data.save(user);
+      log('user id: '+user.id());
+      // add identity provider
+      user = sys.users.addIdentityProvider(user.id(), 'slack', user.email());
+      log('identity provider added');
+      // finally remove the user
+      sys.data.remove(user);
+- name: removeIdentityProvider
+  summary: Disables an identity provider to the given user
+  description: |
+    Disables an identity provider to the given user. If the identity provider wasn't already enabled for that
+    user, it doesn't do anything.
+  parameters:
+  - name: userId
+    type: string
+    required: yes
+    description: The ID of the user to disable the identity provider.
+  - name: identityProviderIdOrName
+    type: string
+    required: yes
+    description: The ID or name of the identity provider to disable.
+  returnType: sys.data.Record
+  returnDescription: The updated user object.
+  throws:
+    - code: badRequest
+      description: If `userId` or `identityProviderIdOrName` are not valid.
+    - code: notFound
+      description: If no user is found in the database for the given user ID.
+  samples:
+  - title: creates a user, adds an identity provider, removes it, and deletes the user
+    code: |
+      var user = sys.data.createRecord();
+      user.field('firstName').val('User1');
+      user.field('lastName').val('Test');
+      user.field('email').val('user1@test.com');
+      user.field('sendWelcomeEmail').val(false);
+      sys.users.addGroup(user, 'Group1', true);
+      // now we save the user and it will be created in the app at this point
+      user = sys.data.save(user);
+      log('user id: '+user.id());
+      // add identity provider
+      user = sys.users.addIdentityProvider(user.id(), 'slack', user.email());
+      log('identity provider added');
+      // remove identity provider
+      user = sys.users.removeIdentityProvider(user.id(), 'slack');
+      log('identity provider removed');
+      // finally remove the user
+      sys.data.remove(user);
+- name: containsGroup
+  summary: Checks if the user belongs to the given group
+  description: |
+    Checks if the user record belongs to the given group.
+  parameters:
+    - name: userRecord
+      type: sys.data.Record
+      required: yes
+      description: The user record to check group.
+    - name: groupIdOrNameOrLabel
+      type: string
+      required: yes
+      description: The ID or name or label of the group to check.
+  returnType: boolean
+  returnDescription: True if the user belongs to the specified group.
+  samples:
+    - title: check if the user belongs to the admins group
+      code: |
+        var user = sys.data.findOne('sys.users', {email: 'user@company.com'});
+        var isAdmin = sys.users.containsGroup(user, 'admins');
+        log('Is it admin? ' + isAdmin);
+- name: isPrimaryGroup
+  summary: Checks if the primary group of the user is the given group
+  description: |
+    Checks if the primary group of the user record is the given group.
+  parameters:
+    - name: userRecord
+      type: sys.data.Record
+      required: yes
+      description: The user record to check group.
+    - name: groupIdOrNameOrLabel
+      type: string
+      required: yes
+      description: The ID or name or label of the group to check.
+  returnType: boolean
+  returnDescription: True if specified group is the primary one.
+  samples:
+    - title: check if admins group is the primary one
+      code: |
+        var user = sys.data.findOne('sys.users', {email: 'user@company.com'});
+        var isPrimary = sys.users.isPrimaryGroup(user, 'admins');
+        log('Is it primary? ' + isPrimary);
+- name: getPrimaryGroup
+  summary: Returns the primary group of the user
+  description: |
+    Retrieves the primary group of the user.
+  parameters:
+    - name: userRecord
+      type: sys.data.Record
+      required: yes
+      description: The user record to retrieve group.
+  returnType: object
+  returnDescription: An object with the attributes ID, name and label
+  samples:
+    - title: check if admins group is the primary one
+      code: |
+        var user = sys.data.findOne('sys.users', {email: 'user@company.com'});
+        var primaryGroup = sys.users.getPrimaryGroup(user);
+        log('Group: ' + JSON.stringify(primaryGroup));
+- name: addGroup
+  summary: Adds a group to the user
+  description: |
+    Adds a group to the specified record user.
+  parameters:
+    - name: userRecord
+      type: sys.data.Record
+      required: yes
+      description: The user record to add group.
+    - name: groupIdOrNameOrLabel
+      type: string
+      required: yes
+      description: The ID or name or label of the group to be added.
+    - name: primary
+      type: boolean
+      required: no
+      description: True if the group to be added is the primary one.
+  samples:
+    - title: add admins group as primary.
+      code: |
+        var user = sys.data.findOne('sys.users', {email: 'user@company.com'});
+        sys.users.addGroup(user, 'admins', true);
+        sys.data.save(user);
+        log('Contains group: ' + sys.users.containsGroup(user, 'admins'));
+- name: removeGroup
+  summary: Removes the user from the given group
+  description: |
+    Removes the user record from the given group
+  parameters:
+    - name: userRecord
+      type: sys.data.Record
+      required: yes
+      description: The user record to remove group.
+    - name: groupIdOrNameOrLabel
+      type: string
+      required: yes
+      description: The ID or name or label of the group to be removed.
+  samples:
+    - title: remove admins group.
+      code: |
+        var user = sys.data.findOne('sys.users', {email: 'user@company.com'});
+        sys.users.removeroup(user, 'admins');
+        sys.data.save(user);
+        log('Contains group: ' + sys.users.containsGroup(user, 'admins'));
+- name: getEndpointConfiguration
+  summary: Retrieves configuration of a set endpoint if exists
+  description: |
+    Retrieves configuration of the specified user endpoint if exists
+  parameters:
+    - name: userRecord
+      type: sys.data.Record
+      required: yes
+      description: The user record to to retrieve endpoint configuration.
+    - name: endpointName
+      type: string
+      required: yes
+      description: The name of the endpoint to retrieve configuration.
+  samples:
+    - title: retrieve http endpoint configuration
+      code: |
+        var user = sys.data.findOne('sys.users', {email: 'user@company.com'});
+        var config = sys.users.getEndpointConfiguration(user, 'http');
+        log('Http endpoint configuration: ' + JSON.stringify(config));
+

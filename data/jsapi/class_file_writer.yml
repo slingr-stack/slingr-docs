@@ -1,0 +1,74 @@
+package: sys.files.FileWriter
+page: app-development-js-api-files.html
+description: |
+  Allows to write a text file line by line. The file will be stored in the app.
+methods:
+- name: descriptor
+  summary: Returns the metadata information of the opened file
+  description: |
+    Returns the metadata information of the opened file.
+  parameters:
+  returnType: sys.files.FileDescriptor
+  returnDescription: The file descriptor of the opened file.
+  throws:
+  samples:
+  - title: creates a new file and logs the id, name, type and size
+    code: |
+      var fileWriter = sys.files.create('test1.txt', 'text/plain');
+      try {
+          fileWriter.writeLine('test file!');
+      } finally {
+          fileWriter.close();
+      }
+      var descriptor = fileWriter.descriptor();
+      log('id: '+descriptor.id());
+      log('name: '+descriptor.name());
+      log('type: '+descriptor.type());
+      log('size: '+descriptor.size());
+- name: writeLine
+  summary: Appends a new line to the file
+  description: |
+    Appends a new line to the file.
+  parameters:
+  - name: line
+    type: string
+    required: yes
+    description: The text to write to the file.
+  returnType:
+  returnDescription:
+  throws:
+    - code: unknown
+      description: |
+        If there are problems writing to the file.
+  samples:
+  - title: writes a few lines in a file
+    code: |
+      var fileWriter = sys.files.create('test1.txt', 'text/plain');
+      try {
+          fileWriter.writeLine('line 1');
+          fileWriter.writeLine('line 2');
+          fileWriter.writeLine('line 3');
+      } finally {
+          fileWriter.close();
+      }
+      log('id: '+fileWriter.descriptor().id());
+- name: close
+  summary: Closes this file stream and releases any system resources associated with the stream
+  description: |
+    Closes this file stream and releases any system resources associated with the stream.
+  parameters:
+  returnType:
+  returnDescription:
+  throws:
+    - code: unknown
+      description: |
+        If there are errors closing the file.
+  samples:
+  - title: close the file after writing it
+    code: |
+      var fileWriter = sys.files.create('test1.txt', 'text/plain');
+      try {
+          fileWriter.writeLine('test file!');
+      } finally {
+          fileWriter.close();
+      }

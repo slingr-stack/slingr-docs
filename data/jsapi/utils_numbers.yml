@@ -1,0 +1,59 @@
+package: sys.utils.numbers
+page: app-development-js-api-numbers.html
+description: |
+  This package contains methods to help manage numbers.
+methods:
+  - name: BigNumber
+    summary: Used for arbitrary-precision arithmetic.
+    description: |
+      A library for arbitrary-precision decimal and non-decimal arithmetic. [For more information: http://mikemcl.github.io/bignumber.js/](http://mikemcl.github.io/bignumber.js/)
+    parameters:
+    returnType: object
+    returnDescription:
+    throws:
+    samples:
+      - title: Returns a BigNumber whose value is the value of this BigNumber plus n
+        code: |
+          var n = 0.2;
+          var bigNumber = sys.utils.numbers.BigNumber(0.1);
+          return bigNumber.plus(n);
+  - name: format
+    summary: Returns a string of formatted number of the value or string without format.
+    description: |
+      Returns a string of formatted number of the value or string without format.
+    parameters:
+      - name: value
+        type: number
+        required: yes
+        description: The value to be formatted
+      - name: options
+        type: object
+        required: no
+        description: |
+          Display options parameters used to format value. If it is empty the default display options are used to format.
+
+          - **thousandsSeparator** if show thousands separator. ie: `true` or `false`.
+          - **limitNumberOfDecimals** if limit number of decimals. ie: `true` or `false`.
+          - **numberOfDecimals** decimals to be displayed. Default `2`
+          - **limitRuleType** rule to use when limit decimal. ie: `TRUNCATE` or `ROUND`. Default `TRUNCATE`
+    returnType: string
+    returnDescription: string of formatted value of number.
+    throws:
+    samples:
+      - title: prints the formatted value of a decimal value
+        code: |
+          var options = {thousandsSeparator: true, limitNumberOfDecimals:true, numberOfDecimals: 3};
+          var formattedNumber = sys.utils.numbers.format(12345.12345, options);
+          log('Result: ' + formattedNumber);
+  - name: getRandomValue
+    summary: Generates a strong cryptographic random decimal number between 0.0 and 1.0.
+    description: |
+      Using a random number algorithm generates a strong cryptographic decimal number between 0.0 and 1.0.
+    returnType: number
+    returnDescription: A decimal number between 0.0 and 1.0.
+    throws:
+    samples:
+      - title: prints a random number.
+        code: |
+          var randomNumber = sys.utils.numbers.getRandomValue();
+          log('Result: ' + randomNumber);

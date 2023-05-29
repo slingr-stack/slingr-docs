@@ -1,0 +1,24 @@
+package: sys.data.AggregatedProject
+page: app-development-js-api-data.html
+description: |
+  Allows to filter fields in elements in an aggregate query. You should never create an object of
+  this class manually. Instead use <<<sys.data.AggregateQuery.project()>>> method.
+
+  Please check the documentation on [Project]({{site.baseurl}}/app-development-aggregate-queries.html#project) for more
+  information on how to use the project operator.
+methods:
+- name: field
+  summary: 	Indicates that the given field should be included in the result
+  description: |
+    Indicates that the given field should be included in the result.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field to include in the results.
+  returnType: sys.data.AggregatedProject
+  returnDescription: The project object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the path is invalid.
+  samples:

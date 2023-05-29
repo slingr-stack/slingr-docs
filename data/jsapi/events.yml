@@ -1,0 +1,27 @@
+package: sys.events
+page: app-development-js-api-events.html
+description: |
+  This package contains methods for management of custom events.
+methods:
+- name: triggerEvent
+  summary: Triggers a custom event into the app
+  description: |
+    Triggers a custom event into the application that can be caught by any listener configured to listen a
+    `CUSTOM_EVENT` with name equals to `event` parameter.
+  parameters:
+  - name: event
+    type: string
+    required: yes
+    description: |
+      The name of dispatched custom event.
+  - name: data
+    type: object
+    required: no
+    description: |
+      Map of properties that will be sent as data of event.
+  returnType: void
+  throws:
+  samples:
+  - title: trigger `newNote` event with id of record
+    code: |
+      sys.events.triggerEvent('newNote', {noteId: record.id()});

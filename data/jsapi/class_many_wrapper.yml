@@ -1,0 +1,312 @@
+package: sys.data.ManyWrapper
+page: app-development-js-api-data.html
+description: |
+  This class inherit from <<<sys.data.Wrapper>>> and it follows the same idea, but it works with
+  multi-valued fields, with utilities to add values, check if one value is contained in the list, remove
+  values, etc.
+
+  Same as with <<<sys.data.Wrapper>>> you won't create it manually. Instead object of type are created by
+  method like <<<sys.data.Record.field()>>>.
+methods:
+- name: add
+  summary: Adds an element at the end of the list
+  description: |
+    Adds an element at the end of the list.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The element to add to the list. The type depends on the field.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `value` is invalid. Validation rules depends on the type.
+  samples:
+  - title: adds a few elements to a list
+    code: |
+      var company = sys.data.createRecord('companies');
+      company.field('addresses').add({
+        addressLine: '52 street',
+        zipCode: '18231'
+      });
+      company.field('addresses').add({
+        addressLine: '73 test',
+        zipCode: '84873'
+      });
+- name: add
+  summary: Adds an element at the specified position in the list
+  description: |
+    Adds an element at the specified position in the list. Existing elements will be shifted to the right.
+  parameters:
+  - name: index
+    type: number
+    required: yes
+    description: The position in the list where the new element should be added.
+  - name: value
+    type: any
+    required: yes
+    description: The element to add to the list. The type depends on the field.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `value` is invalid. Validation rules depends on the type.
+  samples:
+  - title: adds an element at the first position of the list
+    code: |
+      var company = sys.data.createRecord('companies');
+      company.field('addresses').add({
+        addressLine: '52 street',
+        zipCode: '18231'
+      });
+      company.field('addresses').add({
+        addressLine: '73 test',
+        zipCode: '84873'
+      });
+      // this value will be inserted at the first position and other values will be shifted
+      company.field('addresses').add(0, {
+        addressLine: '10 road',
+        zipCode: '92743'
+      });
+- name: remove
+  summary: Removes an element from the list
+  description: |
+    Removes the first occurrence of an element from the list. It doesn't need to be the exact same object,
+    but in order to compare the value the method <<<sys.data.Wrapper.equals()>>> will be used,
+    which can be overridden by each type.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The element to remove from the list. The type depends on the field.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `value` is invalid. Validation rules depends on the type.
+  samples:
+  - title: removes an element from the list
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      log('skills: '+JSON.stringify(contact.field('skills').val()));
+      contact.field('skills').remove('Firewalls');
+      log('skills: '+JSON.stringify(contact.field('skills').val()));
+- name: remove
+  summary: Removes elements where evaluation of the function returns `true`
+  description: |
+    Removes elements where evaluation of the function returns `true`.
+  parameters:
+  - name: callback
+    type: function
+    required: yes
+    description: |
+      The function to evaluate if an element needs to be removed. It will receive the element wrapper as
+      parameter and should return `true` if the element has to be removed or `false` otherwise.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `callback` is invalid.
+  samples:
+  - title: removes an element from the list
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      contact.field('skills').add('WLAN');
+      contact.field('skills').add('YouTube');
+      log('skills: '+JSON.stringify(contact.field('skills').val()));
+      contact.field('skills').remove(function(element) {
+        if (element.label() == 'WLAN' || element.label() == 'YouTube') {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      log('skills: '+JSON.stringify(contact.field('skills').val()));
+- name: removeAt
+  summary: Removes an element from the list from the specified position
+  description: |
+    Removes an element from the list from the specified position.
+  parameters:
+  - name: index
+    type: number
+    required: yes
+    description: The position of the element to remove.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `index` is invalid.
+  samples:
+  - title: removes an element from the list
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      contact.field('skills').add('WLAN');
+      contact.field('skills').add('YouTube');
+      log('skills: '+JSON.stringify(contact.field('skills').val()));
+      contact.field('skills').removeAt(1);
+      log('skills: '+JSON.stringify(contact.field('skills').val()));
+- name: removeAll
+  summary: Removes all elements from the list
+  description: |
+    Removes all elements from the list.
+  parameters:
+  returnType:
+  returnDescription:
+  throws:
+  samples:
+  - title: removes all elements from the list
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      contact.field('skills').add('WLAN');
+      contact.field('skills').add('YouTube');
+      log('skills: '+JSON.stringify(contact.field('skills').val()));
+      contact.field('skills').removeAll();
+      log('skills: '+JSON.stringify(contact.field('skills').val()));
+- name: each
+  summary: Iterate over all elements in the list
+  description: |
+    Iterate over all elements in the list.
+  parameters:
+  - name: callback
+    type: function
+    required: yes
+    description: |
+      The function to that will process all elements. It will receive two parameters: the wrapper element and the current index of the iteration.
+      In order to stop iteration it is possible to return `false` explicitly.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `callback` is invalid.
+  samples:
+  - title: iterates over all elements
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      contact.field('skills').add('WLAN');
+      contact.field('skills').add('VLAN');
+      contact.field('skills').each(function(skill, index) {
+        log('skill: '+skill.label());
+      });
+  - title: iterate over the first two elements
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Java');
+      contact.field('skills').add('.NET');
+      contact.field('skills').add('Python');
+      contact.field('skills').add('Golang');
+      contact.field('skills').each(function(skill, index) {
+        if (index > 1) {
+            return false;
+        }
+        log('skill: '+skill.label());
+      });
+- name: get
+  summary: Retrieves the element at the specifed position
+  description: |
+    Retrieves the element at the specifed position.
+  parameters:
+  - name: index
+    type: number
+    required: yes
+    description: The position of the element to retrieve.
+  returnType: sys.data.Wrapper
+  returnDescription: |
+    Returns the wrapper of the element at the specified position.
+  throws:
+    - code: badRequest
+      description: If `index` is invalid.
+  samples:
+  - title: gets an element from a position in the list
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      contact.field('skills').add('WLAN');
+      contact.field('skills').add('YouTube');
+      log('skills: '+contact.field('skills').get(1).label());
+- name: first
+  summary: Retrieves the first element in the list
+  description: |
+    Retrieves the first element in the list.
+  parameters:
+  returnType: sys.data.Wrapper
+  returnDescription: |
+    Returns the wrapper of the first element. `null` if list is empty.
+  throws:
+  samples:
+  - title: gets the first element in the list
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      contact.field('skills').add('WLAN');
+      contact.field('skills').add('YouTube');
+      log('skills: '+contact.field('skills').first().label());
+- name: last
+  summary: Retrieves the last element in the list
+  description: |
+    Retrieves the last element in the list.
+  parameters:
+  returnType: sys.data.Wrapper
+  returnDescription: |
+    Returns the wrapper of the last element. `null` if list is empty.
+  throws:
+  samples:
+  - title: gets the last element in the list
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      contact.field('skills').add('WLAN');
+      contact.field('skills').add('YouTube');
+      log('skills: '+contact.field('skills').last().label());
+- name: size
+  summary: Returns the number of elements in the list
+  description: |
+    Returns the number of elements in the list.
+  parameters:
+  returnType: number
+  returnDescription: |
+    The number of elements in the list.
+  throws:
+  samples:
+  - title: counts the number of elements in the list
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      log('size: '+contact.field('skills').size());
+      contact.field('skills').add('WLAN');
+      log('size: '+contact.field('skills').size());
+      contact.field('skills').add('YouTube');
+      log('size: '+contact.field('skills').size());
+- name: contains
+  summary: Checks if the given value is already in the list
+  description: |
+    Checks if the given value is already in the list, returning `true` when it is and `false` otherwise.
+    In order to check if the value is on the list the method <<<sys.data.Wrapper.equals()>>>
+    is used, which can be override by each type.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to check if it is in the list. The type depends on the field.
+  returnType: boolean
+  returnDescription: |
+    `true` if value is in the list, `false` otherwise.
+  throws:
+    - code: badRequest
+      description: If `value` is invalid. Validation rules depends on the type.
+  samples:
+  - title: checks if a value is in the list
+    code: |
+      var contact = sys.data.createRecord('contacts');
+      contact.field('skills').add('Firewalls');
+      contact.field('skills').add('WLAN');
+      contact.field('skills').add('YouTube');
+      log('Firewalls: '+contact.field('skills').contains('Firewalls'));
+      log('WLAN: '+contact.field('skills').contains('WLAN'));
+      log('YouTube: '+contact.field('skills').contains('YouTube'));
+      log('Java: '+contact.field('skills').contains('Java'));

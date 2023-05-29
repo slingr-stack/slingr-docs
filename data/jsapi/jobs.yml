@@ -1,0 +1,319 @@
+package: sys.jobs
+page: app-development-js-api-jobs.html
+description: |
+  This package contains methods to handle background jobs.
+methods:
+- name: findById
+  summary: Finds a background job by its ID.
+  description: |
+    Finds a background job by its ID.
+  parameters:
+  - name: id
+    type: string
+    required: yes
+    description: ID of the job.
+  returnType: sys.jobs.Job
+  returnDescription: The job object or `null` if not found.
+  throws:
+    - code: badRequest
+      description: If `id` is not a valid ID.
+  samples:
+  - title: executes an action in the background and finds the job for it
+    code: |
+      var jobId = sys.data.executeAction('companies', {type: 'a'}, 'logSomething', {param1: 'a', param2: 'b'});
+      var job = sys.jobs.findById(jobId);
+      log('job: '+job.name());
+- name: find
+  summary: Finds jobs using a query
+  description: |
+    Finds jobs using a query. A query looks like this:
+
+    ```js
+    var query = {};
+    query['status'] = 'FINISHED';
+    query['_size'] = 50;
+    ```
+
+    Valid parameters are:
+
+    - `type`: the type of job. You can specify many separated by commas. Only job types you can use in your code are:
+      - `IMPORT_RECORDS`
+      - `EXPORT_RECORDS`
+      - `EXECUTE_ACTION`
+      - `DELETE_RECORDS`
+      - `EXECUTE_LISTENER`
+      - `IMPORT_USERS`
+      - `EXPORT_USERS`
+      - `STOP_APP`
+      - `START_APP`
+      - `DEPLOY_ENDPOINT`
+      - `UNDEPLOY_ENDPOINT`
+    - `status`: the status of the job. Valid values are: `PENDING`, `RUNNING`, `FINISHED`, `STOPPING`,
+      `STOPPED`, and `CANCELED`. You can specify many statuses separated by comma.
+    - `startFrom`: filter by the date the job started, combined with startTo (as a range) or alone (in milliseconds).
+    - `startTo`: filter by the date the job started, combined with startFrom (as a range) or alone (in milliseconds).
+    - `endFrom`: filter by the date the job ended, combined with endTo (as a range) or alone (in milliseconds).
+    - `endTo`: filter by the date the job ended, combined with endFrom (as a range) or alone (in milliseconds).
+    - `createFrom`: filter by the date the job was created, combined with createTo (as a range) or alone (in milliseconds).
+    - `createTo`: filter by the date the job was created, combined with createFrom (as a range) or alone (in milliseconds).
+    - `hasErrors`: if the job has errors. You can pass true or false.
+    - `_size`: maximum number of jobs to retrieve.
+  parameters:
+  - name: query
+    type: object
+    required: yes
+    description: The query to filter jobs.
+  returnType: sys.commons.ResultSet
+  returnDescription: The jobs matching the query ordered by creation time in descendent order.
+  throws:
+    - code: badRequest
+      description: If `query` is invalid.
+  samples:
+  - title: finds jobs finished with errors
+    code: |
+      var jobs = sys.jobs.find({status: 'FINISHED', hasErrors: 'true', _size: 10});
+      while (jobs.hasNext()) {
+        var job = jobs.next();
+        log('job with errors: '+job.name());
+      }
+- name: logs
+  summary: Retrieves logs for a background job
+  description: |
+    Retrieves logs for a background job. You can add some filters and paginate them.
+  parameters:
+  - name: jobId
+    type: string
+    required: yes
+    description: ID of the job to retrieve its logs.
+  - name: query
+    type: object
+    required: yes
+    description: |
+      Query to filter logs. Valid options are:
+
+      - `level`: the level of the job. Allowed values are: `INFO` and `ERROR`.
+      - `message`: a string that will be matched partially with the message of the log.
+      - `from`: The minimum timestamp in milliseconds since Epoch. If you specify this parameter,
+        `period` will be ignored.
+      - `to`: The maximum timestamp in milliseconds since Epoch. If you specify this parameter,
+        `period` will be ignored.
+      - `period`: you can specify a period of time. Valid values are `today`, `yesterday` or a time duration like
+        `2h 30m` or `10m`, where you should read logs in the last X amount of time.
+      - `_size`: maximum number of logs to retrieve.
+  returnType: sys.commons.ResultSet
+  returnDescription: A result set with the logs matching the query.
+  throws:
+    - code: badRequest
+      description: If `jobId` or `query` are invalid.
+    - code: notFound
+      description: If no job is found with the given ID.
+  samples:
+  - title: prints up to 10 logs for the last 3 jobs
+    code: |
+      var jobs = sys.jobs.find({status: 'FINISHED', _size: 3});
+      while (jobs.hasNext()) {
+        var job = jobs.next();
+        var logs = sys.jobs.logs(job.id(), {_size: 10});
+        log('logs for job ['+job.name()+']');
+        while (logs.hasNext()) {
+          var logEntry = logs.next();
+          log('   '+logEntry.level()+': '+logEntry.message());
+        }
+      }
+- name: logInfo
+  summary: Adds a log to the job with the `INFO` level
+  description: |
+    Adds a log to the job with the `INFO` level.
+
+    If you don't send the parameter `jobId`, the current job will be used. If there isn't current job,
+    the log will be discarded silently.
+  parameters:
+  - name: jobId
+    type: string
+    required: no
+    description: |
+      ID of the job to add the log. If you don't send this parameter, the current job will be used. If
+      there isn't current job, the log will be discarded silently.
+  - name: message
+    type: string
+    required: yes
+    description: The message to log.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `jobId` or `message` are invalid.
+    - code: notFound
+      description: If no job is found with the given ID.
+  samples:
+  - title: adds a log to the last 3 jobs
+    code: |
+      var jobs = sys.jobs.find({_size: 3});
+      while (jobs.hasNext()) {
+        var job = jobs.next();
+        sys.jobs.logInfo(job.id(), "this is a test log!");
+      }
+- name: logError
+  summary: Adds a log to the job with the `ERROR` level
+  description: |
+    Adds a log to the job with the `ERROR` level. Keep in mind that adding an error log
+    will set the error flag in the job.
+
+    If you don't send the parameter `jobId`, the current job will be used. If there isn't current job,
+    the log will be discarded silently.
+  parameters:
+  - name: jobId
+    type: string
+    required: no
+    description: |
+      ID of the job to add the log. If you don't send this parameter, the current job will be used. If
+      there isn't current job, the log will be discarded silently.
+  - name: message
+    type: string
+    required: yes
+    description: The message to log.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `jobId` or `message` are invalid.
+    - code: notFound
+      description: If no job is found with the given ID.
+  samples:
+  - title: adds a log to the last 3 jobs
+    code: |
+      var jobs = sys.jobs.find({_size: 3});
+      while (jobs.hasNext()) {
+        var job = jobs.next();
+        sys.jobs.logError(job.id(), "adds an error log!");
+      }
+- name: waitForJob
+  summary: Waits for a job to reach specified status
+  description: |
+    Waits for a job to reach specified status. It returns when the job reaches the one of the
+    specified statuses or it will throw a timeout exception if maximum wait time is reached.
+  parameters:
+  - name: jobId
+    type: string
+    required: yes
+    description: The ID of the job to wait for.
+  - name: desiredStatus
+    type: string|string[]
+    required: yes
+    description: |
+      The desried status of the job. You pass an array with many statuses.
+
+      Valid statuses are: `PENDING`, `RUNNING`, `FINISHED`, `STOPPING`, `STOPPED`, `CANCELING` and `CANCELED`.
+  - name: maxTimeToWait
+    type: number
+    required: yes
+    description: |
+      Maximum time to wait for the job to get into one of the statuses specified in `desiredStatus`. If the
+      job takes longer a timeout exception will be thrown.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `jobId` or `desiredStatus` are invalid.
+    - code: notFound
+      description: If no job is found with the given ID.
+    - code: timeout
+      description: If the job took longer than `maxTimeToWait` to get into one of the desired statuses.
+  samples:
+  - title: executes an action in the background and waits for its completion
+    code: |
+      var jobId = sys.data.executeAction('companies', {}, 'logSomething', {param1: 'a', param2: 'b'});
+      try {
+        sys.jobs.waitForJob(jobId, 'FINISHED', 60000);
+        log('job finished!!!');
+      } catch (e) {
+        if (sys.exceptions.getCode(e) == 'timeout') {
+          log('timeout execution the job');
+        }
+      }
+  - title: executes an action in the background and waits until it is finished or stopped
+    code: |
+      var jobId = sys.data.executeAction('companies', {}, 'logSomething', {param1: 'a', param2: 'b'});
+      try {
+        sys.jobs.waitForJob(jobId, ['FINISHED', 'STOPPED'], 60000);
+        log('job finished!!!');
+      } catch (e) {
+        if (sys.exceptions.getCode(e) == 'timeout') {
+          log('timeout execution the job');
+        }
+      }
+- name: setLowPriority
+  summary: Sets the low priority flag for job
+  description: |
+    Sets the low priority flag for job. This means if there are other jobs running they will have
+    more priority than this one.
+  parameters:
+  - name: jobId
+    type: string
+    required: yes
+    description: The ID of the job to flag as low priority.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `jobId` is invalid.
+    - code: notFound
+      description: If no job is found with the given ID.
+  samples:
+  - title: executes an action in the background and sets the low priority flag
+    code: |
+      var jobId = sys.data.executeAction('companies', {}, 'logSomething', {param1: 'a', param2: 'b'});
+      sys.jobs.setLowPriority(jobId);
+      log('job flagged as low priority');
+- name: removeLowPriority
+  summary: Remove the low priority flag from job
+  description: |
+    Removes the low priority flag from the job.
+  parameters:
+  - name: jobId
+    type: string
+    required: yes
+    description: The ID of the job to remove low priority flag.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `jobId` is invalid.
+    - code: notFound
+      description: If no job is found with the given ID.
+  samples:
+  - title: executes an action in the background and sets the low priority flag and the removes it
+    code: |
+      var jobId = sys.data.executeAction('companies', {}, 'logSomething', {param1: 'a', param2: 'b'});
+      sys.jobs.setLowPriority(jobId);
+      log('job flagged as low priority');
+      sys.jobs.removeLowPriority(jobId);
+      log('job unflagged as low priority');
+- name: getCurrentJobId
+  summary: Returns the ID of the job the scripts is running on
+  description: |
+    Returns the ID of the job the scripts is running on. If the script isn't running inside a job
+    this method will return `null`.
+  parameters:
+  returnType: string
+  returnDescription: The ID of the current job or `null` if the script isn't running inside a job.
+  throws:
+  samples:
+  - title: logs the ID of the job executing the script
+    code: |
+      var jobId = sys.jobs.getCurrentJobId();
+      log('job id: ' + jobId);
+- name: getCurrentJob
+  summary: Returns the job the scripts is running on
+  description: |
+    Returns the job the scripts is running on. If the script isn't running inside a job
+    this method will return `null`.
+  parameters:
+  returnType: sys.jobs.Job
+  returnDescription: The job or `null` if the script isn't running inside a job.
+  throws:
+  samples:
+  - title: logs the name of the job executing the script
+    code: |
+      var job = sys.jobs.getCurrentJob();
+      log('job id: ' + job.label());

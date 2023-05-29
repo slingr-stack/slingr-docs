@@ -1,0 +1,425 @@
+package: sys.data.Record
+page: app-development-js-api-data.html
+description: |
+  Represents a record of an entity. It contains methods to read and write fields, execute actions and
+  do some other operations.
+
+  All operations that read data will return this object. For example <<<sys.data.findOne()>>> or <<<sys.data.findById()>>>
+  return objects of <<<sys.data.Record>>>.
+
+  Record objects can be created using the method <<<sys.data.createRecord()>>>:
+
+  ```js
+  var company = sys.data.createRecord('companies');
+  company.field('name').val('test company');
+  sys.data.save(company);
+  ```
+methods:
+- name: id
+  summary: Returns the ID of the record
+  description: |
+    Returns the ID of the record. If this is a new record that hasn't been saved into the database,
+    this will return null.
+  parameters:
+  returnType: string
+  returnDescription: The ID of the record.
+  throws:
+  samples:
+  - title: finds 10 companies and logs their ID
+    code: |
+      var companies = sys.data.find('companies', {type: 'a', _size: 10});
+      while (companies) {
+        var company = companies.next();
+        log('ID: '+company.id());
+      }
+- name: label
+  summary: Returns the label of the record
+  description: |
+    Returns the label of the record based on the instance label expression defined in the entity. Keep in mind
+    that the label is calculated when the record is saved into the database. New records that haven't saved won't
+    have a label. Also, records that were modified but not updated might have an outdated label.
+  parameters:
+  returnType: string
+  returnDescription: The label of the record.
+  throws:
+  samples:
+  - title: finds 10 companies and logs their label
+    code: |
+      var companies = sys.data.find('companies', {type: 'a', _size: 10});
+      while (companies.hasNext()) {
+        var company = companies.next();
+        log('Label: '+company.label());
+      }
+- name: entityName
+  summary: Returns the name of the entity the record belongs to
+  description: |
+    Returns the name of the entity the record belongs to.
+  parameters:
+  returnType: string
+  returnDescription: The name of the entity
+  throws:
+  samples:
+  - title: prints the name of the entity
+    code: |
+      var company = sys.data.findOne('companies', {type: 'a'});
+      log('Entity name: '+company.entityName());
+- name: entitId
+  summary: Returns the ID of the entity the record belongs to
+  description: |
+    Returns the ID of the entity the record belongs to.
+  parameters:
+  returnType: string
+  returnDescription: The ID of the entity
+  throws:
+  samples:
+  - title: prints the ID of the entity
+    code: |
+      var company = sys.data.findOne('companies', {type: 'a'});
+      log('Entity ID: '+company.entityId());
+- name: field
+  summary: Returns the field at the given path
+  description: |
+    Returns the wrapper of the field at the given path. Wrappers have different methods that allow to access data
+    in different ways and they are type-specific. This means each data type will provide different methods. Please
+    check the documentation of <<<sys.data.Wrapper>>> for more information.
+
+    What's important to remember is that this method doesn't return the actual value, but an object of type
+    <<<sys.data.Wrapper>>> (depending on the type the wrapper could offer more utilities) you can use to read
+    and manipulate the value. For example:
+
+    ```js
+    // 'company' is a record in entity 'companies'
+
+    // get the name of the company
+    var name = company.field('name').val();
+
+    // set the name of the company
+    record.field('name').val('new name');
+    ```
+
+    It is possible to access nested fields:
+
+
+    ```js
+    // 'contact' is a record in entity 'contacts'
+
+    // get the state of contacts
+    var state = company.field('address.state').val();
+
+    // set the state of the contact
+    record.field('address.state').val('NY');
+    ```
+
+    If fields are multi-valued you can access them using an index:
+
+    ```js
+    // 'company' is a record in entity 'companies'
+
+    // get the first state for a company
+    var state = company.field('addresses[0].state').val();
+    // the above line is the same as this one:
+    var state = company.field('addresses').first().field('state').val();
+
+    // set a value in a multi-valued field
+    company.field('addresses[1].state').val('CA');
+    ```
+
+    If the index is out of bounds, no exception will be thrown. Instead you will get `null` if
+    you are trying to read the value or, if you are trying to set the value, a new element will
+    be created.
+
+    If you try to access a multi-valued field, you will get a <<<sys.data.ManyWrapper>>> object. This
+    object provides several methods to access the items inside:
+
+    ```js
+    // 'company' is a record in entity 'companies'
+
+    // gets the state of the first address
+    company.field('addresses').first().field('state').val();
+
+    // gets the state of the last address
+    company.field('addresses').last().field('state').val();
+
+    // iterates over all addresses
+    company.field('addresses').each(function(address) {
+      log('State: '+address.field('state').val());
+    });
+    ```
+
+    Please check the documentation of <<<sys.data.ManyWrapper>>> for more information.
+
+    Finally, if the path is not a valid field, an exception will be thrown.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field. It could be a nested or multi-valued field.
+  returnType: sys.data.Wrapper|sys.data.ManyWrapper
+  returnDescription: A wrapper that you can use to read and manipulate the value.
+  throws:
+    - code: badRequest
+      description: If `path` is invalid.
+  samples:
+  - title: prints the name of 10 companies
+    code: |
+      var companies = sys.data.find('companies', {_size: 10});
+      while (companies.next()) {
+        var company = companies.next();
+        log('name: '+company.field('name').val());
+      }
+  - title: creates a new company and sets the name
+    code: |
+      var company = sys.data.createRecord('companies');
+      company.field('name').val('test company');
+      sys.data.save(company);
+- name: parent
+  summary: Returns the record, but with the prefix pointing to the parent field
+  description: |
+    This is useful when you are working on records that have a prefix set. For example
+    let's suppose you have an entity with the following structure:
+
+    - name
+    - orderLines (multi-valued)
+      - product
+      - quantity
+      - notes (multi-valued)
+        - note
+        - date
+        - user
+        - calculatedField
+
+    Field `calculatedField` can have a script to calculate its value and you will find
+    the variable `parentField` in there. This varible is a record object, but it has a
+    prefix for that particular notes field (like `orderLines[2].notes[1]`). This is
+    important because you might need to know the path of your field, so you can write
+    expressions like this one:
+
+    ```js
+    return parentField.parent().parent().field('name').val() + ' ' +
+      parentField.parent().field('product').name() + ' ' +
+      parentField.field('note').val();
+    ```
+  parameters:
+  returnType: sys.data.Record
+  returnDescription: The record object with a prefix set to the parent field
+  throws:
+  samples:
+  - title: this is the value expression for a calculated field taken the sample in the description
+    code: |
+      return parentField.parent().parent().field('name').val() + ' ' +
+        parentField.parent().field('product').name() + ' ' +
+        parentField.field('note').val();
+- name: copy
+  summary: Returns a copy record, but without identifiers
+  description: |
+    This method allows to get a copy of a record and save it as a new one. This is helpful when creating
+    several similar records just changes a few fields
+  parameters:
+  returnType: sys.data.Record
+  returnDescription: The record object without identifiers
+  throws:
+  samples:
+  - title: this is the copy of record with name changed and saved.
+    code: |
+      var copy = record.copy();
+      copy.field('name').val('newOne');
+      sys.data.save(copy);
+- name: isNew
+  summary: Indicates if the record hasn't been saved to the database yet
+  description: |
+    If the record has an ID set, this method will return `false`. Otherwise it will return `true`.
+  parameters:
+  returnType: boolean
+  returnDescription: |
+    `true` if the record doesn't have an ID, `false` otherwise.
+  throws:
+  samples:
+  - title: check if record is new before and after saving
+    code: |
+      var company = sys.data.createRecord('companies');
+      company.field('name').val('test1');
+      log('new: '+company.isNew());
+      sys.data.save(company);
+      log('new: '+company.isNew());
+- name: action
+  summary: Executes an action over the record
+  description: |
+    Executes the given action over the record. The record has to be saved into the database.
+
+    If the action has parameters you can send them in the second argument.
+
+    The response will be different based on the configuration. There are two possible responses:
+    - Record: if the doesn't return any custom response, then the updated record is returned by this method.
+    - Custom action's response: if the the action returns a custom response, then that response is returned.
+  parameters:
+  - name: actionName
+    type: string
+    required: yes
+    description: The name of the action to execute.
+  - name: params
+    type: object
+    required: no
+    description: If the action has parameters you should put them here. The format is the same used by the REST API.
+  returnType: object
+  returnDescription: |
+    An object of type <<<sys.data.Record>>> or a custom response if the action has been configured to do that.
+  throws:
+  samples:
+  - title: executes the action 'logSomething' over a company
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      company.action('logSomething');
+      log('completed!');
+  - title: executes the action 'logSomething' over a company with parameters
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      company.action('logSomething', {param1: 'a', param2: 'b'});
+      log('completed!');
+- name: history
+  summary: Returns an object of type <<<sys.data.RecordHistoryLogs>>> to query history logs
+  description: |
+    Returns an object of type <<<sys.data.RecordHistoryLogs>>> to query history logs.
+
+    See <<<sys.data.RecordHistoryLogs>>> for more information on how to query record's history logs.
+  parameters:
+  returnType: sys.data.RecordHistoryLogs
+  returnDescription: An object of type <<<sys.data.RecordHistoryLogs>>> to query history logs
+  throws:
+  samples:
+  - title: prints who created the record
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      log('creator: '+company.history().createLog().user());
+- name: toJson
+  summary: Converts the record to JSON
+  description: |
+    Converts the record to its native JSON representation.
+  parameters:
+  - name: options
+    type: object
+    required: no
+    description: |
+      These options allow to control how the record will be converted. Available options are:
+
+      - `fields`: By default all fields will be fetched. If you want to specify which fields you want to fetch,
+          you can pass this parameter. You can specify many fields separating them by commas. System field will
+          always be returned (`id`, `version`, etc.).
+      - `relationshipsToFetch`: A comma-separated list of relationship fields that will be fetched within the record.
+          For example if an entity has relationship fields named `company` and `region`, you could fetch those referenced
+          records like this:
+
+          ```
+          relationshipsToFetch: 'company,region'
+          ```
+      - `format`: The format to use to fetch the fields. There are two options: `native` and `plainText`. The first one
+          shows the raw value of each field. The second one, `plainText`, returns the values of the fields converted using the
+          display option of each field. The default value is `native`.
+      - `user`: if the format is `plainText` we would need the user to convert values with the correct internationalization
+          and timezones. Default is current user.
+  returnType: object
+  returnDescription: A key-value JSON structure with the fields of the record converted to their native representation.
+  throws:
+  samples:
+  - title: converts a contact to the JSON representation
+    code: |
+      var record = sys.data.findOne('contacts', {email: 'gowensb1@google.ca'});
+      var recordJson = record.toJson({relatedFields: 'company'});
+      log('JSON version of record: ' + recordJson);
+- name: fromJson
+  summary: Parses object values to record fields
+  description: |
+    Parses a JSON representation of the record.
+  parameters:
+    - name: recordJson
+      type: object
+      required: yes
+      description: |
+        A key-value object map containing the proper record representation. A partial record representation is allowed.
+  throws:
+  samples:
+    - title: copies contact info to a new person record using JSON representation
+      code: |
+        var contact = sys.data.findOne('contacts', {email: 'gowensb1@google.ca'});
+        var contactJson = record.toJson();
+        var person = sys.data.createRecord('people');
+        person.fromJson(contactJson);
+        log('Person after update: ' + person.toJson());
+    - title: performs a partial update of a contact
+      code: |
+        var person = sys.data.findOne('people', {sid: '20309721919'});
+        var contact = sys.data.findOne('contacts', {email: 'gowensb1@google.ca'});
+        contact.fromJson({
+            phoneNumber: person.field('phoneNumber').val(),
+            webSite: person.field('webSite').val()
+        });
+        log('Contact after update: ' + contact.toJson({}));
+- name: lock
+  summary: Acquires a lock and refreshes current record.
+  description: |
+    Acquires a lock for current record. This method should be used when multiple threads try to access the
+    same record. This is important when you have listeners or actions that could be executed concurrently.
+
+    If the lock has been already acquiered, this method will wait until it is released. If the lock cannot be
+    acquiered within the specified timeout an exception will be thrown.
+
+    Keep in mind that if you lock the record again within the same context of execution, the lock will be granted
+    immediately. This means it follows the re-entrant lock concept.
+
+    If you specify the callback parameter the lock will be released automatically. Additionally, once the callback
+    is executed the record object will be refreshed automatically in case it was modified in the callback.
+
+    If you don't specify the callback parameter you should always release the lock using <<sys.data.unlock()>> and
+    you should do that in a `finally` block to make sure that happens. However, in case you forget to do it, the
+    platform will free the locks at the end of the script execution if that was not done before.
+  parameters:
+  - name: callback
+    type: function
+    required: no
+    description: |
+      This callback function is executed after the lock is acquired successfully. The acquired lock is released
+      automatically after the execution of defined callback.
+  samples:
+  - title: locks a record for 20 seconds und unlocks it at the end
+    code: |
+      var company = sys.data.findOne('companies', {name:'Blogpad'});
+      company.lock();
+      try {
+        // write some code here to update the company
+        // if from the app you try to update the record it will be blocked
+        // until the lock is released
+        log('do something');
+        sys.utils.script.wait(20000);
+      } finally {
+        company.unlock();
+      }
+  - title: locks a record for 20 seconds by specifying a callback
+    code: |
+      var company = sys.data.findOne('companies', {name:'Blogpad'});
+      company.lock(function (record) {
+        // write some code here to update the company
+        // if from the app you try to update the record it will be blocked
+        // until the lock is released
+        log('do something');
+        sys.utils.script.wait(20000);
+        // at the end lock will be released automatically
+      });
+- name: unlock
+  summary: Releases lock for current record
+  description: |
+    Releases a lock that was previously acquired.
+
+    If the lock was acquired several times, it needs to be released several times as well.
+  samples:
+  - title: locks a record for 20 seconds und unlocks it at the end
+    code: |
+      var company = sys.data.findOne('companies', {name:'Blogpad'});
+      company.lock();
+      try {
+        // write some code here to update the company
+        // if from the app you try to update the record it will be blocked
+        // until the lock is released
+        log('do something');
+        sys.utils.script.wait(20000);
+      } finally {
+        company.unlock();
+      }

@@ -1,0 +1,28 @@
+package: sys.data.AggregatedSort
+page: app-development-js-api-data.html
+description: |
+  Allows to sort elements in an aggregate query. You should never create an object of
+  this class manually. Instead use <<<sys.data.AggregateQuery.sort()>>> method.
+
+  Please check the documentation on [Sort]({{site.baseurl}}/app-development-aggregate-queries.html#sort) for more
+  information on how to use the sort operator.
+methods:
+- name: by
+  summary: 	Indicates which field will be used to sort and the direction of the sorting
+  description: |
+    Indicates which field will be used to sort and the direction of the sorting.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field used for sorting.
+  - name: sortType
+    type: string
+    required: yes
+    description: The direction of the sorting. Can be `asc` or `desc`.
+  returnType: sys.data.AggregatedSort
+  returnDescription: The sort object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the path or direction are invalid.
+  samples:

@@ -1,0 +1,37 @@
+package: sys.data.AggregatedUnwind
+page: app-development-js-api-data.html
+description: |
+  Allows to unwind elements with array attributes in more elements with single attributes in an aggregate query. You
+  should never create an object of this class manually. Instead use <<<sys.data.AggregateQuery.unwind()>>> method.
+
+  Please check the documentation on [Unwind]({{site.baseurl}}/app-development-aggregate-queries.html#unwind) for more
+  information on how to use the unwind operator.
+methods:
+- name: path
+  summary: 	Indicates the attribute to unwind
+  description: |
+    Indicates selected attribute will be unwound in single elements retrieving one document by every item in array value.
+  parameters:
+  - name: fieldPath
+    type: string
+    required: yes
+    description: Field in record to be unwound.
+  returnType: sys.data.AggregatedUnwind
+  returnDescription: The unwind object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the `fieldPath` is invalid.
+  samples:
+- name: includeEmpty
+  summary: 	Includes empty values
+  description: |
+    Indicates that elements with selected attribute equals to empty array or null will be included.
+  parameters:
+  - name: includeEmpty
+    type: boolean
+    required: no
+    description: if `true` includes records for empty arrays, nulls or not multivalued fields.
+  returnType: sys.data.AggregatedUnwind
+  returnDescription: The unwind object so you can chain more operations.
+  throws:
+  samples:

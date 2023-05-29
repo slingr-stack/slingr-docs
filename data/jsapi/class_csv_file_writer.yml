@@ -1,0 +1,109 @@
+package: sys.files.CsvFileWriter
+page: app-development-js-api-files.html
+description: |
+  Allows to write a CSV file row by row. An object of this type will be returned by the <<<sys.files.create>>>
+  method when the type is `text/csv`.
+
+  It inherits all methods from <<<sys.files.FileWriter>>>.
+methods:
+- name: writeHeaders
+  summary: Writes the headers of the CSV file
+  description: |
+    Writes the headers of the CSV file.
+
+    You should call this method before writing rows. If you start writing rows, the first row will be
+    taken as the headers.
+  parameters:
+  - name: headers
+    type: string[]
+    required: yes
+    description: An array of strings with the headers.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: writes headers and rows for a CSV file
+    code: |
+      var fileWriter = sys.files.create('test2.csv', 'text/csv');
+      try {
+        fileWriter.writeHeaders(['name', 'email']);
+        fileWriter.writeRow(['john', 'john@test.com']);
+        fileWriter.writeRow(['adam', 'adam@test.com']);
+      } finally {
+        fileWriter.close();
+      }
+      log('id: '+fileWriter.descriptor().id());
+- name: writeRow
+  summary: Appends a row the the CSV file
+  description: |
+    Appends a row the the CSV file.
+  parameters:
+  - name: row
+    type: string[]
+    required: yes
+    description: An array with the values of the row. You should use the same order as headers.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: writes headers and rows for a CSV file
+    code: |
+      var fileWriter = sys.files.create('test2.csv', 'text/csv');
+      try {
+        fileWriter.writeHeaders(['name', 'email']);
+        fileWriter.writeRow(['john', 'john@test.com']);
+        fileWriter.writeRow(['adam', 'adam@test.com']);
+      } finally {
+        fileWriter.close();
+      }
+      log('id: '+fileWriter.descriptor().id());
+- name: writeRowMap
+  summary: Appends a row to the CSV file from a map
+  description: |
+    Appends a row to the CSV file from a map. It will take care of the positioning of values in the row
+    automatically based on the headers.
+  parameters:
+  - name: row
+    type: object
+    required: yes
+    description: A map with the row values. Keys should be the headers.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: writes headers and rows for a CSV file
+    code: |
+      var fileWriter = sys.files.create('test2.csv', 'text/csv');
+      try {
+        fileWriter.writeHeaders(['name', 'email']);
+        fileWriter.writeRowMap({name: 'john', email: 'john@test.com'});
+        fileWriter.writeRowMap({name: 'adam', email: 'adam@test.com'});
+      } finally {
+        fileWriter.close();
+      }
+      log('id: '+fileWriter.descriptor().id());
+- name: writeRowStr
+  summary: Appends a row to the CSV file from a plain string
+  description: |
+    Appends a row to the CSV file from a plain string. The string will be appended as it is, without any
+    processing.
+  parameters:
+  - name: row
+    type: string
+    required: yes
+    description: The row to append to the CSV file.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: writes headers and rows for a CSV file
+    code: |
+      var fileWriter = sys.files.create('test2.csv', 'text/csv');
+      try {
+        fileWriter.writeHeaders(['name', 'email']);
+        fileWriter.writeRowStr('john,john@test.com');
+        fileWriter.writeRowStr('adam,adam@test.com');
+      } finally {
+        fileWriter.close();
+      }
+      log('id: '+fileWriter.descriptor().id());

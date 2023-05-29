@@ -1,0 +1,62 @@
+package: sys.endpoints
+page: app-development-js-api-endpoints.html
+description: |
+  This package contains methods to handle endpoints.
+methods:
+- name: findById
+  summary: Finds an endpoint by its ID.
+  description: |
+    Finds an endpoint by its ID.
+  parameters:
+  - name: id
+    type: string
+    required: yes
+    description: ID of the endpoint.
+  returnType: sys.endpoints.Endpoint
+  returnDescription: The endpoint object or `null` if not found.
+  throws:
+    - code: badRequest
+      description: If `id` is not a valid ID or it is empty.
+  samples:
+  - title: finds an endpoint and prints its status
+    code: |
+      var endpoint = sys.endpoints.findById('');
+      log('status: '+endpoint.status());
+- name: findByName
+  summary: Finds an endpoint by its name.
+  description: |
+    Finds an endpoint by its name.
+  parameters:
+  - name: name
+    type: string
+    required: yes
+    description: Name of the endpoint.
+  returnType: sys.endpoints.Endpoint
+  returnDescription: The endpoint object or `null` if not found.
+  throws:
+    - code: badRequest
+      description: If `name` is empty.
+  samples:
+  - title: finds an endpoint and prints its status
+    code: |
+      var endpoint = sys.endpoints.findByName('sample');
+      log('status: '+endpoint.status());
+- name: isDeployed
+  summary: Checks if an endpoint is deployed
+  description: |
+    Checks if an endpoint is deployed.
+  parameters:
+  - name: name
+    type: string
+    required: yes
+    description: Name of the endpoint.
+  returnType: boolean
+  returnDescription: |
+    `true` if the endpoint is deployed, `false` otherwise.
+  throws:
+    - code: badRequest
+      description: If `name` is empty or endpoint is not found with that name.
+  samples:
+  - title: prints if the endpoint is deployed
+    code: |
+      log('endpoint deployed: '+sys.endpoints.isDeployed('sample'));

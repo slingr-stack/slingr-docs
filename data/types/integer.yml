@@ -134,8 +134,7 @@ queries:
     entity="companies"
     jsQueryMap="{'numberOfEmployees': 'greater(10)'}"
     jsQueryBuilder=".field('numberOfEmployees').greater(10)"
-    restApi="numberOfEmployees=greater(10)"
-    }}
+    restApi="numberOfEmployees=greater(10)">}}
 
 
 aggregateQueries:

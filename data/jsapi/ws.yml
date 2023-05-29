@@ -1,0 +1,310 @@
+package: sys.ws
+page: app-development-ui-custom-views.html
+description: |
+  These are utilities to easily access the REST API of your app from script in the custom view. [You can find more
+  information about the REST API for the app here]({{site.baseurl}}/app-development-apps-rest-api.html).
+methods:
+- name: get
+  summary: Performs a `GET` operation to the given URL
+  description: Performs a `GET` operation to the given URL, sending the correct headers and doing the needed conversions.
+  parameters:
+  - name: urlOrParameters
+    type: string|object
+    required: yes
+    description: |
+      Can be either a simple string with the URL like this `/data/companies` or an object with parameters:
+
+      ```js
+      {
+        url: '/data/companies',
+        params: {state: 'active', _size: 100}
+      }
+      ```
+
+      It is important to note that the URL is the path after `/api`. The base of the URL and headers are calculated
+      automatically so you don't need to worry about it.
+
+      Parameters will be encoded automatically.
+  - name: done
+    type: function
+    required: no
+    description: |
+      A callback that will be called if the request succeed and will send one parameter with the result of the call.
+      The REST API returns a JSON string, but this method will convert it to a Javascript object automatically.
+
+      Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  - name: error
+    type: function
+    required: no
+    description: |
+      A callback that will be called if the request fails. An object will be sent as parameter with the error code
+      and error message.
+
+      Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  returnType:
+  returnDescription:
+  throws:
+  samples:
+  - title: logs the label of the app
+    code: |
+      sys.ws.get('/data/companies', function(res) {
+          console.log('Total companies: ' + res.total);
+          res.items.forEach(function(company) {
+              console.log('Company: ' + company.name);
+          });
+      }, function(errorInfo) {
+          console.log('There was an error getting companies. Code: ' + errorInfo.code + ', message: ' + errorInfo.message);
+      });
+- name: post
+  summary: Performs a `POST` operation to the given URL
+  description: Performs a `POST` operation to the given URL, sending the correct headers and doing the needed conversions.
+  parameters:
+  - name: urlOrParameters
+    type: string|object
+    required: yes
+    description: |
+      Can be either a simple string with the URL like this `/data/companies` or an object with parameters:
+
+      ```js
+      {
+        url: '/data/companies'
+      }
+      ```
+
+      It is important to note that the URL is the path after `/api`. The base of the URL and headers are calculated
+      automatically so you don't need to worry about it.
+
+      Parameters will be encoded automatically.
+  - name: data
+    type: object
+    required: no
+    description: |
+      The body of the request. You can pass a Javascript object and it will be converted to JSON automatically.
+  - name: done
+    type: function
+    required: no
+    description: |
+      A callback that will be called if the request succeed and will send one parameter with the result of the call.
+      The REST API returns a JSON string, but this method will convert it to a Javascript object automatically.
+
+      Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  - name: error
+    type: function
+    required: no
+    description: |
+      A callback that will be called if the request fails. An object will be sent as parameter with the error code
+      and error message.
+
+      Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  returnType:
+  returnDescription:
+  throws:
+  samples:
+  - title: logs the label of the app
+    code: |
+      var company = {
+          name: 'test company',
+          state: 'active'
+      };
+      sys.ws.post('/data/companies', company, function(company) {
+          console.log('Company created successfully: ' + JSON.stringify(company));
+      }, function(errorInfo) {
+          console.log('Error creating company. Code: ' + errorInfo.code + ', message: ' + errorInfo.message);
+      });
+- name: put
+  summary: Performs a `PUT` operation to the given URL
+  description: Performs a `PUT` operation to the given URL, sending the correct headers and doing the needed conversions.
+  parameters:
+  - name: urlOrParameters
+    type: string|object
+    required: yes
+    description: |
+      Can be either a simple string with the URL like this `/data/companies` or an object with parameters:
+
+      ```js
+      {
+        url: '/data/companies/56e81f68e4b0001caf8837a4'
+      }
+      ```
+
+      It is important to note that the URL is the path after `/api`. The base of the URL and headers are calculated
+      automatically so you don't need to worry about it.
+
+      Parameters will be encoded automatically.
+  - name: data
+    type: object
+    required: no
+    description: |
+      The body of the request. You can pass a Javascript object and it will be converted to JSON automatically.
+  - name: done
+    type: function
+    required: no
+    description: |
+      A callback that will be called if the request succeed and will send one parameter with the result of the call.
+      The REST API returns a JSON string, but this method will convert it to a Javascript object automatically.
+
+      Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  - name: error
+    type: function
+    required: no
+    description: |
+      A callback that will be called if the request fails. An object will be sent as parameter with the error code
+      and error message.
+
+      Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  returnType:
+  returnDescription:
+  throws:
+  samples:
+  - title: logs the label of the app
+    code: |
+      sys.ws.put('/data/companies/' + company.id, {name: 'new name'}, function(company) {
+          console.log('Company updated successfully: ' + JSON.stringify(company));
+      }, function(errorInfo) {
+          console.log('Error updating company. Code: ' + errorInfo.code + ', message: ' + errorInfo.message);
+      });
+- name: delete
+  summary: Performs a `DELETE` operation to the given URL
+  description: Performs a `DELETE` operation to the given URL, sending the correct headers and doing the needed conversions.
+  parameters:
+  - name: urlOrParameters
+    type: string|object
+    required: yes
+    description: |
+      Can be either a simple string with the URL like this `/data/companies` or an object with parameters:
+
+      ```js
+      {
+        url: '/data/companies/56e81f68e4b0001caf8837a4',
+        params: {async: true}
+      }
+      ```
+
+      It is important to note that the URL is the path after `/api`. The base of the URL and headers are calculated
+      automatically so you don't need to worry about it.
+
+      Parameters will be encoded automatically.
+  - name: done
+    type: function
+    required: no
+    description: |
+      A callback that will be called if the request succeed and will send one parameter with the result of the call.
+      The REST API returns a JSON string, but this method will convert it to a Javascript object automatically.
+
+      Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  - name: error
+    type: function
+    required: no
+    description: |
+      A callback that will be called if the request fails. An object will be sent as parameter with the error code
+      and error message.
+
+      Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  returnType:
+  returnDescription:
+  throws:
+  samples:
+  - title: logs the label of the app
+    code: |
+      sys.ws.del('/data/companies/' + company.id, function(company) {
+          console.log('Company deleted successfully: ' + JSON.stringify(company));
+      }, function(errorInfo) {
+          console.log('Error delting company. Code: ' + errorInfo.code + ', message: ' + errorInfo.message);
+      });
+- name: createRecord
+  summary: Creates a new record in a given entity.
+  description: Uses the post method previously described to create a new record to a given entity and then informs back to the platform.
+  parameters:
+    - name: entityName
+      type: string
+      required: yes
+      description: The name of the entity where the new record will be created. This can be obtain from the context sent to the custom view after fully rendered.
+    - name: data
+      type: object
+      required: no
+      description: |
+        The body of the request. You can pass a Javascript object and it will be converted to JSON automatically.
+    - name: done
+      type: function
+      required: no
+      description: |
+        A callback that will be called if the request succeed and will send one parameter with the result of the call.
+        The REST API returns a JSON string, but this method will convert it to a Javascript object automatically.
+
+        Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+    - name: error
+      type: function
+      required: no
+      description: |
+        A callback that will be called if the request fails. An object will be sent as parameter with the error code
+        and error message.
+
+        Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  returnType:
+  returnDescription:
+  throws:
+  samples:
+    - title: creates a new record in an entity Contacts
+      code: |
+        var newRecord = {
+            company: 'test company name',
+            firstName: 'test first name',
+            lastName: 'test last name',
+            email: 'test email',
+        }
+        sys.ui.createRecord("contacts", newRecord, function (contact) {
+             console.log('Contact created successfully: ' + JSON.stringify(contact));
+        }, function (errorInfo) {
+            console.log('Error creating contact. Code: ' + errorInfo.code + ', message: ' + errorInfo.message);
+        })
+- name: updateRecord
+  summary: Updates a given record of a given entity.
+  description: Uses the put method previously described to update a given record to a given entity and then informs back to the platform.
+  parameters:
+    - name: entityName
+      type: string
+      required: yes
+      description: The name of the entity where the new record will be created. This can be obtain from the context sent to the custom view after fully rendered.
+    - name: recordId
+      type: string
+      required: yes
+      description: The id of the record that will be updated. This can be obtain from the context sent to the custom view after fully rendered.
+    - name: data
+      type: object
+      required: no
+      description: |
+        The body of the request. You can pass a Javascript object and it will be converted to JSON automatically.
+    - name: done
+      type: function
+      required: no
+      description: |
+        A callback that will be called if the request succeed and will send one parameter with the result of the call.
+        The REST API returns a JSON string, but this method will convert it to a Javascript object automatically.
+
+        Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+    - name: error
+      type: function
+      required: no
+      description: |
+        A callback that will be called if the request fails. An object will be sent as parameter with the error code
+        and error message.
+
+        Please check the [REST API docs]({{site.baseurl}}/app-development-apps-rest-api.html) to see the response.
+  returnType:
+  returnDescription:
+  throws:
+  samples:
+    - title: updates a record of the entity Contacts
+      code: |
+        var newValues = {
+            company: 'test company name',
+            firstName: 'test first name',
+            lastName: 'test last name',
+            email: 'test email',
+        }
+        sys.ui.updateRecord("contacts", "5dbb1d5836e3bd27bd640ff3" ,newValues, function (contact) {
+             console.log('Contact updated successfully: ' + JSON.stringify(contact));
+        }, function (errorInfo) {
+            console.log('Error updating contact. Code: ' + errorInfo.code + ', message: ' + errorInfo.message);
+        })
+

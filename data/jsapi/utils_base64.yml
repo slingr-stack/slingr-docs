@@ -1,0 +1,41 @@
+package: sys.utils.base64
+page: app-development-js-api-utils.html
+description: |
+  This package contains utilities for Base64 encoding. This is used to represent binary data in an ASCII format.
+methods:
+- name: encode
+  summary: Encodes binary data using the base64 algorithm
+  description: |
+    Encodes binary data using the base64 algorithm. It does not chunk the output.
+  parameters:
+    - name: string
+      type: string
+      required: yes
+      description: Data to be encoded
+  returnType: string
+  returnDescription: A string containing Base64 characters in their UTF-8 representation.
+  throws:
+  samples:
+    - title: encode a string
+      code: |
+        var pass = 'This_is_a_pass';
+        var encodedPass = sys.utils.base64.encode(pass);
+        log('Encoded pass: ' + encodedPass);
+- name: decode
+  summary: Decodes a Base64 string
+  description: |
+    Decodes a Base64 string into octets.
+  parameters:
+    - name: base64String
+      type: string
+      required: yes
+      description: String containing base 64 data
+  returnType: string
+  returnDescription: Decoded data.
+  throws:
+  samples:
+    - title: decode an encoded string
+      code: |
+        var pass = 'VGhpc19pc19hX3Bhc3M=';
+        var rawPass = sys.utils.base64.decode(pass);
+        log('Pass: ' + rawPass);

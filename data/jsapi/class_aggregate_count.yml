@@ -1,0 +1,24 @@
+package: sys.data.AggregatedCount
+page: app-development-js-api-data.html
+description: |
+  Allows to count elements in an aggregate query. You should never create an object of
+  this class manually. Instead use <<<sys.data.AggregateQuery.count()>>> method.
+
+  Please check the documentation on [Count]({{site.baseurl}}/app-development-aggregate-queries.html#count) for more
+  information on how to use the count operator.
+methods:
+- name: counterName
+  summary: 	Indicates that the given string should be the name of attribute under counter will be stored
+  description: |
+    Indicates that the given string should be the name of attribute under counter will be stored.
+  parameters:
+  - name: fieldName
+    type: string
+    required: yes
+    description: The name of field that will store the counter.
+  returnType: sys.data.AggregatedCount
+  returnDescription: The count object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the fieldName is invalid.
+  samples:

@@ -1,0 +1,1101 @@
+package: sys.data
+page: app-development-js-api-data.html
+description: |
+  This package contains methods and classes to work with data in your application. You will find utilities to query
+  data, create, update or delete records, as well as other more advanced operations like aggregation and execution of actions.
+methods:
+- name: findById
+  summary: Finds a record by its ID
+  description: Finds a record by its ID. If the record is not found, `null` will be returned.
+  parameters:
+  - name: entityName
+    required: yes
+  - name: id
+    type: string
+    required: yes
+    description: ID of the record to find
+  returnType: sys.data.Record
+  returnDescription: Record or `null` if not found.
+  throws:
+    - code: badRequest
+      description: If `entityName` is not valid or ID is not a valid record ID.
+  samples:
+  - title: finds one company by its ID
+    code: |
+      var company = sys.data.findById('companies', '57fd2d65e4b0ce322b0c8665');
+      if (company) {
+        log(company.label());
+      } else {
+        log('company not found');
+      }
+- name: find
+  summary: Finds records based on a query map object
+  description: |
+    Finds records on the given entity according to a query map object. You get a result set you can iterate to fetch
+    records.
+
+    It is important to notice that while you iterate it is possible that records are returned more than once. This could
+    happen if records are updated in the middle (inside the iteration or by another thread), so you should be prepared
+    for this if it happens.
+  parameters:
+  - name: entityName
+    required: yes
+  - name: queryMap
+    required: no
+  returnType: sys.commons.ResultSet
+  returnDescription: A result set that returns <<<sys.data.Record>>> objects when iterated.
+  throws:
+    - code: badRequest
+      description: If `entityName` or `queryMap` are invalid.
+  samples:
+  - title: iterates over all companies
+    code: |
+      var companies = sys.data.find('companies', {});
+      while (companies.hasNext()) {
+        log(companies.next().label());
+      }
+  - title: finds using a query
+    code: |
+      var companies = sys.data.find('companies', {type: 'a', _sortField: 'name', _sortType: 'asc'});
+      while (companies.hasNext()) {
+        log(companies.next().label());
+      }
+- name: find
+  summary: Finds records based on a query builder object
+  description: |
+    Finds records on the given entity according to a query builder object. You get a result set you can iterate to fetch
+    records.
+
+    It is important to notice that while you iterate it is possible that records are returned more than once. This could
+    happen if records are updated in the middle (inside the iteration or by another thread), so you should be prepared
+    for this if it happens.
+  parameters:
+  - name: queryBuilder
+    required: yes
+  returnType: sys.commons.ResultSet
+  returnDescription: A result set that returns <<<sys.data.Record>>> objects when iterated.
+  throws:
+    - code: badRequest
+      description: If `queryBuilder` is invalid.
+  samples:
+  - title: iterates over all companies
+    code: |
+      var query = sys.data.createQuery('companies');
+      var companies = sys.data.find(query);
+      while (companies.hasNext()) {
+        log(companies.next().label());
+      }
+  - title: finds using a query
+    code: |
+      var query = sys.data.createQuery('companies')
+          .field('type').equals('a')
+          .sortBy('name', 'asc');
+      var companies = sys.data.find(query);
+      while (companies.hasNext()) {
+        log(companies.next().label());
+      }
+- name: findOne
+  summary: Finds one record based on a query map object
+  description: |
+    Finds one record based on a query map object. If there query returns more than one result, the first one will be
+    returned.
+  parameters:
+  - name: entityName
+    required: yes
+  - name: queryMap
+    required: no
+  returnType: sys.data.Record
+  returnDescription: The first record found or `null` if there are no matching records for the given query.
+  throws:
+    - code: badRequest
+      description: If `entityName` or `queryMap` are invalid.
+  samples:
+  - title: finds one copmany where type is 'b'
+    code: |
+      var company = sys.data.findOne('companies', {type: 'b'});
+      log(company.label());
+- name: findOne
+  summary: Finds one record based on a query builder object
+  description: |
+    Finds one record based on a query builder object. If there query returns more than one result, the first one will be
+    returned.
+  parameters:
+  - name: queryBuilder
+    required: no
+  returnType: sys.data.Record
+  returnDescription: The first record found or `null` if there are no matching records for the given query.
+  throws:
+    - code: badRequest
+      description: If `queryBuilder` is invalid.
+  samples:
+  - title: finds one copmany where type is 'b'
+    code: |
+      var query = sys.data.createQuery('companies')
+          .field('type').equals('b');
+      var company = sys.data.findOne(query);
+      log(company.label());
+- name: count
+  summary: Counts records in an entity matching a query map object
+  description: |
+    Counts records matching the criteria in the query map object. Keep in mind that some options in the query language
+    like size and offset will be ignored.
+  parameters:
+  - name: entityName
+    required: yes
+  - name: queryMap
+    required: no
+  returnType: number
+  returnDescription: The number of records matching the criteria.
+  throws:
+    - code: badRequest
+      description: If `entityName` or `queryMap` are invalid.
+  samples:
+  - title: counts companies where type is 'a'
+    code: |
+      var count = sys.data.count('companies', {type: 'a'});
+      log('count: '+count);
+- name: count
+  summary: Counts records in an entity matching a query builder object
+  description: |
+    Counts records matching the criteria in the query builder object. Keep in mind that some options in the query language
+    like size and offset will be ignored.
+  parameters:
+  - name: queryBuilder
+    required: no
+  returnType: number
+  returnDescription: The number of records matching the criteria.
+  throws:
+    - code: badRequest
+      description: If `queryBuilder` is invalid.
+  samples:
+  - title: counts companies where type is 'a'
+    code: |
+      var query = sys.data.createQuery('companies')
+          .field('type').equals('b');
+      var count = sys.data.count(query);
+      log('count: '+count);
+- name: aggregate
+  summary: Aggregates data in an entity using an aggregate query map
+  description: |
+    Allows to perform aggregation operations like sum, average and count over an entity. This version uses an
+    aggregate query map. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+  parameters:
+  - name: entityName
+    required: yes
+  - name: aggregateQueryMap
+    type: object
+    required: yes
+    description: |
+      This is the aggregate query map object that defines the operations to perform. Check the documentation
+      for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+  returnType: sys.commons.ResultSet
+  returnDescription: |
+    A result set that returns JSON objects when iterated. The structure of this object depends on the aggregation
+    operations performed. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+  throws:
+    - code: badRequest
+      description: If `entityName` or `aggregateQueryMap` are invalid.
+  samples:
+  - title: sums up the total number of skills per customer
+    code: |
+      var resultSet = sys.data.aggregate('contacts', [
+        {match: {'company.isCustomer': true}},
+        {group: {by: 'company', totalSkills: 'sum(numberOfSkills)'}}
+      ]);
+      while (resultSet.hasNext()) {
+        var result = resultSet.next();
+        // the format of the result is a simple object you can stringify
+        log(JSON.stringify(result));
+      }
+  - title: finds contacts with more skills on each company
+    code: |
+      var resultSet = sys.data.aggregate('contacts', [
+        {sort: {'numberOfSkills': 'desc'}},
+        {group: {
+            by: 'company',
+            firstName: 'first(firstName)',
+            lastName: 'first(lastName)',
+            skills: 'first(numberOfSkills)'
+          }
+        }
+      ]);
+      while (resultSet.hasNext()) {
+        var result = resultSet.next();
+        // the format of the result is a simple object you can stringify
+        log(JSON.stringify(result));
+      }
+- name: aggregate
+  summary: Aggregates data in an entity using an aggregate query builder
+  description: |
+    Allows to perform aggregation operations like sum, average and count over an entity. This version uses an
+    aggregate query builder. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+  parameters:
+  - name: aggregateQueryBuilder
+    type: object
+    required: yes
+    description: This is the aggregate query builder that defines the operations to perform. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+  returnType: sys.commons.ResultSet
+  returnDescription: |
+    A result set that returns JSON objects when iterated. The structure of this object depends on the aggregation
+    operations performed. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+  throws:
+    - code: badRequest
+      description: If `aggregateQueryBuilder` are invalid.
+  samples:
+  - title: sums up the total number of skills per customer
+    code: |
+      var query = sys.data.createAggregateQuery('contacts');
+      query.match().field('company.isCustomer').equals(true);
+      query.group().accumulate('totalNumberOfSkills').sum('numberOfSkills');
+      var resultSet = sys.data.aggregate(query);
+      while (resultSet.hasNext()) {
+        log(JSON.stringify(resultSet.next()));
+      }
+  - title: finds contacts with more skills on each company
+    code: |
+      var query = sys.data.createAggregateQuery('contacts');
+      query.sort().by('numberOfSkills', 'desc');
+      query.group()
+          .by('company')
+          .accumulate('firstName').first('firstName')
+          .accumulate('lastName').first('lastName')
+          .accumulate('skills').first('numberOfSkills');
+      var resultSet = sys.data.aggregate(query);
+      while (resultSet.hasNext()) {
+        log(JSON.stringify(resultSet.next()));
+      }
+- name: refresh
+  summary: Finds the latest version of the record
+  description: |
+    Finds the latest version of the record in order to make sure it is up-to-date. This is useful so you know you have
+    the latest version of the record and you won't get an optimistic locking exception when saving it.
+  parameters:
+  - name: record
+    required: yes
+    description: The record to refresh.
+  returnType: sys.data.Record
+  returnDescription: The latest version of the record. It could return `null` if the record doesn't exist anymore.
+  throws:
+    - code: badRequest
+      description: If `record` is not valid.
+  samples:
+  - title: refreshes a company record
+    code: |
+      var company = sys.data.findById('companies', '57fd2d65e4b0ce322b0c8665');
+      // ...
+      // some long operation happens in the middle
+      // ...
+      company = sys.data.refresh(company);
+      if (company) {
+        log(company.label());
+      } else {
+        log('company was deleted');
+      }
+- name: save
+  summary: Saves a record in the database
+  description: |
+    Saves a record in the database, making changes permanent. If the record was already saved (it has an ID that
+    exists in the entity), it will be updated.
+
+    This method will perform all validation rules defined in the entity and its fields. Additionally it will check the
+    version of the record to make sure no changes are overridden. If version doesn't match, an optimistic locking
+    exception will be thrown.
+
+    Once the record is saved successfully the following events will be triggered:
+
+    -  On record create: if the record is new and was created, this event is triggered. Check the parameter `options` to change this behavior.
+    -  On record change: if the record already existed in the database, this event is triggered. Check the parameter `options` to change this behavior.
+    -  Cascade updates: if the modification or creation of the record impacts other records, a background job will be
+       created to updates them. Check the parameter `options` to change this behavior.
+  parameters:
+  - name: record
+    required: yes
+    description: |
+      The record to save into the database. Keep in mind that this object will be updated with the saved version of
+      the record. For example, an ID will be set if not present and calculated fields will be there.
+  - name: options
+    type: object
+    required: no
+    description: |
+      This is a map with options that can change the behavior of the save and some of them could help to improve
+      import performance when there are a lot of records. These are the options:
+
+      - `calculateFields`: if `false` when record is saved calculated fields won't be evaluated and will
+        be left in `null`. Default is `true`.
+      - `performValidations`: indicates if validations should be performed over the record to save. Keep in mind that
+        type validations are always performed. This flag works with validations defined in type rules. Default is `true`.
+      - `filterByReadWriteAccess`: setting this flag to `false` makes the save process to ignore the read/write access
+        options defined for the field, so all fields will be saved into the database. Default is `true`.
+      - `triggerEvents`: if `false` events like on record create or change won't be triggered. Default is `true`.
+      - `defaultValues`: if `false` default values during save won't be set. Default is `true`.
+      - `cascadeOperations`: if `false` cascade update to update relationship fields or aggregate fields won't be
+        executed. Default is `true`.
+  returnType: sys.data.Record
+  returnDescription: The saved or updated record. The ID will be set and calculated or default values will be there.
+  throws:
+    - code: validationErrors
+      description: If `record` doesn't meet validation rules defined for the entity.
+    - code: optimisticLocking
+      description: If `record` is an old version
+    - code: badRequest
+      description: If `record` is not valid.
+    - code: notFound
+      description: If `record` is being updated (it has an ID) and it is not found in the database.
+  samples:
+  - title: updates a field in a company
+    code: |
+      var company = sys.data.findById('companies', '57fd2d65e4b0ce322b0c8665');
+      company.field('notes').val('modified notes');
+      // you don't need to reassign the 'company' variable because the parameter will be updated
+      sys.data.save(company);
+      // ...
+      // do some other changes and save again
+      company.field('notes').val('another modification');
+      sys.data.save(company);
+  - title: catches validation errors
+    code: |
+      var company = sys.data.findById('companies', '57fd2d65e4b0ce322b0c8665');
+      company.field('type').val('invalid');
+      try {
+        sys.data.save(company);
+      } catch (e) {
+        log(e.code()+': '+e.message());
+      }
+  - title: optimistic locking exception
+    code: |
+      var company1 = sys.data.findById('companies', '57fd2d65e4b0ce322b0c8665');
+      var company2 = sys.data.findById('companies', '57fd2d65e4b0ce322b0c8665');
+      company1.field('notes').val('modified notes');
+      sys.data.save(company1);
+      try {
+        // this will throw an optimistic locking exception because the record was modified in the middle
+        sys.data.save(company2);
+      } catch (e) {
+        log(e.code()+': '+e.message());
+      }
+- name: createRecord
+  summary: Creates a new record object
+  description: |
+    Creates a new empty <<<sys.data.Record>>> object. This record is not saved into the database until
+    you call <<sys.data.save()>>.
+  parameters:
+    - name: entityName
+      required: yes
+  returnType: sys.data.Record
+  returnDescription: The empty record object.
+  throws:
+    - code: badRequest
+      description: If `entityName` is not valid.
+  samples:
+  - title: creates a new company
+    code: |
+      var company = sys.data.createRecord('companies');
+      company.field('name').val('test company '+parseInt(Math.random()*999));
+      // saves the new company into the database
+      sys.data.save(company);
+      company = sys.data.findById('companies', company.id());
+      log('saved company: '+company.label());
+      // clean up the created company
+      sys.data.remove(company);
+- name: remove
+  summary: Deletes a record from the database
+  description: |
+    Deletes a record from the database.
+
+    When the record is deleted successfully the following events are triggered:
+
+    - On record delete
+    - Cascade updates: if the deletion of the record has impact on other records, a background job will be created to
+      update them.
+  parameters:
+    - name: record
+      required: yes
+      description: The record to remove from the database.
+  returnType: sys.data.Record
+  returnDescription: The record that was removed.
+  throws:
+    - code: badRequest
+      description: If `record` is not valid.
+    - code: notFound
+      description: If `record` is not found in the database.
+  samples:
+  - title: creates and deletes a company
+    code: |
+      var company = sys.data.createRecord('companies');
+      company.field('name').val('test company '+parseInt(Math.random()*999));
+      // saves the new company into the database
+      sys.data.save(company);
+      // deletes the just created company
+      var deletedCompany = sys.data.remove(company);
+      log('company ['+deletedCompany.label()+'] was deleted');
+- name: delete
+  summary: Deletes records in an entity matching a query map object
+  description: |
+    Deletes records matching the criteria in the query map object. Keep in mind that some options in the query language
+    like size and offset will be ignored.
+  parameters:
+  - name: entityName
+    required: yes
+  - name: queryMap
+    required: no
+  - name: options
+    type: object
+    required: no
+    description: |
+      This is a map with options that can change the behavior of the deletion and some of them could help to improve
+      delete performance when there are a lot of records. These are the options:
+
+      - `triggerEvents`: if `false` events of deletion won't be triggered. Default is `true`.
+      - `cascadeOperations`: if `false` cascade update to update relationship fields or aggregate fields won't be
+        executed. Default is `true`.
+      - `lowPriority`: set job as low priority will make the deletion only happen when there are no many jobs running.
+        Default is `false`.
+  returnType: string
+  returnDescription: Identifier of deletion job.
+  throws:
+    - code: badRequest
+      description: If `entityName` or `queryMap` are invalid.
+  samples:
+  - title: deletes active companies
+    code: |
+      var jobId = sys.data.delete('companies', {active: true});
+      log('jobId: '+jobId);
+      sys.jobs.waitForJob(jobId, 'FINISHED', 1000*10);
+- name: delete
+  summary: Deletes records in an entity matching a query builder object
+  description: |
+    Deletes records matching the criteria in the query builder object. Keep in mind that some options in the query language
+    like size and offset will be ignored.
+  parameters:
+  - name: queryBuilder
+    required: no
+  - name: options
+    type: object
+    required: no
+    description: |
+      This is a map with options that can change the behavior of the deletion and some of them could help to improve
+      delete performance when there are a lot of records. These are the options:
+
+      - `triggerEvents`: if `false` events of deletion won't be triggered. Default is `true`.
+      - `cascadeOperations`: if `false` cascade update to update relationship fields or aggregate fields won't be
+        executed. Default is `true`.
+      - `lowPriority`: set job as low priority will make the deletion only happen when there are no many jobs running.
+        Default is `false`.
+  returnType: string
+  returnDescription: Identifier of deletion job.
+  throws:
+    - code: badRequest
+      description: If `queryBuilder` is invalid.
+  samples:
+  - title: deletes companies where type is 'b'
+    code: |
+      var query = sys.data.createQuery('companies')
+          .field('type').equals('b');
+      var jobId = sys.data.delete(query);
+      log('jobId: '+jobId);
+      sys.jobs.waitForJob(jobId, 'FINISHED', 1000*10);
+- name: importRecords
+  summary: Imports records from a CSV file
+  description: |
+    Allows to import records from a CSV file that has to be already uploaded. The file could be in a field inside
+    a record, it could be coming from an endpoint like FTP or HTTP, or you can create it in the script.
+
+    Rules for importing from a CSV file are the same as when you import a CSV from the app runtime UI. So check the
+    documentation of imports to understand how they work.
+
+    Finally keep in mind that for each record you import the same events as with the <<sys.data.save()>>
+    method will be triggered.
+  parameters:
+    - name: entityName
+      required: yes
+    - name: fileId
+      type: string
+      required: yes
+      description: |
+        The ID of the file to import. This is a private file uploaded into the app previously. For example if could
+        have been uploaded through the app runtime UI into a file field, it could have been uploaded from an HTTP
+        or FTP endpoint, or you can create the file using a script. Check the samples to see the different options.
+    - name: options
+      type: object
+      required: no
+      description: |
+        This is a map with options that can change the behavior of the import and some of them could help to improve
+        import performance when there are a lot of records. These are the options:
+
+        - `skipRecordsWithInvalidFields`: when `true`, if some of the fields cannot be converted or aren't valid, ç
+          they will be set to `null` and we try to save the record anyways. If this is `false` an exception will be thrown
+          and we won't attempt to import the record. Default is `true`.
+        - `calculateFields`: if `false` when records are imported calculated fields won't be evaluated and will
+          be left in `null`. Default is `true`.
+        - `performValidations`: indicates if validations should be performed. Keep in mind that type validations are always
+          performed. This flag works with validations defined in type rules. Default is `true`.
+        - `filterByReadWriteAccess`: setting this flag to `false` makes the import process to ignore the read/write access
+          options defined for the field, so all fields will be imported into the database. Default is `true`.
+        - `triggerEvents`: if `false` events like on record create or change won't be triggered. Default is `true`.
+        - `defaultValues`: if `false` default values in imported records won't be set. Default is `true`.
+        - `cascadeOperations`: if `false` cascade update to update relationship fields or aggregate fields won't be
+          executed. Default is `true`.
+        - `lowPriority`: set job as low priority will make the import only happen when there are no many jobs running.
+          Default is `false`.
+  returnType: string
+  returnDescription: |
+    The ID of the background job in charge of the import. To check the progress of the import (as well
+    as errors) you should check the status of the background job.
+  throws:
+    - code: badRequest
+      description: If `entityName` or `fileId` is not valid.
+  samples:
+  - title: creates a CSV file, imports it into 'companies' entity using low priority and then does a clean up to remove those records
+    code: |
+      var total = 10;
+      var fileWriter = sys.files.create('companies.csv', 'text/csv');
+      try {
+        fileWriter.writeHeaders(['name', 'state', 'type']);
+        for (var i = 0; i < total; i++) {
+          log('writting row '+i);
+          fileWriter.writeRow(['test'+i, 'active', 'a']);
+        }
+      } finally {
+        fileWriter.close();
+      }
+
+      // import data
+      var jobId = sys.data.importRecords('companies', fileWriter.descriptor().id(), {lowPriority: true});
+      sys.jobs.waitForJob(jobId, 'FINISHED', 60*1000);
+      log(total+' records imported!');
+
+      // clean up
+      var testRecords = sys.data.find('companies', {name: 'like(test)'});
+      var recordsRemoved = 0;
+      while (testRecords.hasNext()) {
+        sys.data.remove(testRecords.next());
+        recordsRemoved++;
+      }
+      log(recordsRemoved+' records removed!');
+  - title: imports records from a file field
+    code: |
+      // find record with file
+      var fileRecord = sys.data.findOne('files', {code: 'test-companies'});
+
+      // import data
+      var jobId = sys.data.importRecords('companies', fileRecord.field('file').id(), {lowPriority: true});
+      sys.jobs.waitForJob(jobId, 'FINISHED', 60*1000);
+      log('records imported!');
+
+      // clean up
+      var testRecords = sys.data.find('companies', {name: 'like(test)'});
+      var recordsRemoved = 0;
+      while (testRecords.hasNext()) {
+        sys.data.remove(testRecords.next());
+        recordsRemoved++;
+      }
+      log(recordsRemoved+' records removed!');
+- name: executeAction
+  summary: Executes an action in the background over several records
+  description: |
+    Executes an action in the background over the records returned by the query.
+  parameters:
+    - name: entityName
+      required: yes
+    - name: queryMap
+      required: yes
+    - name: actionName
+      type: string
+      required: yes
+      description: The name of the action to execute.
+    - name: params
+      type: object
+      required: no
+      description: If the action has parameters you should put them here. The format is the same used by the REST API.
+  returnType: string
+  returnDescription: |
+    The ID of the background job in charge of executing the action over all records. To check progress (as well
+    as errors) you should check the status of the background job.
+  throws:
+    - code: badRequest
+      description: If `entityName`, `queryMap` or `actionNAme` are not valid.
+  samples:
+  - title: executes the action 'logSomething' over 10 company records of type 'a'
+    code: |
+      var jobId = sys.data.executeAction('companies', {type: 'a', _size: 10}, 'logSomething');
+      sys.jobs.waitForJob(jobId, 'FINISHED', 60*1000);
+      log('completed!');
+  - title: executes the action 'logSomething' over 10 company records of type 'a', sending a parameter
+    code: |
+      var jobId = sys.data.executeAction('companies', {type: 'a', _size: 10}, 'logSomething', {param1: 'a', param2: 'b'});
+      sys.jobs.waitForJob(jobId, 'FINISHED', 60*1000);
+      log('completed!');
+- name: executeAction
+  summary: Executes an action in the background over several records using a query builder
+  description: |
+    Executes an action in the background over the records returned by the query. This version uses a query builder.
+  parameters:
+    - name: queryBuilder
+      required: yes
+    - name: actionName
+      type: string
+      required: yes
+      description: The name of the action to execute.
+    - name: body
+      type: object
+      required: no
+      description: If the action has parameters you should put them here. The format is the same used by the REST API.
+  returnType: string
+  returnDescription: |
+    The ID of the background job in charge of executing the action over all records. To check progress (as well
+    as errors) you should check the status of the background job.
+  throws:
+    - code: badRequest
+      description: If `queryBuilder` or `actionNAme` are not valid.
+  samples:
+  - title: executes the action 'logSomething' over 10 company records of type 'a'
+    code: |
+      var query = sys.data.createQuery('companies')
+          .field('type').equals('a')
+          .size(10);
+      var jobId = sys.data.executeAction(query, 'logSomething');
+      sys.jobs.waitForJob(jobId, 'FINISHED', 60*1000);
+      log('completed!');
+  - title: executes the action 'logSomething' over 10 company records of type 'a', sending a parameter
+    code: |
+      var query = sys.data.createQuery('companies')
+          .field('type').equals('a')
+          .size(10);
+      var jobId = sys.data.executeAction(query, 'logSomething', {param1: 'a', param2: 'b'});
+      sys.jobs.waitForJob(jobId, 'FINISHED', 60*1000);
+      log('completed!');
+- name: executeGlobalAction
+  summary: Executes an entity global action in the background
+  description: |
+    Performs the execution of a global action.
+  parameters:
+    - name: entityName
+      type: string
+      required: yes
+    - name: actionName
+      type: string
+      required: yes
+      description: The name of the action to execute.
+    - name: params
+      type: object
+      required: no
+      description: If the action has parameters you should put them here. The format is the same used by the REST API.
+  returnType: string
+  returnDescription: |
+    The ID of the background job in charge of executing the global action. To check progress (as well as errors) you
+    should check the status of the background job.
+  throws:
+    - code: badRequest
+      description: If `entityName` or `actionName` are not valid.
+  samples:
+    - title: executes the global action 'quickAdd' on companies entity and then finds the created company and log some properties
+      code: |
+        var actionParams = {'name': 'Quick company', 'address': {'addressLine1': 'Siempre viva street'}};
+        var jobId = sys.data.executeGlobalAction('companies', 'quickAdd', actionParams);
+        sys.jobs.waitForJob(jobId, 'FINISHED', 1000*10);
+        var dataCursor = sys.data.find('companies', {name: 'Quick company'});
+        var dataFound = dataCursor.next();
+        log(dataFound.id());
+        log(dataFound.label());
+        log(dataFound.field('address.addressLine1').val());
+- name: tryLock
+  summary: Tries to acquiere a lock over a record
+  description: |
+    Tries to acquire a lock for a specified record. This method should be used when multiple threads try to access the
+    same record. This is important when you have listeners or actions that could be executed concurrently.
+
+    If the lock has been already acquiered, this method will wait until it is released. If the lock cannot be
+    acquiered within the specified timeout it will return `null` instead of the record.
+
+    Keep in mind that if you lock the record again within the same context of execution, the lock will be granted
+    immediately. This means it follows the re-entrant lock concept.
+
+    You should always release the lock using <<sys.data.unlock()>> and you should do that in a `finally` block
+    to make sure that happens. However, in case you forget to do it, the platform will free the locks at
+    the end of the script execution if that was not done before.
+
+    **Important!** The lock will be kept for a maximum of 30 minutes, then it will be automatically released.
+  parameters:
+    - name: record
+      required: yes
+    - name: timeout
+      type: number
+      required: yes
+      description: |
+        The maximum time in seconds to wait for the lock be acquired. If the lock cannot be acquired it returns a `null`.
+  returnType: sys.data.Record
+  returnDescription: |
+    The updated version of the record when the lock was acquired, otherwise a `null` object.
+  throws:
+    - code: badRequest
+      description: If `record` or `timeout` are not valid.
+    - code: notFound
+      description: If `record` is not found in the database.
+  samples:
+  - title: locks a record for 20 seconds
+    code: |
+      var company = sys.data.findOne('companies', {name:'Blogpad'});
+      company = sys.data.tryLock(company);
+      try {
+        // write some code here to update the company
+        // if from the app you try to update the record it will be blocked
+        // until the lock is released
+        log('do something');
+        sys.utils.script.wait(20000);
+      } finally {
+        sys.data.unlock(company);
+      }
+- name: lock
+  summary: Acquieres a lock over a record
+  description: |
+    Acquires a lock for a specified record. This method should be used when multiple threads try to access the
+    same record. This is important when you have listeners or actions that could be executed concurrently.
+
+    If the lock has been already acquiered, this method will wait until it is released. If the lock cannot be
+    acquiered within the specified timeout an exception will be thrown.
+
+    Keep in mind that if you lock the record again within the same context of execution, the lock will be granted
+    immediately. This means it follows the re-entrant lock concept.
+
+    You should always release the lock using <<sys.data.unlock()>> and you should do that in a `finally` block
+    to make sure that happens. However, in case you forget to do it, the platform will free the locks at
+    the end of the script execution if that was not done before.
+
+    **Important!** The lock will be kept for a maximum of 30 minutes, then it will be automatically released.
+  parameters:
+    - name: record
+      required: yes
+    - name: timeout
+      type: number
+      default: 300000 (5 minutes)
+      required: no
+      description: |
+        The maximum time in milliseconds to wait for the lock be acquired. If the lock cannot be acquired and
+        exception will be thrown.
+  returnType: sys.data.Record
+  returnDescription: |
+    The updated version of the record when the lock was acquired.
+  throws:
+    - code: badRequest
+      description: If `record` or `timeout` are not valid.
+    - code: notFound
+      description: If `record` is not found in the database.
+    - code: timeout
+      description: If the lock couldn't be acquiered within the specified timeout.
+  samples:
+  - title: locks a record for 20 seconds
+    code: |
+      var company = sys.data.findOne('companies', {name:'Blogpad'});
+      try {
+        company = sys.data.lock(company);
+        try {
+          // write some code here to update the company
+          // if from the app you try to update the record it will be blocked
+          // until the lock is released
+          log('do something');
+          sys.utils.script.wait(20000);
+        } finally {
+          sys.data.unlock(company);
+        }
+      } catch (le) {
+        sys.logs.error('Error acquiring lock');
+      }
+  - title: locks a record several times
+    code: |
+      var company = sys.data.findOne('companies', {name:'Blogpad'});
+      company = sys.data.lock(company);
+      // you can lock again in the same context as it is a reentrant lock
+      company = sys.data.lock(company);
+      // you need to unlock twice to release it
+      sys.data.unlock(company);
+      sys.data.unlock(company);
+- name: tryLockById
+  summary: Tries to acquiere a lock over a record using its ID
+  description: |
+    Tries to acquire a lock for a specified record using its ID (useful when you don't have the record object but just the ID).
+    This method should be used when multiple threads try to access the same record. This is important when you have
+    listeners or actions that could be executed concurrently.
+
+    If the lock has been already acquiered, this method will wait until it is released. If the lock cannot be
+    acquiered within the specified timeout it returns a `null`.
+
+    Keep in mind that if you lock the record again within the same context of execution, the lock will be granted
+    immediately. This means it follows the re-entrant lock concept.
+
+    You should always release the lock using <<sys.data.unlock()>> and
+    you should do that in a `finally` block to make sure that happens. However, in case you forget to do it, the
+    platform will free the locks at the end of the script execution if that was not done before.
+
+    **Important!** The lock will be kept for a maximum of 30 minutes, then it will be automatically released.
+  parameters:
+    - name: entityName
+      required: yes
+    - name: recordId
+      required: yes
+      type: string
+      description: The ID of the record to acquire the lock.
+    - name: timeout
+      type: number
+      required: yes
+      description: |
+        The maximum time in milliseconds to wait for the lock be acquired. If the lock cannot be acquired it returns a `null`.
+  returnType: sys.data.Record
+  returnDescription: |
+    The updated version of the record when the lock was acquired.
+  throws:
+    - code: badRequest
+      description: If `recordId` or `timeout` are not valid.
+    - code: notFound
+      description: If record with ID `recordId` is not found in the database.
+  samples:
+  - title: locks a record for 20 seconds
+    code: |
+      var company = sys.data.lockById('companies', '57fd2d65e4b0ce322b0c8565');
+      try {
+        if (company) {
+          log('company ['+company.label()+'] is locked');
+          // write some code here to update the company
+          // if from the app you try to update the record it will be blocked
+          // until the lock is released
+          log('do something');
+          sys.utils.script.wait(20000);
+        }
+      } finally {
+        log('unlocking company ['+company.label()+']');
+        sys.data.unlock(company);
+      }
+- name: lockById
+  summary: Acquieres a lock over a record using its ID
+  description: |
+    Acquires a lock for a specified record using its ID (useful when you don't have the record object but just the ID).
+    This method should be used when multiple threads try to access the same record. This is important when you have
+    listeners or actions that could be executed concurrently.
+
+    If the lock has been already acquiered, this method will wait until it is released. If the lock cannot be
+    acquiered within the specified timeout an exception will be thrown.
+
+    Keep in mind that if you lock the record again within the same context of execution, the lock will be granted
+    immediately. This means it follows the re-entrant lock concept.
+
+    You should always release the lock using <<sys.data.unlock()>> and
+    you should do that in a `finally` block to make sure that happens. However, in case you forget to do it, the
+    platform will free the locks at the end of the script execution if that was not done before.
+
+    **Important!** The lock will be kept for a maximum of 30 minutes, then it will be automatically released.
+  parameters:
+    - name: entityName
+      required: yes
+    - name: recordId
+      required: yes
+      type: string
+      description: The ID of the record to acquire the lock.
+    - name: timeout
+      type: number
+      default: 300000 (5 minutes)
+      required: no
+      description: |
+        The maximum time in milliseconds to wait for the lock be acquired. If the lock cannot be acquired and
+        exception will be thrown.
+  returnType: sys.data.Record
+  returnDescription: |
+    The updated version of the record when the lock was acquired.
+  throws:
+    - code: badRequest
+      description: If `recordId` or `timeout` are not valid.
+    - code: notFound
+      description: If record with ID `recordId` is not found in the database.
+    - code: timeout
+      description: If the lock couldn't be acquiered within the specified timeout.
+  samples:
+  - title: locks a record for 20 seconds
+    code: |
+      try {
+        var company = sys.data.lockById('companies', '57fd2d65e4b0ce322b0c8565');
+        log('company ['+company.label()+'] is locked');
+        try {
+          // write some code here to update the company
+          // if from the app you try to update the record it will be blocked
+          // until the lock is released
+          log('do something');
+          sys.utils.script.wait(20000);
+        } finally {
+          log('unlocking company ['+company.label()+']');
+          sys.data.unlock(company);
+        }
+      } catch(le) {
+        sys.logs.error('Log could not have been acquired', le);
+      }
+- name: unlock
+  summary: Releases lock for a record
+  description: |
+    Releases a lock that was previously acquired.
+
+    If the lock was acquired several times, it needs to be released several times as well.
+  parameters:
+    - name: record
+      required: yes
+  throws:
+    - code: badRequest
+      description: If `record` is not valid.
+    - code: notFound
+      description: If `record` is not found in the database.
+  samples:
+  - title: locks a record for 20 seconds und unlocks it at the end
+    code: |
+      var company = sys.data.findOne('companies', {name:'Blogpad'});
+      company = sys.data.lock(company);
+      try {
+        // write some code here to update the company
+        // if from the app you try to update the record it will be blocked
+        // until the lock is released
+        log('do something');
+        sys.utils.script.wait(20000);
+      } finally {
+        sys.data.unlock(company);
+      }
+- name: unlockById
+  summary: Releases lock for a record by its ID
+  description: |
+    Releases a lock that was previously acquired.
+
+    If the lock was acquired several times, it needs to be released several times as well.
+  parameters:
+    - name: entityName
+      required: yes
+    - name: recordId
+      required: yes
+      type: string
+      description: The ID of the record to unlock.
+  throws:
+    - code: badRequest
+      description: If `recordId` is not valid.
+    - code: notFound
+      description: If record with ID `recordId` is not found in the database.
+  samples:
+  - title: locks a record for 20 seconds und unlocks it at the end
+    code: |
+      var company = sys.data.lockById('companies', '57fd2d65e4b0ce322b0c8565');
+      log('company ['+company.label()+'] is locked');
+      try {
+        // write some code here to update the company
+        // if from the app you try to update the record it will be blocked
+        // until the lock is released
+        log('do something');
+        sys.utils.script.wait(20000);
+      } finally {
+        log('unlocking company ['+company.label()+']');
+        sys.data.unlockById('companies', '57fd2d65e4b0ce322b0c8565');
+      }
+- name: replaceRefs
+  summary: Replaces all references pointing to a record
+  description: |
+    Replaces all references pointing to `from` with `to`. For example, you have a two companies and under each company
+    you have contacts and orders. You want to merge those two companies so all relationship fields pointing to `company1`
+    should be changed to `company2`:
+
+    ```
+    sys.data.replaceRefs(company1, company2);
+    ```
+
+    **Important!** This change will be applied to all records in all entities and there is not way to roll it back.
+  parameters:
+    - name: from
+      type: sys.data.Record
+      required: yes
+      description: The record you want to replace its references.
+    - name: to
+      type: sys.data.Record
+      required: no
+      type: sys.data.Record
+      description: The record you want to reference instead of `from`. This can be `null` and reference will be removed.
+  returnType: string
+  returnDescription: |
+    The ID of the background job in charge of replacing references over all records. To check progress (as well
+    as errors) you should check the status of the background job.
+  throws:
+    - code: badRequest
+      description: If `from` or `to` are not valid.
+    - code: notFound
+      description: If `toId` is provided but not record is found with that ID in the database.
+  samples:
+  - title: locks a record for 20 seconds und unlocks it at the end
+    code: |
+      // create 2 companies
+      var company1 = sys.data.createRecord('companies');
+      company1.field('name').val('testA');
+      sys.data.save(company1);
+      var company2 = sys.data.createRecord('companies');
+      company2.field('name').val('testB');
+      sys.data.save(company2);
+
+      // create 2 contacts associated to company1
+      var contact1 = sys.data.createRecord('contacts');
+      contact1.field('company').val(company1);
+      contact1.field('firstName').val('contact1');
+      contact1.field('lastName').val('test');
+      contact1.field('email').val('contact1@test.com');
+      sys.data.save(contact1);
+      var contact2 = sys.data.createRecord('contacts');
+      contact2.field('company').val(company1);
+      contact2.field('firstName').val('contact2');
+      contact2.field('lastName').val('test');
+      contact2.field('email').val('contact2@test.com');
+      sys.data.save(contact2);
+
+      // replace references from company1 to company2
+      var jobId = sys.data.replaceRefs(company1, company2);
+      sys.jobs.waitForJob(jobId, 'FINISHED', 60*1000);
+
+      // check if references were modified
+      contact1 = sys.data.refresh(contact1);
+      contact2 = sys.data.refresh(contact2);
+      log(contact1.field('company').label());
+      log(contact2.field('company').label());
+- name: createQuery
+  summary: Creates a query builder object
+  description: |
+    Initializes and returns a <<<sys.data.Query>>> object. Please check out the documentation for
+    the [Query language]({{site.baseurl}}/app-development-query-language.html).
+  parameters:
+    - name: entityName
+      required: yes
+  returnType: sys.data.Query
+  returnDescription: |
+    The query builder object for the given entity.
+  throws:
+    - code: badRequest
+      description: If `entityName` is not valid.
+  samples:
+  - title: creates a query to find companies with type 'a'
+    code: |
+      var query = sys.data.createQuery('companies');
+      query.field('type').equals('a');
+      log('total A companies: '+sys.data.count(query));
+- name: createAggregateQuery
+  summary: Creates an aggregate query builder object
+  description: |
+    Initializes and returns a <<<sys.data.AggregateQuery>>> object. Please check out the documentation
+    for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+  parameters:
+    - name: entityName
+      required: yes
+  returnType: sys.data.AggregateQuery
+  returnDescription: |
+    The aggregate query builder object for the given entity.
+  throws:
+    - code: badRequest
+      description: If `entityName` is not valid.
+  samples:
+  - title: creates an aggregate query to find the contact with more skills per company
+    code: |
+      var query = sys.data.createAggregateQuery('contacts');
+      query.sort().by('numberOfSkills', 'desc');
+      query.group()
+          .by('company')
+          .accumulate('firstName').first('firstName')
+          .accumulate('lastName').first('lastName')
+          .accumulate('skills').first('numberOfSkills');
+      var resultSet = sys.data.aggregate(query);
+      while (resultSet.hasNext()) {
+        log(JSON.stringify(resultSet.next()));
+      }

@@ -1,0 +1,24 @@
+package: sys.data.AggregatedSkip
+page: app-development-js-api-data.html
+description: |
+  Allows to skip elements in an aggregate query. You should never create an object of
+  this class manually. Instead use <<<sys.data.AggregateQuery.skip()>>> method.
+
+  Please check the documentation on [Skip]({{site.baseurl}}/app-development-aggregate-queries.html#skip) for more
+  information on how to use the skip operator.
+methods:
+- name: step
+  summary: 	Indicates the number of elements to skip
+  description: |
+    Indicates that first `step` number of elements will not be retrieved.
+  parameters:
+  - name: number
+    type: number
+    required: yes
+    description: The positive interger number of records to ommit.
+  returnType: sys.data.AggregatedSkip
+  returnDescription: The skip object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If the number is invalid.
+  samples:

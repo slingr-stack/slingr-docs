@@ -184,9 +184,7 @@ queries:
     entity="companies"
     jsQueryMap="{'notes': 'like(test)'}"
     jsQueryBuilder=".field('notes').like('test')"
-    restApi="notes=like(test)"
-
-    }}
+    restApi="notes=like(test)">}}
 
     There is one important thing to keep in mind. Searches will be done against the plain text version of the field.
     For example if you have a tag with a class name `test`, the query above will not match it because it is not part

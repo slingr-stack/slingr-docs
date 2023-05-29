@@ -1,0 +1,184 @@
+package: sys.jobs.Job
+page: app-development-js-api-jobs.html
+description: |
+  Contains information about the job.
+methods:
+- name: id
+  summary: Returns the ID of the job
+  description: |
+    Returns the ID of the job.
+  parameters:
+  returnType: string
+  returnDescription: The ID of the job
+  throws:
+  samples:
+- name: label
+  summary: Returns the label of the job
+  description: |
+    Returns the label of the job.
+  parameters:
+  returnType: string
+  returnDescription: The label of the job.
+  throws:
+  samples:
+- name: type
+  summary: Returns the type of the job
+  description: |
+    Returns the type of the job. The only type of jobs that you can use in your code are the following ones:
+
+    {{site.data.common.publicJobsDescription}}
+
+    There are more type of jobs but they are system ones and can change or be removed without notice.
+  parameters:
+  returnType: string
+  returnDescription: The type of the job
+  throws:
+  samples:
+- name: status
+  summary: Returns the current status of the job
+  description: |
+    Returns the current status of the job. Possible values are:
+
+    {{site.data.common.jobsStatusesDescription}}.
+  parameters:
+  returnType: string
+  returnDescription: The current status of the job.
+  throws:
+  samples:
+- name: progress
+  summary: Returns the percentage of progress of the job
+  description: |
+    Returns the percentage of progress of the job. Keep in mind that in some jobs it might not very precise.
+  parameters:
+  returnType: number
+  returnDescription: The progress of the job.
+  throws:
+  samples:
+- name: waiting
+  summary: Returns the amount of time since the job was created until execution started
+  description: |
+    Returns the amount of time in milliseconds since the job was created until execution started. If it is still in pending this value will grow.
+  parameters:
+  returnType: number
+  returnDescription: The number of milliseconds that the job has been waiting.
+  throws:
+  samples:
+- name: duration
+  summary: Returns the amount of time the job took to complete its execution since start date
+  description: |
+    Returns the amount of time in milliseconds the job took to complete its execution since start date. If it is still in progress this value will grow.
+  parameters:
+  returnType: number
+  returnDescription: The number of milliseconds that the job has been executing.
+  throws:
+  samples:
+- name: hasErrors
+  summary: Indicates if there have been errors during the execution of the job
+  description: |
+    Indicates if there have been errors during the execution of the job.
+  parameters:
+  returnType: boolean
+  returnDescription: |
+    `true` if there have been errors, `false` otherwise.
+  throws:
+  samples:
+- name: startDate
+  summary: Returns the date where the job started its execution
+  description: |
+    Returns the date where the job started its execution. Keep in mind that a job could be in pending for a long
+    time if there is a heavy load on the app. In that case start date might be `null` and it will be set when the
+    job is actually executed.
+  parameters:
+  returnType: Date
+  returnDescription: The date when the execution of the job started
+  throws:
+  samples:
+- name: endDate
+  summary: Returns the date where the job finished its execution
+  description: |
+    Returns the date where the job finished its execution. It could be because the job finished correctly
+    or because it was stopped.
+  parameters:
+  returnType: Date
+  returnDescription: The date when the execution of the job finished
+  throws:
+  samples:
+- name: runBy
+  summary: Returns the information of the user that triggered the job
+  description: |
+    Returns an <<sys.data.Record>> object with the information of the user that triggered the job.
+  parameters:
+  returnType: object
+  returnDescription: Object with ID and name of the user.
+  throws:
+  samples:
+- name: data
+  summary: Returns the parameters of the job
+  description: |
+    Returns an object that contains the parameters of a job. This depends on the type of job and should only
+    be used in public jobs:
+
+    {{site.data.common.jobsDataDescription || liquify }}
+  parameters:
+  returnType: object
+  returnDescription: The parameters of the job.
+  throws:
+  samples:
+- name: results
+  summary: Returns the results of the job
+  description: |
+    Returns an object that contains the results of executing the job. This depends on the type of job and
+    should only be used in public jobs:
+
+    {{site.data.common.jobsResultsDescription || liquify }}
+  parameters:
+  returnType: object
+  returnDescription: The results of the job.
+  throws:
+  samples:
+- name: logs
+  summary: Returns the logs of the job
+  description: |
+    Returns the logs of the job. It accepts a query as parameter. This method works exactly the same as
+    <<<sys.jobs.logs()>>>, so check its documentation to understand how it works.
+  parameters:
+  returnType: sys.commons.ResultSet
+  returnDescription: A result set with the logs of the job.
+  throws:
+    - code: notFound
+      description: If job is not found in the database.
+  samples:
+- name: logInfo
+  summary: Adds a log to the job with the `INFO` level
+  description: |
+    Adds a log to the job with the `INFO` level.
+  parameters:
+  - name: message
+    type: string
+    required: yes
+    description: The message to log.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If job isn't valid any more or `message` is invalid.
+    - code: notFound
+      description: If job is not found in the database.
+  samples:
+- name: logError
+  summary: Adds a log to the job with the `ERROR` level
+  description: |
+    Adds a log to the job with the `ERROR` level.
+  parameters:
+  - name: message
+    type: string
+    required: yes
+    description: The message to log.
+  returnType: void
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If job isn't valid any more or `message` is invalid.
+    - code: notFound
+      description: If job is not found in the database.
+  samples:

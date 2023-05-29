@@ -1,6 +1,6 @@
 ---
-title: "Metadata management"
-lead: "Brief explanation of Slingr and use cases for it."
+title: "Flow designer overview"
+lead: "This is an introduction to the flow designer tool"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

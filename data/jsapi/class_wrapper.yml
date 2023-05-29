@@ -1,0 +1,143 @@
+package: sys.data.Wrapper
+page: app-development-js-api-data.html
+description: |
+  Every time you need to access or manipulate the value of a field using the Javascript API, you
+  will do it through a wrapper. You will never create a wrapper manually. Instead object of type are created by method
+  like <<<sys.data.Record.field()>>>.
+
+  The wrapper provides some utilities to retrieve the value, change it, and depending on the type it could
+  provide different services. [Please check the documentation for each type here]({{site.baseurl}}/app-development-types-overview.html)
+  to see which utilities are available in the wrapper.
+methods:
+- name: val
+  summary: Returns the value of the field
+  description: |
+    Returns the value of the field. Keep in mind that this value can't be different from the value in the REST API. For
+    example a date time field is a number in the REST API respresenting the milliseconds after EPOCH. However this method
+    will return a Date object. You should check each type's documentation to see what's the default format for it.
+
+    Keep in mind that if the field you are referencing is multivalue, it will return an array of values.
+  parameters:
+  returnType: any|any[]
+  returnDescription: |
+    Returns the value of the field. If it is multi-valued it will return an array. Please check the type's
+    documentation to figure out what's returned.
+  samples:
+  - title: get the value of different fields
+    code: |
+      var company = sys.data.findOne('companies', {name:'Voonyx'});
+
+      var nameWrapper = company.field('name');
+      log('name: '+nameWrapper.val());
+      // you could also use a shorter form
+      log('name: '+company.field('name').val());
+
+      // the wrapper for nested fields has utilities to access inner fields
+      var firstAddressWrapper = company.field('addresses[0]');
+      var stateWrapper = firstAddressWrapper.field('state');
+      log('state: '+stateWrapper.val());
+      // or you could use the shorter form
+      log('state: '+company.field('addresses[0]').field('state').val());
+      // or even shorter
+      log('state: '+company.field('addresses[0].state').val());
+
+      // some fields, like data time, use a different format from the REST API
+      // in this case the value is returned as a Date object
+      var lastUpdateWrapper = company.field('lastUpdate');
+      log('last update: '+lastUpdateWrapper.val());
+      log('last update millis: '+lastUpdateWrapper.val().getTime());
+      // date time also supports formatting the date
+      log('last update yyyy-MM-dd: '+company.field('lastUpdate').format('yyyy-MM-dd'));
+
+      // if the field is multi-valued, you will get an array of values
+      log('addresses: '+JSON.stringify(company.field('addresses').val()));
+
+      // if the field isn't multi-valued, but you the parent is an you don't specify
+      // an index, then the result will be an array as well
+      log('states: '+JSON.stringify(company.field('addresses.state').val()));
+- name: val
+  summary: Sets the value of the field
+  description: |
+    Sets the value of the field. You should check the type's documentation to see which formats are supported. For
+    example a date time field will accept `Date` objects but also milliseconds from EPOCH in order to make things
+    easier.
+
+    If the field is multi-valued you should provide an array with values. In this case you should also check the
+    documentation for <<<sys.data.ManyWrapper>>> which contains some utilities to hanle multi-valued fields.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to set in the field. Type depends on the field.
+  returnType:
+  returnDescription:
+  throws:
+    - code: badRequest
+      description: If `value` is invalid. Validation rules depends on the type.
+  samples:
+  - title: creates a record and changes some of the values
+    code: |
+      var company = sys.data.createRecord('companies');
+      // sets a text field
+      company.field('name').val('test 1');
+      // sets a date field using a Date object
+      company.field('startDate').val(new Date());
+      // you can also set a nested field directly
+      company.field('contactInformation.phoneNumber').val('111-222-3333');
+      company.field('contactInformation.email').val('test@test.com');
+      // you could also set nested fields with a map
+      company.field('contactInformation').val({
+        phoneNumber: '444-555-6666',
+        email: 'john@test.com'
+      });
+      // you can set a multi-valued field by sending an array
+      company.field('addresses').val([
+        {
+          addressLine: '63 test',
+          zipCode: '12233'
+        },
+        {
+          addressLine: '32 street',
+          zipCode: '83672'
+        }
+      ]);
+      // you change a nested field inside a multi-valued field using an index
+      company.field('addresses[0].state').val('NY');
+- name: isEmpty
+  summary: Checks if a field is empty
+  description: |
+    If the field is empty, this method will return `true`. Usually a field is empty when its value is `null`. Some
+    types might define additional rules, like text fields where an empty string is considered as an empty value.
+
+    If the field is multi-valued, it will be empty if it has no values.
+  parameters:
+  returnType: boolean
+  returnDescription: Returns `true` if field is empty, `false` otherwise.
+  throws:
+  samples:
+- name: isNotEmpty
+  summary: Checks if a field is not empty
+  description: |
+    If the field is not empty, this method will return `true`. Usually a field is not empty when its value is valid.
+
+    If the field is multi-valued, it will be not empty if it contains values.
+  parameters:
+  returnType: boolean
+  returnDescription: Returns `true` if field is not empty, `false` otherwise.
+  throws:
+  samples:
+- name: equals
+  summary: Checks if the value of the field is equal to the given value
+  description: |
+    Checks if the value of the field is equal to the given value.
+  parameters:
+  - name: value
+    type: any
+    required: yes
+    description: The value to compare with the value of the field. Type depends on the field.
+  returnType: boolean
+  returnDescription: Returns `true` if values are equal, `false` otherwise.
+  throws:
+    - code: badRequest
+      description: If `value` is invalid. Validation rules depends on the type.
+  samples:

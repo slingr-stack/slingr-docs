@@ -1,0 +1,99 @@
+package: sys.data.RecordHistoryLog
+page: app-development-js-api-data.html
+description: |
+  Contains information about a history log of a record.
+methods:
+- name: id
+  summary: Returns the ID of the history log
+  description: |
+    Returns the ID of the history log
+  parameters:
+  returnType: string
+  returnDescription: The ID of the history log
+  throws:
+  samples:
+- name: timestamp
+  summary: Returns the date in which the history log has been recorded
+  description: |
+    Returns the date in which the history log has been recorded.
+  parameters:
+  returnType: Date
+  returnDescription: The date in which log has been recorded
+  throws:
+  samples:
+- name: eventCategory
+  summary: Returns the event category of the history log
+  description: |
+    Returns the event category of the history log. It could be `USER`, `SCRIPT`, or `SYSTEM`.
+  parameters:
+  returnType: string
+  returnDescription: The event category of the history log.
+  throws:
+  samples:
+- name: eventType
+  summary: Returns the event type of the history log
+  description: |
+    Returns the event type of the history log. It could be `USER_RECORD_CREATED`, `USER_RECORD_CHANGED`,
+    `USER_RECORD_DELETED`, `USER_ACTION_PERFORMED`, `SCRIPT_RECORD_CREATED`, `SCRIPT_RECORD_CHANGED`,
+    `SCRIPT_RECORD_DELETED`, `SCRIPT_ACTION_PERFORMED`, `SYSTEM_CASCADE_UPDATE`, `SYSTEM_REFACTORING`
+  parameters:
+  returnType: string
+  returnDescription: The event type of the history log.
+  throws:
+  samples:
+- name: user
+  summary: Returns the email of the user that generated the history log
+  description: |
+    Returns the email of the user that generated the history log.
+  parameters:
+  returnType: string
+  returnDescription: The email of the user that generated the history log.
+  throws:
+  samples:
+- name: ip
+  summary: Returns the IP of the user when the history log was generated
+  description: |
+    Returns the IP of the user when the history log was generated.
+  parameters:
+  returnType: string
+  returnDescription: The IP of the user when the history log was generated.
+  throws:
+  samples:
+- name: oldRecord
+  summary: Returns the old values of the fields that were modified.
+  description: |
+    Returns the old values of the fields that were modified. On each field it will contain the JSON format
+    as well as a more human-redable format. Here is a sample:
+
+    ```js
+    {
+      "type": {
+        "json": "a",
+        "text": "{type:a}"
+      }
+    }
+    ```
+  parameters:
+  returnType: object
+  returnDescription: The old values of the fields that were modified.
+  throws:
+  samples:
+- name: newRecord
+  summary: Returns the new values of the fields that were modified.
+  description: |
+    Returns the new values of the fields that were modified. On each field it will contain the JSON format
+    as well as a more human-redable format. Here is a sample:
+
+    ```js
+    {
+      "type": {
+        "json": "a",
+        "text": "{type:a}"
+      }
+    }
+    ```
+  parameters:
+  returnType: object
+  returnDescription: The new values of the fields that were modified.
+  throws:
+  samples:

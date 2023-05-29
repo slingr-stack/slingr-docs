@@ -1,0 +1,200 @@
+package: sys.context
+page: app-development-js-api-context.html
+description: |
+  This package contains methods to get information about execution context of the script, like the current user
+  or the stack of calls that have been made.
+methods:
+- name: getCurrentUserRecord
+  summary: Returns a <<<sys.data.Record>> object corresponding to the extended user fields record associated with the current user
+  description: |
+    Returns a <<<sys.data.Record>>> object that contains the extended user fields for the user in the current
+    context of execution. If there is no user set in the current context of execution, this method will return `null`.
+  parameters:
+  returnType: sys.data.Record
+  returnDescription: The user in the current context of execution or `null` if it is not set.
+  throws:
+    - code: badRequest
+      description: If extended user fields are not configured.
+  samples:
+  - title: prints the extended user information for the current user
+    code: |
+      var record = sys.context.getCurrentUserRecord();
+      log('current user extra info: ' + JSON.stringify(sys.utils.text.recordToString(record)));
+- name: getCurrentIp
+  summary: Retrieves the IP of the current request
+  description: |
+    Retrieves the IP of the current request. If the script is running on a context without a request associated, then
+    it will return `null`.
+  parameters:
+  returnType: string
+  returnDescription: |
+    Returns the IP of the current request.
+  throws:
+  samples:
+    - title: logs the current request IP
+      code: |
+        var ip = sys.context.getCurrentIp();
+        log('IP: '+ip);
+- name: setCurrentUserRecord
+  summary: Sets the current user in the context of execution using a <<<sys.data.Record>>> object
+  description: |
+    Sets the current user in the context of execution using a <<<sys.data.Record>>> object.
+
+    Keep in mind that if you don't restore the current user in the context of execution it will be restored
+    automatically after the script snippet is executed.
+  parameters:
+  - name: user
+    type: sys.data.Record
+    required: yes
+    description: |
+      The user to set as the current one in the context of execution.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: sets the current user and then logs the email of the current user
+    code: |
+      var test1 = sys.data.findOne('sys.users', {email: 'test1.docs@slingr.io'});
+      sys.context.setCurrentUserRecord(test1);
+      var currentUser = sys.context.getCurrentUserRecord();
+      log('current user: '+currentUser.field('email').val());
+- name: setCurrentUserRecordById
+  summary: Sets the current user in the context of execution using an user ID
+  description: |
+    Sets the current user in the context of execution using an user ID.
+
+    Keep in mind that if you don't restore the current user in the context of execution it will be restored
+    automatically after the script snippet is executed.
+  parameters:
+  - name: userId
+    type: string
+    required: yes
+    description: |
+      The ID of the user to set as the current one in the context of execution.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: sets the current user and then logs the email of the current user
+    code: |
+      var test1 = sys.data.findOne('sys.users', {email: 'test1.docs@slingr.io'});
+      sys.context.setCurrentUserRecordById(test1.id());
+      var currentUser = sys.context.getCurrentUserRecord();
+      log('current user: '+currentUser.field('email').val());
+- name: setCurrentUserRecordByEmail
+  summary: Sets the current user in the context of execution using a user email
+  description: |
+    Sets the current user in the context of execution using a user email.
+
+    Keep in mind that if you don't restore the current user in the context of execution it will be restored
+    automatically after the script snippet is executed.
+  parameters:
+  - name: userEmail
+    type: string
+    required: yes
+    description: |
+      The email of the user to set as the current one in the context of execution.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: sets the current user and then logs the email of the current user
+    code: |
+      sys.context.setCurrentUserRecordByEmail('test1.docs@slingr.io');
+      var currentUser = sys.context.getCurrentUserRecord();
+      log('current user: '+currentUser.field('email').val());
+- name: root
+  summary: Returns an object that provides utilities to check what's the root context
+  description: |
+    Returns an object that provides utilities to check what's the root context. To understand how context
+    work, please read [Context]({{site.baseurl}}/app-development-scripting.html#context).
+
+    The root context is the one at the top of the stack of calls. For example, if you execute an action from
+    the REST API, where the action has an script that creates a record, during the creation of the record the
+    current context would be the creation of the record, but the root one is the execution of the action as
+    that's the operation that started the request.
+
+    This method is used like this:
+
+    ```js
+    if (sys.context.root().entity('companies').create().check()) {
+       // we are in the context of the creation of a record in the 'companies' entity
+       ...
+    } else {
+       ...
+    }
+    ```
+
+    So basically you will always start with `sys.context.root()`, then it will be followed by a chain
+    of methods that define the context, and at the end you have a call to `check()` which is going to
+    evaluate if the context is the root one.
+
+    Here are the available methods to check contexts:
+
+    ```js
+    sys.context.root().entity('entityName').create().check()
+    sys.context.root().entity('entityName').update().check()
+    sys.context.root().entity('entityName').delete().check()
+    sys.context.root().entity('entityName').import().check()
+    sys.context.root().entity('entityName').action('actionName').check()
+    sys.context.root().listener('listenerName').check()
+    sys.context.root().users().create().check()
+    sys.context.root().users().update().check()
+    sys.context.root().users().delete().check()
+    sys.context.root().users().import().check()
+    ```
+
+    Some context allow to add more information to be more precise on which context this is executing:
+
+    ```js
+    sys.context.root().entity('entityName').create().check()
+    sys.context.root().entity('entityName').update().with({recordId: id}).check()
+    sys.context.root().entity('entityName').delete().with({recordId: id}).check()
+    sys.context.root().entity('entityName').import().with({fileName: 'file.csv'}).check()
+    sys.context.root().entity('entityName').action('actionName').with({recordId: id}).check()
+    sys.context.root().users().create().with({email: 'email@test.com'}).check()
+    sys.context.root().users().update().with({email: 'email@test.com'}).check()
+    sys.context.root().users().update().with({id: '56cf0945ee42cf00064c105e'}).check()
+    sys.context.root().users().delete().with({email: 'email@test.com'}).check()
+    sys.context.root().users().delete().with({id: '56cf0945ee42cf00064c105e'}).check()
+    sys.context.root().users().import().with({fileName: 'file.csv'}).check()
+    ```
+  parameters:
+  returnType: object
+  returnDescription: An object that can be used to define the context to check; see description.
+  throws:
+  samples:
+  - title: checks that the script isn't running in the context of an import
+    code: |
+      if (!sys.context.root().entity('companies').import().check()) {
+        // do something here
+      }
+- name: any
+  summary: Returns an object that provides utilities to check the context along the stack calls
+  description: |
+    Returns an object that provides utilities to check the context along the stack calls. To understand how context
+    work, please read [Context]({{site.baseurl}}/app-development-scripting.html#context).
+
+    This is exactly the same as <<sys.context.root()>> but instead of just checking the root context, the method
+    `check()` will evaluate to `true` if any of the contexts in the call stack matches. For example, if you
+    execute an action from the REST API, where the action has an script that creates a record, during the creation
+    of the record the current context would be the creation of the record. If you check the context using `any()`
+    instead of `root()`, checking the context for the action and for the creation of the record will return `true`:
+
+    ```js
+    sys.context.any().entity('companies').action('createAnotherRecord').check(); // returns true
+    sys.context.any().entity('companies').create().check(); // returns true
+    ```
+
+    Please refer to the documentation of <<sys.context.root()>> for more information about how to define a context
+    and check it.
+  parameters:
+  returnType: object
+  returnDescription: An object that can be used to define the context to check; see description.
+  throws:
+  samples:
+  - title: checks we are in the context of the creation of a record, no matter if it is the root or not
+    code: |
+      if (sys.context.().entity('companies').create().check()) {
+        // do something here
+      }

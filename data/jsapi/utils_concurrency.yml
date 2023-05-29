@@ -1,0 +1,131 @@
+package: sys.utils.concurrency
+page: app-development-js-api-concurrency.html
+description: |
+  This package contains methods to help manage cases with concurrency issues.
+methods:
+- name: tryLock
+  summary: Tries to acquire a lock for a specified key
+  description: |
+    Tries to acquire a lock for a specified key.
+
+    This method could be used when multiple threads need some sort of synchronization.
+
+    **Important** Developers have to make sure to release locks. We recommend to always use
+    try/finally clauses to perform that. The platform will release locks automatically after the script
+    is fully executed, but it is better to do it explicitly.
+  parameters:
+  - name: key
+    type: string
+    required: yes
+    description: Key to be locked.
+  - name: timeout
+    type: number
+    required: yes
+    description: Maximum time in seconds to wait for the lock.
+  returnType: boolean
+  returnDescription: |
+    `true` if the lock was acquired, `false` otherwise.
+  throws:
+  samples:
+  - title: locks the key 'lock1'
+    code: |
+      if (sys.utils.concurrency.tryLock('lock1')) {
+        try {
+          sys.logs.info('lock acquired!');
+        } finally {
+          sys.utils.concurrency.unlock('lock1');
+        }
+      }
+- name: lock
+  summary: Acquires a lock for a specified key
+  description: |
+    Acquires a lock for a specified key.
+
+    This method could be used when multiple threads need some sort of synchronization.
+
+    **Important** Developers have to make sure to release locks. We recommend to always use
+    try/finally clauses to perform that. The platform will release locks automatically after the script
+    is fully executed, but it is better to do it explicitly.
+  parameters:
+  - name: key
+    type: string
+    required: yes
+    description: Key to be locked.
+  - name: timeoutOrSuccessCallback
+    type: object
+    required: no
+    description: |
+      Maximum time in seconds to wait for the lock or callback executed after the lock is acquired
+      successfully. If this parameter is a function then the lock is released automatically.
+  - name: successCallback
+    type: function
+    required: no
+    description: |
+      Maximum time in seconds to wait for the lock or callback to beexecuted after the lock is acquired
+      successfully. If this parameter is used then the lock is released automatically.
+  returnType: void
+  returnDescription:
+  throws:
+  - code: timeout
+    description: If lock could not have been acquired.
+  samples:
+  - title: locks the key 'lock1'
+    code: |
+      try {
+        sys.utils.concurrency.lock('lock1');
+        sys.logs.info('lock acquired!');
+        //do something
+        sys.utils.concurrency.unlock('lock1');
+      } catch (e) {
+        sys.logs.error('lock NOT acquired!')
+      }
+  - title: locks the key 'lock1' using a callback
+    code: |
+      sys.utils.concurrency.lock('lock1', function () {
+          sys.logs.info('lock acquired!');
+      });
+      // lock will be released automatically
+- name: unlock
+  summary: Releases a lock for a specified key
+  description: |
+    Releases a lock for a specified key.
+  parameters:
+  - name: key
+    type: string
+    required: yes
+    description: Key to be released.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: acquires and release the lock over key 'lock1'
+    code: |
+      if (sys.utils.concurrency.lock('lock1')) {
+        try {
+          log('lock acquired!');
+        } finally {
+          sys.utils.concurrency.unlock('lock1');
+        }
+      }
+- name: forceUnlock
+  summary: Force to releases a lock for a specified key, no matter the owner of the lock.
+  description: |
+    Releases a lock for a specified key. This is useful for mantenaince purposes.
+  parameters:
+    - name: key
+      type: string
+      required: yes
+      description: Key to be released.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+    - title: acquires and force to release the lock over key 'lock1'
+      code: |
+        if (sys.utils.concurrency.lock('lock1')) {
+          try {
+            log('lock acquired!');
+          } finally {
+            sys.utils.concurrency.forceUnlock('lock1');
+          }
+        }

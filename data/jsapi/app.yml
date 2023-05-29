@@ -1,0 +1,88 @@
+package: sys.app
+page: app-development-js-api-app.html
+description: |
+  This package contains methods to get information about the app, like name, URL, current environment, etc.
+methods:
+- name: getLabel
+  summary: Returns the label of app in execution
+  description: Returns the label of app in execution.
+  parameters:
+  returnType: string
+  returnDescription: The label of the app.
+  throws:
+  samples:
+  - title: logs the label of the app
+    code: |
+      log('app: '+sys.app.getLabel());
+- name: getName
+  summary: Returns the name of app in execution
+  description: Returns the name of app in execution.
+  parameters:
+  returnType: string
+  returnDescription: The name of the app.
+  throws:
+  samples:
+  - title: logs the name of the app
+    code: |
+      log('app: '+sys.app.getName());
+- name: getEnv
+  summary: Returns the name of the environment in execution.
+  description: |
+    Returns the name of the environment in execution. It could be `prod` or `dev`.
+  parameters:
+  returnType: string
+  returnDescription: The name of the environment in execution.
+  throws:
+  samples:
+  - title: logs the name of the environment
+    code: |
+      log('env: '+sys.app.getEnv());
+- name: getUrl
+  summary: Returns the URL of app in execution
+  description: |
+    Returns the URL of app in execution. It could be something like `https://yourapp.slingrs.io/dev/runtime` or
+    `https://yourapp.slingrs.io/prod/runtime`.
+  parameters:
+  returnType: string
+  returnDescription: The URL of the app.
+  throws:
+  samples:
+  - title: logs the URL of the app
+    code: |
+      log('app url: '+sys.app.getUrl());
+- name: getVersion
+  summary: Returns the version of app in execution
+  description: |
+    Returns the version of app in execution. It is a timestamp.
+  parameters:
+  returnType: number
+  returnDescription: The version of the app.
+  throws:
+  samples:
+  - title: logs the version of the app
+    code: |
+      log('app url: '+sys.app.getVersion());
+- name: getDefaultLanguage
+  summary: Returns the default language used in the app.
+  description: |
+    Return the language code of the default language used in the app.
+  parameters:
+  returnType: string
+  returnDescription: Language code used in the app
+  throws:
+  samples:
+    - title: logs the default language of the app
+      code: |
+        log('app language: ' + sys.app.getDefaultLanguage());
+- name: getDefaultTimezone
+  summary: Returns the default timezone used in the app.
+  description: |
+    Return the id and label of the default timezone used in the app.
+  parameters:
+  returnType: object
+  returnDescription: ID and label of the default timezone used in the app.
+  throws:
+  samples:
+    - title: logs the default timezone of the app
+      code: |
+        log('app timezone: ' + JSON.stringify(sys.app.getDefaultTimezone()));

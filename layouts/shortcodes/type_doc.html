@@ -95,15 +95,15 @@ No type rules.
 
 
 <h2>Display Options</h2>
-{{ if eq (len $typeData.displayOptions) 0 }}
+{{ if not $typeData.displayOptions }}
 No display options.
 {{ else }}
 {{ range $typeData.displayOptions }}
 <h3>{{ .name | safeHTML }}</h3>
-
 {{ .description | markdownify }}
 {{ end }}
 {{ end }}
+
 
 <h2>REST API - Read format</h2>
 {{ $typeData.restApi.readFormat | markdownify }}

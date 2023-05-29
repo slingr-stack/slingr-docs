@@ -1,0 +1,75 @@
+package: sys.files.FileReader
+page: app-development-js-api-files.html
+description: |
+  Allows to read a text file line by line. The file must be stored in the app.
+methods:
+- name: descriptor
+  summary: Returns the metadata information of the opened file
+  description: |
+    Returns the metadata information of the opened file.
+  parameters:
+  returnType: sys.files.FileDescriptor
+  returnDescription: The file descriptor of the opened file.
+  throws:
+  samples:
+  - title: opens a file and logs the name of the file from the descriptor
+    code: |
+      var record = sys.data.findOne('files', {code: 'test'});
+      var fileId = record.field('file').id();
+      var fileReader = sys.files.open(record.field('file').id(), 'text/plain');
+      try {
+        var descriptor = fileReader.descriptor();
+        log('file name: '+descriptor.name());
+      } finally {
+        fileReader.close();
+      }
+- name: readLine
+  summary: Reads the next line of the the opened file
+  description: |
+    Reads the next line of the the opened file. If there isn't any more data, it returns `null`.
+  parameters:
+  returnType: string
+  returnDescription: Line of text or `null` if no more data.
+  throws:
+    - code: unknown
+      description: |
+        If there are problems reading the file.
+  samples:
+  - title: reads a text file and prints the content
+    code: |
+      var record = sys.data.findOne('files', {code: 'test'});
+      var fileId = record.field('file').id();
+      var fileReader = sys.files.open(fileId, 'text/plain');
+      try {
+          var line;
+          while (line = fileReader.readLine()) {
+              log(line);
+          }
+      } finally {
+          fileReader.close();
+      }
+- name: close
+  summary: Closes this file stream and releases any system resources associated with the stream
+  description: |
+    Closes this file stream and releases any system resources associated with the stream.
+  parameters:
+  returnType:
+  returnDescription:
+  throws:
+    - code: unknown
+      description: |
+        If there are errors closing the file.
+  samples:
+  - title: close the file after reading it
+    code: |
+      var record = sys.data.findOne('files', {code: 'test'});
+      var fileId = record.field('file').id();
+      var fileReader = sys.files.open(fileId, 'text/plain');
+      try {
+          var line;
+          while (line = fileReader.readLine()) {
+              log(line);
+          }
+      } finally {
+          fileReader.close();
+      }

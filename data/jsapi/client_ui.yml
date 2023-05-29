@@ -1,0 +1,91 @@
+package: sys.ui
+page: app-development-ui-custom-views.html
+description:
+methods:
+- name: goToView
+  summary: Allows to navigate to an app specific view
+  description: Allows to navigate to an app specific view.
+  parameters:
+  - name: viewIdOrName
+    type: string
+    required: yes
+    description: |
+      The view ID or name to navigate to.
+  - name: params
+    type: object
+    required: no
+    description: |
+      Some views might accept additional parameters. For example, grid and workflow views accept a `recordId`
+      parameter to go to the read only view of a record.
+  returnType:
+  returnDescription:
+  throws:
+  samples:
+  - title: goes to a grid view
+    code: |
+      sys.ui.goToView('companies');
+  - title: goes to the read only view of a record in a grid view
+    code: |
+      sys.ui.goToView('companies', {recordId: '5506fc43c2eee3b1a7026948'});
+- name: executeAction
+  summary: Allows  to execute a certain action from a custom view
+  description: Allows  to execute a certain action from a custom view
+  parameters:
+    - name: entityNameOrId
+      type: string
+      required: yes
+      description: |
+        The name or ID of the entity.
+    - name: actionNameOrId
+      type: string
+      required: yes
+      description: |
+        The name or ID of the action to execute.
+    - name: recordIds
+      type: object[]
+      required: no
+      description: |
+        The ids of the registers on which the action will be executed. It can be an string with id or arrya of strings.
+    - name: successCallback
+      type: function
+      required: yes
+      description: |
+        It runs after a successful execution of the action. Sends the result of the action as a parameter.
+    - name: errorCallback
+      type: function
+      required: yes
+      description: |
+        It runs when the action fails.
+    - name: canceledCallback
+      type: function
+      required: yes
+      description: |
+        It runs when the action is canceled.
+  returnType:
+  returnDescription:
+  throws:
+  samples:
+    - title: execute an action for employees
+      code: |
+        sys.ui.executeAction('employees', 'timeTrack', "xxxxx",
+            function(result) {
+               console.info("> success", result);
+            },
+            function(result) {
+               console.info("> error", result);
+            },
+            function(result) {
+               console.info("> canceled", result);
+            });
+    - title: execute a global action
+      code: |
+        sys.ui.executeAction('sampleEntity', 'globalAction', null,
+          function(result) {
+             console.info("> success", result);
+          },
+          function(result) {
+             console.info("> error", result);
+          },
+          function(result) {
+             console.info("> canceled", result);
+          });

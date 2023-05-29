@@ -1,0 +1,54 @@
+package: sys.utils.script
+page: app-development-js-api-utils.html
+description: |
+  This package contains misc methods useful when scripting.
+methods:
+- name: wait
+  summary: Waits blocking the execution of the script
+  description: |
+    Waits blocking the execution of the script.
+  parameters:
+  - name: timeToWait
+    type: number
+    required: yes
+    description: |
+      The number of milliseconds to wait.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: waits for 2 seconds
+    code: |
+      sys.utils.script.wait(2000);
+      // continue execution
+- name: eval
+  summary: Custom implementation of classic `eval`
+  description: |
+    Evaluates JavaScript code represented as a string as classic eval but storing code to be displayed in case of errors.
+  parameters:
+  - name: scriptToEval
+    type: string
+    required: yes
+    description: |
+      Script to be evaluated.
+  - name: context
+    type: object
+    required: no
+    description: |
+      Object that will be used as `this` reference during evaluation, it has an alias called `context` to be accessed from script. It is required when using indirect calls.
+  returnType: object
+  returnDescription: result of `eval`
+  throws:
+  samples:
+  - title: log message through eval
+    code: |
+      var code = 'sys.logs.debug("My custom message")';
+      sys.utils.script.eval(code);  - title: log message through eval
+  - title: indirect call trying to use a callback
+    code: |
+      var message = 'My custom message';
+      var code = '\nvar callback = function(msg) {';
+      code += '\n\tsys.utils.script.eval("sys.logs.debug(\'"+msg+"\')");';
+      code += '\n}';
+      code += '\ncallback(context.msg)';//note that `context` usage is required to work with indirect callback
+      sys.utils.script.eval(code, {msg: message}); //here the second parameter is the context that will be used as `this` object in `eval`

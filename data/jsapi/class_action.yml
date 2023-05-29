@@ -1,0 +1,38 @@
+package: sys.data.Action
+page: app-development-js-api-data.html
+description: |
+  When an action is executed, an object of this class will be available in the context of the scripts of the action
+  with the name `action`. This allow access to fields in the action in a similar way to what you would do with
+  record fields.
+methods:
+- name: name
+  summary: Returns the name of the action being executed
+  description: |
+    Returns the name of the action being executed.
+  parameters:
+  returnType: string
+  returnDescription: Name of the action being executed.
+  throws:
+  samples:
+  - title: print name of the action; only works inside scripts of an action
+    code: |
+      sys.logs.info('action being executed: '+action.name());
+- name: field
+  summary: Returns the value of the action field at the given path
+  description: |
+    Returns the action field at the given path. It works exactly the same as <<<sys.data.Record.field()>>>
+    but it works over the fields defined on the action.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field. It could be a nested or multi-valued field.
+  returnType: sys.data.Wrapper|sys.data.ManyWrapper
+  returnDescription: A field object that you can use to read and manipulate the value.
+  throws:
+    - code: badRequest
+      description: If `path` is invalid.
+  samples:
+  - title: logs the value of field 'param1'; only works inside a script of an action that has a 'param1' field
+    code: |
+      sys.logs.info('param1: '+action.field('param1').val());

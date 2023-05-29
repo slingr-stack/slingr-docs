@@ -1,0 +1,24 @@
+package: sys.data.AggregatedMatch
+page: app-development-js-api-data.html
+description: |
+  Allows to filter elements by a query in an aggregate query. You should never create an object of
+  this class manually. Instead use <<<sys.data.AggregateQuery.match()>>> method.
+
+  Please check the documentation on [Match]({{site.baseurl}}/app-development-aggregate-queries.html#match) for more
+  information on how to use the match operator.
+methods:
+- name: field
+  summary: 	Indicates that the given field should be included in the result
+  description: |
+    Indicates that the given field should be included in the result.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field to apply a filter to.
+  returnType: sys.data.QueryField
+  returnDescription: The match object so you can apply filters on that field.
+  throws:
+  - code: badRequest
+    description: If the path is invalid.
+  samples:

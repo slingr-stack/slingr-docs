@@ -1,0 +1,155 @@
+package: sys.storage
+page: app-development-js-api-storage.html
+description: |
+  This package contains methods to work with the storage. The storage is a temporary key-value data structure
+  you can use to save information for things that span multiple user requests or threads.
+
+  It is a temporary data structure because when the app is restarted information could be lost, so you shouldn't
+  rely on data being available between restarts or upgrades of the app.
+methods:
+- name: get
+  summary: Returns the value stored at the given key
+  description: |
+    Returns the value stored at the given key.
+  parameters:
+  - name: key
+    type: string
+    required: yes
+    description: The key of the value to retrieve.
+  returnType: any
+  returnDescription: The value at the given key or `null` if there isn't any value.
+  throws:
+  samples:
+  - title: puts something in the storage and retrives it
+    code: |
+      sys.storage.put('key1', 'a');
+      log('key1: '+sys.storage.get('key1'));
+- name: put
+  summary: Stores an object or primitive value in the storage at the given key
+  description: |
+    Stores an object or primitive value in the storage.
+  parameters:
+  - name: key
+    type: string
+    required: yes
+    description: The key used to store the value.
+  - name: value
+    type: any
+    required: yes
+    description: The value to store. It could be a primitive or an object.
+  - name: options
+    type: object
+    required: no
+    description: |
+      Additional options for setting the value. So far the only option is `ttl` to indicate the time to live for
+      that key.
+  returnType: any
+  returnDescription: The previous value associated with the given key or `null` if there wasn't a value associated to it.
+  throws:
+  samples:
+  - title: puts a string and an object in the storage
+    code: |
+      sys.storage.put('key1', 'a');
+      log('key1: '+sys.storage.get('key1'));
+      var obj = {prop1: 'a', prop2: 'b'};
+      sys.storage.put('key2', obj);
+      log('key2: '+JSON.stringify(sys.storage.get('key2')));
+  - title: puts a key that will live for 1 hours
+    code: |
+      sys.storage.put('key1', 'a', {ttl: 60 * 60 * 1000});
+- name: putIfAbsent
+  summary: Stores an object or primitive value in the storage at the given key if it hasn't been set already
+  description: |
+    Stores an object or primitive value in the storage at the given key if it hasn't been set already.
+  parameters:
+  - name: key
+    type: string
+    required: yes
+    description: The key used to store the value.
+  - name: value
+    type: any
+    required: yes
+    description: The value to store. It could be a primitive or an object.
+  - name: options
+    type: object
+    required: no
+    description: |
+      Additional options for setting the value. So far the only option is `ttl` to indicate the time to live for
+      that key.
+  returnType: boolean
+  returnDescription: |
+    `true` if the value was effectively set or `false` otherwise.
+  throws:
+  samples:
+  - title: puts a value twice over the same key, but second time it shouldn't be stored
+    code: |
+      sys.storage.put('key1', 'a');
+      sys.storage.putIfAbsent('key1', 'b');
+      log('key1: '+sys.storage.get('key1'));
+- name: replace
+  summary: Replaces the value at the given key
+  description: |
+    Replaces the value at the given key. If no value was set at that key, the new value won't be stored.
+  parameters:
+  - name: key
+    type: string
+    required: yes
+    description: The key used to store the value.
+  - name: value
+    type: any
+    required: yes
+    description: The value to store. It could be a primitive or an object.
+  - name: options
+    type: object
+    required: no
+    description: |
+      Additional options for setting the value. So far the only option is `ttl` to indicate the time to live for
+      that key.
+  returnType: boolean
+  returnDescription: |
+    `true` if the value was effectively set or `false` otherwise.
+  throws:
+  samples:
+  - title: tries to replace the value in two different keys
+    code: |
+      sys.storage.put('key1', 'a');
+      sys.storage.replace('key1', 'b');
+      sys.storage.replace('keyThatDoesNotExist', 'c');
+      log('key1: '+sys.storage.get('key1'));
+      log('keyThatDoesNotExist: '+sys.storage.get('keyThatDoesNotExist'));
+- name: remove
+  summary: Removes the value at the given key
+  description: |
+    Removes the value at the given key.
+  parameters:
+  - name: key
+    type: string
+    required: yes
+    description: The key of the value to remove.
+  returnType: any
+  returnDescription: The value at the given key or `null` if there isn't any value.
+  throws:
+  samples:
+  - title: puts and remove a value
+    code: |
+      sys.storage.put('key1', 'a');
+      log('key1: '+sys.storage.get('key1'));
+      sys.storage.remove('key1');
+      log('key1: '+sys.storage.get('key1'));
+- name: clear
+  summary: Removes all values in the storage
+  description: |
+    Removes all values in the storage.
+  returnType: void
+  returnDescription:
+  throws:
+  samples:
+  - title: puts and remove a value
+    code: |
+      sys.storage.put('key1', 'a');
+      sys.storage.put('key2', 'b');
+      log('key1: '+sys.storage.get('key1'));
+      log('key2: '+sys.storage.get('key2'));
+      sys.storage.clear();
+      log('key1: '+sys.storage.get('key1'));
+      log('key2: '+sys.storage.get('key2'));

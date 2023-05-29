@@ -1,0 +1,151 @@
+package: sys.utils.time
+page: app-development-js-api-utils.html
+description: |
+  This package contains methods to work with time.
+methods:
+- name: getTimeZoneOffset
+  summary: Obtains the offset in milliseconds between given time zone and standard time zone (GMT)
+  description: |
+    Obtains the offset in milliseconds between given time zone and standard time zone (GMT).  If daylight saving time
+    is in effect at the specified time zone, the offset value is adjusted with the amount of daylight saving.
+  parameters:
+  - name: timeZoneId
+    type: string
+    required: yes
+    description: |
+      The ID for a time zone. Valid time zone codes are:
+
+      - US/Hawaii
+      - US/Alaska
+      - US/Pacific
+      - US/Mountain
+      - US/Central
+      - US/Eastern
+      - Canada/Atlantic
+      - America/Buenos_Aires
+      - [See more available Timezones here](http://joda-time.sourceforge.net/timezones.html)
+  - name: timestamp
+    type: object
+    required: no
+    description: |
+      The point in time the time zone offset should be calculated. If it is not specified then the current date time
+      is going to be used.
+  returnType: number
+  returnDescription: The timezone offset in milliseconds.
+  throws:
+  samples:
+  - title: Logs the specific time zone in hours
+    code: |
+      var offset = sys.utils.time.getTimeZoneOffset('America/Buenos_Aires');
+      log('offset in hours: '+offset/1000/60/60);
+- name: setTimeZone
+  summary: Apply the offset difference for a date
+  description: |
+    Apply the offset between given time zone and standard time zone (GMT) to the passed date.
+  parameters:
+  - name: date
+    type: object
+    required: yes
+    description: |
+      The date to apply the given offset
+  - name: timeZoneId
+    type: string
+    required: yes
+    description: |
+      The ID for a time zone. Valid time zone codes are:
+
+      - US/Hawaii
+      - US/Alaska
+      - US/Pacific
+      - US/Mountain
+      - US/Central
+      - US/Eastern
+      - Canada/Atlantic
+      - America/Buenos_Aires
+      - [See more available Timezones here](http://joda-time.sourceforge.net/timezones.html)
+  returnType: object
+  returnDescription: The date with the time zone applied.
+  throws:
+  samples:
+  - title: Apply the specified time zone to the given date
+    code: |
+      var dateWithOffset = sys.utils.time.setTimeZone(new Date(), 'America/Buenos_Aires');
+      log('date modified: ' + dateWithOffset);
+- name: format
+  summary: Returns a formatted date using the given pattern and a specific time zone as string
+  description: |
+    Apply the pattern and the time zone to a date and return it as string.
+  parameters:
+  - name: date
+    type: object
+    required: yes
+    description: |
+      The date to apply the given pattern and offset
+  - name: pattern
+    type: string
+    required: yes
+    description: |
+      The pattern to format the date
+  - name: timezone
+    type: object
+    required: no
+    description: |
+      Timezone configuration object or the string code for a time zone. If it is not specified the default app timezone is going to be used.
+
+      Valid time zone codes are:
+      - US/Hawaii
+      - US/Alaska
+      - US/Pacific
+      - US/Mountain
+      - US/Central
+      - US/Eastern
+      - Canada/Atlantic
+      - America/Buenos_Aires
+      - [See more available Timezones here](http://joda-time.sourceforge.net/timezones.html)
+  returnType: string
+  returnDescription: The date with the time zone applied.
+  throws:
+  samples:
+  - title: Apply the specified format and time zone to the given date
+    code: |
+      var formattedDate = sys.utils.time.format(new Date(), 'yyyy-MM-dd HH:mm Z', 'America/Buenos_Aires');
+      log('date formatted is: ' + formattedDate);
+- name: parse
+  summary: Parse a date string using the given pattern and time zone
+  description: |
+    Parse a date string using pattern and time zone and return it as date object.
+  parameters:
+    - name: date
+      type: string
+      required: yes
+      description: |
+        The date string to parse using the given pattern and timezone
+    - name: pattern
+      type: string
+      required: yes
+      description: |
+        The pattern to parse the date string
+    - name: timezone
+      type: object
+      required: no
+      description: |
+        Timezone configuration object or the string code for a time zone. If it is not specified the default app timezone is going to be used.
+
+        Valid time zone codes are:
+        - US/Hawaii
+        - US/Alaska
+        - US/Pacific
+        - US/Mountain
+        - US/Central
+        - US/Eastern
+        - Canada/Atlantic
+        - America/Buenos_Aires
+        - [See more available Timezones here](http://joda-time.sourceforge.net/timezones.html)
+  returnType: object
+  returnDescription: The final parsed date object with the time zone applied.
+  throws:
+  samples:
+    - title: Parse given date using a specific pattern and timezone
+      code: |
+        var parsedDate = sys.utils.time.parse('2020-07-17 13:30', 'yyyy-MM-dd HH:mm', 'America/Buenos_Aires');
+        log('date is: ' + parsedDate);

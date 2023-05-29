@@ -1,0 +1,50 @@
+package: sys.data.AggregatedGroup
+page: app-development-js-api-data.html
+description: |
+  Allows to define a group operation in an aggregate query. You should never create an object of
+  this class manually. Instead use <<<sys.data.AggregateQuery.group()>>> method.
+
+  Please check the documentation on [Group]({{site.baseurl}}/app-development-aggregate-queries.html#group) for more
+  information on how to use the group operator.
+methods:
+- name: by
+  summary: 	Indicates which fields will be used to group by
+  description: |
+    Indicates which fields will be used to group by.
+  parameters:
+  - name: paths
+    type: string...
+    required: yes
+    description: The path of the fields used for grouping.
+  returnType: sys.data.AggregatedGroup
+  returnDescription: The group object so you can chain more operations.
+  throws:
+  - code: badRequest
+    description: If any of the paths is invalid.
+  samples:
+- name: accumulate
+  summary: 	Allows to apply operations like sum or average in the group for a given field
+  description: |
+    Allows to apply an operation for the values in the group for a given field. For example, sum all values in the
+    group or calculate the average.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field to apply the operation to
+  returnType: sys.data.AggregateAccumulator
+  returnDescription: The accumulator object to configure the operation to perform.
+  throws:
+  - code: badRequest
+    description: If the paths is invalid.
+  samples:
+  - title:
+    code: |
+      var query = sys.data.createAggregateQuery('contacts');
+      query.group()
+          .by('company')
+          .accumulate('totalSkills').sum('numberOfSkills');
+      var resultSet = sys.data.aggregate(query);
+      while (resultSet.hasNext()) {
+        log(JSON.stringify(resultSet.next()));
+      }

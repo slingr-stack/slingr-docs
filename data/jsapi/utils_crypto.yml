@@ -1,0 +1,69 @@
+package: sys.utils.crypto
+page: app-development-js-api-utils.html
+description: |
+  This package contains methods to work with simple cryptographic operations.
+methods:
+- name: sha1
+  summary: Converts a string to a SHA-1 hash
+  description: |
+    Calculates the SHA-1 digest and returns the value as a hex string.
+  parameters:
+  - name: message
+    type: string
+    required: yes
+    description: |
+      The string to be converted
+  returnType: string
+  returnDescription: The result hash as String.
+  throws:
+  samples:
+  - title: converts a company to the string representation
+    code: |
+      var convertedMessage = sys.utils.crypto.sha1('my custom message');
+      log('SHA-1 string: '+convertedMessage);
+- name: sha3
+  summary: Converts a string to a SHA-3 hash
+  description: |
+    Calculates the SHA-3 digest and returns the value as a hex string.
+  parameters:
+  - name: message
+    type: string
+    required: yes
+    description: |
+      The string to be converted
+  - name: bits
+    type: number
+    required: no
+    description: |
+      Valid number of bits for conversion (default 256)
+  returnType: string
+  returnDescription: The result hash as String.
+  throws:
+  samples:
+  - title: converts a company to the string representation
+    code: |
+      var convertedMessage = sys.utils.crypto.sha3('my custom message');
+      log('SHA-3 string: '+convertedMessage);
+- name: keccak
+  summary: Converts a string to a KECCAK hash
+  description: |
+    Calculates the KECCAK digest and returns the value as a hex string.
+  parameters:
+  - name: message
+    type: string
+    required: yes
+    description: |
+      The string to be converted
+  - name: bits
+    type: number
+    required: no
+    description: |
+      Valid number of bits for conversion (default 256)
+  returnType: string
+  returnDescription: The result hash as String.
+  throws:
+  samples:
+  - title: converts a company to the string representation
+    code: |
+      var convertedMessage = sys.utils.crypto.keccak('my custom message');
+      log('Keccak string: '+convertedMessage);

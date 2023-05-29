@@ -1,0 +1,18 @@
+package: sys.data.ComplexQueryCriteria
+page: app-development-js-api-data.html
+description: |
+  This object is returned by the method in <<<sys.data.ComplexQueryHelper>>>. You shouldn't
+  use this object directly.
+
+  Please check [Complex queries]({{site.baseurl}}/app-development-query-language.html#complex-queries) for more
+  information.
+methods:
+- name: toString
+  summary: Returns the string version of the complex query
+  description: |
+    Returns the string version of the complex query.
+  parameters:
+  returnType: string
+  returnDescription: The string version of the complex query
+  throws:
+  samples:

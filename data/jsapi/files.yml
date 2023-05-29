@@ -1,0 +1,161 @@
+package: sys.files
+page: app-development-js-api-files.html
+description: |
+  This package contains methods to read and write text files.
+methods:
+- name: open
+  summary: Opens a file as stream
+  description: |
+    Opens a file as stream. In the case that the type of the file to be read is `text/csv` a proper CSV handler
+    will be returned.
+  parameters:
+  - name: fileId
+    type: string
+    required: yes
+    description: ID of the file to be read.
+  - name: fileType
+    type: string
+    required: yes
+    description: |
+      Text based content type of the file. Some valid types are:
+
+      - `text/plain`
+      - `text/csv`
+      - `text/richtext`
+      - `text/html`
+  - name: options
+    type: string
+    required: yes
+    description: |
+      Configuration options to open the file.
+
+      For `text/csv` the following options are available:
+
+      - `separator`: the delimiter to use for separating entries.
+      - `quoteChar`: the character to use for quoted elements.
+      - `hasHeaders`: if the file to be opened contains headers.
+  returnType: sys.files.FileReader|sys.files.CsvFileReader
+  returnDescription: The reader to read the file.
+  throws:
+    - code: badRequest
+      description: If any of the parameter is invalid.
+    - code: notFound
+      description: If no file found with the given ID.
+    - code: unknown
+      description: If there are problems opening the file.
+  samples:
+  - title: reads a text file and prints the content
+    code: |
+      var record = sys.data.findOne('files', {code: 'test'});
+      var fileId = record.field('file').id();
+      var fileReader = sys.files.open(fileId, 'text/plain');
+      try {
+          var line;
+          while (line = fileReader.readLine()) {
+              log(line);
+          }
+      } finally {
+          fileReader.close();
+      }
+- name: create
+  summary: Opens a new file stream to write in it
+  description: |
+    Opens a new file stream to write in it. In the case that the type of the file to be written is `text/csv`
+    a proper CSV handler will be returned
+  parameters:
+  - name: fileName
+    type: string
+    required: yes
+    description: The name of the file to be created.
+  - name: fileType
+    type: string
+    required: yes
+    description: |
+      Text based content type of the file. Some valid types are:
+
+      - `text/plain`
+      - `text/csv`
+      - `text/richtext`
+      - `text/html`
+  returnType: sys.files.FileWriter|sys.files.CsvFileWriter
+  returnDescription: The writer to write in the file.
+  throws:
+    - code: badRequest
+      description: If `fileName` or `fileType` are invalid.
+    - code: unknown
+      description: If there are problems creating the file.
+  samples:
+  - title: write a text file
+    code: |
+      var fileWriter = sys.files.create('test1.txt', 'text/plain');
+      try {
+          fileWriter.writeLine('test file!');
+      } finally {
+          fileWriter.close();
+      }
+      // now assocaite the file to a record
+      var record = sys.data.findOne('files', {code: 'temporary-file'});
+      if (!record) {
+        record = sys.data.createRecord('files');
+        record.field('code').val('temporary-file');
+      }
+      record.field('file').val({
+        id: fileWriter.descriptor().id(),
+        name: fileWriter.descriptor().name()
+      });
+      sys.data.save(record);
+      log('file record saved!');
+  - title: write a CSV file
+    code: |
+      var fileWriter = sys.files.create('test2.csv', 'text/csv');
+      try {
+          fileWriter.writeHeaders(['name', 'email']);
+          fileWriter.writeRow(['john', 'john@test.com']);
+          fileWriter.writeRow(['adam', 'adam@test.com']);
+      } finally {
+          fileWriter.close();
+      }
+      // now assocaite the file to a record
+      var record = sys.data.findOne('files', {code: 'temporary-csv-file'});
+      if (!record) {
+        record = sys.data.createRecord('files');
+        record.field('code').val('temporary-csv-file');
+      }
+      record.field('file').val({
+        id: fileWriter.descriptor().id(),
+        name: fileWriter.descriptor().name()
+      });
+      sys.data.save(record);
+      log('file record saved!');
+- name: share
+  summary: Shares a file by returning a public URL for it
+  description: |
+    Shares a file by returning a public URL for it. This link is valid for an hour.
+  parameters:
+  - name: fileId
+    type: string
+    required: yes
+    description: ID of the file to share.
+  - name: ttl
+    type: number
+    default: 3600000 (1 hour)
+    required: no
+    description: Time in milliseconds to expire.
+  returnType: string
+  returnDescription: The public URL for the file which is valid for the `ttl` set or an hour.
+  throws:
+    - code: badRequest
+      description: If `fileId` is invalid or `ttl` is not a number.
+    - code: notFound
+      description: If no file found with the given ID.
+  samples:
+  - title: prints a public URL for a file
+    code: |
+      var record = sys.data.findOne('files', {code: 'test'});
+      var publicUrl = sys.files.share(record.field('file').id());
+      log(publicUrl);
+  - title: prints a public URL for a file with expiration equals to a minute
+    code: |
+      var record = sys.data.findOne('files', {code: 'test'});
+      var publicUrl = sys.files.share(record.field('file').id(), 60000);
+      log(publicUrl);

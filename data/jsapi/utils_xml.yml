@@ -1,0 +1,42 @@
+package: sys.utils.xml
+page: app-development-js-api-utils.html
+description: |
+  This package contains methods to manipulate xml format.
+methods:
+- name: xmlToJson
+  summary: Converts a XML text into a JSON representation object
+  description: |
+    Allows to convert a XML text into a JSON object.
+  parameters:
+    - name: xml
+      type: string
+      required: yes
+      description: The xml text to be converted
+  returnType: object
+  returnDescription: the JSON representation of the given XML
+  throws:
+  samples:
+    - title: convert an XML text into a JSON object
+      code: |
+        var xml = '<note><to>Tove</to><from>Jani</from></note>';
+        var json = sys.utils.xml.xmlToJson(xml);
+        log('Json: ' + JSON.stringify(json));
+        // this will print {"note":{"to":"Tove","from":"Jani"}}
+- name: jsonToXml
+  summary: Converts a JSON object into a XML text
+  description: |
+    Allows to convert a JSON object into a XML string.
+  parameters:
+    - name: json
+      type: object
+      required: yes
+      description: The JSON object to be parsed
+  returnType: string
+  returnDescription: A XML text
+  throws:
+  samples:
+    - title: convert a JSON object into a XML text
+      code: |
+        var json = {"note":{"to":"Tove","from":"Jani"}};
+        var xml = sys.utils.xml.jsonToXml(json);
+        log('XML: ' + xml);

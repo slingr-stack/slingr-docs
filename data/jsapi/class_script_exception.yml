@@ -1,0 +1,58 @@
+package: sys.exceptions.ScriptException
+page: app-development-js-api-exceptions.html
+description: |
+  When there is an error in the platform or known errors in the scripts (like validation scripts), objects of this
+  type will be thrown, containing an error code and a message.
+methods:
+- name: code
+  summary: Returns the error code
+  description: |
+    Returns the error code. Valid error codes are:
+
+    - validationErrors
+    - badRequest
+    - forbidden
+    - optimisticLocking
+    - timeout
+    - systemException
+    - unknownError
+  parameters:
+  returnType: string
+  returnDescription: The error code
+  samples:
+  - title: logs the code of a platform exception
+    code: |
+      try {
+        var query = sys.data.createQuery('entityThatDoesNotExist');
+      } catch (e) {
+        log('error code: '+e.code());
+      }
+- name: message
+  summary: Returns the error message
+  description: |
+    Returns the error message.
+  parameters:
+  returnType: string
+  returnDescription: The error message
+  samples:
+  - title: logs the message of a platform exception
+    code: |
+      try {
+        var query = sys.data.createQuery('entityThatDoesNotExist');
+      } catch (e) {
+        log('error message: '+e.message());
+      }
+- name: throw
+  summary: Throws an exception using this object
+  description: |
+    Throws an exception using the method <<sys.exceptions.throwException()>>, where `code` and
+    `message` are the values in this object.
+  parameters:
+  returnType: void
+  samples:
+  - title: creates an exception and throw it
+    code: |
+      if (record.field('state').val() != 'new') {
+        var exception = new sys.exceptions.ScriptException('invalidState', 'Task must be in state new');
+        exception.throw();
+      }

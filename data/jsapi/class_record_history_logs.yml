@@ -1,0 +1,74 @@
+package: sys.data.RecordHistoryLogs
+page: app-development-js-api-data.html
+description: |
+  Allows to query the history logs of a record. Keep in mind that the feature to log history must be
+  enabled on the entity the record belongs to.
+methods:
+- name: find
+  summary: Finds history logs based on a query
+  description: |
+    Finds history logs based on a query.
+  parameters:
+  - name: options
+    type: object
+    required: no
+    description: |
+      This is the query to fetch history logs. Parameters are:
+
+      - `eventType`: the type of the event. Possible values are: `USER_RECORD_CREATED`, `USER_RECORD_CHANGED`,
+        `USER_RECORD_DELETED`, `USER_ACTION_PERFORMED`, `SCRIPT_RECORD_CREATED`, `SCRIPT_RECORD_CHANGED`,
+        `SCRIPT_RECORD_DELETED`, `SCRIPT_ACTION_PERFORMED`, `SYSTEM_CASCADE_UPDATE`, `SYSTEM_REFACTORING`.
+        You can specify many types separating them by commas.
+      - `from`: the minimum timestamp in milliseconds from Epoch.
+      - `to`: the maximum timestamp in milliseconds from Epoch.
+      - `size`: the maximum number of logs to retrieve. Default 20.
+      - `offset`: the offset to fetch more logs when paginating.
+  returnType: sys.data.RecordHistoryLog[]
+  returnDescription: The list of history logs.
+  throws:
+  - code: badRequest
+    description: If the query is not valid.
+  samples:
+  - title: finds changes performed by users and logs the user that did it
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      var historyLogs = company.history().find({
+        eventType: 'USER_RECORD_CHANGED'
+      });
+      for (var i = 0; i < historyLogs.length; i++) {
+        var historyLog = historyLogs[i];
+        log('changed by user: '+historyLog.user());
+      }
+- name: createLog
+  summary: Returns the create log of the record
+  description: |
+    Returns the create log of the record. It could be `null` if history log was not enabled when the record
+    was created.
+  parameters:
+  returnType: sys.data.RecordHistoryLog
+  returnDescription: The create history log or `null` if not found.
+  samples:
+  - title: prints who created the record
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      var createLog = company.history().createLog();
+      if (createLog) {
+        log('creator: '+createLog.user());
+      }
+- name: lastModifiedLog
+  summary: Returns the last modified log of the record
+  description: |
+    Returns the last modified log of the record. It could be `null` if history log was not enabled when the record
+    was modified for the last time or if it hasn't been modified at all. The type of event should be `USER_RECORD_CHANGE`
+    so if the record was modified by a script or by a system process it won't be returned.
+  parameters:
+  returnType: sys.data.RecordHistoryLog
+  returnDescription: The last modified history log or `null` if not found.
+  samples:
+  - title: prints who modified the record for the last time
+    code: |
+      var company = sys.data.findOne('companies', {name: 'Blogpad'});
+      var modifiedLog = company.history().lastModifiedLog();
+      if (modifiedLog) {
+        log('user last modified: '+modifiedLog.user());
+      }

@@ -1,0 +1,97 @@
+package: sys.files.CsvFileReader
+page: app-development-js-api-files.html
+description: |
+  Allows to read a CSV file row by row. An object of this type will be returned by the <<<sys.files.open()>>>
+  method when the type is `text/csv`.
+
+  It inherits all methods from <<<sys.files.FileReader>>>.
+methods:
+- name: readHeaders
+  summary: Returns the headers of the CSV file
+  description: |
+    Returns the headers of the CSV file.
+
+    You don't need to call this method before reading rows. It will be done automatically when the CSV
+    file is opened. This method just returns the headers that were read at that time.
+  parameters:
+  returnType: string[]
+  returnDescription: An array with the headers of the CSV file
+  throws:
+  samples:
+  - title: reads a text file and prints the content
+    code: |
+      var record = sys.data.findOne('files', {code: 'test-companies'});
+      var fileReader = sys.files.open(record.field('file').id(), 'text/csv');
+      try {
+        var headers = fileReader.readHeaders();
+        log('headers: '+JSON.stringify(headers));
+      } finally {
+        fileReader.close();
+      }
+- name: readRow
+  summary: Returns the values of the next row in an array
+  description: |
+    Returns the values of the next row in an array.
+  parameters:
+  returnType: string[]
+  returnDescription: An array with the values of the row.
+  throws:
+  samples:
+  - title: reads a text file and prints the content
+    code: |
+      var record = sys.data.findOne('files', {code: 'test-companies'});
+      var fileReader = sys.files.open(record.field('file').id(), 'text/csv');
+      var count = 1, row;
+      try {
+        var headers = fileReader.readHeaders();
+        log('headers: '+JSON.stringify(headers));
+        while (row = fileReader.readRow()) {
+          log('row '+count+': '+JSON.stringify(row));
+        }
+      } finally {
+        fileReader.close();
+      }
+- name: readRowMap
+  summary: Returns the values of the next row in a map using the headers as the key
+  description: |
+    Returns the values of the next row in a map using the headers as the key.
+  parameters:
+  returnType: object
+  returnDescription: A map with the values of the row using the headers as keys
+  throws:
+  samples:
+  - title: reads a text file and prints the content
+    code: |
+      var record = sys.data.findOne('files', {code: 'test-companies'});
+      var fileReader = sys.files.open(record.field('file').id(), 'text/csv');
+      var count = 1, row;
+      try {
+        while (row = fileReader.readRowMap()) {
+          log('row '+count+': '+JSON.stringify(row));
+        }
+      } finally {
+        fileReader.close();
+      }
+- name: readRowStr
+  summary: Returns the values of the next row as a string
+  description: |
+    Returns the values of the next row as a string.
+  parameters:
+  returnType: string
+  returnDescription: A string with the row values.
+  throws:
+  samples:
+  - title: reads a text file and prints the content
+    code: |
+      var record = sys.data.findOne('files', {code: 'test-companies'});
+      var fileReader = sys.files.open(record.field('file').id(), 'text/csv');
+      var count = 1, row;
+      try {
+        var headers = fileReader.readHeaders();
+        log('headers: '+JSON.stringify(headers));
+        while (row = fileReader.readRowStr()) {
+          log('row '+count+': '+row);
+        }
+      } finally {
+        fileReader.close();
+      }

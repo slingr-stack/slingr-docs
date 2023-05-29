@@ -1,0 +1,82 @@
+package: sys.commons.ResultSet
+page: app-development-js-api-commons.html
+description: |
+  An iterator over API service call results. ResultSet object maintains a cursor pointing to its current object.
+  Initially the cursor is positioned before the first object. The <<sys.commons.ResultSet.next()>>
+  method moves the cursor to the next available object.
+
+  The cursor moves forward only.
+methods:
+- name: hasNext
+  summary: Checks if there are more ojects.
+  description: |
+    Checks if there are more objects.
+  parameters:
+  returnType: boolean
+  returnDescription: "`true` if there are more objects, `false` otherwise."
+  throws:
+  samples:
+  - title: prints the name of 10 companies
+    code: |
+      var query = sys.data.createQuery('companies').size(10);
+      var resultSet = sys.data.find(query);
+      while (resultSet.hasNext()) {
+        var company = resultSet.next();
+        log(company.label());
+      }
+- name: next
+  summary: Returns one object and moves the cursor forward
+  description: |
+    Returns one object and moves the cursor forward.
+  parameters:
+  returnType: object
+  returnDescription: Usually it is a <<<sys.data.Record>>>.
+  throws:
+    - code: badRequest
+      description: If there are no more objects.
+  samples:
+  - title: prints the name of 10 companies
+    code: |
+      var query = sys.data.createQuery('companies').size(10);
+      var resultSet = sys.data.find(query);
+      while (resultSet.hasNext()) {
+        var company = resultSet.next();
+        log(company.label());
+      }
+- name: count
+  summary: Counts the number of objects matching the query.
+  description: |
+    Counts the number of objects matching the query. This does not take limit (`_size` param) into consideration.
+  parameters:
+  returnType: number
+  returnDescription: The number of objects matching que query.
+  throws:
+  samples:
+  - title: counts number of companies of type 'a'
+    code: |
+      var query = sys.data.createQuery('companies').field('type').equals('a');
+      var resultSet = sys.data.find(query);
+      log('count: '+resultSet.count());
+- name: toArray
+  summary: Iterates over all objects and returns them as an array
+  description: |
+    Iterates over all objects and returns them as an array. If there are more than 1,000 objects, the method will
+    throw an exception to avoid a memory overload.
+  parameters:
+  returnType: object[]
+  returnDescription: |
+    Returns an array with all objects. These are usually objects of type <<<sys.data.Record>>>, but it depends
+    one what you are iterating.
+  throws:
+    - code: systemException
+      description: |
+        If there are more than 1,000 objects in the result set.
+  samples:
+  - title: prints the name of 10 companies
+    code: |
+      var query = sys.data.createQuery('companies').size(10);
+      var resultSet = sys.data.find(query);
+      var companies = resultSet.toArray();
+      companies.forEach(function(company) {
+        log(company.label());
+      });

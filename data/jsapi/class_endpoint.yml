@@ -1,0 +1,59 @@
+package: sys.endpoints.Endpoint
+page: app-development-js-api-endpoints.html
+description: |
+  Contains information about an endpoint.
+methods:
+- name: id
+  summary: Returns the ID of the endpoint
+  description: |
+    Returns the ID of the endpoint.
+  parameters:
+  returnType: string
+  returnDescription: The ID of the endpoint
+  throws:
+  samples:
+- name: label
+  summary: Returns the label of the endpoint
+  description: |
+    Returns the label of the endpoint.
+  parameters:
+  returnType: string
+  returnDescription: The label of the endpoint.
+  throws:
+  samples:
+- name: name
+  summary: Returns the name of the endpoint
+  description: |
+    Returns the name of the endpoint.
+  parameters:
+  returnType: string
+  returnDescription: The name of the endpoint.
+  throws:
+  samples:
+- name: type
+  summary: Returns the type of the endpoint
+  description: |
+    Returns the type of the endpoint
+  parameters:
+  returnType: string
+  returnDescription: The type of the endpoint
+  throws:
+  samples:
+- name: status
+  summary: Returns the current status of the endpoint
+  description: |
+    Returns the current status of the endpoint. Possible values are `DEPLOYED`, `UNDEPLOYED`, `DEPLOYING`, `UNDEPLOYING`, `UNKNOWN`.
+  parameters:
+  returnType: string
+  returnDescription: The current status of the endpoint.
+  throws:
+  samples:
+- name: version
+  summary: Returns the current version of the endpoint
+  description: |
+    Returns the current version of the running endpoint.
+  parameters:
+  returnType: string
+  returnDescription: The current version of the endpoint.
+  throws:
+  samples:

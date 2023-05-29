@@ -1,0 +1,115 @@
+package: sys.data.ComplexQueryHelper
+page: app-development-js-api-data.html
+description: |
+  This object is passed as a parameter to the function passed in the method <<<sys.data.Query.query()>>>
+  and helps to build a complex query with AND and OR operators.
+
+  Please check [Complex queries]({{site.baseurl}}/app-development-query-language.html#complex-queries) for more
+  information.
+methods:
+- name: field
+  summary: Returns an <<<sys.data.QueryField>>> object for the given field
+  description: |
+    Returns an <<<sys.data.QueryField>>> object for the given field. With this object
+    you can add filters to the field.
+
+    Please check [Filter by field]({{site.baseurl}}/app-development-query-language.html#filters-by-field) for more information
+    on how it works.
+  parameters:
+  - name: path
+    type: string
+    required: yes
+    description: The path of the field. It could be a nested or multi-valued field.
+  returnType: sys.data.QueryField
+  returnDescription: A query field object for the given path.
+  throws:
+    - code: badRequest
+      description: If `path` is invalid.
+  samples:
+  - title: print the name of 10 companies of type 'a'
+    code: |
+      var query = sys.data.createQuery('companies')
+          .query(function(q) {
+            // 'q' is an object of type sys.data.QueryComplexHelper
+            return q.and(
+              q.field('type').equals('a')
+            );
+          })
+          .size(10);
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: and
+  summary: Returns a <<<sys.data.ComplexQueryCriteria>>> object to do an AND with the given parameters
+  description: |
+    Returns a <<<sys.data.ComplexQueryCriteria>>> object to do an AND with the given parameters.
+
+    Please check [Complex queries]({{site.baseurl}}/app-development-query-language.html#complex-queries) for more
+    information.
+  parameters:
+  - name: conditions
+    type: sys.data.QueryField|sys.data.ComplexQueryCriteria
+    required: yes
+    description: Any number of query fields or other complex query criteria (like an OR) that will be evaluated using the AND operator.
+  returnType: sys.data.ComplexQueryCriteria
+  returnDescription: A complex query criteria object with an AND between all parameters.
+  throws:
+    - code: badRequest
+      description: If parameters sent to the AND operator are invalid.
+  samples:
+  - title: print the companies where tyep is 'a' or where type is 'b' and are customers
+    code: |
+      var query = sys.data.createQuery('companies')
+          .query(function(q) {
+            // 'q' is an object of type sys.data.QueryComplexHelper
+            return q.or(
+              q.field('type').equals('a'),
+              q.and(
+                q.field('type').equals('b'),
+                q.field('isCustomer').equals(true)
+              )
+            );
+          });
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }
+- name: or
+  summary: Returns a <<<sys.data.ComplexQueryCriteria>>> object to do an OR with the given parameters
+  description: |
+    Returns a <<<sys.data.ComplexQueryCriteria>>> object to do an OR with the given parameters.
+
+    Please check [Complex queries]({{site.baseurl}}/app-development-query-language.html#complex-queries) for more
+    information.
+  parameters:
+  - name: conditions
+    type: sys.data.QueryField|sys.data.ComplexQueryCriteria
+    required: yes
+    description: Any number of query fields or other complex query criteria (like an AND) that will be evaluated using the OR operator.
+  returnType: sys.data.ComplexQueryCriteria
+  returnDescription: A complex query criteria object with an OR between all parameters.
+  throws:
+    - code: badRequest
+      description: If parameters sent to the OR operator are invalid.
+  samples:
+  - title: print the companies where tyep is 'a' or where type is 'b' and are customers
+    code: |
+      var query = sys.data.createQuery('companies')
+          .query(function(q) {
+            // 'q' is an object of type sys.data.QueryComplexHelper
+            return q.or(
+              q.field('type').equals('a'),
+              q.and(
+                q.field('type').equals('b'),
+                q.field('isCustomer').equals(true)
+              )
+            );
+          });
+      var records = sys.data.find(query);
+      log('total: '+records.count());
+      while (records.hasNext()) {
+        log(records.next().label());
+      }

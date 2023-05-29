@@ -1,0 +1,174 @@
+package: sys.utils.text
+page: app-development-js-api-utils.html
+description: |
+  This package contains methods to manipulate text.
+methods:
+- name: findTokens
+  summary: Finds all tokens in a string (can be multi-line string)
+  description: |
+    Finds all tokens in a string (can be multi-line string). Tokens are started with `#` and have the following format:
+
+    ```
+    #name:value
+    #name:value1,value2,value3
+    #name
+    ```
+
+    This way you could have a text like this:
+
+    ```
+    #project:test
+    #assignee:user1
+    #important
+
+    There is a bug with user profile popup!
+    ```
+
+    This way you can use this method to easily extract the tokens `project`, `assignee`, and `important`.
+
+    This method is very useful to parse commands in plain text messages, for example, emails or instant messages.
+  parameters:
+  - name: text
+    type: string
+    required: yes
+    description: Text to parse to find tokens.
+  returnType: object
+  returnDescription: |
+    A key-value structure where the key is the token name. Value could be an array if there is more than one value.
+
+    For example, given the following text:
+
+    ```
+    #project:test1
+    #assignee:admin
+    #watchers:user1,user2
+    #important
+
+    This is an important issue! Please fix.
+
+    Also related to #project:test2
+    ```
+
+    Tokens will be:
+
+    ```js
+    {
+      project: ['test1', 'test2'],
+      assignee: 'admin',
+      watchers: ['user1', 'user2'],
+      important: true
+    }
+    ```
+
+    Notice that when you don't specify a value for the token, it will be set to `true`.
+  throws:
+  samples:
+  - title: finds tokens in a string
+    code: |
+      var str = "this is a ticker #project:test1 #type:bug #hotfix";
+      var tokens = sys.utils.text.findTokens(str);
+      log('tokens: '+JSON.stringify(tokens));
+- name: processTemplate
+  summary: Allows to process a Freemarker template
+  description: |
+    Allows to process a Freemarker template. [You can find more information about Freemarker here](http://freemarker.org/).
+  parameters:
+  - name: template
+    type: string
+    required: yes
+    description: The Freemarker template
+  - name: options
+    type: object
+    required: no
+    description: |
+      Options to process the template. These are the available options:
+
+      - `unescapeHtml`: in case you want to unescapte the resulting string after the template has been processed.
+      - `model`: these are the objects you want to merge in your template.
+  returnType: string
+  returnDescription: The processed template
+  throws:
+  samples:
+  - title: process a template for an email for a contact
+    code: |
+      var record = sys.data.findOne('contacts', {email: 'gowensb1@google.ca'});
+      var recordStr = record.toJson({relationshipsToFetch: 'company', user: 'gowensb1@google.ca '});
+      var template = "Hi ${contact.firstName} ${contact.lastName}:\n\n We want to say hi!\n\nThanks!";
+      var emailContent = sys.utils.text.processTemplate(template, {
+        model: {
+          contact: recordStr
+        }
+      });
+      log('email content: '+emailContent);
+- name: htmlToText
+  summary: Converts an html text into a plain text
+  description: |
+    Allows to convert an html text into a plain text by removing html tags.
+  parameters:
+    - name: html
+      type: string
+      required: yes
+      description: The html text to be parsed
+  returnType: string
+  returnDescription: A plain text with html tags removed
+  throws:
+  samples:
+    - title: convert an html text into a plain text
+      code: |
+        var html = "<strong>This is sparta</strong>";
+        var text = sys.utils.text.htmlToText(html);
+        log('Text: ' + text);
+- name: textToHtml
+  summary: Converts a plain text into an html text
+  description: |
+    Allows to convert a plain text into an html text.
+  parameters:
+    - name: text
+      type: string
+      required: yes
+      description: The text to be parsed
+  returnType: string
+  returnDescription: An html text with plain text tokens removed
+  throws:
+  samples:
+    - title: convert a plain text into an html text
+      code: |
+        var text = "This is sparta\n";
+        var html = sys.utils.text.textToHtml(text);
+        log('HTML: ' + html);
+- name: markdownToHtml
+  summary: Converts a markdown text into an html text
+  description: |
+    Allows to convert a markdown text into an html text by transforming markdown tokens into html tags.
+  parameters:
+    - name: markdownText
+      type: string
+      required: yes
+      description: The markdown text to be parsed
+  returnType: string
+  returnDescription: An html text with markdown tokens transformed into html tags
+  throws:
+  samples:
+    - title: convert a markdown text into an html text
+      code: |
+        var markdown = "**This is sparta**";
+        var html = sys.utils.text.markdownToHtml(markdown);
+        log('HTML: ' + html);
+- name: htmlToMarkdown
+  summary: Converts an html text into a markdown text
+  description: |
+    Allows to converts an html text into a markdown text by transforming html tags into markdown tokens.
+  parameters:
+    - name: html
+      type: string
+      required: yes
+      description: The html text to be parsed
+  returnType: string
+  returnDescription: A markdown text with html tags transformed into html tags.
+  throws:
+  samples:
+    - title: convert an html text into a markdown text
+      code: |
+        var html = "<strong>This is sparta</strong><br/>";
+        var markdown = sys.utils.text.htmlToMarkdown(html);
+        log('Markdown text: ' + markdown);

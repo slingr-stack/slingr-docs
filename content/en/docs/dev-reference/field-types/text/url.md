@@ -10,3 +10,5 @@ menu:
     parent: "field-types"
 toc: true
 ---
+
+{{< type_doc type="url" >}}
