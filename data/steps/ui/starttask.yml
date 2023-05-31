@@ -1,0 +1,22 @@
+name: Start task
+category: UI
+description: Displays the specified task in the top right.
+inputs: 
+- label: Task ID
+  description: The ID of the task to be displayed on the tasks menu in the top-right.
+  type: text
+  required: yes
+- label: Title
+  description: The message to be displayed on the tasks menu in the top-right.
+  type: text
+  required: yes
+- label: Message
+  description: The compliment message to be sent as subtitle on tasks menu in the top-right.
+  type: text
+  required: no
+samples:
+- img: /images/vendor/flows/starttask_sample.png
+  alt: Start task Sample
+  description: The flow starts, the start task step displays the specified task in the top right. In case of an error while displaying the task, the error will be logged and the execution will finish.
+  
+  

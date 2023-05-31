@@ -1,0 +1,46 @@
+name: Execute action on data
+category: Data
+description: Executes an action over the records returned by a query.
+inputs:
+  - label: Entity
+    description: The entity that the action belongs to.
+    type: entity
+    required: yes
+  - label: Action
+    description: The action to be executed.
+    type: entityAction
+    required: yes
+  - label: Query
+    description: Filter to match the records to execute the action.
+    type: query
+    required: yes
+    visibility:
+    - field: config.entity
+      operator: 
+      value:
+  - label: Data
+    description: Specific data to be sent to the action.
+    type: dataBody
+    required: false
+  - label: Wait task to finish
+    description: Flag to set if the action should wait for the job to finish.
+    type: boolean
+    required: false
+    default: false
+outputs:
+  - name: taskId
+    type: text
+    description: The task ID in charge of the execution of the action.
+samples:
+  - img: /images/vendor/flows/execute_action_on_data.png
+    alt: Execute action on data image.
+    description: The flow starts, the execute action on data step executes actions over records founded and then the execution finishes with the end step. In case of an error while executing the action, the error will be logged and the execution will finish.
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)
+  - name: taskId
+    type: text

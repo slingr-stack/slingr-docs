@@ -10,3 +10,5 @@ menu:
     parent: "steps"
 toc: true
 ---
+
+{{< steps context="data/delete_record" >}}

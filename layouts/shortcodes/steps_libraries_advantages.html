@@ -1,0 +1,20 @@
+{{- $context := .Get "context" -}}
+{{- $filePath := printf "data/steps/%s.yml" $context -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $myobject := $yamlContent | unmarshal -}}
+
+{{ if $myobject.description }}
+<h3>Description</h3>
+<p>{{ $myobject.description }}</p>
+{{ end }} 
+
+{{- if $myobject.rules -}}
+    <ul>
+        {{- range $index, $rule := $myobject.rules -}}
+            <li>
+                <h3>{{ $rule.title }}</h3>
+                <p>{{ $rule.description }}</p>
+            </li>
+        {{- end -}}
+    </ul>
+{{- end -}}

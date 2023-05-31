@@ -1,0 +1,17 @@
+name: List iterator
+category: Control
+description: List iterator is a control flow statement for traversing items in a collection (result sets or fields many).
+             This step allows other steps to be dropped in. The behavior of this step will encapsulate the behavior of the nested steps.
+inputs: 
+- label: Iterable list
+  description: The list of elements to be traversed.
+  type: resultSet / field(many)
+  required: yes
+outputs:
+- name: nextElementName
+  type: record / field
+  description: The name of the next element in the list.
+samples:
+- img: /images/vendor/flows/foreach_sample.png
+  alt: Foreach Sample
+  description: The flow starts, the foreach step updates and saves each of the records found in the find data step and then the execution finished with the end step.

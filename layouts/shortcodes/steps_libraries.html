@@ -1,0 +1,32 @@
+{{ $context := .Get "context" }}
+{{ $filePath := printf "data/steps/%s.yml" $context }}
+{{ $yamlContent := readFile $filePath }}
+{{ $myobject := $yamlContent | unmarshal }}
+
+{{ if $myobject.description }}
+<h3>Description</h3>
+<p>{{ $myobject.description }}</p>
+{{ end }} 
+
+{{ if $myobject.category }}
+<h3>Category</h3>
+<code class="highlighter-rouge">{{ $myobject.category }}</code>
+{{ end }}
+
+{{ if $myobject.libraries_category }}
+<h3>Category Samples</h3>
+<ul>
+    {{ range $libraries_category := $myobject.libraries_category }}
+    <li>{{ $libraries_category.sample }}</li>
+    {{ end }}
+</ul>
+{{ end }}
+
+{{ if $myobject.category_samples }}
+<div class="sample-step">
+    {{ range $sample := $myobject.category_samples }}
+    <img src="{{ $sample.img }}" alt="{{ $sample.alt }}" />
+    <p><i>{{ $sample.description }}</i></p>
+    {{ end }}
+</div>
+{{ end }}

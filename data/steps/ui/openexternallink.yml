@@ -1,0 +1,17 @@
+name: Open external link
+category: UI
+description: Opens the specified link in the browser.
+inputs: 
+- label: URL
+  description: External URL to open.
+  type: text
+  required: yes
+- label: Open link in a new tab
+  description: If true external URL is opened in a new tab of the browser. Otherwise the URL will be opened in same tab.
+  type: boolean
+  default: true
+  required: yes
+samples:
+- img: /images/vendor/flows/openexternallink_sample.png
+  alt: Open external link Sample
+  description: The flow starts, the open external link step opens the specified external URL and then the execution finished with the end step.

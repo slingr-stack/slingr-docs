@@ -1,0 +1,37 @@
+name: Execute action on data
+category: Data
+description: Executes an entity action over one record.
+inputs:
+  - label: Entity
+    description: The entity that the action belongs to.
+    type: entity
+    required: yes
+  - label: Action
+    description: The action to be executed.
+    type: entityAction
+    required: yes
+  - label: Record
+    description: The record to be modified by the action.
+    type: record
+    required: yes
+  - label: Data
+    description: Specific data to be sent to the action.
+    type: dataBody
+    required: false
+outputs:
+  - name: actionResult
+    type: object
+    description: A record or a custom response if the action has been configured to do that.
+samples:
+  - img: /images/vendor/flows/execute_action_on_record.png
+    alt: Execute action on record image.
+    description: The flow starts, the execute action on record step executes actions over a record and then the execution finishes with the end step. In case of an error while executing the action, the error will be logged and the execution will finish.
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)
+  - name: actionResult
+    type: object

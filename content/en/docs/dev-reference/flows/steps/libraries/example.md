@@ -10,3 +10,4 @@ menu:
     parent: "steps"
 toc: true
 ---
+{{< steps_libraries_sample context="libraries/sample" >}}

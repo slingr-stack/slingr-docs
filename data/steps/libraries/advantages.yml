@@ -1,0 +1,12 @@
+name: Step Libraries Advantages
+
+description: Why should we use Step Libraries?
+
+rules:
+  - description: The Step Library is written once, and can be used in any Flow of your app.
+    title: Reusability
+  - description: Some business logic is too complex to be resolved using the standard steps. This tool gives you the power of inserting custom JS code to resolve all kinds of situations.
+    title: Custom business logic
+  - description:  If an entity used in a Step Library is updated, the Step Library will necessarily need to be manually updated to the modified entity.
+    title: New working dynamics between citizen developers and traditional developers
+

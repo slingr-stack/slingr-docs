@@ -1,0 +1,25 @@
+name: Delete record
+category: Data
+description: Deletes specified record.
+inputs:
+  - label: Record
+    description: The record instance to be deleted.
+    type: record
+    required: yes
+outputs:
+  - name: deletedRecord
+    type: record
+    description: The deleted record.
+samples:
+  - img: /images/vendor/flows/delete_record.png
+    alt: Delete record image
+    description: The flow starts, the delete record step deletes an specific record and then the execution finishes with the end step. In case of an error while deleting the record, the error will be logged and the execution will finish.
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)
+  - name: deletedRecord
+    type: Record

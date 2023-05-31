@@ -1,0 +1,52 @@
+name: Condition
+category: Control
+description: The condition step executes the next steps in the path only if the specified condition is truthy.
+inputs:
+  - label: Condition type
+    description: Type of condition to be checked. Possible values are `Expression`and `Script`.
+    type: choice
+    required: yes
+    default: Expression
+  - label: Expression record
+    description: The record instance to be used to check condition
+    type: record
+    required:
+      - field: Condition type
+        operator: is
+        value: 'Expression'
+    visibility:
+      - field: Condition type
+        operator: is
+        value: 'Expression'
+  - label: Expression condition
+    description: The condition to be evaluated as true.
+    type: condition
+    required:
+      - field: Condition type
+        operator: is
+        value: 'Expression'
+      - field: Expression record
+        operator: has been
+        value: defined
+    visibility:
+      - field: Condition type
+        operator: is
+        value: 'Expression'
+      - field: Expression record
+        operator: has been
+        value: defined
+  - label: Script condition
+    description: The script condition to be evaluated as true.
+    type: condition
+    required:
+      - field: Condition type
+        operator: is
+        value: 'Script'
+    visibility:
+      - field: Condition type
+        operator: is
+        value: 'Script'
+samples:
+  - img: /images/vendor/flows/if_sample.png
+    alt: If Sample
+    description: The flow starts, the if step evaluates the condition, if the condition is true, runs the script and then the execution finished with the end step.

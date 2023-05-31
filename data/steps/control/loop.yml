@@ -1,0 +1,53 @@
+ame: Loop
+category: Control
+description: Control flow statement that allows steps to be executed repeatedly based on a given boolean condition.
+  This step allows other steps to be dropped in. So this step allows to have nested steps inside.
+inputs:
+  - label: Condition type
+    description: Type of condition to be checked. Possible values are `Expression`and `Script`.
+    type: choice
+    required: yes
+    default: Expression
+  - label: Expression record
+    description: The record instance to be used to check condition
+    type: record
+    required:
+      - field: Condition type
+        operator: is
+        value: 'Expression'
+    visibility:
+      - field: Condition type
+        operator: is
+        value: 'Expression'
+  - label: Expression condition
+    description: The condition to be evaluated as true.
+    type: condition
+    required:
+      - field: Condition type
+        operator: is
+        value: 'Expression'
+      - field: Expression record
+        operator: has been
+        value: defined
+    visibility:
+      - field: Condition type
+        operator: is
+        value: 'Expression'
+      - field: Expression record
+        operator: has been
+        value: defined
+  - label: Script condition
+    description: The script condition to be evaluated as true.
+    type: condition
+    required:
+      - field: Condition type
+        operator: is
+        value: 'Script'
+    visibility:
+      - field: Condition type
+        operator: is
+        value: 'Script'
+samples:
+  - img: /images/vendor/flows/while_sample.png
+    alt: While Sample
+    description: The flow starts, the while step logs as long as a specified condition is true and then the execution finished with the end step.

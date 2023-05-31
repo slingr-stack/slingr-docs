@@ -1,0 +1,133 @@
+{{- $context := .Get "context" -}}
+{{- $filePath := printf "data/steps/%s.yml" $context -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $myobject := $yamlContent | unmarshal -}}
+
+{{ if $myobject.description }}
+<h3>Description</h3>
+<p>{{ $myobject.description }}</p>
+{{ end }} 
+
+{{ if $myobject.category }}
+<h3>Category</h3>
+<code class="highlighter-rouge">{{ $myobject.category }}</code>
+{{ end }} 
+
+{{- if $myobject.rules }}
+<h3>Rules</h3>
+{{- end }}
+<ul>
+    {{- range $rules := $myobject.rules -}}
+    <li>{{ $rules.description }}</li>
+    {{- end -}}
+</ul>
+
+{{ if $myobject.inputs }}
+<h3>Inputs</h3>
+<table class="table">
+    <thead>
+        <tr class="header">
+            <th align="left">Label</th>
+            <th align="left">Type</th>
+            <th align="left">Required</th>
+            <th align="left">Default</th>
+            <th align="left">Visibility</th>
+            <th align="left">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range $input := $myobject.inputs }}
+        <tr>
+            <td align="left">
+                <p>{{ $input.label }}</p>
+            </td>
+            <td align="left">
+                <p>
+                    <code class="highlighter-rouge">{{ $input.type }}</code>
+                </p>
+            </td>
+            <td align="left">
+                {{- if or (eq $input.required true) (eq $input.required "yes") -}}
+                    <p>yes</p> 
+                {{- else -}}
+                    <p>no</p>
+                {{- end }}
+            </td>
+            <td align="left">
+                {{- if $input.default -}}
+                <p>
+                    <code style="white-space: nowrap;">
+                        {{ $input.default}}
+                    </code>
+                </p>
+                {{- end }}
+            </td>
+            <td align="left">
+                {{- if $input.visibility -}}
+                    {{- range $visibily := $input.visibility -}}
+                    <p>
+                        <code style="white-space: nowrap;">
+                            <span>{{ $visibily.field }} </span><strong>{{ $visibily.operator }}</strong><span> {{ $visibily.value }}</span>
+                        </code>
+                    </p>
+                    {{- end -}}
+                {{- else -}}
+                <p>Always</p>
+                {{- end }}
+            </td>
+            <td align="left">
+                <p>{{ $input.description }}</p>
+                {{- if $input.options -}}
+                <p>
+                    Possible values are: 
+                    {{- range $option := $input.options -}}
+                    <br><code class="highlighter-rouge">{{ $option.label }}</code>
+                    {{- end -}}
+                </p>
+                {{- end }}
+            </td>
+        </tr>
+        {{- end }}
+    </tbody>
+</table>
+
+{{ end }}
+
+{{ if $myobject.outputs }}
+<h3>outputs</h3>
+<table class="table">
+    <thead>
+        <tr class="header">
+            <th align="left">Label</th>
+            <th align="left">Type</th>
+            <th align="left">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range $output := $myobject.outputs }}
+            <tr>
+                <td align="left">
+                    <p>{{ $output.name }}</p>
+                </td>
+         
+                <td align="left">
+                    <p>
+                        <code class="highlighter-rouge">{{ $output.type }}</code>
+                    </p>
+                </td>
+              
+                <td align="left">
+                    <p>{{ $output.description }}</p>
+                </td>
+            </tr>
+        {{ end }}
+    </tbody>
+</table>
+{{ end }}
+
+<h3>Sample</h3>
+{{ range $index, $sample := $myobject.samples }}
+    <img src="{{ $sample.img }}" alt="{{ $sample.alt }}">
+    <p><i>{{ $sample.description }}</i></p>
+{{ end }}
+

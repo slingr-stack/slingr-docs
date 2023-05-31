@@ -1,0 +1,29 @@
+name: Update record
+category: Data
+description: Manipulates a record and stores changes in database, making changes permanent.
+inputs:
+  - label: Record
+    description: The record instance to be saved into the database after applying changes.
+    type: object
+    required: yes
+  - label: Data
+    description: Data to be used to update record.
+    type: dataBody
+    required: yes
+outputs:
+  - name: updatedRecord
+    type: record
+    description: The updated record
+samples:
+  - img: /images/vendor/flows/update_record_and_save.png
+    alt: Updated record image.
+    description: The flow starts, the update record step updates the data of a record and then the changes are saved by the save record step, finally the execution finishes with the end step. In case of an error, the error will be logged and the execution will finish.
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)
+  - name: updatedRecord
+    type: record

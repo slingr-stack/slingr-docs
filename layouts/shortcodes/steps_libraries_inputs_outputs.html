@@ -1,0 +1,28 @@
+{{ $context := .Get "context" }}
+{{ $filePath := printf "data/steps/%s.yml" $context }}
+{{ $yamlContent := readFile $filePath }}
+{{ $myobject := $yamlContent | unmarshal }}
+
+{{ if $myobject.description }}
+<h3>Description</h3>
+<p>{{ $myobject.description }}</p>
+{{ end }} 
+
+{{ if $myobject.libraries_input }}
+<h3>Inputs</h3>
+<p>{{ $myobject.libraries_input }}</p>
+{{ end }}
+
+{{ if $myobject.input_samples }}
+<div class="sample_step">
+    {{ range $sample := $myobject.input_samples }}
+        <img src="{{ $sample.img }}" alt="{{ $sample.alt }}" />
+        <p><i>{{ $sample.description }}</i></p>
+    {{ end }}
+</div>
+{{ end }}
+
+{{ if $myobject.libraries_output }}
+<h3>Outputs</h3>
+<p>{{ $myobject.libraries_output }}</p>
+{{ end }}

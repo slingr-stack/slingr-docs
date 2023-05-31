@@ -8,5 +8,5 @@
   {{ else if eq .Params.type "warning" }}
       <span class="notes-emoji">🚨</span>{{/* add the warning emoji */}}
   {{ end }}
-  {{ .Inner }}
+  {{ .Inner | markdownify }}
 </div>

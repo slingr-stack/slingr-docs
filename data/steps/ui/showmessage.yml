@@ -1,0 +1,54 @@
+name:  Show message
+category: UI
+description: Displays a message in the UI.
+inputs: 
+- label: Target
+  description: Type of users to send the message.
+  type: choice
+  required: yes
+  default: Caller
+  options:
+  - label: Caller
+  - label: Users
+  - label: All users
+- label: Users
+  description: Specific users to send the message.
+  type: text
+  required: no
+  multiplicity: many
+  required: 
+  - field: config.target
+    operator: is
+    value: 'users'
+  visibility: 
+  - field: config.target
+    operator: is
+    value: 'users'
+- label: Title
+  description: The title to be shown on message.
+  type: text
+  required: yes
+- label: Message
+  description: The message content to be shown on message. It supports some basic HTML tags.
+  type: text
+  required: yes
+- label: Type
+  description: Define the style for the message.
+  type: choice
+  required: yes
+  default: Information
+  options:
+  - label: Information
+  - label: Success
+  - label: Warning
+  - label: Error
+- label: Keep visible
+  description: If true the message won’t be closed automatically and the user has to close it manually.
+  type: boolean
+  required: yes
+  default: false
+samples:
+- img: /images/vendor/flows/showmessage_sample.png
+  alt: Show message Sample
+  description:  The flow starts, the show message step shows the specified message and then the execution finished with the end step. 
+ 

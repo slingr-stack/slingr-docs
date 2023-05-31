@@ -10,3 +10,4 @@ menu:
     parent: "steps"
 toc: true
 ---
+{{< steps context="system/start" >}}

@@ -10,3 +10,5 @@ menu:
     parent: "steps"
 toc: true
 ---
+
+{{< steps context="data/create_record" >}}

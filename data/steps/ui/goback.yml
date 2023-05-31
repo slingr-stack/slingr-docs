@@ -1,0 +1,7 @@
+name: Go back
+category: UI
+description: Goes back in the browser navigation history.
+samples:
+- img: /images/vendor/flows/goback_sample.png
+  alt: Go back Sample
+  description:  The flow starts, the go back step goes back in the browser navigation history and then the execution finished with the end step.

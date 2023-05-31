@@ -1,0 +1,32 @@
+name: Find data
+category: Data
+description: Finds data using specified query.
+inputs:
+  - label: Entity
+    description: The entity to lookup data.
+    type: entity
+    required: yes
+  - label: Query
+    description: The query used to filter records.
+    type: query
+    visibility:
+    - field: config.entity
+      operator: 
+      value:
+outputs:
+  - name: recordsResultSet
+    type: resultSet
+    description: A list of records that can be iterated.
+samples:
+  - img: /images/vendor/flows/find_data.png
+    alt: Find data image.
+    description: The flow starts, the find data step searches for data using a query, then the data is logged and then the execution finishes with the end step. 
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)
+  - name: recordsResultSet
+    type: resultSet

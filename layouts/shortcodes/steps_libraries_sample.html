@@ -1,0 +1,19 @@
+{{- $context := .Get "context" -}}
+{{- $filePath := printf "data/steps/%s.yml" $context -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $myobject := $yamlContent | unmarshal -}}
+
+<h3>Example</h3>
+
+{{- if $myobject.samples -}}
+<div class="sample-step">
+    {{- range $index, $sample := $myobject.samples -}}
+        <p>{{ $sample.description }}</p>
+        <img src="{{ $sample.img }}" alt="{{ $sample.alt }}" />
+    {{- end -}}
+</div>
+{{- end -}}
+
+{{- if $myobject.description -}}
+<p>{{ $myobject.description }}</p>
+{{- end -}}

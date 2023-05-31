@@ -1,0 +1,30 @@
+name: Create record
+category: Data
+description: Creates a new record instance in the database.
+inputs:
+  - label: Entity
+    description: Entity to create a new record instance.
+    type: entity
+    required: yes
+  - label: Data
+    description: Data to be used to create record.
+    type: dataBody
+    required: yes
+outputs:
+  - name: createdRecord
+    type: record
+    description: Created record instance.
+samples:
+  - img: /images/vendor/flows/create_record.png
+    alt: Create record image
+    description: The flow starts, the create record step creates a new record and then the execution finishes with the end step. In case of an error while creating the new record, the error will be logged and the execution will finish.
+
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)
+  - name: createdRecord
+    type: Record

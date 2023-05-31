@@ -1,0 +1,37 @@
+name: Delete data
+category: Data
+description: Deletes data on the given entity.
+inputs:
+  - label: Entity
+    description: The entity to delete data.
+    type: entity
+    required: yes
+  - label: Query
+    description: The query used to filter records to be deleted.
+    type: query
+    visibility:
+    - field: config.entity
+      operator: 
+      value:
+  - label: Wait task to finish
+    description: Flag to set if the deletion should wait for the job to finish.
+    type: boolean
+    required: false
+    default: false
+outputs:
+  - name: taskId
+    type: text
+    description: The task ID in charge of the execution of the deletion.
+samples:
+  - img: /images/vendor/flows/delete_data.png
+    alt: Delete data image
+    description: The flow starts, the delete data step deletes data of an entity and then the execution finishes with the end step. In case of an error while deleting the data, the error will be logged and the execution will finish.
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)
+  - name: taskId
+    type: text

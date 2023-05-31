@@ -10,3 +10,5 @@ menu:
     parent: "steps"
 toc: true
 ---
+
+{{< steps_libraries_inputs_outputs context="libraries/inputs_outputs" >}}
