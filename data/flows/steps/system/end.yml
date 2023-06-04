@@ -1,0 +1,29 @@
+name: End
+category: System
+description: Marks the end of the flow. It is optional and it can return a result.
+rules:
+  - description: There has to be at least one end step.
+inputs:
+  - label: Return result
+    description: If true it will return the final result of the flow.
+    type: boolean
+    default: false
+  - label: Result
+    description: The final result to be returned by the flow.
+    type: object
+    default: false
+    visibility:
+    - field: config.returnResult
+      operator: 
+      value:
+samples:
+  - img: ./images/flows/steps/system/logger.png
+    alt: Image of end step.
+    description:  The flow starts, the logger step logs something and then the execution finishes with the end step.
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)

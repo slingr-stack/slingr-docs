@@ -1,0 +1,37 @@
+name: Logger
+category: System
+description: Logs a message about application events.
+inputs:
+  - label: Level
+    description: The level of importance of the log.
+    type: choice
+    required: yes
+    default: Info
+    options:
+      - label: Info
+      - label: Warning
+      - label: Error
+      - label: Debug
+  - label: Message
+    description: Message to be logged. It can use dynamic arguments for formatting.
+    type: text
+    required: yes
+  - label: Arguments
+    description: Arguments for the format string. It may be zero or more.
+    type: text
+    required: false
+outputs:
+  - name: result
+    type: string
+    description: The name of the next element in the list.
+samples:
+  - img: ./images/flows/steps/system/logger.png
+    alt: Logger image
+    description:  The flow starts, the logger step logs something and then the execution finishes with the end step.
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)

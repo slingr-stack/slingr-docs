@@ -5,46 +5,19 @@
 {{- $jsQueryBuilder := .Get "jsQueryBuilder" -}}
 {{- $restApi := .Get "restApi" -}}
 
-<style>
-    .tab-content > div {
-        display: none;
-    }
-
-    .tab-content > div.active {
-        display: block;
-    }
-    
-    .nav-tabs {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-    
-    .nav-tabs li {
-        display: inline-block;
-        margin-right: 10px;
-    }
-    
-    .nav-tabs button {
-        border: none;
-        background-color: lightblue;
-        cursor: pointer;
-        font-size: 16px;
-        padding: 10px;
-    }
-    
-    .nav-tabs button.active {
-        font-weight: bold;
-        background-color: lightgreen;
-    }
-</style>
-
 <ul id="query-sample-{{ $id }}" class="nav nav-tabs">
+    {{- if $jsQueryMap -}}
     <li><button onclick="showTab('{{ $id }}', 'jsQueryMap-{{ $id }}')">JS Query Map</button></li>
+    {{- end -}}
+    {{- if $jsQueryBuilder -}}
     <li><button onclick="showTab('{{ $id }}', 'jsQueryBuilder-{{ $id }}')">JS Query Builder</button></li>
+    {{- end -}}
+    {{- if $restApi -}}
     <li><button onclick="showTab('{{ $id }}', 'rest-{{ $id }}')">REST API</button></li>
+    {{- end -}}
 </ul>
 <div class="tab-content">
+    {{- if $jsQueryMap -}}
     <div role="tabpanel" class="tab-pane active" id="jsQueryMap-{{ $id }}">
         <div>
             <pre><code>// {{ $description }} 
@@ -55,6 +28,8 @@ while (records_{{ $id }}.hasNext()) {
 }</code></pre>
         </div>
     </div>
+    {{- end -}}
+    {{- if $jsQueryBuilder -}}
     <div role="tabpanel" class="tab-pane" id="jsQueryBuilder-{{ $id }}">
         <div>
             <pre><code>// {{ $description }} 
@@ -67,12 +42,15 @@ while (records_{{ $id }}.hasNext()) {
 }</code></pre>
         </div>
     </div>
+    {{- end -}}
+    {{- if $restApi -}}
     <div role="tabpanel" class="tab-pane" id="rest-{{ $id }}">
         <div>
             <pre><code>// {{ $description }} 
 GET /data/contacts?{{ $restApi }}</code></pre>
         </div>
     </div>
+    {{- end -}}
 </div>
 
 <script>

@@ -1,0 +1,73 @@
+title: Delete a company flow sample
+description: This example is an action that tries to delete a company. If an error occurs while deleting the company, it displays a message.
+
+steps: 
+  - label: Start
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Delete Company
+    inputs:
+      - label: Record
+        description: 
+        type: record
+        value: context.record
+    outputs:
+      - name: deletedRecord
+        type: record
+        description: put in context == false
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Show error message
+    inputs:
+      - label: Target
+        description: 
+        type: choice
+        value: Caller
+      - label: Title
+        description: 
+        type: text
+        value: Error deleting the company 
+      - label: Message
+        description: 
+        type: text
+        value: An error occurred while deleting the company, please try again.
+      - label: Type
+        description: 
+        type: choice
+        value: Error
+      - label: Keep visible
+        description: 
+        type: boolean
+        value: false
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: End
+    inputs:
+      - label: Return result
+        description: If true it will return the final result of the flow.
+        type: boolean
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+samples:
+- img: /images/vendor/flows/delete_company_sample.png
+  alt: Update tax rates sample

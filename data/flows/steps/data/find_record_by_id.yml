@@ -1,0 +1,29 @@
+name: Find record by id
+category: Data
+description: Finds one record by its ID.
+inputs:
+  - label: Entity
+    description: The entity to lookup record.
+    type: entity
+    required: yes
+  - label: Record ID
+    description: ID of the record to find.
+    type: text
+    required: yes
+outputs:
+  - name: resultRecord
+    type: record
+    description: The found record.
+samples:
+  - img: ./images/flows/steps/data/find_record.png
+    alt: Find record by id image.
+    description: The flow starts, the find record by id step searches for a specific record by id, then the record is logged and then the execution finishes with the end step. 
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)
+  - name: resultRecord
+    type: record

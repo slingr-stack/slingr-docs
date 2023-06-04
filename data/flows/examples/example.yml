@@ -1,0 +1,45 @@
+title: Start task flow sample
+description: Changes the status of a task in progress.
+steps: 
+  - label: Start
+    context:
+      - label: record
+        type: record
+      - label: oldRecord
+        type: record
+      - label: action
+        type: action
+  - label: Update record
+    inputs:
+      - label: Input 1
+        description: The list of elements to be traversed.
+        type: resultSet
+      - label: Input 2
+        description: The list of elements to be traversed.
+        type: resultSet
+    outputs:
+      - name: Output 1
+        description: The list of elements to be traversed.
+        type: resultSet
+      - name: Output 2
+        description: The list of elements to be traversed.
+        type: resultSet
+  - label: Save record
+    inputs:
+      - label: Input 1
+        description: The list of elements to be traversed.
+        type: resultSet
+    outputs:
+      - name: Output 1
+        description: The list of elements to be traversed.
+        type: resultSet
+contexts:
+  - label: Entity
+    type: entity
+  - label: Entity
+    type: entity
+  - label: Entity
+    type: entity
+samples:
+- img: /images/vendor/flows/updateTaskStatus_sample.png
+  alt: Update task status sample

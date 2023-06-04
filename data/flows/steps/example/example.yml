@@ -1,0 +1,36 @@
+name: Start
+category: System
+description: Sets the start of the flow.
+rules:
+  - description: first rule
+  - description: second rule
+inputs:
+  - label: Message
+    description: Message to be logged. It can use dynamic arguments for formatting.
+    type: text
+    required: yes
+    default: Info
+    visibility:
+    - field: view.type
+      operator: is
+      value: Custom  
+    options:
+      - label: Info
+      - label: Warning
+      - label: Error
+      - label: Success
+outputs:
+  - label: Result
+    type: string
+    description: The name of the next element in the list.
+samples:
+  - img: /images/flows/steps/control/trycatch_example.png
+    alt: test
+    description: probando
+contexts:
+  - name: Action
+    type: Action(companies)
+  - name: FindDataResult
+    type: resultSet
+  - name: nextElementName
+    type: text

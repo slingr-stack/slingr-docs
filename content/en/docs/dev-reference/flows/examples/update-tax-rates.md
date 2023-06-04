@@ -10,3 +10,5 @@ menu:
     parent: "context"
 toc: true
 ---
+
+{{< flows_examples context="examples/updateTaxRates" >}}

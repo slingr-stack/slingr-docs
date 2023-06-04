@@ -1,0 +1,9 @@
+name: Step Libraries Refactoring
+
+description: When a Step Library is changed, the developer must be aware of the usages of this step because of the following
+
+rules:
+  - description: If the code is changed, then automatically all the Flows using this step will be updated to the new behavior.
+  - description: If the inputs are modified, then the use of the Step in your flow will necessarily change. So take in mind that changing a Step library input will imply updating all the usages of that Step.
+  - description: If an entity used in a Step Library is updated, the Step Library will necessarily need to be manually updated to the modified entity.
+

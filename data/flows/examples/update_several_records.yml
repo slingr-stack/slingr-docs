@@ -1,0 +1,154 @@
+title: Update rating of all the companies in Arizona flow sample
+description: This example is an action that searches for all the companies in Arizona. For each company updates the rating value to 5. Logs the updated company and saves it on the database. In case of an error while updating a company, it will be logged.
+steps: 
+  - label: Start
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Find companies of Arizona
+    inputs:
+      - label: Companies
+        description: Searches for all the companies in Arizona.
+        value: State equals Arizona
+    outputs:
+      - name: arizonaCompanies
+        description: The founded companies are put in the context.
+        type: resultSet
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: arizonaCompanies
+        type: ResultSet
+  - label: For Each
+    inputs:
+      - label: arizonaCompanies
+        description: Iterates the companies.
+        value:
+    outputs:
+      - name: arizonaCompany
+        description: Puts the iterated company in the context.
+        type: record
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: arizonaCompanies
+        type: ResultSet
+      - label: arizonaCompany
+        type: Record
+  - label: Update Rating
+    inputs:
+      - label: arizonaCompany
+        description: The rating of the company is set to 5.
+        value: Rating Set 5
+    outputs:
+      - name: updatedCompany
+        description: The edited company is put in the context.
+        type: record
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: arizonaCompanies
+        type: ResultSet
+      - label: arizonaCompany
+        type: Record
+      - label: updatedCompany
+        type: Record
+  - label: Log success message
+    inputs:
+      - label: Message
+        description: Logs a message too inform that the company was updated successfully.
+        value: Successfully updated company
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: arizonaCompanies
+        type: ResultSet
+      - label: arizonaCompany
+        type: Record
+      - label: updatedCompany
+        type: Record
+  - label: Log error message
+    inputs:
+      - label: Message
+        description: Logs a message too inform that the update of the company faild.
+        value: Error while updating company
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: arizonaCompanies
+        type: ResultSet
+      - label: arizonaCompany
+        type: Record
+      - label: updatedCompany
+        type: Record 
+  - label: Save Company
+    inputs:
+      - label: updatedCompany
+        description: The record instance to be saved into the database after applying changes.
+        value:
+    outputs:
+      - name: savedCompany
+        description: The saved company is put in the context.
+        type: record
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: arizonaCompanies
+        type: ResultSet
+      - label: arizonaCompany
+        type: Record
+      - label: updatedCompany
+        type: Record
+      - label: savedCompany
+        type: Record
+  - label: End
+    inputs:
+      - label: Return result
+        description: If true it will return the final result of the flow.
+        type: boolean
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: arizonaCompanies
+        type: ResultSet
+      - label: arizonaCompany
+        type: Record
+      - label: updatedCompany
+        type: Record
+      - label: savedCompany
+        type: Record
+samples:
+- img: /images/vendor/flows/updateRatingArizonaCompanies.png
+  alt: Update several records sample

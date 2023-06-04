@@ -1,0 +1,13 @@
+name: Flow step libraries Inputs and Outputs
+
+description: Flow steps libraries allow you to define your Steps and then use them in your Flows. It is required to define inputs, outputs, and the script that the step will execute. Then the library will be available to be reused in different places of the app.
+
+libraries-input: The inputs are optional and wide-range configurable. Each input has its configuration. From the Data type to
+  the General rules of each input, allowing the user to use Expressions and Scripts to customize the behavior of the
+  library Step on the Flow Editor.
+
+input-samples:
+  - img: ./images/flows/steps/libraries/libraries_inputs.png
+    description: In the Flow Editor, we have the libraries divided by the configured categories
+
+libraries-output: Outputs are also optional and each output has its Type.

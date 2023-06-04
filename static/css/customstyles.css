@@ -250,3 +250,37 @@ th, td {
 th {
   background-color: #f2f2f2;
 }
+
+.contextExamples {
+  text-align: left;
+  right: 10px;
+  top: 73px;
+  min-height: 140px;
+  width: 180px;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  left: 594px;
+  border: solid 2px;
+  border-radius: 10px;
+}
+
+.contextExamples .context-item {
+  max-height: 16px !important;
+  margin: 0;
+  padding: 0;
+}
+
+.context-item .name {
+  padding-left: 3px;
+  text-transform: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: clip;
+}
+
+.context-item .type {
+  font-weight: lighter;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: clip;
+}

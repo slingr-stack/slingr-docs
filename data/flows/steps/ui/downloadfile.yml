@@ -1,0 +1,12 @@
+name: Download File
+category: UI
+description: Performs the download of the specified file.
+inputs: 
+- label: File ID
+  description: The file to be downloaded.
+  type: text
+  required: yes
+samples:
+- img: ./images/flows/steps/ui/downloadfile_sample.png
+  alt: Download file Sample
+  description: The flow starts, the download file step downloads the specified file. In case of an error while downloading the file, the error will be logged and the execution will finish.

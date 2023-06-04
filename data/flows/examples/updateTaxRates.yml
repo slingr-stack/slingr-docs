@@ -1,0 +1,94 @@
+title: Update tax rate based on customer location flow sample
+description: This example is an action that updates the tax rate percentage based on the customer location. If the customer location is Colorado then the tax rate is 5%. If the customer location is Arizona then the tax rate is 6.5%.
+steps: 
+  - label: Start
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: If CO
+    inputs:
+      - label: Condition
+        description: 
+        type: Condition
+        value: record.field('customer.address.state').val() === 'CO'
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action 
+  - label: If AZ
+    inputs:
+      - label: Condition
+        description: 
+        type: Condition
+        value: record.field('customer.address.state').val() === 'AZ'
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action  
+  - label: Update tax rate Colorado
+    inputs:
+      - label: Record
+        description: 
+        type: record
+        value: context.record
+      - label: Tax Rates
+        description: 
+        type: percentage
+        value: 0.05
+    outputs:
+      - name: updatedRecord
+        type: record
+        description: put in context == false
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Update tax rate Arizona
+    inputs:
+      - label: Record
+        description: 
+        type: record
+        value: context.record
+      - label: Tax Rates
+        description: 
+        type: percentage
+        value: 0.65
+    outputs:
+      - name: updatedRecord
+        type: record
+        description: put in context == false
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: End
+    inputs:
+      - label: Return result
+        description: If true it will return the final result of the flow.
+        type: boolean
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+samples:
+- img: /images/vendor/flows/updateTaxRate_sample.png
+  alt: Update tax rates sample

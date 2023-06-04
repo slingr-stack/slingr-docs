@@ -119,6 +119,8 @@ It is highly recommended to use environment variables to store sensitive informa
 Then a specific configuration property can point to an environment variable. Please refer to [Environment variables]({{site.baseurl}}/app-development-environment-environment-variables.html)
  for more information.
 
+
+
 ## Endpoint properties
 
 For all configured endpoints we have some properties that can be useful in some scenarios for developers. These properties are allocated on the

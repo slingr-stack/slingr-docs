@@ -1,0 +1,32 @@
+name: Find record
+category: Data
+description: Finds one record using specified query
+inputs:
+  - label: Entity
+    description: The entity to lookup record.
+    type: entity
+    required: yes
+  - label: Query
+    description: The query used to filter records.
+    type: query
+    visibility:
+    - field: config.entity
+      operator: 
+      value:
+outputs:
+  - name: resultRecord
+    type: record
+    description: The record instance that matches the filtering.
+samples:
+  - img: ./images/flows/steps/data/find_record.png
+    alt: Find record image.
+    description: The flow starts, the find record step searches for a specific record using a query, then the record is logged and then the execution finishes with the end step. 
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)
+  - name: resultRecord
+    type: record

@@ -1,0 +1,56 @@
+name: Go to view
+category: UI
+description: Navigates to the specified view in the UI.
+inputs: 
+- label: View
+  description: The view to navigate to.
+  type: view
+  required: yes
+- label: View type
+  description: In case of grid or workflow views define the view type to redirect.
+  type: choice
+  required:
+  - field: config.view.type
+    operator: is
+    value: ENTITY_VIEW 
+  visibility:
+  - field: config.view.type
+    operator: is
+    value: ENTITY_VIEW 
+  default: Read Only
+  options:
+    - label: Read Only
+    - label: Create
+    - label: Edit
+- label: Record ID
+  description: ID of the record. When this field is set the app navigates to the detail read-only view of the record.
+  type: text
+  required: 
+  - field: config.view.type
+    operator: is
+    value: ENTITY_VIEW 
+  visibility: 
+  - field: config.view.type
+    operator: is
+    value: ENTITY_VIEW
+- label: Filters
+  description: In case of grid or workflow views define some view filters to be applied.
+  type: query
+  visibility: 
+  - field: config.view.type
+    operator: is
+    value: COLLECTION_VIEW
+  - field: config.view.type
+    operator: is
+    value: CARDS_VIEW
+- label: Parameters
+  description: In case of custom views you can define some view parameters to be applied. Those parameters are transformed into URL query parameters.
+  type: query
+  visibility: 
+  - field: config.view.type
+    operator: is
+    value: CUSTOM_VIEW  
+samples:
+- img: ./images/flows/steps/ui/gotoview_sample.png
+  alt: Go to view Sample
+  description:  The flow starts, the go to view step goes to the specified view and then the execution finished with the end step.

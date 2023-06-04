@@ -1,0 +1,12 @@
+name: Lock record
+category: Data
+description: Acquires a lock for a specified record. This method should be used when multiple threads try to access the same record. This is important when you have listeners or actions that could be executed concurrently.
+inputs:
+  - label: Record
+    description: The record instance to be locked.
+    type: Record
+    required: yes
+samples:
+  - img: ./images/flows/steps/data/lock_record.png
+    alt: Lock record image.
+    description: The flow starts,the lock step acquires a lock for a specified record to ensure that no listener or action changes the record while we perform the actions. The update record step updates the data of a record and then the changes are saved by the save record step, finally we log a success message with the logger step and end the execution with the end step. If the lock cannot be acquired an error message will be logged with the logger step.

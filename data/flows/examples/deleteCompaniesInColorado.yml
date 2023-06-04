@@ -1,0 +1,134 @@
+title: Delete all companies in Colorado flow sample
+description: This example is an action that tries to delete all companies in Colorado . If an error occurs while deleting a company, it is logged.
+
+steps:
+  - label: Start
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Find companies
+    inputs:
+      - label: Companies
+        description: Finds all the companies.
+        value: all
+    outputs:
+      - name: companies
+        type: resultSet
+        description: Puts the company in the context.
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: companies
+        type: ResultSet
+  - label: Delete all companies from Colorado
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: companies
+        type: ResultSet
+  - label: For Each
+    inputs:
+      - label: companies
+        description: Iterates the companies.
+        type: resultSet
+        value:
+    outputs:
+      - name: company
+        description: Puts the iterated company in the context.
+        type: record
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: companies
+        type: ResultSet
+      - label: company
+        type: Record
+  - label: If CO
+    inputs:
+      - label: Condition
+        description: Filter companies from Colorado.
+        type: condition
+        value: context.company.field('address.state').val() === 'CO';
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: companies
+        type: ResultSet
+      - label: company
+        type: Record
+  - label: Delete company
+    inputs:
+      - label: Record
+        description:
+        type: record
+        value: company
+    outputs:
+      - name: deletedRecord
+        description: Deletes the company and does not put it in the context.
+        type: record
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: companies
+        type: ResultSet
+      - label: company
+        type: Record
+  - label: Log error
+    inputs:
+      - label: Message
+        description: Logs a message too inform that the delete of the company faild.
+        value: Error while deleting company
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: companies
+        type: ResultSet
+      - label: company
+        type: Record
+  - label: End
+    inputs:
+      - label: Return result
+        description: If true it will return the final result of the flow.
+        type: boolean
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: companies
+        type: ResultSet
+      - label: company
+        type: Record
+samples:
+- img: /images/vendor/flows/delete_companies_in_colorado.png
+  alt: Delete several companies sample

@@ -1,0 +1,83 @@
+name: Set var
+category: System
+description: Sets a new variable in the current context of execution.
+inputs:
+  - label: Name
+    type: text
+    required: yes
+  - label: Value Type
+    type: choice
+    required: yes
+    default: Fixed
+    options:
+      - label: Fixed
+      - label: Script
+      - label: Expression
+  - label: Script Value
+    type: script
+    required: 
+      - field: config.valueType
+        operator: is
+        value: SCRIPT
+    visibility:
+    - field: config.valueType
+      operator: is
+      value: SCRIPT
+  - label: Fixed Value
+    type: text
+    required:
+      - field: config.valueType
+        operator: is
+        value: FIXED
+    visibility:
+    - field: config.valueType
+      operator: is
+      value: FIXED
+  - label: Expression Type
+    type: choice
+    required:
+      - field: config.valueType
+        operator: is
+        value: EXPRESSION
+    visibility:
+    - field: config.valueType
+      operator: is
+      value: EXPRESSION
+    options:
+      - label: Current User
+      - label: Field Value
+  - label: Context Item
+    type: object
+    required:
+      - field: config.expressionType.name
+        operator: is
+        value: FIELD_VALUE
+    visibility:
+    - field: config.expressionType.name
+      operator: is
+      value: FIELD_VALUE
+  - label: Field
+    type: entityField
+    required:
+      - field: config.expressionType.name
+        operator: is
+        value: FIELD_VALUE
+    visibility:
+    - field: config.expressionType.name
+      operator: is
+      value: FIELD_VALUE
+outputs:
+  - name: resultVariable
+    type: record / field
+    description: Variable returned.
+samples:
+  - img: ./images/flows/steps/system/set_var.png
+    alt: Set var image
+    description: The flow starts, the set var step sets a new variable to the context and then the execution finishes with the end step.
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)

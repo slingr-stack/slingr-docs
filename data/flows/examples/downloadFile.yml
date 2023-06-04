@@ -1,0 +1,151 @@
+title: Download file flow sample
+description: This example is an action that download a file after user verification.
+steps: 
+  - label: Start
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Execute verify user action
+    inputs:
+      - label: Entity
+        description: 
+        type: entity
+        value: users
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+    inputs:
+      - label: Action
+        description: 
+        type: entityAction
+        value: context.record
+    outputs:
+      - name: taskId
+        type: text
+        description: put in context == false
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Go to download view
+    inputs:
+      - label: View
+        description: 
+        type: view
+        value: DownloadFile
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+    inputs:
+      - label: Parameters
+        description: 
+        type: query
+        value: 
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Download file
+    inputs:
+      - label: File ID
+        description: 
+        type: text
+        value: myFileId
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Show execute verify user action error message
+    inputs:
+      - label: Target
+        description: 
+        type: choice
+        value: Caller
+      - label: Title
+        description: 
+        type: text
+        value: Error executing verify user action
+      - label: Message
+        description: 
+        type: text
+        value: An error occurred while execute verify user action, please try again.
+      - label: Type
+        description: 
+        type: choice
+        value: Error
+      - label: Keep visible
+        description: 
+        type: boolean
+        value: false
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Show download file error message
+    inputs:
+      - label: Target
+        description: 
+        type: choice
+        value: Caller
+      - label: Title
+        description: 
+        type: text
+        value: Error downloading file
+      - label: Message
+        description: 
+        type: text
+        value: An error occurred while downloading file, please try again.
+      - label: Type
+        description: 
+        type: choice
+        value: Error
+      - label: Keep visible
+        description: 
+        type: boolean
+        value: false  
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action        
+  - label: End
+    inputs:
+      - label: Return result
+        description: If true it will return the final result of the flow.
+        type: boolean
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+samples:
+- img: /images/vendor/flows/downloadFile_samples.png
+  alt: Download file sample

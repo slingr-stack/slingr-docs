@@ -1,0 +1,23 @@
+name: Script
+category: System
+description: Performs the execution of custom code.
+inputs:
+  - label: Code
+    description: Custom code to be executed.
+    type: script
+    required: yes
+outputs:
+  - name: result
+    type: object
+    description: The final result to be returned by the execution of the script.
+samples:
+  - img: ./images/flows/steps/system/script.png
+    alt: Script image
+    description: The flow starts, the set script step executes custom code and then the execution finishes with the end step.In case of an error while executing the custom code, the error will be logged and the execution will finish.
+contexts:
+  - name: record
+    type: Record(entity)
+  - name: oldRecord
+    type: Record(entity)
+  - name: action
+    type: Action(entity)

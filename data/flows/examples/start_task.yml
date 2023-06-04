@@ -1,0 +1,46 @@
+title: Start task flow sample
+description: This example is an action that changes the status of a task in progress.
+steps: 
+  - label: Start
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+  - label: Update record
+    inputs:
+      - label: record
+        description: Updates the state of the task record and store the changes.
+        value: Status Set IN PROGRESS
+    outputs:
+      - name: updatedTask
+        description: The updated task is put in the context.
+        type: record
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: updatedTask
+        type: record
+  - label: End
+    inputs:
+      - label: Return result
+        description: If true it will return the final result of the flow.
+        type: boolean    
+    context:
+      - label: record
+        type: Record
+      - label: oldRecord
+        type: Record
+      - label: action
+        type: Action
+      - label: updatedTask
+        type: record
+samples:
+- img: /images/vendor/flows/start_task.png
+  alt: Update task status sample
