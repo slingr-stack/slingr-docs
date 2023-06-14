@@ -1,0 +1,54 @@
+verb: PUT
+path: /status/jobs/{id}/stop
+summary: Stops a job
+description: |
+  Stops a job. If the job was running it might need some time to stop gracefully. During that time the
+  status will be `STOPPING`. Once the job has been stopped gracefully the status will change to `STOPPED`.
+
+  Jobs that are stopped can be resumed.
+request:
+  description:
+  headers:
+  parameters:
+  body:
+  bodyFields:
+response:
+  description: |
+    The job in JSON format.
+  headers:
+  body: |
+    {
+      "id": "588a02c13b063a0007605032",
+      ...
+      "status": "STOPPING",
+      ...
+    }
+  bodyFields:
+errors:
+  - code: badRequest
+    status: 404
+    description: |
+      If job cannot be stopped. It could be because jobs of this type cannot be stopped or this is
+      not a root job.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to stop this job. If you are not a developer you can only stop jobs you
+      ran.
+  - code: notFound
+    status: 404
+    description: If job is not found.
+samples:
+  - title: stops a job
+    description:
+    path: /status/jobs/588a02c13b063a0007605032/stop
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "588a02c13b063a0007605032",
+          ...
+          "status": "STOPPING",
+          ...
+        }

@@ -1,0 +1,185 @@
+verb: POST
+path: /data/{entityName}/import
+summary: Imports records from a CSV file
+description: |
+  Imports records from a CSV file.
+request:
+  description: |
+    Imports records from a CSV file. The CSV file should follow these rules:
+
+    - Headers: they have to be the path of the field you want to import. For example a field at the root of the
+      entity called `name` should have `name` as header. If there is a nested field you should put the full path,
+      like `address.state`. For multi-valued fields you need to put the index, for example `phoneNumbers[0]` or
+      `phoneNumbers[1]`.
+    - Data format: based on the type of the field you need to use different formats. Please check the documentation
+      for each type.
+
+    Usually an easy way to get a template of the CSV file is by exporting existing records using fields' names
+    instead of labels.
+
+    Records will be created if they didn't exist. If they already exist, they will be updated.
+    In order to determine if the record exists a unique field must be in the headers. If there are
+    many the first one will be used.
+
+    It is also possible to import records in related entities as well. For example you have a `contacts` entity
+    that has a relationship called `company` that points to the `companies` entity. Then you could have the
+    following headers in the CSV file:
+
+    ```
+    company.name,company.type,firstName,lastName,email
+    ```
+
+    So headers `company.name` and `company.type` are fields in the `companies` entity. The import process will
+    try to match an existing company by name (assuming `name` is a unique field) and will update its `type` field.
+    If there is no match, a new record will be created in `companies` and will be associated to the record in
+    `contacts`. In this way you can create records in many entities with just one import.
+
+    The import will happen in a background job.
+  headers:
+    - name: Content-Type
+      value: multipart/form-data
+    - name: Accept
+      value: application/json
+    - name: token
+      value: token
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the record belongs to.
+    - name: file
+      default:
+      required: yes
+      description: this is a multi-part with the CSV file to import.
+    - name: lowPriority
+      default: false
+      required: no
+      description: |
+        The import will be done only when there aren't many other jobs running at the same time. This is important
+        for big imports if you don't want to delay other jobs.
+    - name: updateCalculatedFields
+      default: true
+      required: no
+      description: |
+        In order to speed up big imports you can decide to skip calculated fields. This means calculated fields might
+        not have the correct value but you can calculate them later.
+
+        This options is only available for developers.
+    - name: updateRelationships
+      default: true
+      required: no
+      description: |
+        If the import updates the label of the record and the record was referenced by another record, a cascade update
+        will be done to update the label in the reference. If you want to speed up big imports you might decide to
+        disable this feature.
+
+        This options is only available for developers.
+    - name: performValidations
+      default: true
+      required: no
+      description: |
+        If you send `false` validations will be skipped. These are type rules validations only. Structure and data format
+        validations will still be done as they are required. For example in an integer field the validation about the max
+        and min value could be skipped, but the value should be a number.
+
+        This options is only available for developers.
+    - name: filterByAccessRules
+      default: true
+      required: no
+      description: |
+        Indicates if fields should be filtered by access rules. If disabled all fields will be imported no matter if
+        they are accessible or not.
+        Disabling this feature might have a slight performance improvement during imports.
+
+        This options is only available for developers.
+    - name: performSecurityChecks
+      default: true
+      required: no
+      description: |
+        If set to `false`, permissions will be skipped. This could help to improve performance or avoid some issues
+        during imports.
+
+        This options is only available for developers.
+    - name: triggerEvents
+      default: true
+      required: no
+      description: |
+        There could be listeners for events associated to the creation or update of records. If this flag is set to
+        `false` those listeners won't be executed.
+
+        This options is only available for developers.
+    - name: setDefaultValues
+      default: true
+      required: no
+      description: |
+        If set to `false`, default values won't be calculated for fields, which could help to improve performance
+        on big imports.
+
+        This options is only available for developers.
+    - name: supportTransientFields
+      default: true
+      required: no
+      description: |
+        If set to `false` transiente fields won't be managed as transient. This could help to improve performance on
+        big imports.
+
+        This options is only available for developers.
+    - name: cascadeOperations
+      default: true
+      required: no
+      description: |
+        Updating or creating records through imports could trigger many cascade operation to update copied fields,
+        aggregate fields, etc. If you don't want it to happen you can set this to `false`.
+
+        This options is only available for developers.
+    - name: skipRecordsWithInvalidFields
+      default: true
+      required: no
+      description: |
+        Normally records with invalid fields (validation errors) won't be created/updated. However, if this flag is
+        set to `false`, records will be created/updated with errors that will need to be fixed later.
+
+        This options is only available for developers.
+  body:
+  bodyFields:
+response:
+  description: |
+    A reference to the job in charge of perform the import.
+  headers:
+  body: |
+    {
+      "jobLink": "/api/status/jobs/588f8357b45fc9000bc1bd2a",
+      "jobId": "588f8357b45fc9000bc1bd2a"
+    }
+  bodyFields:
+errors:
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to import records on this entity.
+  - code: notFound
+    status: 404
+    description: The entity name does not exist.
+samples:
+  - title: imports a few companies from a CSV file
+    description:
+    path: /data/companies/import
+    request:
+      headers:
+        - name: Content-Type
+          value: multipart/form-data
+        - name: Accept
+          value: application/json
+        - name: token
+          value: token
+      body: |
+        name,type
+        test1,a
+        test2,b
+        test3,c
+    response:
+      body: |
+        {
+          "jobLink": "/api/status/jobs/588f3e65b45fc9000bc1baa7",
+          "jobId": "588f3e65b45fc9000bc1baa7"
+        }

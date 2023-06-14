@@ -1,0 +1,205 @@
+verb: PUT
+path: /data/{entityName}/{actionName}
+summary: Execute an action over records matched by a query
+description: |
+  Execute an action over records matched by a query.
+request:
+  description: |
+    If the action contains parameters, you can send them in the body. The format is the same as when you create
+    or update records, but instead of fields you should send parameters of the action.
+
+    If the action doesn't have parameters you can leave the body empty.
+  headers:
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the records belongs to.
+    - name: ids
+      default:
+      required: yes
+      description: IDs of records to execute the action on separated by commas.
+    - name: actionName
+      default:
+      required: yes
+      description: The name of the action that has to be executed.
+    - name: _async
+      default: false
+      required: no
+      description: |
+        Indicates if the action has to be executed in the background, which is needed if the execution is going
+        to take more than 30 seconds or if it is applied over more than 1,000 records.
+
+        When setting this parameter to `true` the response of this method will be a reference to the job in charge
+        of executing the action.
+
+        This parameter will override the default configured in the action.
+    - name: query parameters
+      default:
+      required: no
+      description: |
+        These are the query parameters. See [Query language]({{site.baseurl}}/app-development-query-language.html) for
+        more information.
+  body: |
+    {
+      "param1": "value",
+      "param2": value
+    }
+  bodyFields:
+response:
+  description: |
+    The response will be different based on the type of action and the parameter `_async`. There are three
+    possible responses:
+
+    - A map with records: if the `_async` parameter is `false` and the action doesn't return any custom response,
+      then a map with the ID of the records as key and the JSON of the records as value will be returned. This
+      only applies for actions of type `One record`.
+    - Custom action's responses: if the `_async` parameter is `false` and the action returns a custom response, then
+      a map with the ID of the record (for each record) as key and a map with the `status` ("ok" or "error") and `response` with the
+      custom response will be returned.
+      Keep in mind that actions of type `Many records` should always return a custom response. If they don't
+      return anything, an empty response will be returned.
+    - Job reference: if the `_async` parameter is `true`, the method will return a reference to the job in charge
+      of the execution of the action. Once the action is completed you will find the response of the action
+      in the results of the job.
+
+    You can find samples for each type of response below.
+  headers:
+  body:
+  bodyFields:
+errors:
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to execute the action.
+  - code: notFound
+    status: 404
+    description: If the entity name does not exist.
+samples:
+  - title: executes a simple action over two company records, no custom response
+    description:
+    path: /data/companies/logSomething?id=57fd2d65e4b0ce322b0c8665,57fd2d65e4b0ce322b0c8565
+    request:
+      body: |
+        {
+            "param1": "a",
+            "param2": "b"
+        }
+    response:
+      body: |
+        {
+          "57fd2d65e4b0ce322b0c8665": {
+            "status": "ok",
+            "response": {
+              "id": "57fd2d65e4b0ce322b0c8665",
+              "version": 381,
+              "label": "Browsezoom",
+              "entity": {
+                "id": "57fce228e4b0f6600fdfb836",
+                "name": "Companies"
+              },
+              "name": "Browsezoom",
+              "state": "pending",
+              "type": "a",
+              "numberOfEmployees": 95,
+              "isCustomer": false,
+              "contactInformation": {
+                "phoneNumber": "1-702-845-9380",
+                "email": "jwoodsrq@spotify.com",
+                "id": "58837fdd3b063a0007603547",
+                "label": "Contact Information"
+              },
+              "addresses": [
+                {
+                  "addressLine": "4 Magdeline Place",
+                  "zipCode": "89145",
+                  "city": "Las Vegas",
+                  "state": "NV",
+                  "id": "57fd45aee4b0ce322b0c86aa",
+                  "label": "NV - 89145"
+                }
+              ],
+              "homepage": "http://www.browsezoom.com",
+              "taxId": "350-KWM",
+              "rating": "2.8",
+              "notes": "modified notes",
+              "lastMeeting": 1429623180000,
+              "lastUpdate": 1485292080000
+            }
+          },
+          "57fd2d65e4b0ce322b0c8565": {
+            "status": "ok",
+            "response": {
+              "id": "57fd2d65e4b0ce322b0c8565",
+              "version": 377,
+              "label": "Blogpad",
+              "name": "Blogpad",
+              "state": "pending",
+              "type": "b",
+              "numberOfEmployees": 534,
+              "isCustomer": false,
+              "contactInformation": {
+                "phoneNumber": "1-405-298-5885",
+                "email": "molsonre@rakuten.co.jp",
+                "id": "581224c8e4b0285870237cc5",
+                "label": "Contact Information"
+              },
+              "addresses": [
+                {
+                  "addressLine": "4 Crownhardt Plaza",
+                  "zipCode": "73157",
+                  "city": "Oklahoma City",
+                  "state": "OK",
+                  "id": "57fd45aee4b0ce322b0c86ac",
+                  "label": "OK - 73157"
+                }
+              ],
+              "homepage": "http://www.blogpad.com",
+              "taxId": "123-ABC",
+              "rating": "3.3",
+              "notes": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+              "lastMeeting": 1422111300000,
+              "lastUpdate": 1485292500000
+            }
+          }
+        }
+  - title: executes a simple action over two company records with custom response
+    description:
+    path: /data/companies/customResponse?id=57fd2d65e4b0ce322b0c8665,57fd2d65e4b0ce322b0c8565
+    request:
+    response:
+      body: |
+        {
+          "57fd2d65e4b0ce322b0c8665": {
+              "status": "ok",
+              "response": "This is a custom response"
+          },
+          "57fd2d65e4b0ce322b0c8565": {
+              "status": "ok",
+              "response": "This is a custom response"
+          }
+        }
+  - title: executes a simple action over two company records in the background
+    description:
+    path: /data/companies/logSomething?_async=true&id=57fd2d65e4b0ce322b0c8665,57fd2d65e4b0ce322b0c8565
+    request:
+      body: |
+        {
+            "param1": "a",
+            "param2": "b"
+        }
+    response:
+      body: |
+        {
+          "jobLink": "/api/status/jobs/588f45e2b45fc9000bc1bd1f",
+          "jobId": "588f45e2b45fc9000bc1bd1f"
+        }
+  - title: executes an action that works with many records over two records and returns a custom response
+    description:
+    path: /data/companies/countEmployees?id=57fd2d65e4b0ce322b0c8665,57fd2d65e4b0ce322b0c8565
+    request:
+    response:
+      body: |-
+        {
+            "numberOfEmployees": 629
+        }

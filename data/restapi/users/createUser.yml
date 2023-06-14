@@ -1,0 +1,231 @@
+verb: POST
+path: /users
+summary: Creates a user
+description: |
+  Creates a user. You must be a developer or have permissions to manage users.
+
+  New users will be created as active and will have the Slingr identity provider by default, unless a list of
+  identity providers is specified.
+request:
+  description:
+  headers:
+  parameters:
+  body: |
+    {
+      "firstName": "User4",
+      "lastName": "Test",
+      "email": "user4@test.com",
+      "password": "Test1234",
+      "identityProviders": [
+        {
+          "id": "__slingr__"
+        }
+      ],
+      "groups": [
+        {
+          "id": "5862694885f3fc0007cb4eed",
+          "primary": true,
+          "external": false
+        }
+      ],
+      "localization": {
+        "timezoneMode": "AUTO"
+      },
+      "options": {
+        "notifyUser": false,
+        "generatePassword": false
+      }
+    }
+  bodyFields:
+    - path: options.notifyUser
+      description: |
+        If `true` the user will be notify to its email.
+    - path: options.generatePassword
+      description: |
+        If `true` the password will be automatically generated and `password` field won't be required. This field
+        will not be taked into account if `options.notifyUser` it's `true` since when notifing the user will force
+        it to set it's own password.
+response:
+  description: |
+    The user in JSON format.
+  headers:
+  body: |
+    {
+      "id": "5890a268b45fc9000bc1c056",
+      "email": "user4@test.com",
+      "status": "ACTIVE",
+      "firstName": "User4",
+      "lastName": "Test",
+      "fullName": "User4 Test",
+      "groups": [
+        {
+          "id": "5862694885f3fc0007cb4eed",
+          "name": "Group1",
+          "primary": true,
+          "external": false
+        }
+      ],
+      "permissions": {
+        "developer": false,
+        "usersManagement": false
+      },
+      "localization": {
+        "timezone": null,
+        "timezoneMode": "AUTO"
+      },
+      "identityProviders": [
+        {
+          "id": "__slingr__",
+          "name": "slingr",
+          "label": "Slingr",
+          "externalId": null
+        }
+      ],
+      "version": 0
+    }
+  bodyFields:
+errors:
+  - code: validationErrors
+    status: 400
+    description: |
+      If there are validation errors. When this happens you will get the details of the errors in the body:
+
+      ```js
+      {
+        "code": "validationErrors",
+        "message": "There are validation errors",
+        "errors": [
+          {
+            "field": "firstName",
+            "fieldLabel": null,
+            "code": "required",
+            "message": "First name cannot be empty",
+            "additionalInfo": null
+          }
+        ]
+      }
+      ```
+  - code: forbidden
+    status: 403
+    description: You don't have permissions to create users.
+samples:
+  - title: creates a new user
+    description:
+    path: /users
+    request:
+      body: |
+        {
+          "firstName": "User4",
+          "lastName": "Test",
+          "email": "user4@test.com",
+          "password": "Test1234",
+          "groups": [
+            {
+              "id": "5862694885f3fc0007cb4eed",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "localization": {
+            "timezoneMode": "AUTO"
+          },
+          "notifyUser": false
+        }
+    response:
+      body: |
+        {
+          "id": "5890a268b45fc9000bc1c056",
+          "email": "user4@test.com",
+          "status": "ACTIVE",
+          "firstName": "User4",
+          "lastName": "Test",
+          "fullName": "User4 Test",
+          "groups": [
+            {
+              "id": "5862694885f3fc0007cb4eed",
+              "name": "Group1",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezone": null,
+            "timezoneMode": "AUTO"
+          },
+          "identityProviders": [
+            {
+              "id": "__slingr__",
+              "name": "slingr",
+              "label": "Slingr",
+              "externalId": null
+            }
+          ],
+          "version": 0
+        }
+  - title: creates a new user specifying an identity provider
+    description:
+    path: /users
+    request:
+      body: |
+        {
+          "firstName": "User4",
+          "lastName": "Test",
+          "email": "user4@test.com",
+          "password": "Test1234",
+          "groups": [
+            {
+              "id": "5862694885f3fc0007cb4eed",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "identityProviders": [
+            {
+              "name": "slack",
+              "externalId": "abcxyz"
+            }
+          ],
+          "localization": {
+            "timezoneMode": "AUTO"
+          },
+          "notifyUser": false
+        }
+    response:
+      body: |
+        {
+          "id": "5890a268b45fc9000bc1c056",
+          "email": "user4@test.com",
+          "status": "ACTIVE",
+          "firstName": "User4",
+          "lastName": "Test",
+          "fullName": "User4 Test",
+          "groups": [
+            {
+              "id": "5862694885f3fc0007cb4eed",
+              "name": "Group1",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezone": null,
+            "timezoneMode": "AUTO"
+          },
+          "identityProviders": [
+            {
+              "id": "5821ee4ff41eb200072ed2ba",
+              "name": "slack",
+              "label": "Slack",
+              "externalId": "abcxyz"
+            }
+          ],
+          "version": 0
+        }

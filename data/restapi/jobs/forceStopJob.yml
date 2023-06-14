@@ -1,0 +1,55 @@
+verb: PUT
+path: /status/jobs/{id}/forceStop
+summary: Force to stop a job
+description: |
+  When stopping a job it will try to do it gracefully. If the job keeps running and you need to stop it,
+  you can force it, what will kill the job immediately.
+
+  Keep in mind that the processing the job was doing might be interrupted and data might be in a bad state
+  when doing this, so use it only for very special cases.
+request:
+  description:
+  headers:
+  parameters:
+  body:
+  bodyFields:
+response:
+  description: |
+    The job in JSON format.
+  headers:
+  body: |
+    {
+      "id": "588a02c13b063a0007605032",
+      ...
+      "status": "STOPPED",
+      ...
+    }
+  bodyFields:
+errors:
+  - code: badRequest
+    status: 400
+    description: |
+      If job cannot be stopped. It could be because jobs of this type cannot be stopped, this is not a root
+      job or because the status is different from `STOPPING`.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to stop this job. If you are not a developer you can only stop jobs you
+      ran.
+  - code: notFound
+    status: 404
+    description: If job is not found.
+samples:
+  - title: force to stop a job
+    description:
+    path: /status/jobs/588a02c13b063a0007605032/forceStop
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "588a02c13b063a0007605032",
+          ...
+          "status": "STOPPED",
+          ...
+        }

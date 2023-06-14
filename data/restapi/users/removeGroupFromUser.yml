@@ -1,0 +1,155 @@
+verb: PUT
+path: /users/{ids}/removeGroup/{groupIdOrName}
+summary: Removes a group from users
+description: |
+  Removes a group from a single user or a list of users.
+request:
+  description:
+  headers:
+  parameters:
+    - name: ids
+      default:
+      required: true
+      description: |
+        The ID, email or external ID of the user (a comma separated list in case of multiple users) to remove the group.
+    - name: groupIdOrName
+      default:
+      required: true
+      description: |
+        The ID or the name of the group to remove.
+    - name: identityProvider
+      default:
+      required: false
+      description: |
+        Required when ids is an external ID (or a list of them). It is the ID or name of the identity provider that generated that external ID.
+  body:
+  bodyFields:
+response:
+  description: |
+    The updated users in JSON format (an array in case of multiple users).
+  headers:
+  body: |
+    {
+      "id": "5890a268b45fc9000bc1c056",
+      "email": "user4@test.com",
+      "status": "ACTIVE",
+      "firstName": "User4",
+      "lastName": "Test",
+      "fullName": "User4 Test",
+      "groups": [
+        {
+          "id": "56a53cc0e4b0f5f7e39c9b74",
+          "name": "group2",
+          "primary": true,
+          "external": false
+        }
+      ],
+      "permissions": {
+        "developer": false,
+        "usersManagement": false
+      },
+      "localization": {
+        "timezone": null,
+        "timezoneMode": "AUTO"
+      },
+      "identityProviders": [
+        {
+          "id": "__slingr__",
+          "name": "slingr",
+          "label": "Slingr"
+          "externalId": null
+        }
+      ],
+      "version": 2
+    }
+  bodyFields:
+errors:
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to remove a group for this user.
+  - code: notFound
+    status: 404
+    description: |
+      If the users or group are not found.
+samples:
+  - title: removes a group from a single user using the id
+    description:
+    path: /users/5890a268b45fc9000bc1c056/removeGroup/5862694885f3fc0007cb4eed
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "5890a268b45fc9000bc1c056",
+          "email": "user4@test.com",
+          "status": "ACTIVE",
+          "firstName": "User4",
+          "lastName": "Test",
+          "fullName": "User4 Test",
+          "groups": [
+            {
+              "id": "56a53cc0e4b0f5f7e39c9b74",
+              "name": "group2",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezone": null,
+            "timezoneMode": "AUTO"
+          },
+          "identityProviders": [
+            {
+              "id": "__slingr__",
+              "name": "slingr",
+              "label": "Slingr"
+              "externalId": null
+            }
+          ],
+          "version": 2
+        }
+  - title: removes a group from a single user using the name
+    description:
+    path: /users/5890a268b45fc9000bc1c056/removeGroup/group1
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "5890a268b45fc9000bc1c056",
+          "email": "user4@test.com",
+          "status": "ACTIVE",
+          "firstName": "User4",
+          "lastName": "Test",
+          "fullName": "User4 Test",
+          "groups": [
+            {
+              "id": "56a53cc0e4b0f5f7e39c9b74",
+              "name": "group2",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezone": null,
+            "timezoneMode": "AUTO"
+          },
+          "identityProviders": [
+            {
+              "id": "__slingr__",
+              "name": "slingr",
+              "label": "Slingr"
+              "externalId": null
+            }
+          ],
+          "version": 2
+        }

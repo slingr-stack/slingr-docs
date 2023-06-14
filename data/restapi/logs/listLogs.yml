@@ -1,0 +1,182 @@
+verb: GET
+path: /status/logs
+summary: Query logs from the app
+description: |
+  Query logs from the app.
+
+  Keep in mind that logs rotate and when the maximum size of logs is reached older ones are lost.
+request:
+  description:
+  headers:
+  parameters:
+    - name: userEmail
+      default:
+      required: no
+      description: Allows to filter by user email doing a partial match.
+    - name: period
+      default:
+      required: no
+      description: |
+        Allows to filter by a span of time. For example you can send `3h 30m` and it will query logs in
+        the last 3 hours and a half. The format is the same you can use for
+        [Time duration]({{site.baseurl}}/app-development-type-time-duration.html#overview) fields, with the
+        only difference that you can also pass `today` or `yesterday`.
+
+        If this parameter is specified, parameters `start` and `end` will be discarded.
+    - name: from
+      default:
+      required: no
+      description: |
+        The minimum timestamp in milliseconds since Epoch.
+    - name: to
+      default:
+      required: no
+      description: |
+        The maximum timestamp in milliseconds since Epoch.
+    - name: level
+      default:
+      required: no
+      description: |
+        The level of logs to find. You can specify many levels separated by commas.
+    - name: message
+      default:
+      required: no
+      description: |
+        Allows to filter by the message in the logs. It will do a partial search.
+    - name: _size
+      default: 200
+      required: no
+      description: The maximum number of logs to retrieve.
+    - name: _offset
+      default:
+      required: no
+      description: |
+        This is the offset to start getting logs. When you make a query you will get the offset you need to
+        use to get more logs.
+  body:
+  bodyFields:
+response:
+  description: |
+    A list of logs in JSON format.
+  headers:
+  body: |
+    {
+      "total": 151
+      "items": [
+        {
+          "id": "58907c10b45fc9000bc1c020",
+          "type": "APP",
+          "subType": "LOGIN",
+          "level": "INFO",
+          "message": "POST /login",
+          "userEmail": "dgaviola@slingr.io",
+          "adminUserEmail": null,
+          "timestamp": 1485863952895,
+          "ip": null
+        },
+        {
+          "id": "58907c1bb45fc9000bc1c023",
+          "type": "APP",
+          "subType": null,
+          "level": "INFO",
+          "message": "GET /api/users/57fce0c3e4b0ce322b0c06b2?appsVersion=true",
+          "userEmail": "dgaviola@slingr.io",
+          "adminUserEmail": null,
+          "timestamp": 1485863963701,
+          "ip": "::ffff:10.240.0.11"
+        },
+        {
+          "id": "589085b0b45fc9000bc1c02f",
+          "type": "APP",
+          "subType": null,
+          "level": "INFO",
+          "message": "Validation exceptions on record [test]. Error: [file: Content type is required when uploading a file and must be a string]",
+          "userEmail": "dgaviola@slingr.io",
+          "adminUserEmail": null,
+          "timestamp": 1485866416124,
+          "ip": null,
+          "additionalInfo": {
+            "recordLabel": "test",
+            "errors": [
+              {
+                "code": "INVALID",
+                "field": "file",
+                "message": "Content type is required when uploading a file and must be a string"
+              }
+            ]
+          }
+        },
+        {
+          "id": "589085bdb45fc9000bc1c030",
+          "type": "APP",
+          "subType": "REST_API_RECORD_UPDATED",
+          "level": "INFO",
+          "message": "PUT /api/data/files/585aea800d29d300072484a8",
+          "userEmail": "dgaviola@slingr.io",
+          "adminUserEmail": null,
+          "timestamp": 1485866429630,
+          "ip": "::ffff:10.240.0.15"
+        },
+        {
+          "id": "589085bfb45fc9000bc1c032",
+          "type": "APP",
+          "subType": null,
+          "level": "INFO",
+          "message": "Data record of type [files] with label [test] was changed successfully",
+          "userEmail": "dgaviola@slingr.io",
+          "adminUserEmail": null,
+          "timestamp": 1485866431823,
+          "ip": null
+        },
+      ]
+    }
+  bodyFields:
+    - path: total
+      description: |
+        The total number of logs matched by the query.
+    - path: offset
+      description: |
+        The offset to use to get more logs.
+    - path: items
+      description: |
+        The logs found. Please check the docs for [Logs](#logs) for more information.
+errors:
+  - code: forbidden
+    status: 403
+    description: |
+      If you try to query logs with a user who is not a developer.
+samples:
+  - title: finds two logs for yesterday for one specific user
+    description:
+    path: /status/logs?period=yesterday&userEmail=test@slingr.io&_size=2
+    request:
+      body:
+    response:
+      body: |
+        {
+          "items": [
+            {
+              "id": "58907c10b45fc9000bc1c020",
+              "type": "APP",
+              "subType": "LOGIN",
+              "level": "INFO",
+              "message": "POST /login",
+              "userEmail": "test@slingr.io",
+              "adminUserEmail": null,
+              "timestamp": 1485863952895,
+              "ip": null
+            },
+            {
+              "id": "58907c19b45fc9000bc1c021",
+              "type": "APP",
+              "subType": null,
+              "level": "INFO",
+              "message": "GET /api/users/current",
+              "userEmail": "test@slingr.io",
+              "adminUserEmail": null,
+              "timestamp": 1485863961326,
+              "ip": "::ffff:10.240.0.16"
+            }
+          ],
+          "total": 151
+        }

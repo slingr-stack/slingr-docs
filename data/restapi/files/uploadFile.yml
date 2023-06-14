@@ -1,0 +1,44 @@
+verb: POST
+path: /files
+summary: Uploads a file to the app
+description: |
+  Uploads a file to the app. It will be stored temporarily until it gets referenced by a record. If no record
+  references the file in 12 hours, the file will be removed.
+request:
+  description: The file needs to be uploaded as a multi-part. You can upload any type of file.
+  headers:
+    - name: Content-Type
+      value: multipart/form-data
+    - name: Accept
+      value: application/json
+    - name: token
+      value: token
+  parameters:
+  body:
+  bodyFields:
+response:
+  description: |
+    The metadata of the uploaded file.
+  headers:
+  body: |
+    {
+      "fileId": "588f9f1eb45fc9000bc1c010",
+      "fileLink": "/files/588f9f1eb45fc9000bc1c010"
+    }
+  bodyFields:
+    - path: fileId
+      description: The ID of the file. You can use this ID to reference the file from file fields in records.
+errors:
+samples:
+  - title: uploads a file
+    description:
+    path: /files
+    request:
+      body: |
+        test file in multi-part
+    response:
+      body: |
+        {
+          "fileId": "588f9f1eb45fc9000bc1c010",
+          "fileLink": "/files/588f9f1eb45fc9000bc1c010"
+        }

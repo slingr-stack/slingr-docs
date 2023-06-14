@@ -1,0 +1,52 @@
+verb: GET
+path: /data/{entityName}/{recordId}/files/{fileId}
+summary: Downloads a file that belongs to a specific record.
+description: |
+  Downloads a file that belongs to a specific record. User permissions check is performed.
+request:
+  description:
+  headers:
+  parameters:
+    - name: recordId
+      default:
+      required: yes
+      description: ID of the record to fetch file.
+    - name: fileId
+      default:
+      required: yes
+      description: ID of the file to be retrieved.
+  body:
+  bodyFields:
+response:
+  description: |
+    Returns the record file to download.
+  headers:
+    - name: Content-Type
+      value: application/force-download
+    - name: Content-Disposition
+      value: attachment; filename=file.ext
+  body: |
+    the content of the file
+  bodyFields:
+errors:
+  - code: notFound
+    status: 404
+    description: The entity or record or file can no be found.
+  - code: forbidden
+    status: 403
+    description: Provided token does not have permissions to access specified file.
+samples:
+  - title: fetches a file that belongs to a record
+    description:
+    path: /data/companies/57fd2d65e4b0ce322b0c8665/files/588fa383b45fc9000bc1c014
+    request:
+      headers:
+      body:
+    response:
+      headers:
+        - name: Content-Type
+          value: application/force-download
+        - name: Content-Disposition
+          value: attachment; filename=logo.png
+      body: |
+        this is the content of the file

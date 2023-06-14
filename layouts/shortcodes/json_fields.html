@@ -1,0 +1,25 @@
+{{ $context := .Get "context" }}
+{{ $filePath := printf "data/restapi/%s.yml" $context }}
+{{ $yamlContent := readFile $filePath }}
+{{ $myobject := $yamlContent | unmarshal }}
+
+<table class="table">
+    <thead>
+        <tr class="header">
+            <th align="left">Path</th>
+            <th align="left">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{- range $field := $myobject.fields -}}
+        <tr>
+            <td align="left">
+                <code>{{$field.path}}</code>
+            </td>
+            <td align="left">
+                <p>{{ $field.description  | markdownify }}</p>
+            </td>
+        </tr>
+    {{ end }}
+    </tbody>
+</table>

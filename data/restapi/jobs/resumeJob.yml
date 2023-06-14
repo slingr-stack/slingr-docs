@@ -1,0 +1,51 @@
+verb: PUT
+path: /status/jobs/{id}/resume
+summary: Resumes a job that is stopped
+description: |
+  Resumes a job that is stopped. The job will continue execution where it left. If the job was not started
+  when it was stopped, the status will be set to `PENDING` instead of `RUNNING`.
+request:
+  description:
+  headers:
+  parameters:
+  body:
+  bodyFields:
+response:
+  description: |
+    The job in JSON format.
+  headers:
+  body: |
+    {
+      "id": "588a02c13b063a0007605032",
+      ...
+      "status": "RUNNING",
+      ...
+    }
+  bodyFields:
+errors:
+  - code: badRequest
+    status: 404
+    description: |
+      If job cannot be resumed. It could be because the job is in a bad status or it is not a root job.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to resume this job. If you are not a developer you can only resume jobs you
+      ran.
+  - code: notFound
+    status: 404
+    description: If job is not found.
+samples:
+  - title: resumes a job
+    description:
+    path: /status/jobs/588a02c13b063a0007605032/resume
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "588a02c13b063a0007605032",
+          ...
+          "status": "RUNNING",
+          ...
+        }

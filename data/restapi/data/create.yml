@@ -1,0 +1,174 @@
+verb: POST
+path: /data/{entityName}
+summary: Creates a new record for the given entity
+description: |
+  Creates a new record for the given entity.
+
+  Data is sent in the body and should be valid according to the entity structure and fields rules.
+request:
+  description: |
+    The body of this request should be a record in JSON format based on the entity structure.
+
+    All fields you are sending have to be present in the entity definition and values have to match the format
+    required by the type (see [Types]({{site.baseurl}}/app-development-types-overview.html)). Also, there might
+    be validation rules you have to take into account.
+  headers:
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the record will be added to.
+  body: |
+    {
+      "fieldA": "value",
+      "fieldB": "value"
+      "fieldC": 10,
+      "nestedFields": [
+        {
+          "innerA": "value",
+          "innerB": "value"
+        },
+        {
+          "innerA": "value",
+          "innerB": "value"
+        }
+      ]
+    }
+  bodyFields:
+response:
+  description: |
+    The response is the same as if you do a `GET /data/companies/{id}`, which means that you will be able
+    to get the ID and label of the created record, as well as other calculated/default fields the entity
+    might have.
+
+    You can find more information about the JSON format of a record [here](#app-data).
+  headers:
+  body: |
+    {
+      "id": "588775f63b063a0007604f4c",
+      "version": 0,
+      "label": "label",
+      "fieldA": "value",
+      "fieldB": "value"
+      "fieldC": 10,
+      "nestedFields": [
+        {
+          "id": "588775f63b063a0007604f4c",
+          "label": "label",
+          "innerA": "value",
+          "innerB": "value"
+        },
+        {
+          "id": "588775f63b063a0007604f8a",
+          "label": "label",
+          "innerA": "value",
+          "innerB": "value"
+        }
+      ],
+      "calculatedField": "value"
+    }
+  bodyFields:
+errors:
+  - code: validationErrors
+    status: 400
+    description: |
+      If there are validations errors, the response will look like this:
+
+      ```js
+      {
+        "code": "validationErrors",
+        "message": "There are validation errors",
+        "errors": [
+          {
+            "field": "name",
+            "fieldLabel": "Name",
+            "code": "required",
+            "message": "This field is required",
+            "additionalInfo": null
+          },
+          {
+            "field": "state",
+            "fieldLabel": "State",
+            "code": "invalid",
+            "message": "Not a valid choice",
+            "additionalInfo": {
+              "rejectedValue": "sdfsdfsd"
+            }
+          }
+        ]
+      }
+      ```
+
+      In this case you will get details information about the field having issues, the error code and
+      a human readable description of the error. Additional information might be added depending on
+      the type of error, for example the rejected value.
+  - code: forbidden
+    status: 403
+    description: Provided token does not have permissions to create records on this entity.
+  - code: notFound
+    status: 404
+    description: If entity name does not exist.
+samples:
+  - title: creates a new company
+    description:
+    path: /data/companies
+    request:
+      body: |
+        {
+          "name": "Test 1",
+          "state": "pending",
+          "type": "a",
+          "numberOfEmployees": 95,
+          "isCustomer": false,
+          "contactInformation": {
+            "phoneNumber": "1-702-845-9380",
+            "email": "jwoodsrq@spotify.com"
+          },
+          "addresses": [
+            {
+              "addressLine": "4 Magdeline Place",
+              "zipCode": "89145",
+              "city": "Las Vegas",
+              "state": "NV"
+            }
+          ],
+          "homepage": "http://www.browsezoom.com",
+          "taxId": "350-KWM",
+          "rating": "2.8",
+          "notes": "test notes",
+          "lastMeeting": 1429623180000
+        }
+    response:
+      body: |
+        {
+          "id": "588775f63b063a0007604f4c",
+          "version": 0,
+          "label": "Test 1",
+          "name": "Test 1",
+          "state": "pending",
+          "type": "a",
+          "numberOfEmployees": 95,
+          "isCustomer": false,
+          "contactInformation": {
+            "phoneNumber": "1-702-845-9380",
+            "email": "jwoodsrq@spotify.com",
+            "id": "588775f63b063a0007604f4a",
+            "label": "Contact Information"
+          },
+          "addresses": [
+            {
+              "addressLine": "4 Magdeline Place",
+              "zipCode": "89145",
+              "city": "Las Vegas",
+              "state": "NV",
+              "id": "588775f63b063a0007604f4b",
+              "label": "NV - 89145"
+            }
+          ],
+          "homepage": "http://www.browsezoom.com",
+          "taxId": "350-KWM",
+          "rating": "2.8",
+          "notes": "test notes",
+          "lastMeeting": 1429623180000,
+          "lastUpdate": 1485272566096
+        }

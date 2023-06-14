@@ -1,0 +1,103 @@
+verb: PUT
+path: /data/{entityName}/export
+summary: Exports records to a CSV file
+description: |
+  Exports records to a CSV file. It is possible to filter records to export using a query and just export
+  some of the fields.
+
+  You can use the `_fields` parameter to indicate which fields should be included in the export. It works
+  very similar as in [queries]({{site.base_url}}/app-development-query-language.html#select-fields-to-fetch),
+  however there are a few differences:
+
+  - You can put related fields, that is fields that are in the entities pointed by relationship fields. For
+    example if you have a relationship field `company` pointing to the `companies` entity, you could specify
+    the field `company.type` to be included in the CSV file. If you just put `company` only the label will
+    be exported.
+  - If you don't specify anything in `_fields`, all fields will be included, except related ones.
+  - System fields (`id`, `label` and `version`) aren't included.
+request:
+  description:
+  headers:
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the record belongs to.
+    - name: _useFieldNames
+      default: false
+      required: no
+      description: |
+        This flag modifies how headers are generated. If it is set to `true` it will use the name instead of the label
+        to build the headers. Otherwise the label will be used, which is the default.
+    - name: query parameters
+      default:
+      required: no
+      description: |
+        These are the query parameters. See [Query language]({{site.baseurl}}/app-development-query-language.html) for
+        more information.
+  body:
+  bodyFields:
+response:
+  description: |
+    A reference to the job in charge of perform the import. To actually fetch the file you need to check when the
+    job is finished and look into the results of the job, where you'll find something like this:
+
+    ```js
+    {
+      ...
+      "hasErrors": false,
+      "results": {
+        "fileLink": "https://docs.slingrs.io/dev/runtime/api/files/588f864eb45fc9000bc1bd5c",
+        "fileId": "588f864eb45fc9000bc1bd5c",
+        "recordsExported": 283
+      },
+      "status": "FINISHED"
+    }
+    ```
+
+    The field `results.fileLink` contains the URL to download the file. You need to pass the token in the headers
+    when fetching the file or the token needs to be set in cookies.
+  headers:
+  body: |
+    {
+      "jobLink": "/api/status/jobs/588f8357b45fc9000bc1bd2a",
+      "jobId": "588f8357b45fc9000bc1bd2a"
+    }
+  bodyFields:
+errors:
+  - code: badRequest
+    status: 400
+    description: |
+      If you are trying to export more than 1,000,000 records or if query is invalid.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to export records on this entity.
+  - code: notFound
+    status: 404
+    description: The entity name does not exist.
+samples:
+  - title: exports companies with type 'b', with a maxium of 50 records
+    description:
+    path: /data/companies/export?type=b&_size=50
+    request:
+      headers:
+      body:
+    response:
+      body: |
+        {
+          "jobLink": "/api/status/jobs/588f3e65b45fc9000bc1baa7",
+          "jobId": "588f3e65b45fc9000bc1baa7"
+        }
+  - title: exports companies with type 'b', with a maxium of 50 records but only the fields name, address->state and mainContact->email.
+    description:
+    path: /data/companies/export?type=b&_size=50&_fields=name,address.state,mainContact.email
+    request:
+      headers:
+      body:
+    response:
+      body: |-
+        {
+          "jobLink": "/api/status/jobs/588f3e65b45fc9000bc1baa8",
+          "jobId": "588f3e65b45fc9000bc1baa8"
+        }

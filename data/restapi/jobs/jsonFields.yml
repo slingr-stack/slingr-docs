@@ -1,0 +1,86 @@
+fields:
+  - path: id
+    description: |
+      ID of the job.
+  - path: label
+    description: |
+      Name of the jobs. It is a simple description of what the job does. This description might change without notice
+      so don't use it to take decisions in your code.
+  - path: type
+    description: |
+      This is the type of job. There are many types of jobs, however some of them might change without notice. The
+      only job types we support are the following ones:
+
+      {{site.data.common.publicJobsDescription}}
+
+      Other jobs are system ones and you shouldn't base your code on any of them as we might change or remove them.
+  - path: runBy
+    description: |
+      It is a map with `id` and `fullName` of the user that triggered the job.
+  - path: parentJob
+    description: |
+      It is a map with `id` and `label` of the parent job.
+
+      The parent job is the job that was being executed when the job was created. If the job was not created during
+      the execution of another job, then this field will be `null` and it means this is a root job.
+  - path: rootJob
+    description: |
+      It is a map with `id` and `label` of the root job.
+
+      A root job is one that doesn't have a parent. If this field is `null` it means this is a root job.
+  - path: createDate
+    description: |
+      The date the job was created in milliseconds.
+  - path: startDate
+    descirption: |
+      The date when the execution of the job started. This can be `null` if the job is still pending for execution.
+  - path: endDate
+    description: |
+      The date when the execution of the job finished. This can be `null` if the job hasn't finished yet.
+  - path: status
+    description: |
+      Current status of the job. It could be:
+
+      {{site.data.common.jobsStatusesDescription}}
+  - path: hasErrors
+    description: |
+      If `true` it means that there was at least one error during the execution of the job. You should check
+      the logs and results of the job to see what happened.
+  - path: progress
+    description: |
+      This is a number from 0 to 100 that indicates the progress of the job. Keep in mind that some jobs will move
+      directly from 0 to 100 as there is no progress information. Also in cases were progress is updated it might
+      not be consistent, so use it carefully.
+  - path: recordsCount
+    description: |
+      If the job needs to do something with records, this number will indicate the number of records involved.
+  - path: recordsProcessed
+    description: |
+      If the job needs to do something with records, this number will indicate the number of records that have
+      been processed already.
+  - path: childrenJobsCount
+    description: |
+      If other jobs were created during the execution of the job, this counter will increase to show how many children
+      jobs have been created. This number will be 0 at the beginning but could grow over time, so it isn't fixed.
+  - path: childrenJobsProcessed
+    description: |
+      The number of children jobs that are finished.
+  - path: stoppable
+    description: |
+      If `true` it means this job allows to be stopped. Otherwise you won't be able to stop it and you need to wait
+      for it (except that the job is still pending, case in which you can always stop it).
+  - path: lowPriority
+    description: |
+      If `true` the job will be executed only when there are no many other jobs running.
+  - path: data
+    description: |
+      The content of this field depends on the job. Here you will find more information about parameters for the
+      job.
+
+      {{site.data.common.jobsDataDescription || liquify }}
+  - path: results
+    description: |
+      The content of this field depends on the job. Here you will find information about the results of executing
+      the job.
+
+      {{site.data.common.jobsResultsDescription || liquify}}

@@ -1,0 +1,135 @@
+verb: GET
+path: /status/jobs
+summary: Lists jobs in the app
+description: |
+  Lists jobs in the app.
+request:
+  description:
+  headers:
+  parameters:
+    - name: type
+      default:
+      required: no
+      description: |
+        The type of job. Possible values are: {{site.data.common.publicJobsList}}.
+
+        You can specify many separated by commas.
+    - name: status
+      default:
+      required: no
+      description: |
+        The status of the job. Possible values are: {{site.data.common.jobsStatusesList}}.
+
+        You can specify many separated by commas.
+    - name: hasErrors
+      default:
+      required: no
+      description: |
+        Allows to filter jobs if they have errors. `true` if you want only jobs with errors, `false` if you only
+        want jobs without errors.
+    - name: startFrom
+      default:
+      required: no
+      description: |
+        Allows to filter jobs by start date. This is the initial range limit to filter from, it can be used alone or
+        in combination with startTo.
+    - name: startTo
+      default:
+      required: no
+      description: |
+        Allows to filter jobs by start date. This is the final range limit to filter to, it can be used alone or
+        in combination with startFrom.
+    - name: endFrom
+      default:
+      required: no
+      description: |
+        Allows to filter jobs by end date. This is the initial range limit to filter from, it can be used alone or
+        in combination with endTo.
+    - name: endTo
+      default:
+      required: no
+      description: |
+        Allows to filter jobs by end date. This is the final range limit to filter to, it can be used alone or
+        in combination with endFrom.
+    - name: createFrom
+      default:
+      required: no
+      description: |
+        Allows to filter jobs by creation date. This is the initial range limit to filter from, it can be used alone or
+        in combination with createTo.
+    - name: createTo
+      default:
+      required: no
+      description: |
+        Allows to filter jobs by creation date. This is the final range limit to filter to, it can be used alone or
+        in combination with createFrom.
+    - name: _size
+      default: 20
+      required: no
+      description: The maximum number of jobs to retrieve.
+    - name: _offset
+      default:
+      required: no
+      description: |
+        This is the offset to start getting jobs. When you make a query you will get the offset you need to
+        use to get more jobs.
+  body:
+  bodyFields:
+response:
+  description: |
+    A list of jobs in JSON format.
+  headers:
+  body: |
+    {
+      "total": 54,
+      "offset": "5890d8ddb45fc9000bc1c2cf",
+      "items": [
+        {
+          "id": "5890d8deb45fc9000bc1c2d3",
+          ...
+        },
+        {
+          "id": "5890d8deb45fc9000bc1c2d1",
+          ...
+        },
+        {
+          "id": "5890d8ddb45fc9000bc1c2cf",
+          ...
+      ]
+    }
+  bodyFields:
+    - path: total
+      description: |
+        The total number of jobs matched by the query.
+    - path: offset
+      description: |
+        The offset to use to get more jobs.
+    - path: items
+      description: |
+        The jobs found. Please check the docs for [Jobs](#jobs) for more information.
+errors:
+samples:
+  - title: finds up to three finished jobs
+    description:
+    path: /status/jobs?status=FINISHED&_size=3
+    request:
+      body:
+    response:
+      body: |
+        {
+          "total": 50,
+          "offset": "5890d8ddb45fc9000bc1c2cf",
+          "items": [
+            {
+              "id": "5890d8deb45fc9000bc1c2d3",
+              ...
+            },
+            {
+              "id": "5890d8deb45fc9000bc1c2d1",
+              ...
+            },
+            {
+              "id": "5890d8ddb45fc9000bc1c2cf",
+              ...
+          ]
+        }

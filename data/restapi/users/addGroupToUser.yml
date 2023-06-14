@@ -1,0 +1,171 @@
+verb: PUT
+path: /users/{ids}/addGroup
+summary: Adds a group to users
+description: |
+  Adds a group for multiple users (or just a single one).
+
+  In the body you can send the field `id` or `name`. If you send both, `id` will have precedence over `name`.
+request:
+  description:
+  headers:
+  parameters:
+    - name: ids
+      default:
+      required: true
+      description: |
+        The ID, email or external ID or list of them (a comma separated list) of the users to add to the group.
+    - name: identityProvider
+      default:
+      required: false
+      description: |
+        Required when ids is an external ID (or a list of them). It is the ID or name of the identity provider that generated that external ID.
+  body: |
+    {
+      "id": "5862694885f3fc0007cb4eed",
+      "name": "group1"
+      "primary": true,
+      "external": false
+    }
+response:
+  description: |
+    The updated users in JSON format (an array in case of multiple users).
+  headers:
+  body: |
+    {
+      "id": "5890a268b45fc9000bc1c056",
+      "email": "user4@test.com",
+      "status": "ACTIVE",
+      "firstName": "User4",
+      "lastName": "Test",
+      "fullName": "User4 Test",
+      "groups": [
+        {
+          "id": "5862694885f3fc0007cb4eed",
+          "name": "Group1",
+          "primary": true,
+          "external": false
+        }
+      ],
+      "permissions": {
+        "developer": false,
+        "usersManagement": false
+      },
+      "localization": {
+        "timezone": null,
+        "timezoneMode": "AUTO"
+      },
+      "identityProviders": [
+        {
+          "id": "__slingr__",
+          "name": "slingr",
+          "label": "Slingr"
+          "externalId": null
+        }
+      ],
+      "version": 2
+    }
+  bodyFields:
+errors:
+  - code: badRequest
+    status: 400
+    description: |
+      Invalid information for the new group.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to add a group for these users.
+  - code: notFound
+    status: 404
+    description: |
+      If the users or group are not found.
+samples:
+  - title: adds a group to a user using the ID
+    description:
+    path: /users/5890a268b45fc9000bc1c056/addGroup
+    request:
+      body: |
+        {
+          "id": "5862694885f3fc0007cb4eed",
+          "primary": true,
+          "external": false
+        }
+    response:
+      body: |
+        {
+          "id": "5890a268b45fc9000bc1c056",
+          "email": "user4@test.com",
+          "status": "ACTIVE",
+          "firstName": "User4",
+          "lastName": "Test",
+          "fullName": "User4 Test",
+          "groups": [
+            {
+              "id": "5862694885f3fc0007cb4eed",
+              "name": "group1",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezone": null,
+            "timezoneMode": "AUTO"
+          },
+          "identityProviders": [
+            {
+              "id": "__slingr__",
+              "name": "slingr",
+              "label": "Slingr"
+              "externalId": null
+            }
+          ],
+          "version": 1
+        }
+  - title: adds a group to a user using the name
+    description:
+    path: /users/5890a268b45fc9000bc1c056/addGroup
+    request:
+      body: |
+        {
+          "name": "group1",
+          "primary": true,
+          "external": false
+        }
+    response:
+      body: |
+        {
+          "id": "5890a268b45fc9000bc1c056",
+          "email": "user4@test.com",
+          "status": "ACTIVE",
+          "firstName": "User4",
+          "lastName": "Test",
+          "fullName": "User4 Test",
+          "groups": [
+            {
+              "id": "5862694885f3fc0007cb4eed",
+              "name": "group1",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezone": null,
+            "timezoneMode": "AUTO"
+          },
+          "identityProviders": [
+            {
+              "id": "__slingr__",
+              "name": "slingr",
+              "label": "Slingr"
+              "externalId": null
+            }
+          ],
+          "version": 1
+        }

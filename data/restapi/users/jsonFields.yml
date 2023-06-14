@@ -1,0 +1,52 @@
+- path: id
+  description: |
+    ID of the user.
+- path: email
+  description: |
+    Email of the user. Required and must be unique.
+- path: status
+  description: |
+    The current status of the user. Possible values are:
+
+    - `ACTIVE`: the user is active and fully functional.
+    - `INACTIVE`: the user has been inactivated and won't be able to use the app.
+    - `BLOCKED`: the user has been blocked due to maximum loging attempts or other suspicious activity.
+- path: firstName
+  description: |
+    First name of the user.
+- path: lastName
+  description: |
+    Last name of the user.
+- path: fullName
+  description: |
+    Full name of the user, which is the concatenation of `firstName` and `lastName`.
+- path: groups
+  description: |
+    These are the groups the user belongs to. Only one of them can be the primary group, which is indicated
+    with the `primary` flag.
+
+    There is another flag called `external`, which indicates if the group was added from an external
+    identity provider.
+- path: permissions.developer
+  description: Indicates if the user is a developer.
+- path: permissions.userManagement
+  description: |
+    Indicates if the user can manage other users. If this is `true` there will be another field called
+    `permissions.managedGroups` indicating which groups can be managed.
+
+    Keep in mind that if the user is a developer this flag will be always `false` because developers can
+    manage users by default.
+- path: localization.timezoneMode
+  description: |
+    Possible values are `AUTO` or `MANUAL`. If manual there will be a filed with path
+    `localization.timezone`.
+- path: identityProviders
+  description: |
+    These are the identity providers available to the user for login. There is one special identity provider
+    with ID `__slingr__` which is the default identity provider for Slingr apps.
+
+    Each identity provider can have its own external ID that identifies the user on its side.
+- path: version
+  description: |
+    This is the version of the user and it is used for optimistic locking so no changes are lost during
+    updates.

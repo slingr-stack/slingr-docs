@@ -1,0 +1,95 @@
+verb: GET
+path: /data/{entityName}
+summary: Reads many records from one entity
+description: |
+  Reads many records from one entity. You can specify filters and other options in the URL.
+
+  More information about queries can be found in [Query language]({{site.baseurl}}/app-development-query-language.html).
+request:
+  description:
+  headers:
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the record belongs to.
+    - name: query parameters
+      default:
+      required: no
+      description: You can find information about other parameters in [Query language]({{site.baseurl}}/app-development-query-language.html).
+  body:
+  bodyFields:
+response:
+  description: |
+    A list of records in JSON representation will be returned.
+  headers:
+  body: |
+    {
+      "total": 10,
+      "offset": "57fd2d65e4b0ce322b0c8565",
+      "items": [
+        {
+          "id": "57fd2d65e4b0ce322b0c8665",
+          "version": 1,
+          "label": "label",
+          "fieldA": "value",
+          "fieldB": "value"
+        },
+        {
+          "id": "57fd2d65e4b0ce322b0c8565",
+          "version": 1,
+          "label": "label",
+          "fieldA": "value",
+          "fieldB": "value"
+        }
+      ]
+    }
+  bodyFields:
+    - path: total
+      description: |
+        The total number of records matched. If there are more than the records returned, you should use pagination
+        to fetch more records. See [Limit size]({{site.baseurl}}/app-development-query-language.html#limit-size) and
+        [Skip records]({{site.baseurl}}/app-development-query-language.html#skip-records).
+    - path: offset
+      description: |
+        The offset to pass to get more records. Please see [Skip records]({{site.baseurl}}/app-development-query-language.html#skip-records).
+    - path: items
+      description: |
+        This is the list of records fetched. For more information about the format of records, please go [here](#app-data).
+errors:
+  - code: badRequest
+    status: 400
+    description: Query is not valid.
+  - code: forbidden
+    status: 403
+    description: Provided token does not have permissions to access this entity or some of the fields you are querying by.
+  - code: notFound
+    status: 404
+    description: If entity name does not exist.
+samples:
+  - title: fetches fields name and type of two companies in pending status
+    description:
+    path: /data/companies?state=pending&_fields=name,type&_size=2
+    request:
+    response:
+      body: |
+        {
+          "total": 135,
+          "offset": "57fd2d65e4b0ce322b0c8565",
+          "items": [
+            {
+              "id": "57fd2d65e4b0ce322b0c8665",
+              "version": 379,
+              "label": "Browsezoom",
+              "name": "Browsezoom",
+              "type": "a"
+            },
+            {
+              "id": "57fd2d65e4b0ce322b0c8565",
+              "version": 375,
+              "label": "Blogpad",
+              "name": "Blogpad",
+              "type": "b"
+            }
+          ]
+        }

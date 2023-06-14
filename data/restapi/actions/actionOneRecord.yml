@@ -1,0 +1,140 @@
+verb: PUT
+path: /data/{entityName}/{id}/{actionName}
+summary: Execute an action over one record
+description: |
+  Execute an action over one record.
+request:
+  description: |
+    If the action contains parameters, you can send them in the body. The format is the same as when you create
+    or update records, but instead of fields you should send parameters of the action.
+
+    If the action doesn't have parameters you can leave the body empty.
+  headers:
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the record belongs to.
+    - name: id
+      default:
+      required: yes
+      description: ID of the record to execute the action on.
+    - name: actionName
+      default:
+      required: yes
+      description: The name of the action that has to be executed.
+    - name: _async
+      default: false
+      required: no
+      description: |
+        Indicates if the action has to be executed in the background, which is needed if the execution is going
+        to take more than 30 seconds.
+
+        When setting this parameter to `true` the response of this method will be a reference to the job in charge
+        of executing the action.
+
+        This parameter will override the default configured in the action.
+  body: |
+    {
+      "param1": "value",
+      "param2": value
+    }
+  bodyFields:
+response:
+  description: |
+    The response will be different based on the type of action and the parameter `_async`. There are three
+    possible responses:
+
+    - Record: if the `_async` parameter is `false` and the action doesn't return any custom response, then
+      the updated record is returned by this method. This only applies for actions of type `One record`.
+    - Custom action's response: if the `_async` parameter is `false` and the action returns a custom response, then
+      that response is returned.
+      Keep in mind that actions of type `Many records` should always return a custom response. If they don't
+      return anything, an empty response will be returned.
+    - Job reference: if the `_async` parameter is `true`, the method will return a reference to the job in charge
+      of the execution of the action. Once the action is completed you will find the response of the action
+      in the results of the job.
+
+    You can find samples for each type of response below.
+  headers:
+  body:
+  bodyFields:
+errors:
+  - code: badRequest
+    status: 400
+    description: If request is not allowed. For example, pre-conditions in the actions are not met.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to execute the action or you don't have permissions for the record.
+  - code: notFound
+    status: 404
+    description: The entity name or the record does not exist.
+samples:
+  - title: executes a simple action over a company record, no custom response
+    description:
+    path: /data/companies/57fd2d65e4b0ce322b0c8665/logSomething
+    request:
+      body: |
+        {
+            "param1": "a",
+            "param2": "b"
+        }
+    response:
+      body: |
+        {
+          "id": "57fd2d65e4b0ce322b0c8665",
+          "version": 381,
+          "label": "Browsezoom",
+          "name": "Browsezoom",
+          "state": "pending",
+          "type": "a",
+          "numberOfEmployees": 95,
+          "isCustomer": false,
+          "contactInformation": {
+            "id": "58837fdd3b063a0007603547",
+            "label": "Contact Information",
+            "phoneNumber": "1-702-845-9380",
+            "email": "jwoodsrq@spotify.com",
+          },
+          "addresses": [
+            {
+              "id": "57fd45aee4b0ce322b0c86aa",
+              "label": "NV - 89145",
+              "addressLine": "4 Magdeline Place",
+              "zipCode": "89145",
+              "city": "Las Vegas",
+              "state": "NV"
+            }
+          ],
+          "homepage": "http://www.browsezoom.com",
+          "taxId": "350-KWM",
+          "rating": "2.8",
+          "notes": "modified notes",
+          "lastMeeting": 1429623180000,
+          "lastUpdate": 1485292080000
+        }
+  - title: executes a simple action over a company record in the background, no custom response
+    description:
+    path: /data/companies/57fd2d65e4b0ce322b0c8665/logSomething?_async=true
+    request:
+      body: |
+        {
+            "param1": "a",
+            "param2": "b"
+        }
+    response:
+      body: |
+        {
+          "jobLink": "/api/status/jobs/588f3e65b45fc9000bc1baa7",
+          "jobId": "588f3e65b45fc9000bc1baa7"
+        }
+  - title: executes an action that works with many records and returns a custom response
+    description:
+    path: /data/companies/57fd2d65e4b0ce322b0c8665/countEmployees
+    request:
+    response:
+      body: |
+        {
+            "numberOfEmployees": 95
+        }

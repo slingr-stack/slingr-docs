@@ -1,0 +1,129 @@
+verb: GET
+path: /users
+summary: Lists users in the app
+description: |
+  Lists users in the app.
+request:
+  description:
+  headers:
+  parameters:
+    - name: firstName
+      default:
+      required: no
+      description: Allows to filter by first name doing a partial match.
+    - name: lastName
+      default:
+      required: no
+      description: Allows to filter by last name doing a partial match.
+    - name: fullName
+      default:
+      required: no
+      description: Allows to filter by full name doing a partial match.
+    - name: email
+      default:
+      required: no
+      description: Allows to filter by email doing a partial match.
+    - name: developer
+      default:
+      required: no
+      description: Allows to filter by developers. You can pass `true` or `false`, or leave it empty to get all.
+    - name: status
+      default:
+      required: no
+      description: |
+        Allows to filter by the status. You can pass many statuses separated by commas. Possible values
+        are `ACTIVE`, `INACTIVE` and `BLOCKED`.
+    - name: groups
+      default:
+      required: no
+      description: |
+        Allows to filter by group label doing a partial match. You can specify many values separated by commas.
+    - name: size
+      default: 20
+      required: no
+      description: The maximum number of users to retrieve.
+    - name: offset
+      default:
+      required: no
+      description: |
+        This is the offset to start getting users. When you make a query you will get the offset you need to
+        use to get more users.
+  body:
+  bodyFields:
+response:
+  description: |
+    A list of users in JSON format.
+  headers:
+  body: |
+    {
+      "total": 3,
+      "offset": "57fce0c3e4b0ce322b0c06b2",
+      "items": [
+        {
+          "id": "588662a93b063a0007604a3e",
+          ...
+        },
+        {
+          "id": "57fe52ade4b0ce322b0cea32",
+          ...
+        },
+        {
+          "id": "57fce0c3e4b0ce322b0c06b2",
+          ...
+        }
+      ]
+    }
+  bodyFields:
+    - path: total
+      description: |
+        The total number of users matched by the query.
+    - path: offset
+      description: |
+        The offset to use to get more users.
+    - path: items
+      description: |
+        The users found. Please check the docs for [Users](#users) for more information.
+errors:
+samples:
+  - title: finds active users
+    description:
+    path: /users?status=ACTIVE
+    request:
+      body:
+    response:
+      body: |
+        {
+          "total": 3,
+          "offset": "57fce0c3e4b0ce322b0c06b2",
+          "items": [
+            {
+              "id": "588662a93b063a0007604a3e",
+              ...
+            },
+            {
+              "id": "57fe52ade4b0ce322b0cea32",
+              ...
+            },
+            {
+              "id": "57fce0c3e4b0ce322b0c06b2",
+              ...
+            }
+          ]
+        }
+  - title: finds up to 2 users where group is 'Group1' and status is ACTIVE
+    description:
+    path: /users?groups=Group1&status=ACTIVE
+    request:
+      body:
+    response:
+      body: |
+        {
+          "total": 1,
+          "offset": "57fce0c3e4b0ce322b0c06b2",
+          "items": [
+            {
+              "id": "588662a93b063a0007604a3e",
+              ...
+            }
+          ]
+        }

@@ -1,0 +1,93 @@
+verb: POST
+path: /status/logs
+summary: Creates a log
+description: |
+  Creates a log. You only need to send the message and the level of log. Other fields will be calculated
+  automatically. An optional `additionalInfo` object can be send to add extra fields.
+request:
+  description:
+  headers:
+  parameters:
+  body: |
+    {
+      "level": "INFO",
+      "message": "This is a test log",
+      "additionalInfo": {
+        "test": "Additional info property"
+      }
+    }
+  bodyFields:
+response:
+  description: |
+    The created log in JSON format.
+  headers:
+  body: |
+    {
+      "id": "589085bdb45fc9000bc1c030",
+      "type": "EXTERNAL",
+      "subType": null,
+      "level": "INFO",
+      "message": "This is a test log",
+      "userEmail": "test@slingr.io",
+      "adminUserEmail": null,
+      "timestamp": 1485866429630,
+      "ip": null,
+      "additionalInfo": {
+        "test": "Additional info property"
+      }
+    }
+  bodyFields:
+errors:
+  - code: validationErrors
+    status: 400
+    description: |
+      If there are validation errors. When this happens you will get the details of the errors in the body:
+
+      ```js
+      {
+        "code": "validationErrors",
+        "message": "There are validation errors",
+        "errors": [
+          {
+            "field": "message",
+            "fieldLabel": null,
+            "code": "required",
+            "message": "Message cannot be empty",
+            "additionalInfo": null
+          }
+        ]
+      }
+      ```
+  - code: forbidden
+    status: 403
+    description: |
+      If you try to create a log with a user who is not a developer.
+samples:
+  - title: creates a new log
+    description:
+    path: /status/logs
+    request:
+      body: |
+        {
+          "level": "INFO",
+          "message": "This is a test log",
+          "additionalInfo": {
+            "test": "Additional info property"
+          }
+        }
+    response:
+      body: |
+        {
+          "id": "589085bdb45fc9000bc1c030",
+          "type": "EXTERNAL",
+          "subType": null,
+          "level": "INFO",
+          "message": "This is a test log",
+          "userEmail": "test@slingr.io",
+          "adminUserEmail": null,
+          "timestamp": 1485866429630,
+          "ip": "::ffff:10.240.0.15",
+          "additionalInfo": {
+            "test": "Additional info property"
+          }
+        }

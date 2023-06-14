@@ -1,0 +1,258 @@
+verb: GET
+path: /data/{entityName}/{id}/history
+summary: Returns the history of a record
+description: |
+  Returns the history of a record. The entity needs to have history logs enabled.
+request:
+  description:
+  headers:
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the record belongs to.
+    - name: id
+      default:
+      required: yes
+      description: The ID of the record to get its history.
+    - name: _size
+      default: 20
+      required: no
+      description: The number of history records to fetch. Always the latests logs will be retrieved.
+    - name: _offset
+      default:
+      required: no
+      description: Specifies an ID of a history log to start fetching logs from. This is to allow pagination.
+  body:
+  bodyFields:
+response:
+  description: |
+    The list of history logs for that record, sorted from the newest to the oldest ones.
+  headers:
+  body: |
+    {
+      "total": 2,
+      "offset": "588f8b99b45fc9000bc1bfc5",
+      "items": [
+        {
+          "id": "588f8ba7b45fc9000bc1bfce",
+          "entityId": "57fce228e4b0f6600fdfb836",
+          "entityName": "companies",
+          "entityVersion": 57,
+          "recordId": "588f8b99b45fc9000bc1bfc4",
+          "recordName": "test1",
+          "user": "dgaviola@slingr.io",
+          "timestamp": 1485802407010,
+          "ip": "::ffff:10.240.0.15",
+          "eventType": "USER_RECORD_CHANGED",
+          "eventCategory": "USER",
+          "contextPath": "entities.companies.update",
+          "recordDeleted": null,
+          "deletionDate": null,
+          "oldRecord": {
+            "type": {
+              "json": "a",
+              "text": "{type:a}"
+            },
+            "addresses": {
+              "json": null,
+              "text": "{}"
+            }
+          },
+          "newRecord": {
+            "type": {
+              "json": "b",
+              "text": "{type:b}"
+            },
+            "addresses": {
+              "json": null,
+              "text": "{}"
+            }
+          }
+        },
+        {
+          "id": "588f8b99b45fc9000bc1bfc5",
+          "entityId": "57fce228e4b0f6600fdfb836",
+          "entityName": "companies",
+          "entityVersion": 57,
+          "recordId": "588f8b99b45fc9000bc1bfc4",
+          "recordName": "test1",
+          "user": "dgaviola@slingr.io",
+          "timestamp": 1485802393836,
+          "ip": "::ffff:10.240.0.11",
+          "eventType": "USER_RECORD_CREATED",
+          "eventCategory": "USER",
+          "contextPath": "entities.companies.create",
+          "recordDeleted": null,
+          "deletionDate": null,
+          "oldRecord": {},
+          "newRecord": {
+            "name": "test1",
+            "state": "active",
+            "type": "a",
+            "numberOfEmployees": null,
+            "isCustomer": false,
+            "contactInformation": {
+              "phoneNumber": null,
+              "email": null,
+              "id": "588f8b99b45fc9000bc1bfc3",
+              "label": "Contact Information"
+            },
+            "homepage": null,
+            "taxId": null,
+            "rating": null,
+            "notes": null,
+            "lastMeeting": null,
+            "lastUpdate": 1485802380000
+          }
+        }
+      ]
+    }
+  bodyFields:
+    - path: total
+      description: The total number of history logs for the record.
+    - path: offset
+      description: |
+        The ID of the latest history log, which needs to be sent in the `_offset` parameter to get the following
+        records when using pagination.
+    - path: items
+      description: The history logs. Most of the fields are self explanatory. Next we will describe a few ones.
+    - path: items[].eventCategory
+      description: |
+        The category of the event. These are the possible values:
+
+        - `USER`: the change was done by a user using the UI or the REST API.
+        - `SCRIPT`: the change was done by a script.
+        - `SYSTEM`: these are system changes like cascade updates.
+    - path: items[].eventType
+      description: |
+        The type of event, which depends on the category. These are the options:
+
+        - `USER_RECORD_CREATED`
+        - `USER_RECORD_CHANGED`
+        - `USER_RECORD_DELETED`
+        - `USER_ACTION_PERFORMED`
+        - `SCRIPT_RECORD_CREATED`
+        - `SCRIPT_RECORD_CHANGED`
+        - `SCRIPT_RECORD_DELETED`
+        - `SCRIPT_ACTION_PERFORMED`
+        - `SYSTEM_CASCADE_UPDATE`
+        - `SYSTEM_REFACTORING`
+    - path: items[].contextPath
+      description: |
+        This is a path that describe where the change was done. For example if it was a script it will say
+        which script made the change.
+    - path: items[].recordDeleted
+      description: Indicates if the record has been deleted or not.
+    - path: items[].deletionDate
+      description: Date when the record was deleted.
+    - path: items[].oldRecord
+      description: |
+        Contains the old values of the fields that were modified. On each field it will contain the JSON format
+        as well as a more human-redable format.
+    - path: items[].newRecord
+      description: |
+        Contains the new values of the fields that were modified. On each field it will contain the JSON format
+        as well as a more human-redable format.
+errors:
+  - code: badRequest
+    status: 400
+    description: |
+      If record ID is invalid.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to see history of records for the entity.
+  - code: notFound
+    status: 404
+    description: |
+      The entity name does not exist. Keep in mind that this method won't return this error if the record ID
+      does not exists because you could be asking for a deleted record.
+samples:
+  - title: gets the history of a company record
+    description:
+    path: /data/companies/588f8b99b45fc9000bc1bfc4/history
+    request:
+      body:
+    response:
+      body: |
+        {
+          "total": 2,
+          "offset": "588f8b99b45fc9000bc1bfc5",
+          "items": [
+            {
+              "id": "588f8ba7b45fc9000bc1bfce",
+              "entityId": "57fce228e4b0f6600fdfb836",
+              "entityName": "companies",
+              "entityVersion": 57,
+              "recordId": "588f8b99b45fc9000bc1bfc4",
+              "recordName": "test1",
+              "user": "dgaviola@slingr.io",
+              "timestamp": 1485802407010,
+              "ip": "::ffff:10.240.0.15",
+              "eventType": "USER_RECORD_CHANGED",
+              "eventCategory": "USER",
+              "contextPath": "entities.companies.update",
+              "recordDeleted": null,
+              "deletionDate": null,
+              "oldRecord": {
+                "type": {
+                  "json": "a",
+                  "text": "{type:a}"
+                },
+                "addresses": {
+                  "json": null,
+                  "text": "{}"
+                }
+              },
+              "newRecord": {
+                "type": {
+                  "json": "b",
+                  "text": "{type:b}"
+                },
+                "addresses": {
+                  "json": null,
+                  "text": "{}"
+                }
+              }
+            },
+            {
+              "id": "588f8b99b45fc9000bc1bfc5",
+              "entityId": "57fce228e4b0f6600fdfb836",
+              "entityName": "companies",
+              "entityVersion": 57,
+              "recordId": "588f8b99b45fc9000bc1bfc4",
+              "recordName": "test1",
+              "user": "dgaviola@slingr.io",
+              "timestamp": 1485802393836,
+              "ip": "::ffff:10.240.0.11",
+              "eventType": "USER_RECORD_CREATED",
+              "eventCategory": "USER",
+              "contextPath": "entities.companies.create",
+              "recordDeleted": null,
+              "deletionDate": null,
+              "oldRecord": {},
+              "newRecord": {
+                "name": "test1",
+                "state": "active",
+                "type": "a",
+                "numberOfEmployees": null,
+                "isCustomer": false,
+                "contactInformation": {
+                  "phoneNumber": null,
+                  "email": null,
+                  "id": "588f8b99b45fc9000bc1bfc3",
+                  "nestedFieldLabel": "Contact Information",
+                  "id": "588f8b99b45fc9000bc1bfc3",
+                  "label": "Contact Information"
+                },
+                "homepage": null,
+                "taxId": null,
+                "rating": null,
+                "notes": null,
+                "lastMeeting": null,
+                "lastUpdate": 1485802380000
+              }
+            }
+          ]
+        }

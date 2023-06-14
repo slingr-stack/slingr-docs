@@ -1,0 +1,176 @@
+verb: PUT
+path: /data/{entityName}/{id}
+summary: Updates a record data
+description: |
+  Updates a record data.
+
+  Data is sent in the body and should be valid according to the entity structure and fields rules.
+request:
+  description: |
+    The body of this request should be a record in JSON format based on the entity structure.
+
+    All fields you are sending have to be present in the entity definition and values have to match the format
+    required by the type (see [Types]({{site.baseurl}}/app-development-types-overview.html)). Also, there might
+    be validation rules you have to take into account.
+
+    You can specify only the fields you want to set. Fields that are not included won't be modified
+    (if you want to clear a field value, set them to `null` explicitly).
+
+    One important thing to mention here is the field `version`, which indicates the version of the record you are
+    updating. This is to handle concurrency issues when two users try to update the same record at the same time
+    (read the optimistic locking section below). If you don't provide the `version` field then you will always
+    write the data, no matter if you are overriding other user's data.
+  headers:
+
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the record belongs to.
+    - name: id
+      default:
+      required: yes
+      description: |
+        The ID of the record to update. If you provide the ID on the body it will be discarded and the ID sent
+        in the URL parameter will be used.
+  body: |
+    {
+      "version": 1,
+      "fieldA": "newValue",
+      "fieldB": "newValue",
+      "nestedFields": [
+        {
+          "id": "588775f63b063a0007604f4c",
+          "innerA": "newValue"
+        },
+        {
+          "id": "588775f63b063a0007604f8a",
+          "innerB": "newValue"
+        }
+      ]
+    }
+  bodyFields:
+response:
+  description: |
+    The response is the same as if you do a `GET /data/companies/{id}`, which means that you will
+    be able to get the ID and label of the updated record, as well as other calculated/default fields
+    the entity might have.
+  headers:
+  body: |
+    {
+      "id": "588775f63b063a0007604ab2",
+      "version": 0,
+      "label": "label",
+      "fieldA": "newValue",
+      "fieldB": "newValue"
+      "fieldC": 10,
+      "nestedFields": [
+        {
+          "id": "588775f63b063a0007604f4c",
+          "label": "label",
+          "innerA": "newValue",
+          "innerB": "value"
+        },
+        {
+          "id": "588775f63b063a0007604f8a",
+          "label": "label",
+          "innerA": "value",
+          "innerB": "newValue"
+        }
+      ],
+      "calculatedField": "value"
+    }
+  bodyFields:
+errors:
+  - code: validationErrors
+    status: 400
+    description: |
+      If there are validations errors, the response will look like this:
+
+      ```js
+      {
+        "code": "validationErrors",
+        "message": "There are validation errors",
+        "errors": [
+          {
+            "field": "name",
+            "fieldLabel": "Name",
+            "code": "required",
+            "message": "This field is required",
+            "additionalInfo": null
+          },
+          {
+            "field": "state",
+            "fieldLabel": "State",
+            "code": "invalid",
+            "message": "Not a valid choice",
+            "additionalInfo": {
+              "rejectedValue": "sdfsdfsd"
+            }
+          }
+        ]
+      }
+      ```
+
+      In this case you will get details information about the field having issues, the error code and
+      a human readable description of the error. Additional information might be added depending on
+      the type of error, for example the rejected value.
+  - code: forbidden
+    status: 403
+    description: |
+      Provided token does not have permissions to edit records on this entity or you don't have permissions
+      to edit this particular record.
+  - code: notFound
+    status: 404
+    description: If entity name or record ID does not exist.
+  - code: optimisticLocking
+    status: 409
+    description: |
+      If another user modified the data in the middle. This can be determined only if you provide the
+      `version` field.
+samples:
+  - title: updates a few fields in a company record
+    description:
+    path: /data/companies/588775f63b063a0007604f4c
+    request:
+      body: |
+        {
+          "version": 1,
+          "state": "active",
+          "type": "b",
+          "numberOfEmployees": 100
+        }
+    response:
+      body: |
+        {
+          "id": "588775f63b063a0007604f4c",
+          "version": 2,
+          "label": "Test 1",
+          "name": "Test 1",
+          "state": "active",
+          "type": "b",
+          "numberOfEmployees": 100,
+          "isCustomer": false,
+          "contactInformation": {
+            "phoneNumber": "1-702-845-9380",
+            "email": "jwoodsrq@spotify.com",
+            "id": "588775f63b063a0007604f4a",
+            "label": "Contact Information"
+          },
+          "addresses": [
+            {
+              "addressLine": "4 Magdeline Place",
+              "zipCode": "89145",
+              "city": "Las Vegas",
+              "state": "NV",
+              "id": "588775f63b063a0007604f4b",
+              "label": "NV - 89145"
+            }
+          ],
+          "homepage": "http://www.browsezoom.com",
+          "taxId": "350-KWM",
+          "rating": "2.8",
+          "notes": "test notes",
+          "lastMeeting": 1429623180000,
+          "lastUpdate": 1485288240000
+        }

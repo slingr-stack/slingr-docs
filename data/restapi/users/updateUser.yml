@@ -1,0 +1,170 @@
+verb: PUT
+path: /users/{idOrEmailOrExternalId}
+summary: Updates an existing user
+description: |
+  Updates a user. You must be a developer or have permissions to manage users.
+request:
+  description:
+  headers:
+  parameters:
+    - name: idOrEmailOrExternalId
+      default:
+      required: true
+      description: |
+        Either the user ID, email or external ID of the user to update.
+    - name: identityProvider
+      default:
+      required: false
+      description: |
+        Required when idOrEmailOrExternalId is an external ID. It is the ID or name of the identity provider that generated that external ID.
+  body: |
+    {
+      "firstName": "User4",
+      "lastName": "Test",
+      "email": "user4@test.com",
+      "password": "Test1234",
+      "groups": [
+        {
+          "id": "5862694885f3fc0007cb4eed",
+          "primary": true,
+          "external": false
+        }
+      ],
+      "identityProviders": [
+        {
+          "id": "__slingr__"
+        }
+      ],
+      "localization": {
+        "timezoneMode": "AUTO"
+      }
+    }
+  bodyFields:
+response:
+  description: |
+    The updated user in JSON format.
+  headers:
+  body: |
+    {
+      "id": "5890a268b45fc9000bc1c056",
+      "email": "user4@test.com",
+      "status": "ACTIVE",
+      "firstName": "User4",
+      "lastName": "Test",
+      "fullName": "User4 Test",
+      "groups": [
+        {
+          "id": "5862694885f3fc0007cb4eed",
+          "name": "Group1",
+          "primary": true,
+          "external": false
+        }
+      ],
+      "permissions": {
+        "developer": false,
+        "usersManagement": false
+      },
+      "localization": {
+        "timezone": null,
+        "timezoneMode": "AUTO"
+      },
+      "identityProviders": [
+        {
+          "id": "__slingr__",
+          "name": "slingr",
+          "label": "Slingr",
+          "externalId": null
+        }
+      ],
+      "version": 1
+    }
+  bodyFields:
+errors:
+  - code: validationErrors
+    status: 400
+    description: |
+      If there are validation errors. When this happens you will get the details of the errors in the body:
+
+      ```js
+      {
+        "code": "validationErrors",
+        "message": "There are validation errors",
+        "errors": [
+          {
+            "field": "firstName",
+            "fieldLabel": null,
+            "code": "required",
+            "message": "First name cannot be empty",
+            "additionalInfo": null
+          }
+        ]
+      }
+      ```
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to create users, you are trying to change the password when impersonating
+      another user or you are trying to update a developer.
+  - code: optimisticLocking
+    status: 409
+    description: |
+      Version of the user doesn't match the one in the server, which means you have an outdated version of
+      the user.
+samples:
+  - title: updates an existing user
+    description:
+    path: /users/5890a268b45fc9000bc1c056
+    request:
+      body: |
+        {
+          "firstName": "User4",
+          "lastName": "Test",
+          "email": "user4@test.com",
+          "password": "Test1234",
+          "groups": [
+            {
+              "id": "5862694885f3fc0007cb4eed",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "localization": {
+            "timezoneMode": "AUTO"
+          },
+          "version": 0
+        }
+    response:
+      body: |
+        {
+          "id": "5890a268b45fc9000bc1c056",
+          "email": "user4@test.com",
+          "status": "ACTIVE",
+          "firstName": "User4",
+          "lastName": "Test",
+          "fullName": "User4 Test",
+          "groups": [
+            {
+              "id": "5862694885f3fc0007cb4eed",
+              "name": "Group1",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezone": null,
+            "timezoneMode": "AUTO"
+          },
+          "identityProviders": [
+            {
+              "id": "5821ee4ff41eb200072ed2ba",
+              "name": "slack",
+              "label": "Slack",
+              "externalId": "abcxyz"
+            }
+          ],
+          "version": 1
+        }

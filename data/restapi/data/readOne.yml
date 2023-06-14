@@ -1,0 +1,111 @@
+
+verb: GET
+path: /data/{entityName}/{id}
+summary: Reads one record by ID
+description: Reads one record by ID.
+request:
+  description:
+  headers:
+
+  parameters:
+  - name: entityName
+    default:
+    required: yes
+    description: Name of the entity the record belongs to.
+  - name: id
+    default:
+    required: yes
+    description: ID of the record to fetch.
+  - name: _fields
+    default: all
+    required: no
+    description: |
+      By default all fields will be fetched. If you want to specify which fields you want to fetch, you can
+      pass this parameter. You can specify many fields separating them by commas:
+
+      ```
+      _fields=name,type
+      ```
+
+      System field will always be returned (`id`, `version`, etc.).
+  - name: _format
+    default: native
+    required: no
+    description: |
+      The format to use to fetch the fields. There are two options: `native` and `plainText`. The first
+      one show the raw value of each field. The second one, plainText, returns the values of the fields
+      converted using the display option of each field.
+  - name: _relationshipsToFetch
+    default:
+    required: no
+    description: |
+      A comma-separated list of relationship fields that will be fetched within the record. For example
+      if an entity has relationship fields named `company` and `region`, you could fetch those referenced
+      records like this:
+
+      ```
+      _relationshipsToFetch=company,region
+      ```
+  body:
+  bodyFields:
+response:
+  description: |
+    The JSON representation of the record is returned. More info about the format can be found [here](#app-data).
+  headers:
+  body: |
+    {
+      "id": "57fd2d65e4b0ce322b0c8665",
+      "version": 1,
+      "label": "label",
+      "fieldA": "value",
+      "fieldB": "value"
+      "fieldC": "value"
+    }
+  bodyFields:
+errors:
+  - code: forbidden
+    status: 403
+    description: Provided token does not have permissions to access this record.
+  - code: notFound
+    status: 404
+    description: "`Either` entity or record ID does not exist."
+
+samples:
+- title: fetches one company record
+  description:
+  path: /data/companies/57fd2d65e4b0ce322b0c8665
+  request:
+  response:
+    body: |
+      {
+        "id": "57fd2d65e4b0ce322b0c8665",
+        "version": 379,
+        "label": "Browsezoom",
+        "name": "Browsezoom",
+        "state": "pending",
+        "type": "a",
+        "numberOfEmployees": 95,
+        "isCustomer": false,
+        "contactInformation": {
+          "phoneNumber": "1-702-845-9380",
+          "email": "jwoodsrq@spotify.com",
+          "id": "58837fdd3b063a0007603547",
+          "label": "Contact Information"
+        },
+        "addresses": [
+          {
+            "addressLine": "4 Magdeline Place",
+            "zipCode": "89145",
+            "city": "Las Vegas",
+            "state": "NV",
+            "id": "57fd45aee4b0ce322b0c86aa",
+            "label": "NV - 89145"
+          }
+        ],
+        "homepage": "http://www.browsezoom.com",
+        "taxId": "350-KWM",
+        "rating": "2.8",
+        "notes": "modified notes",
+        "lastMeeting": 1429623180000,
+        "lastUpdate": 1485012900000
+      }

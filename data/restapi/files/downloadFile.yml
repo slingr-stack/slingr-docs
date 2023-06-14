@@ -1,0 +1,47 @@
+verb: GET
+path: /files/{id}
+summary: Downloads a file.
+description: |
+  Downloads a file. This service is only available for developer and system users.
+request:
+  description:
+  headers:
+    - name: token
+    - value: token
+  parameters:
+    - name: id
+      default:
+      required: yes
+      description: The ID of the file to download.
+  body:
+  bodyFields:
+response:
+  description: |
+    Returns the file to download.
+  headers:
+    - name: Content-Type
+      value: application/force-download
+    - name: Content-Disposition
+      value: attachment; filename=file.ext
+  body: |
+    the content of the file
+  bodyFields:
+errors:
+  - code: notFound
+    status: 404
+    description: The file doesn't exist.
+samples:
+  - title: fetches a file
+    description:
+    path: /files/588f9f1eb45fc9000bc1c010
+    request:
+      headers:
+      body:
+    response:
+      headers:
+        - name: Content-Type
+          value: application/force-download
+        - name: Content-Disposition
+          value: attachment; filename=test-file.txt
+      body: |
+        this is the content of the file

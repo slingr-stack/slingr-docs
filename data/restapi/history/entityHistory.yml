@@ -1,0 +1,249 @@
+verb: GET
+path: /data/{entityName}/history
+summary: Returns the history logs for all records in an entity
+description: |
+  Returns the history logs for all records in an entity, which needs to have history logs enabled.
+request:
+  description:
+  headers:
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the fetch history logs.
+    - name: eventTypes
+      default:
+      required: no
+      description: |
+        Allows to filter by some specific type of events. You can select many separating them by commas. Possible
+        values are:
+
+        - `USER_RECORD_CREATED`
+        - `USER_RECORD_CHANGED`
+        - `USER_RECORD_DELETED`
+        - `USER_ACTION_PERFORMED`
+        - `SCRIPT_RECORD_CREATED`
+        - `SCRIPT_RECORD_CHANGED`
+        - `SCRIPT_RECORD_DELETED`
+        - `SCRIPT_ACTION_PERFORMED`
+        - `SYSTEM_CASCADE_UPDATE`
+        - `SYSTEM_REFACTORING`
+    - name: to
+      default:
+      required: no
+      description: |
+        Allows to filter logs by timestamp. This is the maximum date and you should pass the number of milliseconds
+        since Epoch.
+    - name: from
+      default:
+      required: no
+      description: |
+        Allows to filter logs by timestamp. This is the minimum date and you should pass the number of milliseconds
+        since Epoch.
+    - name: _size
+      default: 20
+      required: no
+      description: The number of history records to fetch. Always the latests logs will be retrieved.
+    - name: _offset
+      default:
+      required: no
+      description: Specifies an ID of a history log to start fetching logs from. This is to allow pagination.
+  body:
+  bodyFields:
+response:
+  description: |
+    The list of history logs, sorted from the newest to the oldest ones.
+  headers:
+  body: |
+    {
+      "total": 3,
+      "offset": "588f8ba7b45fc9000bc1bfce",
+      "items": [
+        {
+          "id": "588f9757b45fc9000bc1bfe1",
+          "entityId": "57fce228e4b0f6600fdfb836",
+          "entityName": "companies",
+          "entityVersion": 57,
+          "recordId": "588f9757b45fc9000bc1bfe0",
+          "recordName": "test2",
+          "user": "dgaviola@slingr.io",
+          "timestamp": 1485805399966,
+          "ip": "::ffff:10.240.0.11",
+          "eventType": "USER_RECORD_CREATED",
+          "eventCategory": "USER",
+          "contextPath": "entities.companies.create",
+          "recordDeleted": null,
+          "deletionDate": null,
+          "oldRecord": {},
+          "newRecord": {
+            "name": "test2",
+            "state": "active",
+            "type": "c",
+            "color": "#e1e1e1",
+            "numberOfEmployees": null,
+            "isCustomer": false,
+            "contactInformation": {
+              "phoneNumber": null,
+              "email": null,
+              "id": "588f9757b45fc9000bc1bfdf",
+              "nestedFieldLabel": "Contact Information",
+              "id": "588f9757b45fc9000bc1bfdf",
+              "label": "Contact Information"
+            },
+            "homepage": null,
+            "taxId": null,
+            "rating": null,
+            "notes": null,
+            "lastMeeting": null,
+            "lastUpdate": 1485805380000
+          }
+        },
+        {
+          "id": "588f8ba7b45fc9000bc1bfce",
+          "entityId": "57fce228e4b0f6600fdfb836",
+          "entityName": "companies",
+          "entityVersion": 57,
+          "recordId": "588f8b99b45fc9000bc1bfc4",
+          "recordName": "test1",
+          "user": "dgaviola@slingr.io",
+          "timestamp": 1485802407010,
+          "ip": "::ffff:10.240.0.15",
+          "eventType": "USER_RECORD_CHANGED",
+          "eventCategory": "USER",
+          "contextPath": "entities.companies.update",
+          "recordDeleted": null,
+          "deletionDate": null,
+          "oldRecord": {
+            "type": {
+              "json": "a",
+              "text": "{type:a}"
+            },
+            "addresses": {
+              "json": null,
+              "text": "{}"
+            }
+          },
+          "newRecord": {
+            "type": {
+              "json": "b",
+              "text": "{type:b}"
+            },
+            "addresses": {
+              "json": null,
+              "text": "{}"
+            }
+          }
+        }
+      ]
+    }
+  bodyFields:
+    - path: total
+      description: The total number of history logs matched by the query.
+    - path: offset
+      description: |
+        The ID of the latest history log, which needs to be sent in the `_offset` parameter to get the following
+        records when using pagination.
+    - path: items
+      description: The history logs. Please check the documentation for [History for one record](#history-for-one-record).
+errors:
+  - code: badRequest
+    status: 400
+    description: |
+      If the query is invalid.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to see history of records for the entity.
+  - code: notFound
+    status: 404
+    description: |
+      The entity name does not exist.
+samples:
+  - title: gets the last two history logs in entity 'companies'
+    description:
+    path: /data/companies/history?_size=2
+    request:
+      body:
+    response:
+      body: |-
+        {
+          "total": 3,
+          "offset": "588f8ba7b45fc9000bc1bfce",
+          "items": [
+            {
+              "id": "588f9757b45fc9000bc1bfe1",
+              "entityId": "57fce228e4b0f6600fdfb836",
+              "entityName": "companies",
+              "entityVersion": 57,
+              "recordId": "588f9757b45fc9000bc1bfe0",
+              "recordName": "test2",
+              "user": "dgaviola@slingr.io",
+              "timestamp": 1485805399966,
+              "ip": "::ffff:10.240.0.11",
+              "eventType": "USER_RECORD_CREATED",
+              "eventCategory": "USER",
+              "contextPath": "entities.companies.create",
+              "recordDeleted": null,
+              "deletionDate": null,
+              "oldRecord": {},
+              "newRecord": {
+                "name": "test2",
+                "state": "active",
+                "type": "c",
+                "color": "#e1e1e1",
+                "numberOfEmployees": null,
+                "isCustomer": false,
+                "contactInformation": {
+                  "phoneNumber": null,
+                  "email": null,
+                  "id": "588f9757b45fc9000bc1bfdf",
+                  "nestedFieldLabel": "Contact Information",
+                  "id": "588f9757b45fc9000bc1bfdf",
+                  "label": "Contact Information"
+                },
+                "homepage": null,
+                "taxId": null,
+                "rating": null,
+                "notes": null,
+                "lastMeeting": null,
+                "lastUpdate": 1485805380000
+              }
+            },
+            {
+              "id": "588f8ba7b45fc9000bc1bfce",
+              "entityId": "57fce228e4b0f6600fdfb836",
+              "entityName": "companies",
+              "entityVersion": 57,
+              "recordId": "588f8b99b45fc9000bc1bfc4",
+              "recordName": "test1",
+              "user": "dgaviola@slingr.io",
+              "timestamp": 1485802407010,
+              "ip": "::ffff:10.240.0.15",
+              "eventType": "USER_RECORD_CHANGED",
+              "eventCategory": "USER",
+              "contextPath": "entities.companies.update",
+              "recordDeleted": null,
+              "deletionDate": null,
+              "oldRecord": {
+                "type": {
+                  "json": "a",
+                  "text": "{type:a}"
+                },
+                "addresses": {
+                  "json": null,
+                  "text": "{}"
+                }
+              },
+              "newRecord": {
+                "type": {
+                  "json": "b",
+                  "text": "{type:b}"
+                },
+                "addresses": {
+                  "json": null,
+                  "text": "{}"
+                }
+              }
+            }
+          ]
+        }

@@ -1,0 +1,110 @@
+verb: PUT
+path: /users/{ids}/unblock
+summary: Unblocks a user
+description: |
+  Unblocks a user, changing its status from `BLOCKED` to `ACTIVE`.
+request:
+  description:
+  headers:
+  parameters:
+    - name: id
+      default:
+      required: true
+      description: |
+        The ID, email or external ID of the user to unblock. It can be a comma separated list of user identifiers.
+    - name: identityProvider
+      default:
+      required: false
+      description: |
+        Required when ids is an external ID (or a list of them). It is the ID or name of the identity provider that generated that external ID.
+  body:
+  bodyFields:
+response:
+  description: |
+    The unblocked user in JSON format.
+  headers:
+  body: |
+    {
+      "id": "5890a268b45fc9000bc1c056",
+      "email": "user4@test.com",
+      "status": "ACTIVE",
+      "firstName": "User4",
+      "lastName": "Test",
+      "fullName": "User4 Test",
+      "groups": [
+        {
+          "id": "5862694885f3fc0007cb4eed",
+          "name": "Group1",
+          "primary": true,
+          "external": false
+        }
+      ],
+      "permissions": {
+        "developer": false,
+        "usersManagement": false
+      },
+      "localization": {
+        "timezone": null,
+        "timezoneMode": "AUTO"
+      },
+      "identityProviders": [
+        {
+          "id": "__slingr__",
+          "name": "slingr",
+          "label": "Slingr",
+          "externalId": null
+        }
+      ],
+      "version": 1
+    }
+  bodyFields:
+errors:
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to unblock this user.
+  - code: notFound
+    status: 404
+    description: |
+      If the user is not found.
+samples:
+  - title: unblocks a user
+    description:
+    path: /users/5890a268b45fc9000bc1c056/unblock
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "5890a268b45fc9000bc1c056",
+          "email": "user4@test.com",
+          "status": "ACTIVE",
+          "firstName": "User4",
+          "lastName": "Test",
+          "fullName": "User4 Test",
+          "groups": [
+            {
+              "id": "5862694885f3fc0007cb4eed",
+              "name": "Group1",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezone": null,
+            "timezoneMode": "AUTO"
+          },
+          "identityProviders": [
+            {
+              "id": "__slingr__",
+              "name": "slingr",
+              "label": "Slingr",
+              "externalId": null
+            }
+          ],
+          "version": 1
+        }

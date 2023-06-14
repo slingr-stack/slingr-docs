@@ -1,0 +1,53 @@
+verb: PUT
+path: /status/jobs/{id}/kill
+summary: Ends the job immediately
+description: |
+  Forces a job to end immediately.
+
+  Keep in mind that the processing the job was doing might be interrupted and data might be in a bad state
+  when doing this, so use it only for very special cases.
+request:
+  description:
+  headers:
+  parameters:
+  body:
+  bodyFields:
+response:
+  description: |
+    The job in JSON format.
+  headers:
+  body: |
+    {
+      "id": "588a02c13b063a0007605032",
+      ...
+      "status": "FINISHED",
+      ...
+    }
+  bodyFields:
+errors:
+  - code: badRequest
+    status: 400
+    description: |
+      If job cannot be stopped. It could be because jobs of this type cannot be killed.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to stop this job. If you are not a developer you can only stop jobs you
+      ran.
+  - code: notFound
+    status: 404
+    description: If job is not found.
+samples:
+  - title: kill a job
+    description:
+    path: /status/jobs/588a02c13b063a0007605032/kill
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "588a02c13b063a0007605032",
+          ...
+          "status": "FINISHED",
+          ...
+        }

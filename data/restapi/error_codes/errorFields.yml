@@ -1,0 +1,24 @@
+- path: 200
+  description: |
+    Everything went fine. No errors.
+- path: 400
+  description: |
+    Request is not valid. This can be due to validation errors in the data you are sending or because the operation you are trying to do is not valid.
+- path: 401
+  description: |
+    Unauthorized. You need to log in or the provided token is not valid.
+- path: 403
+  description: |
+    Forbidden. You have credentials, but you are trying to access data or execute an operation you don’t have permissions.
+- path: 404
+  description: |
+    Not found. The resource you are trying to access does not exist.
+- path: 409
+  description: |
+    Optimistic locking exception. This happens when two users tries to update the same record at the same time. The once that enters in the second place will get this error.
+- path: 500
+  description: |
+    Internal error. This happens when something went wrong and was not expected. If you get this type of errors please contact support.
+- path: 503
+  description: |-
+    Service unavailable. This is when the application is under maintenance.

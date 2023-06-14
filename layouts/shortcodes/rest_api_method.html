@@ -1,0 +1,172 @@
+{{ $context := .Get "context" }}
+{{ $filePath := printf "data/restapi/%s.yml" $context }}
+{{ $yamlContent := readFile $filePath }}
+{{ $myobject := $yamlContent | unmarshal }}
+
+{{ $headers := slice }}
+{{ $hasContentType := false }}
+{{ $hasToken := false }}
+
+{{ range $header := $myobject.request.headers }}
+    {{ if eq $header.name "Content-Type" }}
+        {{ $hasContentType = true }}
+    {{ end }}
+    {{ if eq $header.name "token" }}
+        {{ $hasToken = true }}
+    {{ end }}
+    {{ $headerKeyValue := (slice (printf "%s: %s" $header.name $header.value)) }}
+    {{ $headers = append $headers $headerKeyValue }}
+{{ end }}
+
+{{ if or (eq $myobject.verb "POST") (eq $myobject.verb "PUT") }}
+    {{ if not $hasContentType }}
+        {{ $headers = append $headers (slice "Content-Type: application/json") }}
+    {{ end }}
+    {{ if not $hasToken }}
+        {{ $headers = append $headers (slice "token: token") }}
+    {{ end }}
+{{ end }}
+
+
+
+<h4 style="color: gray; font-style: italic;">{{ $myobject.title }}</h4>
+<pre><code>{{ printf "%s %s" $myobject.verb $myobject.path }}</code></pre>
+<br>
+{{ $myobject.description }}
+
+
+{{ if $myobject.request }}
+    <h6>Request</h6>
+
+    <p>{{ $myobject.request.description | markdownify}}</p>
+
+    <pre><code>{{ $myobject.verb }} {{ $myobject.path }}
+{{ range $header := $headers }}
+> {{$header}}{{ end }}</code></pre>
+
+    {{ if $myobject.request.parameters }}
+        <div class="table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th align="left">Parameter</th>
+                        <th align="left">Required</th>
+                        <th align="left">Default</th>
+                        <th align="left">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range $myobject.request.parameters }}
+                        <tr>
+                            <td><code>{{ .name }}</code></td>
+                            <td>{{ if or (eq .required true) (eq .required "yes") }}yes{{ else }}no{{ end }}</td>
+                            <td>{{if .default}}<code>{{ .default }}</code>{{end}}</td>
+                            <td style="max-width: 300px; word-wrap: break-word;">{{ .description | markdownify }}</td>
+                        </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    {{ end }}
+
+    {{ if $myobject.request.bodyFields }}
+    <table class="table">
+        <thead>
+            <tr class="header">
+                <th align="left">Path</th>
+                <th align="left">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{ range $myobject.request.parameters }}
+            <tr>
+                <td align="left">
+                    <p markdown="1">`{{ .path }}`</p>
+                </td>
+                <td align="left">
+                    <p>{{ .description | markdownify }}</p>
+                </td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+    {{end}}
+{{ end }}
+
+{{ if $myobject.response }}
+    <h6>Response</h6>
+    <p>{{ $myobject.response.description }}</p>
+
+
+    <pre><code>{{ $myobject.verb }} {{ $myobject.path }}
+< Content-Type: application/json
+
+    {{if $myobject.response.body}}{{ $myobject.response.body }}{{ end }}</code></pre>
+    {{ if $myobject.response.bodyFields }}
+    <table class="table">
+        <thead>
+            <tr class="header">
+                <th align="left">Path</th>
+                <th align="left">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{ range $myobject.response.parameters }}
+            <tr>
+                <td align="left">
+                    <p markdown="1">`{{ .path }}`</p>
+                </td>
+                <td align="left">
+                    <p>{{ .description | markdownify }}</p>
+                </td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+    {{end}}
+{{ end }}
+
+{{if $myobject.errors }}
+    <h6>Possible errors</h6>
+    <table class="table">
+        <thead>
+            <tr class="header">
+                <th align="left">Error code</th>
+                <th align="left">HTTP Status Code</th>
+                <th align="left">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{ range $myobject.errors }}
+            <tr>
+                <td align="left">
+                    <code>{{ .code }}</code>
+                </td>
+                <td align="left">
+                    <code>{{ .status }}</code>
+                </td>
+                <td align="left">
+                    <p>{{ .description | markdownify }}</p>
+                </td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+{{end}}
+{{if $myobject.samples }}
+    <h6>Samples</h6>
+    {{ range $myobject.samples }}
+        {{ .description | markdownify }}
+        <pre><code>{{.title}}                    
+{{ $myobject.verb }} {{ .path }}
+{{ range $header := $headers }}
+> {{$header}}{{ end }}
+
+{{if .request}}{{if .request.body}}{{ .request.body }}{{ end }}{{end}}
+{{ $myobject.verb }} {{ .path }}
+{{ range $header := $headers }}
+> {{$header}}{{ end }}
+{{if .response}}{{if .response.body}}{{ .response.body }}{{ end }}{{end}}</code></pre>
+    {{ end }}
+{{end}}
+

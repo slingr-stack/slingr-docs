@@ -1,0 +1,42 @@
+verb: PUT
+path: /files/{id}/share
+summary: Shares a file through a public link
+description: |
+  Shares a file through a public link. The link will be valid for an hour.
+request:
+  description:
+  headers:
+  parameters:
+    - name: ttl
+      default: 3600000
+      required: no
+      description: Time to expire in milliseconds.
+  body:
+  bodyFields:
+response:
+  description: |
+    The public link to download the file. This link won't require any permission.
+  headers:
+  body: |
+    {
+      "sharedFileId": "588fa383b45fc9000bc1c014",
+      "sharedFileLink": "/files/shared/588fa383b45fc9000bc1c014"
+    }
+  bodyFields:
+    - path: sharedFileId
+      description: This is the ID of the shared file.
+    - path: sharedFileLink
+      description: The link to download the file. You should prepend the API endpoint.
+errors:
+samples:
+  - title: shares a file which will expire in one minute
+    description:
+    path: /files/588f9f1eb45fc9000bc1c010/share?ttl=60000
+    request:
+      body:
+    response:
+      body: |
+        {
+          "sharedFileId": "588fa383b45fc9000bc1c014",
+          "sharedFileLink": "/files/shared/588fa383b45fc9000bc1c014"
+        }

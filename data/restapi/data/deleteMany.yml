@@ -1,0 +1,147 @@
+verb: DELETE
+path: /data/{entityName}/{ids}
+summary: Deletes many records by IDs.
+description: |
+  Deletes many records from the database. You won't be able to recover deleted records (except that you have enabled
+  history for that entity).
+
+  This method will return immediately but a job will be created to delete the records in the background. You can
+  check the status of the job to verify when it finishes.
+request:
+  description:
+  headers:
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity records belongs to.
+    - name: ids
+      default:
+      required: yes
+      description: IDs of records to delete separated by commas.
+    - name: _async
+      default: false
+      required: no
+      description: |
+        Indicates if the delete has to be executed in the background, which is needed if the execution is going
+        to take more than 30 seconds or you want to delete more than 1,000 records.
+
+        When setting this parameter to `true` the response of this method will be a reference to the job in charge
+        of executing the deletion.
+  body:
+  bodyFields:
+response:
+  description: |
+    The response will be different based on the parameter `_async`. There are two possible responses:
+
+    - A map with records: if the `_async` parameter is `false`, then the result will be a map with the ID of the
+      record as the key and the value will be a map with the fields `status` and `response` (the deleted record
+      as a JSON) or errorMessage if there was an error.
+    - Job reference: if the `_async` parameter is `true`, the method will return a reference to the job in charge
+      of the execution of the delete process. Once the job is completed you will find the response of the process
+      in the results of the job.
+
+    You can find samples for each type of response below.
+  headers:
+  body:
+  bodyFields:
+errors:
+  - code: forbidden
+    status: 403
+    description: Provided token does not have permissions to delete records on this entity.
+  - code: notFound
+    status: 404
+    description: If the entity name does not exist.
+samples:
+  - title: deletes two companies
+    description:
+    path: /data/companies/57fd2d65e4b0ce322b0c8665,57fd2d65e4b0ce322b0c8565
+    request:
+    response:
+      body: |
+        {
+          "57fd2d65e4b0ce322b0c8665": {
+            "status": "ok",
+            "response": {
+              "id": "57fd2d65e4b0ce322b0c8665",
+              "version": 381,
+              "label": "Browsezoom",
+              "entity": {
+                "id": "57fce228e4b0f6600fdfb836",
+                "name": "Companies"
+              },
+              "name": "Browsezoom",
+              "state": "pending",
+              "type": "a",
+              "numberOfEmployees": 95,
+              "isCustomer": false,
+              "contactInformation": {
+                "id": "58837fdd3b063a0007603547",
+                "label": "Contact Information"
+                "phoneNumber": "1-702-845-9380",
+                "email": "jwoodsrq@spotify.com"
+              },
+              "addresses": [
+                {
+                  "id": "57fd45aee4b0ce322b0c86aa",
+                  "label": "NV - 89145",
+                  "addressLine": "4 Magdeline Place",
+                  "zipCode": "89145",
+                  "city": "Las Vegas",
+                  "state": "NV"
+                }
+              ],
+              "homepage": "http://www.browsezoom.com",
+              "taxId": "350-KWM",
+              "rating": "2.8",
+              "notes": "modified notes",
+              "lastMeeting": 1429623180000,
+              "lastUpdate": 1485292080000
+            }
+          },
+          "57fd2d65e4b0ce322b0c8565": {
+            "status": "ok",
+            "response": {
+              "id": "57fd2d65e4b0ce322b0c8565",
+              "version": 377,
+              "label": "Blogpad",
+              "name": "Blogpad",
+              "state": "pending",
+              "type": "b",
+              "numberOfEmployees": 534,
+              "isCustomer": false,
+              "contactInformation": {
+                "id": "581224c8e4b0285870237cc5",
+                "label": "Contact Information",
+                "phoneNumber": "1-405-298-5885",
+                "email": "molsonre@rakuten.co.jp"
+              },
+              "addresses": [
+                {
+                  "id": "57fd45aee4b0ce322b0c86ac",
+                  "label": "OK - 73157",
+                  "addressLine": "4 Crownhardt Plaza",
+                  "zipCode": "73157",
+                  "city": "Oklahoma City",
+                  "state": "OK"
+                }
+              ],
+              "homepage": "http://www.blogpad.com",
+              "taxId": "123-ABC",
+              "rating": "3.3",
+              "notes": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+              "lastMeeting": 1422111300000,
+              "lastUpdate": 1485292500000
+            }
+          }
+        }
+  - title: deletes two companies in the background
+    description:
+    path: /data/companies/588775f63b063a0007604f4c,588775f63b063a0007604f8b?_async=true
+    request:
+    response:
+      body: |
+        {
+          "jobLink": "/api/status/jobs/5887b6f23b063a0007604fa8",
+          "jobId": "5887b6f23b063a0007604fa8"
+        }

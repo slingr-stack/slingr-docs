@@ -262,7 +262,7 @@ and query builder.
 Here is a sample of a complex query and you can see the differences between the three versions:
 
 {{< query_sample
-  id="Kfiewr934sdfwer234ga"
+  id="Kfiewr93fefsdfwer234ga"
   entity="companies"
   jsQueryMap="{ _or: { type: 'a', _and: { type: 'b', isCustomer: true } } }"
   jsQueryBuilder=".field('type').equals('a').or().field('type').equals('b').field('isCustomer').equals(true)"
@@ -532,8 +532,7 @@ This can be done using the `_formatForUser` parameter and only makes sense if yo
 You should pass either the user's ID or email that will be used to format the record. For example, if the user configured a different time zone, date-time fields will use that setting to format dates. This is useful if you need to send emails to individuals that live across different time zones.
 
 {{< query_sample
-  id="43ids832jkdsERW341"
+  id="43ids832jkdsERW33331"
   entity="companies"
   restApi="_format=plainText&_formatForUser=test1.docs@slingr.io&_size=10"
 >}}
-

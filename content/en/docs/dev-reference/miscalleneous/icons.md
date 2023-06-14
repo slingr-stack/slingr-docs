@@ -1,6 +1,6 @@
 ---
-title: "Queries"
-lead: "Brief explanation of Slingr and use cases for it."
+title: "Icons"
+lead: "Describes icons available in apps."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -10,3 +10,6 @@ menu:
     parent: "dev-reference"
 toc: true
 ---
+
+Here is a list of the available icons and his corresponding code for the app:
+{{< misc_icons >}}

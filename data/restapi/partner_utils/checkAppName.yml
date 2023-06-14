@@ -1,0 +1,74 @@
+verb: GET
+path: /utils/checkAppName
+summary: Checks if an app name is available
+description: |
+  Checks if an app name is available.
+request:
+  description:
+  headers:
+  parameters:
+    - name: appName
+      default:
+      required: yes
+      description: This is the app name to check availability.
+  body:
+  bodyFields:
+response:
+  description: |
+    The response indicating if the app name is available.
+  headers:
+  body: |
+    {
+      "status": "available"
+    }
+  bodyFields:
+    - path: status
+      description: |
+        Indicates if it is available. Values could be:
+
+        - `available`: app name is available.
+        - `notUnique`: there is another app with same name.
+        - `invalid`: the name is not valid.
+
+        For `notUnique` and `invalid` you will also get a field `message` with more details about the problem.
+    - path: message
+      description: |
+        If `status` is `notUnique` or `invalid` you will get more details about the problem in this field.
+errors:
+  - code: Unauthorized
+    status: 401
+    description: |
+      You are not authenticated or credentials are invalid.
+samples:
+  - title: checks a name that is available
+    description:
+    path: /utils/checkAppName?appName=uniqueAndValidName
+    request:
+      body:
+    response:
+      body: |
+        {
+          "status": "available"
+        }
+  - title: checks a name that is not unique
+    description:
+    path: /utils/checkAppName?appName=notUniqueName
+    request:
+      body:
+    response:
+      body: |
+        {
+          "status": "notUnique",
+          "message": "Code is already in use."
+        }
+  - title: checks an invalid name
+    description:
+    path: /utils/checkAppName?appName=$invalid#
+    request:
+      body:
+    response:
+      body: |-
+        {
+          "status": "invalid",
+          "message": "Only lowercase letters and numbers are allowed. The first character must be a letter."
+        }

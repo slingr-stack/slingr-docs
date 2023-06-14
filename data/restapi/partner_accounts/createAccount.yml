@@ -1,0 +1,86 @@
+verb: POST
+path: /accounts
+summary: Creates a new account
+description: |
+  Creates a new account in the platform. This account will be associated to the partner that created it.
+request:
+  description:
+  headers:
+  parameters:
+  body: |
+    {
+      "firstName": "first name",
+      "lastName": "last name",
+      "email": "name@company.com",
+      "password": "abcd1234"
+    }
+  bodyFields:
+    - path: firstName
+      description: First name of the owner of the account.
+    - path: lastName
+      description: Last name of the owner of the account.
+    - path: email
+      description: Email of the owner of the account.
+    - path: password
+      description: Password to set this this account.
+response:
+  description: |
+    The created account in JSON format.
+  headers:
+  body: |
+    {
+      "id": "asdw432j4bu9bdf92323",
+      "firstName": "first name",
+      "lastName": "last name",
+      "email": "name@company.com",
+      "status": "ACTIVE",
+      "timeZoneMode": "AUTO"
+    }
+  bodyFields:
+errors:
+  - code: validationErrors
+    status: 400
+    description: |
+      If there are validation errors. When this happens you will get the details of the errors in the body:
+
+      ```js
+      {
+        "code": "validationErrors",
+        "message": "There are validation errors",
+        "errors": [
+          {
+            "field": "firstName",
+            "fieldLabel": null,
+            "code": "required",
+            "message": "First name cannot be empty",
+            "additionalInfo": null
+          }
+        ]
+      }
+      ```
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to create an account. You should check the token.
+samples:
+  - title: creates a new account
+    description:
+    path: /accounts
+    request:
+      body: |
+        {
+          "firstName": "first name",
+          "lastName": "last name",
+          "email": "name@company.com",
+          "password": "abcd1234"
+        }
+    response:
+      body: |-
+        {
+          "id": "asdw432j4bu9bdf92323",
+          "firstName": "first name",
+          "lastName": "last name",
+          "email": "name@company.com",
+          "status": "ACTIVE",
+          "timeZoneMode": "AUTO"
+        }

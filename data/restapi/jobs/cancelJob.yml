@@ -1,0 +1,52 @@
+verb: PUT
+path: /status/jobs/{id}/cancel
+summary: Cancels a job
+description: |
+  Cancels a job. Only jobs that are in `STOPPED` can be canceled.
+
+  Jobs that are canceled cannot be resumed.
+request:
+  description:
+  headers:
+  parameters:
+  body:
+  bodyFields:
+response:
+  description: |
+    The job in JSON format.
+  headers:
+  body: |
+    {
+      "id": "588a02c13b063a0007605032",
+      ...
+      "status": "CANCELED",
+      ...
+    }
+  bodyFields:
+errors:
+  - code: badRequest
+    status: 404
+    description: |
+      If job cannot be canceled. It could be because the job is in a bad status or it is not a root job.
+  - code: forbidden
+    status: 403
+    description: |
+      You don't have permissions to cancel this job. If you are not a developer you can only cancel jobs you
+      ran.
+  - code: notFound
+    status: 404
+    description: If job is not found.
+samples:
+  - title: cancels a job
+    description:
+    path: /status/jobs/588a02c13b063a0007605032/cancel
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "588a02c13b063a0007605032",
+          ...
+          "status": "CANCELED",
+          ...
+        }

@@ -1,0 +1,80 @@
+verb: GET
+path: /status/jobs/{id}
+summary: Gets one job by ID
+description: |
+  Gets one job by ID.
+request:
+  description:
+  headers:
+  parameters:
+    - name: id
+      default:
+      required: true
+      description: |
+        The ID of the job.
+  body:
+  bodyFields:
+response:
+  description: |
+    The job in JSON format.
+  headers:
+  body: |
+    {
+      "id": "588a02c13b063a0007605032",
+      "label": "Execute action countEmployees from entity companies",
+      "type": "EXECUTE_ACTION",
+      "runBy": {
+        "id": "57fce0c3e4b0ce322b0c06b2",
+        "fullName": "Diego Gaviola"
+      },
+      "parentJob": null,
+      "rootJob": null,
+      "createDate": 1485439681643,
+      "startDate": 1485439681652,
+      "endDate": 1485439681807,
+      "status": "FINISHED",
+      "hasErrors": false,
+      "progress": 100,
+      "recordsCount": 0,
+      "recordsProcessed": 0,
+      "childrenJobsCount": 0,
+      "childrenJobsProcessed": 0,
+      "stoppable": true,
+      "lowPriority": false
+    }
+  bodyFields:
+errors:
+  - code: notFound
+    status: 404
+    description: The job doesn't exist
+samples:
+  - title: gets a job by ID
+    description:
+    path: /status/jobs/588a02c13b063a0007605032
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "588a02c13b063a0007605032",
+          "label": "Execute action countEmployees from entity companies",
+          "type": "EXECUTE_ACTION",
+          "runBy": {
+            "id": "57fce0c3e4b0ce322b0c06b2",
+            "fullName": "Diego Gaviola"
+          },
+          "parentJob": null,
+          "rootJob": null,
+          "createDate": 1485439681643,
+          "startDate": 1485439681652,
+          "endDate": 1485439681807,
+          "status": "FINISHED",
+          "hasErrors": false,
+          "progress": 100,
+          "recordsCount": 0,
+          "recordsProcessed": 0,
+          "childrenJobsCount": 0,
+          "childrenJobsProcessed": 0,
+          "stoppable": true,
+          "lowPriority": false
+        }

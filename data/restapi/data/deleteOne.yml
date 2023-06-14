@@ -1,0 +1,98 @@
+verb: DELETE
+path: /data/{entityName}/{id}
+summary: Deletes one record by ID.
+description: |
+  Deletes a record from the database. You won't be able to recover the deleted record (except that you have enabled
+  history for that entity).
+request:
+  description:
+  headers:
+  parameters:
+    - name: entityName
+      default:
+      required: yes
+      description: Name of the entity the record belongs to.
+    - name: id
+      default:
+      required: yes
+      description: ID of the record to delete.
+    - name: async
+      default: false
+      required: no
+      description: |
+        Indicates if the delete has to be executed in the background, which is needed if the execution is going
+        to take more than 30 seconds.
+
+        When setting this parameter to `true` the response of this method will be a reference to the job in charge
+        of executing the deletion.
+  body:
+  bodyFields:
+response:
+  description: |
+    The response will be different based on the parameter `async`. There are two possible responses:
+
+    - Record: if the `async` parameter is `false`, then the deleted record is returned by this method.
+    - Job reference: if the `async` parameter is `true`, the method will return a reference to the job in charge
+      of the execution of the delete process. Once the job is completed you will find the response of the process
+      in the results of the job.
+
+    You can find samples for each type of response below.
+  headers:
+  body:
+  bodyFields:
+errors:
+  - code: forbidden
+    status: 403
+    description: Provided token does not have permissions to delete this record.
+  - code: notFound
+    status: 404
+    description: Either entity or record ID does not exist.
+samples:
+  - title: deletes one company
+    description:
+    path: /data/companies/588775f63b063a0007604f4c
+    request:
+    response:
+      body: |
+        {
+          "id": "588775f63b063a0007604f4c",
+          "version": 10,
+          "label": "Test 1",
+          "name": "Test 1",
+          "state": "active",
+          "type": "b",
+          "numberOfEmployees": 100,
+          "isCustomer": false,
+          "contactInformation": {
+            "phoneNumber": "1-702-845-9380",
+            "email": "jwoodsrq@spotify.com",
+            "id": "588775f63b063a0007604f4a",
+            "label": "Contact Information"
+          },
+          "addresses": [
+            {
+              "addressLine": "4 Magdeline Place",
+              "zipCode": "89145",
+              "city": "Las Vegas",
+              "state": "NV",
+              "id": "588775f63b063a0007604f4b",
+              "label": "NV - 89145"
+            }
+          ],
+          "homepage": "http://www.browsezoom.com",
+          "taxId": "350-KWM",
+          "rating": "2.8",
+          "notes": "test notes",
+          "lastMeeting": 1429623180000,
+          "lastUpdate": 1485288240000
+        }
+  - title: deletes one company in the background
+    description:
+    path: /data/companies/588775f63b063a0007604f4c?_async=true
+    request:
+    response:
+      body: |
+        {
+          "jobLink": "/api/status/jobs/5887b6f23b063a0007604fa8",
+          "jobId": "5887b6f23b063a0007604fa8"
+        }

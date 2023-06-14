@@ -1,0 +1,143 @@
+verb: GET
+path: /users/{idOrEmailOrExternalId}
+summary: Gets one user by ID, email or external ID.
+description: |
+  Gets one user by ID, email or external ID.
+request:
+  description:
+  headers:
+  parameters:
+    - name: idOrEmailOrExternalId
+      default:
+      required: true
+      description: |
+        This can be either the user ID, email or external ID, which are always unique.
+    - name: identityProvider
+      default:
+      required: false
+      description: |
+        Required when idOrEmailOrExternalId is an external ID. It is the ID or name of the identity provider that generated that external ID.
+  body:
+  bodyFields:
+response:
+  description: |
+    The user in JSON format.
+  headers:
+  body: |
+    {
+      "id": "57fe52ade4b0ce322b0cea32",
+      "email": "test1.docs@slingr.io",
+      "firstName": "Test1",
+      "lastName": "Docs",
+      "fullName": "Test1 Docs",
+      "status": "ACTIVE",
+      "groups": [
+        {
+          "id": "57fe5269e4b0f6600fdfbdba",
+          "name": "Read-only user",
+          "primary": true,
+          "external": false
+        }
+      ],
+      "permissions": {
+        "developer": false,
+        "usersManagement": false
+      },
+      "localization": {
+        "timezoneMode": "MANUAL",
+        "timezone": "Europe/Berlin"
+      },
+      "identityProviders": [
+        {
+          "id": "__slingr__",
+          "name": "slingr",
+          "label": "Slingr"
+          "externalId": null
+        }
+      ],
+      "version": 3
+    }
+  bodyFields:
+errors:
+  - code: notFound
+    status: 404
+    description: The user doesn't exist
+samples:
+  - title: gets a user by ID
+    description:
+    path: /users/57fe52ade4b0ce322b0cea32
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "57fe52ade4b0ce322b0cea32",
+          "email": "test1.docs@slingr.io",
+          "firstName": "Test1",
+          "lastName": "Docs",
+          "fullName": "Test1 Docs",
+          "status": "ACTIVE",
+          "groups": [
+            {
+              "id": "57fe5269e4b0f6600fdfbdba",
+              "name": "Read-only user",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezoneMode": "MANUAL",
+            "timezone": "Europe/Berlin"
+          },
+          "identityProviders": [
+              "id": "__slingr__",
+              "name": "slingr",
+              "label": "Slingr"
+              "externalId": null
+            }
+          ],
+          "version": 3
+        }
+  - title: gets a user by external ID
+    description:
+    path: /users/abcxyz?identityProvider=slack
+    request:
+      body:
+    response:
+      body: |
+        {
+          "id": "57fe52ade4b0ce322b0cea32",
+          "email": "test1.docs@slingr.io",
+          "firstName": "Test1",
+          "lastName": "Docs",
+          "fullName": "Test1 Docs",
+          "status": "ACTIVE",
+          "groups": [
+            {
+              "id": "57fe5269e4b0f6600fdfbdba",
+              "name": "Read-only user",
+              "primary": true,
+              "external": false
+            }
+          ],
+          "permissions": {
+            "developer": false,
+            "usersManagement": false
+          },
+          "localization": {
+            "timezoneMode": "MANUAL",
+            "timezone": "Europe/Berlin"
+          },
+          "identityProviders": [
+              "id": "5821ee4ff41eb200072ed2ba",
+              "name": "slack",
+              "label": "Slack",
+              "externalId": "abcxyz"
+            }
+          ],
+          "version": 3
+        }

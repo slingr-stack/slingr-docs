@@ -1,0 +1,45 @@
+verb: GET
+path: /files/shared/{id}
+summary: Downloads a shared file
+description: |
+  Downloads a shared file.
+request:
+  description:
+  headers:
+  parameters:
+    - name: id
+      default:
+      required: yes
+      description: The ID of the shared file to download.
+  body:
+  bodyFields:
+response:
+  description: |
+    Returns the shared file to download.
+  headers:
+    - name: Content-Type
+      value: application/force-download
+    - name: Content-Disposition
+      value: attachment; filename=file.ext
+  body: |
+    the content of the file
+  bodyFields:
+errors:
+  - code: notFound
+    status: 404
+    description: The shared file doesn't exist.
+samples:
+  - title: fetches a shared file
+    description:
+    path: /files/shared/588fa383b45fc9000bc1c014
+    request:
+      headers:
+      body:
+    response:
+      headers:
+        - name: Content-Type
+          value: application/force-download
+        - name: Content-Disposition
+          value: attachment; filename=test-file.txt
+      body: |-
+        this is the content of the file

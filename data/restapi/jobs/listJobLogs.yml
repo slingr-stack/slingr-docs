@@ -1,0 +1,125 @@
+verb: GET
+path: /status/jobs/{id}/logs
+summary: Query logs from a job
+description: |
+  Query logs from a job.
+request:
+  description:
+  headers:
+  parameters:
+    - name: period
+      default:
+      required: no
+      description: |
+        Allows to filter by a span of time. For example you can send `3h 30m` and it will query logs in
+        the last 3 hours and a half. The format is the same you can use for
+        [Time duration]({{site.baseurl}}/app-development-type-time-duration.html#overview) fields, with the
+        only difference that you can also pass `today` or `yesterday`.
+
+        If this parameter is specified, parameters `start` and `end` will be discarded.
+    - name: from
+      default:
+      required: no
+      description: |
+        The minimum timestamp in milliseconds since Epoch.
+    - name: to
+      default:
+      required: no
+      description: |
+        The maximum timestamp in milliseconds since Epoch.
+    - name: level
+      default:
+      required: no
+      description: |
+        The level of logs to find. You can specify many levels separated by commas.
+
+        Possible values are `INFO`, `WARN` and `ERROR`.
+    - name: message
+      default:
+      required: no
+      description: |
+        Allows to filter by the message in the logs. It will do a partial search.
+    - name: _size
+      default: 200
+      required: no
+      description: The maximum number of users to retrieve.
+    - name: _offset
+      default:
+      required: no
+      description: |
+        This is the offset to start getting users. When you make a query you will get the offset you need to
+        use to get more users.
+  body:
+  bodyFields:
+response:
+  description: |
+    A list of logs in JSON format.
+  headers:
+  body: |
+    {
+      "total": 3,
+      "items": [
+        {
+          "timestamp": 1485887710544,
+          "level": "INFO",
+          "message": "Starting processing"
+        },
+        {
+          "timestamp": 1485887710546,
+          "level": "INFO",
+          "message": "Cleaning up"
+        },
+        {
+          "timestamp": 1485887710704,
+          "level": "INFO",
+          "message": "Process completed"
+        }
+      ]
+    }
+  bodyFields:
+    - path: total
+      description: |
+        The total number of logs matched by the query.
+    - path: offset
+      description: |
+        The offset to use to get more logs.
+    - path: items
+      description: |
+        The logs found that contains three fields:
+
+        - `timestamp`: the timestamp when the log was created.
+        - `level`: level of the log. Could be `INFO`, `WARN` or `ERROR`.
+        - `message`: the message in the logs.
+errors:
+  - code: notFound
+    status: 404
+    description: |
+      If the job is not found.
+samples:
+  - title: finds logs for one job
+    description:
+    path: /status/job/5890d8deb45fc9000bc1c2d3/logs
+    request:
+      body:
+    response:
+      body: |
+        {
+          "total": 3,
+          "items": [
+            {
+              "timestamp": 1485887710544,
+              "level": "INFO",
+              "message": "Starting processing"
+            },
+            {
+              "timestamp": 1485887710546,
+              "level": "INFO",
+              "message": "Cleaning up"
+            },
+            {
+              "timestamp": 1485887710704,
+              "level": "INFO",
+              "message": "Process completed"
+            }
+          ]
+        }
