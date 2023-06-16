@@ -33,7 +33,7 @@
 
 [[main]]
   name = "Getting Started"
-  url = "/docs/getting-started/where-to-start/"
+  url = "/getting-started/where-to-start/"
   weight = 10
 
 
@@ -42,23 +42,22 @@
   name = "Platform reference"
   weight = 30
   identifier = "platform"
-  url = "/docs/platform-ref"
+  url = "/platform-ref/"
   parent = "documentation"
 
 [[main]]
   name = "Developer's reference"
   weight = 40
   identifier = "dev-reference"
-  url = "https://getdoks.org/tutorial/introduction/"
+  url = "/dev-reference/"
   parent = "documentation"
 
 [[main]]
   name = "Extending the platform"
   weight = 50
   identifier = "tutorial"
-  url = "https://getdoks.org/tutorial/introduction/"
+  url = "/extending/"
   parent = "documentation"
-
 
 
 
@@ -70,9 +69,14 @@
 
 
 
-
-
 # [[footer]]
  #  name = "Privacy"
   # url = "/privacy-policy/"
    #weight = 10
+
+
+[[main]]
+  name = "Developer's reference"
+  weight = 20
+  identifier = "dev-reference"
+  url = "/dev-reference/"
