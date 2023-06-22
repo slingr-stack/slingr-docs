@@ -9,4 +9,5 @@ menu:
   docs:
     parent: "slingr-platform"
 toc: true
+weight: 10
 ---

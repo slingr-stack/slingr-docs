@@ -5,7 +5,8 @@
 {{- $yamlContent := readFile $filePath -}}
 {{- $typeData := $yamlContent | unmarshal -}}
 
-<h2>Available operators</h2>
+## Available operators
+{{ "### hola" | markdownify}}
 <table class="table">
 
     <thead>

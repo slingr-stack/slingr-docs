@@ -9,6 +9,7 @@ menu:
   docs:
     parent: "extending-platform"
 toc: true
+weight: 14
 ---
 
 It is possible to create your own endpoints and use them in your apps. This will allow to expand the

@@ -9,6 +9,7 @@ menu:
   docs:
     parent: "slingr-dev-portal"
 toc: true
+weight: 4
 ---
 Pricing of the platform is done by app. Each app will generate a subscription, which could be associated to any
 of the three products we have:

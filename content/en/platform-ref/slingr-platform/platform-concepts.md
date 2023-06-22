@@ -9,6 +9,7 @@ menu:
   docs:
     parent: "slingr-platform"
 toc: true
+weight: 1
 ---
 
 ![Alt Text](/images/vendor/platform-ref/platform-concepts.png)

@@ -9,6 +9,7 @@ menu:
   docs:
     parent: "slingr-dev-portal"
 toc: true
+weight: 5
 ---
 
 This API is for partners that need to create accounts or apps on the Slingr platform on behalf of other

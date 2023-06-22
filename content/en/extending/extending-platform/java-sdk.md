@@ -9,6 +9,7 @@ menu:
   docs:
     parent: "extending-platform"
 toc: true
+weight: 16
 ---
 This document will guide through the creation of an endpoint using the Java SDK and will provide details about the
 framework.

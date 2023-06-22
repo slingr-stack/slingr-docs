@@ -42,21 +42,21 @@
   name = "Platform reference"
   weight = 30
   identifier = "platform"
-  url = "/platform-ref/"
+  url = "/platform-ref/slingr-platform/platform-concepts/"
   parent = "documentation"
 
 [[main]]
   name = "Developer's reference"
   weight = 40
   identifier = "dev-reference"
-  url = "/dev-reference/"
+  url = "/dev-reference/overview/overview/"
   parent = "documentation"
 
 [[main]]
   name = "Extending the platform"
   weight = 50
   identifier = "tutorial"
-  url = "/extending/"
+  url = "/extending/getting_started/overview/"
   parent = "documentation"
 
 
@@ -74,9 +74,3 @@
   # url = "/privacy-policy/"
    #weight = 10
 
-
-[[main]]
-  name = "Developer's reference"
-  weight = 20
-  identifier = "dev-reference"
-  url = "/dev-reference/"

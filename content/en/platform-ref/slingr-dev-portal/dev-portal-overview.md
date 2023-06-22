@@ -9,6 +9,7 @@ menu:
   docs:
     parent: "slingr-dev-portal"
 toc: true
+weight: 2
 ---
 
 ![](/images/vendor/platform-ref/developer-portal.png)

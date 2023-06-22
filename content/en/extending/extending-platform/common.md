@@ -9,6 +9,7 @@ menu:
   docs:
     parent: "extending-platform"
 toc: true
+weight: 15
 ---
 
 Endpoints, no matter if they are in Java, Node.js or another technology, they will share some common things like:

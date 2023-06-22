@@ -1,0 +1,280 @@
+---
+title: "Linear line chart widget"
+lead: "Detailed explanation of settings available for linear chart widget that can be used in dashboard views."
+date: 2020-11-16T13:59:39+01:00
+lastmod: 2020-11-16T13:59:39+01:00
+draft: false
+images: []
+menu:
+  docs:
+    parent: "dev-reference"
+toc: true
+weight: 55
+---
+
+A line chart is a way of plotting data points on a line. Often, it is used to show trend data, or 
+the comparison of two data sets.
+
+There are three types of line chart:
+
+- **Category:** horizontal axis are defined as labels (category) of each value. This kind of chart is defined from one entity.  
+- **Linear:** numerical data is defined for each point. The scatter chart type automatically configures a line chart to use 
+one of these scales for the x axis. As the name suggests, linear interpolation is used to determine where a value lies on the axis.
+- **Time:** a point is defined with the pair date-number. The time scale is used to display dates types. When building its 
+ticks, it will automatically calculate the most comfortable unit base on the size of the scale.
+
+## Linear
+ 
+Numerical data is defined for each point. The scatter chart type automatically configures a line chart to use 
+one of these scales for the x axis. As the name suggests, linear interpolation is used to determine where a value lies on the axis.
+
+This kind of chart is defined for a list of series. Each series is defined from a independent data source and specifying 
+a numerical point for horizontal and vertical axis, that means a point number-number 
+
+### Label
+
+This is a human-readable name of the view. You can use spaces, special characters and
+mix upper case and lower case letters.
+
+This label will be displayed at the top of the table widget view, so make sure you use something
+users will understand.
+
+### Name
+
+This is the internal name of the view. It cannot hold special characters or spaces.
+
+Usually you will use the name of the view in scripts and the REST API, so changing it
+might affect your app and you will need to make some manual adjustments.
+
+### Description
+
+This is a human-readable description of the widget. You can use spaces, special characters and
+mix upper case and lower case letters. You can internationalize it.
+
+This description will be displayed in top of added widget in your dashboard.
+
+### Allow Refresh
+
+This is to Show/Hide refresh button. We can perform this action in order to update this widget 
+information. Is true by default.
+
+### Horizontal axis settings
+
+#### Label
+
+This is a human-readable name of the view. You can use spaces, special characters and
+mix upper case and lower case letters.
+
+This label will be displayed as below horizontal axis.
+
+#### Grid lines
+
+If false, do not display grid lines for this axis.
+
+
+### Vertical axis settings
+
+#### Label
+
+This is a human-readable name of the view. You can use spaces, special characters and
+mix upper case and lower case letters.
+
+This label will be displayed next to vertical axis.
+
+#### Ticks suggested min / max
+
+The suggestedMax and suggestedMin settings only change the data values that are used to scale the axis. 
+These are useful for extending the range of the axis while maintaining the auto fit behaviour.
+
+
+#### Grid lines
+
+If false, do not display grid lines for this axis.
+
+## Series
+
+### Dataset
+
+These settings indicate how the data source should collect the information.
+
+**Entity:**: This is the entity the view will point to. Only records of this entity will be listed
+in to define the horizontal and vertical axis.
+
+**Filter type:** Can be expression or script. In case to select expression should set record filters. In other case should return
+the script.
+
+**Filters:** Defines which records will be listed. Only records matching the given expression will be listed
+in the table widget view.
+
+**Script:** Return query parameter or queryMap. The query map object used to filter records. 
+Check the [Query language]({{site.baseurl}}/app-development-query-language.html) documentation for the query map version.
+
+**Size:** The maximum number of records to fetch when the view is loaded and when clicking in `More` to fetch
+more records.
+
+**Sort field:** This is the default sorting field for the listing. Users might be able to change the default sorting 
+if that's enabled in any of the columns.
+
+**Sort type:** Indicates the direction of the sorting. Users might be able to change the default sorting if that's enabled in any of the columns.
+
+
+### Point settings
+
+#### Horizontal Value
+
+**View type:** Represent the field type to be used to generate the horizontal axis values. It can be an entity field or a
+calculated field.
+
+**Entity field:** Allows to select an existing entity field. The value will be stored as a reference to metadata, being refactored in 
+the same way when changes happen. 
+
+**Calculated field:** The value of this kind of field is generated by script for horizontal axis.
+
+
+#### Vertical Value
+
+**View type:** Represent the field type to be used to generate the horizontal axis values. It can be an entity field or a
+calculated field.
+
+**Entity field:** Allows to select an existing entity field. The value will be stored as a reference to metadata, being refactored in 
+the same way when changes happen. 
+
+**Calculated field:** The value of this kind of field is generated by script for horizontal axis.
+
+#### Point styling settings
+
+**Settings Mode:** It can be simple or advanced. In case of simple mode just need set line color and other settings are calculated or 
+set by default. For advanced the developer should define each value.
+
+**Background Color:** The fill color for points. It should be hexadecimal color code.
+
+**Style:** Style of the point. It can by:
+
+- circle
+- cross
+- crossRot
+- dash
+- line
+- rect
+- rectRounded
+- rectRot
+- star
+- triangle
+
+**Radius:** The radius of the point shape.
+
+**Hover Background Color:** Point background color when hovered.
+
+**Border Width:** The width of the point border in pixels.
+
+**Border Color:** The border color for points.
+
+### Line styling settings
+
+**Settings Mode:** It can be simple or advanced. In case of simple mode just need set line color and other settings are calculated or 
+set by default. For advanced the developer should define each value.
+
+**Color:** This is the line color. It should be hexadecimal color code.
+
+**Line Tension:** Bezier curve tension of the line. Set to 0 to draw straightlines. Default value is 0.4
+
+**Background Color:** The line fill color. It should be hexadecimal color code.
+
+**Border Width:** The line width (in pixels).
+
+**Border Dash:** Length and spacing of dashes.
+
+**Stepped Line:** The following values are supported for stepped line:
+
+- None
+- Before
+- Middle
+- After
+
+## Example
+
+### Use case
+
+This type of chart is created by connecting a series of data points together with a solid line. An example you can need 
+visualize the resistance of different materials to temperature.
+
+### Precondition
+
+You need have the entities in order to set the information of each material. We need to have a calculated entities in witch have 
+the aggregated information.
+
+By example the entity `materialA` has the integer field type called `temperature` and decimal field type called 
+`resistence`. Similar entity for `materialB`. 
+
+### Create a line chart
+
+Following steps describe how to create 
+
+- Step 1: In order to create the widget from root layout of given dashboard in columns or row you go to `Assign widget`.
+- Step 2: You can assign an existent widget or create a new one. In this case we want to create a new one.
+- Step 3: Complete the label and name for the new widget and set `Line Chart` in widget type and subtype `linear`. save 
+changes in order to go to widget configurations.
+- Step 4: In **Horizontal and vertical axis settings** we can customize settings for axis. Please check documentation above.
+- Step 5: Start to add new series for each material. Here we need to define the `label` that is used to identify the line. In
+dataset whe need to configure the entity source, by example `materialA` and set filter and order conditions.
+- Step 6: Need to define the point number-number. In this example for horizontal value select `temperature` entity field, 
+after that for vertical value select the `resistence` entity field and finally we can customize the point style. 
+- Step 7: You can customize the line style or set the default values.
+- Step 8: Repeat step 5, 6 and 7 in order to add a new series for `materialB`. 
+
+## UI Message
+
+Widgets can react to UI message. The common case is when need refresh the data or apply filters.
+
+### Refresh and filter
+
+It is possible send a message to refresh the widget using its default settings. This messages are sending to dashboard 
+container and propagated to each widget. 
+
+Additionally you can send a filter parameter in order to be applied to the query used to get the data. This query can be 
+a [query]({{site.baseurl}}/app-development-js-api-data.html#sys.data.Query) object or a query map. In case to use a query 
+object the filter just is applied if the entity is same to the entity set in the widget. Check the 
+[Query language]({{site.baseurl}}/app-development-query-language.html) for more information.  
+
+In order to apply filters is necessary set the `widgetContainer` with a list of objects in witch each one describes the 
+container `name` and the `filter` to be applied on each widget. Additionally you can send `title` to update the widget 
+title. 
+
+For this kind chart in witch each series can be defined from a different entity the `filter` parameter is an array of 
+objects in witch each one describes the series `name` and the `filter` to be applied just for that series. 
+
+#### Example
+
+In following example you can refresh and apply a filter sending the filter parameter to given widget container. 
+As you can see in the example each series define its own query independently and it is applied to specific entity. 
+
+```javascript
+
+var query = sys.data.createQuery('polycarbonateInfo');
+query.field('temperatureC').greaterOrEquals(100);
+
+var query2 = sys.data.createQuery('nylonInfo');
+query2.field('temperatureC').greaterOrEquals(50);
+
+sys.ui.sendMessage({
+  scope: 'view',
+  name: 'refresh',
+  views: ['technicalDashboard'],
+  widgetContainers: [
+    {
+      name: 'col11',
+      filter: [
+        {
+          name: 'polycarbonate',
+          filter: query
+        },
+        {
+          name: 'nylon6',
+          filter: query2
+        }
+      ]
+    }
+  ]
+});
+
+``` 

@@ -9,6 +9,7 @@ menu:
   docs:
     parent: "extending-platform"
 toc: true
+weight: 10
 ---
 ## Overview
 
