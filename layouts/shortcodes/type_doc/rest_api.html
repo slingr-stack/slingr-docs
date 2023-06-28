@@ -1,0 +1,10 @@
+{{- $typeName := .Get "type" -}}
+{{- $filePath := printf "data/types/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $typeData := $yamlContent | unmarshal -}}
+
+<h5>REST API - Read format</h5>
+{{ $typeData.restApi.readFormat | markdownify }}
+
+<h5>REST API - Write format</h5>
+{{ $typeData.restApi.writeFormat | markdownify }}

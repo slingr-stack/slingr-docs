@@ -28,10 +28,10 @@ There are some resources that can <b>not</b> be deleted.
 ## Basic structure
 The navigation tree has five root nodes that group all the rest of the resources: 
 
-- [App]({{site.baseurl}}/app-development-app-settings.html)
-- [Environment settings]({{site.baseurl}}/app-development-environment-environment-variables.html)
-- [Model]({{site.baseurl}}/app-development-model-entities.html)
-- [Security ]({{site.baseurl}}/app-development-security-overview.html)
-- [User Interface]({{site.baseurl}}/app-development-ui-overview.html)
+- [App]({{<ref "/dev-reference/app/settings.md">}})
+- [Environment settings]({{<ref "/dev-reference/environment-settings/environment-var.md">}})
+- [Model]({{<ref "/dev-reference/data-model-and-logic/entities.md">}})
+- [Security]({{<ref "/dev-reference/security/overview.md">}})
+- [User Interface]({{<ref "/dev-reference/user-interface/overview.md">}})
 
 Each one of those nodes are explained in detailed in a particular section of this documentation.

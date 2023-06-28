@@ -158,7 +158,7 @@ is growing. You can check those things in the app monitor.
  
 Also keep in mind that adding more instances might not help if the database is the bottleneck. In
 this case you should upgrade your database to take advantage of the additional instances. You can
-check the [slows queries]({{site.baseurl}}/app-development-monitor-database.html#performance) 
+check the [slows queries]({{<ref "/dev-reference/monitoring/database-and-files.md">}}) 
 report in the app monitor to see if the database is being the bottleneck.
 
 The same way you can add instances, you can remove them. When you do that some instances will be
@@ -309,7 +309,7 @@ it because you still want to get updates from the master app.
 
 In these cases what you can do is add a development environment by clicking in `Add development environment`.
 When you do this, how changes are synced will be changed. Please check the section
-[Pushing and Syncing changes]({{site.baseurl}}/app-development-pushing-and-syncing.html) for more details.
+[Pushing and Syncing changes]({{< ref "/dev-reference/metadata-management/pushing-and-syncing.md">}}) for more details.
 
 ## Delete app
 

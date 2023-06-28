@@ -5,8 +5,7 @@
 {{- $yamlContent := readFile $filePath -}}
 {{- $typeData := $yamlContent | unmarshal -}}
 
-## Available operators
-{{ "### hola" | markdownify}}
+
 <table class="table">
 
     <thead>
@@ -130,7 +129,7 @@ No display options.
 <h2>Queries </h2>
 Please refer to the documentation for the available operators in the query language.
 
-<h2>Available operators</h2>
+<h3>Available operators</h3>
 
 <table class="table">
     <thead>
@@ -206,7 +205,7 @@ Please refer to the documentation for the available operators in the query langu
 
 <h2> Aggregate queries</h2>
 
-****************************
+<p>Please check the documentation for <a href="/dev-reference/queries/aggregate-queries/">Aggregate queries</a> for more information.</p>
 
 <h3> Available operators </h3>
 
@@ -255,7 +254,7 @@ Please refer to the documentation for the available operators in the query langu
 
 <h2> UI queries </h2>
 
-*****
+<p>Please check the documentation for <a href="/dev-reference/queries/ui-queries/">UI queries</a> for more information.</p>
 
 <h3> Matching of values </h3>
 
@@ -327,4 +326,3 @@ Please refer to the documentation for the available operators in the query langu
         </tr>
     </tbody>
 </table>
-

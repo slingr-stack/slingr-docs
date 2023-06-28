@@ -81,4 +81,4 @@ This is a script that will be executed during start up process and after every c
 all JS API, but it is not part of it (not possible to call functions defined here).
 
 The main idea is to allow call functions during initialization of metadata process in `runtime`. [To get more information
-about scripting using our API check here]({{site.baseurl}}/app-development-js-api.html)
+about scripting using our API check here]({{<ref "/dev-reference/scripting/namespaces.md">}})

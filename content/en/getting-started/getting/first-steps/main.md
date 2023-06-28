@@ -25,5 +25,5 @@ In these tutorials, we are going to assume you already have a developer account.
 {{< /tutorial-box >}}
 
 
-If you just want to see the resulting apps, we have made them available as templates. So you only need to create an app [here]() and select the app that you want as a template. Keep in mind, that if you start the Task Manager App from a template, you will need to configure the Slack integration as explained in the section [Integration with Slack]() of the Task Manager tutorial.
+If you just want to see the resulting apps, we have made them available as templates. So you only need to create an app [here](https://developer-portal.slingrs.io/login.html) and select the app that you want as a template. Keep in mind, that if you start the Task Manager App from a template, you will need to configure the Slack integration as explained in the section [Integration with Slack]() of the Task Manager tutorial.
 

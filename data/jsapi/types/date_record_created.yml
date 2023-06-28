@@ -11,7 +11,7 @@ methods:
   returnDescription: The milliseconds from Epoch.
   throws:
   samples:
-  - title: printds the number of milliseconds from Epoch
+  - title: prints the number of milliseconds from Epoch
     code: |
       var company = sys.data.findOne('companies', {name: 'Blogpad'});
       log('last update millis: '+company.field('lastUpdate').toMillis());

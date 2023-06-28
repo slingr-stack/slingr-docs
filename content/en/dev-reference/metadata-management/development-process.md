@@ -47,9 +47,9 @@ The cycle would look like this:
   working. Seeing it work will give you a better idea of what you have do next.
 1. **Iterate until you get what you want!**: go through the same process until you get to state
   where you are satisfied with the results. Slingr is ready to help you as much as possible
-  with features like [Automatic Refactorings](/docs/dev-reference/metadata-management/automatic-refactorings), 
-  generated [UI]({{site.baseurl}}/app-development-ui-overview.html) and 
-  [REST API]({{site.baseurl}}/app-development-apps-rest-api-docs.html).
+  with features like [Automatic Refactorings]({{<ref "/dev-reference/metadata-management/automatic-refactorings.md">}}), 
+  generated [UI]({{<ref "/dev-reference/user-interface/overview.md">}}) and 
+  [REST API]({{<ref "/dev-reference/rest-apis/apps-api-doc.md">}}).
 
 Keep in mind that you don't need to perform all these steps on each iteration. In some cases your
 changes will only affect an action script and things like views and permissions won't be modified

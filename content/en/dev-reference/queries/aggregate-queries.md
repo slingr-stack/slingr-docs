@@ -294,9 +294,7 @@ When you run the above query you will get something like this as the output:
 
 You can see that only fields `name` and `numberOfEmployees` were included in the output (and `id` that is always there).
 
-Sure! Here's the updated version of the code snippet using the query_sample shortcode:
 
-```markdown
 ### Group
 
 This is the most important operation as it is the one that will actually aggregate data. It allows you to group a set of records based on some fields and accumulate the results of those records into a field.

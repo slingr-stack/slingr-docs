@@ -4,8 +4,8 @@ description: |
   Represents a record of an entity. It contains methods to read and write fields, execute actions and
   do some other operations.
 
-  All operations that read data will return this object. For example <<<sys.data.findOne()>>> or <<<sys.data.findById()>>>
-  return objects of <<<sys.data.Record>>>.
+  All operations that read data will return this object. For example `sys.data.findOne()` or `sys.data.findById()`
+  return objects of `sys.data.Record`.
 
   Record objects can be created using the method <<<sys.data.createRecord()>>>:
 

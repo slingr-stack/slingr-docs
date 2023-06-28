@@ -1,5 +1,5 @@
 ---
-title: "First changes to out app"
+title: "First changes to our app"
 lead: "Creating a new field in the existing 'Events' entity"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00

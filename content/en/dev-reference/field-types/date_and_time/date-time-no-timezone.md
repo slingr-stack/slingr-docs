@@ -12,4 +12,28 @@ menu:
 toc: true
 ---
 
-{{< type_doc type="date_time_no_timezone" >}}
+
+
+### Available features
+{{< type_doc/available_f type="date_time_no_timezone" >}}
+
+### Display options 
+{{< type_doc/display_options type="date_time_no_timezone" >}}
+
+### REST API 
+{{< type_doc/rest_api type="date_time_no_timezone" >}}
+
+### JavaScript API
+{{< type_doc/js_api type="date_time_no_timezone" >}}
+
+### Export/Import
+{{< type_doc/export-import type="date_time_no_timezone" >}}
+
+### Queries 
+{{< type_doc/queries type="date_time_no_timezone" >}}
+
+### Aggregate queries
+{{< type_doc/aggregate_queries type="date_time_no_timezone" >}}
+
+### UI queries
+{{< type_doc/ui_queries type="date_time_no_timezone" >}}

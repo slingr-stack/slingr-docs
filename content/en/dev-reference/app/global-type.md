@@ -30,10 +30,11 @@ changing it.
 Notice that for type rules there aren't default rules created by default as usually it isn't 
 desirable to share rules across all fields in the app.
 
-See configuration of [type rules](app-development-model-fields.html#type-rules) and 
-[display options](app-development-model-fields.html#type-display-options) inside fields to see how 
+See configuration of [type rules]({{<ref "/dev-reference/data-model-and-logic/fields.md#type-rules">}}) and 
+[display options]({{<ref "/dev-reference/data-model-and-logic/fields.md#general-display-options">}}) inside fields to see how 
 you can reference predefined configurations created here.
 
 If you delete a predefined configuration that was in used by other fields, the configuration for
 those fields will be changed to `Custom` and the settings will remain as they were for those fields,
 but they won't be linked any longer.
+

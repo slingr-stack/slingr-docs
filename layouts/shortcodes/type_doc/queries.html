@@ -1,0 +1,81 @@
+{{- $typeName := .Get "type" -}}
+{{- $filePath := printf "data/types/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $typeData := $yamlContent | unmarshal -}}
+
+Please refer to the documentation for the available operators in the query language.
+
+<h5>Available operators</h5>
+
+<table class="table">
+    <thead>
+        <tr class="header">
+            <th align="left" width="30%">Operator</th>
+            <th align="left" width="20%">Supported</th>
+            <th align="left" width="50%">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"><p>equals</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.equals.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.equals.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>notEquals</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.notEquals.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.notEquals.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>empty</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.empty.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.empty.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>notEmpty</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.notEmpty.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.notEmpty.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>like</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.like.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.like.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>greater</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.greater.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.greater.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>greaterOrEquals</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.greaterOrEquals.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.greaterOrEquals.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>less</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.less.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.less.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>lessOrEquals</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.lessOrEquals.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.lessOrEquals.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>between</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.between.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.between.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>currentUserField</p></td>
+            <td align="left"><p>{{ if $typeData.Page.Params.typeData.queries.operators.currentUserField.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.Page.Params.typeData.queries.operators.currentUserField.notes | markdownify }}</p></td>
+        </tr>
+        
+    </tbody>
+</table>
+
+<h5>Query formats</h5>
+
+{{ $typeData.queries.format | markdownify }}
+

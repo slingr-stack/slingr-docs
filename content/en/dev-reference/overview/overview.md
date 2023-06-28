@@ -11,7 +11,8 @@ menu:
 weight: 1
 toc: true
 ---
-As explained in [What's Slingr?](/docs/getting-started/what_is_slingr),
+
+As explained in [What's Slingr?]({{<ref "/getting-started/getting/what_is_slingr.md">}}) ,
 Slingr is a platform to create cloud apps that can easily integrate with other SaaS solutions 
 out there or your internal apps as well. To increase developers' productivity Slingr lets
 developers focus on solving business problems instead of having to deal with technical issues.
@@ -22,7 +23,7 @@ that information will be used to execute your application. We call that definiti
 
 Next we will explain the most important elements in the app metadata that you need to understand
 in order to create apps in Slingr. To understand how metadata is deployed and executed, take
-a look at [Pushing and syncing changes](/docs/dev-reference/metadata-management/pushing-and-syncing), where 
+a look at [Pushing and syncing changes]({{<ref "/dev-reference/metadata-management/pushing-and-syncing.md">}}), where 
 it is also explained how to make changes to apps.
 
 ## Model
@@ -76,7 +77,7 @@ traditional databases:
 As you can see many of the aspects of your app can be defined in entities. For this reasons here is
 where you will probably start when creating a new app, by defining the most important entities.
 
-[You can find more information about entities here](/docs/dev-reference/data-model-and-logic/entities).
+[You can find more information about entities here]({{<ref "/dev-reference/data-model-and-logic/entities.md">}}).
 
 ### Listeners
 
@@ -84,7 +85,7 @@ Listeners allow to hook into different events of the app. For example you could 
 time a new record is created in one specific entity, or react to events coming from endpoint (for 
 example, create a new record when a contact is created in Google Contacts).
 
-[You can find more information about listeners here](/docs/dev-reference/data-model-and-logic/listeners).
+[You can find more information about listeners here]({{<ref "/dev-reference/data-model-and-logic/listeners.md">}}).
 
 ### Libraries
  
@@ -93,11 +94,11 @@ For example you could have a function to encode a string in Base64 and you need 
 actions defined in your app. In this case you can put the function to encode a string to Base64
 in a library and easily call it from the actions that need it.
 
-[You can find more information about libraries here](/docs/dev-reference/data-model-and-logic/libraries).
- 
+[You can find more information about libraries here]({{<ref " /dev-reference/data-model-and-logic/libraries.md">}}).
+
 ### Endpoints
 
-Endpoints allow to [extend the capabilities of the platform]({{site.baseurl}}/extensions-overview.html).
+Endpoints allow to [extend the capabilities of the platform]({{<ref "/extending/getting_started/overview.md">}}).
 Usually endpoints allow to easily integrate with other SaaS solutions like Slack, Google Calendar, 
 SparkPost, etc. However endpoints are not limited to integrations, they can also be used for other
 purposes. For example let's suppose you have a library in Java to encrypt files and you want to use
@@ -105,11 +106,8 @@ it in your app. In this case you could create an endpoint to with that library a
 app.
 
 You can add many endpoints to your app and each endpoint will add more features to your app. You
-can check [existing endpoints]({{site.baseurl}}/extensions-official-endpoints.html) or 
-[create one by yourself]({{site.baseurl}}/extensions-create-your-own-endpoints.html)!
-
-[You can find more information about how to use endpoints here](/docs/dev-reference/data-model-and-logic/endpointss).
-
+can check [existing endpoints]({{<ref "/extending/official-ui-pluggins/overview.md">}}) or [create one by yourself]({{<ref "/extending/extending-platform/create_your_own.md">}})!
+[You can find more information about how to use endpoints here]({{<ref "/dev-reference/data-model-and-logic/endpointss.md">}}).
 ## Permissions
 
 Permissions allow you to indicate what can be done by users. Slingr allows very fine-grained
@@ -124,9 +122,8 @@ definition of permissions:
   be passed over to the action.
 - **Views**: it is possible to define which views will be accessible.
 
-Permissions are configured in [groups](/docs/dev-reference/security/groups). Then [users](/docs/dev-reference/security/users) can be assigned to one or more groups, 
+Permissions are configured in [groups]({{<ref "/dev-reference/security/groups.md">}}). Then [users]({{<ref "/dev-reference/security/users.md">}}) can be assigned to one or more groups, 
 which will grant permissions based on the configuration of those groups.
-
 Although permissions are defined in groups, to make it easier to configure them it is possible to
 edit them from the different elements they control (namely entities, fields, actions and views).
 
@@ -159,8 +156,7 @@ The UI of the app is organized in the following way:
   area.
 - **Main content**: this is where app views are rendered.
 
-You are able to configure these things in the [User interface](/docs/dev-reference/user-interface/overview) 
-section of the app builder, where you will usually start creating views for the entities you have
+You are able to configure these things in the [User interface]({{<ref "/dev-reference/user-interface/overview.md">}}) section of the app builder, where you will usually start creating views for the entities you have
 and then add them to the menus so they can be navigated in the app.
 
 Below we describe the most important pieces of the UI.
@@ -175,7 +171,7 @@ For example you could have a gird view associated to an entities for companies. 
 list companies in your app. Depending on the configuration of that view you will be able to
 see details, edit company records or create new ones.
 
-[You can find more information about views here](/docs/dev-reference/user-interface/overview).
+[You can find more information about views here]({{<ref "/dev-reference/user-interface/overview.md">}}).
 
 ### Navigation
 
@@ -183,7 +179,7 @@ The navigation indicates how views can be accessed in your app. For example how 
 organized in configured in the navigation, where items in the menu point to the views that will
 be displayed in the main content area.
 
-[You can find more information about navigation here](/docs/dev-reference/user-interface/navigation).
+[You can find more information about navigation here]({{<ref "/dev-reference/user-interface/overview.md">}}).
 
 ### Field types' display options
 

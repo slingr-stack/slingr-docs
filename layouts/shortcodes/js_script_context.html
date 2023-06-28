@@ -1,9 +1,11 @@
+{{- $context := .Get "context" -}}
+{{- $filePath := printf "data/script_contexts/%s.yml" $context -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $myobject := $yamlContent | unmarshal -}}
+
+{{ if $myobject.params }}
 <h6>Parameters</h6>
 <table>
-  {{- $context := .Get "context" -}}
-  {{- $filePath := printf "data/script_contexts/%s.yml" $context -}}
-  {{- $yamlContent := readFile $filePath -}}
-  {{- $myobject := $yamlContent | unmarshal -}}
     <thead>
     <tr>
       <th>Name</th>
@@ -15,12 +17,13 @@
     {{- range $param := $myobject.params -}}
     <tr>
       <td>{{ $param.name | markdownify }}</td>
-      <td>{{ $param.type | markdownify }}</td>
+      <td><a href="/dev-reference/scripting/sys-data/#{{$param.type}}">{{ $param.type }}</a></td>
       <td>{{ $param.description | markdownify }}</td>
     </tr>
     {{- end -}}
   </tbody>
 </table>
+{{end}}
 
 {{ if and $myobject.returnType $myobject.returnDescription }}
 <h6>Returns</h6>

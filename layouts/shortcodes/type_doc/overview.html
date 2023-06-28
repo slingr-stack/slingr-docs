@@ -1,0 +1,6 @@
+{{- $typeName := .Get "type" -}}
+{{- $filePath := printf "data/types/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $typeData := $yamlContent | unmarshal -}}
+
+{{$typeData.overview | markdownify}}

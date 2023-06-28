@@ -12,7 +12,7 @@ toc: true
 weight: 11
 ---
 
-As explained in the [Overview]({{site.baseurl}}/app-development-overview.html) the definition of
+As explained in the [Overview]({{<ref "/dev-reference/overview/overview.md">}}) the definition of
 your data model, business rules, scripts, views, permissions, etc., is what we call the **metadata**
 of your app.
 
@@ -38,10 +38,9 @@ You can push changes from the app builder, using the action `Push changes` in th
 that have been done and will be pushed and will be able to do a backup and enter a message explaining
 the changes done.
 
-If you set the flag to create a backup, a [version]({{site.baseurl}}/app-development-app-versions.html)
+If you set the flag to create a backup, a [version]({{<ref "/dev-reference/app/versions.md">}})
 will be created that you can later restore. You probably don't want to create a backup on every
 single push, but only when you need a point-in-time where you can go back if needed.
-
 Finally it is important to know what happens when you push changes:
 
 1. The app will be stopped in the development environment (production is not affected).
@@ -76,7 +75,7 @@ When syncing changes this is what happens:
 
 Depending on the changes made and the amount of data that needs to be refactored (if any) this might
 take a while, so make sure you understand what changes could cause data refactorings (see 
-[Automatic refactorings]({{site.baseurl}}/app-development-automatic-refactorings.html)) and sync 
+[Automatic refactorings]({{<ref "/dev-reference/metadata-management/automatic-refactorings.md">}})) and sync 
 changes when it won't affect your operations.
 
 Finally, another thing to bear in mind is that if there are apps linked to your app, changes will be
@@ -148,8 +147,10 @@ in the development or staging environment those settings can be changed from the
 
 In the documentation you will find more information for the different environment settings:
 
-- [Environment variables]({{site.baseurl}}/app-development-environment-environment-variables.html)
-- [UI settings]({{site.baseurl}}/app-development-environment-ui-settings.html)
-- [Logs and alerts]({{site.baseurl}}/app-development-environment-logs-and-alerts.html)
-- [Localization]({{site.baseurl}}/app-development-environment-localization.html)
+- [Environment variables]({{<ref "/dev-reference/environment-settings/environment-var.md">}})
 
+- [UI settings]({{<ref "/dev-reference/environment-settings/ui-settings.md">}})
+
+- [Logs and alerts]({{<ref "/dev-reference/environment-settings/logs-and-alerts.md">}})
+
+- [Localization]({{<ref "/dev-reference/environment-settings/localization.md">}})

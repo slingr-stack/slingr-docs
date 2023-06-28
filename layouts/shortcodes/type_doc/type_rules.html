@@ -1,0 +1,15 @@
+{{- $typeName := .Get "type" -}}
+{{- $filePath := printf "data/types/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $typeData := $yamlContent | unmarshal -}}
+
+{{ if $typeData.typeRules }}
+  {{ range $typeData.typeRules }}
+  <h3>{{ .name | safeHTML }}</h3>
+  {{ .description | markdownify }}
+  {{ end }}
+{{ else }}
+No type rules.
+{{ end }}
+
+

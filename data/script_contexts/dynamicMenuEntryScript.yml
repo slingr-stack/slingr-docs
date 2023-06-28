@@ -4,10 +4,10 @@ returnDescription: |
   An array of menu items. Each item should have the following things:
 
   - `label`: this is the label to show in the menu.
-  - `icon`: this is the name of the icon ([you can check icon names here]({{site.baseurl}}/app-development-misc-icons.html)).
+  - `icon`: this is the name of the icon ([you can check icon names here]({{<ref "/dev-reference/miscalleneous/icons.md">}}).
   - `view`: this is the ID or the name of the view to load when the menu entry is selected.
   - `filters`: if the view allows filters, here is where you can define them. See the [docs
-    for filters]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html#query-format)
+    for filters]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md#query-format">}})
     for more information.
 samples:
   - title: returns a list of menu items that point to Companies view

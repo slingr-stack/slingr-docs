@@ -12,7 +12,7 @@ toc: true
 weight: 12
 ---
 
-As explained in [Development Process]({{site.baseurl}}/app-development-development-process.html),
+As explained in [Development Process]({{<ref "/dev-reference/metadata-management/development-process.md">}}),
 Slingr tries to make it as easy as possible to follow agile methodologies when developing
 your apps. One of the things that helps on that side are automatic refactorings, because they allow
 to evolve your app a lot easier.

@@ -1,5 +1,5 @@
 ---
-title: "Javascript API available namespaces"
+title: "Namespaces"
 lead: "Documentation for all methods and classes in the Javascript API of the Slingr platform."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00

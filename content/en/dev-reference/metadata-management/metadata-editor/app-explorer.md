@@ -24,7 +24,7 @@ Keyboard shortcut <b>alt + right arrow</b> will expand or collapse the right pan
 {{< /notes >}}
 
 ### Structure
-When this tab is active, you will see an interactive tree very similar to the [navigation tree]({{site.baseurl}}/app-development-metadata-management-metadata-editor-app-resources.html#navigation-tree) on the left panel. This is the **explorer tree**, and it's a cutted down version of the navigation tree. Root nodes here are mostly the nodes inside the **Model** node of the navigation tree with the addition to a **User Interface** node. You can use this tree to have a cleaner look at how the metadata in your app is structured.
+When this tab is active, you will see an interactive tree very similar to the [navigation tree]({{<ref "/dev-reference/metadata-management/metadata-editor/app-resources.md">}}) on the left panel. This is the **explorer tree**, and it's a cutted down version of the navigation tree. Root nodes here are mostly the nodes inside the **Model** node of the navigation tree with the addition to a **User Interface** node. You can use this tree to have a cleaner look at how the metadata in your app is structured.
 Clicking on the inner nodes of the exploration tree will render on the bottom section a table with **some** basic information and settings about that particular node.
 
 
@@ -42,7 +42,7 @@ You can use this feature when your app has grown too much and you don't remember
 {{< /notes >}}
 
 ### Usages
-in order to use this tab, you have to press the `find usages` action from the [central panel]({{site.baseurl}}/app-development-metadata-management-metadata-editor-metadata-edition.html#central-panel-view) header and it will display a list of all the different places where the current resource has been used. Clicking on any of those items will redirect you to the resource where the current resource it's being used.
+in order to use this tab, you have to press the `find usages` action from the [central panel]({{<ref "/dev-reference/metadata-management/metadata-editor/metadata-edition.md#central-panel-view">}}) header and it will display a list of all the different places where the current resource has been used. Clicking on any of those items will redirect you to the resource where the current resource it's being used.
 
 {{< notes type="tip">}}
 You can use this feature when your app has grown too much and you are not sure in what other places that particular resource is being used

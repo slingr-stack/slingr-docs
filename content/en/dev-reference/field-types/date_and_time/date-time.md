@@ -12,4 +12,29 @@ menu:
 toc: true
 ---
 
-{{< type_doc type="date_time" >}}
+### Overview
+{{< type_doc/overview type="date_time" >}}
+
+### Available features
+{{< type_doc/available_f type="date_time" >}}
+
+### Display options 
+{{< type_doc/display_options type="date_time" >}}
+
+### REST API 
+{{< type_doc/rest_api type="date_time" >}}
+
+### JavaScript API
+{{< type_doc/js_api type="date_time" >}}
+
+### Export/Import
+{{< type_doc/export-import type="date_time" >}}
+
+### Queries 
+{{< type_doc/queries type="date_time" >}}
+
+### Aggregate queries
+{{< type_doc/aggregate_queries type="date_time" >}}
+
+### UI queries
+{{< type_doc/ui_queries type="date_time" >}}

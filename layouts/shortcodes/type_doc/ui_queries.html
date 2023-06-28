@@ -1,0 +1,80 @@
+{{- $typeName := .Get "type" -}}
+{{- $filePath := printf "data/types/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $typeData := $yamlContent | unmarshal -}}
+
+
+
+<p>Please check the documentation for <a href="/dev-reference/queries/ui-queries/">UI queries</a> for more information.</p>
+
+<h5> Matching of values </h5>
+
+<table class="table">
+    <thead>
+        <tr class="header">
+            <th align="left" width="30%">Property</th>
+            <th align="left" width="70%">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"><p>Matching operator</p></td>
+            <td align="left">
+                <p><code class="highlighter-rouge">{{ $typeData.uiQueries.matching.operator }}</code></p>
+                <p>
+                    {{ $typeData.uiQueries.matching.notes | markdownify }}
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td align="left"><p>Special values</p></td>
+            <td align="left"><p>{{ $typeData.uiQueries.matching.specialValues | markdownify }}</p></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h5> Available operators </h5>
+
+<table class="table">
+    <thead>
+        <tr class="header">
+            <th align="left" width="30%">Operator</th>
+            <th align="left" width="20%">Supported</th>
+            <th align="left" width="50%">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"><p>Many values</p></td>
+            <td align="left"><p>{{ if or (eq $typeData.uiQueries.operators.manyValues.supported true) (eq $typeData.uiQueries.operators.manyValues.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.uiQueries.operators.manyValues.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Greater</p></td>
+            <td align="left"><p>{{ if or (eq $typeData.uiQueries.operators.greater.supported true) (eq $typeData.uiQueries.operators.greater.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.uiQueries.operators.greater.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Greater or equals</p></td>
+            <td align="left"><p>{{ if or (eq $typeData.uiQueries.operators.greaterOrEquals.supported true) (eq $typeData.uiQueries.operators.greaterOrEquals.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.uiQueries.operators.greaterOrEquals.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Less</p></td>
+            <td align="left"><p>{{ if or (eq $typeData.uiQueries.operators.less.supported true) (eq $typeData.uiQueries.operators.less.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.uiQueries.operators.less.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Less or equals</p></td>
+            <td align="left"><p>{{ if or (eq $typeData.uiQueries.operators.lessOrEquals.supported true) (eq $typeData.uiQueries.operators.lessOrEquals.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.uiQueries.operators.lessOrEquals.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Between</p></td>
+            <td align="left"><p>{{ if or (eq $typeData.uiQueries.operators.between.supported true) (eq $typeData.uiQueries.operators.between.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.uiQueries.operators.between.notes | markdownify }}</p></td>
+        </tr>
+    </tbody>
+</table>
+

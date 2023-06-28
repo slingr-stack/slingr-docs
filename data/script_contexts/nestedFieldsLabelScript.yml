@@ -6,7 +6,7 @@ params:
   - name: nested
     type: sys.data.Record
     description: |
-      This is a <<<sys.data.Record>>> object with the difference that the root of the record is set to the
+      This is a `sys.data.Record` object with the difference that the root of the record is set to the
       nested fields. For example let's suppose you have the following structure:
 
       - name

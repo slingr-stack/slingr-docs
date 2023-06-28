@@ -33,7 +33,7 @@
 
 [[main]]
   name = "Getting Started"
-  url = "/getting-started/where-to-start/"
+  url = "/getting-started/getting/where-to-start/"
   weight = 10
 
 

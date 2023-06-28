@@ -1,0 +1,50 @@
+{{- $typeName := .Get "type" -}}
+{{- $filePath := printf "data/types/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $typeData := $yamlContent | unmarshal -}}
+
+<p>Please check the documentation for <a href="/dev-reference/queries/aggregate-queries/">Aggregate queries</a> for more information.</p>
+
+<h5> Available operators </h5>
+
+<table class="table">
+    <thead>
+        <tr class="header">
+            <th align="left" width="30%">Operator</th>
+            <th align="left" width="20%">Supported</th>
+            <th align="left" width="50%">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"><p>sum</p></td>
+            <td align="left"><p>{{ if or $typeData.aggregateQueries.operators.sum.supported true (eq $typeData.aggregateQueries.operators.sum.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.aggregateQueries.operators.sum.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>avg</p></td>
+            <td align="left"><p>{{ if or $typeData.aggregateQueries.operators.avg.supported true (eq $typeData.aggregateQueries.operators.avg.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.aggregateQueries.operators.avg.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>first</p></td>
+            <td align="left"><p>{{ if or $typeData.aggregateQueries.operators.first.supported true (eq $typeData.aggregateQueries.operators.first.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.aggregateQueries.operators.first.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>last</p></td>
+            <td align="left"><p>{{ if or $typeData.aggregateQueries.operators.last.supported true (eq $typeData.aggregateQueries.operators.last.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.aggregateQueries.operators.last.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>min</p></td>
+            <td align="left"><p>{{ if or $typeData.aggregateQueries.operators.min.supported true (eq $typeData.aggregateQueries.operators.min.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.aggregateQueries.operators.min.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>max</p></td>
+            <td align="left"><p>{{ if or $typeData.aggregateQueries.operators.max.supported true (eq $typeData.aggregateQueries.operators.max.supported "yes") }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.aggregateQueries.operators.max.notes | markdownify }}</p></td>
+        </tr>
+    </tbody>
+</table>

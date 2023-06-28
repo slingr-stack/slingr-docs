@@ -125,7 +125,7 @@ could be different.
 
 ### By user field
 
-User conditions are based on the [User extended fields]({{site.baseurl}}/app-development-app-settings.html#user-extended-fields)
+User conditions are based on the [User extended fields]({{<ref "/dev-reference/app/settings.md">}})
 feature, so it must be enabled in the app before using this type of condition.
 
 In this case the value will be obtained from the field in the user extended record (the `Source field`)
@@ -142,7 +142,7 @@ add a condition `By user field` in the permissions for the `tasks` entity where 
 ### By user value
 
 This filter is a mix between `By user field` and `By value`. Here, value is hard-coded as `By value`, but 
-the `Target field` belongs to entity configured into [User extended fields]({{site.baseurl}}/app-development-app-settings.html#user-extended-fields).
+the `Target field` belongs to entity configured into [User extended fields]({{<ref "/dev-reference/app/settings.md">}}).
 
 #### Operation
 
@@ -210,5 +210,5 @@ of these operations:
 - `notEmpty`
 - `currentUserField`
 
-To learn more about query language and the valid operators please check the docs for [Complex Query Language]({{site.baseurl}}/app-development-query-language.html#complex-queries).
+To learn more about query language and the valid operators please check the docs for [Complex Query Language]({{<ref "/dev-reference/queries/query-language.md#complex-queries">}}).
 

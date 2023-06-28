@@ -49,7 +49,7 @@ event. Options are:
 - `None`: there are no conditions, so as long as the event is trigger, the rule will match.
 - `Expression`: it is possible to define an expression that should evaluate to true in order for the
   event to be matched.
-  See documentation of [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html) for more
+  See documentation of [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) for more
   information.
 - `Script`: allows to provide a script that should evaluate to true if the event should be matched.
   This is the context:

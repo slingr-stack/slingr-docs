@@ -166,7 +166,7 @@ need to be updated. For this reason only create indexes when they are really nee
 If you enable the flag `Allow global search` for an entity, an index will be created. This index will allow to
 efficiently query for words in any field of the record. It is like searching something on any fields.
 
-[You can find more information on how global search works here]({{site.baseurl}}/app-development-query-language.html#global-search).
+[You can find more information on how global search works here]({{<ref "/dev-reference/queries/query-language.md#global-search">}}).
 
 ### Record validations
 
@@ -204,7 +204,7 @@ time, as well as the fields modified and people involved in those changes.
 
 When history logs are enabled for an entity you will be able to query logs of a record (or even
 of all records at the same time) using the REST API or the UI. See 
-[History]({{site.baseurl}}/app-development-apps-rest-api.html#history).
+[History]({{<ref "/dev-reference/rest-apis/apps-api.md#history">}}).
 
 There are many settings you can control to decide what you want to log to the history of records:
 
@@ -272,8 +272,7 @@ or `false` otherwise. `Data generation script` will run only if this script retu
 
 ### Data generation script
 
-This script should return a list of either [Record objects]({{site.baseurl}}/app-development-js-api-data.html#sys.data.Record) 
-or `JSONs` that can be mapped to a [Record object]({{site.baseurl}}/app-development-js-api-data.html#sys.data.Record).
+This script should return a list of either [Record objects]({{<ref "/dev-reference/scripting/sys-data.md#sys.data.Record">}}) or `JSONs` that can be mapped to a [Record object]({{<ref "/dev-reference/scripting/sys-data.md#sys.data.Record">}}).
 
 ### Behavior during regeneration
 
@@ -302,18 +301,18 @@ For example you might have an entity with this structure:
   - `state`
   
 Each field has a type, which defines which data can be stored there as well as rules and
-display options. [You can check the copied field types here]({{site.baseurl}}/app-development-types-overview.html).
+display options. [You can check the copied field types here]({{<ref "/dev-reference/field-types/overview.md">}}).
  
 Apart from the type-specific settings, all fields share some common features. For more
-details check [Fields]({{site.baseurl}}/app-development-model-fields.html).
+details check [Fields]({{<ref "/dev-reference/data-model-and-logic/fields.md">}}).
 
 There are two special field types that are worth mentioning:
 
 - **Nested fields**: this type can hold other fields inside of it. This allows to have
-  multiple levels of nesting. [You can find more information here]({{site.baseurl}}/app-development-type-nested-fields.html).
+  multiple levels of nesting. [You can find more information here]({{<ref "/dev-reference/field-types/special/special.md">}}).
 - **Relationship**: this type allows to reference another record of any entity. This way
   it is possible to create relationships between data. [You can find more information
-  here]({{site.baseurl}}/app-development-type-relationship.html).
+  here]({{<ref "/dev-reference/field-types/special/relationship.md">}}).
 
 ### Changes on fields and data refactorings
 
@@ -371,7 +370,7 @@ There are basically two types of actions:
   which is not possible to do with actions that are executed over individual records.
   
 For more information about actions, please check the documentation for 
-[Actions]({{site.baseurl}}/app-development-model-actions.html).
+[Actions]({{<ref "/dev-reference/data-model-and-logic/actions.md">}}).
 
 ## Record Listeners
 
@@ -382,7 +381,7 @@ the `Model > Listeners` section in the app builder.
 
 For `Caculated entities` they have a different behavior. These listeners are used to update the records and they will be only listed in the calculated entity.
 
-For more information check the documentation of [Listeners]({{site.baseurl}}/app-development-model-listeners.html).
+For more information check the documentation of [Listeners]({{<ref "/dev-reference/data-model-and-logic/listeners.md">}}).
 
 ## External Listeners
 
@@ -391,7 +390,7 @@ These listeners are only available for `Caculated entities`. External Listeners 
 Those listeners will be listed in the entity, however they can also be managed from
 the `Model > Listeners` section in the app builder.
 
-For more information check the documentation of [Listeners]({{site.baseurl}}/app-development-model-listeners.html).
+For more information check the documentation of  [Listeners]({{<ref "/dev-reference/data-model-and-logic/listeners.md">}}).
 
 ## Permissions
 
@@ -404,4 +403,4 @@ configure permissions on the entity for all existing groups.
 
 When a new entity is added, no permissions are added to any group by default.
 
-For more information about permissions please refer to [Groups]({{site.baseurl}}/app-development-security-groups.html).
+For more information about permissions please refer to [Groups]({{<ref "/dev-reference/security/groups.md">}}).

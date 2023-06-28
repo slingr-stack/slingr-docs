@@ -1,10 +1,9 @@
 package: sys.data.AggregateAccumulator
 page: app-development-js-api-data.html
 description: |
-  Allows to define accumulation operations for groups created using <<<sys.data.AggregatedGroup>>>
+  Allows to define accumulation operations for groups created using <<<sys.data.AggregatedGroup>>> 
   like sum, average, etc.
-
-  Please check the documentation on [Group]({{site.baseurl}}/app-development-aggregate-queries.html#group) for more
+  Please check the documentation on [Group]({{<ref "/dev-reference/queries/aggregate-queries.md#group">}}) for more
   information on how to use aggregations.
 methods:
 - name: sum

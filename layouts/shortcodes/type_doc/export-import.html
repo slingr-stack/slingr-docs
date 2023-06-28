@@ -1,0 +1,10 @@
+{{- $typeName := .Get "type" -}}
+{{- $filePath := printf "data/types/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $typeData := $yamlContent | unmarshal -}}
+
+<h5>Export format</h5>
+{{ $typeData.exportImport.exportFormat | markdownify }}
+
+<h5>Import format</h5>
+{{ $typeData.exportImport.importFormat | markdownify }}

@@ -1,0 +1,79 @@
+{{- $typeName := .Get "type" -}}
+{{- $filePath := printf "data/types/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $typeData := $yamlContent | unmarshal -}}
+
+
+<table class="table">
+
+    <thead>
+        <tr class="header">
+            <th align="left" width="30%">Name</th>
+            <th align="left" width="20%">Supported</th>
+            <th align="left" width="50%">Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td align="left"><p>Many multiplicity</p></td>
+            <td align="left"><p>{{ if $typeData.features.manyMultiplicity.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.manyMultiplicity.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Default values</p></td>
+            <td align="left"><p>{{ if $typeData.features.defaultValue.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.defaultValue.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Unique flag</p></td>
+            <td align="left"><p>{{ if $typeData.features.uniqueFlag.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.uniqueFlag.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Required flag</p></td>
+            <td align="left"><p>{{ if $typeData.features.requiredFlag.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.requiredFlag.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Indexable flag</p></td>
+            <td align="left"><p>{{ if $typeData.features.indexableFlag.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.indexableFlag.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Sensitive flag</p></td>
+            <td align="left"><p>{{ if $typeData.features.sensitiveFlag.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.sensitiveFlag.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Calculated value</p></td>
+            <td align="left"><p>{{ if $typeData.features.calculatedValue.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.calculatedValue.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Automatic initialization</p></td>
+            <td align="left"><p>{{ if $typeData.features.automaticInitialization.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.automaticInitialization.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Calculated initial value</p></td>
+            <td align="left"><p>{{ if $typeData.features.calculatedInitialValue.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.calculatedInitialValue.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Aggregation</p></td>
+            <td align="left"><p>{{ if $typeData.features.aggregation.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.aggregation.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Default type rules</p></td>
+            <td align="left"><p>{{ if $typeData.features.defaultTypeRules.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.defaultTypeRules.notes | markdownify }}</p></td>
+        </tr>
+        <tr>
+            <td align="left"><p>Default display options</p></td>
+            <td align="left"><p>{{ if $typeData.features.defaultDisplayOptions.supported }}yes{{ else }}no{{ end }}</p></td>
+            <td align="left"><p>{{ $typeData.features.defaultDisplayOptions.notes | markdownify }}</p></td>
+        </tr>        
+        <!-- Add similar code blocks for other features -->
+    </tbody>
+</table>
