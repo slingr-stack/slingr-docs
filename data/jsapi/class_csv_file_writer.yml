@@ -1,10 +1,10 @@
 package: sys.files.CsvFileWriter
 page: app-development-js-api-files.html
 description: |
-  Allows to write a CSV file row by row. An object of this type will be returned by the <<<sys.files.create>>>
+  Allows to write a CSV file row by row. An object of this type will be returned by the `sys.files.create`
   method when the type is `text/csv`.
 
-  It inherits all methods from <<<sys.files.FileWriter>>>.
+  It inherits all methods from `sys.files.FileWriter`.
 methods:
 - name: writeHeaders
   summary: Writes the headers of the CSV file

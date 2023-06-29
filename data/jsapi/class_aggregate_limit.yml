@@ -2,9 +2,9 @@ package: sys.data.AggregatedLimit
 page: app-development-js-api-data.html
 description: |
   Allows to limit the number of elements in an aggregate query. You should never create an object of
-  this class manually. Instead use <<<sys.data.AggregateQuery.limit()>>> method.
+  this class manually. Instead use `sys.data.AggregateQuery.limit()` method.
 
-  Please check the documentation on [Limit]({{site.baseurl}}/app-development-aggregate-queries.html#limit) for more
+  Please check the documentation on [Limit]({{<ref "/dev-reference/queries/aggregate-queries.md#limit">}}) for more
   information on how to use the limit operator.
 methods:
 - name: step

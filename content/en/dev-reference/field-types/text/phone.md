@@ -11,30 +11,29 @@ menu:
 toc: true
 ---
 
-{{< type_doc type="phone" >}}
 ### Overview
-{{< type_doc/overview type="" >}}
+{{< type_doc/overview type="phone" >}}
 
 ### Available features
-{{< type_doc/available_f type="" >}}
+{{< type_doc/available_f type="phone" >}}
 
 ### Display options 
-{{< type_doc/display_options type="" >}}
+{{< type_doc/display_options type="phone" >}}
 
 ### REST API 
-{{< type_doc/rest_api type="" >}}
+{{< type_doc/rest_api type="phone" >}}
 
 ### JavaScript API
-{{< type_doc/js_api type="" >}}
+{{< type_doc/js_api type="phone" >}}
 
 ### Export/Import
-{{< type_doc/export-import type="" >}}
+{{< type_doc/export-import type="phone" >}}
 
 ### Queries 
-{{< type_doc/queries type="" >}}
+{{< type_doc/queries type="phone" >}}
 
 ### Aggregate queries
-{{< type_doc/aggregate_queries type="" >}}
+{{< type_doc/aggregate_queries type="phone" >}}
 
 ### UI queries
-{{< type_doc/ui_queries type="" >}}
+{{< type_doc/ui_queries type="phone" >}}

@@ -12,7 +12,7 @@ params:
       This variable is only available when this is a field inside a nested field and it is based on the
       variable `record` or `action` (the same rules apply then it is an action parameter or an entity field).
 
-      It is a <<<sys.data.Record>>> object with the difference that the root of the record is set to the
+      It is a `sys.data.Record` object with the difference that the root of the record is set to the
       nested fields containing it. This way it is possible to access fields in the nested group like
       `parentField.field('fieldA')` instead of `record.field('nested.fieldA')` or `action.field('nested.fieldA')`,
       which is specially needed when nested fields are multi-valued as you don't know the index.

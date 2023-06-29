@@ -2,9 +2,9 @@ package: sys.data.AggregatedLookup
 page: app-development-js-api-data.html
 description: |
   Allows to lookup elements with other collections elemtents making an equivalent SQL left join. You
-  should never create an object of this class manually. Instead use <<<sys.data.AggregateQuery.lookup()>>> method.
+  should never create an object of this class manually. Instead use  `sys.data.AggregateQuery.lookup()` method.
 
-  Please check the documentation on [Lookup]({{site.baseurl}}/app-development-aggregate-queries.html#lookup) for more
+  Please check the documentation on [Lookup]({{<ref "/dev-reference/queries/aggregate-queries.md#lookup">}}) for more
   information on how to use the lookup operator.
 methods:
 - name: localField

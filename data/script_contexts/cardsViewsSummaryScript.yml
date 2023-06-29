@@ -6,7 +6,7 @@ params:
 returnType: string
 returnDescription: |
   HTML code that will be rendered in the body of the card. Keep in mind that HTML tags allowed are the
-  same as for [HTML type]({{site.baseurl}}/app-development-type-html.html).
+  same as for [HTML type]({{<ref "/dev-reference/field-types/text/html.md">}}).
 samples:
   - title: builds the summary using different fields
     code: |

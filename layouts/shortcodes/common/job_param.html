@@ -1,0 +1,8 @@
+{{ $filePath := "data/common.yml" }}
+{{ $yamlContent := readFile $filePath }}
+{{ $myobject := $yamlContent | unmarshal }}
+
+{{ $objectName := .Get "object" }}
+{{ $objectValue := index $myobject $objectName }}
+
+

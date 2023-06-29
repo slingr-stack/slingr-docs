@@ -1,19 +1,19 @@
 package: sys.data.ComplexQueryHelper
 page: app-development-js-api-data.html
 description: |
-  This object is passed as a parameter to the function passed in the method <<<sys.data.Query.query()>>>
+  This object is passed as a parameter to the function passed in the method `sys.data.Query.query()`
   and helps to build a complex query with AND and OR operators.
 
-  Please check [Complex queries]({{site.baseurl}}/app-development-query-language.html#complex-queries) for more
+  Please check [Complex queries]({{<ref "/dev-reference/queries/query-language.md#complex-queries">}}) for more
   information.
 methods:
 - name: field
-  summary: Returns an <<<sys.data.QueryField>>> object for the given field
+  summary: Returns an `sys.data.QueryField` object for the given field
   description: |
-    Returns an <<<sys.data.QueryField>>> object for the given field. With this object
+    Returns an `sys.data.QueryField` object for the given field. With this object
     you can add filters to the field.
 
-    Please check [Filter by field]({{site.baseurl}}/app-development-query-language.html#filters-by-field) for more information
+    Please check [Filter by field]({{<ref "/dev-reference/queries/query-language.md#filters-by-field">}}) for more information
     on how it works.
   parameters:
   - name: path
@@ -42,11 +42,11 @@ methods:
         log(records.next().label());
       }
 - name: and
-  summary: Returns a <<<sys.data.ComplexQueryCriteria>>> object to do an AND with the given parameters
+  summary: Returns a `sys.data.ComplexQueryCriteria` object to do an AND with the given parameters
   description: |
-    Returns a <<<sys.data.ComplexQueryCriteria>>> object to do an AND with the given parameters.
+    Returns a `sys.data.ComplexQueryCriteria` object to do an AND with the given parameters.
 
-    Please check [Complex queries]({{site.baseurl}}/app-development-query-language.html#complex-queries) for more
+    Please check [Complex queries]({{<ref "/dev-reference/queries/query-language.md#complex-queries">}}) for more
     information.
   parameters:
   - name: conditions
@@ -78,11 +78,11 @@ methods:
         log(records.next().label());
       }
 - name: or
-  summary: Returns a <<<sys.data.ComplexQueryCriteria>>> object to do an OR with the given parameters
+  summary: Returns a `sys.data.ComplexQueryCriteria` object to do an OR with the given parameters
   description: |
-    Returns a <<<sys.data.ComplexQueryCriteria>>> object to do an OR with the given parameters.
+    Returns a `sys.data.ComplexQueryCriteria` object to do an OR with the given parameters.
 
-    Please check [Complex queries]({{site.baseurl}}/app-development-query-language.html#complex-queries) for more
+    Please check [Complex queries]({{<ref "/dev-reference/queries/query-language.md#complex-queries">}}) for more
     information.
   parameters:
   - name: conditions

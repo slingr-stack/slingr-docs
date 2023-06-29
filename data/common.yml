@@ -1,0 +1,232 @@
+publicJobsDescription: |
+  - `IMPORT_RECORDS`
+  - `EXPORT_RECORDS`
+  - `EXECUTE_ACTION`
+  - `DELETE_RECORDS`
+  - `EXECUTE_LISTENER`
+  - `IMPORT_USERS`
+  - `EXPORT_USERS`
+  - `STOP_APP`
+  - `START_APP`
+  - `DEPLOY_ENDPOINT`
+  - `UNDEPLOY_ENDPOINT`
+publicJobsList: |
+  `IMPORT_RECORDS`, `EXPORT_RECORDS`, `EXECUTE_ACTION`, `DELETE_RECORDS`, `EXECUTE_LISTENER`, `IMPORT_USERS`, `EXPORT_USERS`,
+  `STOP_APP`, `START_APP`, `DEPLOY_ENDPOINT`, `UNDEPLOY_ENDPOINT`
+jobsStatusesDescription: |
+  - `PENDING`: the job is pending for execution.
+  - `RUNNING`: the job is being executed.
+  - `FINISHED`: the job is completed.
+  - `STOPPING`: the job is stopping. This could take a while until the job can be stopped gracefully.
+  - `STOPPED`: the job has been stopped but can be resumed.
+  - `CANCELED`: the job has been canceled and cannot be resumed.
+jobsStatusesList: |
+  `PENDING`, `RUNNING`, `FINISHED`, `STOPPING`, `STOPPED`, `CANCELING`, `CANCELED`
+jobsDataDescription: |
+  **Start app**
+
+  {% include json_fields.html fields=site.data.common.jobsDataFields.startApp %}
+
+  {{< common/jobfields object="saludo" >}}
+
+  **Import records**
+
+  {% include json_fields.html fields=site.data.common.jobsDataFields.importRecords %}
+
+  **Export records**
+
+  {% include json_fields.html fields=site.data.common.jobsDataFields.exportRecords %}
+
+  **Delete records**
+
+  {% include json_fields.html fields=site.data.common.jobsDataFields.deleteRecords %}
+
+  **Execute action**
+
+  {% include json_fields.html fields=site.data.common.jobsDataFields.executeAction %}
+
+  **Execute listener**
+
+  {% include json_fields.html fields=site.data.common.jobsDataFields.executeListener %}
+
+  **Import users**
+
+  {% include json_fields.html fields=site.data.common.jobsDataFields.importUsers %}
+
+  **Deploy endpoint**
+
+  {% include json_fields.html fields=site.data.common.jobsDataFields.deployEndpoint %}
+
+  **Undeploy endpoint**
+
+  {% include json_fields.html fields=site.data.common.jobsDataFields.undeployEndpoint %}
+jobsResultsDescription: |
+  **Import records**
+
+  {% include json_fields.html fields=site.data.common.jobsResultFields.importRecords %}
+
+  **Export records**
+
+  {% include json_fields.html fields=site.data.common.jobsResultFields.exportRecords %}
+
+  **Delete records**
+
+  The result will be a map like this one:
+
+  ```js
+  {
+    "results": {
+      "id1": {
+        "status": "ok"
+      },
+      "id2": {
+        "status": "error",
+        "errorMessage": "error message"
+      }
+    }
+  }
+  ```
+
+  `status` will indicate if the delete process was executed successfully over that record (`ok`) or if there were
+  errors (`error`). The field `response` will be available only if the action is configured to return the
+  response in the results; otherwise it won't be there.
+
+  One important thing to keep in mind is that the maximum number of responses in this map will be 1,000. If
+  you execute the delete process over more than 1,000 records you might not be able to collect the response for each
+  one.
+
+  **Execute action**
+
+  The results of this job depends on the type of action. If the action is of type `One record`, the result
+  will be a map like this one:
+
+  ```js
+  {
+    "results": {
+      "id1": {
+        "status": "ok",
+        "response": "response from action"
+      },
+      "id2": {
+        "status": "error",
+        "errorMessage": "error message"
+      }
+    }
+  }
+  ```
+
+  `status` will indicate if the action was executed successfully over that record (`ok`) or if there were
+  errors (`error`). The field `response` will be available only if the action is configured to return the
+  response in the results; otherwise it won't be there. The field `errorMessage` will be present when there
+  is an error, giving some insight about the problem.
+
+  One important thing to keep in mind is that the maximum number of responses in this map will be 1,000. If
+  you execute the action over more than 1,000 records you might not be able to collect the response for each
+  one.
+
+  If the action is of type `Many records`, you will only get a map with fields `status` and `response`:
+
+  ```js
+  {
+    "results": {
+      "status": "ok",
+      "response": "response from action"
+    }
+  }
+  ```
+
+  **Import users**
+
+  {% include json_fields.html fields=site.data.common.jobsResultFields.importUsers %}
+
+  **Export users**
+
+  {% include json_fields.html fields=site.data.common.jobsResultFields.exportUsers %}
+jobsDataFields:
+  startApp:
+  - path: pushChanges
+    description: |
+      `true` if changes will be pushed during the starting of the app. `false` or empty otherwise.
+  - path: wakingUp
+    description: |
+      `true` if the app was sleeping and is waking ap. `false` otherwise.
+  importRecords:
+  - path: fileName
+    description: |
+      This is the name of the file that will be imported.
+  - path: entityName
+    description: |
+      The name of the entity where records will be imported.
+  exportRecords:
+  - path: entityName
+    description: |
+      The name of the entity where records will be exported from.
+  deleteRecords:
+  - path: entityName
+    description: |
+      The name of the entity where records will be deleted from.
+  executeAction:
+  - path: entityName
+    description: |
+      The name of the entity the action belongs to.
+  - path: actionName
+    description: |
+      The name of the action to be executed.
+  executeListener:
+  - path: listenerName
+    description: |
+      The name of the listener to execute.
+  importUsers:
+  - path: fileName
+    description: |
+      This is the name of the file that will be imported.
+  - path: notifyUsers
+    description: |
+      `true` if people will be notified by email when users are created; `false` otherwise.
+  deployEndpoint:
+  - path: endpointName
+    description: |
+      The name of the endpoint to deploy.
+  undeployEndpoint:
+  - path: endpointName
+    description: |
+      The name of the endpoint to undeploy.
+jobsResultFields:
+  importRecords:
+  - path: rowsImported
+    description: |
+      The number of rows that were imported successfully.
+  - path: rowsWithErrors
+    description: |
+      The number of rows that couldn't be imported due to errors.
+  exportRecords:
+  - path: fileLink
+    description: |
+      URL to download the CSV file with the exported records. You will need to send the token in the headers in
+      order to be able to download it.
+  - path: fileId
+    description: |
+      The ID of the file that was generated.
+  - path: recordsExported
+    description: |
+      The number of records that were exported.
+  importRecords:
+  - path: rowsImported
+    description: |
+      The number of rows that were imported successfully.
+  - path: rowsWithErrors
+    description: |
+      The number of rows that couldn't be imported due to errors.
+  exportUsers:
+  - path: fileLink
+    description: |
+      URL to download the CSV file with the exported users. You will need to send the token in the headers in
+      order to be able to download it.
+  - path: fileId
+    description: |
+      The ID of the file that was generated.
+  - path: usersExported
+    description: |
+      The number of users that were exported.
+
+saludo: hola

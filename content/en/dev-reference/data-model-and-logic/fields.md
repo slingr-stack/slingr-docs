@@ -17,7 +17,7 @@ structure of entities, but they are also used in other places like parameters in
 
 The most important property of a field is the type, as it will define the available options,
 rules, display options, UI for editing and reading, etc. [You can find more information
-about types here]({{site.baseurl}}/app-development-types-overview.html).
+about types here]({{<ref "/dev-reference/field-types/overview.md">}}).
 
 Settings for fields can be organized in this way:
 
@@ -44,7 +44,7 @@ Settings for fields can be organized in this way:
     as a link or, during edition, if you want to use a dropdown or boxes to pick a new
     value.
     
-To know more about type-specific settings, please check the [Types]({{site.baseurl}}/app-development-types-overview.html) 
+To know more about type-specific settings, please check the [Types]({{<ref "/dev-reference/field-types/overview.md">}})
 documentation.
 
 ## Basic settings
@@ -82,7 +82,7 @@ The type of the field indicates what can be stored in that field as well as how 
 will be rendered. Each type has its own rules and display options.
 
 To know which types are available and their features, please check the 
-[Types]({{site.baseurl}}/app-development-types-overview.html) documentation.
+[Types]({{<ref "/dev-reference/field-types/overview.md">}}) documentation.
 
 If you change the type of a field, when pushing or syncing changes the app will try to
 automatically convert existing values to the new type. The rule during conversions is 
@@ -162,7 +162,7 @@ Possible options for the required flag are:
 
 
 - `Expression`: the field will be required if the expression evaluates to `true`. You can find more
-  information in the documentation for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html).
+  information in the documentation for [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}})
 - `Never`: the field will never be required. This is the default value.
 
 ### Unique
@@ -236,7 +236,7 @@ Read/write access has the following options:
 
 
 - `Expression`: the field will be accessible if the expression evaluates to `true`. You can find more
-  information in the documentation for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html).
+  information in the documentation for [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}})
 - `Never`: the field will never be accessible. This makes sense only when you uncheck the flag 
   `Sync read/write` and you set this option to either read or write.
 
@@ -299,10 +299,10 @@ restrict the length of the value while choice fields will define which option ar
 There are three ways to set type rules:
 
 - `Custom`: you manually set type rules for this field. You should check the documentation
-  for [Types]({{site.baseurl}}/app-development-types-overview.html) to see what rules are available 
+  for [Types]({{<ref "/dev-reference/field-types/overview.md">}}) to see what rules are available 
   for each type.
 - `Predefined`: you can select one of the global type rules configured in the section `App > Types`
-  of the app builder. See [Global type settings](app-development-app-types.html).
+  of the app builder. See [Global type settings]({{<ref "/dev-reference/app/global-type.md">}}).
 - `Field`: you can point to an existing field in the entity and use the same type rules. This way
   if type rules are modified in the referenced field, they will be automatically updated on this
   field.
@@ -333,7 +333,7 @@ Read Only has the following options:
 {{< js_script_context context="readWriteAccessScript">}}
 
 - `Expression`: the field will be editable if the expression evaluates to `true`. You can find more
-  information in the documentation for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html).
+  information in the documentation for [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}})
 - `Never`: the field will be editable. Default option.
 
 
@@ -363,7 +363,7 @@ Visible has the following options:
 
 
 - `Expression`: the field will be visible if the expression evaluates to `true`. You can find more
-  information in the documentation for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html).
+  information in the documentation for [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}})
 - `Never`: the field will never be visible.
 
 ### Sorting
@@ -467,10 +467,10 @@ In this section you configure display options that are type-specific. There are 
 to set display options:
 
 - `Custom`: you manually set display options for this field. You should check the documentation
-  for [Types]({{site.baseurl}}/app-development-types-overview.html) to see what options are available 
+  for [Types]({{<ref "/dev-reference/field-types/overview.md">}})  to see what options are available 
   for each type.
 - `Predefined`: you can select one of the global display options configured in the section `App > Types`
-  of the app builder. See [Global type settings](app-development-app-types.html).
+  of the app builder. See [Global type settings]({{<ref "/dev-reference/app/global-type.md">}}).
 - `Field`: you can point to an existing field in the entity and use the same display options. This way
   if display options are modified in the referenced field, they will be automatically updated on this
   field.
@@ -491,12 +491,12 @@ Here it is possible to indicate access permissions for the field. Options are:
   this field at all.
 - `Advanced`: allows to configure read or write access separately and optionally based on record data
   through expressions filters or scripts (in the same way as you can do with 
-  [Read/Write Access]({{site.baseurl}}/app-development-model-fields.html#readwrite-access) in field).
+  [Read/Write Access]({{<ref "/dev-reference/data-model-and-logic/fields.md#readwrite-access">}}) in field).
 
 When a new field is added to an entity, if a group has update access to the entity (`Can Create` or `Can Edit` are 
 set to `Always` or `Condition`), the field is given read-write permission for that group by default. If there is only 
 read access to the entity (`Can Access` is set to `Always` or `Condition`), read-only access is given to the field in 
 that group. Otherwise no permissions are set automatically.
  
-For more information about permissions please refer to [Groups]({{site.baseurl}}/app-development-security-groups.html).
+For more information about permissions please refer to [Groups]({{<ref "/dev-reference/security/groups.md">}}).
 

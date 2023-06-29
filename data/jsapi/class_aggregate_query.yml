@@ -3,15 +3,15 @@ page: app-development-js-api-data.html
 description: |
   Allows to build aggregate quieries easily. Here you will find information about the methods
   provided by this class. If you want to understand how to use and write aggregate queries, please check
-  the documentation on [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+  the documentation on [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md">}}).
 
-  Usually you will create query objects using the method <<<sys.data.createAggregateQuery()>>>
+  Usually you will create query objects using the method `sys.data.createAggregateQuery()`
   instead of using the constructor directly.
 methods:
 - name: group
-  summary: Adds an <<<sys.data.AggregatedGroup>>> operation to the aggregate query
+  summary: Adds an `sys.data.AggregatedGroup` operation to the aggregate query
   description: |
-    Adds a <<<sys.data.AggregatedGroup>>> operation to the aggregate query.
+    Adds a `sys.data.AggregatedGroup` operation to the aggregate query.
 
     Please check [Group]({{site.baseurl}}/app-development-aggregate-queries.html#group) for more information on how to use it.
   parameters:
@@ -20,9 +20,9 @@ methods:
   throws:
   samples:
 - name: match
-  summary: Adds an <<<sys.data.AggregatedMatch>>> operation to the aggregate query
+  summary: Adds an `sys.data.AggregatedMatch` operation to the aggregate query
   description: |
-    Adds a <<<sys.data.AggregatedMatch>>> operation to the aggregate query.
+    Adds a `sys.data.AggregatedMatch` operation to the aggregate query.
 
     Please check [Match]({{site.baseurl}}/app-development-aggregate-queries.html#match) for more information on how to use it.
   parameters:
@@ -31,9 +31,9 @@ methods:
   throws:
   samples:
 - name: sort
-  summary: Adds an <<<sys.data.AggregatedSort>>> operation to the aggregate query
+  summary: Adds an `sys.data.AggregatedSort` operation to the aggregate query
   description: |
-    Adds a <<<sys.data.AggregatedSort>>> operation to the aggregate query.
+    Adds a `sys.data.AggregatedSort` operation to the aggregate query.
 
     Please check [Sort]({{site.baseurl}}/app-development-aggregate-queries.html#sort) for more information on how to use it.
   parameters:
@@ -42,9 +42,9 @@ methods:
   throws:
   samples:
 - name: project
-  summary: Adds an <<<sys.data.AggregatedProject>>> operation to the aggregate query
+  summary: Adds an `sys.data.AggregatedProject` operation to the aggregate query
   description: |
-    Adds a <<<sys.data.AggregatedProject>>> operation to the aggregate query.
+    Adds a `sys.data.AggregatedProject` operation to the aggregate query.
 
     Please check [Project]({{site.baseurl}}/app-development-aggregate-queries.html#project) for more information on how to use it.
   parameters:
@@ -53,9 +53,9 @@ methods:
   throws:
   samples:
 - name: count
-  summary: Adds an <<<sys.data.AggregatedCount>>> operation to the aggregate query
+  summary: Adds an `sys.data.AggregatedCount` operation to the aggregate query
   description: |
-    Adds a <<<sys.data.AggregatedCount>>> operation to the aggregate query.
+    Adds a `sys.data.AggregatedCount` operation to the aggregate query.
 
     Please check [Count]({{site.baseurl}}/app-development-aggregate-queries.html#count) for more information on how to use it.
   parameters:
@@ -64,9 +64,9 @@ methods:
   throws:
   samples:
 - name: skip
-  summary: Adds an <<<sys.data.AggregatedSkip>>> operation to the aggregate query
+  summary: Adds an `sys.data.AggregatedSkip` operation to the aggregate query
   description: |
-    Adds a <<<sys.data.AggregatedSkip>>> operation to the aggregate query.
+    Adds a `sys.data.AggregatedSkip` operation to the aggregate query.
 
     Please check [Skip]({{site.baseurl}}/app-development-aggregate-queries.html#skip) for more information on how to use it.
   parameters:
@@ -75,9 +75,9 @@ methods:
   throws:
   samples:
 - name: limit
-  summary: Adds an <<<sys.data.AggregatedLimit>>> operation to the aggregate query
+  summary: Adds an `sys.data.AggregatedLimit` operation to the aggregate query
   description: |
-    Adds a <<<sys.data.AggregatedLimit>>> operation to the aggregate query.
+    Adds a `sys.data.AggregatedLimit` operation to the aggregate query.
 
     Please check [Limit]({{site.baseurl}}/app-development-aggregate-queries.html#limit) for more information on how to use it.
   parameters:
@@ -86,9 +86,9 @@ methods:
   throws:
   samples:
 - name: unwind
-  summary: Adds an <<<sys.data.AggregatedUnwind>>> operation to the aggregate query
+  summary: Adds an `sys.data.AggregatedUnwind` operation to the aggregate query
   description: |
-    Adds a <<<sys.data.AggregatedUnwind>>> operation to the aggregate query.
+    Adds a `sys.data.AggregatedUnwind` operation to the aggregate query.
 
     Please check [Unwind]({{site.baseurl}}/app-development-aggregate-queries.html#unwind) for more information on how to use it.
   parameters:
@@ -97,9 +97,9 @@ methods:
   throws:
   samples:
 - name: lookup
-  summary: Adds an <<<sys.data.AggregatedLookup>>> operation to the aggregate query
+  summary: Adds an `sys.data.AggregatedLookup` operation to the aggregate query
   description: |
-    Adds a <<<sys.data.AggregatedLookup>>> operation to the aggregate query.
+    Adds a `sys.data.AggregatedLookup` operation to the aggregate query.
 
     Please check [Lookup]({{site.baseurl}}/app-development-aggregate-queries.html#lookup) for more information on how to use it.
   parameters:

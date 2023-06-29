@@ -2,9 +2,9 @@ package: sys.data.AggregatedMatch
 page: app-development-js-api-data.html
 description: |
   Allows to filter elements by a query in an aggregate query. You should never create an object of
-  this class manually. Instead use <<<sys.data.AggregateQuery.match()>>> method.
+  this class manually. Instead use `sys.data.AggregateQuery.match()` method.
 
-  Please check the documentation on [Match]({{site.baseurl}}/app-development-aggregate-queries.html#match) for more
+  Please check the documentation on [Match]({{<ref "/dev-reference/queries/aggregate-queries.md#match">}}) for more
   information on how to use the match operator.
 methods:
 - name: field

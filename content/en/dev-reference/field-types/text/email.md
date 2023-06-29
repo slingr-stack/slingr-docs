@@ -12,30 +12,29 @@ menu:
 toc: true
 ---
 
-{{< type_doc type="email" >}}
 ### Overview
-{{< type_doc/overview type="" >}}
+{{< type_doc/overview type="email" >}}
 
 ### Available features
-{{< type_doc/available_f type="" >}}
+{{< type_doc/available_f type="email" >}}
 
 ### Display options 
-{{< type_doc/display_options type="" >}}
+{{< type_doc/display_options type="email" >}}
 
 ### REST API 
-{{< type_doc/rest_api type="" >}}
+{{< type_doc/rest_api type="email" >}}
 
 ### JavaScript API
-{{< type_doc/js_api type="" >}}
+{{< type_doc/js_api type="email" >}}
 
 ### Export/Import
-{{< type_doc/export-import type="" >}}
+{{< type_doc/export-import type="email" >}}
 
 ### Queries 
-{{< type_doc/queries type="" >}}
+{{< type_doc/queries type="email" >}}
 
 ### Aggregate queries
-{{< type_doc/aggregate_queries type="" >}}
+{{< type_doc/aggregate_queries type="email" >}}
 
 ### UI queries
-{{< type_doc/ui_queries type="" >}}
+{{< type_doc/ui_queries type="email" >}}

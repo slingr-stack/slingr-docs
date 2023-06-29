@@ -2,9 +2,9 @@ package: sys.data.AggregatedGroup
 page: app-development-js-api-data.html
 description: |
   Allows to define a group operation in an aggregate query. You should never create an object of
-  this class manually. Instead use <<<sys.data.AggregateQuery.group()>>> method.
+  this class manually. Instead use `sys.data.AggregateQuery.group()` method.
 
-  Please check the documentation on [Group]({{site.baseurl}}/app-development-aggregate-queries.html#group) for more
+  Please check the documentation on [Group](({{<ref "/dev-reference/queries/aggregate-queries.md#group">}})) for more
   information on how to use the group operator.
 methods:
 - name: by

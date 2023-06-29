@@ -10,14 +10,15 @@
 <h5>Javascript API - Write format</h5>
 {{ $typeData.jsApi.writeFormat | markdownify }}
 
-<h5> Javascript API - Wrapper </h5>
 
 
 {{- $filePath := printf "data/jsapi/types/%s.yml" $typeName -}}
 {{- $yamlContent := readFile $filePath -}}
 {{- $api := $yamlContent | unmarshal -}}
 
-
+{{if $api.methods}}
+<h5> Javascript API - Wrapper </h5>
+{{end}}
 
 {{- $api.description | markdownify }}
 

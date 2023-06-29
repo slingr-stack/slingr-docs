@@ -2,9 +2,9 @@ package: sys.data.AggregatedSkip
 page: app-development-js-api-data.html
 description: |
   Allows to skip elements in an aggregate query. You should never create an object of
-  this class manually. Instead use <<<sys.data.AggregateQuery.skip()>>> method.
+  this class manually. Instead use `sys.data.AggregateQuery.skip()` method.
 
-  Please check the documentation on [Skip]({{site.baseurl}}/app-development-aggregate-queries.html#skip) for more
+  Please check the documentation on [Skip]({{<ref "/dev-reference/queries/aggregate-queries.md#skip">}}) for more
   information on how to use the skip operator.
 methods:
 - name: step

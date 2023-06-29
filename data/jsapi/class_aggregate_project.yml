@@ -2,9 +2,9 @@ package: sys.data.AggregatedProject
 page: app-development-js-api-data.html
 description: |
   Allows to filter fields in elements in an aggregate query. You should never create an object of
-  this class manually. Instead use <<<sys.data.AggregateQuery.project()>>> method.
+  this class manually. Instead use `sys.data.AggregateQuery.project()` method.
 
-  Please check the documentation on [Project]({{site.baseurl}}/app-development-aggregate-queries.html#project) for more
+  Please check the documentation on [Project]({{<ref "/dev-reference/queries/aggregate-queries.md#project">}}) for more
   information on how to use the project operator.
 methods:
 - name: field

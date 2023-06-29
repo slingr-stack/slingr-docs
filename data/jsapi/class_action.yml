@@ -20,7 +20,7 @@ methods:
 - name: field
   summary: Returns the value of the action field at the given path
   description: |
-    Returns the action field at the given path. It works exactly the same as <<<sys.data.Record.field()>>>
+    Returns the action field at the given path. It works exactly the same as `sys.data.Record.field()`
     but it works over the fields defined on the action.
   parameters:
   - name: path

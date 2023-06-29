@@ -1,10 +1,10 @@
 package: sys.data.ComplexQueryCriteria
 page: app-development-js-api-data.html
 description: |
-  This object is returned by the method in <<<sys.data.ComplexQueryHelper>>>. You shouldn't
+  This object is returned by the method in `sys.data.ComplexQueryHelper`. You shouldn't
   use this object directly.
 
-  Please check [Complex queries]({{site.baseurl}}/app-development-query-language.html#complex-queries) for more
+  Please check [Complex queries]({{<ref "/dev-reference/queries/query-language.md#complex-queries">}}) for more
   information.
 methods:
 - name: toString

@@ -26,7 +26,17 @@ methods:
   description: |
     Returns the type of the job. The only type of jobs that you can use in your code are the following ones:
 
-    {{site.data.common.publicJobsDescription}}
+      - `IMPORT_RECORDS`
+      - `EXPORT_RECORDS`
+      - `EXECUTE_ACTION`
+      - `DELETE_RECORDS`
+      - `EXECUTE_LISTENER`
+      - `IMPORT_USERS`
+      - `EXPORT_USERS`
+      - `STOP_APP`
+      - `START_APP`
+      - `DEPLOY_ENDPOINT`
+      - `UNDEPLOY_ENDPOINT`
 
     There are more type of jobs but they are system ones and can change or be removed without notice.
   parameters:
@@ -39,7 +49,12 @@ methods:
   description: |
     Returns the current status of the job. Possible values are:
 
-    {{site.data.common.jobsStatusesDescription}}.
+      - `PENDING`: the job is pending for execution.
+      - `RUNNING`: the job is being executed.
+      - `FINISHED`: the job is completed.
+      - `STOPPING`: the job is stopping. This could take a while until the job can be stopped gracefully.
+      - `STOPPED`: the job has been stopped but can be resumed.
+      - `CANCELED`: the job has been canceled and cannot be resumed.
   parameters:
   returnType: string
   returnDescription: The current status of the job.
@@ -129,6 +144,7 @@ methods:
   description: |
     Returns an object that contains the results of executing the job. This depends on the type of job and
     should only be used in public jobs:
+    {{< common/job_param object="jobsResultsDescription" >}}
 
     {{site.data.common.jobsResultsDescription || liquify }}
   parameters:

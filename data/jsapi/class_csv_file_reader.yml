@@ -1,10 +1,10 @@
 package: sys.files.CsvFileReader
 page: app-development-js-api-files.html
 description: |
-  Allows to read a CSV file row by row. An object of this type will be returned by the <<<sys.files.open()>>>
+  Allows to read a CSV file row by row. An object of this type will be returned by the `sys.files.open()`
   method when the type is `text/csv`.
 
-  It inherits all methods from <<<sys.files.FileReader>>>.
+  It inherits all methods from `sys.files.FileReader`.
 methods:
 - name: readHeaders
   summary: Returns the headers of the CSV file
