@@ -3,18 +3,17 @@ page: app-development-js-api-data.html
 description: |
   Allows to build more complex quieries easily. Here you will find information about the methods
   provided by this class. If you want to understand how to use and write queries, please check
-  the documentation on [Query language]({{site.baseurl}}/app-development-query-language.html).
-
-  Usually you will create query objects using the method <<<sys.data.createQuery()>>>
+  the documentation on [Query language]({{<ref "/dev-reference/queries/query-language.md">}}).
+  Usually you will create query objects using the method `sys.data.createQuery() `
   instead of using the constructor directly.
 methods:
 - name: field
-  summary: Returns a <<<sys.data.QueryField>>> object for the given field
+  summary: Returns a `sys.data.QueryField` object for the given field
   description: |
-    Returns a <<<sys.data.QueryField>>> object for the given field. With this object
+    Returns a `sys.data.QueryField ` object for the given field. With this object
     you can add filters to the field.
 
-    Please check [Filter by field]({{site.baseurl}}/app-development-query-language.html#filters-by-field) for more information
+    Please check [Filter by field]({{<ref "/dev-reference/queries/query-language.md#filters-by-field">}}) for more information
     on how it works.
   parameters:
   - name: path
@@ -200,7 +199,7 @@ methods:
   - name: complexQueryOrFunction
     type: function|string
     required: yes
-    description: A string representing a complex query or an anonymous function returning a <<<sys.data.ComplexQueryCriteria>>>.
+    description: A string representing a complex query or an anonymous function returning a `sys.data.ComplexQueryCriteria `.
   returnType: sys.data.Query
   returnDescription: The same query object. This is to allow to chain more operations easily.
   throws:

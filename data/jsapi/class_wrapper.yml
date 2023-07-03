@@ -3,11 +3,10 @@ page: app-development-js-api-data.html
 description: |
   Every time you need to access or manipulate the value of a field using the Javascript API, you
   will do it through a wrapper. You will never create a wrapper manually. Instead object of type are created by method
-  like <<<sys.data.Record.field()>>>.
+  like `sys.data.Record.field()`.
 
   The wrapper provides some utilities to retrieve the value, change it, and depending on the type it could
-  provide different services. [Please check the documentation for each type here]({{site.baseurl}}/app-development-types-overview.html)
-  to see which utilities are available in the wrapper.
+  provide different services. [Please check the documentation for each type here]({{<ref "/dev-reference/field-types/overview.md">}}) to see which utilities are available in the wrapper.
 methods:
 - name: val
   summary: Returns the value of the field
@@ -63,7 +62,7 @@ methods:
     easier.
 
     If the field is multi-valued you should provide an array with values. In this case you should also check the
-    documentation for <<<sys.data.ManyWrapper>>> which contains some utilities to hanle multi-valued fields.
+    documentation for `sys.data.ManyWrapper` which contains some utilities to hanle multi-valued fields.
   parameters:
   - name: value
     type: any

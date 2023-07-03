@@ -1,11 +1,12 @@
 package: sys.data.QueryField
 page: app-development-js-api-data.html
 description: |
-  This object is returned by the method <<<sys.data.Query.field()>>> and allows to
+  This object is returned by the method `sys.data.Query.field()` and allows to
   apply filters to the field.
 
-  Please check [Filters by field]({{site.baseurl}}/app-development-query-language.html#filters-by-field) for more
-  information on filter data.
+  Please check [Filters by field]({{<ref "/dev-reference/queries/query-language.md#filters-by-field">}})
+  for more information on filter data.
+
 methods:
 - name: equals
   summary: Adds a filter using equals operator
@@ -18,7 +19,7 @@ methods:
     description: The value to compare to. Please check the field's type documentation to see which values are allowed.
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest
@@ -48,7 +49,7 @@ methods:
     description: The value to compare to. Please check the field's type documentation to see which values are allowed.
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest
@@ -74,7 +75,7 @@ methods:
   parameters:
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest
@@ -98,7 +99,7 @@ methods:
   parameters:
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest
@@ -127,7 +128,7 @@ methods:
     description: The value to compare to. Please check the field's type documentation to see which values are allowed.
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest
@@ -186,7 +187,7 @@ methods:
     description: The value to compare to. Please check the field's type documentation to see which values are allowed.
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest
@@ -216,7 +217,7 @@ methods:
     description: The value to compare to. Please check the field's type documentation to see which values are allowed.
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest
@@ -246,7 +247,7 @@ methods:
     description: The value to compare to. Please check the field's type documentation to see which values are allowed.
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest
@@ -276,7 +277,7 @@ methods:
     description: The value to compare to. Please check the field's type documentation to see which values are allowed.
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest
@@ -310,7 +311,7 @@ methods:
     description: The maximum value to match (inclusive).
   returnType: sys.data.Query|sys.data.QueryField
   returnDescription: |
-    Returns the <<<sys.data.Query>>> object to allow chain operations or a <<<sys.data.QueryField>>> in case
+    Returns the `sys.data.Query` object to allow chain operations or a `sys.data.QueryField` in case
     you are using it in a complex query.
   throws:
     - code: badRequest

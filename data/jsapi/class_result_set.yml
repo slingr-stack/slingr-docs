@@ -2,7 +2,7 @@ package: sys.commons.ResultSet
 page: app-development-js-api-commons.html
 description: |
   An iterator over API service call results. ResultSet object maintains a cursor pointing to its current object.
-  Initially the cursor is positioned before the first object. The <<sys.commons.ResultSet.next()>>
+  Initially the cursor is positioned before the first object. The `sys.commons.ResultSet.next()`
   method moves the cursor to the next available object.
 
   The cursor moves forward only.
@@ -30,7 +30,7 @@ methods:
     Returns one object and moves the cursor forward.
   parameters:
   returnType: object
-  returnDescription: Usually it is a <<<sys.data.Record>>>.
+  returnDescription: Usually it is a `<sys.data.Record`>.
   throws:
     - code: badRequest
       description: If there are no more objects.
@@ -65,7 +65,7 @@ methods:
   parameters:
   returnType: object[]
   returnDescription: |
-    Returns an array with all objects. These are usually objects of type <<<sys.data.Record>>>, but it depends
+    Returns an array with all objects. These are usually objects of type `<sys.data.Record`>, but it depends
     one what you are iterating.
   throws:
     - code: systemException

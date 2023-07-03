@@ -4,12 +4,12 @@ description: |
   This package contains methods to work with exceptions.
 methods:
   - name: getCode
-    summary: Returns the error code in case the parameter passed is of type <<<sys.exceptions.ScriptException>>>
+    summary: Returns the error code in case the parameter passed is of type `sys.exceptions.ScriptException`
     description: |
-      Returns the error code in case the parameter passed is of type <<<sys.exceptions.ScriptException>>>.
+      Returns the error code in case the parameter passed is of type `sys.exceptions.ScriptException`.
       Otherwise return `null`.
       
-      The advantage of using this method instead of just calling <<<sys.exceptions.ScriptException.code()>>> is that you don't
+      The advantage of using this method instead of just calling `sys.exceptions.ScriptException.code()` is that you don't
       need to worry if it is a platform exception or any other kind of exceptions. Otherwise you should first check it is
       a platform exception before fetching the code.
     parameters:
@@ -39,11 +39,11 @@ methods:
   - name: getMessage
     summary: Returns the error message in the exception
     description: |
-      Returns the error message in the exception. If the parameter is a string, returns it. If it is a <<<sys.exceptions.ScriptException>>>,
+      Returns the error message in the exception. If the parameter is a string, returns it. If it is a `sys.exceptions.ScriptException`,
       then returns the message contained inside. If it is an object, returns its JSON representation. Otherwise
       tries to cast the parameter to a string.
       
-      The advantage of using this method instead of just calling <<<sys.exceptions.ScriptException.message()>>> is that you don't
+      The advantage of using this method instead of just calling `sys.exceptions.ScriptException.message()` is that you don't
       need to worry if it is a platform exception or any other kind of exceptions. Otherwise you should first check it is
       a platform exception before fetching the message.
     parameters:

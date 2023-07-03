@@ -7,7 +7,7 @@ description: |
   All operations that read data will return this object. For example `sys.data.findOne()` or `sys.data.findById()`
   return objects of `sys.data.Record`.
 
-  Record objects can be created using the method <<<sys.data.createRecord()>>>:
+  Record objects can be created using the method `sys.data.createRecord()`:
 
   ```js
   var company = sys.data.createRecord('companies');
@@ -81,10 +81,10 @@ methods:
   description: |
     Returns the wrapper of the field at the given path. Wrappers have different methods that allow to access data
     in different ways and they are type-specific. This means each data type will provide different methods. Please
-    check the documentation of <<<sys.data.Wrapper>>> for more information.
+    check the documentation of `sys.data.Wrapper` for more information.
 
     What's important to remember is that this method doesn't return the actual value, but an object of type
-    <<<sys.data.Wrapper>>> (depending on the type the wrapper could offer more utilities) you can use to read
+    `sys.data.Wrapper` (depending on the type the wrapper could offer more utilities) you can use to read
     and manipulate the value. For example:
 
     ```js
@@ -128,7 +128,7 @@ methods:
     you are trying to read the value or, if you are trying to set the value, a new element will
     be created.
 
-    If you try to access a multi-valued field, you will get a <<<sys.data.ManyWrapper>>> object. This
+    If you try to access a multi-valued field, you will get a `sys.data.ManyWrapper` object. This
     object provides several methods to access the items inside:
 
     ```js
@@ -146,7 +146,7 @@ methods:
     });
     ```
 
-    Please check the documentation of <<<sys.data.ManyWrapper>>> for more information.
+    Please check the documentation of `sys.data.ManyWrapper` for more information.
 
     Finally, if the path is not a valid field, an exception will be thrown.
   parameters:
@@ -262,7 +262,7 @@ methods:
     description: If the action has parameters you should put them here. The format is the same used by the REST API.
   returnType: object
   returnDescription: |
-    An object of type <<<sys.data.Record>>> or a custom response if the action has been configured to do that.
+    An object of type `sys.data.Record` or a custom response if the action has been configured to do that.
   throws:
   samples:
   - title: executes the action 'logSomething' over a company
@@ -276,14 +276,14 @@ methods:
       company.action('logSomething', {param1: 'a', param2: 'b'});
       log('completed!');
 - name: history
-  summary: Returns an object of type <<<sys.data.RecordHistoryLogs>>> to query history logs
+  summary: Returns an object of type `sys.data.RecordHistoryLogs` to query history logs
   description: |
-    Returns an object of type <<<sys.data.RecordHistoryLogs>>> to query history logs.
+    Returns an object of type `sys.data.RecordHistoryLogs` to query history logs.
 
-    See <<<sys.data.RecordHistoryLogs>>> for more information on how to query record's history logs.
+    See `sys.data.RecordHistoryLogs` for more information on how to query record's history logs.
   parameters:
   returnType: sys.data.RecordHistoryLogs
-  returnDescription: An object of type <<<sys.data.RecordHistoryLogs>>> to query history logs
+  returnDescription: An object of type `sys.data.RecordHistoryLogs` to query history logs
   throws:
   samples:
   - title: prints who created the record

@@ -5,9 +5,9 @@ description: |
   or the stack of calls that have been made.
 methods:
 - name: getCurrentUserRecord
-  summary: Returns a <<<sys.data.Record>> object corresponding to the extended user fields record associated with the current user
+  summary: Returns a  `sys.data.Record>> object corresponding to the extended user fields record associated with the current user
   description: |
-    Returns a <<<sys.data.Record>>> object that contains the extended user fields for the user in the current
+    Returns a `sys.data.Record`object that contains the extended user fields for the user in the current
     context of execution. If there is no user set in the current context of execution, this method will return `null`.
   parameters:
   returnType: sys.data.Record
@@ -36,9 +36,9 @@ methods:
         var ip = sys.context.getCurrentIp();
         log('IP: '+ip);
 - name: setCurrentUserRecord
-  summary: Sets the current user in the context of execution using a <<<sys.data.Record>>> object
+  summary: Sets the current user in the context of execution using a  `sys.data.Record`object
   description: |
-    Sets the current user in the context of execution using a <<<sys.data.Record>>> object.
+    Sets the current user in the context of execution using a `sys.data.Record`object.
 
     Keep in mind that if you don't restore the current user in the context of execution it will be restored
     automatically after the script snippet is executed.
@@ -107,7 +107,7 @@ methods:
   summary: Returns an object that provides utilities to check what's the root context
   description: |
     Returns an object that provides utilities to check what's the root context. To understand how context
-    work, please read [Context]({{site.baseurl}}/app-development-scripting.html#context).
+    work, please read [Context]({{<ref "/dev-reference/scripting/overview.md#context">}}) 
 
     The root context is the one at the top of the stack of calls. For example, if you execute an action from
     the REST API, where the action has an script that creates a record, during the creation of the record the
@@ -173,7 +173,7 @@ methods:
   summary: Returns an object that provides utilities to check the context along the stack calls
   description: |
     Returns an object that provides utilities to check the context along the stack calls. To understand how context
-    work, please read [Context]({{site.baseurl}}/app-development-scripting.html#context).
+    work, please read [Context]({{<ref "/dev-reference/scripting/overview.md#context">}}) 
 
     This is exactly the same as <<sys.context.root()>> but instead of just checking the root context, the method
     `check()` will evaluate to `true` if any of the contexts in the call stack matches. For example, if you

@@ -43,7 +43,7 @@ methods:
   - name: queryMap
     required: no
   returnType: sys.commons.ResultSet
-  returnDescription: A result set that returns <<<sys.data.Record>>> objects when iterated.
+  returnDescription: A result set that returns `sys.data.Record` objects when iterated.
   throws:
     - code: badRequest
       description: If `entityName` or `queryMap` are invalid.
@@ -73,7 +73,7 @@ methods:
   - name: queryBuilder
     required: yes
   returnType: sys.commons.ResultSet
-  returnDescription: A result set that returns <<<sys.data.Record>>> objects when iterated.
+  returnDescription: A result set that returns `sys.data.Record` objects when iterated.
   throws:
     - code: badRequest
       description: If `queryBuilder` is invalid.
@@ -178,7 +178,7 @@ methods:
   summary: Aggregates data in an entity using an aggregate query map
   description: |
     Allows to perform aggregation operations like sum, average and count over an entity. This version uses an
-    aggregate query map. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+    aggregate query map. Check the documentation for [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md">}}).
   parameters:
   - name: entityName
     required: yes
@@ -187,11 +187,11 @@ methods:
     required: yes
     description: |
       This is the aggregate query map object that defines the operations to perform. Check the documentation
-      for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+      for [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md">}}).
   returnType: sys.commons.ResultSet
   returnDescription: |
     A result set that returns JSON objects when iterated. The structure of this object depends on the aggregation
-    operations performed. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+    operations performed. Check the documentation for [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md">}}).
   throws:
     - code: badRequest
       description: If `entityName` or `aggregateQueryMap` are invalid.
@@ -228,16 +228,16 @@ methods:
   summary: Aggregates data in an entity using an aggregate query builder
   description: |
     Allows to perform aggregation operations like sum, average and count over an entity. This version uses an
-    aggregate query builder. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+    aggregate query builder. Check the documentation for [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md">}}).
   parameters:
   - name: aggregateQueryBuilder
     type: object
     required: yes
-    description: This is the aggregate query builder that defines the operations to perform. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+    description: This is the aggregate query builder that defines the operations to perform. Check the documentation for [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md">}}).
   returnType: sys.commons.ResultSet
   returnDescription: |
     A result set that returns JSON objects when iterated. The structure of this object depends on the aggregation
-    operations performed. Check the documentation for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+    operations performed. Check the documentation for [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md">}}).
   throws:
     - code: badRequest
       description: If `aggregateQueryBuilder` are invalid.
@@ -376,7 +376,7 @@ methods:
 - name: createRecord
   summary: Creates a new record object
   description: |
-    Creates a new empty <<<sys.data.Record>>> object. This record is not saved into the database until
+    Creates a new empty `sys.data.Record` object. This record is not saved into the database until
     you call <<sys.data.save()>>.
   parameters:
     - name: entityName
@@ -1054,8 +1054,8 @@ methods:
 - name: createQuery
   summary: Creates a query builder object
   description: |
-    Initializes and returns a <<<sys.data.Query>>> object. Please check out the documentation for
-    the [Query language]({{site.baseurl}}/app-development-query-language.html).
+    Initializes and returns a `sys.data.Query` object. Please check out the documentation for
+    the [Query language]({{<ref "/dev-reference/queries/query-language.md">}}).
   parameters:
     - name: entityName
       required: yes
@@ -1074,8 +1074,8 @@ methods:
 - name: createAggregateQuery
   summary: Creates an aggregate query builder object
   description: |
-    Initializes and returns a <<<sys.data.AggregateQuery>>> object. Please check out the documentation
-    for [Aggregate queries]({{site.baseurl}}/app-development-aggregate-queries.html).
+    Initializes and returns a `sys.data.AggregateQuery` object. Please check out the documentation
+    for [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md”>}}).
   parameters:
     - name: entityName
       required: yes
