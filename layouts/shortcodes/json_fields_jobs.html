@@ -1,0 +1,28 @@
+{{ $context := .Get "context" }}
+{{ $field := .Get "field" }}
+
+{{ $filePath := printf "data/jobs/%s.yml" $context }}
+{{ $yamlContent := readFile $filePath }}
+{{ $myobject := $yamlContent | unmarshal }}
+{{ $myobjectfield := index $myobject $field }}
+
+<table class="table">
+    <thead>
+        <tr class="header">
+            <th align="left">Path</th>
+            <th align="left">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{- range $field := $myobjectfield -}}
+        <tr>
+            <td align="left">
+                <code>{{$field.path}}</code>
+            </td>
+            <td align="left">
+                <p>{{ $field.description  | markdownify }}</p>
+            </td>
+        </tr>
+        {{- end }}
+    </tbody>
+</table>

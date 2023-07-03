@@ -1,0 +1,37 @@
+jobsResultFields:
+  importRecords:
+  - path: rowsImported
+    description: |
+      The number of rows that were imported successfully.
+  - path: rowsWithErrors
+    description: |
+      The number of rows that couldn't be imported due to errors.
+  exportRecords:
+  - path: fileLink
+    description: |
+      URL to download the CSV file with the exported records. You will need to send the token in the headers in
+      order to be able to download it.
+  - path: fileId
+    description: |
+      The ID of the file that was generated.
+  - path: recordsExported
+    description: |
+      The number of records that were exported.
+  importRecords:
+  - path: rowsImported
+    description: |
+      The number of rows that were imported successfully.
+  - path: rowsWithErrors
+    description: |
+      The number of rows that couldn't be imported due to errors.
+  exportUsers:
+  - path: fileLink
+    description: |
+      URL to download the CSV file with the exported users. You will need to send the token in the headers in
+      order to be able to download it.
+  - path: fileId
+    description: |
+      The ID of the file that was generated.
+  - path: usersExported
+    description: |
+      The number of users that were exported.

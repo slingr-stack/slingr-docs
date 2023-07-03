@@ -48,7 +48,6 @@ methods:
   summary: Returns the current status of the job
   description: |
     Returns the current status of the job. Possible values are:
-
       - `PENDING`: the job is pending for execution.
       - `RUNNING`: the job is being executed.
       - `FINISHED`: the job is completed.
@@ -133,7 +132,41 @@ methods:
     Returns an object that contains the parameters of a job. This depends on the type of job and should only
     be used in public jobs:
 
-    {{site.data.common.jobsDataDescription || liquify }}
+    {{< json_fields_jobs context="jobsDataFields" field="startApp" >}}
+
+
+    **Import records**
+
+    {{< json_fields_jobs context="jobsDataFields" field="importRecords" >}}
+
+    **Export records**
+
+    {{< json_fields_jobs context="jobsDataFields" field="exportRecords" >}}
+
+    **Delete records**
+
+    {{< json_fields_jobs context="jobsDataFields" field="deleteRecords" >}}
+
+    **Execute action**
+
+    {{< json_fields_jobs context="jobsDataFields" field="executeAction" >}}
+
+    **Execute listener**
+
+    {{< json_fields_jobs context="jobsDataFields" field="executeListener" >}}
+
+    **Import users**
+    {{< json_fields_jobs context="jobsDataFields" field="importUsers" >}}
+
+    **Deploy endpoint**
+
+    {{< json_fields_jobs context="jobsDataFields" field="deployEndpoint" >}}
+
+    **Undeploy endpoint**
+
+    {{< json_fields_jobs context="jobsDataFields" field="undeployEndpoint" >}}
+
+
   parameters:
   returnType: object
   returnDescription: The parameters of the job.
@@ -144,9 +177,90 @@ methods:
   description: |
     Returns an object that contains the results of executing the job. This depends on the type of job and
     should only be used in public jobs:
-    {{< common/job_param object="jobsResultsDescription" >}}
 
-    {{site.data.common.jobsResultsDescription || liquify }}
+    **Import records**
+
+    {{< json_fields_jobs context="jobsResultFields" field="importRecords" >}}
+
+    **Export records**
+
+    {{< json_fields_jobs context="jobsResultFields" field="exportRecords" >}}
+
+    **Delete records**
+
+    The result will be a map like this one:
+
+    ```js
+    {
+      "results": {
+        "id1": {
+          "status": "ok"
+        },
+        "id2": {
+          "status": "error",
+          "errorMessage": "error message"
+        }
+      }
+    }
+    ```
+
+    `status` will indicate if the delete process was executed successfully over that record (`ok`) or if there were
+    errors (`error`). The field `response` will be available only if the action is configured to return the
+    response in the results; otherwise it won't be there.
+
+    One important thing to keep in mind is that the maximum number of responses in this map will be 1,000. If
+    you execute the delete process over more than 1,000 records you might not be able to collect the response for each
+    one.
+
+    **Execute action**
+
+    The results of this job depends on the type of action. If the action is of type `One record`, the result
+    will be a map like this one:
+
+    ```js
+    {
+      "results": {
+        "id1": {
+          "status": "ok",
+          "response": "response from action"
+        },
+        "id2": {
+          "status": "error",
+          "errorMessage": "error message"
+        }
+      }
+    }
+    ```
+
+    `status` will indicate if the action was executed successfully over that record (`ok`) or if there were
+    errors (`error`). The field `response` will be available only if the action is configured to return the
+    response in the results; otherwise it won't be there. The field `errorMessage` will be present when there
+    is an error, giving some insight about the problem.
+
+    One important thing to keep in mind is that the maximum number of responses in this map will be 1,000. If
+    you execute the action over more than 1,000 records you might not be able to collect the response for each
+    one.
+
+    If the action is of type `Many records`, you will only get a map with fields `status` and `response`:
+
+    ```js
+    {
+      "results": {
+        "status": "ok",
+        "response": "response from action"
+      }
+    }
+    ```
+
+    **Import users**
+
+    {{< json_fields_jobs context="jobsResultFields" field="importUsers" >}}
+
+    **Export users**
+
+    {{< json_fields_jobs context="jobsResultFields" field="exportUsers" >}}
+
+
   parameters:
   returnType: object
   returnDescription: The results of the job.
@@ -156,7 +270,7 @@ methods:
   summary: Returns the logs of the job
   description: |
     Returns the logs of the job. It accepts a query as parameter. This method works exactly the same as
-    <<<sys.jobs.logs()>>>, so check its documentation to understand how it works.
+    `sys.jobs.logs()`, so check its documentation to understand how it works.
   parameters:
   returnType: sys.commons.ResultSet
   returnDescription: A result set with the logs of the job.

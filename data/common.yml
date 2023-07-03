@@ -27,7 +27,6 @@ jobsDataDescription: |
 
   {% include json_fields.html fields=site.data.common.jobsDataFields.startApp %}
 
-  {{< common/jobfields object="saludo" >}}
 
   **Import records**
 

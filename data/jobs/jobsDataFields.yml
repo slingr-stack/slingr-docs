@@ -1,0 +1,48 @@
+startApp:
+  - path: pushChanges
+    description: |
+      `true` if changes will be pushed during the starting of the app. `false` or empty otherwise.
+  - path: wakingUp
+    description: |
+      `true` if the app was sleeping and is waking ap. `false` otherwise.
+importRecords:
+  - path: fileName
+    description: |
+      This is the name of the file that will be imported.
+  - path: entityName
+    description: |
+      The name of the entity where records will be imported.
+exportRecords:
+  - path: entityName
+    description: |
+      The name of the entity where records will be exported from.
+deleteRecords:
+  - path: entityName
+    description: |
+      The name of the entity where records will be deleted from.
+executeAction:
+  - path: entityName
+    description: |
+      The name of the entity the action belongs to.
+  - path: actionName
+    description: |
+      The name of the action to be executed.
+executeListener:
+  - path: listenerName
+    description: |
+      The name of the listener to execute.
+importUsers:
+  - path: fileName
+    description: |
+      This is the name of the file that will be imported.
+  - path: notifyUsers
+    description: |
+      `true` if people will be notified by email when users are created; `false` otherwise.
+deployEndpoint:
+  - path: endpointName
+    description: |
+      The name of the endpoint to deploy.
+undeployEndpoint:
+  - path: endpointName
+    description: |
+      The name of the endpoint to undeploy.

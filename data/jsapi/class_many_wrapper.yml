@@ -1,12 +1,12 @@
 package: sys.data.ManyWrapper
 page: app-development-js-api-data.html
 description: |
-  This class inherit from <<<sys.data.Wrapper>>> and it follows the same idea, but it works with
+  This class inherit from `sys.data.Wrapper` and it follows the same idea, but it works with
   multi-valued fields, with utilities to add values, check if one value is contained in the list, remove
   values, etc.
 
-  Same as with <<<sys.data.Wrapper>>> you won't create it manually. Instead object of type are created by
-  method like <<<sys.data.Record.field()>>>.
+  Same as with `sys.data.Wrapper` you won't create it manually. Instead object of type are created by
+  method like `sys.data.Record.field()`.
 methods:
 - name: add
   summary: Adds an element at the end of the list
@@ -73,7 +73,7 @@ methods:
   summary: Removes an element from the list
   description: |
     Removes the first occurrence of an element from the list. It doesn't need to be the exact same object,
-    but in order to compare the value the method <<<sys.data.Wrapper.equals()>>> will be used,
+    but in order to compare the value the method `sys.data.Wrapper.equals()` will be used,
     which can be overridden by each type.
   parameters:
   - name: value
@@ -286,7 +286,7 @@ methods:
   summary: Checks if the given value is already in the list
   description: |
     Checks if the given value is already in the list, returning `true` when it is and `false` otherwise.
-    In order to check if the value is on the list the method <<<sys.data.Wrapper.equals()>>>
+    In order to check if the value is on the list the method `sys.data.Wrapper.equals()`
     is used, which can be override by each type.
   parameters:
   - name: value
