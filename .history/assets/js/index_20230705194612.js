@@ -93,8 +93,8 @@ Source:
   */
 
   // https://discourse.gohugo.io/t/range-length-or-last-element/3803/2
-  {{ $list := slice }}
-  {{ $section := .Section }}
+
+  {{ $list := slice }}  {{ $section := .Section }}
   {{- if and (isset .Site.Params.options "searchsectionsindex") (not (eq (len .Site.Params.options.searchSectionsIndex) 0)) }}
   {{- if eq .Site.Params.options.searchSectionsIndex "ALL" }}
   {{- $list = .Site.Pages }}

@@ -1075,7 +1075,7 @@ methods:
   summary: Creates an aggregate query builder object
   description: |
     Initializes and returns a `sys.data.AggregateQuery` object. Please check out the documentation
-    for [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md”>}}).
+    for [Aggregate queries]({{<ref "/dev-reference/queries/aggregate-queries.md">}}).
   parameters:
     - name: entityName
       required: yes
