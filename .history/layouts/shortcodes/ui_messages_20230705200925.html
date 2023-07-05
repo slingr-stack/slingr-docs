@@ -1,0 +1,63 @@
+{{- $typeName := .Get "context" -}}
+{{- $filePath := printf "data/jsapi/%s.yml" $typeName -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $object := $yamlContent | unmarshal -}}
+
+    
+<table class="table">
+    <thead>
+        <tr class="header">
+            <th class="th-scope" align="left">Scope</th>
+            <th class="th-name" align="left">Name</th>
+            <th align="left">Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{ range $object.availableMessages }}
+        <tr>
+            <td class="td-scope" align="left"><p>{{ .scope }}</p></td>
+            <td class="td-name" align="left"><p>{{ .name }}</p></td>
+            <td align="left">
+                <table class="table">
+                    <thead>
+                        <tr class="header">
+                            <th align="left">Name</th>
+                            <th align="left">Type</th>
+                            <th align="left">Required</th>
+                            <th align="left">Default</th>
+                            <th align="left">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {{ range .params }}
+                        <tr>
+                            <td align="left"><p>{{ .name }}</p></td>
+                            <td align="left">
+                                <p>
+                                    {{/* Check if the parameter type is predefined or custom */}}
+                                    {{ if .type }}
+                                        {{ .type }}
+                                    {{ else }}
+                                        {{/* If the type is not defined, retrieve it from predefined data */}}
+                                        {{ with $.Site.Data.jsapi.snippets.params }}
+                                            {{ range . }}
+                                                {{ if eq .name $.name }}
+                                                    {{ .type }}
+                                                {{ end }}
+                                            {{ end }}
+                                        {{ end }}
+                                    {{ end }}
+                                </p>
+                            </td>
+                            <td align="left"><p>{{ if or (eq .required true) (eq .required "yes") }}yes{{ else }}no{{ end }}</p></td>
+                            <td align="left"><p>{{ .default }}</p></td>
+                            <td align="left"><p>{{ .description | markdownify }}</p></td>
+                        </tr>
+                    {{ end }}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    {{ end }}
+    </tbody>
+</table>

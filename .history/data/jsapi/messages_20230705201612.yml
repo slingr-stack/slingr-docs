@@ -1,0 +1,451 @@
+availableMessages:
+  - scope: global
+    name: reload
+    params:
+    - name: goToDefaultView
+      type: boolean
+      required: no
+      default: false
+      description: |
+        If `true` when the app is reloaded, the user will be taken to the default view (the view displayed when
+        the app is loaded after login). Otherwise current page will be reloaded.
+  - scope: global
+    name: navigate
+    params:
+    - name: view
+      type: string
+      required: yes
+      default: null
+      description: |
+        ID or name of the view to navigate to.
+    - name: recordId
+      type: string
+      required: no
+      default: null
+      description: |
+        ID of the record. When this field is set the app navigates to the detail read-only view of the record.
+    - name: viewType
+      type: string
+      required: no
+      default: readOnly
+      description: |
+        In case of grid or workflow views define the view type to redirect. Possible values `edit` or `create`.
+    - name: filters
+      type: object
+      required: no
+      default: null
+      description: |
+        In case of grid or workflow views define some view filters to be applied. This filter example apply 2 filters for
+        the view:
+
+        ```js
+        {
+          name: 'ACME',
+          address.state: 'New'
+        }
+        ```
+    - name: parameters
+      type: object
+      required: no
+      default: null
+      description: |
+        In case of custom views you can define some view parameters to be applied. Those parameters are transformed into URL query
+        parameters. For example, the following parameters:
+
+        ```js
+        {
+          name: 'ACME',
+          status: 'New'
+        }
+        ```
+        Are going to be transformed to the following URL query parameters:
+        ```
+        ?name=ACME&status=New
+        ```
+
+  - scope: global
+    name: openExternalLink
+    params:
+    - name: url
+      type: string
+      required: yes
+      default: null
+      description: |
+        External URL to open.
+    - name: newTab
+      type: boolean
+      required: no
+      default: true
+      description: |
+        If `true` external URL is opened in a new tab of the browser. Otherwise the URL will be opened in same tab.
+  - scope: global
+    name: historyBack
+
+  - scope: global
+    name: showMessage
+    params:
+    - name: title
+      type: string
+      required: yes
+      default: null
+      description: |
+        The title to be shown on message.
+    - name: message
+      type: string
+      required: yes
+      default: null
+      description: |
+        The message content to be shown. It supports some basic HTML tags.
+    - name: type
+      type: string
+      required: no
+      default: info
+      description: |
+        Defines the style for the message. Possible values are `info`, `success`, `warning` or `error`.
+    - name: keepVisible
+      type: boolean
+      required: no
+      default: false
+      description: |
+        If true the message won't be closed automatically and the user has to close it manually.
+  - scope: global
+    name: downloadFile
+    params:
+    - name: fileId
+      type: string
+      required: true
+      default: null
+      description: |
+        The ID of the file to download.
+  - scope: global
+    name: addBackgroundJob
+    params:
+    - name: jobId
+      type: string
+      required: true
+      default: null
+      description: |
+        The ID of the background job in charge of executing.
+  - scope: global
+    name: startTask
+    params:
+    - name: taskId
+      type: string
+      required: true
+      default: null
+      description: |
+        The ID of the task to be displayed on tasks menu in the top-right.
+    - name: taskTitle
+      type: string
+      required: true
+      default: null
+      description: |
+        The message to be displayed on tasks menu in the top-right.
+    - name: taskMessage
+      type: string
+      required: false
+      default: null
+      description: |
+        The compliment message to be sent as subtitle on tasks menu in the top-right.
+  - scope: global
+    name: updateTask
+    params:
+    - name: taskId
+      type: string
+      required: true
+      default: null
+      description: |
+        The ID of the task to be updated on tasks menu in the top-right.
+    - name: taskTitle
+      type: string
+      required: false
+      default: null
+      description: |
+        The message to be updated on tasks menu in the top-right.
+    - name: taskMessage
+      type: string
+      required: false
+      default: null
+      description: |
+        The compliment message to be sent as subtitle on tasks menu in the top-right.
+    - name: taskStatus
+      type: string
+      required: false
+      default: null
+      description: |
+        The status of the tasks. Can be updated to running, success or error. At the beginning the status is running.
+  - scope: view
+    name: recordChanged
+    params:
+    - name: recordId
+      type: string
+      required: no
+      default: null
+      description: |
+        The id of the record that has been changed.
+    - name: views
+      type: object
+      required: yes
+      default: null
+      description: |
+        The list of view names that will be notified by the event. The view types that can process this event
+        are: `grid`, `card`, `calendar` and `read only` views.
+  - scope: view
+    name: recordCreated
+    params:
+    - name: recordId
+      type: string
+      required: no
+      default: null
+      description: |
+        The id of the record that has been created.
+    - name: views
+      type: object
+      required: yes
+      default: null
+      description: |
+        The list of view names that will be notified by the event. The view types that can process this event
+        are: `grid`, `calendar` and `card` views.
+  - scope: view
+    name: recordDeleted
+    params:
+    - name: recordId
+      type: string
+      required: no
+      default: null
+      description: |
+        The id of the record that has been deleted.
+    - name: views
+      type: object
+      required: yes
+      default: null
+      description: |
+        The list of view names that will be notified by the event. The view types that can process this event
+        are: `grid`, `calendar` and `card` views.
+  - scope: view
+    name: refresh
+    params:
+    - name: views
+      type: object
+      required: yes
+      default: null
+      description: |
+        The list of view names that will be refreshed. The view types that can process this event
+        are: `grid`, `calendar` and `card` views.
+    - name: widgetContainers
+      type: object
+      required: no
+      default: null
+      description: |
+        In case to dashbaord view you can send the array a list to containers to be refresh. This can be an array of string
+        or can be specify an object with container name and query parameters. Check widgets documentation for more information.
+  - scope: plugin:pluginName
+    name: anyEvent
+    description: |
+      Calls `processMessage` function for installed plugin (if any) with name `pluginName`. Sent `name` of message as event.
+  - scope: action
+    name: anyEvent
+    params:
+    - name: entity
+      type: string
+      required: true
+      default: null
+      description: |
+        ID or name of the entity the action belongs too.
+    - name: recordId
+      type: string
+      required: false
+      default: null
+      description: |
+        The ID of the record the action will be executed over. This is optional in case it is a global action.
+    - name: recordIds
+      type: object
+      required: false
+      default: null
+      description: |
+        The IDs array of the record the action will be executed over. This is optional in case it is a global action.
+    - name: actionView
+      type: string
+      required: false
+      default: null
+      description: |
+        Name or ID of the action view.
+    - name: action
+      type: string
+      required: false
+      default: null
+      description: |
+        If actionView is not provided, you can send only action with the name or ID of the action and the default view will be used.
+    - name: success
+      type: function
+      required: false
+      default: null
+      description: |
+        Callback when the action is executed successfully.
+    - name: error
+      type: function
+      required: false
+      default: null
+      description: |
+        Callback when there is an error executing the action.
+    - name: canceled
+      type: function
+      required: false
+      default: null
+      description: 
+      Callback when the action execution is canceled.
+  methods:
+  - name: sendMessage
+    summary: Allows to send a message to the UI
+    description: |
+      Allows to send a message to the UI. This message is a command that the UI will follow. For example
+      it could be to navigate to another view, reload the current view, show a message, etc.
+
+      Please check the available messages [here](#).
+    parameters:
+    - name: message
+      type: object
+      required: yes
+      description: |
+        This is the message to send to the UI. You must indicate the `scope` and `name`. Other fields depends
+        on the message. For example:
+
+        ```js
+        {
+          scope: 'global',
+          name: 'reload',
+          goToDefaultView: true
+        }
+        ```
+    returnType:
+    returnDescription:
+    throws:
+    - code: badRequest
+      description: |
+        If the message is does not exist or there are validation errors.
+
+    samples:
+    - title: reload current page
+      code: |
+        sys.ui.sendMessage({
+          scope: 'global',
+          name: 'reload',
+          target: 'caller'
+        });
+    - title: reload and go to default view
+      code: |
+        sys.ui.sendMessage({
+          scope: 'global',
+          name: 'reload',
+          goToDefaultView: true,
+          target: 'caller'
+        });
+    - title: send a custom message
+      code: |
+        sys.ui.sendMessage({
+          scope: 'global',
+          name: 'showMessage',
+          target: 'users',
+          targetUsers: ['id1', 'id2', 'user@test.com'],
+          title: 'Heads up!',
+          message: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+          type: 'warning',
+          keepVisible: true
+        });
+    - title: start downloading a file
+      code: |
+        sys.ui.sendMessage({
+          scope: 'global',
+          name: 'downloadFile',
+          target: 'caller',
+          fileId: record.field('file').id()
+        });
+    - title: send a notification
+      code: |
+        sys.ui.sendMessage({
+          scope: 'global',
+          name: 'showMessage',
+          target: 'allUsers',
+          title: 'title message',
+          message: 'body message here...'
+        });
+    - title: Notify to all users that are currently on views `contacts` and `contactsReadOnly` that the record `57fd2d65e4b0ce322b0c8665` has been updated
+      code: |
+        sys.ui.sendMessage({
+          scope: 'view',
+          name: 'recordChanged',
+          target: 'allUsers',
+          views: ['contacts','contactsReadOnly'],
+          recordId: '57fd2d65e4b0ce322b0c8665'
+        });
+    - title: Refresh view `contacts` to all users that are currently on that view
+      code: |
+        sys.ui.sendMessage({
+          scope: 'view',
+          name: 'refresh',
+          target: 'allUsers',
+          views: ['contacts']
+        });
+    - title: Notify to some users that are currently on view `tasksCards` that a record has been created
+      code: |
+        var record = sys.data.createRecord('tasks');// create an empty record of entity task
+        record.field('status').val('NEW');// filling the new necord with the corresponding field values...
+        record.field('description').val('Example created on script');
+        record.field('title').val('New task created from script');
+        record.field('area').val({id:"5506fc3cc2eee3b1a7025bff"});
+        record.field('project').val({id: "5506fc44c2eee3b1a7026959", label: "Point-to-point link"});
+        record = sys.data.save(record);// saving the created record
+        sys.ui.sendMessage({
+          scope: 'view',
+          views: ['tasksCards'],
+          target: 'users',
+          targetUsers: ['id1', 'id2', 'user@test.com'],
+          name: 'recordCreated',
+          recordId: record.id()
+        });
+    - title: Notify to all users that are currently on view `contacts` that the record `57fd2d65e4b0ce322b0c8665` has been deleted
+      code: |
+        sys.ui.sendMessage({
+          scope: 'view',
+          name: 'recordDeleted',
+          target: 'allUsers',
+          views: ['contacts'],
+          recordId: '57fd2d65e4b0ce322b0c8665'
+        });
+    - title: dispatch `event1` in `sample` plugin
+      code: |
+        sys.ui.sendMessage({
+          scope: 'plugin:sample',
+          name: 'event1',
+          companyId: record.id(),
+          callbacks: {
+            callback1: function(originalMessage, callbackData) {
+              sys.logs.debug("Here is the original message for callback 1");
+              sys.logs.debug(JSON.stringify(originalMessage));
+              sys.logs.debug("Here is the callback data for callback 1");
+              sys.logs.debug(JSON.stringify(callbackData));
+            },
+            callback2: function(originalMessage, callbackData) {
+              //do something
+            }
+          }
+        });
+    - title: Send UI message in order to trigger an action from server side so the user can enter the parameters and execute it.
+      code: |
+        sys.ui.sendMessage({
+          scope: 'action',
+          entity: 'myCompany',
+          target: 'allUsers',
+          recordIds: ['5be99071b10c3e09893300d2', '5be99082b10c3e09893300e2'],
+          action: 'setCompanyType',
+          success: function() {
+            sys.logs.debug("> Success!");
+          },
+          error: function() {
+            sys.logs.debug("> ERROR");
+          },
+          canceled: function() {
+            sys.logs.debug("> Canceled...");
+          }
+        });
