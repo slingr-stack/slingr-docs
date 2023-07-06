@@ -4,12 +4,15 @@
 {{- $jsQueryMap := .Get "jsQueryMap" -}}
 {{- $jsQueryBuilder := .Get "jsQueryBuilder" -}}
 {{- $restApi := .Get "restApi" -}}
-
-<div>
-    <button class="query-button" data-id="{{ $id }}">Click me (Query {{ $id }})</button>
-    <button class="query-button" data-id="{{ $id }}">Click me (Query {{ $id }})</button>
-    <button class="query-button" data-id="{{ $id }}">Click me (Query {{ $id }})</button>
-</div>
-
+<style>
+    .query-button.active {
+      background-color: green;
+    }
+  </style>
+  <div id="container-{{ $id }}">
+    <button class="query-button jsQueryMap" data-id="jsQueryMap-{{ $id }}">Click me (Query {{ $id }})</button>
+    <button class="query-button jsQueryBuilder" data-id="jsQueryBuilder-{{ $id }}">Click me (Query {{ $id }})</button>
+    <button class="query-button restApi" data-id="restApi-{{ $id }}">Click me (Query {{ $id }})</button>
+  </div>
 
 <script src="/js/query.js"></script>
