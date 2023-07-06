@@ -5,11 +5,77 @@
 {{- $jsQueryBuilder := .Get "jsQueryBuilder" -}}
 {{- $restApi := .Get "restApi" -}}
 
-<div>
-    <h1>{{$id}}</h1>
-    <button data-id="{{$id}}"> hey </button>
-    <button data-id="{{$id}}"> hey </button>
-    <button data-id="{{$id}}"> hey </button>
+<style>
+
+    button {
+        color: #0072ce;
+        border: none;
+    }
+
+    .nav.nav-tabs button.active {
+        background-color: #0072ce;
+        color: white;
+    }
+    .nav.nav-tabs button:hover {
+        background-color: #c7e7ff;
+        color: #0072ce;
+    }
+
+    /* Clase de animación CSS */
+    .slide-color {
+        transition: background-color 1.5s ease;
+    }
+</style>
+
+<div style="margin-top: 15px;" id="query-sample-{{ $id }}" class="query-sample-container">
+    <ul style="margin-bottom: 5px;"class="nav nav-tabs">
+        {{- if $jsQueryMap -}}
+        <li><button class="{{ if $jsQueryMap }}active slide-color{{ end }} data-target=">JS Query Map</button></li>
+        {{- end -}}
+        {{- if $jsQueryBuilder -}}
+        <li><button class="{{ if and (not $jsQueryMap) $jsQueryBuilder }}active slide-color{{ end }}">JS Query Builder</button></li>
+        {{- end -}}
+        {{- if $restApi -}}
+        <li><button class="{{ if and (not $jsQueryMap) (not $jsQueryBuilder) }}active slide-color{{ end }}">REST API</button></li>
+        {{- end -}}
+    </ul>
+
+    <div class="tab-content">
+        {{- if $jsQueryMap -}}
+        <div role="tabpanel" class="tab-pane {{ if $jsQueryMap }}active{{ end }}" id="jsQueryMap-{{ $id }}">
+            <div>
+                <pre><code>// {{ $description }} 
+var records_{{ $id }} = sys.data.find('{{ $entity }}', {{ $jsQueryMap }});
+log('total: '+records_{{ $id }}.count());
+while (records_{{ $id }}.hasNext()) {
+    log(records_{{ $id }}.next().label());
+}</code></pre>
+            </div>
+        </div>
+        {{- end -}}
+        {{- if $jsQueryBuilder -}}
+        <div role="tabpanel" class="tab-pane {{ if not $jsQueryMap }}active{{ end }}" id="jsQueryBuilder-{{ $id }}">
+            <div>
+                <pre><code>// {{ $description }} 
+var query_{{ $id }} = sys.data.createQuery('{{ $entity }}')
+    {{ $jsQueryBuilder }}
+var records_{{ $id }} = sys.data.find(query_{{ $id }});
+log('total: '+records_{{ $id }}.count());
+while (records_{{ $id }}.hasNext()) {
+    log(records_{{ $id }}.next().label());
+}</code></pre>
+            </div>
+        </div>
+        {{- end -}}
+        {{- if $restApi -}}
+        <div role="tabpanel" class="tab-pane {{ if and (not $jsQueryMap) (not $jsQueryBuilder) }}active{{ end }}" id="rest-{{ $id }}">
+            <div>
+                <pre><code>// {{ $description }} 
+GET /data/contacts?{{ $restApi }}</code></pre>
+            </div>
+        </div>
+        {{- end -}}
+    </div>
 </div>
 
 <script src="/js/query.js"></script>
