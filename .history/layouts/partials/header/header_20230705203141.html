@@ -74,12 +74,12 @@
               <li class="nav-item">
                 <a class="nav-link ps-0 py-1{{ if $active }} active{{ end }}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
               </li>
+              {{ partial "sidebar/menu-mobile.html" . }}
             {{ end }}
+
           {{ end -}}
-          {{ partial "sidebar/menu-mobile.html" . }}
 
         </ul>
-
 
 
         
