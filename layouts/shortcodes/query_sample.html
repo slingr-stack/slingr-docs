@@ -79,13 +79,11 @@ GET /data/contacts?{{ $restApi }}</code></pre>
 </div>
 
 <script>
-function showTab(id, tabId) {
-    var tab = document.getElementById(tabId);
-    var tabButton = document.querySelector('button[onclick="showTab(\'' + id + '\', \'' + tabId + '\')"]');
-
-    // Verificar si el elemento existe antes de manipular clases
-    if (tab && tabButton) {
+    function showTab(id, tabId) {
+        var tab = document.getElementById(tabId);
         tab.classList.add('active');
+
+        var tabButton = document.querySelector('button[onclick="showTab(\'' + id + '\', \'' + tabId + '\')"]');
         tabButton.classList.add('active');
 
         var otherTabs = Array.from(tab.parentNode.children).filter(function(child) {
@@ -104,7 +102,6 @@ function showTab(id, tabId) {
             otherTabButton.firstChild.classList.remove('active');
         });
     }
-}
 
     // Seleccionar el tab por defecto según la prioridad
     window.addEventListener('DOMContentLoaded', function() {

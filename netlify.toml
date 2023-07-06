@@ -30,7 +30,7 @@ for = "/*"
   package = "netlify-plugin-submit-sitemap"
 
 	[plugins.inputs]
-    baseUrl = "https://main--relaxed-stroopwafel-0e60d7.netlify.app/"
+    baseUrl = "https://doks.netlify.app/"
     sitemapPath = "/sitemap.xml"
     ignorePeriod = 0
     providers = [
