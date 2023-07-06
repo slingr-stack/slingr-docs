@@ -8,4 +8,10 @@
   {{ block "head/seo" . }}{{ partial "head/seo.html" . }}{{ end }}
   {{ block "head/favicons" . }}{{ partial "head/favicons.html" . }}{{ end }}
   {{ block "head/custom-head" . }}{{ partial "head/custom-head.html" . }}{{ end }}
+  <meta http-equiv="Content-Security-Policy"
+  content="default-src * https://main--relaxed-stroopwafel-0e60d7.netlify.app/;
+  script-src * 'unsafe-eval' 'unsafe-inline';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' https://main--relaxed-stroopwafel-0e60d7.netlify.app/ data:">
 </head>
+

@@ -286,6 +286,6 @@ th {
 }
 
 
-.query-button.active {
+.query-button {
   background-color: green;
 }

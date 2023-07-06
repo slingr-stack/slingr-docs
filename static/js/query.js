@@ -1,19 +1,23 @@
 document.querySelectorAll('.query-button').forEach(button => {
     (function() {
-        const containerId = button.parentNode.id;
-        const buttons = document.querySelectorAll(`#${containerId} .query-button`);
-    
-        buttons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                buttons.forEach(b => b.classList.remove('active')); // Remove "active" class from all buttons
-    
-                const id = e.target.dataset.id;
-                console.log('Button ID:', id);
-    
-                // Add "active" class to the clicked button
-                e.target.classList.add('active');
-            });
-        });
+      const lastClickedButtons = {};
+
+      button.addEventListener('click', (e) => {
+        const containerId = e.target.parentNode.id;
+        const id = e.target.dataset.id;
+        console.log('Button ID:', id);
+
+        // Remover la clase 'active' del último botón presionado en el contenedor correspondiente
+        const lastClickedButton = lastClickedButtons[containerId];
+        if (lastClickedButton) {
+          lastClickedButton.classList.remove('active');
+        }
+
+        // Agregar la clase 'active' al botón presionado
+        button.classList.add('active');
+
+        // Guardar el último botón presionado en el contenedor correspondiente
+        lastClickedButtons[containerId] = button;
+      });
     })();
-});
-  
+  });
