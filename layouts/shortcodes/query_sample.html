@@ -30,13 +30,13 @@
 <div style="margin-top: 15px;" id="query-sample-{{ $id }}" class="query-sample-container">
     <ul style="margin-bottom: 5px;"class="nav nav-tabs">
         {{- if $jsQueryMap -}}
-        <li><button class="{{ if $jsQueryMap }}active slide-color{{ end }} data-target=">JS Query Map</button></li>
+        <li><button onclick="showTab('{{ $id }}', 'jsQueryMap-{{ $id }}')" class="{{ if $jsQueryMap }}active slide-color{{ end }}">JS Query Map</button></li>
         {{- end -}}
         {{- if $jsQueryBuilder -}}
-        <li><button class="{{ if and (not $jsQueryMap) $jsQueryBuilder }}active slide-color{{ end }}">JS Query Builder</button></li>
+        <li><button onclick="showTab('{{ $id }}', 'jsQueryBuilder-{{ $id }}')" class="{{ if and (not $jsQueryMap) $jsQueryBuilder }}active slide-color{{ end }}">JS Query Builder</button></li>
         {{- end -}}
         {{- if $restApi -}}
-        <li><button class="{{ if and (not $jsQueryMap) (not $jsQueryBuilder) }}active slide-color{{ end }}">REST API</button></li>
+        <li><button onclick="showTab('{{ $id }}', 'rest-{{ $id }}')" class="{{ if and (not $jsQueryMap) (not $jsQueryBuilder) }}active slide-color{{ end }}">REST API</button></li>
         {{- end -}}
     </ul>
 
@@ -77,5 +77,6 @@ GET /data/contacts?{{ $restApi }}</code></pre>
         {{- end -}}
     </div>
 </div>
+
 
 <script src="/js/query.js"></script>
