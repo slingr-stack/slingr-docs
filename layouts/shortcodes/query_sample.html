@@ -4,12 +4,14 @@
 {{- $jsQueryMap := .Get "jsQueryMap" -}}
 {{- $jsQueryBuilder := .Get "jsQueryBuilder" -}}
 {{- $restApi := .Get "restApi" -}}
+<link rel="stylesheet" href="/css/customstyles.css"> <!-- Import the CSS file -->
 <style>
     .query-button.active {
       background-color: green;
     }
     /* Add any additional styles for the buttons here */
 </style>
+<h1 class="titulo" >hola</h1>
 <div id="container-{{ $id }}" style="background-color: aqua;">
     <button class="query-button jsQueryMap" data-id="jsQueryMap-{{ $id }}">Click me (Query {{ $id }})</button>
     <button class="query-button jsQueryBuilder" data-id="jsQueryBuilder-{{ $id }}">Click me (Query {{ $id }})</button>
@@ -17,4 +19,3 @@
 </div>
 
 <script src="/js/query.js"></script>
-
