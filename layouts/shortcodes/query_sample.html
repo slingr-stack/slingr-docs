@@ -79,11 +79,13 @@ GET /data/contacts?{{ $restApi }}</code></pre>
 </div>
 
 <script>
-    function showTab(id, tabId) {
-        var tab = document.getElementById(tabId);
-        tab.classList.add('active');
+function showTab(id, tabId) {
+    var tab = document.getElementById(tabId);
+    var tabButton = document.querySelector('button[onclick="showTab(\'' + id + '\', \'' + tabId + '\')"]');
 
-        var tabButton = document.querySelector('button[onclick="showTab(\'' + id + '\', \'' + tabId + '\')"]');
+    // Verificar si el elemento existe antes de manipular clases
+    if (tab && tabButton) {
+        tab.classList.add('active');
         tabButton.classList.add('active');
 
         var otherTabs = Array.from(tab.parentNode.children).filter(function(child) {
@@ -102,6 +104,7 @@ GET /data/contacts?{{ $restApi }}</code></pre>
             otherTabButton.firstChild.classList.remove('active');
         });
     }
+}
 
     // Seleccionar el tab por defecto según la prioridad
     window.addEventListener('DOMContentLoaded', function() {
