@@ -284,3 +284,8 @@ th {
   overflow: hidden;
   text-overflow: clip;
 }
+
+
+.query-button.active {
+  background-color: green;
+}
