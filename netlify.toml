@@ -1,15 +1,10 @@
-[[headers]]
-for = "/*"
-  [headers.values]
-  Content-Security-Policy = "default-src * 'unsafe-inline' 'unsafe-eval';"
-
 [build]
   publish = "public"
   functions = "functions"
 
 [build.environment]
-  NODE_VERSION = "18.16.0"
-  NPM_VERSION = "9.5.1"
+  NODE_VERSION = "16.16.0"
+  NPM_VERSION = "8.11.0"
 
 [context.production]
   command = "npm run build"
