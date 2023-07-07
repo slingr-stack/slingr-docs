@@ -4,16 +4,16 @@
 {{- $jsQueryMap := .Get "jsQueryMap" -}}
 {{- $jsQueryBuilder := .Get "jsQueryBuilder" -}}
 {{- $restApi := .Get "restApi" -}}
-<style>
-    .query-button.active {
-      background-color: green;
-    }
-    /* Add any additional styles for the buttons here */
-</style>
-<div id="container-{{ $id }}" style="background-color: aqua;">
-    <button class="query-button jsQueryMap" data-id="jsQueryMap-{{ $id }}">Click me (Query {{ $id }})</button>
-    <button class="query-button jsQueryBuilder" data-id="jsQueryBuilder-{{ $id }}">Click me (Query {{ $id }})</button>
-    <button class="query-button restApi" data-id="restApi-{{ $id }}">Click me (Query {{ $id }})</button>
+
+<div>
+<button id="button1" class="myClass" data-id="jsQueryMap-{{$id}}">Click Me</button>
+<button id="button2" data-id="jsQueryBuilder{{$id}}">Click Me</button>
+<button id="button3" data-id="restApi{{$id}}">Click Me</button>
 </div>
 
 <script src="/js/query.js"></script>
+<style>
+    .myClass{
+        color: aquamarine;
+    }
+</style>
