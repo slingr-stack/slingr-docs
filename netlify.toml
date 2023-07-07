@@ -1,7 +1,4 @@
-[[headers]]
-for = "/*"
-  [headers.values]
-  Content-Security-Policy = "default-src * 'unsafe-inline' 'unsafe-eval';"
+
 
 [build]
   publish = "public"
