@@ -12,8 +12,6 @@ weight: 2
 toc: true
 ---
 
-{{< hola >}}
-
 Welcome to Slingr! On this page, we will guide you through the process of getting started with our cloud-based platform for creating applications that can easily integrate with other software-as-a-service (SaaS) solutions.
 
 ## What is Slingr?
