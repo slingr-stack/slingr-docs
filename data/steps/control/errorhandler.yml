@@ -3,7 +3,7 @@ category: Control
 description: The error handler step allows you to define a block of code to be tested for errors while it is being executed.
              This step allows other steps to be dropped in. The behavior of this step will encapsulate the behavior of the nested steps.
 samples:
-- img: /images/vendor/flows/trycatch_sample.png
+- img: {{site.baseurl}}/images/vendor/flows/trycatch_sample.png
   alt: Try Catch Sample
   description: The flow starts, the try-catch step executes the script. In case of an error while executing the script, the error will be logged and the execution will finish.
   

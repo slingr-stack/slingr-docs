@@ -7,6 +7,6 @@ inputs:
     type: Record
     required: yes
 samples:
-  - img: /images/vendor/flows/lock_record.png
+  - img: {{site.baseurl}}/images/vendor/flows/lock_record.png
     alt: Lock record image.
     description: The flow starts,the lock step acquires a lock for a specified record to ensure that no listener or action changes the record while we perform the actions. The update record step updates the data of a record and then the changes are saved by the save record step, finally we log a success message with the logger step and end the execution with the end step. If the lock cannot be acquired an error message will be logged with the logger step.

@@ -150,5 +150,5 @@ steps:
       - label: savedCompany
         type: Record
 samples:
-- img: /images/vendor/flows/updateRatingArizonaCompanies.png
+- img: {{site.baseurl}}/images/vendor/flows/updateRatingArizonaCompanies.png
   alt: Update several records sample

@@ -167,7 +167,7 @@ To access the Slingr API, you can make requests to the following endpoint:">
   <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
 
     <a class="navbar-brand order-0" href="/" aria-label="Slingr">
-      <img src="/images/vendor/logo.png" class="navbar-img">
+      <img src="{{site.baseurl}}/images/vendor/logo.png" class="navbar-img">
 
     </a>
 
@@ -4293,7 +4293,27 @@ GET /data/companies?state=pending&amp;_fields=name,type&amp;_size=2
 <tr>
 <td>validationErrors</td>
 <td>400</td>
-<td>If there are validations errors, the response will look like this:<br><pre><code>{  &ldquo;code&rdquo;: &ldquo;validationErrors&rdquo;, &ldquo;message&rdquo;: &ldquo;There are validation errors&rdquo;,  &ldquo;errors&rdquo;: [  {      &ldquo;field&rdquo;: &ldquo;name&rdquo;,      &ldquo;fieldLabel&rdquo;: &ldquo;Name&rdquo;,      &ldquo;code&rdquo;: &ldquo;required&rdquo;,      &ldquo;message&rdquo;: &ldquo;This field is required&rdquo;,      &ldquo;additionalInfo&rdquo;: null  },  {       &ldquo;field&rdquo;: &ldquo;state&rdquo;,       &ldquo;fieldLabel&rdquo;: &ldquo;State&rdquo;,       &ldquo;code&rdquo;: &ldquo;invalid&rdquo;,       &ldquo;message&rdquo;: &ldquo;Not a valid choice&rdquo;,       &ldquo;additionalInfo&rdquo;: {            &ldquo;rejectedValue&rdquo;: &ldquo;sdfsdfsd&rdquo;       }  }]}</pre></code><br>In this case you will get details information about the field having issues, the error code and a human readable description of the error. Additional information might be added depending on the type of error, for example the rejected value.</td>
+<td>If there are validations errors, the response will look like this:<br><pre><code>{ 
+ &ldquo;code&rdquo;: &ldquo;validationErrors&rdquo;,
+ &ldquo;message&rdquo;: &ldquo;There are validation errors&rdquo;, 
+ &ldquo;errors&rdquo;: [ 
+ { 
+     &ldquo;field&rdquo;: &ldquo;name&rdquo;, 
+     &ldquo;fieldLabel&rdquo;: &ldquo;Name&rdquo;, 
+     &ldquo;code&rdquo;: &ldquo;required&rdquo;, 
+     &ldquo;message&rdquo;: &ldquo;This field is required&rdquo;, 
+     &ldquo;additionalInfo&rdquo;: null 
+ }, 
+ { 
+      &ldquo;field&rdquo;: &ldquo;state&rdquo;, 
+      &ldquo;fieldLabel&rdquo;: &ldquo;State&rdquo;, 
+      &ldquo;code&rdquo;: &ldquo;invalid&rdquo;, 
+      &ldquo;message&rdquo;: &ldquo;Not a valid choice&rdquo;, 
+      &ldquo;additionalInfo&rdquo;: { 
+           &ldquo;rejectedValue&rdquo;: &ldquo;sdfsdfsd&rdquo; 
+      } 
+ }]
+}</pre></code><br>In this case you will get details information about the field having issues, the error code and a human readable description of the error. Additional information might be added depending on the type of error, for example the rejected value.</td>
 </tr>
 <tr>
 <td>forbidden</td>
@@ -4484,7 +4504,27 @@ POST /data/companies
 <tr>
 <td>validationErrors</td>
 <td>400</td>
-<td>If there are validations errors, the response will look like this:<br><pre><code>{  &ldquo;code&rdquo;: &ldquo;validationErrors&rdquo;, &ldquo;message&rdquo;: &ldquo;There are validation errors&rdquo;,  &ldquo;errors&rdquo;: [  {      &ldquo;field&rdquo;: &ldquo;name&rdquo;,      &ldquo;fieldLabel&rdquo;: &ldquo;Name&rdquo;,      &ldquo;code&rdquo;: &ldquo;required&rdquo;,      &ldquo;message&rdquo;: &ldquo;This field is required&rdquo;,      &ldquo;additionalInfo&rdquo;: null  },  {       &ldquo;field&rdquo;: &ldquo;state&rdquo;,       &ldquo;fieldLabel&rdquo;: &ldquo;State&rdquo;,       &ldquo;code&rdquo;: &ldquo;invalid&rdquo;,       &ldquo;message&rdquo;: &ldquo;Not a valid choice&rdquo;,       &ldquo;additionalInfo&rdquo;: {            &ldquo;rejectedValue&rdquo;: &ldquo;sdfsdfsd&rdquo;       }  }]}</pre></code><br>In this case you will get details information about the field having issues, the error code and a human readable description of the error. Additional information might be added depending on the type of error, for example the rejected value.</td>
+<td>If there are validations errors, the response will look like this:<br><pre><code>{ 
+ &ldquo;code&rdquo;: &ldquo;validationErrors&rdquo;,
+ &ldquo;message&rdquo;: &ldquo;There are validation errors&rdquo;, 
+ &ldquo;errors&rdquo;: [ 
+ { 
+     &ldquo;field&rdquo;: &ldquo;name&rdquo;, 
+     &ldquo;fieldLabel&rdquo;: &ldquo;Name&rdquo;, 
+     &ldquo;code&rdquo;: &ldquo;required&rdquo;, 
+     &ldquo;message&rdquo;: &ldquo;This field is required&rdquo;, 
+     &ldquo;additionalInfo&rdquo;: null 
+ }, 
+ { 
+      &ldquo;field&rdquo;: &ldquo;state&rdquo;, 
+      &ldquo;fieldLabel&rdquo;: &ldquo;State&rdquo;, 
+      &ldquo;code&rdquo;: &ldquo;invalid&rdquo;, 
+      &ldquo;message&rdquo;: &ldquo;Not a valid choice&rdquo;, 
+      &ldquo;additionalInfo&rdquo;: { 
+           &ldquo;rejectedValue&rdquo;: &ldquo;sdfsdfsd&rdquo; 
+      } 
+ }]
+}</pre></code><br>In this case you will get details information about the field having issues, the error code and a human readable description of the error. Additional information might be added depending on the type of error, for example the rejected value.</td>
 </tr>
 <tr>
 <td>forbidden</td>
@@ -7426,7 +7466,19 @@ GET /status/logs?period=yesterday&amp;userEmail=test@slingr.io&amp;_size=2
 <tr>
 <td>validationErrors</td>
 <td>400</td>
-<td>If there are validation errors. When this happens you will get the details of the errors in the body:<br><pre><code>{  &ldquo;code&rdquo;: &ldquo;validationErrors&rdquo;,   &ldquo;message&rdquo;: &ldquo;There are validation errors&rdquo;,  &ldquo;errors&rdquo;: [   {     &ldquo;field&rdquo;: &ldquo;message&rdquo;,     &ldquo;fieldLabel&rdquo;: null,     &ldquo;code&rdquo;: &ldquo;required&rdquo;,     &ldquo;message&rdquo;: &ldquo;Message cannot be empty&rdquo;,     &ldquo;additionalInfo&rdquo;: null   }  ] } </code></pre></td>
+<td>If there are validation errors. When this happens you will get the details of the errors in the body:<br><pre><code>{
+  &ldquo;code&rdquo;: &ldquo;validationErrors&rdquo;, 
+  &ldquo;message&rdquo;: &ldquo;There are validation errors&rdquo;,
+  &ldquo;errors&rdquo;: [
+   {
+     &ldquo;field&rdquo;: &ldquo;message&rdquo;,
+     &ldquo;fieldLabel&rdquo;: null,
+     &ldquo;code&rdquo;: &ldquo;required&rdquo;,
+     &ldquo;message&rdquo;: &ldquo;Message cannot be empty&rdquo;,
+     &ldquo;additionalInfo&rdquo;: null
+   }
+  ]
+ } </code></pre></td>
 </tr>
 <tr>
 <td>forbidden</td>
@@ -7587,7 +7639,34 @@ POST /status/logs
 </tr>
 <tr>
 <td><strong><code>results</code></strong></td>
-<td>The content of this field depends on the job. Here you will find information about the results of executing the job.<br><br><h6>Import Records</h6><table><tr><th>Path</th><th>Description</th></tr><tr><td><strong>rowsImported</strong></td><td>The number of rows that were imported successfully.</td></tr><tr><td><strong>rowsWithErrors</strong></td><td>The number of rows that couldn&rsquo;t be imported due to errors.</td></tr></table><h6>Export Records</h6><table><tr><th>Path</th><th>Description</th></tr><tr><td><strong>fileLink</strong></td><td>URL to download the CSV file with the exported records. You will need to send the token in the headers to download it.</td></tr><tr><td><strong>fileId</strong></td><td>The ID of the file that was generated.</td></tr><tr><td><strong>recordsExported</strong></td><td>The number of records that were exported.</td></tr></table><h6>Delete Records</h6><br>The result will be a map like this one:<br><pre><code>{  &ldquo;results&rdquo;: {    &ldquo;id1&rdquo;: {      &ldquo;status&rdquo;: &ldquo;ok&rdquo;,      &ldquo;response&rdquo;: &ldquo;response from action&rdquo;    },    &ldquo;id2&rdquo;: {      &ldquo;status&rdquo;: &ldquo;error&rdquo;,      &ldquo;errorMessage&rdquo;: &ldquo;error message&rdquo;    }  }}</code></pre><br> <strong><code>status</code></strong> will indicate if the delete process was executed successfully over that record (<strong><code>ok</code></strong>) or if there were errors (<strong><code>error</code></strong>). The field <strong><code>response</code></strong> will be available only if the action is configured to return the response in the results; otherwise it won&rsquo;t be there.<br> One important thing to keep in mind is that the maximum number of responses in this map will be 1,000. If you execute the delete process over more than 1,000 records, you might not be able to collect the response for each one.<h6>Execute Action</h6>The results of this job depend on the type of action. If the action is of type One record, the result will be a map like this one:<br><pre><code>{  &ldquo;results&rdquo;: {    &ldquo;id1&rdquo;: {      &ldquo;status&rdquo;: &ldquo;ok&rdquo;,      &ldquo;response&rdquo;: &ldquo;response from action&rdquo;    },    &ldquo;id2&rdquo;: {      &ldquo;status&rdquo;: &ldquo;error&rdquo;,      &ldquo;errorMessage&rdquo;: &ldquo;error message&rdquo;    }  }}</code></pre><br> <strong><code>status</code></strong> will indicate if the action was executed successfully over that record (<strong><code>ok</code></strong>) or if there were errors (<strong><code>error</code></strong>). The field response will be available only if the action is configured to return the response in the results; otherwise it won&rsquo;t be there. The field <strong><code>errorMessage</code></strong> will be present when there is an error, providing some insight into the problem. <br> One important thing to keep in mind is that the maximum number of responses in this map will be 1,000. If you execute the action over more than 1,000 records, you might not be able to collect the response for each one.<br> If the action is of type <strong><code>Many records</code></strong>, you will only get a map with fields <strong><code>status</code></strong> and <strong><code>response</code></strong>:<br><br><pre><code>{  &ldquo;results&rdquo;: {    &ldquo;status&rdquo;: &ldquo;ok&rdquo;,    &ldquo;response&rdquo;: &ldquo;response from action&rdquo;  }}</code></pre><h6>Import Users</h6><table><tr><th>Path</th><th>Description</th></tr><tr><td><strong>fileLink</strong></td><td>URL to download the CSV file with the exported users. You will need to send the token in the headers to download it.</td></tr></table><h6>Export Users</h6><table><tr><th>Path</th><th>Description</th></tr><tr><td><strong>fileLink</strong></td><td>URL to download the CSV file with the exported users. You will need to send the token in the headers to download it.</td></tr><tr><td><strong>fileId</strong></td><td>The ID of the file that was generated.</td></tr><tr><td><strong>usersExported</strong></td><td>The number of users that were exported.</td></tr></table><br></td>
+<td>The content of this field depends on the job. Here you will find information about the results of executing the job.<br><br><h6>Import Records</h6><table><tr><th>Path</th><th>Description</th></tr><tr><td><strong>rowsImported</strong></td><td>The number of rows that were imported successfully.</td></tr><tr><td><strong>rowsWithErrors</strong></td><td>The number of rows that couldn&rsquo;t be imported due to errors.</td></tr></table><h6>Export Records</h6><table><tr><th>Path</th><th>Description</th></tr><tr><td><strong>fileLink</strong></td><td>URL to download the CSV file with the exported records. You will need to send the token in the headers to download it.</td></tr><tr><td><strong>fileId</strong></td><td>The ID of the file that was generated.</td></tr><tr><td><strong>recordsExported</strong></td><td>The number of records that were exported.</td></tr></table><h6>Delete Records</h6><br>The result will be a map like this one:<br><pre><code>{
+  &ldquo;results&rdquo;: {
+    &ldquo;id1&rdquo;: {
+      &ldquo;status&rdquo;: &ldquo;ok&rdquo;,
+      &ldquo;response&rdquo;: &ldquo;response from action&rdquo;
+    },
+    &ldquo;id2&rdquo;: {
+      &ldquo;status&rdquo;: &ldquo;error&rdquo;,
+      &ldquo;errorMessage&rdquo;: &ldquo;error message&rdquo;
+    }
+  }
+}</code></pre><br> <strong><code>status</code></strong> will indicate if the delete process was executed successfully over that record (<strong><code>ok</code></strong>) or if there were errors (<strong><code>error</code></strong>). The field <strong><code>response</code></strong> will be available only if the action is configured to return the response in the results; otherwise it won&rsquo;t be there.<br> One important thing to keep in mind is that the maximum number of responses in this map will be 1,000. If you execute the delete process over more than 1,000 records, you might not be able to collect the response for each one.<h6>Execute Action</h6>The results of this job depend on the type of action. If the action is of type One record, the result will be a map like this one:<br><pre><code>{
+  &ldquo;results&rdquo;: {
+    &ldquo;id1&rdquo;: {
+      &ldquo;status&rdquo;: &ldquo;ok&rdquo;,
+      &ldquo;response&rdquo;: &ldquo;response from action&rdquo;
+    },
+    &ldquo;id2&rdquo;: {
+      &ldquo;status&rdquo;: &ldquo;error&rdquo;,
+      &ldquo;errorMessage&rdquo;: &ldquo;error message&rdquo;
+    }
+  }
+}</code></pre><br> <strong><code>status</code></strong> will indicate if the action was executed successfully over that record (<strong><code>ok</code></strong>) or if there were errors (<strong><code>error</code></strong>). The field response will be available only if the action is configured to return the response in the results; otherwise it won&rsquo;t be there. The field <strong><code>errorMessage</code></strong> will be present when there is an error, providing some insight into the problem. <br> One important thing to keep in mind is that the maximum number of responses in this map will be 1,000. If you execute the action over more than 1,000 records, you might not be able to collect the response for each one.<br> If the action is of type <strong><code>Many records</code></strong>, you will only get a map with fields <strong><code>status</code></strong> and <strong><code>response</code></strong>:<br><br><pre><code>{
+  &ldquo;results&rdquo;: {
+    &ldquo;status&rdquo;: &ldquo;ok&rdquo;,
+    &ldquo;response&rdquo;: &ldquo;response from action&rdquo;
+  }
+}</code></pre><h6>Import Users</h6><table><tr><th>Path</th><th>Description</th></tr><tr><td><strong>fileLink</strong></td><td>URL to download the CSV file with the exported users. You will need to send the token in the headers to download it.</td></tr></table><h6>Export Users</h6><table><tr><th>Path</th><th>Description</th></tr><tr><td><strong>fileLink</strong></td><td>URL to download the CSV file with the exported users. You will need to send the token in the headers to download it.</td></tr><tr><td><strong>fileId</strong></td><td>The ID of the file that was generated.</td></tr><tr><td><strong>usersExported</strong></td><td>The number of users that were exported.</td></tr></table><br></td>
 </tr>
 </tbody>
 </table>
@@ -8290,7 +8369,7 @@ PUT /status/jobs/588a02c13b063a0007605032/cancel
 </code></pre>
 <br>
 <h5 id="possible-errors-11">Possible errors <a href="#possible-errors-11" class="anchor" aria-hidden="true">#</a></h5>
-<table>
+<table>{{site.baseurl}}/images/vendor
 <thead>
 <tr>
 <th>Error Code</th>

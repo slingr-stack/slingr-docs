@@ -1,13 +1,13 @@
 name: Flow step libraries Sample
 
 samples:
-  - img: /images/vendor/flows/script_code_sample.png
+  - img: {{site.baseurl}}/images/vendor/flows/script_code_sample.png
     description: 1. First, we define our Business Logic step. In our example, this has a list as input. And return a list applying the process to all elements.
-  - img: /images/vendor/flows/libraries_flow_incomplete.png
+  - img: {{site.baseurl}}/images/vendor/flows/libraries_flow_incomplete.png
     description: 2. After the Business Logic step definition, we go to the Flow Editor and realize that we have several lists to process. So we decided to add a Library Step to simplify the operation of concatenating those lists.
-  - img: /images/vendor/flows/libraries_steps_flow_editor.png
+  - img: {{site.baseurl}}/images/vendor/flows/libraries_steps_flow_editor.png
     description: 3. Now in the Flow Editor, we have the new Steps ready to be used.
-  - img: /images/vendor/flows/libraries_on_flow_editor.png
+  - img: {{site.baseurl}}/images/vendor/flows/libraries_on_flow_editor.png
     description: 4. In our sample, we are collecting the data to process on the Set Var steps. After finding all the data lists, the Concat List step joins all the values to be processed by the Business Logic Step.
 
 

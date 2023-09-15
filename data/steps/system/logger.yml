@@ -25,7 +25,7 @@ outputs:
     type: string
     description: The name of the next element in the list.
 samples:
-  - img: /images/vendor/flows/logger.png
+  - img: {{site.baseurl}}/images/vendor/flows/logger.png
     alt: Logger image
     description:  The flow starts, the logger step logs something and then the execution finishes with the end step.
 contexts:

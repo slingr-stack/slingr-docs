@@ -8,6 +8,6 @@ inputs:
   required: yes
   default: false
 samples:
-- img: /images/vendor/flows/reload_sample.png
+- img: {{site.baseurl}}/images/vendor/flows/reload_sample.png
   alt: Reload Sample
   description: The flow starts, the reload step reloads the app and then the execution finished with the end step.  

@@ -51,6 +51,6 @@ inputs:
     operator: is
     value: CUSTOM_VIEW  
 samples:
-- img: /images/vendor/flows/gotoview_sample.png
+- img: {{site.baseurl}}/images/vendor/flows/gotoview_sample.png
   alt: Go to view Sample
   description:  The flow starts, the go to view step goes to the specified view and then the execution finished with the end step.

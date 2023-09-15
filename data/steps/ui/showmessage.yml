@@ -48,7 +48,7 @@ inputs:
   required: yes
   default: false
 samples:
-- img: /images/vendor/flows/showmessage_sample.png
+- img: {{site.baseurl}}/images/vendor/flows/showmessage_sample.png
   alt: Show message Sample
   description:  The flow starts, the show message step shows the specified message and then the execution finished with the end step. 
  

@@ -57,13 +57,13 @@ Now let’s add the two new groups:
 
 6. Select the **`Task`** entity and then click on **``Apply permissions``**:
 
-![Apply permissions](/images/vendor/task-mananger/groups/p.png)
+![Apply permissions]({{site.baseurl}}/images/vendor/task-mananger/groups/p.png)
 
 7. There select the option **`Read/write`** and click on **`Apply`**.
 
 8. Then click on the configuration button under the **`Edit`** column, and configure fields permissions so fields **`Status`** and **`Rank`** are read-only.
 
-![Field permissions](/images/vendor/task-mananger/groups/pp.png)
+![Field permissions]({{site.baseurl}}/images/vendor/task-mananger/groups/pp.png)
 
 {{< callout type="info" contend="" >}}
   This is the correct way to enforce permissions instead of just making the field read-only in the UI.
@@ -78,7 +78,7 @@ Now let’s add the two new groups:
 
 12. Set the flag in the column **`Permission`** for both views:
 
-![View permissions](/images/vendor/task-mananger/groups/ppp.png)
+![View permissions]({{site.baseurl}}/images/vendor/task-mananger/groups/ppp.png)
 
 13. Finally, click the `Apply` button on the top-right of the listing to persist changes.
 
@@ -94,15 +94,15 @@ Now that we have our first group, create a new group called Support, and add som
 
 3. Configure entity permissions like this:
 
-![Entity permissions](/images/vendor/task-mananger/groups/pppp.png)
+![Entity permissions]({{site.baseurl}}/images/vendor/task-mananger/groups/pppp.png)
 
 4. Configure field permissions like this:
 
-![Field permissions](/images/vendor/task-mananger/groups/ppppp.png)
+![Field permissions]({{site.baseurl}}/images/vendor/task-mananger/groups/ppppp.png)
 
 5. Configure action permissions like this:
 
-![Action permissions](/images/vendor/task-mananger/groups/pppppp.png)
+![Action permissions]({{site.baseurl}}/images/vendor/task-mananger/groups/pppppp.png)
 
 6. Click on **`Apply`**.
 

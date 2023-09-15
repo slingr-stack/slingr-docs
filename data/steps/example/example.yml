@@ -24,7 +24,7 @@ outputs:
     type: string
     description: The name of the next element in the list.
 samples:
-  - img: /images/vendor/flows/trycatch_example.png
+  - img: {{site.baseurl}}/images/vendor/flows/trycatch_example.png
     alt: test
     description: probando
 contexts:

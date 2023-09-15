@@ -165,7 +165,7 @@ Context stack # Adding items to the context stack # Certain steps have the capab
   <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
 
     <a class="navbar-brand order-0" href="/" aria-label="Slingr">
-      <img src="/images/vendor/logo.png" class="navbar-img">
+      <img src="{{site.baseurl}}/images/vendor/logo.png" class="navbar-img">
 
     </a>
 
@@ -3599,7 +3599,7 @@ Context stack # Adding items to the context stack # Certain steps have the capab
 <h2 id="scope"><strong>Scope</strong> <a href="#scope" class="anchor" aria-hidden="true">#</a></h2>
 <p>Each item within the context stack operates within its designated scope. Context items are exclusively available when editing a step that follows the step responsible for outputting the context item. For instance, you cannot select context items from steps located outside the execution flow of the step that produces the context. Similarly, you cannot choose an output from a step that precedes the step responsible for generating the context.</p>
 <h2 id="example"><strong>Example</strong> <a href="#example" class="anchor" aria-hidden="true">#</a></h2>
-<p><img class="img-fluid lazyload blur-up" src="/images/vendor/flows/context_stack_example.png" alt="Context Stack Example"></p>
+<p><img class="img-fluid lazyload blur-up" src="{{site.baseurl}}/images/vendor/flows/context_stack_example.png" alt="Context Stack Example"></p>
 <p><em>In the <strong><code>&quot;updateRecord&quot;</code></strong> step, nested within a <strong><code>&quot;tryCatch&quot;</code></strong> step, it&rsquo;s not possible to access the output of <strong><code>&quot;findData&quot; </code></strong> because it is not within the execution flow of <strong><code>&quot;findData.&quot;</code></strong> However, it can access the output of the parent step: <strong><code>&quot;tryCatchError.&quot;</code></strong></em></p>
 
 			<div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
@@ -3635,7 +3635,7 @@ Context stack # Adding items to the context stack # Certain steps have the capab
     <div class="row justify-content-center">
       <div class="col-lg-4" >
         <ul class="list-unstyled">
-          <img src="/images/vendor/slingr_blue.png">
+          <img src="{{site.baseurl}}/images/vendor/slingr_blue.png">
           <li>©2023 Slingr. All rights reserved. </li>
           <li>Site last generated: Apr 11, 2023</li>
 

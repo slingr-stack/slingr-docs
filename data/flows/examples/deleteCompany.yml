@@ -69,5 +69,5 @@ steps:
       - label: action
         type: Action
 samples:
-- img: /images/vendor/flows/delete_company_sample.png
+- img: {{site.baseurl}}/images/vendor/flows/delete_company_sample.png
   alt: Update tax rates sample

@@ -167,7 +167,7 @@ Custom views provide a Javascript API, simplifying interaction with the app.">
   <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
 
     <a class="navbar-brand order-0" href="/" aria-label="Slingr">
-      <img src="/images/vendor/logo.png" class="navbar-img">
+      <img src="{{site.baseurl}}/images/vendor/logo.png" class="navbar-img">
 
     </a>
 
@@ -3708,7 +3708,10 @@ Custom views provide a Javascript API, simplifying interaction with the app.">
 <td>urlParameters</td>
 <td>string or object</td>
 <td>yes</td>
-<td>This can be either a simple string containing the URL, e.g., <strong><code>/data/companies</code></strong>, or an object with parameters: <br><br><pre><code>{url: &lsquo;/data/companies&rsquo;,params: {state: &lsquo;active&rsquo;, _size: 100}}</code></pre><br> It&rsquo;s important to note that the URL represents the path after <strong><code>/api</code></strong>. The base of the URL and headers are calculated automatically, so there&rsquo;s no need to worry about them. Parameters are encoded automatically.</td>
+<td>This can be either a simple string containing the URL, e.g., <strong><code>/data/companies</code></strong>, or an object with parameters: <br><br><pre><code>{
+url: &lsquo;/data/companies&rsquo;,
+params: {state: &lsquo;active&rsquo;, _size: 100}
+}</code></pre><br> It&rsquo;s important to note that the URL represents the path after <strong><code>/api</code></strong>. The base of the URL and headers are calculated automatically, so there&rsquo;s no need to worry about them. Parameters are encoded automatically.</td>
 </tr>
 <tr>
 <td>done</td>
@@ -3754,7 +3757,9 @@ sys.ws.get('/data/companies', function(res) {
 <td>urlParameters</td>
 <td>string or object</td>
 <td>yes</td>
-<td>This can be either a simple string containing the URL, e.g., <strong><code>/data/companies</code></strong>, or an object with parameters: <br><br><pre><code>{url: &lsquo;/data/companies&rsquo;}</code></pre><br> It&rsquo;s important to note that the URL represents the path after <strong><code>/api</code></strong>. The base of the URL and headers are calculated automatically, so there&rsquo;s no need to worry about them. Parameters are encoded automatically.</td>
+<td>This can be either a simple string containing the URL, e.g., <strong><code>/data/companies</code></strong>, or an object with parameters: <br><br><pre><code>{
+url: &lsquo;/data/companies&rsquo;
+}</code></pre><br> It&rsquo;s important to note that the URL represents the path after <strong><code>/api</code></strong>. The base of the URL and headers are calculated automatically, so there&rsquo;s no need to worry about them. Parameters are encoded automatically.</td>
 </tr>
 <tr>
 <td>data</td>
@@ -3807,7 +3812,9 @@ sys.ws.post('/data/companies', company, function(company) {
 <td>urlParameters</td>
 <td>string or object</td>
 <td>yes</td>
-<td>This can be either a simple string containing the URL, e.g., <strong><code>/data/companies</code></strong>, or an object with parameters: <br><br><pre><code>{url:&rsquo;/data/companies/56e81f68e4b0001caf8837a4&rsquo;}</code></pre><br> It&rsquo;s important to note that the URL represents the path after <strong><code>/api</code></strong>. The base of the URL and headers are calculated automatically, so there&rsquo;s no need to worry about them. Parameters are encoded automatically.</td>
+<td>This can be either a simple string containing the URL, e.g., <strong><code>/data/companies</code></strong>, or an object with parameters: <br><br><pre><code>{
+url:&rsquo;/data/companies/56e81f68e4b0001caf8837a4&rsquo;
+}</code></pre><br> It&rsquo;s important to note that the URL represents the path after <strong><code>/api</code></strong>. The base of the URL and headers are calculated automatically, so there&rsquo;s no need to worry about them. Parameters are encoded automatically.</td>
 </tr>
 <tr>
 <td>data</td>
@@ -3856,7 +3863,10 @@ sys.ws.put('/data/companies/' + company.id, {name: 'new name'}, function(company
 <td>urlParameters</td>
 <td>string or object</td>
 <td>yes</td>
-<td>This can be either a simple string containing the URL, e.g., <strong><code>/data/companies</code></strong>, or an object with parameters: <br><br><pre><code>{url: &lsquo;/data/companies/56e81f68e4b0001caf8837a4&rsquo;,params: {async: true}}</code></pre><br> It&rsquo;s important to note that the URL represents the path after <strong><code>/api</code></strong>. The base of the URL and headers are calculated automatically, so there&rsquo;s no need to worry about them. Parameters are encoded automatically.</td>
+<td>This can be either a simple string containing the URL, e.g., <strong><code>/data/companies</code></strong>, or an object with parameters: <br><br><pre><code>{
+url: &lsquo;/data/companies/56e81f68e4b0001caf8837a4&rsquo;,
+params: {async: true}
+}</code></pre><br> It&rsquo;s important to note that the URL represents the path after <strong><code>/api</code></strong>. The base of the URL and headers are calculated automatically, so there&rsquo;s no need to worry about them. Parameters are encoded automatically.</td>
 </tr>
 <tr>
 <td>done</td>
@@ -4288,7 +4298,7 @@ const listenToHeightChanges = function() {
 			
 		</main>
 	</div>
-
+{{site.baseurl}}/images/vendor
       </div>
     </div>
     

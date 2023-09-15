@@ -167,7 +167,7 @@ Script Association: While you can call this method from any script, it is recomm
   <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
 
     <a class="navbar-brand order-0" href="/" aria-label="Slingr">
-      <img src="/images/vendor/logo.png" class="navbar-img">
+      <img src="{{site.baseurl}}/images/vendor/logo.png" class="navbar-img">
 
     </a>
 
@@ -3855,14 +3855,20 @@ sys.ui.sendMessage({
 <td>object</td>
 <td>no</td>
 <td>-</td>
-<td>In case of grid or workflow views define some view filters to be applied. This filter example apply 2 filters for the view:<br><br><pre><code>{name: &lsquo;ACME&rsquo;,address.state:&rsquo;new&rsquo;}</code></pre></td>
+<td>In case of grid or workflow views define some view filters to be applied. This filter example apply 2 filters for the view:<br><br><pre><code>{
+name: &lsquo;ACME&rsquo;,
+address.state:&rsquo;new&rsquo;
+}</code></pre></td>
 </tr>
 <tr>
 <td>parameters</td>
 <td>object</td>
 <td>no</td>
 <td>-</td>
-<td>In case of custom views you can define some view parameters to be applied. Those parameters are transformed into URL query parameters. For example, the following parameters<br><br><pre><code>{name: &lsquo;ACME&rsquo;,status:&rsquo;new&rsquo;}</code></pre><br>Are going to be transformed to the following URL query parameters:<br><code>?name=ACME&amp;status=New</code></td>
+<td>In case of custom views you can define some view parameters to be applied. Those parameters are transformed into URL query parameters. For example, the following parameters<br><br><pre><code>{
+name: &lsquo;ACME&rsquo;,
+status:&rsquo;new&rsquo;
+}</code></pre><br>Are going to be transformed to the following URL query parameters:<br><code>?name=ACME&amp;status=New</code></td>
 </tr>
 </tbody>
 </table>
@@ -4464,7 +4470,7 @@ sys.ui.sendMessage({
       </div>
     </div>
     
-    
+    {{site.baseurl}}/images/vendor
     <footer class="footer text-muted">
   <div class="container-xxl">
     <div class="row justify-content-center">

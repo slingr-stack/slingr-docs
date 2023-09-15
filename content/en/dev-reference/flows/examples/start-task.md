@@ -16,7 +16,7 @@ weight: 130
 
 This example is an action that changes the status of a task in progress.
 
-![Start task sample flow](/images/vendor/flows/start_task.png)
+![Start task sample flow]({{site.baseurl}}/images/vendor/flows/start_task.png)
 
 ## **Step: start**
 

@@ -47,6 +47,6 @@ inputs:
         operator: is
         value: 'Script'
 samples:
-  - img: /images/vendor/flows/if_sample.png
+  - img: {{site.baseurl}}/images/vendor/flows/if_sample.png
     alt: If Sample
     description: The flow starts, the if step evaluates the condition, if the condition is true, runs the script and then the execution finished with the end step.

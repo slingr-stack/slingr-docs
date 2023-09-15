@@ -147,5 +147,5 @@ steps:
       - label: action
         type: Action
 samples:
-- img: /images/vendor/flows/downloadFile_samples.png
+- img: {{site.baseurl}}/images/vendor/flows/downloadFile_samples.png
   alt: Download file sample

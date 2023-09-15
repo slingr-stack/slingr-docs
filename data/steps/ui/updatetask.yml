@@ -19,6 +19,6 @@ inputs:
   type: text
   required: no
 samples:
-- img: /images/vendor/flows/updatetask_sample.png
+- img: {{site.baseurl}}/images/vendor/flows/updatetask_sample.png
   alt: Update task Sample
   description: The flow starts, the update task step updates the status of the specified task. In case of an error while updating the task, the error will be logged and the execution will finish.

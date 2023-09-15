@@ -17,7 +17,7 @@ weight: 135
 
 In this example, we showcase an action designed to delete a company. 
 
-![Download file sample flow](/images/vendor/flows/downloadFile_samples.png)
+![Download file sample flow]({{site.baseurl}}/images/vendor/flows/downloadFile_samples.png)
 
 ## **Step: start**
 

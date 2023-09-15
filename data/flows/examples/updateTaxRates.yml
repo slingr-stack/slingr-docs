@@ -90,5 +90,5 @@ steps:
       - label: action
         type: Action
 samples:
-- img: /images/vendor/flows/updateTaxRate_sample.png
+- img: {{site.baseurl}}/images/vendor/flows/updateTaxRate_sample.png
   alt: Update tax rates sample

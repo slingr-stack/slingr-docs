@@ -7,6 +7,6 @@ inputs:
   type: text
   required: yes
 samples:
-- img: /images/vendor/flows/downloadfile_sample.png
+- img: {{site.baseurl}}/images/vendor/flows/downloadfile_sample.png
   alt: Download file Sample
   description: The flow starts, the download file step downloads the specified file. In case of an error while downloading the file, the error will be logged and the execution will finish.

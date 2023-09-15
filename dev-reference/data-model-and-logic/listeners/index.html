@@ -169,7 +169,7 @@ Name # This serves as the internal name of the listener.">
   <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
 
     <a class="navbar-brand order-0" href="/" aria-label="Slingr">
-      <img src="/images/vendor/logo.png" class="navbar-img">
+      <img src="{{site.baseurl}}/images/vendor/logo.png" class="navbar-img">
 
     </a>
 
@@ -3691,7 +3691,10 @@ Name # This serves as the internal name of the listener.">
 <tr>
 <td><strong><code>event</code></strong></td>
 <td>object</td>
-<td>Contains information about the event. It has the following structure: <br><pre><code>{  &ldquo;type&rdquo;: &ldquo;DATA&rdquo;,  &ldquo;dataEvent&rdquo;: &ldquo;RECORD_CHANGED}</code></pre><br> - Possible values for <strong><code>dataEvent</code></strong> are: <strong><code>RECORD_CREATED</code></strong>, <strong><code>RECORD_CHANGED</code></strong>, <strong><code>RECORD_DELETED</code></strong>, <strong><code>CONDITION_MET</code></strong>, <strong><code>ACTION_PERFORMED</code></strong>.</td>
+<td>Contains information about the event. It has the following structure: <br><pre><code>{
+  &ldquo;type&rdquo;: &ldquo;DATA&rdquo;,
+  &ldquo;dataEvent&rdquo;: &ldquo;RECORD_CHANGED
+}</code></pre><br> - Possible values for <strong><code>dataEvent</code></strong> are: <strong><code>RECORD_CREATED</code></strong>, <strong><code>RECORD_CHANGED</code></strong>, <strong><code>RECORD_DELETED</code></strong>, <strong><code>CONDITION_MET</code></strong>, <strong><code>ACTION_PERFORMED</code></strong>.</td>
 </tr>
 <tr>
 <td><strong><code>record</code></strong></td>
@@ -3725,7 +3728,16 @@ sys.logs.info('*** RECORD: '+record.label());
 <tr>
 <td><strong><code>event</code></strong></td>
 <td>object</td>
-<td>Contains information about the event. It has the following structure: <br><pre><code>{  &ldquo;type&rdquo;: &ldquo;ENDPOINT&rdquo;,  &ldquo;date&rdquo;: 1486673333420,  &ldquo;endpoint&rdquo;: &ldquo;sample&rdquo;,  &ldquo;endpointEvent&rdquo;: &ldquo;inboundEvent&rdquo;,  &ldquo;data&rdquo;: {    &ldquo;token&rdquo;: &ldquo;123456&rdquo;,    &ldquo;number&rdquo;: 4468  }}</code></pre><br><br> <strong><code>date</code></strong> is the timestamp when the event was sent.<br> <strong><code>endpoint</code></strong> is the name of the endpoint.<br><strong><code>endpointEvent</code></strong> is the name of the event.<br> <strong><code>data</code></strong> is data sent by the endpoint which is specific for each event and you should check the documentation for each endpoint.</td>
+<td>Contains information about the event. It has the following structure: <br><pre><code>{
+  &ldquo;type&rdquo;: &ldquo;ENDPOINT&rdquo;,
+  &ldquo;date&rdquo;: 1486673333420,
+  &ldquo;endpoint&rdquo;: &ldquo;sample&rdquo;,
+  &ldquo;endpointEvent&rdquo;: &ldquo;inboundEvent&rdquo;,
+  &ldquo;data&rdquo;: {
+    &ldquo;token&rdquo;: &ldquo;123456&rdquo;,
+    &ldquo;number&rdquo;: 4468
+  }
+}</code></pre><br><br> <strong><code>date</code></strong> is the timestamp when the event was sent.<br> <strong><code>endpoint</code></strong> is the name of the endpoint.<br><strong><code>endpointEvent</code></strong> is the name of the event.<br> <strong><code>data</code></strong> is data sent by the endpoint which is specific for each event and you should check the documentation for each endpoint.</td>
 </tr>
 </tbody>
 </table>
@@ -3750,7 +3762,16 @@ sys.logs.info('*** DATA: '+event.data);
 <tr>
 <td><strong><code>event</code></strong></td>
 <td>object</td>
-<td>Contains information about the event. It has the following structure: <br><pre><code>{  &ldquo;type&rdquo;: &ldquo;SERVICE&rdquo;,  &ldquo;date&rdquo;: 1486673333420,  &ldquo;endpoint&rdquo;: &ldquo;sample&rdquo;,  &ldquo;endpointEvent&rdquo;: &ldquo;inboundEvent&rdquo;,  &ldquo;data&rdquo;: {    &ldquo;token&rdquo;: &ldquo;123456&rdquo;,    &ldquo;number&rdquo;: 4468  }}</code></pre><br><br> <strong><code>date</code></strong> is the timestamp when the event was sent.<br> <strong><code>service</code></strong> is the name of the service.<br><strong><code>serviceEvent</code></strong> is the name of the event.<br> <strong><code>data</code></strong> is data sent by the endpoint which is specific for each event and you should check the documentation for each service.</td>
+<td>Contains information about the event. It has the following structure: <br><pre><code>{
+  &ldquo;type&rdquo;: &ldquo;SERVICE&rdquo;,
+  &ldquo;date&rdquo;: 1486673333420,
+  &ldquo;endpoint&rdquo;: &ldquo;sample&rdquo;,
+  &ldquo;endpointEvent&rdquo;: &ldquo;inboundEvent&rdquo;,
+  &ldquo;data&rdquo;: {
+    &ldquo;token&rdquo;: &ldquo;123456&rdquo;,
+    &ldquo;number&rdquo;: 4468
+  }
+}</code></pre><br><br> <strong><code>date</code></strong> is the timestamp when the event was sent.<br> <strong><code>service</code></strong> is the name of the service.<br><strong><code>serviceEvent</code></strong> is the name of the event.<br> <strong><code>data</code></strong> is data sent by the endpoint which is specific for each event and you should check the documentation for each service.</td>
 </tr>
 </tbody>
 </table>
@@ -3775,7 +3796,22 @@ sys.logs.info('*** DATA: '+event.data);
 <tr>
 <td><strong><code>event</code></strong></td>
 <td>object</td>
-<td>Contains information about the event. It has the following structure: <br><pre><code>{  &ldquo;type&rdquo;: &ldquo;UI_SERVICE&rdquo;,  &ldquo;date&rdquo;: 1486673333420,  &ldquo;uiService&rdquo;: &ldquo;sample&rdquo;,  &ldquo;event&rdquo;: &ldquo;event1&rdquo;,  &ldquo;callback&rdquo;: &ldquo;callback1&rdquo;,  &ldquo;data&rdquo;: {    &ldquo;originalMessage&rdquo;: {      &ldquo;companyId&rdquo;: &ldquo;ABC&rdquo;    },    &ldquo;callbackData&rdquo;: {      &ldquo;number&rdquo;: 1234,      &ldquo;text&rdquo;: &ldquo;hello&rdquo;    }  }}</code></pre><br><br> <strong><code>date</code></strong> is the timestamp when the event was sent.<br> <strong><code>uiService</code></strong> is the name of the uiService.<br><strong><code>event</code></strong> is the name of the event.<br><strong><code>callback</code></strong> is the name of the callback.<br> <strong><code>data</code></strong> is data sent by the callback request.</td>
+<td>Contains information about the event. It has the following structure: <br><pre><code>{
+  &ldquo;type&rdquo;: &ldquo;UI_SERVICE&rdquo;,
+  &ldquo;date&rdquo;: 1486673333420,
+  &ldquo;uiService&rdquo;: &ldquo;sample&rdquo;,
+  &ldquo;event&rdquo;: &ldquo;event1&rdquo;,
+  &ldquo;callback&rdquo;: &ldquo;callback1&rdquo;,
+  &ldquo;data&rdquo;: {
+    &ldquo;originalMessage&rdquo;: {
+      &ldquo;companyId&rdquo;: &ldquo;ABC&rdquo;
+    },
+    &ldquo;callbackData&rdquo;: {
+      &ldquo;number&rdquo;: 1234,
+      &ldquo;text&rdquo;: &ldquo;hello&rdquo;
+    }
+  }
+}</code></pre><br><br> <strong><code>date</code></strong> is the timestamp when the event was sent.<br> <strong><code>uiService</code></strong> is the name of the uiService.<br><strong><code>event</code></strong> is the name of the event.<br><strong><code>callback</code></strong> is the name of the callback.<br> <strong><code>data</code></strong> is data sent by the callback request.</td>
 </tr>
 </tbody>
 </table>
@@ -3799,7 +3835,22 @@ sys.logs.info('*** DATA: '+event.data);
 <tr>
 <td><strong><code>event</code></strong></td>
 <td>object</td>
-<td>Contains information about the event. It has the following structure: <br><pre><code>{  &ldquo;type&rdquo;: &ldquo;PLUGIN&rdquo;,  &ldquo;date&rdquo;: 1486673333420,  &ldquo;plugin&rdquo;: &ldquo;sample&rdquo;,  &ldquo;event&rdquo;: &ldquo;event1&rdquo;,  &ldquo;callback&rdquo;: &ldquo;callback1&rdquo;,  &ldquo;data&rdquo;: {    &ldquo;originalMessage&rdquo;: {      &ldquo;companyId&rdquo;: &ldquo;ABC&rdquo;    },    &ldquo;callbackData&rdquo;: {      &ldquo;number&rdquo;: 1234,      &ldquo;text&rdquo;: &ldquo;hello&rdquo;    }  }}</code></pre><br><br> <strong><code>date</code></strong> is the timestamp when the event was sent.<br> <strong><code>plugin</code></strong> is the name of the plugin.<br><strong><code>event</code></strong> is the name of the event.<br><strong><code>callback</code></strong> is the name of the callback.<br> <strong><code>data</code></strong> is data sent by the callback request.</td>
+<td>Contains information about the event. It has the following structure: <br><pre><code>{
+  &ldquo;type&rdquo;: &ldquo;PLUGIN&rdquo;,
+  &ldquo;date&rdquo;: 1486673333420,
+  &ldquo;plugin&rdquo;: &ldquo;sample&rdquo;,
+  &ldquo;event&rdquo;: &ldquo;event1&rdquo;,
+  &ldquo;callback&rdquo;: &ldquo;callback1&rdquo;,
+  &ldquo;data&rdquo;: {
+    &ldquo;originalMessage&rdquo;: {
+      &ldquo;companyId&rdquo;: &ldquo;ABC&rdquo;
+    },
+    &ldquo;callbackData&rdquo;: {
+      &ldquo;number&rdquo;: 1234,
+      &ldquo;text&rdquo;: &ldquo;hello&rdquo;
+    }
+  }
+}</code></pre><br><br> <strong><code>date</code></strong> is the timestamp when the event was sent.<br> <strong><code>plugin</code></strong> is the name of the plugin.<br><strong><code>event</code></strong> is the name of the event.<br><strong><code>callback</code></strong> is the name of the callback.<br> <strong><code>data</code></strong> is data sent by the callback request.</td>
 </tr>
 </tbody>
 </table>
@@ -3823,7 +3874,12 @@ sys.logs.info('*** DATA: '+event.data);
 <tr>
 <td><strong><code>event</code></strong></td>
 <td>object</td>
-<td>Contains information about the event. It has the following structure: <br><pre><code>{  &ldquo;type&rdquo;: &ldquo;JOB&rdquo;,  &ldquo;jobType&rdquo;: &ldquo;IMPORT_RECORDS&rdquo;,  &ldquo;jobEvent&rdquo;: &ldquo;FINISHED&rdquo;,  &ldquo;jobId&rdquo;: &ldquo;589cdb2ae201af1d75ec2d83&rdquo;}</code></pre><br><br> <strong><code>jobType</code></strong> is the type of job<br> <strong><code>jobEvent</code></strong> is the event of the job that triggered the listener.<br><strong><code>jobId</code></strong>  is the ID of the job. You can use it to find the job and get more information about it.</td>
+<td>Contains information about the event. It has the following structure: <br><pre><code>{
+  &ldquo;type&rdquo;: &ldquo;JOB&rdquo;,
+  &ldquo;jobType&rdquo;: &ldquo;IMPORT_RECORDS&rdquo;,
+  &ldquo;jobEvent&rdquo;: &ldquo;FINISHED&rdquo;,
+  &ldquo;jobId&rdquo;: &ldquo;589cdb2ae201af1d75ec2d83&rdquo;
+}</code></pre><br><br> <strong><code>jobType</code></strong> is the type of job<br> <strong><code>jobEvent</code></strong> is the event of the job that triggered the listener.<br><strong><code>jobId</code></strong>  is the ID of the job. You can use it to find the job and get more information about it.</td>
 </tr>
 </tbody>
 </table>
@@ -3847,7 +3903,9 @@ sys.logs.info('*** ERRORS: '+job.hasErrors());
 <tr>
 <td><strong><code>event</code></strong></td>
 <td>object</td>
-<td>Contains information about the event. It has the following structure: <br><pre><code>{  &ldquo;type&rdquo;: &ldquo;TIME&rdquo;}</code></pre></td>
+<td>Contains information about the event. It has the following structure: <br><pre><code>{
+  &ldquo;type&rdquo;: &ldquo;TIME&rdquo;
+}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -3870,9 +3928,15 @@ sys.logs.info('*** TIME LISTENER!');
 <tr>
 <td><strong><code>event</code></strong></td>
 <td>object</td>
-<td>Contains information about the event. It has the following structure: <br><pre><code>{  &ldquo;type&rdquo;: &ldquo;CUSTOM&rdquo;,  &ldquo;customEvent&rdquo;: &ldquo;newNote&rdquo;,  &ldquo;customData&rdquo;: {    &ldquo;noteId&rdquo;: &ldquo;589cdb2ae201af1d75ec2d83&rdquo;  }}</code></pre><br><br> <strong><code>customEvent</code></strong> is the name of custom event that triggered the listener.<br> <strong><code>customData</code></strong> is an object sent by user as data opf this custom event.</td>
+<td>Contains information about the event. It has the following structure: <br><pre><code>{
+  &ldquo;type&rdquo;: &ldquo;CUSTOM&rdquo;,
+  &ldquo;customEvent&rdquo;: &ldquo;newNote&rdquo;,
+  &ldquo;customData&rdquo;: {
+    &ldquo;noteId&rdquo;: &ldquo;589cdb2ae201af1d75ec2d83&rdquo;
+  }
+}</code></pre><br><br> <strong><code>customEvent</code></strong> is the name of custom event that triggered the listener.<br> <strong><code>customData</code></strong> is an object sent by user as data opf this custom event.</td>
 </tr>
-</tbody>
+</tbody>{{site.baseurl}}/images/vendor
 </table>
 <h5 id="samples-7">Samples <a href="#samples-7" class="anchor" aria-hidden="true">#</a></h5>
 <pre><code class="language-js">// log note ID create
@@ -3893,7 +3957,14 @@ sys.logs.info('*** NOTE CREATED: '+customData.noteId);
 <tr>
 <td><strong><code>event</code></strong></td>
 <td>object</td>
-<td>Contains information about the event. It has the following structure: <br><pre><code>{  &ldquo;type&rdquo;: &ldquo;CUSTOM&rdquo;,  &ldquo;packageEvent&rdquo;: &ldquo;newNote&rdquo;,  &ldquo;package&rdquo;: &ldquo;newNote&rdquo;,   &ldquo;data&rdquo;: {    &ldquo;messageContent&rdquo;: &ldquo;589cdb2ae201af1d75ec2d83&rdquo;  }}</code></pre><br><br> <strong><code>packageEvent</code></strong> is the name of the package event that triggered the listener.<br> <strong><code>data</code></strong> is an object sent by user as data of this package event. <br> <strong><code>package</code></strong>  is the name of the package.</td>
+<td>Contains information about the event. It has the following structure: <br><pre><code>{
+  &ldquo;type&rdquo;: &ldquo;CUSTOM&rdquo;,
+  &ldquo;packageEvent&rdquo;: &ldquo;newNote&rdquo;,
+  &ldquo;package&rdquo;: &ldquo;newNote&rdquo;, 
+  &ldquo;data&rdquo;: {
+    &ldquo;messageContent&rdquo;: &ldquo;589cdb2ae201af1d75ec2d83&rdquo;
+  }
+}</code></pre><br><br> <strong><code>packageEvent</code></strong> is the name of the package event that triggered the listener.<br> <strong><code>data</code></strong> is an object sent by user as data of this package event. <br> <strong><code>package</code></strong>  is the name of the package.</td>
 </tr>
 </tbody>
 </table>

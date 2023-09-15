@@ -4,7 +4,7 @@ description: Sets the start of the flow.
 rules:
   - description: There must be one start step.
 samples:
-  - img: /images/vendor/flows/logger.png
+  - img: {{site.baseurl}}/images/vendor/flows/logger.png
     alt: Start step.
     description: The flow starts, the logger step logs something and then the execution finishes with the end step.
 contexts:

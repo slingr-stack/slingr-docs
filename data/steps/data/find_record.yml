@@ -18,7 +18,7 @@ outputs:
     type: record
     description: The record instance that matches the filtering.
 samples:
-  - img: /images/vendor/flows/find_record.png
+  - img: {{site.baseurl}}/images/vendor/flows/find_record.png
     alt: Find record image.
     description: The flow starts, the find record step searches for a specific record using a query, then the record is logged and then the execution finishes with the end step. 
 contexts:

@@ -11,7 +11,7 @@ outputs:
     type: record
     description: The deleted record.
 samples:
-  - img: /images/vendor/flows/delete_record.png
+  - img: {{site.baseurl}}/images/vendor/flows/delete_record.png
     alt: Delete record image
     description: The flow starts, the delete record step deletes an specific record and then the execution finishes with the end step. In case of an error while deleting the record, the error will be logged and the execution will finish.
 contexts:

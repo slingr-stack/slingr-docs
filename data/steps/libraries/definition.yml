@@ -8,7 +8,7 @@ libraries_category:
   - sample: By generic functionalities, you can make Steps with operations that you use recurrently in Flows development.
 
 category_samples:
-  - img: /images/vendor/flows/libraries_steps_flow_editor.png
+  - img: {{site.baseurl}}/images/vendor/flows/libraries_steps_flow_editor.png
     description: In the Flow Editor, we have the libraries divided by the configured categories
 
 libraries_input: The inputs are optional and wide-range configurable. Each input has its configuration. From the Data type to 

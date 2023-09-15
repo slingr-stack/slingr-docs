@@ -32,7 +32,7 @@ outputs:
     type: text
     description: The task ID in charge of the execution of the action.
 samples:
-  - img: /images/vendor/flows/execute_action_on_data.png
+  - img: {{site.baseurl}}/images/vendor/flows/execute_action_on_data.png
     alt: Execute action on data image.
     description: The flow starts, the execute action on data step executes actions over records founded and then the execution finishes with the end step. In case of an error while executing the action, the error will be logged and the execution will finish.
 contexts:

@@ -23,7 +23,7 @@ outputs:
     type: object
     description: A record or a custom response if the action has been configured to do that.
 samples:
-  - img: /images/vendor/flows/execute_action_on_record.png
+  - img: {{site.baseurl}}/images/vendor/flows/execute_action_on_record.png
     alt: Execute action on record image.
     description: The flow starts, the execute action on record step executes actions over a record and then the execution finishes with the end step. In case of an error while executing the action, the error will be logged and the execution will finish.
 contexts:

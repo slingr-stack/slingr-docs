@@ -130,5 +130,5 @@ steps:
       - label: company
         type: Record
 samples:
-- img: /images/vendor/flows/delete_companies_in_colorado.png
+- img: {{site.baseurl}}/images/vendor/flows/delete_companies_in_colorado.png
   alt: Delete several companies sample

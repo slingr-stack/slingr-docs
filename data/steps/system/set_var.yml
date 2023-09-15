@@ -71,7 +71,7 @@ outputs:
     type: record / field
     description: Variable returned.
 samples:
-  - img: /images/vendor/flows/set_var.png
+  - img: {{site.baseurl}}/images/vendor/flows/set_var.png
     alt: Set var image
     description: The flow starts, the set var step sets a new variable to the context and then the execution finishes with the end step.
 contexts:

@@ -33,7 +33,7 @@ Once you are logged into the developer portal, you should see the Home Page:
 
 Once your app is successfully created, you will see its details. By default, you will be the **``owner``** of the app, and you will have **``developer permissions``** for the **``development environment``**, which is created by default. In the environment details, you will be able to navigate through the different components of the app.
 
-![App-Details](/images/vendor/task-mananger/creating/task_manager_app_details.png)
+![App-Details]({{site.baseurl}}/images/vendor/task-mananger/creating/task_manager_app_details.png)
 
 👉 **``Go To App``**: This button will take you to your running app. Right now, it doesn't provide much functionality as the app is empty.
 
@@ -45,7 +45,7 @@ Once your app is successfully created, you will see its details. By default, you
 
 You can also see the different environments and components on the Apps Page.
 
-![App-Card-Details](/images/vendor/task-mananger/creating/task_manager_apps_page.png)
+![App-Card-Details]({{site.baseurl}}/images/vendor/task-mananger/creating/task_manager_apps_page.png)
 
 The first button represents the **``Runtime``**, the second is the **``Monitor``**, and the third one is the **``Builder``**. As our new app is empty, the first thing we need to do is to go to the app builder by clicking on the **``Builder``** button (the one with the wrench). That will automatically open the builder in a new tab.
 
