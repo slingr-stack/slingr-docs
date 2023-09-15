@@ -1,0 +1,239 @@
+.
+├── _index.md
+├── app
+│   ├── _index.md
+│   ├── global-type.md
+│   ├── public-files.md
+│   ├── settings.md
+│   └── versions.md
+├── data-model-and-logic
+│   ├── _index.md
+│   ├── actions.md
+│   ├── endpointss.md
+│   ├── entities.md
+│   ├── fields.md
+│   ├── libraries.md
+│   └── listeners.md
+├── dev
+├── embed-api
+│   ├── _index.md
+│   └── embedded-views.md
+├── environment-settings
+│   ├── _index.md
+│   ├── api-tokens.md
+│   ├── environment-var.md
+│   ├── localization.md
+│   ├── logs-and-alerts.md
+│   └── ui-settings.md
+├── field-types
+│   ├── _index.md
+│   ├── date_and_time
+│   │   ├── _index.md
+│   │   ├── date-record-created.md
+│   │   ├── date-record-modified.md
+│   │   ├── date-time-no-timezone.md
+│   │   ├── date-time.md
+│   │   ├── date.md
+│   │   ├── month-day.md
+│   │   ├── time-duration.md
+│   │   ├── time.md
+│   │   └── year-month.md
+│   ├── miscellaneous_types
+│   │   ├── _index.md
+│   │   ├── color.md
+│   │   └── rank.md
+│   ├── multiple_choice
+│   │   ├── _index.md
+│   │   ├── boolean.md
+│   │   ├── choice.md
+│   │   └── dynamic-choice.md
+│   ├── number
+│   │   ├── _index.md
+│   │   ├── auto-increment.md
+│   │   ├── big-number.md
+│   │   ├── decimal.md
+│   │   ├── integer.md
+│   │   ├── money.md
+│   │   └── percentage.md
+│   ├── overview.md
+│   ├── references
+│   │   ├── _index.md
+│   │   ├── file.md
+│   │   └── group.md
+│   ├── special
+│   │   ├── _index.md
+│   │   ├── relationship.md
+│   │   └── special.md
+│   └── text
+│       ├── _index.md
+│       ├── email.md
+│       ├── html.md
+│       ├── long_text.md
+│       ├── masked_text.md
+│       ├── phone.md
+│       ├── qr.md
+│       ├── text.md
+│       └── url.md
+├── flows
+│   ├── _index.md
+│   ├── context
+│   │   ├── _index.md
+│   │   └── context-overview.md
+│   ├── examples
+│   │   ├── _index.md
+│   │   ├── delete-company.md
+│   │   ├── delete-several-records.md
+│   │   ├── download-file.md
+│   │   ├── start-task.md
+│   │   ├── update-several-records.md
+│   │   └── update-tax-rates.md
+│   ├── flow-designer
+│   │   ├── _index.md
+│   │   ├── establishing.md
+│   │   ├── group-container.md
+│   │   ├── keyboard-shortcuts.md
+│   │   ├── overview.md
+│   │   └── validation-rules.md
+│   ├── overview.md
+│   └── steps
+│       ├── _index.md
+│       ├── categories.md
+│       ├── control
+│       │   ├── _index.md
+│       │   ├── condition.md
+│       │   ├── error-handler.md
+│       │   ├── list-iterator.md
+│       │   ├── loop.md
+│       │   └── subflow.md
+│       ├── data
+│       │   ├── _index.md
+│       │   ├── create-record.md
+│       │   ├── delete-data.md
+│       │   ├── delete-record.md
+│       │   ├── execute-action-ondata.md
+│       │   ├── execute-action-onrecord.md
+│       │   ├── execute-globalaction.md
+│       │   ├── find-data.md
+│       │   ├── find-record-byid.md
+│       │   ├── find-record.md
+│       │   ├── lock-record.md
+│       │   ├── save-record.md
+│       │   └── update-record.md
+│       ├── libraries
+│       │   ├── _index.md
+│       │   ├── advantages.md
+│       │   ├── definition.md
+│       │   ├── example.md
+│       │   ├── input-and-outputs.md
+│       │   └── refactoring.md
+│       ├── system
+│       │   ├── _index.md
+│       │   ├── end-step.md
+│       │   ├── logger-step.md
+│       │   ├── script-step.md
+│       │   ├── set-var-step.md
+│       │   └── start-step.md
+│       └── ui
+│           ├── _index.md
+│           ├── download-file.md
+│           ├── go-back.md
+│           ├── go-to-view.md
+│           ├── open-action.md
+│           ├── open-external-link.md
+│           ├── reload.md
+│           ├── show-message.md
+│           ├── start-task.md
+│           └── update-task.md
+├── metadata-management
+│   ├── _index.md
+│   ├── automatic-refactorings.md
+│   ├── development-process.md
+│   ├── metadata-common
+│   │   ├── _index.md
+│   │   ├── data-events.md
+│   │   ├── expressions.md
+│   │   ├── metadata-history.md
+│   │   └── navigate-metadata.md
+│   ├── metadata-editor
+│   │   ├── _index.md
+│   │   ├── app-explorer.md
+│   │   ├── app-resources.md
+│   │   ├── console.md
+│   │   └── metadata-edition.md
+│   └── pushing-and-syncing.md
+├── miscellaneous
+│   ├── _index.md
+│   ├── code-editor.md
+│   └── icons.md
+├── monitoring
+│   ├── _index.md
+│   ├── background-jobs.md
+│   ├── dashboard.md
+│   ├── database-and-files.md
+│   ├── endpoints.md
+│   ├── environment-settings.md
+│   ├── logs-and-alerts.md
+│   ├── other-tools.md
+│   └── overview.md
+├── overview
+│   ├── _index.md
+│   └── overview.md
+├── queries
+│   ├── _index.md
+│   ├── aggregate-queries.md
+│   ├── query-language.md
+│   └── ui-queries.md
+├── rest-apis
+│   ├── _index.md
+│   ├── apps-api-doc.md
+│   └── apps-api.md
+├── scripting
+│   ├── _index.md
+│   ├── javascript-es6.md
+│   ├── namespaces.md
+│   ├── overview.md
+│   ├── sys-app.md
+│   ├── sys-commons.md
+│   ├── sys-context.md
+│   ├── sys-data.md
+│   ├── sys-endpoints.md
+│   ├── sys-events.md
+│   ├── sys-exceptions.md
+│   ├── sys-files.md
+│   ├── sys-i18n.md
+│   ├── sys-jobs.md
+│   ├── sys-logs.md
+│   ├── sys-storage.md
+│   ├── sys-ui.md
+│   ├── sys-users.md
+│   └── sys-utils.md
+├── security
+│   ├── _index.md
+│   ├── external-tools.md
+│   ├── groups.md
+│   ├── oauth.md
+│   ├── overview.md
+│   ├── single-sign-on.md
+│   └── users.md
+└── user-interface
+    ├── _index.md
+    ├── action-views.md
+    ├── bar-chart-widget.md
+    ├── calendar-views.md
+    ├── custom-views.md
+    ├── custom-widget.md
+    ├── dashboard-views.md
+    ├── grid-views.md
+    ├── indicator-widget.md
+    ├── line-chart-widget.md
+    ├── linear-chart-widget.md
+    ├── navigation.md
+    ├── overview.md
+    ├── pie-chart-widget.md
+    ├── record-views.md
+    ├── table-widget.md
+    ├── time-line-chart-widget.md
+    ├── ui-plugins.md
+    └── workflow-views.md
+
+34 directories, 203 files
