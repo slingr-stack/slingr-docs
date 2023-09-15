@@ -79,7 +79,7 @@ In this scenario, you need an application to support your main business processe
 ---
 
 ### Glue your existing apps
-![hola]({{ .Site.BaseURL | relLangURL }}/images/vendor/glue.png)
+![hola](/images/vendor/glue.png)
 
 In this case, you are already using various cloud apps. You can leverage Slingr to coordinate workflows in your business, breaking silos between different departments. Here are some use cases for the schema described above:
 
@@ -93,7 +93,7 @@ In this case, you are already using various cloud apps. You can leverage Slingr 
 
 ### Customize a template app
 
-![hola]({{ .Site.BaseURL | relLangURL }}/images/vendor/customize.png)
+![hola](/images/vendor/customize.png)
 
 In this case, instead of creating an app from scratch on Slingr, you can take one of the template apps and adapt them to your business needs.
 
@@ -103,7 +103,7 @@ This can apply also to your own apps. Let's suppose you build an app for lawyers
 
 ### Use it as a backend for mobile apps
 
-![hola]({{ .Site.BaseURL | relLangURL }}/images/vendor/useit.png)
+![hola](/images/vendor/useit.png)
 
 Due to the exceptional REST API automatically generated for your app, it becomes incredibly easy to develop mobile apps tailored to specific purposes. These mobile apps can effortlessly pull and push data to the Slingr app, effectively acting as a backend. As long as the mobile app can access the Slingr API, it can be either native or use HTML5.
 

@@ -1,4 +1,5 @@
 baseurl = "/"
+relativeURLs = true
 canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
