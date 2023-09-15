@@ -7,7 +7,7 @@ enableGitInfo = false
 enableRobotsTXT = true
 paginate = 7
 rssLimit = 10
-theme = "my-doks-theme"
+theme = Doks
 
 # Multilingual
 defaultContentLanguage = "en"
