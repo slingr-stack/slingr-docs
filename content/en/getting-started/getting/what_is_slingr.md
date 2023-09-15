@@ -31,7 +31,7 @@ Finally, everything happens on the cloud, eliminating the need for you to set up
 
 **`Slingr offers an end-to-end cloud solution.`**
 
-## Highlights
+## **Highlights**
 
     - Focus on solving business problems instead of technical issues.
     - Increase your productivity to create cloud apps.
@@ -41,7 +41,7 @@ Finally, everything happens on the cloud, eliminating the need for you to set up
     - Easily evolve your apps as your business does.
     - End-to-end cloud solution, from development to your end users.
 
-## How It Works
+## **How it works**
 
 As explained before, you need to define your data model and business rules in the builder. The app runtime will then use this definition to execute the specified actions and conditions.
 
@@ -69,7 +69,7 @@ The idea is that you only need to take care of the problems you need to solve, i
 
 This is a highly simplified example to demonstrate the basics of how Slingr works, but you can achieve much more powerful functionalities with it. In the next section, we will describe a few use cases.
 
-## Use Cases
+## **Use cases**
 ---
 
 ### Create an app to support your business
