@@ -11,43 +11,48 @@ menu:
 toc: true
 weight: 80
 ---
-Flows are essentially a set of steps and connections between them with a particular direction, that’s why it is important to know how to connect two steps with each other. Connections in the flow designer are made by dragging the connectors from a source **connection's endpoints** to a target step or a target **connection's endpoint**. Connection's endpoints are the small colored squares on the edges of the steps, and they will only be visible after they are dropped into the canvas. Different steps have different connection's endpoints, witch results in different type of connections able to achieve.
 
-### Connection types
-There are three type of possible connection to be made:
+Flows consist of a sequence of steps interconnected in a specific direction. It's crucial to understand how to establish connections between these steps. In the flow designer, connections are created by dragging connectors from a source step's endpoints to a target step or a target connection's endpoint. The connection's endpoints are the small colored squares located at the edges of the steps. They become visible once they are dragged onto the canvas. Different steps have different connection endpoints, leading to various types of connections.
 
-- **Regular** connections: represented by a **green** arrows. They will set the order of execution of the different instructions each step represent.
-- **Error** connections: represented by **red** arrows. If the execution a certain step failed, the next step in the flow execution will be the one connected with this error connector instead.
-- **Else** connections: represented by a **purple** arrow. Those are only available in the condition steps. If the condition set in this step is not met, the next step in the flow execution will be the one connected with this else connector instead.
+## **Connection types**
 
-### Connection's endpoint types
-There are four types of connection's endpoints:
+There are three types of connections that can be established:
 
-- **Green** connection's endpoints: located in the right or some time bottom side of all steps (except for the “end” step). Dragging a connection from one of those and dropping it in a target step will connect them as a **normal connection**.
+- **`Regular connections`**: Represented by green arrows, these connections define the execution order of the different instructions represented by each step.
 
-![Alt text](/images/vendor/flows/regular_connection.gif)
+- **`Error connections`**: Indicated by red arrows, error connections come into play when a certain step fails. In such cases, the next step in the flow execution will be the one connected to this error connector.
 
-- **Red** connection's endpoints: located on the bottom side of some steps. Dragging a connection from one of those and dropping it in a target step will connect them as an **error connection**.
+- **`Else connections`**: Marked with purple arrows, else connections are only available in conditional steps. If the condition set in this step is not met, the next step in the flow execution will be the one connected to this else connector.
 
+## **Connection endpoint types**
 
-![Alt text](/images/vendor/flows/error_connection.gif)
+There are four types of connection endpoints:
 
-- **Else** connection's endpoints: located on the bottom side of `Condition` type steps. Dragging a connection from one of those and dropping it in a target step will connect them as an **else connection**.
+- **`Green connection endpoints`**: Located on the right or sometimes the bottom side of all steps (except for the "end" step). Dragging a connection from one of these endpoints and dropping it onto a target step will establish a normal connection.
 
-![Alt text](/images/vendor/flows/else_connection.gif)
+![Regular Connection](/images/vendor/flows/regular_connection.gif)
 
-- **Target** connection's endpoints: located on the left side of group containers steps. **Dropping** a connection **to** one of those will connect them. Connection could be regular, error, or else  depending on the **source connection endpoint**
+- **`Red connection endpoints`**: Positioned on the bottom side of certain steps. Creating a connection from one of these endpoints and connecting it to a target step will create an error connection.
 
-![Alt text](/images/vendor/flows/target_connection.gif)
+![Error Connection](/images/vendor/flows/error_connection.gif)
+
+- **`Else connection endpoints`**: Found on the bottom side of **`Condition`** type steps. Connecting a connection from one of these endpoints to a target step will establish an else connection.
+
+![Else Connection](/images/vendor/flows/else_connection.gif)
+
+- **`Target connection endpoints`**: Situated on the left side of group container steps. To establish a connection, drop it onto one of these endpoints. The connection can be regular, error, or else, depending on the source connection endpoint.
+
+![Target Connection](/images/vendor/flows/target_connection.gif)
 
 {{< notes type="note">}}
-Connection targets, such as regular steps or target connection's endpoints will display a dashed outline border when a connection is being dragged on top of them.
+Connection targets, such as regular steps or target connection's endpoints, will display a dashed outline border when a connection is being dragged on top of them.
 {{< /notes >}}
 
-### Deleting a connection
-in order to delete a connection, you just need to press click on the connector and a delete button will appear. By pressing click on that button, the connection will be deleted.
+## **Deleting a connection**
 
-![Alt text](/images/vendor/flows/deleting_connection.gif)
+To delete a connection, simply click on the connector, and a delete button will appear. By clicking on that button, the connection will be deleted.
+
+![Deleting a Connection](/images/vendor/flows/deleting_connection.gif)
 
 
 

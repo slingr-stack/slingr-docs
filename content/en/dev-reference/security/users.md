@@ -12,91 +12,73 @@ toc: true
 weight: 40
 ---
 
+To access the app, whether through the UI or the REST API, you must possess a valid user account created within the app. Alternatively, you can create an account through an [Identity Provider]({{<ref "/dev-reference/security/single-sign-on.md">}}).
 
-In order to use the app (either through the UI or the REST API) you must have a valid user created
-in the app (or create one through an [Identity provider]({{site.baseurl}}/app-development-security-single-sign-on.html)).
+User records are maintained within the system entity **`System > Users`**. This entity is generated and managed by the platform. While the metadata associated with this entity cannot be altered, it can be extended through custom configurations such as entity fields and actions.
 
-Users records are hold by the system entity `System > Users`. This entity is created and managed by the platform. Metadata
-generated for this entity can not be changed but it can be extended by adding custom configuration like entity fields 
-and actions. 
+User management can be performed from various locations. In the app builder, user management is available under **`Security > Users`**. Within the app monitor, this function resides in the **`Users`** section. Additionally, during app runtime, users with sufficient permissions can manage users using the **`Manage Users`** menu item in the secondary menu.
 
-Users can be managed from different places. In the app builder you can manage user in section 
-`Security > Users`, in the app monitor this can be done in section `Users`, while in the app runtime it
-is also possible to manage users for users with enough permissions using the menu item `Manage users`
-in the secondary menu.
+User permissions and authentication settings are determined by the groups to which they belong. For further insights, please refer to the documentation on [Groups]({{<ref "/dev-reference/security/groups.md">}}).
 
-Permissions and authentication settings for users are based on the groups they belong to. Please check 
-the documentation for [Groups]({{site.baseurl}}/app-development-security-groups.html) for more information.
+## **User settings**
 
-## User's settings
-
-The following system user fields are created by default. It is possible also to create custom fields in this entity.
+The following system user fields are created by default. Furthermore, custom fields can be created within this entity.
 
 ### First name
 
-The first name of the user.
+Refers to the user's first name.
 
 ### Last name
 
-The last name of the user.
+Represents the user's last name.
 
 ### Email
 
-The email of the user. It must be unique in the app and notifications will be sent to this address,
-so make sure it is a valid one.
+Denotes the user's email address. This email must be unique within the app, and notifications will be dispatched to this address. Therefore, it's imperative to ensure the email provided is valid.
 
-Keep in mind that some identity providers might use the email address to match users.
+It's worth noting that certain identity providers might utilize the email address for user identification.
 
 ### Send welcome email
 
-This flag is only available when creating a new user. If set a notification will be sent to
-the user with instructions to login.
+This flag is exclusively available during the creation of a new user. When activated, a notification containing login instructions is dispatched to the user.
 
 ### Authentication
 
-Settings that are related to the authentication of user sessions.
+This section pertains to settings associated with user session authentication.
 
 #### Password
 
-This is the password used by the user to login using the default Slingr identity provider.
+This refers to the password utilized by the user to log in using the default Slingr identity provider.
 
-When creating a new user it is possible to set the flag `Generate password` to generate
-a password automatically.
+When creating a new user, the **`Generate Password`** flag can be selected to automatically generate a password.
 
-#### Two factor authentication
+#### Two-Factor authentication
 
-Two Factor Authentication is an extra layer of security that requires not only a password and username but also something 
-that only, and only, that user has on them, i.e. a piece of information only they should know or have immediately to hand 
-- such as a physical token.
+Two-Factor Authentication adds an extra layer of security, necessitating not just a password and username, but also a unique piece of information known solely to the user. This could be a physical token, for instance.
 
-The user can enable this feature from its own profile and scan the QR code generated using Google Authenticator
-from its mobile phone. Also the phone number is required in order to recover the code by SMS if user change its mobile. 
+Users can activate this feature within their own profiles by scanning the QR code generated using Google Authenticator on their mobile devices. Additionally, a phone number is required to enable SMS-based recovery of the authentication code, in case the user changes their mobile device.
 
 ### Groups
 
-These are the groups the user belongs to. There must be one and only one primary group.
+This section displays the groups to which the user belongs. Each user must have one and only one primary group.
 
 ### Identity providers
 
-These are the identity providers configured for the user. It is possible to add or remove
-identity providers as well as edit the external ID for each of them.
+This section showcases the identity providers configured for the user. You can add or remove identity providers, and also modify the external ID associated with each provider.
 
-Keep in mind that some identity providers could be configured so they can be added automatically
-to a user. See [Single sign on]({{site.baseurl}}/app-development-security-single-sign-on.html) 
-for more information.
+It's important to be aware that some identity providers might be configured for automatic addition to a user. For more details, consult [Single Sign-On]({{<ref "/dev-reference/security/single-sign-on.md">}}).
 
-## Operations
+## **Operations**
 
 ### Reset password
 
-If a user forgets its password it is possible to reset it using this operation. The temporary
-password will be generated and sent to the user, who will need to change it during the first
-login.
+In the event of a user forgetting their password, this operation can be employed to reset it. A temporary password will be generated and sent to the user, who will be prompted to change it during their first login.
 
-### Deactive
+### Deactivate
 
-Makes a user inactive. An inactive user cannot login or use the app, but will still be there.
+This operation renders a user account inactive. An inactive user cannot log in or access the app, but their account information remains intact.
 
 ### Activate
 
-Reactivates a user that is inactive.
+Reactivates an inactive user account, granting them access to the app once again.
+

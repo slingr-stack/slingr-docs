@@ -12,177 +12,315 @@ toc: true
 weight: 41
 ---
 
-Identity provides allow users to login into your app without having to sign up. Instead they can use
-an existing account in one of the supported identity providers.
+Identity providers enable users to access your app without requiring them to create new accounts. Instead, users can utilize their existing accounts from supported identity providers to sign in.
 
-For example, if you enable Slack as an identity provider, a user with a Slack account will be able
-to sign into your app with that user (of course you can define some settings to restrict who can do
-it).
+For instance, enabling Slack as an identity provider permits users with Slack accounts to access your app. However, specific settings can be configured to limit access.
 
-Below are the supported identity providers.
+Listed below are the currently supported identity providers.
 
-## Common options for all identity providers
+## **Shared options for all identity providers**
 
-These options are available to all identity providers.
+These options are accessible to all identity providers.
 
 ### Label
 
-This is what the button in the login page will say. Usually you will want to have something like
-`Login with Slack!` so the user understands it is possible to login using Slack credentials.
+This label will be displayed on the login page button. A label like **`Login with Slack!`** provides clarity that users can sign in using Slack credentials.
 
 ### Name
 
-This is the internal name of the identity provider. It cannot hold special characters or spaces.
-
-If you were using the name of the identity provider in scripts or the REST API, you might need
-to make some manual adjustments if you change the name.
+This internal identity provider name must not contain special characters or spaces. If used in scripts or the REST API, a manual update may be required if the name is altered.
 
 ### Icon
 
-This is the icon that will be displayed in the button in the login screen.
+This icon is showcased on the login button within the login screen. A square icon with a recommended minimum size of 64x64 pixels is advised.
 
-It should be square and at least 64x64 is recommended.
+### Allow user creation
 
-### Allow to create user
+When enabled, users without accounts attempting to sign in through the identity provider will trigger new user creation within the app. When disabled, users must already have accounts in the app.
 
-If this flag is set and a user without an account tries to sign in using the identity
-provider, a new user will be created in the app.
+### Allow user data update
 
-If this flag is unset, then the user must already exist in the app.
+If this option is active, user information will be updated with data from the identity provider upon sign-in. When inactive, user creation will occur, but no modifications will be made to user information in the app.
 
-### Allow to update user data
+### Allow provider addition
 
-If this flag is set, when a user signs in through the identity provider, the information
-of the user will be updated using what's coming from the identity provider. Otherwise
-once the user is created, access will be given but the user won't be modified at all
-in the app.
+Enabling this option automatically adds an identity provider when a user attempts to sign in with it. If disabled, manual allowance is necessary.
 
-### Allow to add provider
+<br>
 
-If this flag is set, when a user tries to sign in through the identity provider but
-it is not configured as one of the valid identity providers for the user, it will be
-added automatically.
+---
 
-If this flag is unset, you must manually allow the identity provider to the user.
+## **Google**
 
-## Slack
+The Google identity provider enables users with Google accounts to log in to your application.
 
-The Slack identity provider allows Slack users to login to your app.
+### Service account of google
 
-### Allow to login with any team
+To generate a service account in Google, follow these steps:
 
-Indicates which Slack users can login. If this flag is set, any user will be able to do it.
-If not, then it is possible to define a list of teams that will be allowed. Here you need
-to put the team id, not the domain.
+1. Go to the Google Cloud console and log in as a super administrator.
+2. Create a project in the Google Cloud console.
+3. Activate the APIs for the service account.
+4. Create a service account in the Google Cloud console.
+5. Assign roles to the service account to provide access to GCP resources.
 
-In order to get the **team id** you can use the [Web API](https://api.slack.com/methods/auth.test/test) 
-set the request token in **Extra args** like `token=XYZ123`. For more information about how obtain a token read 
-[Legacy tokens](https://api.slack.com/custom-integrations/legacy-tokens) from official documentation.
+### Client ID
 
-### Use default Slack application
+When you create a service account, a unique and permanent ID is automatically generated. A service account name is provided in the email address format: SA_NAME@PROJECT_ID.iam.gserviceaccount.com. This value serves as the Client ID that you need to configure in the Slingr app.
 
-If you don't want to go through the process of creating a Slack application, you can use the
-default one provided by Slingr.
+### OAuth redirect URI
 
-The main reason to create your own Slack application is that you can setup your logo and app
-name there so when users sign in with Slack they will see your app requesting permissions.
+The OAuth redirect URI is the URI you need to configure in your Google Cloud console, in the same Google service account you created earlier. The standard format is: **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/google/<providerName>/consumer`**.
 
-If you decide not to use the default Slack application your will need to provide the following
-settings:
+### Default user group
 
-- `Client ID`: this is the client ID of the Slack application to use.
-- `Client secret`: this is the client secret of the Slack application to use.
-- `Redirect URI`: this is the URI you need to configure in your Slack application.
+If it is allowed to create users when signing in through this identity provider, any new user created will be automatically assigned to this group.
 
-For more information about how to create a Slack application, please check the documentation
-at [Getting started with Slack apps](https://api.slack.com/slack-apps) and 
-[Sign in with Slack](https://api.slack.com/docs/sign-in-with-slack). Remember that you just
-need to create the app and copy the settings. The button to sign in is already implemented
-in Slingr!
+After configuring app settings in Slingr and applying the changes, a "Sign In" button will automatically appear on the login page of the app.
+
+When a user clicks the button, a popup will open, allowing the user to select their Google account to use for signing in.
+
+<br>
+
+---
+
+## **Slack**
+
+The Slack identity provider permits Slack users to log in to your app.
+
+### Allow login with any team
+
+This setting defines which Slack users can sign in. Enabling it allows any user to log in. Disabling it requires specifying a list of allowed teams using their IDs (not domains). The team ID can be obtained via the [Web API](https://api.slack.com/methods/auth.test/test) by setting the request token in **`Extra args`** as **`token=XYZ123`**. For further information, refer to [Legacy tokens](https://api.slack.com/custom-integrations/legacy-tokens) in the official documentation.
+
+### Use default slack application
+
+If you opt not to create a Slack application, the default one provided by Slingr can be used. However, creating a custom Slack application enables branding and personalized app names for users signing in with Slack.
+
+To use a custom Slack application, provide the following settings:
+
+- **`Client ID`**: ID of the custom Slack application.
+- **`Client Secret`**: Secret of the custom Slack application.
+- **`Redirect URI`**: URI configured in your custom Slack application.
+
+For details on creating a Slack application, consult the documentation at [Getting started with Slack apps](https://api.slack.com/slack-apps) and [Sign in with Slack](https://api.slack.com/docs/sign-in-with-slack). The sign-in button is pre-implemented in Slingr!
 
 ### Default group
 
-If it is allowed to create users when signing in through this identity provider, when the new
-user is created it will be assigned to this group by default.
+When new users are created via this identity provider, they will be assigned to this group by default.
 
-## Veritone
+<br>
 
-The Veritone identity provider allows Veritone aiWARE platform users to login into a Slingr app.
+---
 
-### Configure application in Veritone aiWARE platform side
-First, it is required to register the Slingr app in Veritone side. The following settings have to be configured:
+## **Veritone**
 
-- `Application label`: the used label for the Slingr app.
-- `URL`: the URL of the Slingr app. The standard is: `https://<appName>.slingrs.io`.
-- `OAuth2 Redirect URL`: The redirect URL in Slingr side in which the access code will be received. The standard is: 
-`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer`.
+The Veritone identity provider enables Veritone aiWARE platform users to sign in to a Slingr app.
 
-There are some other optional additional settings like `Application Description` and `Icon` that can be specified.
+### Configure application in veritone aiWARE platform
 
-For more information about how to create a Veritone aiWARE application, please check the documentation
-at [Veritone aiWARE docs](https://docs.veritone.com/).
+To register the Slingr app on the Veritone side, configure the following settings:
 
-### Configure identity provider in Slingr app side
-After registering the app in Veritone side, an `ID` and `OAuth2 Client Secret` will be provided. By using those settings it
-is necessary to create a identity provider record in the Slingr app with the following settings:
+- **`Application Label`**: Label for the Slingr app.
+- **`URL`**: URL of the Slingr app. Standard format: **`https://<appName>.slingrs.io`**.
+- **`OAuth2 Redirect URL`**: URL in Slingr where the access code will be received. Format: **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer`**.
 
-- `API URL`: this is the API URL to perform authentication. The production URL is `https://api.veritone.com`.
-- `Client ID`: this is the client ID of the Veritone application to be used during the single sign on flow.
-- `Client secret`: this is the client secret of the Veritone application to be used during the single sign on flow.
-- `Default group`:  when a new user is created it will be assigned to this group by default if user roles information 
-is not provided.
+Optional settings such as **`Application Description`** and **`Icon`** can also be specified.
+
+Refer to the [Veritone aiWARE docs](https://docs.veritone.com/) for guidance on creating a Veritone aiWARE application.
+
+### Configure identity provider in Slingr app
+
+After registering the app with Veritone, you'll receive an **`ID`** and **`OAuth2 Client Secret`**. Using these, create an identity provider record in the Slingr app with the following settings:
+
+- **`API URL`**: API URL for authentication. Production URL: **`https://api.veritone.com`**.
+- **`Client ID`**: Client ID of the Veritone application for single sign-on.
+- **`Client Secret`**: Client secret of the Veritone application for single sign-on.
+- **`Default Group`**: New users created through this identity provider will be assigned to this group by default unless user role information is provided.
 
 ### Users management
-It is allowed to create/update users when signing in through this identity provider. The following user attributes are going 
-to be synchronized between Slingr and Veritone: `id`, `first name`, `last name`, `email` and `roles`.
 
-After configuring app settings in Slingr a button to sign in is going to be automatically displayed in the login page of the app.
+Creating or updating users when signing in through this identity provider is permitted. Synchronized user attributes between Slingr and Veritone include **`id`**, **`first name`**, **`last name`**, **`email`**, and **`roles`**.
 
-## SAML
+Once Slingr app settings are configured, a sign-in button will automatically appear on the app's login page.
 
-SAML is an open-standard data format for exchanging authentication and authorization data between
-parties (see [Security Assertion Markup Language](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)).
+<br>
 
-This is commonly used in corporate environments. This way you can keep managing users centrally
-using your existing tools and your users can just jump to the Slingr app without having to login
-again.
+---
+
+## **SAML**
+
+SAML is an open-standard data format for exchanging authentication and authorization data between parties (see [Security Assertion Markup Language](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)).
+
+SAML is commonly used in corporate environments, allowing users to access your Slingr app without needing to log in again, thanks to centralized user management.
 
 ### Login URL
 
-This is the URL to sign in. It must be provided by the SAML identity provider.
+Provide the URL for user sign-in, provided by the SAML identity provider.
 
 ### Change password URL
 
-This is the URL t change the password of a user. It must be provided by the SAML identity provider.
+Provide the URL for changing user passwords, provided by the SAML identity provider.
 
 ### Certificate
 
-This is the certificate to validate tokens are valid. Just copy the content of the certificate
-as it is.
-
-It must be provided by the SAML identity provider.
+Supply the certificate used to validate the authenticity of tokens. Copy the certificate content as-is.
 
 ### Synchronize only external groups
 
-If this flag is set, only groups added by the identity provider in the past will be synced. For example
-if the user belongs to group `A`, `B` and `C`, but only `C` was added by the identity provider, then if the 
-identity provider sends group `D` for that user, groups `A` and `B` won't be removed as they were not added 
-by the identity provider.
+Enabling this option synchronizes only the groups added by the identity provider in the past. If a user belongs to groups **`A`**, **`B`**, and **`C`**, but only **`C`** was added by the identity provider, adding group **`D`** won't remove **`A`** and **`B`**.
 
 ### Attribute mapping
 
-This indicates how the mapping of attributes from the identity provider to the user should be done.
+Attribute mapping specifies how attributes from the identity provider map to user attributes. The default mapping assumes the presence of the following attributes:
 
-If you select the default mapping, we will assume the following attributes are present:
+- **`userId`**: Immutable ID from the identity provider (used as the user's external ID).
+- **`userEmail`**: User's email in the identity provider.
+- **`userFirstName`**: User's first name in the identity provider.
+- **`userLastName`**: User's last name in the identity provider.
+- **`userGroups`**: Groups to which the user belongs in the identity provider, separated by commas.
 
-- `userId`: immutable ID from identity provider. This will be set as the external ID of the user for 
-  this identity provider.
-- `userEmail`: email of the user in the identity provider.  
-- `userFirstName`: first name of the user in the identity provider. 
-- `userLastName`: last name of the user in the identity provider. 
-- `userGroups`: groups that user belongs to in the identity provider. It is a list of group names
-  separated by comma. 
+For custom mapping, a script context is provided. Parameters include `idpAttributes` for attributes from the SAML identity provider. The script should return an object containing attributes such as **`userId`**, **`userEmail`**, **`userFirstName`**, **`userLastName`**, and **`userGroups`**.
 
 If you decide to provide a custom mapping, here is the context of the script:
 
-{{< js_script_context context="samlAttributesMappingScript">}}
+  ##### Parameters
+
+  Name|Type|Description|
+  ---|---|---
+  idpAttributes|object|This object contains all the attributes comming from the SAML identity provider. For example if the identity providers sends an attribute with name firstName, you should be able to access it using idpAttributes.firstName.
+
+  ##### Returns
+
+  **`object`** - The script should return an object with the following attributes:
+
+  - **`userId`**: immutable ID from identity provider. This will be set as the external ID of the user for this identity provider.
+  - **`userEmail`**: email of the user in the identity provider.
+  - **`userFirstName`**: first name of the user in the identity provider.
+  - **`userLastName`**: last name of the user in the identity provider.
+  - **`userGroups`**: groups that user belongs to in the identity provider. It is a list of group names separated by comma.
+
+  ##### Samples
+
+  ```js
+  // this is a mapping script where some values are encoded in Base64 
+  var Base64 = {
+      _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+      check: function(s) {
+          var endsWith = function(s, suffix) {
+              return s.indexOf(suffix, this.length - suffix.length) !== -1;
+          };
+          var base64Matcher = new RegExp("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})([=]{1,2})?$");
+          return endsWith(s, '=') && base64Matcher.test(s);
+      },
+      encode: function(input) {
+          var output = "";
+          var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+          var i = 0;
+          input = Base64._utf8_encode(input);
+          while (i < input.length) {
+              chr1 = input.charCodeAt(i++);
+              chr2 = input.charCodeAt(i++);
+              chr3 = input.charCodeAt(i++);
+              enc1 = chr1 >> 2;
+              enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+              enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+              enc4 = chr3 & 63;
+              if (isNaN(chr2)) {
+                  enc3 = enc4 = 64;
+              } else if (isNaN(chr3)) {
+                  enc4 = 64;
+              }
+              output = output + this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) + this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+          }
+          return output;
+      },
+      decode: function(input) {
+          var output = "";
+          var chr1, chr2, chr3;
+          var enc1, enc2, enc3, enc4;
+          var i = 0;
+          input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+          while (i < input.length) {
+              enc1 = this._keyStr.indexOf(input.charAt(i++));
+              enc2 = this._keyStr.indexOf(input.charAt(i++));
+              enc3 = this._keyStr.indexOf(input.charAt(i++));
+              enc4 = this._keyStr.indexOf(input.charAt(i++));
+              chr1 = (enc1 << 2) | (enc2 >> 4);
+              chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+              chr3 = ((enc3 & 3) << 6) | enc4;
+              output = output + String.fromCharCode(chr1);
+              if (enc3 != 64) {
+                  output = output + String.fromCharCode(chr2);
+              }
+              if (enc4 != 64) {
+                  output = output + String.fromCharCode(chr3);
+              }
+          }
+          output = Base64._utf8_decode(output);
+          return output;
+      },
+      _utf8_encode: function(string) {
+          string = string.replace(/\r\n/g, "\n");
+          var utftext = "";
+          for (var n = 0; n < string.length; n++) {
+              var c = string.charCodeAt(n);
+              if (c < 128) {
+                  utftext += String.fromCharCode(c);
+              }
+              else if ((c > 127) && (c < 2048)) {
+                  utftext += String.fromCharCode((c >> 6) | 192);
+                  utftext += String.fromCharCode((c & 63) | 128);
+              }
+              else {
+                  utftext += String.fromCharCode((c >> 12) | 224);
+                  utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+                  utftext += String.fromCharCode((c & 63) | 128);
+              }
+          }
+          return utftext;
+      },
+      _utf8_decode: function(utftext) {
+          var string = "";
+          var i = 0;
+          var c = c1 = c2 = 0;
+          while (i < utftext.length) {
+              c = utftext.charCodeAt(i);
+              if (c < 128) {
+                  string += String.fromCharCode(c);
+                  i++;
+              }
+              else if ((c > 191) && (c < 224)) {
+                  c2 = utftext.charCodeAt(i + 1);
+                  string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+                  i += 2;
+              }
+              else {
+                  c2 = utftext.charCodeAt(i + 1);
+                  c3 = utftext.charCodeAt(i + 2);
+                  string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+                  i += 3;
+              }
+          }
+          return string;
+      }
+  };
+
+  var attributes = {};
+  attributes['userId'] = idpAttributes['userId'];
+  if (Base64.check(idpAttributes['userFirstName'])) {
+      attributes['userFirstName'] = Base64.decode(idpAttributes['userFirstName']);
+  } else {
+      attributes['userFirstName'] = idpAttributes['userFirstName'];
+  }
+  if (Base64.check(idpAttributes['userLastName'])) {
+      attributes['userLastName'] = Base64.decode(idpAttributes['userLastName']);
+  } else {
+      attributes['userLastName'] = idpAttributes['userLastName'];
+  }
+  attributes['userEmail'] = idpAttributes['userEmail'];
+  attributes['userGroups'] = 'Default';
+  return attributes;
+  ```
+  <br>
+
+  ---

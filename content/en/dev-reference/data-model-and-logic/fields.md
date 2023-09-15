@@ -12,491 +12,562 @@ toc: true
 weight: 23
 ---
 
-Fields are the smallest unit of data in Slingr apps. They are mainly used to define the
-structure of entities, but they are also used in other places like parameters in actions.
+Fields serve as the fundamental units of data in Slingr apps. They primarily define the
+structure of entities, but also find utility in other contexts, such as parameters within actions.
 
-The most important property of a field is the type, as it will define the available options,
-rules, display options, UI for editing and reading, etc. [You can find more information
-about types here]({{<ref "/dev-reference/field-types/overview.md">}}).
+A pivotal attribute of a field is its type, which determines the available options, rules,
+display preferences, and user interfaces for editing and reading. [More information about
+types is available here]({{<ref "/dev-reference/field-types/overview.md">}}).
 
-Settings for fields can be organized in this way:
+Field settings are organized as follows:
 
-- **Basic settings**: these are basic settings that all fields need. They indicate the
-  name, label, type and multiplicity. All these settings are required.
-- **Rules**: these settings affect how value is validated and how it is stored in the
-  database. For example if you set a field as sensitive the value will be encrypted in
-  the database and won't be logged. It could also be something specific for the type, like
-  the minimum and maximum value of an integer field.
-  - **General rules**: these are settings shared by all types. Some of them might not be
-    available to some specific types though.
-  - **Type rules**: these are specific for the type. Each type will define different
-    rules. For example the text type has rules to define the minimum and maximum length
-    of the string.
-- **Display options**: display options, in contrast with rules, do not affect validation
-  of values and how they are stored in the database. They only change how the field will
-  be displayed in the UI.
-  - **General display options**: these general settings affect how the field is rendered
-    in the UI, but do not affect the value at all. For example you can define how the
-    label should look like, if value has to be indented, etc., but won't say anything about
-    how values of the field are displayed.
-  - **Type display options**: these settings affect how the value is rendered. For example
-    for a relationship field it is possible to indicate if the reference should be displayed
-    as a link or, during edition, if you want to use a dropdown or boxes to pick a new
-    value.
-    
-To know more about type-specific settings, please check the [Types]({{<ref "/dev-reference/field-types/overview.md">}})
-documentation.
+- **`Basic Settings`**: These foundational settings are essential for all fields. They encompass
+  the name, label, type, and multiplicity. All of these settings are mandatory.
+- **`Rules`**: These settings influence value validation and storage in the database. For instance,
+  designating a field as sensitive will result in encrypted database storage and exclusion from logs.
+  There might also be type-specific rules, such as defining minimum and maximum values for an integer field.
+  - **`General Rules`**: These settings are universal across all types, though certain types may lack some options.
+  - **`Type-Specific Rules`**: These settings are tailored to each type. For instance, text fields offer rules
+    for specifying the minimum and maximum string length.
+- **`Display Options`**: Unlike rules, display options don't impact value validation or database storage.
+  They focus solely on the field's appearance in the user interface.
+  - **`General Display Options`**: These overall settings influence how the field is visually presented,
+    without affecting its value. For example, you can define label aesthetics and value indentation,
+    but these settings won't dictate how field values are displayed.
+  - **`Type-Specific Display Options`**: These settings determine how the field's value is shown. For instance,
+    in the case of a relationship field, you can choose to display the reference as a link. During editing,
+    you might opt for a dropdown or selection boxes to choose a new value.
 
-## Basic settings
+For insights into type-specific settings, please refer to the [Types documentation]({{<ref "/dev-reference/field-types/overview.md">}}).
+
+## **Basic settings**
 
 ### Label
 
-This is the human-readable name of the field. This is what will be displayed in the UI
-when rendering the field.
+This represents the human-readable field name. It's what appears in the UI when the field is displayed.
 
-It can be override using display options in case you need to show something different
-in some specific places.
+Display options can override this label, useful for showing distinct labels in specific contexts.
 
 ### Name
 
-This is the internal name of the field and it will be used in the REST and Javascript 
-APIs, as well as in the database when it is a field inside an entity.
+This is the internal field name, used in the REST and JavaScript APIs, as well as for database storage within entities.
 
-The name cannot contain special characters or spaces. Only letters and numbers.
+The name must not contain special characters or spaces; only letters and numbers are allowed.
 
-One thing to keep in mind is that changing the name of the field could have some side
-effects:
+Keep in mind that altering the field name can have ramifications:
 
-- **Database**: if the field was used inside an entity, a data refactoring will be
-  triggered when changes are pushed or synced. If the entity had a lot of records this
-  renaming could take a while.
-- **REST API**: if external apps were using this field through the REST API, these apps
-  will need to be updated as the field name will be different.
-- **Scripts**: if there were scripts in the app referencing this field in queries or
-  fetching its value, those scripts need to be updated manually. In the near feature
-  there will be tools to help on these cases.
+- **`Database`**: Renaming a field within an entity triggers data refactoring during pushes or syncs. For entities
+  with substantial records, this renaming process might take some time.
+- **`REST API`**: External apps utilizing this field through the REST API will require updates, as the field name changes.
+- **`Scripts`**: If any app scripts reference this field in queries or for fetching values, manual updates to these scripts
+  are necessary. Future tools are anticipated to aid in such cases.
 
 ### Type
 
-The type of the field indicates what can be stored in that field as well as how the field
-will be rendered. Each type has its own rules and display options.
+The field's type determines the allowable content and its visual rendering. Each type is associated with specific rules and display options.
 
-To know which types are available and their features, please check the 
-[Types]({{<ref "/dev-reference/field-types/overview.md">}}) documentation.
+To explore available types and their features, please refer to the [Types documentation]({{<ref "/dev-reference/field-types/overview.md">}}).
 
-If you change the type of a field, when pushing or syncing changes the app will try to
-automatically convert existing values to the new type. The rule during conversions is 
-that the original value will be converted to its string representation, and the new type
-will try to parse that string representation. If the parsing fails, the value will be 
-set to `null`.
+When altering the field type, during pushes or syncs, the app will attempt to automatically convert existing values to the new type. The conversion rule is as follows: the original value will be transformed into its string representation, which will then be parsed by the new type. If parsing fails, the value will be set to **`null`**.
 
-It is important to notice that changing the type of the field might have side effects:
+Note that changing a field's type may result in side effects:
 
-- **Database**: if the field was used inside an entity, it is possible that a data refactoring
-  will be triggered when changes are pushed or synced. This is to convert the value to
-  the new type.
-- **REST API**: if external apps were using this field through the REST API, these apps
-  might need to be updated because the format of the field might have changed. For example if
-  the field types was changed from integer to text, the REST API will return a string instead of
-  a number.
-- **Scripts**: if there were scripts in the app referencing this field it might be needed to
-  update the them if it was using things specific for that type, like wrapper features.
+- **`Database`**: If the field was used within an entity, modifying its type might trigger data refactoring to adapt the value to the new type.
+- **`REST API`**: External apps utilizing this field via the REST API may need updates due to potential changes in the field's format. For instance, if the field type shifts from integer to text, the REST API will return a string instead of a number.
+- **`Scripts`**: If there were scripts in the app referencing this field, updates might be necessary, especially if the scripts relied on type-specific features.
 
 ### Multiplicity
 
-Indicates if the field can hold one or many values. For example you might have a field
-called `emails` that can hold many email addresses in case the user has more than one.
+Multiplicity indicates whether the field can store one or multiple values. For instance, you could have an **`emails`** field capable of holding multiple email addresses for users with more than one email.
 
-You can change the multiplicity of an existing field and the app will refactor existing
-records automatically. If a field is changed from single-valued to multi-valued, existing 
-value will be set as the first value in the field. On the other hand, if the multiplicity
-is changed from multi-valued to single-valued, only the first value will be kept, discarding 
-any additional value of the field.
+Changing the multiplicity of an existing field triggers automatic refactoring of existing records. If a field transitions from single-valued to multi-valued, the existing value becomes the first value in the field. Conversely, when shifting from multi-valued to single-valued, only the first value remains, discarding any additional values.
 
-It is important to notice that changing the multiplicity of the field might have side effects:
+Note that changing field multiplicity might entail side effects:
 
-- **Database**: if the field was used inside an entity, a data refactoring will be triggered 
-  when changes are pushed or synced. This is to change the structure.
-- **REST API**: if external apps were using this field through the REST API, these apps
-  will need to be updated because the structure of the field will change.
-- **Scripts**: if there were scripts in the app referencing this field it will be needed to
-  update the them if it they were assuming some multiplicity.
+- **`Database`**: If the field was used within an entity, alterations to multiplicity may trigger data refactoring during pushes or syncs to adjust the structure.
+- **`REST API`**: External apps relying on the field through the REST API will require updates, as the field structure will change.
+- **`Scripts`**: Scripts referencing this field in the app may need updating if they make assumptions about the field's multiplicity.
 
-## General rules
+## **General rules**
 
 ### Default value
 
-It is possible to define a default value that will be set to the field. There are different rules
-based on where the field stands:
+You can set a default value for a field. The behavior varies based on the context:
 
-- **Entity field**: the default value will be set only when creating a new record, which means it
-  won't have any effect when editing an existing record.
-- **Action's parameter**: the default value will be set only if the parameter is empty.
+- **`Entity Field`**: The default value applies solely when creating a new record; it won't affect editing existing records.
+- **`Action's Parameter`**: The default value takes effect only if the parameter is empty.
 
-Usually changing this settings doesn't trigger any refactoring and only affects new records. However
-if the field is also set as required or this is a new field field we are adding, a refactoring could 
-be trigger where it will set the default value for all records where this field is empty or added.
+Usually, changing this setting doesn't trigger any refactoring and mainly affects new records. However, if the field is also marked as required or if it's a newly added field, a refactoring might occur to assign the default value to all records where this field is empty or added.
 
-Default value could be set in two ways:
+Default values can be defined in two ways:
 
-- `Value`: a fixed value could be selected as the default value.
-- `Script`: in this case you can provide a script to calculate the default value. This is the
-  context of the script:
+- **`Value`**: You can choose a fixed value as the default.
+- **`Script`**: Alternatively, you can provide a script to calculate the default value. Here's the script context:
 
-{{< js_script_context context="requiredScript">}}
+    ---
+
+    ##### Parameters
+
+    |Name|Type|Description|
+    |---|---|---|
+    |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This record is linked to the operation at hand. If the default value is for an entity field, this record encompasses the field. It's important to recognize that, in this context, the default value is generally computed before record creation. As a result, many fields might be empty in this phase. The only scenario in which other fields are populated is when introducing a new field or when the required flag has been added. Thus, during default value calculation, other fields might already be present.<br>If the field serves as an action parameter, this record pertains to the ongoing execution of the action. In such cases, the record contains values and is notably more informative.|
+    |parentField|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This variable exclusively comes into play when dealing with a field nested within another field. Its behavior aligns with the rules applicable to variables associated with records or actions (similar principles apply whether it's an action parameter or an entity field).<br>The variable takes the form of a **`sys.data.Record`** object, albeit with a distinction: the record's root is set to the encompassing nested fields. This arrangement facilitates access to fields within the nested group. For instance, you can utilize **`parentField.field('fieldA')`** instead of resorting to **`record.field('nested.fieldA')`** or **`action.field('nested.fieldA')`**. This feature proves especially invaluable when nested fields are multi-valued, as you are not required to know the index.|
+    |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This variable becomes accessible exclusively when the field serves as an action parameter. It grants access to other parameters, though it's important to note that these parameters might be devoid of content, unless an initial value has been designated.|
+
+
+    ##### Returns
+
+    **`any or any[]`** - You should return the calculated value in the format used in the Javascript API for the type of the field. If the field is multi-valued, you should return an array.
+
+    ##### Samples
+
+    ```js
+    // if current user has an email with 'slingr.io', set this field to 'true'
+      
+    let flag = false;
+    const currentUser = sys.context.getCurrentUserRecord();
+    if (currentUser.field('email').val().indexOf('@slingr.io') != -1) {
+      flag = true;
+    }
+    return flag;
+      
+    ```
+    <br>
+    
+    ---
 
 ### Required
 
-This flag allows to set a field as required. When a field is required it must have a value. The value
-could be set explicitly or it can use the default value. If a value is not provided for the field and
-it doesn't have a default value either, then a validation error will be thrown when trying to save
-the record.
+Enabling this flag designates a field as required. A required field necessitates a value. This value can be explicitly set or drawn from the default value. If no value is furnished for the field and no default value exists, an attempt to save the record will trigger a validation error.
 
-Possible options for the required flag are:
+The available choices for the required flag are as follows:
 
-- `Always`: the field will always be required.
-- `Script`: the field will be required if the evaluation of the script returns `true`. This is the
-  context for the script:
+- **`Always`**: The field is consistently obligatory.
+- **`Script`**: The field's requirement hinges on the script's evaluation yielding **`true`**. Here's the script's context:
 
-{{< js_script_context context="nestedFieldsLabelScript">}}
+    ---
 
+    ##### Parameters
 
-- `Expression`: the field will be required if the expression evaluates to `true`. You can find more
-  information in the documentation for [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}})
-- `Never`: the field will never be required. This is the default value.
+    |Name|Type|Description|
+    |---|---|---|
+    |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This record is linked to the ongoing operation. If the field resides within an entity field, this record corresponds to the container of that field.<br>In the case of a field serving as an action parameter, this record pertains to the execution of the action.|
+    |parentField|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This variable is exclusively accessible when the field is situated within a nested field. It operates based on the variable record or action, adhering to the same principles applicable to action parameters or entity fields.<br>The variable assumes the form of a **`sys.data.Record`** object. The key distinction is that the record's root is set to encompass the nested fields in which it resides. This configuration facilitates the retrieval of fields within the nested group. For instance, you can employ **`parentField.field('fieldA')`** as an alternative to **`record.field('nested.fieldA')`** or **`action.field('nested.fieldA')`**. This feature proves particularly valuable in cases involving multi-valued nested fields where index awareness might be absent.|
+    |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This variable is accessible solely when the field functions as an action parameter. It facilitates access to other parameters.|
+
+    ##### Returns
+
+    **`boolean`** - You should return **`true`** if the field must be required, **`false`** otherwise.
+
+    ##### Samples
+
+    ```js
+    // if 'numberOfExmployees' is bigger than 10, then this field is required
+    return record.field('numberOfEmployees').val() > 10;
+
+    ```
+    <br>
+    
+    ---
+
+- **`Expression`**: The field becomes required if the expression evaluates to `true`. For further details, consult the [Expressions documentation]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
+- **`Never`**: The field remains non-required. This is the default setting.
 
 ### Unique
 
-This flag indicates if the value should be unique for all records in the entity. If it set, then
-the app will enforce this validation.
+This flag indicates whether the value must be unique across all records in the entity. When activated, the app enforces this validation.
 
-Empty values won't be taken into account when checking if it is unique. This means there could be
-many records with this field empty.
+Empty values will not be considered when assessing uniqueness. Consequently, numerous records may possess an empty field.
 
-Enabling this flag will create an index with this field.
+Activating this flag generates an index with respect to this field.
 
-Keep in mind that the flag can be enabled even when there are duplicated values in existing record.
-You should take care of them manually.
+It's important to note that the flag can be enabled even if duplicated values exist in current records. Handling such cases of duplication will require manual intervention.
 
 ### Indexable
 
-If this flag is set, an index will be created for the field. This could be useful to improve performance in 
-cases where you need to query using this field and there are a lot of records in the entity.
+Upon enabling this flag, an index will be established for the field. This can prove beneficial for enhancing performance in scenarios where querying using this field is frequent and the entity contains a substantial number of records.
 
-Remember that the creation of indexes has some overhead on creates, updates, and deletes, as well on storage
-space, so you should make sure that setting the indexable flag is something that is really needed.
+Bear in mind that index creation introduces some overhead during record creation, updates, and deletions, as well as impacts storage requirements. Consequently, you should only set the indexable flag when it's genuinely necessary.
 
-Except you know beforehand which entities are going to have lots of records and you know how you are going 
-to query the data, we recommend to start without indexes and add them as performance issues are noticed.
+Unless you possess advance knowledge of which entities will amass numerous records and understand the anticipated data querying patterns, we recommend initially forgoing indexes and only introducing them as performance concerns emerge.
 
 ### Transient
 
-If this flag is set, values won't be stored in the database. However you can still do things with values
-in these fields during the processing of the record. For example if you have a listener when records are
-created, in the script of the listener you can use the value of this field to do something.
+When this flag is activated, values won't be permanently stored in the database. However, you can still manipulate the values within these fields during record processing. For instance, if you have a listener that triggers when records are created, you can utilize the value of this field in the listener's script to perform specific actions.
 
 ### Sensitive
 
-If this flag is set, additional care will be taken when handling the data on these fields:
+Activating this flag triggers enhanced precautions when handling data within these fields:
 
-- When we log data sent by users, we will mask fields set as sensitive data.
-- We will store these fields encrypted on the database.
-- When syncing data from prod to a different environment, we will obfuscate the data in these fields.
+- For user-sent data that's logged, fields marked as sensitive will be masked.
+- These fields will be encrypted in the database.
+- When data is synchronized from production to another environment, the data in these fields will be obfuscated.
 
-This flag can be used together with the transient one. For instance, it makes no sense avoid storing 
-the credit card in the database if we are logging it on plain text. In this case, when you set both flag, 
-data will be masked on logs and won't be stored nor synced.
+This flag can be used in conjunction with the transient flag. For instance, it's illogical to avoid storing credit card information in the database if it's being logged in plain text. In such cases, when both flags are set, the data will be masked in logs and won't be stored or synced.
 
-Marking a field as sensitive has some limitations though:
+However, designating a field as sensitive carries certain limitations:
 
-- Filtering only work for text fields and you have to search by exactly the same text (no partial matching).
-- Sorting won't work these fields.
+- Filtering only functions for text fields, and searches must match the exact text (no partial matching).
+- Sorting won't function for these fields.
 
-### Read/write access
+### Read/Write access
 
-Indicates when the field can be read and written. For example let's suppose you have the following fields:
+This attribute indicates when the field can be read from and written to. Consider the following scenario with fields:
 
-- `type` (choice field with options `a`, `b`, and `c`)
-- `subType` (only visible if `type` is `c`)
+- **`type`** (a choice field with options **`a`**, **`b`**, and **`c`**)
+- **`subType`** (visible only if **`type`** is **`c`**)
 
-In this case you want field `subType` to only show up when `type` is `c`, which can be achieved using a
-read/write access condition on the field `subType`.
- 
-If you need to define different access rules to read and write, you can uncheck the flag `Sync read/write`
-an you will be able to define a different condition for read and write. This is not a common use case,
-but might be needed.
+In this instance, you might want the **`subType`** field to only appear when **`type`** is set to **`c`**. This can be achieved using a read/write access condition on the **`subType`** field.
 
-Read/write access has the following options:
+If you require distinct access rules for reading and writing, you can uncheck the **`Sync read/write`** flag. This allows you to define separate conditions for read and write access. Although uncommon, such a configuration might be necessary.
 
-- `Always`: the field is always accessible.
-- `Script`: if the script returns `true` the field will be accessible, otherwise it won't be accesible.
-  This is the context of the script:
+The available read/write access options include:
 
-{{< js_script_context context="readWriteAccessScript">}}
+- **`Always`**: The field is perpetually accessible.
+- **`Script`**: When the script returns **`true`**, the field becomes accessible; otherwise, it remains inaccessible. Here's the script's context:
 
+    ---
 
-- `Expression`: the field will be accessible if the expression evaluates to `true`. You can find more
-  information in the documentation for [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}})
-- `Never`: the field will never be accessible. This makes sense only when you uncheck the flag 
-  `Sync read/write` and you set this option to either read or write.
+    ##### Parameters
 
-It is worth highlight that controlling access here is different than doing it through permissions. In this
-case rules will be applied to all users and there is no way to skip this rules, even from script. On the
-other side, permissions do not apply for developers and system users, and they are ignored in scripts as
-well.
+    |Name|Type|Description|
+    |---|---|---|
+    |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This record is linked to the ongoing operation. If the field resides within an entity field, this record corresponds to the container of that field.<br>In the case of a field serving as an action parameter, this record pertains to the execution of the action.|
+    |parentField|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This variable is exclusively accessible when the field is situated within a nested field. It operates based on the variable record or action, adhering to the same principles applicable to action parameters or entity fields.<br>The variable assumes the form of a **`sys.data.Record`** object. The key distinction is that the record's root is set to encompass the nested fields in which it resides. This configuration facilitates the retrieval of fields within the nested group. For instance, you can employ **`parentField.field('fieldA')`** as an alternative to **`record.field('nested.fieldA')`** or **`action.field('nested.fieldA')`**. This feature proves particularly valuable in cases involving multi-valued nested fields where index awareness might be absent.|
+    |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This variable is accessible solely when the field functions as an action parameter. It facilitates access to other parameters.|
+
+    ##### Returns
+
+    **`boolean`** - You should return **`true`**  if there is access to the field, **`false`** otherwise.
+
+    ##### Samples
+
+    ```js
+    // if 'numberOfExmployees' is bigger than 10, then this field is visible
+    return record.field('numberOfEmployees').val() > 10;
+    ```
+    <br>
+    
+    ---
+
+- **`Expression`**: The field becomes accessible if the expression evaluates to `true`. More information is available in the [Expressions documentation]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
+- **`Never`**: The field will never be accessible. This option is relevant only when the `Sync read/write` flag is unchecked and you've selected either the read or write option.
+
+It's worth highlighting that access control here differs from permission settings. In this context, rules apply universally to all users, and there's no way to bypass these rules, even via scripting. In contrast, permissions don't affect developers and system users and are similarly disregarded in scripts.
 
 ### Calculated value
 
-Some types allow to make the field calculated, which means the field will have a value calculate from
-other data and the user won't be able to set it manually.
+Certain types permit the field to be calculated, implying that the field's value will be derived from other data, and users won't be able to manually set it.
 
-There are two ways of calculating a value:
+Two approaches exist for calculating a value:
 
-- `Script`: in this case you can provide a script to calculate the value. This is the context of the script:
+- **`Script`**: In this scenario, you can furnish a script to compute the value. Here's the script's context:
 
+    ---
 
-{{< js_script_context context="readWriteAccessScript">}}
+    ##### Parameters
 
+    |Name|Type|Description|
+    |---|---|---|
+    |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This record is linked to the ongoing operation. If the field resides within an entity field, this record corresponds to the container of that field.<br>In the case of a field serving as an action parameter, this record pertains to the execution of the action.|
+    |parentField|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This variable is exclusively accessible when the field is situated within a nested field. It operates based on the variable record or action, adhering to the same principles applicable to action parameters or entity fields.<br>The variable assumes the form of a **`sys.data.Record`** object. The key distinction is that the record's root is set to encompass the nested fields in which it resides. This configuration facilitates the retrieval of fields within the nested group. For instance, you can employ **`parentField.field('fieldA')`** as an alternative to **`record.field('nested.fieldA')`** or **`action.field('nested.fieldA')`**. This feature proves particularly valuable in cases involving multi-valued nested fields where index awareness might be absent.|
+    |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This variable is accessible solely when the field functions as an action parameter. It facilitates access to other parameters.|
 
-- `Aggregate`: in this case you can calculate a value based on an aggregate query on other records. For
-  example you have a an entity `departments` and then `employees` with a field named `salary`. If you
-  want to have the average salary for each department you could add a field where the calculation is an
-  aggregation over the entity `employees` for records with the field `department` pointing to the record
-  of the field being calculated and doing an average over the field `salary`. This aggregation will be
-  updated automatically whenever a salary changes or an employee is added or removed from the department.
-  So when the calculation is `Aggregate` you are able to select the following options:
-  - `Aggregate entity`: the entity that contains the records that have to be aggregate. In the example
-    above it would be the `employees` entity.
-  - `Expression`: this is the expression that records in the `Aggregate entity` have to match to be included
-    in the aggregation. In the example above the expression was by field, where `Current record` was equals
-    to the `department` field. This way only employees for the current department are going to be included
-    in the aggregation.
-  - `Aggregate operation`: this is the operation that will be performed. It could be:
-    - `Count`: it just counts the number of records matching the expression.
-    - `Sum`: it sums the values in the `Aggregate field` (see below) of the records matching the expression.
-    - `Avg`: it performs an average of the values in the `Aggregate field` (see below) of the records 
-      matching the expression.
-  - `Aggregate field`: if the `Aggregate operation` is different than `Count` then a field needs to be selected
-    to apply the operation on it. In the sample above the field is `salary`.
+    ##### Returns
+
+    **`any or any[]`** - You should return the calculated value in the format used in the Javascript API for the type of the field. If the field is multi-valued, you should return an array.
+
+    ##### Samples
+
+    ```js
+    // calculate the total price from the unit price and quantity
+    return record.field('unitPrice').val() * record.field('quantity').val();
+    ```
+    <br>
+
+    **Note:** The accurate sequence of field calculations is automatically managed within the bounds of the current entity's scope. This signifies that if you invoke a script outside of the entity scope, any associated dependencies will not be monitored. For instance, when utilizing a library to compute values, ensure you make the call in the following manner:
+
+    ```js
+    var field1 = record.field('fiedl1').val();
+    var field2 = record.field('field2').val();
+    app.utils.foo(field1, field2);
+    ```
+    <br>
+    instead of:
+
+    ```js
+    app.utils.foo(record);
+    ```
+    <br>
+    
+    ---
+
+- **`Aggregate`**: In this scenario, you can compute a value based on an aggregate query involving other records. For instance, if you possess an entity named **`departments`** and another named **`employees`** with a field labeled **`salary`**, you could create a field for calculating the average salary per department. This calculation would be an aggregation over the **`employees`** entity, considering records with the **`department`** field pointing to the department being evaluated. The aggregation would involve calculating an average over the **`salary`** field. This aggregation would be dynamically updated each time a salary changes or an employee is added or removed from a department. Thus, when you select the **`Aggregate`** calculation, you have access to the following options:
+  - **`Aggregate Entity`**: The entity housing the records to be aggregated. In the aforementioned example, this would be the **`employees`** entity.
+  - `Expression`: This expression filters which records from the **`Aggregate Entity`** are included in the aggregation. In the earlier example, the expression filtered records by matching the **`Current Record`** with the **`department`** field, thus ensuring only employees from the current department contribute to the aggregation.
+  - **`Aggregate Operation`**: This operation dictates what action to perform. Options include:
+    - **`Count`**: This simply tallies the number of records matching the expression.
+    - **`Sum`**: It calculates the sum of values in the **`Aggregate Field`** (see below) for records fulfilling the expression.
+    - **`Avg`**: It computes the average of values in the **`Aggregate Field`** (see below) for records satisfying the expression.
+  - **`Aggregate Field`**: If the **`Aggregate Operation`** isn't **`Count`**, a field must be chosen to which the operation applies. In the example above, the selected field is **`salary`**.
 
 ### Custom validations
 
-Custom validations allow to perform more complex validations over the field and using other services that are not available in fields rules. If
-the field is multi-valued, this validation will be called for each value. If you need to validate many values at the same time you should use record validations.
+Custom validations enable the execution of intricate validations on the field, along with the use of services not available within field rules. In cases where the field is multi-valued, this validation will be triggered for each individual value. If you need to validate multiple values simultaneously, record validations should be employed.
 
-For example you might have an endpoint for an address validation service that you can use to validate addresses, or you just want to make sure that the value of a field needs to match some specific pattern.
+For instance, consider a legacy service that utilizes an address validation service or the need to ensure a field value adheres to a specific pattern.
 
-This is the context of the script:
+Here's the script's context:
 
-{{< js_script_context context="fieldValidationsScript">}}
+  ---
 
+  ##### Parameters
 
-## Type rules
+  |Name|Type|Description|
+  |---|---|---|
+  |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record that contains the field to validate.|
+  |parentField|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This variable is exclusively accessible when the field is situated within a nested field. It operates based on the variable record or action, adhering to the same principles applicable to action parameters or entity fields.<br>The variable assumes the form of a **`sys.data.Record`** object. The key distinction is that the record's root is set to encompass the nested fields in which it resides. This configuration facilitates the retrieval of fields within the nested group. For instance, you can employ **`parentField.field('fieldA')`** as an alternative to **`record.field('nested.fieldA')`** or **`action.field('nested.fieldA')`**. This feature proves particularly valuable in cases involving multi-valued nested fields where index awareness might be absent.|
+  |field|[sys.data.Wrapper]({{<ref "/dev-reference/scripting/sys-data.md">}})|The field wrapper to be validated. For more details on how to manipulate it, refer to the documentation for **`sys.data.Wrapper`**.|
+  |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This variable will be available only if the field is an action parameter. It will provide access to other parameters, but keep in mind that they might be empty (except that they have an initial value set).|
 
-In this section you configure rule that are type-specific. For example a text field will have rules to
-restrict the length of the value while choice fields will define which option are valid.
+  ##### Returns
 
-There are three ways to set type rules:
+  **`object`** - You should return an object representing the error, something like this:
+  ```js
+  {code: 'invalid', message: 'This is not a valid US zip code'}
+  ```
+  <br>
 
-- `Custom`: you manually set type rules for this field. You should check the documentation
-  for [Types]({{<ref "/dev-reference/field-types/overview.md">}}) to see what rules are available 
-  for each type.
-- `Predefined`: you can select one of the global type rules configured in the section `App > Types`
-  of the app builder. See [Global type settings]({{<ref "/dev-reference/app/global-type.md">}}).
-- `Field`: you can point to an existing field in the entity and use the same type rules. This way
-  if type rules are modified in the referenced field, they will be automatically updated on this
-  field.
+  Where **`code`** represents the error code. You can use any value that aligns with your context. This value will be included in the response when attempting to create/update a record through the REST API or as part of the exception information when saving a record using the JavaScript API.
 
-## General display options
+  The **`message`** parameter corresponds to the text that will be showcased in the user interface. It will also be included in the response along with the **`code`**.
 
-### Read-only
+  When the field is considered valid, no response is required.
 
-Indicates when the field can be displayed always as read-only.
+  ##### Samples
 
-Keep in mind this is just a UI setting, so the field will be still writable
-using the REST API or in another view with this flag unset.
- 
-For example let's suppose you have the following fields:
+  ```js
+  // validates the zip code using an expression
+  var zipValue = field.val();
+  if (zipValue && !/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipValue)) {
+      return {code: 'invalid', message: 'This is not a valid US zip code'};
+  }
+  ```
+  <br>
 
-- `type` (choice field with options `a`, `b`, and `c`)
-- `subType` (only editable if `type` is `c`)
+  ```js
+  // validates the zip code using an external service
+  var zipValue = field.val();
+  if (!app.endpoints.addressValidator.isValidZipCode(zipValue)) {
+      return {code: 'invalid', message: 'This is not a valid US zip code'};
+  }
+  ```
+  <br>
+  
+  ---
 
-In this case you want field `subType` to only show up as editable when `type` is `c`, which can be achieved using a
-read only condition on the field `subType`.
- 
-Read Only has the following options:
+## **Type rules**
 
-- `Always`: the field is always read only.
-- `Script`: if the script returns `true` the field will be editable, otherwise it will be read only.
-  This is the context of the script:
+In this section, you configure rules that are specific to the field's data type. For instance, a text field will have rules that limit the length of the value, while choice fields will define valid options.
 
-{{< js_script_context context="readWriteAccessScript">}}
+There are three methods to define type rules:
 
-- `Expression`: the field will be editable if the expression evaluates to `true`. You can find more
-  information in the documentation for [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}})
-- `Never`: the field will be editable. Default option.
+- **`Custom`**: You manually define type rules for this field. To learn which rules are available for each data type, consult the [Types documentation]({{<ref "/dev-reference/field-types/overview.md">}}).
+- **`Predefined`**: You can select one of the global type rules configured in the "App > Types" section of the app builder. Refer to [Global Type Settings]({{<ref "/dev-reference/app/global-type.md">}}).
+- **`Field`**: You can reference an existing field within the entity and inherit its type rules. Consequently, if the type rules for the referenced field are altered, the rules for this field will be automatically updated.
 
+## **General display options**
+
+### Read-Only
+
+This indicates when the field should be perpetually displayed in read-only mode.
+
+Remember that this setting solely influences the UI. Consequently, although the field appears read-only, it can still be modified using the REST API or in another view where this flag isn't enabled.
+
+For instance, consider the following fields:
+
+- **`type`** (a choice field with options **`a`**, **`b`**, and **`c`**)
+- **`subType`** (only editable if **`type`** is **`c`**)
+
+In this scenario, you desire the **`subType`** field to be editable exclusively when **`type`** is set to **`c`**. Achieving this involves employing a read-only condition on the **`subType`** field.
+
+Read-Only has the following options:
+
+- **`Always`**: The field is consistently read-only.
+- **`Script`**: If the script returns **`true`**, the field becomes editable; otherwise, it remains read-only. Here's the script's context:
+
+    ---
+
+    ##### Parameters
+
+    |Name|Type|Description|
+    |---|---|---|
+    |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This record is linked to the ongoing operation. If the field resides within an entity field, this record corresponds to the container of that field.<br>In the case of a field serving as an action parameter, this record pertains to the execution of the action.|
+    |parentField|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This variable is exclusively accessible when the field is situated within a nested field. It operates based on the variable record or action, adhering to the same principles applicable to action parameters or entity fields.<br>The variable assumes the form of a **`sys.data.Record`** object. The key distinction is that the record's root is set to encompass the nested fields in which it resides. This configuration facilitates the retrieval of fields within the nested group. For instance, you can employ **`parentField.field('fieldA')`** as an alternative to **`record.field('nested.fieldA')`** or **`action.field('nested.fieldA')`**. This feature proves particularly valuable in cases involving multi-valued nested fields where index awareness might be absent.|
+    |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This variable is accessible solely when the field functions as an action parameter. It facilitates access to other parameters.|
+
+    ##### Returns
+
+    **`boolean`** - You should return **`true`** if there is access to the field, **`false`** otherwise.
+
+    ##### Samples
+
+    ```js
+    // if 'numberOfExmployees' is bigger than 10, then this field is visible
+    return record.field('numberOfEmployees').val() > 10;
+    ```
+    <br>
+    
+    ---
+
+- **`Expression`**: The field becomes editable if the expression evaluates to `true`. Additional information is available in the [Expressions documentation]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
+- **`Never`**: The field will remain uneditable. This is the default option.
 
 ### Visible
 
-If this is set as `Never`, even when the field is in the view, the field won't be displayed. This flag is
-useful so you don't need to go to managed views an remove the field manually. 
+If set to **`Never`**, the field won't be displayed even when included in the view. This flag proves valuable, eliminating the need to manually remove the field from managed views.
 
-Keep in mind this is just a UI setting.
- 
-For example let's suppose you have the following fields:
+Remember that this setting solely influences the UI.
 
-- `type` (choice field with options `a`, `b`, and `c`)
-- `subType` (only visible if `type` is `c`)
+For example, consider the following fields:
 
-In this case you want field `subType` to only show up when `type` is `c`, which can be achieved using a
-visible condition on the field `subType`.
- 
-Visible has the following options:
+- **`type`** (a choice field with options **`a`**, **`b`**, and **`c`**)
+- **`subType`** (only visible if **`type`** is **`c`**)
 
-- `Always`: the field is always visible. Default option.
-- `Script`: if the script returns `true` the field will be visible, otherwise it will be read only.
-  This is the context of the script:
+In this instance, you want the **`subType`** field to exclusively appear when **`type`** is set to **`c`**. This can be accomplished through a visibility condition applied to the **`subType`** field.
 
-{{< js_script_context context="readWriteAccessScript">}}
+Visibility has the following options:
 
+- **`Always`**: The field is consistently visible. This is the default option.
+- **`Script`**: If the script returns **`true`**, the field becomes visible; otherwise, it remains hidden. Here's the script's context:
 
+    ---
 
-- `Expression`: the field will be visible if the expression evaluates to `true`. You can find more
-  information in the documentation for [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}})
-- `Never`: the field will never be visible.
+    ##### Parameters
+
+    |Name|Type|Description|
+    |---|---|---|
+    |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This record is linked to the ongoing operation. If the field resides within an entity field, this record corresponds to the container of that field.<br>In the case of a field serving as an action parameter, this record pertains to the execution of the action.|
+    |parentField|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This variable is exclusively accessible when the field is situated within a nested field. It operates based on the variable record or action, adhering to the same principles applicable to action parameters or entity fields.<br>The variable assumes the form of a **`sys.data.Record`** object. The key distinction is that the record's root is set to encompass the nested fields in which it resides. This configuration facilitates the retrieval of fields within the nested group. For instance, you can employ **`parentField.field('fieldA')`** as an alternative to **`record.field('nested.fieldA')`** or **`action.field('nested.fieldA')`**. This feature proves particularly valuable in cases involving multi-valued nested fields where index awareness might be absent.|
+    |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This variable is accessible solely when the field functions as an action parameter. It facilitates access to other parameters.|
+
+    ##### Returns
+
+    **`boolean`** - You should return **`true`**  if there is access to the field, **`false`** otherwise.
+
+    ##### Samples
+
+    ```js
+    // if 'numberOfExmployees' is bigger than 10, then this field is visible
+    return record.field('numberOfEmployees').val() > 10;
+    ```
+    <br>
+    
+    ---
+- `Expression`: The field becomes visible if the expression evaluates to `true`. More details can be found in the [Expressions documentation]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
+- `Never`: The field will never be visible.
 
 ### Sorting
 
-Indicated how sorting values should be sorted. Options are:
+Indicates the sorting order for values:
 
-- `Oldest to newest`: oldest values will be at the top and new values will be inserted at the bottom of
-  the list. This is the default.
-- `Newest to oldest`: newest values will be at the top and new values will be inserted at the top as well.
+- **`Oldest to Newest`**: Oldest values appear at the top, and new values are inserted at the bottom of the list. This is the default.
+- **`Newest to Oldest`**: Newest values appear at the top, and new values are inserted at the top as well.
 
-Only visible in fields with multiplicity `Many`.
+This option is only visible in fields with a multiplicity of **`Many`**.
 
 ### Pagination
 
-If this flag is enabled, values will be paginated. This way if the field has many values it won't take
-a lot of space in the form, letting the user to fetch more values as needed. You can configure the page
-size which is `5` by default.
+Enabling this flag results in paginated values. This prevents excessive space usage on the form if the field contains numerous values, allowing users to fetch additional values as needed. The default page size is **`5`**.
 
-Only visible in fields with multiplicity `Many`.
+This option is only visible in fields with a multiplicity of **`Many`**.
 
-#### Page size
+#### Page Size
 
-When the flag `Pagination` is enabled, here you will be able to indicate the number of values to show
-on each page. The default is `5`.
+When **`Pagination`** is enabled, this setting lets you define the number of values to display on each page. The default is `5`.
 
 ### Customize add button
 
-If this flag is set additional options will show up to customize how the `Add` button used to add 
-more values to the field should look like.
+Enabling this flag introduces additional options to customize the appearance of the "Add" button, used to add more values to the field.
 
-Only visible in fields with multiplicity `Many`.
+This option is only visible in fields with a multiplicity of **`Many`**.
 
 #### Text to append
 
-If `Customize add button` is enabled, this option indicates the text that will be appended to the button's
-label. For example if you put `Note` in this field, the button will have the label `Add Note` instead of
-just `Add`.
+When **`Customize Add Button`** is enabled, this setting determines the text appended to the button's label. For instance, setting this field to **`Note`** results in a button label of **`Add Note`** instead of just **`Add`**.
 
-## Label options
+## **Label options**
 
 ### Show label
 
-Indicates if the label has to be displayed. If the label is not displayed you could choose between
-indenting the value or not using the flag `Indent value`.
+Indicates whether the label should be displayed. If the label is hidden, you can choose whether to indent the value using the **`Indent Value`** flag.
 
 ### Override label
 
-If this flag is set it is possible to override the default label, which could be useful in
-some views where you want the label to be different.
+Enabling this flag permits overriding the default label. This can be useful in specific views where a distinct label is desired.
 
 ### Indent value
 
-If the flag `Show label` is not set, then you can decide if the value has to be indented, which
-is what this flag indicates.
+If **`Show Label`** is not enabled, you can determine whether to indent the value. This flag controls this behavior.
 
-## Value Options
+## **Value options**
 
-### Text Alignment
+### Text alignment
 
-Indicates text alignment for read only view. Its possible values are `Left`, `Center` or `Right`.
-It is available for all data types excepting Nested Fields, File, Html and Color. 
+Specifies text alignment for the read-only view. Possible values are **`Left`**, **`Center`**, or **`Right`**. Applicable to all data types except Nested Fields, File, Html, and Color.
 
-### Help Message
+### Help message
 
-An information message that will be shown while hovering the information icon next to the field's label,
-giving the developer the opportunity to explain what the field is for. Just it is visible on edition time.
+An informational message displayed when hovering over the information icon next to the field's label. Developers can utilize this to explain the field's purpose. Only visible during editing.
 
 ### Placeholder
 
-The placeholder specifies a short hint that describes the expected value of an input field.
+Provides a brief hint describing the expected value of an input field.
 
 ### Prepend addon type
 
-Allow include an addon (`Text` or `Icon`) in left side of the input field. This feature is available for text and numeric
- data types. By default is disabled or equals to `None` 
+Allows inclusion of an addon (**`Text`** or **`Icon`**) on the left side of the input field. Available for text and numeric data types. Disabled by default.
 
 ### Prepend addon text
 
-If addon type is `Text` here specify the text to be added to left side of the input field.
+For **`Text`** addon type, specifies the text to add to the left side of the input field.
 
 ### Prepend addon icon
 
-If addon type is `Icon` here specify the icon to be added to left side of the input field.
+For **`Icon`** addon type, specifies the icon to add to the left side of the input field.
 
 ### Append addon type
 
-Allow include an addon (`Text` or `Icon`) in right side of the input field. This feature is available for text and numeric
- data types.  By default is disabled or equals to `None` 
+Allows inclusion of an addon (**`Text`** or **`Icon`**) on the right side of the input field. Available for text and numeric data types. Disabled by default.
 
 ### Append addon text
 
-If addon type is `Text` here specify the text to be added to right side of the input field.
+For **`Text`** addon type, specifies the text to add to the right side of the input field.
 
 ### Append addon icon
 
-If addon type is `Icon` here specify the icon to be added to right side of the input field.
+For **`Icon`** addon type, specifies the icon to add to the right side of the input field.
 
-## Type display options
+## **Type display pptions**
 
-In this section you configure display options that are type-specific. There are three ways
-to set display options:
+In this section, you configure display options specific to the data type. Three methods are available:
 
-- `Custom`: you manually set display options for this field. You should check the documentation
-  for [Types]({{<ref "/dev-reference/field-types/overview.md">}})  to see what options are available 
-  for each type.
-- `Predefined`: you can select one of the global display options configured in the section `App > Types`
-  of the app builder. See [Global type settings]({{<ref "/dev-reference/app/global-type.md">}}).
-- `Field`: you can point to an existing field in the entity and use the same display options. This way
-  if display options are modified in the referenced field, they will be automatically updated on this
-  field.
+- **`Custom`**: Manually define display options for this field. Refer to the [Types documentation]({{<ref "/dev-reference/field-types/overview.md">}}) for available options for each type.
+- **`Predefined`**: Select a global display option configured in the "App > Types" section of the app builder. See [Global Type Settings]({{<ref "/dev-reference/app/global-type.md">}}).
+- **`Field`**: Reference an existing field in the entity to inherit its display options. Changes to display options in the referenced field will automatically update this field.
 
-## Permissions
+## **Permissions**
 
-Permissions indicate which groups have access to the field. As in other cases, permissions are enforced in 
-the UI as well as in the REST API.
+Permissions determine which groups have access to the field. Permissions are enforced in both the UI and the REST API.
 
-Here it is possible to indicate access permissions for the field. Options are:
+Here, access permissions for the field can be specified. Options include:
 
-- `Parent`: permissions of the parent field will be taken. This is only available for fields inside nested fields and 
-  it is the default.
-- `Read/Write`: users of this group will be able to read and write this field.
-- `Read Only`: users of this group will only be able to read this field. If they try to change the value in an
-  update, the value will be silently discarded.
-- `None`: users of this group won't be able to either read or write this field. The UI and REST API won't show
-  this field at all.
-- `Advanced`: allows to configure read or write access separately and optionally based on record data
-  through expressions filters or scripts (in the same way as you can do with 
-  [Read/Write Access]({{<ref "/dev-reference/data-model-and-logic/fields.md#readwrite-access">}}) in field).
+- **`Parent`**: Inherits permissions from the parent field. This is only available for fields within nested fields and is the default behavior.
+- **`Read/Write`**: Users in this group can read and write to this field.
+- **`Read Only`**: Users in this group can only read this field. If they attempt to modify the value during an update, the change will be silently discarded.
+- **`None`**: Users in this group cannot read or write to this field. The field will be entirely omitted from both the UI and REST API.
+- **`Advanced`**: Enables configuring read or write access separately, optionally based on record data using expression filters or scripts. This mirrors the capability of [Read/Write Access]({{<ref "/dev-reference/data-model-and-logic/fields.md#readwrite-access">}}) in fields.
 
-When a new field is added to an entity, if a group has update access to the entity (`Can Create` or `Can Edit` are 
-set to `Always` or `Condition`), the field is given read-write permission for that group by default. If there is only 
-read access to the entity (`Can Access` is set to `Always` or `Condition`), read-only access is given to the field in 
-that group. Otherwise no permissions are set automatically.
- 
-For more information about permissions please refer to [Groups]({{<ref "/dev-reference/security/groups.md">}}).
+When a new field is added to an entity, permissions are automatically set based on the group's access to the entity (**`Can Create`** or **`Can Edit`** set to **`Always`** or **`Condition`**). If there's only read access to the entity (**`Can Access`** set to **`Always`** or **`Condition`**), read-only access is granted to the field for that group. No permissions are automatically set otherwise.
 
+For more information about permissions, refer to the [Groups documentation]({{<ref "/dev-reference/security/groups.md">}}).

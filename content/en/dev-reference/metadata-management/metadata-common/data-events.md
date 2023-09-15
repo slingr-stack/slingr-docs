@@ -12,55 +12,53 @@ toc: true
 weight: 10
 ---
 
-Data events allow to define a set of rules that will match different events on records. For 
-example you might have a rule to match when a record is deleted so you can do some clean up 
-in an external system.
+You can define multiple rules. If at least one rule matches the event, the event will be considered matched.
 
-You can define many rules. If at least one rule matches the event, it will be considered that 
-the event was matched.
+All rules are applied to a single entity, indicated in the `Entity` field.
 
-All rules are always applied to only one entity, that has to be indicated in the `Entity` field.
+Each rule includes the following settings:
 
-Each rule has the following settings:
+## **Event Types**
 
-## Event
+This represents the type of event the rule will match. Possible values include:
 
-This is the type of the event the rule will match. Possible values are:
- 
-- `On record created`: this event is triggered when a record is created.
-- `On record changed`: this event is triggered when a record is updated. Keep in mind that a record 
-  could be updated by a human through the UI, an external app through the REST API, a script running
-  in the background, etc. So be careful when you use this event because any change on the record will
-  trigger this event.
-- `On record deleted`: this event is triggered when a record is deleted.
-- `On action performed`: this event is triggered when an action is executed over a record. 
-- `On condition met`: this event is triggered when a record is changed in a way that the condition 
-  (see below) is met and it wasn't met before updating the record. For example, if the condition is 
-  that field `type` has to be `a`, if the record is updated and before it didn't have `a` in `type` 
-  and now it does have that value, the event will be matched by the rule. If the record already had `a` 
-  in `type` and the record is updated and the value is still `a`, the event won't be matched because 
-  the condition was already met in the old version of the record.
+- **`On Record Created`**: Triggered when a record is created.
+- **`On Record Changed`**: Triggered when a record is updated. Keep in mind that a record can be updated by various means, such as through the UI, an external app via the REST API, a background script, etc. Be cautious, as any change to the record triggers this event.
+- **`On Record Deleted`**: Triggered when a record is deleted.
+- **`On Action Performed`**: Triggered when an action is executed on a record.
+- **`On Condition Met`**: Triggered when a record is changed in a way that satisfies the specified condition (see below), and this condition wasn't met before the record update. For instance, if the condition is that the **`type`** field must be **`a`**, when a record is updated and the **`type`** field changes from a different value to **`a`**, the event will be matched. However, if the record already had **`a`** in the **`type`** field, and it's updated without changing the value, the event won't be matched because the condition was already met in the previous version of the record.
 
-## Condition
+## **Condition**
 
-Apart from the event, you can define a set of conditions that should be met in order to match the
-event. Options are:
+In addition to the event, you can define a set of conditions that must be met for the event to match. Options include:
 
-- `None`: there are no conditions, so as long as the event is trigger, the rule will match.
-- `Expression`: it is possible to define an expression that should evaluate to true in order for the
-  event to be matched.
-  See documentation of [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) for more
-  information.
-- `Script`: allows to provide a script that should evaluate to true if the event should be matched.
+- **`None`**: No conditions, so as long as the event is triggered, the rule will match.
+- **`Expression`**: Define an expression that must evaluate to true for the event to match. For more information, refer to the [Expressions Documentation]({{<ref "/dev-reference/scripting/sys-data.md">}}).
+- **`Script`**: Provide a script that must evaluate to true for the event to match.
+Please replace the corresponding sections in your documentation with this corrected version.
   This is the context:
 
+##### Parameters
 
-{{< js_script_context context="dataEventConditionScript">}}
+|Name|Type|Description|
+|---|---|---|
+|record|[sys.data.Record]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}})|This is the current record affected by the event.|
+|oldRecord|sys.data.Record|If the event is of type **`On record change`**, **`On action performed`** or **`On condition met`**, this variable will hold the version of the record before the event happened.|
 
+##### Returns
 
-## Actions
+**`boolean`** - Return **`true`** to execute the action, and **`false`** otherwise.
 
-If `Event` is `On action performed` you will be able to select a list of actions that could be matched.
+##### Samples
 
-Notice that only actions of type `One record` can be selected. Actions of type `Many records` aren't
-associated to any specific record so they can't be used here.
+```js
+// only match the event if the field 'type' was modifed
+  
+return record.field('type').val() != oldRecord.field('type').val();
+```
+
+## **Actions**
+
+If the `Event` is set to `On Action Performed`, you can select a list of actions that can be matched.
+
+Please note that only actions of type `One Record` can be chosen. Actions of type `Many Records` are not tied to any specific record and therefore cannot be used in this context.

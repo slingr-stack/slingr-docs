@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on </title>
+    <link>/dev-reference/security/</link>
+    <description>Recent content in Security on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="/dev-reference/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Security</title>
+      <link>/dev-reference/security/overview/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/security/overview/</guid>
+      <description>Slingr offers comprehensive features for user authentication and authorization.
+Authentication # Slingr provides the capability to establish authentication rules, including password policies, maximum login attempts, IP restrictions, and the utilization of different identity providers to facilitate Single Sign-On (SSO) via protocols such as SAML or Slack.
+Authorization # On the authorization front, Slingr empowers you to define granular permissions for entities, fields, actions, and views. This flexible approach allows for precise control over user privileges and operations.</description>
+    </item>
+    
+    <item>
+      <title>Groups</title>
+      <link>/dev-reference/security/groups/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/security/groups/</guid>
+      <description>Groups enable the definition of permissions and security regulations for users. Permissions can be tailored for entities and views, while security rules can be configured to manage user aspects like passwords, IP whitelisting, and user management.
+A user can be a member of multiple groups simultaneously, but only one group serves as the primary designation. The primary group significantly influences which security rules apply to the user.
+When you create a new group, it doesn&amp;rsquo;t automatically come with any pre-set permissions.</description>
+    </item>
+    
+    <item>
+      <title>Users</title>
+      <link>/dev-reference/security/users/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/security/users/</guid>
+      <description>To access the app, whether through the UI or the REST API, you must possess a valid user account created within the app. Alternatively, you can create an account through an Identity Provider.
+User records are maintained within the system entity System &amp;gt; Users. This entity is generated and managed by the platform. While the metadata associated with this entity cannot be altered, it can be extended through custom configurations such as entity fields and actions.</description>
+    </item>
+    
+    <item>
+      <title>Single sign on</title>
+      <link>/dev-reference/security/single-sign-on/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/security/single-sign-on/</guid>
+      <description>Identity providers enable users to access your app without requiring them to create new accounts. Instead, users can utilize their existing accounts from supported identity providers to sign in.
+For instance, enabling Slack as an identity provider permits users with Slack accounts to access your app. However, specific settings can be configured to limit access.
+Listed below are the currently supported identity providers.
+Shared options for all identity providers # These options are accessible to all identity providers.</description>
+    </item>
+    
+    <item>
+      <title>External tools</title>
+      <link>/dev-reference/security/external-tools/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/security/external-tools/</guid>
+      <description>LastPass # LastPass is a secure password manager designed to store encrypted passwords online. It offers a web interface and plugins for various web browsers, as well as mobile apps for smartphones.
+👉 Sometimes, external factors can impact the performance of your application. Here are some tips to consider:
+If you&amp;rsquo;re using the LastPass extension on Chrome and notice performance issues, you can try the following steps:
+Adjust Site Settings: Access the LastPass plugin in the upper right corner, then click the edit pen icon for your site.</description>
+    </item>
+    
+    <item>
+      <title>OAuth Support</title>
+      <link>/dev-reference/security/oauth/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/security/oauth/</guid>
+      <description>External applications can access the Slingr App API through OAuth requests. We refer to these applications as OAuth Apps.
+Follow the steps below to acquire and refresh the Access Token.
+In the Slingr app # 1) Enabling OAuth support in builder and creating scopes # Navigate to Security -&amp;gt; OAuth and enable OAuth support. This action will activate a form for OAuth Scopes. OAuth tokens security is now managed through OAuth scope groups, rather than user groups.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,6 +1,6 @@
 ---
 title: "Background jobs"
-lead: "Explains how to manage jobs from the app monitor."
+lead: "Discover how to effectively manage background jobs using the App Monitor."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,95 +12,67 @@ toc: true
 weight: 149
 ---
 
+In the App Monitor's "Jobs" section, you can track the status and details of various jobs associated with your application. Jobs come in different types and are generated as a result of various operations within the app runtime. Some common triggers for background jobs include:
 
-In the app monitor in section `Jobs` it is possible to see which jobs are running as well as those
-that are in different statuses like pending or finished.
+- Executing an action in the background
+- Receiving an event from an legacy service
+- Exporting or importing records
 
-Background jobs are of different types and are created as a consequence of some operations executed
-in the app runtime. For example the following things will trigger background jobs:
+Within the App Monitor, you can monitor jobs responsible for these operations, view their statuses, progress, and access relevant logs.
 
-- Execute an action in the background
-- An event coming from an endpoint
-- Export/import records
+Here's the information available for each job:
 
-You can monitor jobs in charge of these operations from the app monitor. There you will be able to
-see the status, progress as well as logs.
+- **`Create date`**: Indicates when the job was created.
+- **`Waiting`**: Shows the elapsed time between job creation and the start of execution. This value increases while the job is pending.
+- **`Start date`**: Marks when the job's execution commenced.
+- **`Duration`**: Reflects the time taken for the job to complete since its start date. This value continues to grow while the job is in progress.
+- **`Status`**: Indicates the current status of the job, such as **`"Pending," "In Progress," or "Finished."`**
+- **`Errors`**: Flags the presence of errors during job execution, with detailed information available in the job's logs.
+- **`Low priority`**: Marks jobs as low priority, impacting their execution when the app experiences heavy loads.
+- **`Run by`**: Identifies the user who triggered the job; it may be empty for system jobs.
+- **`Progress`**: Offers an estimate of the job's progress, although some jobs may not update this accurately.
+- **`Children execution`**: Shows the progress of child jobs, if any exist. Note that additional child jobs might be created during execution, adjusting the overall progress.
 
-This is the information you can see for a job:
+## **Operations on jobs**
 
-- `Create date`: when the job was created.
-- `Waiting`: how much time happened since it was created until execution started. If it is still 
-  in pending this value will grow.
-- `State date`: when the job execution started.
-- `Duration`: how long the job took to complete execution since start date. If it is still in
-  progress this value will grow.
-- `Status`: the current status of the job. It could be {{site.data.common.jobsStatusesList | markdownify}}.
-- `Errors`: indicate if there were errors during the execution of the job. If there are errors you 
-  should check the job's logs to see what happened.
-- `Low priority`: if this job is flagged as low priority. See below for more information on how
-  to make a job low priority.
-- `Run by`: which user triggered this job. Could be empty if it is a system job.
-- `Progress`: indicates the progress of the job. Some jobs might not update this accurately, so
-  it is just an estimation.
-- `Children execution`: indicates the progress in the execution of children jobs (if there are 
-  children jobs). Keep in mind that more children jobs could be created, so progress could be 
-  adjusted.
-  
-## Operations over jobs
+You can perform several operations on jobs by selecting the relevant jobs:
 
-There some operations available for jobs that you can apply from there (after selecting the
-affected jobs):
+- **`Stop`**: Attempts to gracefully halt a running job. After stopping, you can choose to resume it. Please note that certain jobs, such as those executing listeners, may not be stoppable mid-execution and will remain in a **`"Stopping"`** state until completion. System jobs may not have the option to stop.
 
-- **Stop**: this will try to gracefully stop the job if it is running. Once the job is stopped
-  it would be possible to resume it. Keep in mind that this could take a while if the job in some
-  cases because we try to leave things in a good state so they can be resumed.
-  Some jobs cannot be stopped at the middle of the execution. For example a job to execute a
-  listener cannot be stopped because the script cannot be stopped in the middle. If you try to
-  stop a job like that it will be in status `Stopping` until it is completed.
-  Finally there are some system jobs where the option to stop them is not available.
-- **Resume**: if the status of the job is `Stopped` you can resume execution with this operation.
-  It will pick up execution from where it was left.
-- **Force stop**: if the status of the job is `Stopping` you can force it to stop. Keep in mind
-  that you should only do this if you are sure there is no other alternative as some data might
-  be left inconsistent.
-- **Cancel**: if you cancel a job that is in `Stopped`, the job will be discarded and cannot be
-  resume later.
-- **Restart**: if a job is `Finished` but for some reason you need to re-execute it, you can use
-  this operation. It is only available on some types of jobs.
-- **Set low priority**: sets a job to be low priority. This means that the job will only be executed
-  if there isn't much load on the app.
-- **Remove low priority**: removes the low priority flag so the job is executed a usual.
+- **`Resume`**: Resumes the execution of a job in the **`"Stopped"`** state, continuing from where it left off.
 
-## Logs
+- **`Force Stop`**: Forces a job in the **`"Stopping"`** state to halt. Use this cautiously, as it may result in inconsistent data if no alternative exists.
 
-For each job you will be able to see its logs. These are logs specific to the execution of the job.
+- **`Cancel`**: Discards a job in the **`"Stopped"`** state, making it unrecoverable.
 
-Searching and filtering logs works exactly the same way as [app logs]({{site.baseurl}}/app-development-monitor-logs.html).
+- **`Restart`**: Available for specific job types, this operation re-executes a **`"Finished"`** job if necessary.
 
-## Children jobs
+- **`Set low priority`**: Marks a job as low priority, scheduling it for execution during low app load periods.
 
-If during the execution of a job other jobs are triggered, these are children jobs. This is important
-not only to clean up the main list of jobs but will have consequences in the scheduling of jobs.
+- **`Remove low priority`**: Removes the low priority flag, ensuring a job is executed as usual.
 
-The scheduler will assign execution time per root jobs (jobs that do not have a parent). This avoid 
-that one job with a lot of children jobs blocks other jobs.
+## **Logs**
 
-## System jobs
+For each job, you can access logs specific to its execution. Log searching and filtering function similarly to [app logs]({{<ref "/dev-reference/monitoring/logs-and-alerts.md">}}).
 
-In the secondary there is a button named `Show system jobs`. If you click there you will system jobs
-in the listing. These jobs are generated by the platform in order to carry on some of the needed
-tasks. For example refactorings of data, automatic update of relationship fields, etc.
+## **Children jobs**
 
-Usually you won't need to look at system jobs, but you can check them out if needed.
+During a job's execution, it may trigger other jobs known as children jobs. These not only help maintain the clarity of the main jobs list but also influence job scheduling. The scheduler allocates execution time based on root jobs (those without parents) to prevent a single job with numerous children from blocking others.
 
-## Statistics
+## **System jobs**
 
-In the section `Jobs > Statistics` in the app monitor you can see some useful information about jobs
-execution over time:
+You can view system jobs by clicking the "Show system jobs" button in the secondary menu. System jobs are generated by the platform to perform essential tasks, such as data refactorings or automatic updates to relationship fields.
 
-- `Number of creations`: this is the number of jobs created. It allows to detect any anomaly in your app.
-- `Average waiting time`: this is the average amount of time a job is waiting before it gets executed. If
-  this number goes up it means there is a performance issue. If this persists, you probably need to add
-  more instances to your app.
-- `Min waiting time`: the minimum waiting time a job was waiting before being executed.
-- `Max waiting time`: the maximum waiting time a job was waiting before being executed.
+System jobs are typically not necessary to monitor but can be inspected when needed.
+
+## **Statistics**
+
+In the **`"Jobs > Statistics"`** section of the App Monitor, you can find valuable insights into job execution over time, including:
+
+- **`Number of creations`**: Indicates the total number of jobs created, useful for detecting anomalies in your app.
+
+- **`Average waiting time`**: Reflects the average duration a job waits before execution. An increase in this value suggests a performance issue, possibly requiring additional app instances.
+
+- **`Min waiting time`**: Displays the shortest waiting time among jobs before execution.
+
+- **`Max waiting time`**: Highlights the longest waiting time a job experienced before execution.

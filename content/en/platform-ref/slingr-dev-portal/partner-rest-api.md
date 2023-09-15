@@ -17,7 +17,7 @@ people.
 
 You can access the API at the following endpoint:
 
-```
+``` js
 https://developer-portal.slingrs.io/api
 ```
 
@@ -29,9 +29,9 @@ Additionally, all calls should have the following headers:
 - `Accept: application/json`
 - `token: <token received after login>`
 
-## General error codes
+## **General error codes**
 
-<!-- {% include general_error_codes.html fields=site.data.restapi.apps_error_codes.errorFields %} -->
+Here are some general error descriptions. Then on each method you will see a better description to some of the errors that can show up.
 
 <table>
   <tr>
@@ -73,18 +73,18 @@ Additionally, all calls should have the following headers:
 </table>
 
 
-## Authorization
+## **Authorization**
 
-In order to call methods in this API you will need a partner token. You need to request this token to the Platform team support (<support@slingr.io>). So for all request you will need to send the header `token` with the partner token.
+In order to call methods in this API you will need a partner token. You need to request this token to the Platform team support (<support@slingr.io>). So for all request you will need to send the header **token** with the partner token.
 
-## Create account
+## **Create an account**
 
-```
+```js
 POST /accounts
 ```
 Creates a new account in the platform. This account will be associated to the partner that created it.
 
-**Request**
+### Request
 
 ```
 POST /accounts
@@ -124,8 +124,9 @@ POST /accounts
   </tr>
 </table>
 
-<br></br>
-**Response**
+<br>
+
+### Response
 
 The created account in JSON format.
 
@@ -142,7 +143,8 @@ POST /accounts
   "timeZoneMode": "AUTO"
 }
 ```
-<br></br>
+<br>
+
 <style>
 table {
   margin-top: 10px;
@@ -151,8 +153,6 @@ table {
   width: 100%;
 }
 
-
-
 th, td {
   padding: 8px;
   text-align: left;
@@ -160,13 +160,11 @@ th, td {
   font-size: 14px;
 }
 
-
 code {
   display: block;
   white-space: pre-wrap;
   background-color: #f2f2f2;
-  padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-family: Consolas, monospace;
   font-size: 14px;
 }
@@ -213,7 +211,8 @@ td {
   </tr>
 </table>
 
-**Samples**
+### Samples
+
 ```
 creates a new account
 
@@ -242,15 +241,14 @@ POST /accounts
   "timeZoneMode": "AUTO"
 }
 ```
-<!-- {% include rest_api_method.html method=site.data.restapi.partner_accounts.createAccount %} -->
 
-## Check app name
+## **Check app name**
 ```
 GET /utils/checkAppName
 ```
 Checks if an app name is available.
 
-**Request**
+### Request
 ```
 GET /utils/checkAppName
 > Accept: application/json
@@ -276,7 +274,7 @@ GET /utils/checkAppName
   </tr>
 </table>
 
-**Response**
+### Response
 
 The response indicating if the app name is available.
 ```
@@ -327,7 +325,8 @@ GET /utils/checkAppName
   </tr>
 </table>
 
-**Possible errors**
+### Possible errors
+
 <table>
   <tr>
     <th>Error code</th>
@@ -343,8 +342,8 @@ GET /utils/checkAppName
   </tr>
 </table>
 
-**Response**
-Samples
+### Samples
+
 ```
 checks a name that is available
 
@@ -359,6 +358,7 @@ GET /utils/checkAppName?appName=uniqueAndValidName
   "status": "available"
 }
 ```
+
 ```
 checks a name that is not unique
 
@@ -377,6 +377,7 @@ GET /utils/checkAppName?appName=notUniqueName
 }
 
 ```
+
 ```
 checks an invalid name
 

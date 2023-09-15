@@ -12,91 +12,50 @@ toc: true
 weight: 2
 ---
 
-Here you will find some guidelines to create a new app in Slingr. They are just recommendations
-and you are free to follow them or take your own path. However we suggest to go through this document
-to understand the basic path and then you can make adjustments as you need.
+In this document, we present recommendations for creating a new app in Slingr. While you're free to follow your own approach, we suggest going through this guide initially to grasp the fundamental path. You can then adapt these guidelines to your specific needs.
 
-## Process
+## **The process**
 
-We strongly believe in agile methodologies for software development and Slingr is built in
-a way to facilitate its implementation when creating apps. This means that getting something up
-and running is just a matter of minutes, and evolving your app over time is made as simple as
-possible.
+At Slingr, we embrace agile methodologies for software development. The platform is designed to facilitate agile implementation while building apps. This means you can swiftly set up a basic app, and gradually evolve and enhance it over time.
 
-As agile methodologies suggest, we encourage developers to go through small iterations during the
-development of their apps, to start with something very simple that can provide some value and 
-people can start using. From there you can keep adding more features and change things as you need.
+Following agile principles, we encourage developers to work in small iterations when creating apps. Start with a simple version that provides some value and can be used by people. Then, gradually add more features and make adjustments as needed.
 
-The cycle would look like this:
+The iterative cycle typically looks like this:
 
 ![App metadata and environments](/images/vendor/platform-ref/development-process1.png)
 
-1. **Model your entities**: capture the most important things from your domain and model them into
-  entities. At this point it is probably good to just define the structure of fields and a few
-  settings. Over time you will be adjusting settings as needed.
-1. **Add business logic**: this means to add things like actions, listeners, integrations through
-  endpoints, scripts to define calculated values, aggregations, etc. This will make your app to be
-  more than just a storage of records.
-1. **Create views on top of your entities**: if you added new entities you probably want to create
-  at least a grid view to being able to do basic CRUD operations. If you already had views probably
-  you want to adjust them to the changes in your model.
-1. **Configure permissions**: make sure that features you are adding or changing can be accessed
-  by the right groups.
-1. **Define navigation**: add views to menus so users can access app features.
-1. **Test your app**: once you have the basics, go ahead and push changes so you can see your app
-  working. Seeing it work will give you a better idea of what you have do next.
-1. **Iterate until you get what you want!**: go through the same process until you get to state
-  where you are satisfied with the results. Slingr is ready to help you as much as possible
-  with features like [Automatic Refactorings]({{<ref "/dev-reference/metadata-management/automatic-refactorings.md">}}), 
-  generated [UI]({{<ref "/dev-reference/user-interface/overview.md">}}) and 
-  [REST API]({{<ref "/dev-reference/rest-apis/apps-api-doc.md">}}).
+1. **`Model Your Entities`**: Begin by defining your app's entities, capturing the key aspects of your domain. Start by outlining the structure of fields and a few settings. You'll refine these settings over time as needed.
+2. **`Add Business Logic`**: Incorporate elements like actions, listeners, legacy services integrations, scripts for calculated values, and aggregations. These additions will transform your app from a mere record repository into a dynamic system.
+3. **`Create Views`**: Establish views for your entities. If you've introduced new entities, create at least a grid view to support basic CRUD operations. If you already had views, adapt them to match changes in your model.
+4. **`Configure Permissions`**: Ensure that newly added or modified features are accessible by the appropriate user groups.
+5. **`Define Navigation`**: Integrate views into menus to enable user-friendly access to app features.
+6. **`Test Your App`**: Once you've established the basics, push the changes and observe your app in action. Seeing your app function provides clarity on the next steps.
+7. **`Iterate to Your Ideal State`**: Go through this cycle iteratively until you reach a point where you're satisfied with the results. Slingr supports your journey with features like [Automatic Refactorings]({{<ref "/dev-reference/metadata-management/automatic-refactorings.md">}}), auto-generated [UI]({{<ref "/dev-reference/user-interface/overview.md">}}), and the [REST API]({{<ref "/dev-reference/rest-apis/apps-api-doc.md">}}).
 
-Keep in mind that you don't need to perform all these steps on each iteration. In some cases your
-changes will only affect an action script and things like views and permissions won't be modified
-at all. This is just a guideline.
+Remember, you don't need to follow all these steps in each iteration. Depending on the changes, some iterations might only affect action scripts, leaving views and permissions unchanged. This is meant as a flexible guideline.
 
-These iterations could be very short, maybe just a few hours or even minutes, when you are in your
-development environment. However when you need to sync to prod we suggest that you make cycles a
-longer and include things that have been tested good enough.
+Iterations can be very brief, lasting only a few hours or even minutes, especially in your development environment. However, for syncing to production, consider longer cycles that include well-tested changes.
 
-## Best practices
+## **Best practices**
 
 ### Start light
 
-Don't try to create everything in your first iteration! Think what are the most important use cases
-and try to get the basic things done. Show it to your users and make changes from there.
+Avoid attempting to create everything in your initial iteration. Focus on the most critical use cases and establish the fundamentals. Share this version with your users and make improvements based on their feedback. This incremental approach reduces uncertainty and yields an app that aligns closely with user expectations.
 
-This will help you to move forward with less uncertainty, creating an app that really matches the
-expectations of users.
+### Optimize your development environment
 
-### First class development environment
+Ensure that your development environment provides access to all features, and that they function optimally. For instance, if your app integrates with Slack, create a dedicated Slack team for your development environment to test Slack integrations. Avoid testing in the production environment whenever possible.
 
-Make sure that your development environment has all the features available and they work well. For
-example if you have an integration with Slack, you should have a Slack team for your development
-environment so you can test you Slack integrations there. Otherwise you will end up testing things
-in your production environment, which is never a good thing.
+Enable comprehensive testing in your development environment. Create accounts for integrated services dedicated to your development environment, allowing developers to access and interact with these services. Having sufficient data in your development environment for various use cases will significantly accelerate development.
 
-So basically make sure that you can test everything in your development environment. Create account
-in services you are integrating that are dedicated to your development environment, where developers
-can have access if they need to look at something or just play a bit with it. Make sure you have
-enough data to go through the different use cases easily. This will greatly improve development times.
+### Prioritize versioning
 
-### Be aware of versioning
+When pushing changes, consider creating a backup of your app's metadata. This safeguard enables you to revert to a previous version if unintended issues arise.
 
-When pushing changes it is possible to create a backup of your app metadata. This will allow you
-to go back to a previous version in case that you break something by mistake.
+Although you might not want to create version backups after every change, doing so when completing a significant task is wise. Include detailed notes describing the changes made in each version to facilitate future reference.
 
-Probably you don't want to create a version backup every time you push changes, but you should do
-it when you complete working on something. It is also important to add notes to describe what was
-done so it will be easier to see what changed on each version.
+### Handle production sync with care
 
-### Sync to prod carefully
+During synchronization to the production environment, remember that your app will be briefly stopped, changes applied, and then the app restarted. This means your app won't be accessible to users during this time.
 
-When syncing to your production environment keep in mind that your app will be stopped, changes
-will be applied and then the app will be started. During that time the app won't be accessible
-by your users.
-
-In many cases downtime could be just a couple of seconds and won't affect users, however if there
-are refactorings affecting a lot of records (for example a field was renamed or removed), this
-could take a while.
-
+In many cases, downtime could be just a few seconds and won't impact users. However, extensive changes affecting numerous records, such as field renaming or removal, might extend the downtime. Keep this in mind when planning your synchronization to the production environment.

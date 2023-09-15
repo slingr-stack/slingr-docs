@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Steps on </title>
+    <link>/dev-reference/flows/steps/</link>
+    <description>Recent content in Steps on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="/dev-reference/flows/steps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Categories</title>
+      <link>/dev-reference/flows/steps/categories/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/flows/steps/categories/</guid>
+      <description>Definition # Steps are predefined components that serve specific functionalities. They are used in a flow to create code in a more graphical way, eliminating the need to learn any specific coding language. Instead, you simply need to drag and drop steps from the steps palette onto the canvas area and then connect them by dragging a connector from a source step to a target step. Steps are categorized, and documentation for each step can be found on the following pages.</description>
+    </item>
+    
+    <item>
+      <title>System steps</title>
+      <link>/dev-reference/flows/steps/system-steps/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/flows/steps/system-steps/</guid>
+      <description>Start step # General Info # Category Description Rules System Initiates the flow. - A single start step is mandatory. Inputs # No configuration required.
+Outputs # No configuration required.
+Sample # The flow begins with the logger step, which logs a message, and concludes with the end step. End step # General Info # Category Description Rules System Marks the end of the flow. Optional, and can return a result.</description>
+    </item>
+    
+    <item>
+      <title>Control steps</title>
+      <link>/dev-reference/flows/steps/control-steps/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/flows/steps/control-steps/</guid>
+      <description>List iterator # General info # Category Description Control The List Iterator is a control flow statement designed for iterating through items within a collection, such as result sets or multiple fields. This step facilitates the inclusion of other steps within it. The behavior of this step encapsulates the behavior of the nested steps, enabling structured traversal of the collection. Inputs # Label Type Required Visibility Description Iterable list resultSet / field(many) yes Always The list of elements to be traversed.</description>
+    </item>
+    
+    <item>
+      <title>Data steps</title>
+      <link>/dev-reference/flows/steps/data-steps/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/flows/steps/data-steps/</guid>
+      <description>Create record # General info # Category Description Data This step generates a new record instance within the database. Inputs # Label Type Required Visibility Description Entity entity yes Always Entity to create a new record instance. Data dataBody yes Always Data to be used to create record. Outputs # Name Type Description createRecord record Create record instance. Sample # The flow begins, and the &#34;create record&#34; step generates a new record.</description>
+    </item>
+    
+    <item>
+      <title>UI steps</title>
+      <link>/dev-reference/flows/steps/ui-steps/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/flows/steps/ui-steps/</guid>
+      <description>Download file # General info # Category Description UI Performs a download of the specified file. Inputs # Label Type Required Visibility Description File ID text yes Always The ID of the file to download. Outputs # No configuration required.
+Sample # The flow begins, and the &#34;download file&#34; step downloads the specified file. If an error occurs during the file download, the error will be logged, and the execution will be terminated.</description>
+    </item>
+    
+    <item>
+      <title>Library steps</title>
+      <link>/dev-reference/flows/steps/library-steps/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/flows/steps/library-steps/</guid>
+      <description>Definition categories # Description # Flow Steps Libraries empower you to define your custom steps and seamlessly integrate them into your workflows. It&amp;rsquo;s imperative to specify inputs, outputs, and the script that a step will execute. Once defined, this library becomes a reusable asset accessible across various parts of your application.
+Category # In contrast to predefined steps, you have the flexibility to configure the category of your step library.</description>
+    </item>
+    
+  </channel>
+</rss>

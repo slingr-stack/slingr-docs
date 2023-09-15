@@ -1,6 +1,6 @@
 ---
 title: "Apps REST API documentation"
-lead: "Explain how to auto-generate the documentation for the REST API of the app."
+lead: "Let's dive into the process of effortlessly generating REST API documentation, making it easier for external developers to work with your app's API."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,55 +12,35 @@ toc: true
 weight: 142
 ---
 
+Developers who want to interact with your app's [REST API]({{<ref "/dev-reference/rest-apis/apps-api.md">}}) need essential information about entities, fields, actions, permissions, and more. However, this critical information is typically locked within the app builder and inaccessible to external developers. To bridge this gap, Slingr offers a solution to auto-generate comprehensive REST API documentation, providing all the details required for seamless API interaction.
 
-Although developers could go an read the general [REST API documentation]({{site.baseurl}}/app-development-apps-rest-api.html), 
-they still need to know entity names, fields, actions, permissions, etc., in order to make use of it. 
-That information is defined in the app builder, but external developer that need to interact with your 
-app do not have access to it.
+## **Understanding REST APIs**
 
-For this reason Slingr provides a way to auto-generate documentation for the REST API of an app,
-providing information about the entities, fields, actions, etc., which is needed to interact with
-the API.
+In your app builder, navigate to the **`Model > REST API`** section to find a list of APIs associated with your app. While your app technically has one API based on your model, certain features may be restricted depending on the user's permissions. This section allows you to define the permissions for different types of API users you expect.
 
-## Understanding REST APIs
+There will always be one API called **`Full API`**, which cannot be deleted. It serves as the API for developer users or individuals with comprehensive permissions. Additionally, you can create other APIs to specify the groups to which API users belong. These groups are instrumental in determining user permissions.
 
-In the app builder, under the section `Model > REST API`, you will see the list of APIs for your app.
-This might sound a bit confusing, because your app has only one API based on your model, but depending on
-the user accessing the API some features might not be available. For example you don't have any permissions
-for one specific field. This section allows you to define which are the permissions for the different 
-types of API users you expect to have.
-
-There is going to be always one API called `Full API`. This one cannot be deleted and it is the API
-for a developer user, or someone who has permissions for everything. Then it is possible to define other
-APIs indicating the groups that the API users will belong to. These groups will be used to determine
-the permissions the users will have.
-
-When you configure a REST API, when you push changes you will be able to see the documentation of the
-API at this URL:
+Once you configure a REST API and push changes, you can access the API's documentation at this URL:
 
 ```
 https://{{site.slingr_domain}}/<env>/runtime/api/docs/<api-name>
 ```
+<br>
 
-Keep in mind that these REST APIs you define here are useful to auto-generate the documentation only.
-Any user who does not belong to any of the groups used in the REST API can still use the API, but
-there won't be any documentation.
+Please note that these REST APIs defined here serve the sole purpose of auto-generating documentation. Any user who doesn't belong to the specified groups can still use the API but won't have access to the documentation.
 
-## REST API settings
+## **REST API Settings**
 
-When you create a new REST API you will need to provide the following settings:
- 
+When creating a new REST API, you must provide the following settings:
+
 ### Label
 
-This is a human-readable name for the REST API. 
+A user-friendly, human-readable name for the REST API.
 
 ### Name
 
-This is the internal name of the REST API and it will be used in the URL of the API documentation.
-
-The name cannot contain special characters or spaces. Only letters and numbers.
+The internal name of the REST API, used in the API documentation's URL. It should consist only of letters and numbers, with no special characters or spaces.
 
 ### Groups
 
-This is a list of groups that define the permissions for this REST API. Only things that are accessible
-to these groups will be documented.
+A list of groups that define the permissions for this REST API. Only the components accessible to these groups will be documented.

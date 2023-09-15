@@ -3,7 +3,7 @@ params:
     type: sys.data.Record
     description: |
       This is the record that is being moved. You will usually update the rank field in this record
-      using the methods in the [wrapper methods]({{<ref "/dev-reference/field-types/miscallaneous_types/rank.md#javascript-api">}})
+      using the methods in the [wrapper methods]({{<ref "/dev-reference/field-types/miscellaneous_types/rank.md#javascript-api">}})
 
       Keep in mind that you need to save the record after you update the rank field, otherwise rank won't
       be updated and record won't be moved.

@@ -1,6 +1,6 @@
 ---
-title: "Community endpoints"
-lead: "List of community endpoints."
+title: "Community legacy services"
+lead: "List of community legacy services."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,7 +12,7 @@ toc: true
 weight: 5
 ---
 
-Here you can find the list of the community endpoints:
+Here you can find the list of the community legacy services:
 
 - [Apidaze](https://github.com/slingr-stack/apidaze-endpoint)
 - [Authorize.Net](https://github.com/slingr-stack/authorize-net-endpoint)

@@ -12,65 +12,96 @@ weight: 40
 toc: true
 ---
 
+In this section, we will learn how to add actions to our events. The purpose is to enable changing the event status without entering the edit view. 
 
-In this section, we will add actions to our events to change their status without having to enter the edit view. 
+## Create a 'cancel event' action
 
-To begin, let’s create an action to cancel events using a feature called Flows. This action will only appear if the current status of the event is Active. Follow these steps:
+Let's get started by creating an action to cancel events using a feature called ``Flows``. This action will only be visible when the current status of the event is set to Active. Follow these steps:
 
-1. Right-click on the node Model > Entities > Events > Actions and select New Action from the dropdown menu.
-2. Fill in the form with the following details:
-   - Label: Cancel Event
-   - Name: cancelEvent
-   - Type: One Record
-   - Visible: Always
-   - Preconditions: Expression
-   - Expression: Value > Status > Equals > Active
-   - Actions type: Flow
-   - Click on Open Editor.
+👉 Right-click on the node `Model > Entities > Events > Actions` and select `New Action` from the dropdown menu.
+
+👉 Fill in the form with the following details:
+
+       Label: Cancel Event
+       Name: cancelEvent
+       Type: One Record
+       Visible: Always
+       Preconditions: Expression
+       Expression: Value > Status > Equals > Active
+       Actions type: Flow
+
+---
 
 ![Alt Text](/images/vendor/event-planner/creating-actions/ww_event_planner_cancel_event_action.png)
 
 ![Alt Text](/images/vendor/event-planner/creating-actions/ww_event_planner_cancel_event_action_2.png)
 
+---
+### Configure action flow
+
+👉 Click on Open Editor.
+
 ![Alt Text](/images/vendor/event-planner/creating-actions/ww_event_planner_flow_editor.png)
 
-3. The flow designer will open. The squares on the left are called steps and each step has different functionality that can be connected to build a flow. Use the flow designer to change the status of the record by following these steps:
-   - Create an Update Record step and connect it with the start step.
-   - On the right, fill the form with the following details:
-       - Record: record
-       - Data: Status > Set > Cancel
-       - Store Changes: true
-   - Create an End step and connect it with the Update Record step.
+This is what we call the **``Flow Designer``**, and the boxes on the left are referred to as "steps." Each step has different functionality, and you can connect them to build a flow. You can learn more about flows [here]({{<ref "/dev-reference/flows/overview.md" >}}). We are going to use it to change the status of the record.
+
+👉 Follow these flow steps:
+
+1. Create an "Update Record" step and connect it to the "Start" step.
 
 ![Alt Text](/images/vendor/event-planner/creating-actions/ww_event_planner_update_record_step.png)
+
+2. On the right, fill the form to the following details:
+
+```   
+      Record: record
+      Data: Status > Set > Cancel
+      Store Changes: true
+```
+
+3. Create an "End" step and connect it to the "Update Record" step. 
 
 ![Alt Text](/images/vendor/event-planner/creating-actions/cc.png)
 
 4. Click on Create.
 
-Once we execute this action, we can set the status of an event to Cancel without having to enter the edit view. 
+**This is ready!**
 
-Next, we will create another action to pass an event from Active to Done using the Javascript API offered by Slingr. Follow these steps:
+👉 When this action is executed that, the user will be able to set the status of an event to "Cancel" without having to edit the event record.
 
-1. Right-click on the node Model > Entities > Events > Actions and select New Action from the dropdown menu.
-2. Fill in the form with the following details:
-   - Label: End Event
-   - Name: endEvent
-   - Type: One Record
-   - Visible: Always
-   - Preconditions: Expression
-   - Expression: Value > Status > Equals > Active
-   - Actions type: Script
-   - Script:
-      ```
-      record.field("status").val("done");
-      sys.data.save(record);
-      ```
+---
+
+## Create a 'done' action
+
+Now, the only thing left is to create another event to transition an event from "Active" to "Done." 
+
+We can follow the same process we just learned, but this time, we will utilize the JavaScript API offered by Slingr. You can learn more about it [here]({{<ref "/dev-reference/scripting/overview.md" >}}).
+
+Let's do it:
+
+👉 Right-click on the node ``Model > Entities > Events > Actions`` and select ``New Action`` from the dropdown menu.
+
+👉 Fill in the form with the following details:
+
+       Label: End Event
+       Name: endEvent
+       Type: One Record
+       Visible: Always
+       Preconditions: Expression
+       Expression: Value > Status > Equals > Active
+       Actions type: Script
+       Script:
+         record.field("status").val("done");
+         sys.data.save(record);
+         
+---
 
 ![Alt Text](/images/vendor/event-planner/creating-actions/ccc.png)
 
 ![Alt Text](/images/vendor/event-planner/creating-actions/cccc.png)
 
-3. Click on Create.
+👉 Click on Create.
 
-That's it! We have implemented our actions. After pushing the changes, go to the runtime and proceed to the next section, Actions in Action, to see the results.
+👉 Push to see the changes.
+
+That's it! We have implemented our two actions. After pushing the changes, go to the runtime and proceed to the next section, **Actions in Action**, to see the results.

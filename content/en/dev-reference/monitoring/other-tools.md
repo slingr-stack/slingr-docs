@@ -1,6 +1,6 @@
 ---
 title: "Other tools"
-lead: "Describes some tools available in the app monitor"
+lead: "Provides an overview of various tools accessible within the app monitor."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,64 +12,51 @@ toc: true
 weight: 153
 ---
 
+In the App Monitor, you have access to a set of valuable tools that assist you in efficiently managing your app environment. These tools offer insights and control over various aspects of your application's runtime.
 
-Here we will describe a few tools available in the app monitor that can help when managing your
-environment.
+## **App explorer**
 
-## App explorer
+The App Explorer provides a view of your app's metadata in its current runtime state. It's important to note that this metadata might differ from what you see in the App Builder if you haven't pushed all your changes. In production environments, the App Explorer is the sole method for exploring metadata, as there is no App Builder instance available.
 
-The app explorer allows to see what's the metadata of the running app, which could be different
-than the metadata you see in the app explorer (if you haven't pushed all changes).
+## **Storage**
 
-Also in production this will be the only way to explore metadata because there isn't an app builder
-instance there.
+The **`Storage`** section in the App Monitor allows you to interact with the temporary [key-value storage engine]({{<ref "/dev-reference/scripting/sys-storage.md">}}) of your app. Here's what you can do:
 
-## Storage
+- **`View Existing Key-Value Pairs`**: Inspect the key-value pairs currently stored in the storage engine.
 
-From the `Storage` section in the app monitor you can explore what's in the temporary 
-[key-value storage engine]({{site.baseurl}}/app-development-js-api-storage.html). You can do the
-following things:
+- **`Edit Value of an Existing Key`**: Modify the value associated with an existing key.
 
-- See existing key-value pairs
-- Edit value of an existing key
-- Create new key-value pairs
-- Clear storage, which will remove all key-value pairs
+- **`Create New Key-Value Pairs`**: Add new key-value pairs to the storage engine.
 
-## Users management
+- **`Clear Storage`**: Remove all key-value pairs from the storage engine, providing a clean slate for your app's temporary data.
 
-In the section `Users` of the app monitor it is possible to manage users. 
-[Here you can find more information about what you can do there.]({{site.baseurl}}/app-development-security-users.html)
+## **Users management**
 
-## Console
+In the `Users` section of the App Monitor, you gain the capability to manage users within your app environment. For comprehensive details on user management, please refer to our [Users Management documentation]({{<ref "/dev-reference/security/users.md">}}).
 
-The console allows to execute scripts directly in the app runtime. This is very useful for
-maintenance tasks. For example let's suppose you need to update many records due to an unexpected
-event and you don't have any feature in the app to do that. In this case, instead of going record
-by record making the requested updates, you can write a script to update all affected records and
-run it from the console.
+## **Console**
 
-When you execute a script in the console a job is created to execute it. All logs done in the job
-will appear in the console output. You can write add logs to the job with the methods 
-{% include js_symbol.html symbol='sys.jobs.logInfo()' %} or {% include js_symbol.html symbol='sys.jobs.logError()' %}, 
-but there is a shortcut when executing a script in the console which is `log()`:
+The Console is a powerful tool for executing scripts directly within your app's runtime. This functionality is particularly useful for maintenance tasks, such as mass updates to records in response to unexpected events. Rather than manually updating records one by one, you can write a script to make the necessary changes and execute it from the console.
 
-```js
+When you execute a script in the console, a job is created to execute it. All logs generated during the job's execution are displayed in the console output. You can add logs to the job using methods like[sys.jobs.logInfo()]({{<ref "/dev-reference/scripting/sys-jobs.md#loginfomessage">}}) or [sys.jobs.logError()]({{<ref "/dev-reference/scripting/sys-jobs.md#logerrormessage">}}). There's also a convenient shortcut for logging when executing scripts in the console, which is **`log()`**:
+
+``` js
 for (var i = 0; i < 10; i++) {
   log('i: '+i);
 }
 ```
+<br>
 
-Keep in mind that if you use {% include js_symbol.html symbol='sys.logs.info()' %} or 
-{% include js_symbol.html symbol='sys.logs.error()' %}, those logs won't be in the console output 
-but the app logs.
+Please note that logs generated using [sys.jobs.logInfo()]({{<ref "/dev-reference/scripting/sys-jobs.md#loginfomessage">}}) or [sys.jobs.logError()]({{<ref "/dev-reference/scripting/sys-jobs.md#logerrormessage">}}) will appear in the app logs, not in the console output.
 
-## REST API
+## **REST API**
 
-Here we can find information about the REST API calls in our app over time:
+In the **`REST API`** section of the App Monitor, you can access essential information about the REST API calls made to your app over time:
 
-- `Number of calls`: number of API calls that have been made to the app.
-- `Average response time`: the average response time of API calls. If you see this number growing
-  in a persistent way, you might need to add more instances to your app or increase the size of
-  your instances.
-- `Min response time`: the minimum response time to calls in the API of the app.
-- `Max response time`: the maximum response time to calls in the API of the app.
+- **`Number of Calls`**: Displays the total number of API calls made to your app.
+
+- **`Average Response Time`**: Represents the average response time for API calls. If you observe a consistent increase in this value, it might be an indicator that you need to either scale up your app by adding more instances or increase the resource allocation to your existing instances.
+
+- **`Minimum Response Time`**: Indicates the shortest response time observed for API calls to your app.
+
+- **`Maximum Response Time`**: Highlights the longest response time recorded for API calls to your app.

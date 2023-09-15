@@ -1,6 +1,6 @@
 ---
-title: "Official endpoints"
-lead: "List of official endpoints."
+title: "Official legacy services"
+lead: "List of official legacy services."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,7 +12,7 @@ toc: true
 weight: 4
 ---
 
-Here you can find the list of our officially-supported endpoints:
+Here you can find the list of our officially-supported legacy services:
 
 - [AWS Connect](https://github.com/slingr-stack/aws-connect-endpoint)
 - [AWS Lex](https://github.com/slingr-stack/aws-lex-endpoint)

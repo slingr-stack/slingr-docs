@@ -1,6 +1,6 @@
 ---
-title: "Flows overview"
-lead: "This section provides an overview on how flows can be used to do the same actions that could be done with scripts but in an easier way."
+title: "Overview"
+lead: "This section offers an overview of how flows can streamline tasks that would typically be accomplished with scripts, offering a more straightforward approach."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,78 +12,52 @@ toc: true
 weight: 77
 ---
 
-## Introduction
+## **Introduction**
 
-Flow is a visual programming language tool that uses graphical blocks (steps) to develop algorithms.
+Flow is a visual programming language tool that utilizes graphical blocks (steps) for creating algorithms.
 
-To describe the logic of a flow it is required to do a drag and drop of steps and connect them together. So a Flow is a 
-series of predefined and configurable steps that can be used to execute a wide variety of business rules in different 
-parts of an application. 
+To describe the logic of a flow, you are required to perform a drag-and-drop action of steps and connect them together. In essence, a Flow is a sequence of predefined and configurable steps that can be employed to execute a wide array of business rules in various parts of an application.
 
-## Flow Settings
+## **Flow settings**
 
-The following table describes the general properties of the flows:
+The table below outlines the general properties of flows:
 
-<table class="table">
-    <thead>
-        <tr class="header">
-            <th align="left">Label</th>
-            <th align="left">Type</th>
-            <th align="left">Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Label</td>
-            <td><code class="highlighter-rouge">string</code></td>
-            <td>This is a human-readable name of the flow. You can use spaces, special characters and mix upper case and lower case letters.</td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td><code class="highlighter-rouge">string</code></td>
-            <td>This is the internal name of the flow. It cannot hold special characters or spaces.</td>
-        </tr>
-        <tr>
-            <td>Description</td>
-            <td><code class="highlighter-rouge">string</code></td>
-            <td>This is the description of the flow.</td>
-        </tr>
-        <tr>
-            <td>Debug</td>
-            <td><code class="highlighter-rouge">boolean</code></td>
-            <td>If enabled, will print the generated code in logs.</td>
-        </tr>
-    </tbody>
-</table>
+| Label        | Type                        | Description                                                  |
+| ------------ | --------------------------- | ------------------------------------------------------------ |
+| Label        |  string                     | This is a human-readable name of the flow. You can use spaces, special characters, and mix upper case and lower case letters. |
+| Name         |  string                     | This is the internal name of the flow. It cannot contain special characters or spaces. |
+| Description  |  string                     | This is the description of the flow.                         |
+| Debug        |  boolean                    | If enabled, it will print the generated code in logs.        |
 
-## General Rules
+## **General rules**
 
-The following list contains the rules that must be followed in all flows:
+The following list outlines the rules that must be adhered to in all flows:
 
-- The flow name must be unique in the app.
-- Each step name must be unique in the flow.
-- Start and end steps are mandatory.
-- Start step should be unique.
-- Inputs need to pass their own validation rules.
-- Outputs need to pass their own validation rules.
-- There can not be steps without any connection with the exception of the context step and expanded version of subflows.
-- Every step except for start and end steps should be source or target of at least one connection.
-- You can only select items from the context according to its scope.
+- The flow name must be unique within the app.
+- Each step name must be unique within the flow.
+- Both start and end steps are mandatory.
+- The start step should be unique.
+- Inputs must adhere to their own validation rules.
+- Outputs must adhere to their own validation rules.
+- Steps, with the exception of the context step and expanded versions of subflows, must have at least one connection.
+- Every step, except for start and end steps, should serve as the source or target of at least one connection.
+- Item selection from the context should align with its scope.
 
+## **Considerations**
 
-## Considerations
-Description of considerations to take into account when working with flows
-- Right now the input values can only contain fixed values or references to variables available in the context.
+This section provides essential considerations to keep in mind when working with flows:
+
+- Currently, input values can only consist of fixed values or references to variables available in the context.
 - Condition expressions are expressed as scripts.
 
-## Quick start
+## **Quick start**
 
-The flow editor contains the [available steps](), the steps can be dragged and connected to each other to build the flow.
+The flow editor comprises [available steps]({{<ref "/dev-reference/flows/steps/categories.md">}}), which can be dragged and interconnected to construct the flow.
 
-Each step has a different function, it can have input parameters and generate output data that will be included in the context of the flow to be reused by other steps. 
+Each step serves a distinct function and may include input parameters, generating output data that becomes part of the flow's context for reuse by other steps.
 
-The steps can be connected to each other by connecting from the green rectangle of the source step to the destination step. Some steps have a red square that indicates the flow to follow in case an error occurs when executing the step.
+Steps are interconnected by drawing connections from the green rectangle of the source step to the destination step. Some steps feature a red square, indicating the flow to follow in case of an error during step execution.
 
-![](/images/vendor/flows/quickstart_sample.png)
+![Flow Example](/images/vendor/flows/quickstart_sample.png)
 
-_The flow begins with the start step, then the find data step searches all the companies, for each of the companies found in the previous step, the update record step updates that company and the corresponding log step is executed whether it was successful or not. Finally the flow ends with the step end._
+In the example above, the flow initiates with the start step, followed by the find data step searching for all companies. For each of the companies discovered in the previous step, the update record step is executed, and the corresponding log step is triggered, whether the operation succeeds or not. The flow concludes with the end step.

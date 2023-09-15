@@ -12,13 +12,15 @@ toc: true
 weight: 6
 ---
 
-## General description
-On the bottom side of the app builder you will find a panel with the **console**. You can press click to expand this panel. Inside, you can execute any script using the [Javascript API]({{<ref "/dev-reference/scripting/overview.md">}}) of the platform. The output of this execution will be printed on the right side of this panel. This feature is very useful for testing any script before setting it in any other place.
+## **Console panel**
+
+Situated at the bottom of the app builder is the **`console`** panel. By clicking on it, you can expand this panel. Within the console, you have the ability to execute scripts using the [Javascript API]({{<ref "/dev-reference/scripting/overview.md">}}) of the platform. The results of these script executions will be displayed on the right side of this panel. This feature proves highly valuable for testing scripts prior to implementing them in other parts of your app.
 
 {{< notes type="tip">}}
-Keyboard shortcut <b>alt + down arrow</b> will expand or collapse the bottom panel with the console. 
+Utilize the keyboard shortcut **alt + down arrow** to expand or collapse the console panel.
 {{< /notes >}}
 
 {{< notes type="tip">}}
-You can press <b>ctrl + enter</b> to execute the script in the console.
+Pressing <b>ctrl + enter</b> allows you to execute scripts directly in the console.
 {{< /notes >}}
+

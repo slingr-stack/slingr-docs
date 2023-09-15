@@ -6,24 +6,44 @@
 {{- $restApi := .Get "restApi" -}}
 
 <style>
+    .nav.nav-tabs {
+        background-color: #fbf7f0;
+        border-bottom: none;
+        display: flex; /* Mostramos los botones en línea */
+        padding: 5px;
+    }
 
-    button {
-        color: #0072ce;
+    .nav.nav-tabs button {
+        background-color: transparent;
         border: none;
+        border-top: 2px solid transparent;
+        color: #333;
+        cursor: pointer;
+        flex: 1;
+        padding: 10px 15px;
+        text-align: center;
+        transition: all 0.3s ease;
     }
 
     .nav.nav-tabs button.active {
-        background-color: #0072ce;
-        color: white;
-    }
-    .nav.nav-tabs button:hover {
-        background-color: #c7e7ff;
+        border-top-color: #0072ce;
         color: #0072ce;
     }
 
-    /* Clase de animación CSS */
-    .slide-color {
-        transition: background-color 1.5s ease;
+    .nav.nav-tabs button:hover {
+        background-color: #f0f0f0;
+    }
+
+    .query-sample-container {
+        margin-top: 15px;
+    }
+
+    .tab-content pre code {
+        background-color: #fbf7f0; 
+        color: #555;
+        padding: 2%;
+        white-space: pre-wrap;
+        overflow: hidden; 
     }
 </style>
 

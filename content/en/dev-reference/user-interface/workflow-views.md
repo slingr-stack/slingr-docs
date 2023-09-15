@@ -11,355 +11,403 @@ menu:
 toc: true
 weight: 47
 ---
+Workflow views facilitate the display of entity records in a board-style layout, organized by columns. This organizational structure proves particularly beneficial for scenarios involving workflows. For instance, you could employ a tasks entity, and within the workflow view, you could establish columns such as **`To do`**, **`In progress`**, and **`Done`**. Records are allocated to respective columns based on their status. Users possess the capability to shift cards across columns as they progress through tasks, arrange cards within columns to indicate priority, and more.
 
-Workflow views allow to show records of an entity in a board organized by columns, which makes it
-very useful for cases where you have workflows. For example you could have a tasks entity and
-in the workflow view you could have columns for states `To do`, `In progress`, and `Done`. Records
-will be placed in the different columns based on the state and users will be able to move cards
-from one column to another as they work on them, sort them in the column to establish priorities,
-etc.
+Workflow views offer the following functionality:
+- Creation of new records
+- Access to record details
+- Editing of records
+- Execution of actions
 
-From workflow views it is also possible to create new records, see details of each record, edit them
-and execute actions, similar to what you can do in grid views. The main difference is that instead
-of showing records in a list they are displayed as cards in a board.
+These capabilities parallel those of grid views. The fundamental distinction lies in the visual representation of records. In a workflow view, records appear as cards within a board, as opposed to a traditional list format.
 
-To move records from one column to another transitions have to be defined. Transitions will use
-an action that will be executed when record is moved.
+To facilitate the transition of records from one column to another, transitions must be defined. Transitions hinge on an associated action, executed upon the movement of a record.
 
-Finally it is possible to configure how cards will be rendered by customizing the title, content
-and tags.
+Finally, customization options extend to card rendering. Developers can configure the appearance of cards by modifying the title, content, and tags.
 
-## Label
+## **Entity**
 
-This is a human-readable name of the view. You can use spaces, special characters and
-mix upper case and lower case letters.
+This specifies the entity to which the view is linked. Only records belonging to this entity will be listed within the grid view.
 
-This label will be displayed at the top of the workflow view, so make sure you use something
-users will understand.
+## **Label**
 
-## Name
+This represents the human-readable name of the view. You can use spaces, special characters, and a mixture of uppercase and lowercase letters.
 
-This is the internal name of the view. It cannot hold special characters or spaces.
+The label will be displayed at the top of the grid view, so choose something comprehensible to users.
 
-Usually you will use the name of the view in scripts and the REST API, so changing it
-might affect your app and you will need to make some manual adjustments.
+## **Name**
 
-## Entity
+The internal name of the view. This name must exclude special characters and spaces.
 
-This is the entity the view will point to. Only records of this entity will be listed
-in the workflow view.
+Commonly, this view name is utilized in scripts and the REST API. Altering it may impact your application and necessitate manual adjustments.
 
-## Columns
+## **Columns**
 
-Columns are how workflow views are organized. Usually columns represent the different states
-that records can have, but could be any other criteria.
+Columns form the structural foundation of workflow views. Primarily, columns mirror different states that records can assume, although they can also be based on alternate criteria.
 
 ### Label
 
-This is the label of the column and will be displayed at the top of it in the UI.
+This label designates the column's title, displayed at the top of the column in the user interface.
 
 ### Sort field
 
-This is the default sorting field for the column.
+This indicates the default sorting field for the column.
 
 ### Sort type
 
-Indicates the direction of the sorting. 
+Specifies the sorting direction.
 
 ### Width
 
-This is the width of the column that can be specified in pixels or percentage. When using
-percentage, the reference is the width of the main content area. If you use pixels and
-the width is more than the available space, it will be possible to scroll horizontally to
-see other columns.
+This signifies the column's width, which can be specified in pixels or as a percentage. When using a percentage, the reference point is the width of the main content area. If pixel values are employed and the width exceeds the available space, horizontal scrolling will be enabled to navigate through other columns.
 
 ### Filters
 
-Filters allow to specify which records will be shown on the column, so only records matching
-the expressions specified in the filters will be in the column. For example if the
-column is `To do`, you probably will put a filter on records where field `state` is 
-equals to `toDo` (or whatever the filter needs to be).
+Filters enable the specification of criteria for which records will be displayed in the column. Consequently, only records matching the expressions defined within the filters will appear in the column. For instance, if the column pertains to **`To do`**, a filter might be placed on records with a **`state`** field equivalent to **`toDo`** (or any other applicable filter condition).
 
-Please check the [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html) 
-documentation for more information and how to configure these filters.
+For comprehensive details and configuration instructions regarding filters, consult the [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) documentation.
 
-### Page size
+### Page Size
 
-This is the maximum number of records to fetch initially and when the user scrolls down
-the list.
+This designates the maximum number of records to be initially fetched and when users scroll through the list.
 
 ### Allow to rank records
 
-Inside the column it is possible to rank records, moving them up and down. To enable this
-feature this flag has to be set and the entity must have a field of type 
-[Rank]({{site.baseurl}}/app-development-type-rank.html).
+Enabling this option enables sorting of records through drag-and-drop within the column. To use this feature, the entity must possess a field of type [Rank]({{<ref "/dev-reference/field-types/miscellaneous_types/rank.md">}}).
 
-These settings must be configured when this option is enabled:
+The following settings must be configured when this option is enabled:
 
-- `Rank field`: this is the rank field used to sort records in the column.
-- `Rank type`: indicates how the rank will be done. `Auto` leaves this to the platform,
-  which basically allows to move records to any position. If you need more control you
-  could set the `Manual` option and use a script to define how rank should happen, which
-  could be useful if you need to define restrictions or special rules. For example, if
-  issues have some dependencies defined, you might check that tasks with dependencies on
-  other tasks cannot be above those other tasks.
-  When you select `Manual` you will need to provide a script. This is the context of the
-  script:
-  {{< js_script_context context="rankManualScript">}}
+- **`Rank Field`**: The rank field utilized for sorting records in the column.
+- **`Rank Type`**: Specifies how ranking will be performed. **`Auto`** defers the decision to the platform, permitting records to be moved to any position. Select **`Manual`** to have more control and use a script to define ranking rules. This is beneficial for imposing restrictions or special rules. For example, if issues have dependencies, tasks with dependencies on other tasks cannot be above those dependent tasks. If **`Manual`** is selected, a script must be provided for context:
+  
+  ##### Parameters
 
-## Transitions
+  | Name   | Type                | Description |
+  |--------|---------------------|-------------|
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) |This pertains to the record that is undergoing movement. Typically, you will update the rank field within this record using the methods available in the wrapper methods. <br> It's important to remember that after updating the rank field, you must save the record. Failing to save the record will result in the rank not being updated, and the record will not be repositioned.|
+  | recordBefore | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) | This refers to the record that precedes the intended position for the record being moved. It might be **`null`** in instances where the record is being moved to the first position, as there would be no preceding record.|
+  | recordAfter | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) | This denotes the record following the intended position for the record being moved. It could be **`null`** when moving the record to the last position, as there would be no succeeding record.|
 
-Transitions indicate how cards can be moved from one column to another. If there is no transition
-defined to move cards from one column to another, this movement won't be possible in the UI.
+  ##### Samples
 
-These are the settings for transitions
+  ``` javascript
+  // rank records in a way that urgent ones are always at the top
+  var fieldName = 'rank';
+  var moved = false;
+  if (!recordBefore && recordAfter) { // the record is moved to the top
+    if (!recordAfter.field('urgent').val() || record.field('urgent').val()) {
+      record.field(fieldName).rankBefore(recordAfter.field(fieldName));
+      moved = true;
+    }
+  } else if (recordBefore && !recordAfter) { // the record is moved to the bottom
+    if (recordBefore.field('urgent').val() || !record.field('urgent').val()) {
+      record.field(fieldName).rankAfter(recordBefore.field(fieldName));
+      moved = true;
+    }
+  } else if (recordBefore && recordAfter) { // the record is placed between two other records
+    if ((!recordAfter.field('urgent').val() || record.field('urgent').val()) &&
+        (recordBefore.field('urgent').val() || !record.field('urgent').val())) {
+      record.field(fieldName).rankBetween(recordBefore.field(fieldName), recordAfter.field(fieldName));
+      moved = true;
+    }
+  }
+  // IMPORTANT!!! You need to save the record to make the new rank value permanent
+  if (moved) {
+    sys.data.save(record);
+  }
+  ```
+  <br>
 
-- `Label`: this is a label to identify the transition.
-- `Source column`: the column where cards will be dragged from.
-- `Target column`: the column where cards will be dropped to.
-- `Action`: this is the action to execute when the card is dropped. If the action has parameters,
-  a modal will ask the user to complete the form and confirm the action. Otherwise the action will
-  be executed automatically, ignoring the flag to ask for confirmation.
-  One important thing to keep in mind is that the action is responsible to change the record in
-  a way that it will be placed in the new column. For example if the transition moves allows to
-  move the record from the column `To do` to the column `In progress`, the action should change
-  the state of the tasks from `toDo` to `inProgress`. If the action for any reason (it could be
-  a restriction) doesn't update the record, it will be put back in the column where it was.
+  ---
 
-## Card settings
+## **Transitions**
 
-Card settings determine how the cards will be rendered, like header, content and tags.
+Transitions outline the process by which cards can be relocated from one column to another. Without a defined transition for card movement between columns, such movements cannot be facilitated within the user interface.
+
+The following settings pertain to transitions:
+
+- **`Label`**: This serves as a label for identifying the transition.
+- **`Source Column`**: Indicates the column from which cards will be dragged.
+- **`Target Column`**: Specifies the column to which cards will be dropped.
+- **`Action`**: This pertains to the action executed upon card drop. If the action encompasses parameters, a modal will prompt the user to complete the form and confirm the action. In cases where the action lacks a confirmation requirement, it will automatically execute, bypassing the confirmation flag.
+
+It's crucial to note that the action bears the responsibility of altering the record in a manner that situates it in the new column. For example, if the transition enables the transfer of a record from the **`To do`** column to the **`In progress`** column, the action must modify the task's state from **`toDo`** to **`inProgress`**. Failure to update the record within the action, for any reason, will result in the record being returned to its original column.
+
+## **Card settings**
+
+Card settings dictate the visual presentation of cards, encompassing elements such as headers, content, and tags.
 
 ### Header
 
-The header is shown at the top of the card. It should be short (according to the width configured
-in columns) and provide enough information to let users identify the record.
+The header is located at the top of the card. It should be concise (commensurate with the column's configured width) and provide sufficient information for users to identify the record.
 
-There are two ways to define the header:
+Two methods exist for defining the header:
 
-- `Field`: a field in the entity is selected and the value of that field will be used as
-  the header.
-- `Script`: if you need to mix different fields or have a more complex header, you can use a script
-  to define it. This is the context of the script:
-  {{< js_script_context context="cardsViewsHeaderScript">}}
+- **`Field`**: Selection of a field within the entity, with the field's value serving as the header.
+- **`Script`**: In instances where a more intricate header, combining different fields, is necessary, a script can be employed. The script's context is as follows:
 
+    ##### Parameters
+
+    | Name   | Type                | Description |
+    |--------|---------------------|-------------|
+    | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) |The record that the card is representing.|
+
+    ##### Returns
+
+    **`string`** - Plain text that will be used as the header.
+
+    ##### Samples
+
+    ``` javascript
+    // builds the header using the task number and summary 
+    return record.field('number').val() + '. ' + record.field('summary').val();
+    ```
+    <br>
 
 ### Summary
 
-The summary is rendered in the body of the card. It should provide more details of the record but
-you should try to keep it short, probably try not to take more than 3 lines. If the content is too
-long, a vertical scroll will be added in the body of the card.
+The summary is displayed within the card's body. While it should offer more comprehensive details about the record, an effort should be made to maintain brevity, ideally limiting the content to three lines or fewer. In cases where content exceeds this limit, vertical scrolling will be enabled within the card's body.
 
-There are two ways to define the summary:
+Two approaches exist for defining the summary:
 
-- `Field`: a field in the entity is selected and the value of that field will be used as
-  the summary.
-- `Script`: if you need to mix different fields or have a more complex summary, you can use a script
-  to define it. This is the context of the script:
-  {{< js_script_context context="cardsViewsSummaryScript">}}
+- **`Field`**: Selection of a field within the entity, with the field's value serving as the summary.
+- **`Script`**: In instances where a more intricate summary, involving the combination of different fields, is necessary, a script can be employed. The script's context is as follows:
 
+    ##### Parameters
+
+    | Name   | Type                | Description |
+    |--------|---------------------|-------------|
+    | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) |The record that the card is representing.|
+
+    ##### Returns
+
+    **`string`** - HTML code that will be rendered in the body of the card. Keep in mind that HTML tags allowed are the same as for [HTML type]({{<ref "/dev-reference/field-types/text/html.md">}}).
+
+    ##### Samples
+
+    ``` javascript
+    // builds the summary using different fields 
+    var summary = '';
+    if (record.field('description').isEmpty()) {
+      summary += 'No description';
+    } else {
+      summary += record.field('description').val();
+    }
+    if (!record.field('attachments').isEmpty()) {
+      summary += 'Attachments'
+      summary += '';
+      record.field('attachments').each(function(attachment) {
+        var url = sys.app.getUrl()+'/api/files/'+attachment.id();
+        summary += ''+attachment.name()+''
+      });
+      summary += '';
+    }
+    return summary;
+    ```
+    <br>
 
 ### Tags groups
 
-Tags are placed at the bottom of the card. They have a label and a color and are useful to quickly highlight
-something in the card. For example for urgent tasks you might want to have a red tag saying 'urgent' so users
-can quickly see them.
+Tags are situated at the base of the card, comprised of a label and a color. They serve as a means to swiftly highlight aspects within the card. For instance, urgent tasks could be designated with a red tag labeled 'urgent,' allowing users to promptly identify them.
 
 #### Label
 
-This is a label for the tags group. It is just used to identify the meaning of the tag group.
+This label designates the tags group, providing a means of signifying the significance of the tag group.
 
 #### Filter
 
-This filter indicates which records can have this tag, which doesn't necessarily mean those records will
-have it as there might be other considerations in the label script or if the label field is empty.
+This filter specifies which records may possess this tag. However, the presence of this filter does not necessarily guarantee that records will bear the tag. Additional considerations might stem from the label script or the absence of content within the label field.
 
-Please check the documentation for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html) 
-to know how to configure the filter.
- 
+For comprehensive information and guidance on configuring filters, consult the [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) documentation.
+
 #### Color
 
-This is the color used for the tag. These colors are theme-aware.
+This denotes the color employed for the tag. These colors are aligned with the theme.
 
 #### Tags
 
-These are the tags that will be applied. These are the options:
+The subsequent options are available for tags:
 
-- `Fixed text`: only one tag will be added with the given text.
-- `Field`: in this case the value of the text field will be used as the label. If the field is multi-valued,
-  a tag will be added to each value. If the field is empty no tag will be added.
-- `Script`: here it is possible to define tags using a script. Basically the script should return a string
-  (one tag) or a list of strings (many tags).
-  {{< js_script_context context="cardsViewsTagScript">}}
+- **`Fixed Text`**: A single tag with the provided text.
+- **`Field`**: The value of the designated field serves as the tag label. If the field is multi-valued, a tag will be added for each value. Should the field be empty, no tags will be appended.
+- **`Script`**: This option allows the definition of tags using a script. Essentially, the script should return either a string (a single tag) or a list of strings (multiple tags).
 
-#### Record highlight
+    ##### Parameters
 
-With this option you can define which records should be highlighted with colors. This is useful when
-you want users to quickly see something. For example if there is a listing of tasks and you want users to
-quickly see urgent ones, you can define a highlight expression for those fields so they have a red
-color.
+    | Name   | Type                | Description |
+    |--------|---------------------|-------------|
+    | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) |The record that the card is representing.|
 
-It is possible to define many highlight rules. For each one a color must be selected and a expression must be
-defined. All records matching the expression will use the selected color.
+    ##### Returns
 
-Please check the documentation for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html).
+    **`string|string[]`** - This is the text to show in the tag. If the script returns a string, it will considered one tag. If the script returns an array of strings, many tags will be added.
 
-Alternatively you can use a script instead of an expression:
+    ##### Samples
 
-{{< js_script_context context="cardsViewHighlightScript">}}
+    ``` javascript
+    // adds the company state as tag 
+    return record.field('company').fetch().field('state').val();
+    ```
+    <br>
 
-#### Main menu
+#### Record Highlight
 
-This option controls the actions that can be executed from the view header.
+This option empowers you to designate records that should stand out through the application of colors. This proves invaluable when seeking to draw users' swift attention to specific aspects. For instance, in a task listing, urgent tasks could be highlighted in red, facilitating rapid identification.
+
+Multiple highlight rules can be established. For each rule, a color must be selected, and an associated expression must be defined. Any records that satisfy the expression will be presented with the chosen color.
+
+For comprehensive details and guidance on expressions, refer to the [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) documentation.
+
+Alternatively, a script can be employed in place of an expression:
+
+  ##### Parameters
+
+  | Name   | Type                | Description |
+  |--------|---------------------|-------------|
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) |The record that the card is representing and that will be evaluated to see if it has to be highlighted.|
+
+  ##### Returns
+
+  **`boolean`** - You should return **`true`** if the record has to be highlighted, **`false`** otherwise.
+
+  ##### Samples
+
+  ``` javascript
+  // the task will be highlighted if it is urgent 
+  return record.field('urgent').val() == true;
+  ```
+  <br>
+
+### Main menu
+
+This option governs the actions that can be executed from the view header.
 
 The available options are:
 
-- `All`: Every action view available in the entity will be shown in the event context menu.
-- `Some`: A custom selection of actions will be available. A new selector will appear called `Available actions`,
-  which can be used to select which actions will be listed (you select the views of the actions here).
-- `Custom menu`: This option allows the developer to customize how actions are rendered. Actions can be grouped in groups. At root level groups will be rendered as dropdown buttons while nested groups will be nested dropdowns.
-  There are some options available to configure the behaviour of buttons in the runtime:
-  - `Label`: Only for `Groups`. Groups can have a label.
-  - `Default options`: If this flag is false it will allow to override some configuration of the actions views.
-    - `Only icon`: Only for elements at root level. Buttons can be rendered only with the icon.
-    - `Icon`: This overrides the predefined icon of the action. If empty, it won't override the icon
-    - `Style`: This overrides the predefined style of the action. If empty, it won't override the style.
-    - `Label of action`: This overrides the label of the action. If empty, it won't override the label.
-- `System Actions Only`: Only system actions like `CRUD`, `Import`, `Refresh`, etc. will be displayed.
-- `None`: No actions will be available.
+- **`All`**: All available action views associated with the entity will be displayed in the context menu.
+- **`Some`**: A customized selection of actions will be accessible. This introduces a new selector called **`Available actions`**,
+  which is employed to choose which actions will be listed (the corresponding views of these actions are selected here).
+- **`Custom menu`**: This option provides developers with the ability to customize how actions are presented. Actions can be grouped into logical categories. Top-level groups will appear as dropdown buttons, while nested groups will form nested dropdowns.
+  Several runtime behavior configurations for buttons are available:
+  - **`Label`**: Solely applicable to **`Groups`**. Groups can be assigned a label.
+  - **`Default options`**: If disabled, certain configuration aspects of the action views can be overridden.
+    - **`Only icon`**: Relevant to top-level elements. Buttons can be displayed with only icons.
+    - **`Icon`**: Overrides the predefined icon associated with the action. If left empty, the icon is not overridden.
+    - **`Style`**: Overrides the predefined style associated with the action. If left empty, the style is not overridden.
+    - **`Label of action`**: Overrides the label of the action. If left empty, the label is not overridden.
+- **`System Actions Only`**: Only system actions such as **`CRUD`**, **`Import`**, **`Refresh`**, etc., will be shown.
+- **`None`**: No actions will be available.
 
-In all cases permissions and preconditions of actions will be verified, so some actions might be hidden if the
-user doesn't have permissions or preconditions aren't met.
+In all cases, permissions and preconditions of actions will be verified, potentially resulting in the hiding of certain actions if the
+user lacks the requisite permissions or preconditions are not met.
 
-### Record Menu
+### Record menu
 
-This option controls the actions that can be executed from each card. They will be displayed in the context
-menu that belongs to each card (the three vertical dots on the upper-right corner of the card).
+This option governs the actions that can be executed from each card. These actions will be displayed in the context
+menu associated with each card (identifiable through the three vertical dots in the upper-right corner of the card).
 
 The available options are:
 
-- `All`: Every action view available in the entity will be shown in the cards' context menu.
-- `Some`: A custom selection of actions will be available. A new selector will appear called `Available actions`,
-  which can be used to select which actions will be listed (you select the views of the actions here).
-- `System Actions Only`: Only system actions like `CRUD`, `Import`, `Refresh`, etc. will be displayed
-- `None`: No actions will be available.
+- **`All`**: All available action views associated with the entity will be displayed in the context menu of the cards.
+- **`Some`**: A customized selection of actions will be accessible. This introduces a new selector called **`Available actions`**,
+  which is employed to choose which actions will be listed (the corresponding views of these actions are selected here).
+- **`System Actions Only`**: Only system actions such as **`CRUD`**, **`Import`**, **`Refresh`**, etc., will be displayed.
+- **`None`**: No actions will be available.
 
-In all cases permissions and preconditions of actions will be verified, so some actions might be hidden if the 
-user doesn't have permissions or preconditions aren't met.
+In all cases, permissions and preconditions of actions will be verified, potentially resulting in the hiding of certain actions if the 
+user lacks the requisite permissions or preconditions are not met.
 
 ### Automatic refresh
 
-When this flag is enabled a dynamic listener will be created to allow to refresh automatically this view for all users
-if a record that belong to the entity that this view is pointing is created, updated or deleted. No mather if the event is
-being fired by a user or a script. Enabling this feature on card view we are also enabling it on his CRUD read only view.
+When this flag is enabled, a dynamic listener will be established to enable automatic refreshing of this view for all users
+whenever a record belonging to the entity to which this view is directed is created, updated, or deleted. Whether the event is
+initiated by a user or a script, this feature remains effective. By enabling this feature on a card view, it is simultaneously enabled on its corresponding CRUD read-only view.
 
-## CRUD actions
+## **CRUD actions**
 
-From workflow views it is possible to create, read, update and delete records. In this section you will be able
-to configure how these actions can be done.
+Workflow views support the creation, reading, updating, and deletion of records. In this section, you can configure these actions.
 
-If the entity has children entities, it is possible to configure the different views for each kind of 
-entity. So for example if you have entity A and then entities A1 and A2, if you create a record view for A, 
-it allows to configure the view for entities A1 and A2. 
+If the entity encompasses child entities, distinct views can be configured for each type of entity. For instance, if Entity A has entities A1 and A2 as its children, creating a record view for A facilitates the configuration of views for entities A1 and A2.
 
-In this way, if you create a card view for entity A you will see records from A1 and A2. Depending on the type 
-of record you open is the record view that will be displayed.
+Consequently, a card view for Entity A will display records from A1 and A2. Depending on the type 
+of record opened, the corresponding record view will be displayed.
 
 ### Create
 
 #### Allow to create
 
-This action is used to create new records in the entity. If enabled, a button to create new records will be
-available in the listing. In case the entity associated to the view has children entities a button dropdown
-with available options will be displayed.
+This action facilitates the creation of new records within the entity. Enabling this option introduces a button that allows the creation of new records within the listing. If the entity associated with the view has child entities, a button dropdown displaying available options will be presented.
 
-You will be able to configure the record view to create a new record by clicking on `Configure view`. Please take a 
-look at the documentation of [Record views]({{site.baseurl}}/app-development-ui-record-views.html).
+The configuration of the record view for creating new records can be accessed by clicking **`Configure View`**. For a comprehensive understanding of record views, consult the [Record Views]({{<ref "/dev-reference/user-interface/record-views.md">}}) documentation.
 
 #### Open in modal
 
-If this flag is set, the view to create a new record will be displayed in a modal instead of replacing the
-listing as the main content.
+When enabled, this flag ensures that the view for creating a new record is displayed in a modal window rather than replacing the
+listing as the primary content.
 
-#### Show Next button
+#### Show next button
 
-If this option is set, when creating a new record, apart from the `Cancel` and `Save` buttons, you will see
-a `Next` button that will save the record and will show the form to create a new record immediately. This is
-useful when users need to create many records quickly.
+Enabling this option introduces a **`Next`** button alongside the **`Cancel`** and **`Save`** buttons when creating a new record. Selecting **`Next`** not only saves the current record but also promptly displays the form to create a new record. This feature streamlines the process of creating multiple records.
 
 ### Read
 
-#### Allow to see details
+#### Allow to view details
 
-This action is used to open a record from the listing. If enabled, users will be able to click on the record
-in the listing to see details and they will see the action `View` in the action column (if enabled).
+This action enables users to access a detailed view of a record from the listing. Enabling this option permits users to click on a record
+within the listing to view additional details. Furthermore, the **`View`** action will be available in the action column (if enabled).
 
-You will be able to configure the record view to see details by clicking on `Configure view`. Please take a 
-look at the documentation of [Record views]({{site.baseurl}}/app-development-ui-record-views.html).
+The configuration of the record view for detailed viewing can be accessed by clicking **`Configure View`**. For detailed insights into record views, refer to the [Record Views]({{<ref "/dev-reference/user-interface/record-views.md">}}) documentation.
 
 #### Open in modal
 
-If this flag is set, the view to see details of records will be displayed in a modal instead of replacing the
-listing as the main content.
+When enabled, this flag ensures that the detailed view of records is displayed in a modal window rather than replacing the
+listing as the primary content.
 
 ### Update
 
 #### Allow to edit
 
-This action is used to edit a record from the listing. If enabled, users will see an `Edit` button in the
-read view of the record (it is needed to enable the read action) and they will see the action `Edit` in 
+This action facilitates the editing of records from within the listing. Enabling this option will present an **`Edit`** button within the
+detailed view of a record (which requires the read action to be enabled). Additionally, the **`Edit`** action will be available in 
 the action column (if enabled).
 
-You will be able to configure the record view to edit by clicking on `Configure view`. Please take a 
-look at the documentation of [Record views]({{site.baseurl}}/app-development-ui-record-views.html).
+The configuration of the record view for editing can be accessed by clicking **`Configure View`**. For a comprehensive understanding of record views, consult the [Record Views]({{<ref "/dev-reference/user-interface/record-views.md">}}) documentation.
 
 #### Open in modal
 
-If this flag is set, the view to edit records will be displayed in a modal instead of replacing the
-listing as the main content.
-
-Keep in mind that if the read view is configured to not show as a modal, this won't be shown in a
-modal when accessing the edit view from the read view and this setting will only apply when clicking
-on `Edit` in the action column of the listing.
+When enabled, this flag ensures that the view for editing records is displayed in a modal window rather than replacing the
+listing as the primary content. It's important to note that if the read view is configured to not show in a modal, this setting will not be applied when accessing the edit view from the read view. This setting primarily applies when clicking on **`Edit`** in the action column of the listing.
 
 ### Delete
 
 #### Allow to delete
 
-This action allows to delete records. When enabled you will see a `Delete` button in the listing where
-you will be able to delete all selected records. It will also show up in the dropdown of the action
-column and in the read view.
+This action empowers users to delete records. When enabled, a **`Delete`** button will be visible within the listing, allowing users to delete selected records. This button will also appear in the action column's dropdown and in the detailed view.
 
-## Filters
+## **Filters**
 
-### Global filters
+### Global Filters
 
-If the flag `Allow global filters` is enabled, the UI will allow the user to filter cards in the board
-by the fields indicated in `Global filter fields`.
+If the **`Allow Global Filters`** flag is enabled, users can filter cards on the board based on the fields specified in **`Global Filter Fields`**.
 
 #### Override label
 
-If `Allow global filters` is enabled, on `Global filter fields` there is a flag `Override Label` that
-allow to override the filter label (default one is the field label)
+When **`Allow Global Filters`** is enabled, the **`Override Label`** flag is available on **`Global Filter Fields`**, allowing for the customization of the filter label (by default, the label corresponds to the field label).
 
-If the entity has global search enabled, it is possible to allow to use this feature by setting the
-flag `Allow global search`.
+For entities with enabled global search, it is possible to activate the **`Allow Global Search`** flag.
 
 ### Quick filters
-Quick filters let you further filter the collection of cards easily by clicking/unclicking buttons.
 
-See [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html) for more information.
+Quick filters enable effortless card filtering through the simple act of clicking or unclicking buttons.
 
-## Permissions
+For more information, consult [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
 
-Permissions allow to define which groups can access this view.
+## **Permissions**
+
+Permissions determine which groups can access this view.
   
-Permissions for a view can be handled right in the view definition, but it is just
-a different view of what you can configure in groups. It is oriented so you can easily
-configure permissions on the view for all existing groups.
+While permissions for a view can be configured directly within the view definition, it mirrors the capabilities available in group configuration. The objective is to facilitate easy permission configuration for all existing groups.
 
-When a new view is created, if a group has permissions to the entity associated to that view, then the view 
-receives permission to be used for that group.
+Upon the creation of a new view, if a group holds permissions for the entity associated with that view, the view will inherently be granted permission for use by that group.
 
-For more information about permissions please refer to [Groups]({{site.baseurl}}/app-development-security-groups.html).
-
+For a comprehensive understanding of permissions, refer to the [Groups]({{<ref "/dev-reference/security/groups.md">}}) documentation.

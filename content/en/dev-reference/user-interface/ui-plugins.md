@@ -1,5 +1,5 @@
 ---
-title: "Plugins"
+title: "UI Plugins"
 lead: "Description of what UI plugins are and how to use them to connect client with external apps."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -9,40 +9,36 @@ menu:
   docs:
     parent: "dev-reference"
 toc: true
-weight: 52
+weight: 53
 
 ---
 
+Plugins are components that operate on the client side and enable the expansion of the platform's UI features.
 
-Plugins are components that run on client side and allow to extend the features of the UI of the platform.
+A common scenario for plugins is facilitating interaction with external applications on the client side. For instance, a Twilio UI plugin could display incoming calls and provide users the ability to answer them.
 
-The most common use case is to allow to interact with external apps on client side. For example a Twillio
-UI plugin could show an incoming call and allowing users to answer it.
+A comprehensive [list of official plugins can be accessed here]({{<ref "/extending/official-ui-plugins/overview.md">}}).
 
-A complete [list of official plugins can be found here]({{site.baseurl}}/extensions-official-ui-plugins.html)
-  
-## Plugins configuration
+## **Configuration**
 
-All plugins share some settings, however each plugin will have additional settings. You should check
-their documentation to know what they are.
+While plugins may have specific settings, they all share certain common settings. Refer to the respective plugin's documentation for its unique settings.
 
-Here we will describe common settings.
+Here, we will outline the general settings.
 
 ### Label
 
-This is the human-readable name of the plugin. It doesn't have any usage during the execution of the app.
+This label serves as the human-readable name of the plugin. Its utilization isn't involved in app execution.
 
 ### Name
 
-This is the internal name of the plugin and it will be used when you send messages to the plugin
-from the backend using the [Javascript API]({{site.baseurl}}/app-development-js-api-ui.html#sys.ui.sendMessage_message).
+The internal name of the plugin, used when dispatching messages to the plugin from the backend through the [Javascript API]({{<ref "/dev-reference/scripting/sys-ui.md">}}).
 
-The name cannot contain special characters or spaces. Only letters and numbers.
+The name must comprise only letters and numbers, excluding special characters or spaces.
 
-## Sending message to plugin
+## **Sending messages to plugins**
 
-It is possible to send messages to UI plugin from a backend script using the [Javascript API]({{site.baseurl}}/app-development-js-api-ui.html#sys.ui.sendMessage_message)
-For example, to call the plugin `sample` for event `event1` you would do something like this:
+You can send messages to UI plugins from a backend script using the [Javascript API]({{<ref "/dev-reference/scripting/sys-ui.md">}}). For instance, to communicate with the **`sample`** plugin for the **`event1`** event, you would proceed as follows:
+Feel free to integrate this enhanced version into your documentation.
 
 ```js
 sys.ui.sendMessage({
@@ -63,11 +59,9 @@ sys.ui.sendMessage({
 });
 ```
 
-## Events
+## **Events**
 
-Plugins can send events to the backend. This events can be caught on listeners using the type `UI Plugin`
-and selecting the corresponding event.
+Plugins have the capability to transmit events to the backend. These events can be captured by listeners with the type set to **`UI Plugin`**, and the corresponding event should be selected.
 
-Take a look at [UI plugin listeners]({{site.baseurl}}/app-development-model-listeners.html#ui-plugin-listeners) 
-documentation for more information.
+For more details, refer to the [UI plugin listeners documentation]({{<ref "/dev-reference/data-model-and-logic/listeners.md#ui-plugin-listeners">}}).
 

@@ -1,6 +1,6 @@
 ---
-title: "Javascript API overview"
-lead: "The Slingr platform allows to use Javascript scripts to define behavior and processes. This section provides an overview on how scripts can be used to extend the functionality of your app."
+title: "Overview"
+lead: "The Slingr platform empowers you to leverage JavaScript scripts to define behaviors and processes. This section offers an overview of how scripts can be harnessed to expand the functionality of your app."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,62 +12,35 @@ toc: true
 weight: 58
 ---
 
-## Overview
+## **Javascript API Overview**
 
-Scripts are a very flexible way to extend and customize your apps. Using a declarative
-way is usually preferred, but we acknowledge that in many situations it is just not possible to
-consider all cases or it is just easier to write a few lines of code instead of going
-through a complicated and time consuming UI to express things in a declarative way.
+Scripts provide a highly flexible means of extending and customizing your apps. While a declarative approach is often preferred, we recognize that in certain situations, it may not be feasible to cover all scenarios. Sometimes, writing a few lines of code is more straightforward than navigating a complex and time-consuming user interface to express certain functionalities in a declarative manner.
 
-The goal is that you only write scripts to express the behavior of your application. You 
-will never write boilerplate code or infrastructure code. That's all handled by the platform
-so you can focus on what's more important to you: solve problems and provide business value.
+The primary objective is for you to write scripts solely to define your application's behavior. You won't need to write boilerplate or infrastructure code. The platform handles these aspects, enabling you to focus on what truly matters: solving problems and delivering business value.
 
-In this document you will find general information about scripts, but you should check
-the documentation to see the different places where you can write scripts and how they
-are used in each case.
+This document offers general insights into scripts, but you should consult the documentation to understand the various locations where scripts can be written and how they are employed in each scenario.
 
-In order to make it easier to write scripts, we have created a [Javascript API]({{site.baseurl}}/app-development-js-api.html) 
-that provides services to easily access your application's features and data. You will
-be making an extensive you of the API while writing scripts, so be sure to have it accessible,
-though there are many links from the app builder to the documentation as well.
+To simplify script writing, we've developed a [Javascript API]({{<ref "/dev-reference/scripting/namespaces.md">}}) that provides services for seamless access to your application's features and data. When writing scripts, you will extensively utilize this API. Make sure to have it accessible; however, you'll also find numerous links from the app builder leading to the documentation.
 
-Apart from the Javascript API, you can also access endpoints features as well as
-custom libraries.
+In addition to the Javascript API, you can also tap into endpoint features and custom libraries.
 
-With the endpoints API you will be able to call functions in endpoints, sending messages
-to external services as if that were just a simple method invocation. [You can find more
-information on how to use endpoints through scripts here]({{site.baseurl}}/app-development-model-endpoints.html).
+With the endpoints API, you can invoke functions within endpoints, sending messages to external services as though it were a straightforward method call. [More information on using endpoints through scripts can be found here]({{<ref "/dev-reference/data-model-and-logic/endpoints.md">}}).
 
-Custom libraries allow you to keep reusable code in a central place. This can be referenced
-anywhere in your app. [You can find more information on custom libraries 
-here]({{site.baseurl}}/app-development-model-libraries.html).
+Custom libraries empower you to centralize reusable code. This code can be referenced throughout your app. [For more details on custom libraries, refer to this link]({{<ref "/dev-reference/data-model-and-logic/libraries.md">}}).
 
-## Permissions
+## **Permissions**
 
-When executing scripts permissions are not taken into account. For example if a user has
-permissions to execute action `A` but not permissions to access entity `E`, but the
-script in action `A` performs operations in entity `E`, this action will still work
-well when the user executes it.
+When executing scripts, permissions are not rigorously enforced. For example, if a user has permissions to execute action **`A`** but lacks permissions to access entity **`E`**, yet the script within action **`A`** involves operations on entity **`E`**, this action will still proceed without issue when executed by the user.
 
-The rational behind this is that developers are in control of scripts and if they
-grant permissions to execute a script, the platform assumes the script does things
-that are allowed to the user.
+This approach is rooted in the idea that developers are in command of scripts. If they grant permission to execute a script, the platform assumes the script's actions align with what the user is allowed to perform.
 
-## Exception handling
+## **Exception handling**
 
-When there is an error, an exception will be thrown. For example if you call a method in
-the Javascript API with invalid parameters, an exception will be thrown. If there is an
-error executing an endpoint's function, an exception will be thrown.
+In case of an error, an exception will be raised. For instance, calling a method in the Javascript API with invalid parameters triggers an exception. Similarly, an exception will be thrown if there is an error executing an endpoint function.
 
-If you don't catch the exception, it will rise until it is caught by the platform and will
-be logged so you can see the error in the app monitor. There you will be able to see where
-the exception was thrown, the snippet of your code as well as a stack trace so you can
-follow the different calls made.
+If you do not catch the exception, it will propagate until it's captured by the platform, where it will be logged. You can then view the error in the app monitor. Here, you'll see the point where the exception occurred, a snippet of your code, and a stack trace to help trace the sequence of calls made.
 
-There are cases where you might want to handle the exception because you don't want the
-execution of the script to be interrupted. In these cases you can use the regular tools
-provided by Javascript to do so:
+There are instances where you might want to manage the exception to prevent script execution from halting. In such cases, you can employ standard Javascript tools to achieve this:
 
 ```js
 ...
@@ -77,32 +50,29 @@ try {
   sys.logs.warn('There were errors sending message to Slack: '+sys.exceptions.getMessage(e), e);
 }
 ```
+<br>
 
-The Javascript API provides some tools to help getting the error message and code from
-exceptions (this is good because some exceptions have different internal structures) in
-[sys.exceptions]({{site.baseurl}}/app-development-js-api-exceptions.html) package.
+The Javascript API provides several tools to assist in obtaining error messages and codes from exceptions. This is particularly beneficial because certain exceptions may have varying internal structures. These tools are available within the [sys.exceptions]({{<ref "/dev-reference/scripting/sys-exceptions.md">}}) package.
 
-Also remember that you can always log the exception, even when you log as `INFO`. This might
-be useful when debugging an app. You can find that in the logging methods in the
-[sys.logs]({{site.baseurl}}/app-development-js-api-logs.html) package.
+Also, remember that you can log exceptions even when using the **`INFO`** log level. This can prove to be valuable during the app debugging process. You can find this capability in the logging methods provided by the [sys.logs]({{<ref "/dev-reference/scripting/sys-logs.md">}}) package.
 
-## Throwing exceptions
+## **Throwing exceptions**
 
-If your code needs to throw exceptions, we recommend you to use the method `throwException(code, message)`
-in package [sys.exceptions]({{site.baseurl}}/app-development-js-api-exceptions.html). When calling this
-method an exception will be thrown and the stack trace will be kept.
+If your code necessitates throwing exceptions, we strongly recommend using the **`throwException(code, message)`**
+method within the [sys.exceptions]({{<ref "/dev-reference/scripting/sys-exceptions.md">}}) package. When invoking this
+method, an exception will be thrown while retaining the stack trace.
 
-If you use the Javascript `throw` keyword and you catch it on your code, when you log it the stack trace
-will be lost so you won't be able to know where exactly the problem was.
+Using the Javascript **`throw`** keyword and subsequently capturing it in your code will lead to the stack trace being lost. Consequently, you won't have visibility into the exact location of the problem.
 
-For this reason the recommendation is to always use `throwException(code, message)` instead of just `throw`.
-For example, instead of writing this code:
+For this reason, it is highly recommended to consistently use **`throwException(code, message)`** instead of just **`throw`**.
+As an example, rather than writing this code:
 
 ```js
 if (record.field('state').val() != 'new') {
     throw 'Task must be in state new';
 }
 ```
+<br>
 
 we recommend to write this code:
 
@@ -111,37 +81,22 @@ if (record.field('state').val() != 'new') {
     sys.exceptions.throwException('invalidState', 'Task must be in state new');
 }
 ```
+<br>
 
-## Context
+## **Context**
 
-When scripts are executed, there will be a `context` object available that you can use to
-get information about where your script is being executed. For example, if you have a library
-you might want to know if you are being called from one specific action to do something
-different, or you might want a listener to be executed only under some specific context.
+When scripts are executed, a **`context`** object will be available, offering information about the execution environment of your script. For instance, when working with a library, you might want to differentiate actions between different contexts or ensure that a listener is only executed under specific circumstances.
 
-You can find detailed information about the how to work with context in the 
-[sys.context]({{site.baseurl}}/app-development-js-api-context.html) package.
+Comprehensive information about working with context can be found in the [sys.context]({{<ref "/dev-reference/scripting/sys-context.md">}}) package.
 
-One important thing to understand is the scope of the context. The scope of the context
-is opened when an external events arrives (a REST API call or an endpoint event). The scope
-will be preserved as long as we are in the same thread. This means that if the script
-triggers a background job, that will be executed in another scope and the context won't be
-the same.
+It's crucial to comprehend the scope of the context. This scope initiates when an external event occurs, such as a REST API call or an endpoint event. The scope persists as long as we remain in the same thread. This implies that if a script triggers a background job, that job will execute in a separate scope, distinct from the original context.
 
-For example you have an action, and the action script saves a record. The entity the record
-belongs to has a listener attached when a record is changed, and this listener is flagged
-to be executed in the background. When the listener is executed it won't know anything about
-the action that was originally executed because the job is run in a different thread and it
-doesn't know anything about the action.
+For instance, consider an action that, when its script runs, saves a record. If this record belongs to an entity with a listener attached for record changes, and this listener is designated to execute in the background, the listener won't possess knowledge of the original action. This is because the background job runs in a distinct thread and lacks awareness of the action.
 
-However, in the above example, if the listener is not flagged to be executed in the background,
-it will be able to check that the listener was triggered during the execution of the action,
-because it will be run immediately in the same thread.
+However, in the above scenario, if the listener isn't set to execute in the background, it can identify that it was triggered during the execution of the action. This is because it runs immediately in the same thread as the action.
 
-## Execution limitations
+## **Execution limitations**
 
-Scripts that aren't running on a background job (they are executed as part of the REST API call)
-are limited to a maximum of 30 seconds. After that an exception will be thrown and your script
-will be interrupted.
+Scripts running outside of a background job (those executed as part of a REST API call) are subject to a maximum execution time of 30 seconds. Beyond this threshold, an exception will be thrown, halting the script.
 
-If a script can take long to run you should probably execute it in the background to avoid issues.
+For scripts with the potential for extended runtime, it's advisable to execute them in the background to prevent disruptions.

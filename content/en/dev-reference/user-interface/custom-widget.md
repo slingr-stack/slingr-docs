@@ -9,58 +9,51 @@ menu:
   docs:
     parent: "dev-reference"
 toc: true
-weight: 51
+weight: 58
 ---
 
-This widget allow render a custom view inside a dashboard view.
+This widget allows rendering a custom view inside a dashboard view.
 
-## Label
+## **Label**
 
-This is a human-readable name of the view. You can use spaces, special characters and
-mix upper case and lower case letters.
+This is a human-readable name for the view. You can use spaces, special characters, and a mixture of upper and lower case letters.
 
-This label will be displayed at the top of the table widget view, so make sure you use something
-users will understand.
+This label will appear at the top of the widget view, so ensure you use language that users will understand.
 
-## Name
+## **Name**
 
-This is the internal name of the view. It cannot hold special characters or spaces.
+This is the internal name of the view. It cannot contain special characters or spaces.
 
-Usually you will use the name of the view in scripts and the REST API, so changing it
-might affect your app and you will need to make some manual adjustments.
+You will usually utilize the view's name in scripts and the REST API. Changing it may impact your app, necessitating manual adjustments.
 
-## Description
+## **Description**
 
-This is a human-readable description of the widget. You can use spaces, special characters and
-mix upper case and lower case letters. You can internationalize it.
+This is a human-readable description of the widget. You can use spaces, special characters, and a mixture of upper and lower case letters. Internationalization is possible.
 
-This description will be displayed in top of added widget in your dashboard.
+This description will be visible at the top of the added widget in your dashboard.
 
-## Allow Refresh
+## **Allow refresh**
 
-This is to Show/Hide refresh button. We can perform this action in order to update this widget 
-information. Is true by default.
+This option determines whether the refresh button is displayed or hidden. This button facilitates the update of widget information. It's enabled by default.
 
-## View settings
+## **View settings**
 
 ### Custom view
 
-List existent custom views to be rendered inside the widget.
+Render a custom view inside the widget.
 
 ### Show title
 
-Display the name ot the widget at the top of the container.
+Display the widget's title at the top of the container.
 
-## Permissions
+## **Permissions**
 
-Permissions allow to define which groups can access this view.
+Permissions determine which groups can access this view.
   
-Permissions for a view can be handled right in the view definition, but it is just
-a different view of what you can configure in groups. It is oriented so you can easily
-configure permissions on the view for all existing groups.
+While permissions for a view can be configured directly within the view definition, it mirrors the capabilities available in group configuration. The objective is to facilitate easy permission configuration for all existing groups.
 
-When a new view is created, if a group has permissions to the entity associated to that view, then the view 
-receives permission to be used for that group.
+Upon the creation of a new view, if a group holds permissions for the entity associated with that view, the view will inherently be granted permission for use by that group.
 
-For more information about permissions please refer to [Groups]({{site.baseurl}}/app-development-security-groups.html).
+For a comprehensive understanding of permissions, refer to the [Groups]({{<ref "/dev-reference/security/groups.md">}}) documentation.
+
 

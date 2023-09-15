@@ -12,8 +12,10 @@ toc: true
 weight: 7
 ---
 
-In the builder, pressing the key combination `ctrl` + `shift` + `f`  will open the metadata navigation pop-up. You will see an input search box that will look for **labels** of any metadata in the application and display a list of all the matches. Clicking on one of these results will redirect you to the view of that selected resource.
+## **Metadata navigation pop-up**
+
+To swiftly navigate through your metadata within the builder, press the key combination `ctrl` + `shift` + `f`. This action will open the metadata navigation pop-up. Inside this pop-up, you'll encounter an input search box designed to seek out **`labels`** across all metadata in the application. The pop-up will then display a comprehensive list of matches found. Clicking on any of these search results will automatically redirect you to the view of the selected resource.
 
 {{< notes type="tip">}}
-This is a really useful feature when trying to move fast between the different resources of your application.
+This feature proves incredibly handy for swiftly moving between various resources within your application.
 {{< /notes >}}

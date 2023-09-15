@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+    <url>
+      <loc>/dev-reference/scripting/overview/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/namespaces/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-app/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys.auth/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-commons/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-context/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-data/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-endpoints/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-events/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-exceptions/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-files/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-i18n/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-jobs/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-logs/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-storage/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-ui/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-users/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/sys-utils/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/scripting/javascript-es6/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    </urlset>

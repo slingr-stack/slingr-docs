@@ -12,277 +12,255 @@ toc: true
 weight: 22
 ---
 
-Entities are the main concept in a Slingr app. They define the data structure as well as
-the behavior of an app. Entities could be companies, people, tasks, projects, etc.
+Entities are the fundamental concept in a Slingr app. They define both the data structure and the behavior of an app. Entities can represent various entities like companies, people, tasks, projects, and more.
 
-Once the entity is created, it is possible to create records under that entity. For example
-if you have an entity called `companies`, each company under that entity will be a record.
+Once an entity is created, you can create records within that entity. For instance, if you have an entity named **`companies`**, each individual company under that entity will be treated as a record.
 
-An entity will define the following things:
+An entity defines the following aspects:
 
-- **Settings**: these are things like name, label, history logs, indexes, etc.
-- **Fields**: fields define the structure of the entity. The structure of fields will
-  impact the database and the UI.
-- **Actions**: here it is possible to define the "behavior" of the entity.
-- **Permissions**: define who has access to operations, actions and fields in the entity.
+- **`Settings`**: These encompass details such as name, label, history logs, indexes, etc.
+- **`Fields`**: Fields establish the structure of the entity, affecting both the database and the UI.
+- **`Actions`**: Here, you can define the "behavior" or actions associated with the entity.
+- **`Permissions`**: Specify who has access to operations, actions, and fields within the entity.
 
-## Settings
+## **Settings**
 
 ### Label
 
-This is a human-readable name of the entity. You can use spaces, special characters and
-mix upper case and lower case letters.
+The label represents a human-readable name for the entity. It can include spaces, special characters, and a mixture of uppercase and lowercase letters.
 
-The label will be used to reference the entity in the UI. Changing the label of an entity
-doesn't involve any kind of data refactorings.
+This label is used as a reference for the entity within the user interface. Changing the label of an entity does not require any data restructuring.
 
 ### Name
 
-This is the internal name of the entity. It cannot hold special characters or spaces.
+The name is the internal identifier for the entity. It cannot contain special characters or spaces.
 
-The name will be used for many things in the app:
+This name serves various purposes within the app:
 
-- **Database**: records for the entity will be stored under the entity name.
-- **REST API**: the automatic generated REST API uses the entity name for URLs.
-- **Scripts**: scripts will have probably have references to the entity by the entity name.
+- **`Database`**: Records for the entity are stored under this name.
+- **`REST API`**: The automatically generated REST API uses this name for URLs.
+- **`Scripts`**: Scripts often reference the entity by its name.
 
-This means that changing the name of an entity will impact all the above things.
+Changing the entity's name impacts all of the above aspects.
 
-Changes in the database will be handled automatically by the platform when pushing changes,
-so you don't need to worry about them.
+Database changes are handled automatically by the platform when changes are pushed, eliminating the need for manual intervention.
 
-Changes in the REST API will be done automatically. However if there were external apps using
-the REST API, those apps will need to be adjusted.
+Changes in the REST API are also managed automatically. However, if external apps are using the REST API, those apps might require adjustments.
 
-Finally, scripts using the entity name to reference the entity will need to be manually
-updated. In the near feature we will provide some helps on these cases.
+Scripts using the entity name need manual updates. We plan to provide assistance for these cases in the near future.
 
 ### Type
 
-Defines how the entity should behave:
+The type setting defines the behavior of the entity:
 
-- `Data`: this means that the entity will holds app data. This is the most common case
-  and the default option. This data won't be included in backups and won't be synced
-  between environments and linked apps.
-- `Enum`: these are entities that hold (usually) a small number of records that are in
-  some way part of the metadata of the app, for example type of orders, states, etc.
-  Records of this entity will be included in backups and synced to the different 
-  environments and linked apps. You can define how this sync will happen:
-  - `Not syncing`: this will make the entity behave as a data entity, where no records
-    are synced.
-  - `Create new records`: only new records will be synced, but no records will be deleted
-    or updated in the target environment. For example if you created and updated records
-    in the production environment, these changes will be kept.
-  - `Create and update records`: new records will be synced and existing records will be
-    updated. This means that if you made changes in one existing record in the target
-    environment, sync will override those changes. Records created on the target environment
-    won't be affected.
-  - `Full sync`: when syncing the platform will make sure that records in the target
-    environment are the same as the records in the source environment; in other words, any
-    record created in the target environment will be deleted, and updated records will be
-    overridden with the records from the source environment. On the other hand when pulling,  
-    will add any non-existing record into the target environment and if it does exist,
-    keeps the record from the environment which has the latest version.
-- `Calculated`: this means that the entity will calculate its data. This is useful to model external data
-   that has to be represented in our app. The behavior it's the same as for `Data` entities.
-- `System`: this type of entities are created and managed by the platform and they can be extended by adding 
-   custom configuration like entity fields and actions. The metadata autogenerated by the platform is immutable. 
-   Entities of this type are located under the system folder `System`.
-   An example of a system entity is `Users`. This entity is created when the app is provisioned. 
-    
+- **`Data`**: This signifies that the entity holds app data. It's the default and most common option. Data in this entity is excluded from backups and doesn't synchronize between environments and linked apps.
+- **`Enum`**: These entities usually contain a small number of records that contribute to the app's metadata, such as order types or states. Records in this entity are included in backups and synchronized across environments and linked apps. Sync behavior options include:
+  - **`Not syncing`**: The entity acts like a data entity, with no record synchronization.
+  - **`Create new records`**: Only new records are synced; existing records in the target environment aren't deleted or updated.
+  - **`Create and update records`**: New and existing records are synced; changes to existing records in the target environment are overwritten.
+  - **`Full sync`**: Synchronization ensures records in the target environment match those in the source environment, potentially leading to record deletions.
+- **`Calculated`**: This type calculates entity data. It's useful for representing external data in the app, and behaves the same as **`Data`** entities.
+- **`System`**: Platform-created and managed entities that can be extended with custom configurations like fields and actions. Autogenerated metadata for these entities is immutable. They reside under the **`System`** folder. An example is the **`Users`** entity, created during app provisioning.
+
 ### Parent entity
 
-An entity can inherit from another entity. This is helpful to avoid repeating things in the 
-same app.
+Entities can inherit from other entities, reducing redundancy in the app.
 
-Extending an entity from another one means that fields, actions and indexes in the parent entity
-will be available in the child entity.   
+Inheriting from a parent entity provides access to the parent entity's fields, actions, and indexes within the child entity.
 
 ### Abstract
 
-When you set a parent entity it is possible to flag an entity as abstract. When you do that it means 
-that no instances of this entity will exist. So it won't be possible to create views for an abstract
-entity.
+Setting an entity as abstract when inheriting means instances of this entity won't exist. Views can't be created for abstract entities.
 
 ### Record label
 
-Records have a label that will be used as a summary of the record in different places of
-the app. For example in relationship fields, when selecting a record, the label will be
-displayed.
+Records possess a label used as a summary in various app contexts. For instance, in relationship fields, the label appears when selecting a record.
 
-Usually the label should be representative of what the record holds. For example, if the
-entity contains information about people, a good label could be the full name of the person.
+Typically, the label should represent the record's content. For example, if the entity contains individual information, the label could be the person's full name.
 
-There are two ways to define the label of records:
+Two methods exist to define record labels:
+
+- **`Field`**: Select an entity field whose string value serves as the record's label.
+- **`Script`**: For more flexibility, write a script returning the record's label.
+
+---
+
+##### Parameters
+
+|Name|Type|Description|
+|---|---|---|
+|record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record where the label is being calculated.|
+
+##### Returns
+
+**`string`** - You should return the label of the record.
+
+##### Samples
+
+```js
+// builds the label using first and last names 
+return record.field('firstName').val()+' '+record.field('lastName').val();
+```
+<br>
  
-- `Field`: you have to select a field from the entity and it's string value will be used
-  as the label of the record.
-- `Script`: if you need more flexibility you can write a script that should return the
-  label of the record.
+---
 
-
-{{< js_script_context context="recordLabelScript">}}
-
-
-Keep in mind that changing the record label definition will trigger data refactorings to update label on
-all records under the entity as well on record of entities that have relationship fields pointing to 
-records on the entity where label was modified.
+Modifying the record label definition triggers data refactorings across the entity's records. This also applies to records within entities that possess relationship fields pointing to records in the entity where the label was altered.
 
 ### Indexes
 
-Indexes allow to improve the performance of queries. They follow the same concept of indexes
-in traditional databases. For example if you have an entity with over a million records and you
-make a lot of queries by the field `sku`, it makes sense to create an index for the field `sku`
-to speed up those queries and avoid a full scan.
+Indexes play a crucial role in enhancing query performance and follow the principles of traditional databases. For instance, if your entity comprises a substantial number of records and you frequently query by the **`sku`** field, creating an index for the **`sku`** field can significantly expedite those queries and mitigate the need for full scans.
 
-Indexes can be created directly in the `Indexes` section of an entity, or they will be created when
-you flag a field as `Unique` or `Indexable`.
+Indexes can be generated directly within the **`Indexes`** section of an entity. Alternatively, they are automatically generated when you designate a field as **`Unique`** or **`Indexable`**.
 
-Each index has the following properties:
+Each index encompasses the following properties:
 
-- `Name`: this is the name of the index in the database. It is calculated and read-only.
-- `Type`: the type of index. This is calculated automatically based on the selected fields. Possible types
-  are:
-  - `Normal`: these are regular indexes.
-  - `Relationship`: when the field is applied to a relationship, user, group or file field, two indexes will
-    be created: one for the ID and another for the label, full name, or name (depending on the type).
-  - `Compound`: when more than one field is selected, the type of the index will be compound.
-- `Status`: this is the current status of the index as you can create it on the builder but it won't be created
-  in the database until changes are pushed or synced. During the creation of the index there could be issues,
-  and you can check the status to make sure it was created successfully.
-- `Unique`: this flag indicates if the values for this index must be unique. If there are already records and
-  there are duplicated values, the creation of the index will fail.
-- `Fields`: these are the fields that will be part of the index. If you select more than one field keep in mind
-  that in order to use the index in queries you need to query by all those fields.
+- **`Name`**: This signifies the index name in the database. It is automatically computed and unalterable.
+- **`Type`**: The index type is automatically determined based on the chosen fields. Possible types encompass:
+  - **`Normal`**: Regular indexes.
+  - **`Relationship`**: Created for fields applied to relationships, users, groups, or files. Comprises ID and label indexes.
+  - **`Compound`**: Generated when multiple fields are selected.
+- **`Status`**: Denotes the present index creation status. While you can create the index in the builder, it won't manifest in the database until changes are pushed or synced. During index creation, potential issues might arise, and the status helps ensure successful creation.
+- **`Unique`**: This flag indicates whether index values must be unique. If duplicate values exist in existing records, index creation will fail.
+- **`Fields`**: Lists the fields forming the index. Remember that in queries, all indexed fields must be queried to utilize the index effectively.
 
-Keep in mind that adding and removing indexes will cause indexes to be dropped or built, which might
-take some time on entities with many records.
-
-Also remember that indexes have an overhead during creation, update and delete of records as indexes
-need to be updated. For this reason only create indexes when they are really needed.
+Adding or removing indexes results in the construction or removal of indexes, which can be time-consuming for entities with numerous records. It's important to note that indexes entail overhead during record creation, update, and deletion, as they need to be updated. Hence, make sure to only generate indexes when they are genuinely essential.
 
 ### Global search
 
-If you enable the flag `Allow global search` for an entity, an index will be created. This index will allow to
-efficiently query for words in any field of the record. It is like searching something on any fields.
+Enabling the **`Allow Global Search`** flag initiates index creation, thereby enabling efficient word-based querying across all fields of the record. This feature significantly enhances the ability to search across the contents of various fields.
 
-[You can find more information on how global search works here]({{<ref "/dev-reference/queries/query-language.md#global-search">}}).
+[For more details on how Global Search operates, refer to this documentation]({{<ref "/dev-reference/queries/query-language.md#global-search">}}).
 
 ### Record validations
 
-Record validations allow to perform more complex validations across all fields in the record and 
-using other services that are not available in fields' rules.
+Record validations empower you to execute intricate validations encompassing all fields within a record. Moreover, they facilitate interaction with external services, capabilities that are beyond the scope of field-level rules.
 
-For example you might have an endpoint for an address validation service that you can use to 
-validate addresses, or you just want to make sure that when one option is set in one field, 
-the value of another field needs to match some specific pattern.
+For instance, you might possess an endpoint for address validation services that can be utilized to validate addresses. Alternatively, you might require certain fields to conform to specific patterns when specific options are selected.
 
 This is the script context:
 
-{{< js_script_context context="recordValidationsScript">}}
+---
 
+##### Parameters
 
+|Name|Type|Description|
+|---|---|---|
+|record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|	The record to validate.|
+
+##### Returns
+
+**`object[]`** - You should return an array of errors.
+
+To handle errors effectively, return an array of error objects following this structure:
+
+- **`path`**: This corresponds to the field's location with issues. For nested fields like `address.zipCode`, provide the full path. For multi-valued fields, specify the index, such as `addresses[1].zipCode`.
+
+- **`code`**: Assign an appropriate error code. This code will be included in the response when attempting to create/update a record via the REST API or as exception information when saving a record with the JavaScript API.
+
+- **`message`**: Craft a descriptive error message that will not only be displayed in the user interface but also sent in response, along with the associated error code.
+
+```js
+[
+  {
+    path: 'addressLine', 
+    code: 'invalid',
+    message: 'This is not a valid US address'
+  },{
+    path: 'zipCode', 
+    code: 'invalid', 
+    message: 'This is not a valid US zip code'
+  }
+]
+```
+<br>
+
+##### Samples
+
+```js
+// validates the zip code using an external service
+var errors = [];
+var zipCode = record.field('address.zipCode').val();
+if (!app.endpoints.addressValidator.isValidZipCode(zipCode)) {
+  errors.push({
+    path: 'address.zipCode',
+    code: 'invalid',
+    message: 'This is not a valid US zip code'
+  });
+}
+return errors;
+```
+<br>
+ 
+---
 ### Lookup fields
 
-Fields configured with this feature are going to be considered during record fetching. In order to lookup for 
-specific record these fields are going to be used together with the default system fields: `ID` and `label`.  
+Fields configured with this feature are considered during record retrieval. To look up a specific record, these fields are used in conjunction with the default system fields: **`ID`** and **`label`**.
 
-Lookup fields require to have the `unique` flag enabled.
+Lookup fields require the **`unique`** flag to be enabled.
 
 ### Detailed logs
-This feature is to enable more detailed logging for the following record operations: create, edit, delete and execution 
-of actions over data records. 
 
-This feature can be activated at entity level through this setting:
-- `Enable detailed logging`: Whether enable detailed logging for record operations.
+This feature enables more detailed logging for various record operations: create, edit, delete, and the execution of actions on data records.
+
+Activate this feature at the entity level through this setting:
+- **`Enable Detailed Logging`**: Toggle to enable detailed logging for record operations.
 
 ### History logs
 
-This feature allow to log changes in records, which could be very useful for auditing purposes. For
-example you can see when the record was created, the different changes made to the record over
-time, as well as the fields modified and people involved in those changes.
+This feature allows you to log changes in records, which is useful for auditing purposes. You can track when a record was created, the different changes made to it over time, as well as the modified fields and people involved in those changes.
 
-When history logs are enabled for an entity you will be able to query logs of a record (or even
-of all records at the same time) using the REST API or the UI. See 
-[History]({{<ref "/dev-reference/rest-apis/apps-api.md#history">}}).
+When history logs are enabled for an entity, you can query logs for a specific record (or even all records at the same time) using the REST API or the UI. See [History]({{<ref "/dev-reference/rest-apis/apps-api.md#history">}}) for more details.
 
-There are many settings you can control to decide what you want to log to the history of records:
+Several settings control what gets logged in the history of records:
 
-- `Logs expiration`: allows to define rules to determine when logs have to expire.
-  - `Delete policy`: indicates what to do with the history of a record when it is deleted.
-    - `Delete history with record`: the history logs will be deleted when the record is deleted.
-    - `Keep history`: the history logs of the record will be kept. When this option is selected
-      you can specify more details about how long the history logs will be kept, which coud be
-      a number of days/weeks/months.
-- `User events`: user events are those changes made as a consequence of an external request, for
-  example from the REST API or the UI. These are the events
-  - `Ignore fields`: if you don't want to track changes on some specific fields when changes are 
-    done through the REST API or the UI, you can put those fields in this list. This might be needed
-    if you have fields that are updated all the time or if the content is too much ot track it.
-  - `Record created`: if this flag is set, when a record is created from the REST API or the UI,
-    a log for it will be created.
-  - `Record changed`: if this flag is set, when a record is updated from the REST API or the UI,
-    a log for it will be created.
-  - `Record deleted`: if this flag is set, when a record is deleted from the REST API or the UI,
-    a log for it will be created.
-  - `Action executed`: if this flag is set, when an action is executed over an individual record
-    from the REST API or the UI, a log for it will be created.
-- `Events from scripts`: these are events generated from scripts in the app. For example when a
-  script uses the method {% include js_symbol.html symbol='sys.data.save()' %}.
-  - `Ignore fields`: if you don't want to track changes on some specific fields when changes are 
-    done from a script in the app, you can put those fields in this list. This might be needed
-    if you have fields that are updated all the time or if the content is too much ot track it.
-  - `Record created`: if this flag is set, when a record is created from a script in the app,
-    a log for it will be created.
-  - `Record changed`: if this flag is set, when a record is updated from a script in the app,
-    a log for it will be created.
-  - `Record deleted`: if this flag is set, when a record is deleted from a script in the app,
-    a log for it will be created.
-  - `Action executed`: if this flag is set, when an action is executed over an individual record
-    from a script in the app, a log for it will be created.
-- `System events`: these are events that are a side effect of other operations. For example if you
-  update the label of a record and it is referenced by another record, the relationship will be
-  updated. Usually you don't want to track these kinds of changes.
-  - `Cascade updates`: these events are generated when a change in another record needs to be
-    propagated to other records. For example when you have copied fields in a relationship
-    field and those fields are updated in a record, they need to be copied to relationship fields
-    referencing that record.
-  - `Refactorings`: if this flag is set, when changes are done in the entity definition that 
-    produce refactorings on records, a log for it will be created. For example if you delete
-    a field on the entity or change the label definition.
+- **`Logs Expiration`**: Define rules to determine when logs should expire.
+  - **`Delete Policy`**: Indicate what to do with the history of a record when it is deleted.
+    - **`Delete History with Record`**: Delete the history logs when the record is deleted.
+    - **`Keep History`**: Keep the history logs of the record. When this option is selected, specify how long the history logs will be kept (e.g., number of days, weeks, or months).
+- **`User Events`**: Track changes made as a consequence of an external request, such as from the REST API or the UI. These events include:
+  - **`Ignore Fields`**: Exclude specific fields from change tracking when changes are made through the REST API or the UI. This can be useful for fields that are updated frequently or contain extensive content.
+  - **`Record Created`**: Log the creation of records via the REST API or the UI.
+  - **`Record Changed`**: Log updates to records via the REST API or the UI.
+  - **`Record Deleted`**: Log record deletions via the REST API or the UI.
+  - **`Action Executed`**: Log the execution of actions on individual records via the REST API or the UI.
+- **`Events from Scripts`**: These are events generated from scripts in the app, such as when a script uses the method ['sys.data.save()']({{<ref "/dev-reference/scripting/sys-data.md#save(record,options)">}}).
+  - **`Ignore Fields`**: Exclude specific fields from change tracking when changes are made from a script in the app. This can be useful for fields that are updated frequently or contain extensive content.
+  - **`Record Created`**: Log the creation of records from a script in the app.
+  - **`Record Changed`**: Log updates to records from a script in the app.
+  - **`Record Deleted`**: Log record deletions from a script in the app.
+  - **`Action Executed`**: Log the execution of actions on individual records from a script in the app.
+- **`System Events`**: These events result as side effects of other operations. For example, updating the label of a record that is referenced by another record will update the relationship. Generally, you don't want to track these kinds of changes.
+  - **`Cascade Updates`**: These events are generated when a change in one record needs to be propagated to other records. For instance, when copied fields in a relationship field are updated in a record, they need to be copied to relationship fields referencing that record.
+  - **`Refactorings`**: If this flag is set, when changes are made in the entity definition that lead to refactorings on records (e.g., field deletion or label changes), a log for it will be created.
 
-## Data generation settings
+## **Data generation settings**
 
-This settings are only available for `Calculated entities`.
+These settings are only available for **`Calculated Entities`**.
 
 ### Schedule time expression
 
-This expression is to determine when the script for generate data should run. The minimum frequency supported is 15 
-minutes.  Please check this [documentation](http://www.quartz-scheduler.org/documentation/quartz-2.0.2/tutorials/tutorial-lesson-06.html) 
-for more information on the format of the expression.
+This expression determines when the script for generating data should run. The minimum supported frequency is 15 minutes. Refer to this [documentation](http://www.quartz-scheduler.org/documentation/quartz-2.0.2/tutorials/tutorial-lesson-06.html) for more information on the format of the expression.
 
 ### Condition type
 
-Allows to select if data should always be generated when time expression it's met or you can evaluate it by using a script.
+Choose whether data should always be generated when the time expression is met or if you want to evaluate it using a script.
 
 ### Condition
 
-This script it's for determine if data should be re-generated or not and it's only available if you choose `Script` as condition type. It should return `true` if that's the case
-or `false` otherwise. `Data generation script` will run only if this script return `true`.
+This script determines if data should be regenerated and is only available if you choose **`Script`** as the condition type. The script should return **`true`** if regeneration is necessary or **`false`** otherwise. The **`Data Generation Script`** will only run if this script returns **`true`**.
 
 ### Data generation script
 
-This script should return a list of either [Record objects]({{<ref "/dev-reference/scripting/sys-data.md#sys.data.Record">}}) or `JSONs` that can be mapped to a [Record object]({{<ref "/dev-reference/scripting/sys-data.md#sys.data.Record">}}).
+This script should return a list of either [Record objects]({{<ref "/dev-reference/scripting/sys-data.md#sys.data.Record">}}) or **`JSON`** objects that can be mapped to a [Record object]({{<ref "/dev-reference/scripting/sys-data.md#sys.data.Record">}}).
 
 ### Behavior during regeneration
 
-This flag allows to configure the behavior when data it's being generated. It apply to data queries.
-If flag it's set to `true` then when trying to read any data for this entity, if data it's being generated at that moment that read
-operation will wait until data generation ends.
-If flag it's set to `false` then then when trying to read any data for this entity, if data it's being generated at that moment
-an `AccessForbiddenException` will be throw.
+This flag allows to configure the behavior when data **it’s being generated**. It applies to data queries.
+- If the flag **it’s set to true**, when trying to read any data for this entity, if data **it’s being generated at that moment**, that read operation will wait until data generation ends.
+- If the flag **it’s set to false**, when trying to read any data for this entity, if data **it’s being generated at that moment**, an **`AccessForbiddenException`** will be thrown.
 
-## Fields
+## **Fields**
 
 Fields define what information will be stored in records of the entity.
 
@@ -292,13 +270,13 @@ nested fields. These features make it is easy to define a more natural model.
 
 For example you might have an entity with this structure:
 
-- `name`
-- `type`
-- `phoneNumbers` (multi-valued)
-- `addresses` (multi-valued)
-  - `addressLine`
-  - `zipCode`
-  - `state`
+- **`name`**
+- **`type`**
+- **`phoneNumbers`** (multi-valued)
+- **`addresses`** (multi-valued)
+  - **`addressLine`**
+  - **`zipCode`**
+  - **`state`**
   
 Each field has a type, which defines which data can be stored there as well as rules and
 display options. [You can check the copied field types here]({{<ref "/dev-reference/field-types/overview.md">}}).
@@ -321,21 +299,21 @@ changes to existing fields in a way that affect the data structure (for example 
 the field name), when those changes are pushed or synced, data refactorings will be done
 to adjust all records to the new structure.
 
-For example if you rename a field from `type` to `category`, when changes are pushed or
-synced a refactoring over all records will be done to rename field `type` to `category`.
+For example if you rename a field from **`type`** to **`category`**, when changes are pushed or
+synced a refactoring over all records will be done to rename field **`type`** to **`category`**.
 
 A more complex case happens when you change the type of the field. Let's suppose that the
-field `itemCode` was an integer field but it is changed to a text field. In this case the
+field **`itemCode`** was an integer field but it is changed to a text field. In this case the
 data refactoring will convert numbers to strings and the value will be preserved.
 
 However, if you are converting in the other way around, the conversion might not be valid
-in some cases. For example if the value was the string `"10"`, then it can be safely converted
-to the number `10`, but if the value was `A10` then it is not a valid integer number and
-the field value will be set to `null`.
+in some cases. For example if the value was the string **`"10"`**, then it can be safely converted
+to the number **`10`**, but if the value was **`A10`** then it is not a valid integer number and
+the field value will be set to **`null`**.
 
 The rule during conversions is that the original value will be converted to its string
 representation, and the new type will try to parse that string representation. If the parsing
-fails, the value will be set to `null`.
+fails, the value will be set to **`null`**.
 
 Finally, another conversion that can affect the structure is multiplicity changes. If a field
 is changed from single-valued to multi-valued, existing value will be set as the first value
@@ -352,7 +330,7 @@ those records won't be valid any longer.
 When this happens records will be kept as they are. If you try to update them the validation error
 will show up and you will need to fix it before proceeding.
 
-## Actions
+## **Actions**
 
 Actions allow to define some behavior on records. For example, in an entity that holds tasks, you
 could have an action to complete it, that will check that all pre-conditions are met, update the
@@ -360,11 +338,11 @@ status and notify people involved in the task.
 
 There are basically two types of actions:
 
-- `One record`: these actions are applied to one record at a time. Even when it is possible to 
+- **`One record`**: these actions are applied to one record at a time. Even when it is possible to 
   select many records through the UI or send many IDs on the REST API, this action will be applied 
   at one record at a time. The action doesn't know how many records are involved, it is only aware 
   of the record the action is being applied.
-- `Many records`: these actions take a query as parameter that defines the selection of records. 
+- **`Many records`**: these actions take a query as parameter that defines the selection of records. 
   This way the action knows all the records involved and it can do something with all of them at 
   the same time. For example you could have an action to send a summary of many tasks in one email, 
   which is not possible to do with actions that are executed over individual records.
@@ -372,35 +350,31 @@ There are basically two types of actions:
 For more information about actions, please check the documentation for 
 [Actions]({{<ref "/dev-reference/data-model-and-logic/actions.md">}}).
 
-## Record Listeners
+## **Record listeners**
 
 Record Listeners can be hooked to different record events, like record created, changed, action executed, etc.
 
-Those listeners will be listed in the entity, however they can also be managed from
-the `Model > Listeners` section in the app builder.
+Those listeners will be listed in the entity, however they can also be managed from the **`Model > Listeners`** section in the app builder.
 
-For `Caculated entities` they have a different behavior. These listeners are used to update the records and they will be only listed in the calculated entity.
+For **`Caculated entities`** they have a different behavior. These listeners are used to update the records and they will be only listed in the calculated entity.
 
 For more information check the documentation of [Listeners]({{<ref "/dev-reference/data-model-and-logic/listeners.md">}}).
 
-## External Listeners
+## **External listeners**
 
-These listeners are only available for `Caculated entities`. External Listeners can be hooked to different record events, like record created, changed, action executed, etc.
+These listeners are only available for **`Caculated entities`**. External Listeners can be hooked to different record events, like record created, changed, action executed, etc.
 
-Those listeners will be listed in the entity, however they can also be managed from
-the `Model > Listeners` section in the app builder.
+Those listeners will be listed in the entity, however they can also be managed fromthe **`Model > Listeners`** section in the app builder.
 
-For more information check the documentation of  [Listeners]({{<ref "/dev-reference/data-model-and-logic/listeners.md">}}).
+For more information check the documentation of [Listeners]({{<ref "/dev-reference/data-model-and-logic/listeners.md">}}).
 
-## Permissions
+## **Permissions**
 
-Permissions allow to define which operations can be done for each group on records of 
-the entity.
+Permissions allow to define which operations can be done for each group on records of the entity.
   
-Permissions for an entity can be handled right in the entity definition, but it is just
-a different view of what you can configure in groups. It is oriented so you can easily
-configure permissions on the entity for all existing groups.
+Permissions for an entity can be handled right in the entity definition, but it is just a different view of what you can configure in groups. It is oriented so you can easily configure permissions on the entity for all existing groups.
 
 When a new entity is added, no permissions are added to any group by default.
 
 For more information about permissions please refer to [Groups]({{<ref "/dev-reference/security/groups.md">}}).
+

@@ -12,112 +12,141 @@ toc: true
 weight: 50
 ---
 
-In order to be able to execute an action from the UI it is needed to define a view for it. To
-make this simpler, when an action is created a default view will be created as well. This default
-view will be completely managed, which means that new parameters will be added and removed as you
-change your actions, so in many cases you can just ignore action views.
+To enable the execution of an action from the UI, it's necessary to define a corresponding view for it. Simplifying this process, when an action is created, a default view is also generated. This default view is fully managed, meaning new parameters will be automatically added and removed as you modify your actions. In many cases, you can simply disregard action views and utilize the default view.
 
-However it is possible to define many views for one action based on different settings you
-need in other parts of the UI. For example in a grid view you might want to request confirmation
-before executing the action as users can select many record while in the read-only view you just
-skip action confirmation to make it faster.
+Nevertheless, it's possible to create multiple views for a single action, each configured based on different requirements within different UI components. For instance, in a grid view, you might want to prompt for user confirmation before executing an action when multiple records can be selected. In a read-only view, you might skip the confirmation step to expedite the process.
 
-Each view has the following settings:
+Each action view is equipped with the following settings:
 
-## Label
+## **Label**
 
-A human-friendly name for the action view. This is what users will see as the name
-of the action. Doesn't need to be unique.
+A user-friendly name for the action view. This name is displayed to users as the action's identifier. Uniqueness is not necessary.
 
-## Name
+## **Name**
 
-A unique name for the action view. It cannot contain spaces or special characters.
+An exclusive name for the action view. It should not include spaces or special characters.
 
-## Is default view
+## **Default view**
 
-Indicates if this is the default view for the action. Default views will be used for example
-in grid views when you select the option to show all actions. In this case only the default view
-for each action will be listed (doesn't make much sense to show all the views of each action
-in the same place).
+Indicates whether this is the default view for the action. Default views are employed, for example, in grid views when you choose to display all available actions. In such cases, only the default view for each action is listed, as showing all views for each action within the same context would be impractical.
 
-## Managed
+## **Managed**
 
-If this flag is set, new parameters will be automatically added to the view and order will be
-kept between parameters in the action and the view.
+When this flag is set, new parameters are automatically incorporated into the view, and the parameter order aligns with that of the action.
 
-## Ask for confirmation
+## **Confirmation prompt**
 
-If this flag is set, the user will be asked for confirmation before being able to execute the action.
-This makes sense when there aren't parameters defined in the view.
+When enabled, this prompts the user to confirm their intention before executing the action. This is particularly relevant when no parameters are defined in the view.
 
-## Show success message
+## **Display success message**
 
-Display success message after the successful action execution. Is true by default but if it 
-disabled this message is avoided.
+This flag, enabled by default, triggers the display of a success message following the successful execution of the action. Disabling it omits this message.
 
-## Style
+## **Style**
 
-This is the style for the action when showing it as a button in the UI.
+This pertains to the visual style of the action when presented as a button in the UI.
 
-## Icon
+## **Icon**
 
-This is the icon for the action when showing it in the UI.
+This specifies the icon to represent the action when displayed in the UI.
 
-## Confirmation button
+## **Confirmation button**
 
-A human-friendly label for the action confirmation button. This message replaces default label: `Action label`.
+A user-friendly label for the action confirmation button. This label replaces the default **`Action label`**.
 
-## Cancel button
+## **Cancel button**
 
-This is a human-friendly text for cancel button. This message replaces the default label: `Cancel`.
+A user-friendly label for the cancel button. This label replaces the default **`Cancel`**.
 
-## Help message
+## **Help message**
 
-This is a human-readable help message about the behavior of the action action does. The label will be displayed at the 
-top of the action modal.
+A human-readable explanation of the action's behavior. This message is displayed at the top of the action modal.
 
-## Parameters
+## **Parameters**
 
-This is the list of parameters that will be displayed on the view. It is possible to sort them,
-remove the ones you don't need, etc.
+This encompasses the list of parameters shown in the view. You can sort, remove unnecessary ones, and more.
 
-Here it is possible to override default display options. You can check the documentation of
-[General display options]({{site.baseurl}}/app-development-model-fields.html#general-display-options)
-for more information.
+In this context, you have the flexibility to override default display options. For more details, consult the documentation on [General Display Options]({{<ref "/dev-reference/data-model-and-logic/fields.md#general-display-options">}}).
 
-## Events
+## **Events**
 
 ### Before show
 
-The before show script will be evaluated before the action is executed. In the UI it is executed
-before showing the popup to the user, so it is possible to make some changes to the parameters
-based on some special conditions.
+The before show script is evaluated prior to action execution. In the UI, it is triggered before presenting the user with the action popup. This enables adjustments to parameters based on specific conditions.
 
-If many records are selected, the script is evaluated only once. You can check which
-records will be affected by using the `query` parameter in the script.
+When multiple records are selected, the script is evaluated only once. You can determine the records affected by using the **`query`** parameter in the script.
 
-{{< js_script_context context="actionInitScript">}}
+
+  ##### Parameters
+
+  | Name   | Type                | Description |
+  |--------|---------------------|-------------|
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})| The record on which the action will be executed. <br> This variable is exclusively accessible if the action type is set to **`"One record"`** or if you are applying the action to multiple records.|
+  | query |  [sys.data.Query]({{<ref "/dev-reference/scripting/sys-data.md">}}) | A query object containing filters to locate all records affected by this action. This is applicable only for the **`"Many records"`** action type. |
+  | action |  [sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}}) | This provides access to the parameters of the action. Changes made here will be reflected in the UI when the action is executed from the user interface.|
+
+  ##### Samples
+
+  ``` javascript
+  // sets the default value as the email of the current user
+  action.field('sendTo').val(sys.context.getCurrentUser().email());
+  ```
+  <br>
 
 ### On action change
 
-The on action change script will be evaluated each time that an view parameter change its value. So it is possible
-to make some changes to the parameters based on some special conditions.
+The **On Action Change** script is executed whenever a view parameter changes its value. This enables making adjustments to the parameters based on specific conditions.
 
-You can check which parameter has fired the event using the `modifiedParameter` parameter in the script.
+You can identify the parameter that triggered the event by utilizing the **`modifiedParameter`** parameter within the script.
 
-{{< js_script_context context="onActionChangeScript">}}
+  ##### Parameters
+
+  | Name   | Type                | Description |
+  |--------|---------------------|-------------|
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})| The record on which the action will be executed. <br> This variable is exclusively accessible if the action type is set to **`"One record"`** or if you are applying the action to multiple records.|
+  | action |  [sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}}) | This provides access to the parameters of the action. Changes made here will be reflected in the UI when the action is executed from the user interface.|
+  | modifiedParameter | string | A string with the name of the field that fires the event. |
+
+  ##### Samples
+
+  ``` javascript
+  // sets the value as the email of the current user only if the field 'sendTo' has changed and is empty
+  if (modifiedParameter == 'sendTo' && action.field('sendTo').isEmpty()) {
+    action.field('sendTo').val(sys.context.getCurrentUser().email());
+  }
+  ```
+  <br>
 
 ### After action executed
 
-The after action executed script is evaluated right after the user confirms the action execution
-(or just when they trigger the action if the flag `Ask for confirmation` is not set). Keep in
-mind that this is only done when the action is executed from the UI using this specific view.
 
-If many records are selected, the script is evaluated only once. You can check which
-records will be affected by using the `query` parameter in the script.
+The *After Action Executed* script is executed immediately after the user confirms the execution of the action (or when they trigger the action, if the **`Ask for confirmation`** flag is not enabled). It's important to note that this only occurs when the action is executed from the UI using this specific view.
 
-Additionally if the action is sent to the background, a `job` object will be available that
-references the job in charge of executing the action over the record(s).
+In situations where multiple records are selected, the script is evaluated only once. You can determine the affected records by utilizing the **`query`** parameter within the script.
 
-{{< js_script_context context="actionAfterExecutedScript">}}
+Furthermore, if the action is executed in the background, a **`job`** object becomes available, referencing the job responsible for executing the action over the record(s).
+
+
+  ##### Parameters
+
+  | Name   | Type                | Description |
+  |--------|---------------------|-------------|
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})| The record on which the action will be executed. <br> This variable is exclusively accessible if the action type is set to **`"One record"`** or if you are applying the action to multiple records.|
+  | query |  [sys.data.Query]({{<ref "/dev-reference/scripting/sys-data.md">}}) | A query object containing filters to locate all records affected by this action. This is applicable only for the **`"Many records"`** action type. |
+  | action |  [sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}}) | This provides access to the parameters of the action. Changes made here will be reflected in the UI when the action is executed from the user interface.|
+  | job | [sys.jobs.Job]({{<ref "/dev-reference/scripting/sys-jobs.md">}}) | This is the job object, exclusively accessible when the action is executed in the background. <br> Keep in mind that the **`After Action Executed`** script is run immediately after triggering the action from the UI. At this point, the associated job might still be pending or running.|
+
+  ##### Samples
+
+  ``` javascript
+  // after action is executed redirect to read only view of given record
+  var record = sys.data.findOne(query);
+  sys.ui.sendMessage({
+      scope: 'global',
+      name: 'navigate',
+      view: '590ce2e38a2....',
+      recordId: record.id()
+    });
+  ```
+  <br>
 

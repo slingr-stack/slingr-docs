@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Slingr developer portal on </title>
+    <link>/platform-ref/slingr-dev-portal/</link>
+    <description>Recent content in Slingr developer portal on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="/platform-ref/slingr-dev-portal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Overview</title>
+      <link>/platform-ref/slingr-dev-portal/dev-portal-overview/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/platform-ref/slingr-dev-portal/dev-portal-overview/</guid>
+      <description>The Developer Portal is a key component and the entry point of the Slingr Platform.
+Slingr Developers can use the Developer Portal to:
+👉 Manage their Apps: Create and configure general settings for their apps. Developers can define basic settings (label, name, logo, and description) as well as settings specific to each app environment, including instances (size and number), database, and custom domain.
+👉 Manage Accesses: Configure the accounts that have developer or admin permissions for a specific app.</description>
+    </item>
+    
+    <item>
+      <title>Managing apps</title>
+      <link>/platform-ref/slingr-dev-portal/managing-apps/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/platform-ref/slingr-dev-portal/managing-apps/</guid>
+      <description>Apps can be managed in the Slingr Developer Portal. From there, you will be able to manage apps, endpoints, organizations, handle developer permissions, set up billing, and view invoices, etc.
+App Creation # 👉 To create a new app, simply click the Create app from scratch button located in the Home section of Slingr.
+👉 You can also create new apps from the Apps section by clicking the + Create Apps button</description>
+    </item>
+    
+    <item>
+      <title>Pricing and billing</title>
+      <link>/platform-ref/slingr-dev-portal/pricing-and-billing/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/platform-ref/slingr-dev-portal/pricing-and-billing/</guid>
+      <description>Pricing of the platform is based on apps. Each app will have a corresponding subscription, which can be associated with any of the three products we offer:
+👉 Slingr Free: These apps are free and won&amp;rsquo;t incur any charges.
+👉 Slingr Dev: These apps have a fixed monthly fee. You can check the pricing here.
+👉 Slingr Pro: These apps will be charged based on usage. The more environments, instances, endpoints, etc.</description>
+    </item>
+    
+    <item>
+      <title>Partner REST API</title>
+      <link>/platform-ref/slingr-dev-portal/partner-rest-api/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/platform-ref/slingr-dev-portal/partner-rest-api/</guid>
+      <description>This API is for partners that need to create accounts or apps on the Slingr platform on behalf of other people.
+You can access the API at the following endpoint:
+https://developer-portal.slingrs.io/api Notice that you always have to use HTTPS. Trying to access out API using HTTP will return an error.
+Additionally, all calls should have the following headers:
+Content-Type: application/json Accept: application/json token: &amp;lt;token received after login&amp;gt; General error codes # Here are some general error descriptions.</description>
+    </item>
+    
+  </channel>
+</rss>

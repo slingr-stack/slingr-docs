@@ -1,6 +1,6 @@
 ---
 title: "Environment settings"
-lead: "Explains how to change environment settings from the app monitor and how that affects the running app."
+lead: "Learn how to modify environment settings through the App Monitor and understand their immediate impact on your running app."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,19 +12,18 @@ toc: true
 weight: 148
 ---
 
-In the section `Environment settings` in app monitor it is possible to change environment settings.
-These are the settings that can be changed:
+In the **`Environment settings`** section of the App Monitor, you have the capability to modify various environment settings that directly impact your app's behavior. These settings encompass:
 
-- [Environment variables]({{site.baseurl}}/app-development-environment-environment-variables.html)
-- [UI settings]({{site.baseurl}}/app-development-environment-ui-settings.html)
-- [Logs and alerts]({{site.baseurl}}/app-development-environment-logs-and-alerts.html)
-- [Localization]({{site.baseurl}}/app-development-environment-localization.html)
-- [API Tokens]({{site.baseurl}}/app-development-environment-api-tokens.html)
+- [Environment variables]({{<ref "/dev-reference/environment-settings/environment-var.md">}}): Configure and manage environment-specific variables that influence the app's behavior.
 
-When you change these settings they will take effect in the app immediately. For example if you
-change the app theme, just reloading the app should bring the new theme.
+- [UI settings]({{<ref "/dev-reference/environment-settings/ui-settings.md">}}): Customize the user interface settings to tailor the app's appearance and behavior to your preferences.
 
-The only exception to this are changes in environment variables that affect endpoints, for example
-when the variable is used in the configuration of the endpoint. If you change the value of the
-variable you will be asked to restart affected endpoints, but you can do it later if you don't
-want to do it right away.
+- [Logs and alerts]({{<ref "/dev-reference/environment-settings/logs-and-alerts.md">}}): Fine-tune logging and alerting configurations to stay informed about critical events and issues within your app.
+
+- [Localization]({{<ref "/dev-reference/environment-settings/localization.md">}}): Adjust localization settings to provide a tailored experience for users in different regions and languages.
+
+- [API Tokens]({{<ref "/dev-reference/environment-settings/api-tokens.md">}}): Manage API tokens that enable secure access to your app's resources.
+
+When you make changes to these settings, they take immediate effect within your app. For instance, if you modify the app's theme, simply reloading the app will reflect the updated theme.
+
+The only exception to this rule is when you make changes to environment variables that impact legacy services, such as when a variable is utilized in an legacy service's configuration. In such cases, if you alter the variable's value, you will be prompted to restart the affected legacy services. However, you can choose to postpone this action if you don't wish to restart them immediately.

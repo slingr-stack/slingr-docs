@@ -1,0 +1,3957 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preload" as="font" href="/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="/fonts/vendor/jost/jost-v4-latin-500.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="/fonts/vendor/jost/jost-v4-latin-700.woff2" type="font/woff2" crossorigin>
+
+  <script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script>
+
+  <link rel="stylesheet" href="/main.8baf82da65d80590a37e20640d3a478fd8b8d815a422e20827a4d63356c295d7d6db94e9ea3a2daec3b71ee84a019efb69497303e2c70274e858a0a4018a38e2.css" integrity="sha512-i6&#43;C2mXYBZCjfiBkDTpHj9i42BWkIuIIJ6TWM1bCldfW25Tp6jotrsO3HuhKAZ77aUlzA&#43;LHAnToWKCkAYo44g==" crossorigin="anonymous">
+<noscript><style>img.lazyload { display: none; }</style></noscript>
+  <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <title>Legacy services - Slingr</title>
+<meta name="description" content="Legacy services are components that operate alongside your app. They possess their own resources and their primary purpose is to enhance the platform&amp;rsquo;s capabilities.
+A prevalent use case is establishing connections between your app and other applications through the utilization of APIs for sending, receiving, and retrieving data. For instance, endpoints exist for services like Slack, Google Contacts, Google Calendar, and various other widely-used cloud platforms. This allows your app to seamlessly leverage the functionalities provided by these external services.">
+  <link rel="canonical" href="/dev-reference/data-model-and-logic/endpoints/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Legacy services">
+<meta property="og:description" content="Legacy services are components that operate alongside your app. They possess their own resources and their primary purpose is to enhance the platform&rsquo;s capabilities.
+A prevalent use case is establishing connections between your app and other applications through the utilization of APIs for sending, receiving, and retrieving data. For instance, endpoints exist for services like Slack, Google Contacts, Google Calendar, and various other widely-used cloud platforms. This allows your app to seamlessly leverage the functionalities provided by these external services.">
+<meta property="og:url" content="/dev-reference/data-model-and-logic/endpoints/">
+<meta property="og:site_name" content="Slingr">
+<meta property="article:published_time" content="2020-11-16T13:59:39+01:00">
+  <meta property="article:modified_time" content="2020-11-16T13:59:39+01:00">
+  
+  <meta property="og:image" content="/doks.png"/>
+      <meta property="og:image:alt" content="Slingr">
+    
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@getdoks">
+<meta name="twitter:creator" content="@henkverlinde">
+<meta name="twitter:title" content="Legacy services">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="/doks.png">
+    <meta name="twitter:image:alt" content="Legacy services">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+        "@id": "/#/schema/organization/1",
+      "name": "Doks",
+      "url": "/",
+      "sameAs": [
+        "https://twitter.com/getdoks"
+        , "https://github.com/h-enk/doks"
+        ],
+      "logo": {
+          "@type": "ImageObject",
+          "@id": "/#/schema/image/1",
+          "url": "/logo-doks.png",
+          "width":  512 ,
+          "height":  512 ,
+          "caption": "Doks"
+        },
+        "image": {
+          "@id": "/#/schema/image/1"
+        }
+      },
+    {
+      "@type": "WebSite",
+      "@id": "/#/schema/website/1",
+      "url": "/",
+      "name": "Slingr",
+      "description": "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize.",
+      "publisher": {
+          "@id": "/#/schema/organization/1"
+        }
+      },
+    {
+      "@type": "WebPage",
+      "@id": "/dev-reference/data-model-and-logic/endpoints/",
+      "url": "/dev-reference/data-model-and-logic/endpoints/",
+      "name": "Legacy services",
+      "description": "",
+      "isPartOf": {
+        "@id": "/#/schema/website/1"
+      },
+      "about": {
+          "@id": "/#/schema/organization/1"
+        },
+      "datePublished": "2020-11-16T13:59:39CET",
+      "dateModified": "2020-11-16T13:59:39CET",
+      "breadcrumb": {
+        "@id": "/dev-reference/data-model-and-logic/endpoints/#/schema/breadcrumb/1"
+      },
+      "primaryImageOfPage": {
+        "@id": "/dev-reference/data-model-and-logic/endpoints/#/schema/image/2"
+      },
+      "inLanguage": "en-US",
+      "potentialAction": [{
+        "@type": "ReadAction", "target": ["/dev-reference/data-model-and-logic/endpoints/"]
+      }]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "/dev-reference/data-model-and-logic/endpoints/#/schema/breadcrumb/1",
+      "name": "Breadcrumbs",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position":  1 ,
+        "item": {
+          "@type": "WebPage",
+          "@id": "/",
+          "url": "/",
+          "name": "Home"
+          }
+        },{
+        "@type": "ListItem",
+        "position":  2 ,
+        "item": {
+          "@id": "/dev-referencedata-model-and-logicendpoints/"
+          }
+        }]
+    },
+
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ImageObject",
+          "@id": "/dev-reference/data-model-and-logic/endpoints/#/schema/image/2",
+          "url": "/doks.png",
+          "contentUrl": "/doks.png",
+          "caption": "Legacy services"
+        }
+      ]
+    }
+
+  ]
+}
+</script>
+
+  <meta name="theme-color" content="#fff">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" crossorigin="use-credentials" href="/site.webmanifest">
+
+  
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="/css/material-design-iconic-font.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/fonts.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha512-rRQtF4V2wtAvXsou4iUAs2kXHi3Lj9NE7xJR77DE7GHsxgY9RTWy93dzMXgDIG8ToiRTD45VsDNdTiUagOFeZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+  <body class="dev-reference single">
+    <div class="sticky-top">
+<div class="header-bar"></div>
+
+<header class="navbar navbar-expand-lg navbar-light doks-navbar">
+  <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+
+    <a class="navbar-brand order-0" href="/" aria-label="Slingr">
+      <img src="/images/vendor/logo.png" class="navbar-img">
+
+    </a>
+
+    <button class="btn btn-menu order-2 d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="offcanvas offcanvas-end border-0 py-lg-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+      <div class="header-bar d-lg-none"></div>
+      <div class="offcanvas-header d-lg-none">
+        <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Slingr</a></h2>
+        <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+      </div>
+      <div class="offcanvas-body p-4 p-lg-0">
+        <ul class="nav flex-column flex-lg-row align-items-lg-center mt-2 mt-lg-0 ms-lg-2 me-lg-auto">
+              <li class="nav-item">
+                <a class="nav-link ps-0 py-1" href="/getting-started/getting/where-to-start/">Getting Started</a>
+              </li>
+            
+          
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle ps-0 py-1" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Documentation
+                  <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-main shadow rounded border-0" aria-labelledby="navbarDropdownMenuLink">
+                  <li>
+                      <a class="dropdown-item" href="/platform-ref/slingr-platform/platform-concepts/">Platform reference</a>
+                    </li>
+                  <li>
+                      <a class="dropdown-item" href="/dev-reference/overview/overview/">Developer&#39;s reference</a>
+                    </li>
+                  <li>
+                      <a class="dropdown-item" href="/extending/getting_started/overview/">Extending the platform</a>
+                    </li>
+                  </ul>
+              </li>
+            
+          
+<ul class="list-unstyled collapsible-sidebar mobile-only">
+    
+    
+    <h5 style="color:#d8a31a">📍 dev-reference</h5>    
+    <hr >
+
+    
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-3b878279a04dc47d60932cb294d96259" aria-expanded="false">
+            Overview
+          </button>
+          <div class="collapse" id="section-3b878279a04dc47d60932cb294d96259">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/overview/overview/">Understanding the Slingr Platform</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c5d4b3e1ba756b8008909f0e0c58db0a" aria-expanded="false">
+            Metadata management
+          </button>
+          <div class="collapse" id="section-c5d4b3e1ba756b8008909f0e0c58db0a">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/metadata-management/development-process/">Development process</a></li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-6d3b65a647bd552922b51c6f3bb6b816" aria-expanded="false">
+                      Metadata editor
+                    </button>
+                    <div class="collapse" id="section-6d3b65a647bd552922b51c6f3bb6b816">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/app-resources/">App resources</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/metadata-edition/">Metadata edition</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/app-explorer/">App explorer</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/console/">Console</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-8567a7dcf5be9efebce71c5fc2940fb8" aria-expanded="false">
+                      Metadata common
+                    </button>
+                    <div class="collapse" id="section-8567a7dcf5be9efebce71c5fc2940fb8">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/navigate-metadata/">Navigate metadata</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/metadata-history/">Metadata history</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/expressions/">Building expressions</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/data-events/">Data events</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/metadata-management/pushing-and-syncing/">Pushing and syncing changes</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/metadata-management/automatic-refactorings/">Automatic refactorings</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-ac863f346e618f9a959b5c95d5d28941" aria-expanded="false">
+            App
+          </button>
+          <div class="collapse" id="section-ac863f346e618f9a959b5c95d5d28941">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/app/settings/">App settings</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/app/global-type/">Global settings</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/app/public-files/">Public files</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/app/versions/">Versions</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-bcbb98645675d5c041a11b77efdb3d98" aria-expanded="false">
+            Environment settings
+          </button>
+          <div class="collapse" id="section-bcbb98645675d5c041a11b77efdb3d98">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/environment-settings/environment-var/">Environment variables</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/environment-settings/ui-settings/">UI settings</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/environment-settings/logs-and-alerts/">Logs and alerts settings</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/environment-settings/localization/">Localization</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/environment-settings/api-tokens/">API Tokens</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c8b29037c1e3abab39f0b7b3e2701db3" aria-expanded="true">
+            Data model and logic
+          </button>
+          <div class="collapse show" id="section-c8b29037c1e3abab39f0b7b3e2701db3">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/entities/">Entities</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/fields/">Fields</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/actions/">Actions</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/listeners/">Listeners</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/libraries/">Libraries</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded active" href="/dev-reference/data-model-and-logic/endpoints/">Legacy services</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/services/">Services</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/packages/">Packages</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/ui-services/">UI services</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-7ef70e5edf79eb2957833170f39b9c55" aria-expanded="false">
+            Field types
+          </button>
+          <div class="collapse" id="section-7ef70e5edf79eb2957833170f39b9c55">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/field-types/overview/">Field types</a></li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-8e4ee2c0d9ad8f2016555690ab1062be" aria-expanded="false">
+                      Date and time types
+                    </button>
+                    <div class="collapse" id="section-8e4ee2c0d9ad8f2016555690ab1062be">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-record-created/">Date record created type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-record-modified/">Date record modified type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date/">Date type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-time-no-timezone/">Date-Time no timezone type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-time/">Date-Time type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/month-day/">Month-day type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/time-duration/">Time duration type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/time/">Time type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/year-month/">Year-Month type</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-d0dc71ca710f394767a103be41210e70" aria-expanded="false">
+                      Miscellaneous types
+                    </button>
+                    <div class="collapse" id="section-d0dc71ca710f394767a103be41210e70">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/miscellaneous_types/color/">Color type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/miscellaneous_types/rank/">Rank type</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-fa674c33f660ba6a2064c3f359412271" aria-expanded="false">
+                      Multiple choice types
+                    </button>
+                    <div class="collapse" id="section-fa674c33f660ba6a2064c3f359412271">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/multiple_choice/boolean/">Boolean type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/multiple_choice/choice/">Choice type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/multiple_choice/dynamic-choice/">Dynamic choice type</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-1d4408166f2342eb045acaf1df536cd8" aria-expanded="false">
+                      Number types
+                    </button>
+                    <div class="collapse" id="section-1d4408166f2342eb045acaf1df536cd8">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/number/auto-increment/">Auto-increment type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/number/big-number/">Big Number type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/number/decimal/">Decimal type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/number/integer/">Integer type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/number/money/">Money type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/number/percentage/">Percentage type</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-94afdb96a2af4523273de5c01dbd260b" aria-expanded="false">
+                      Reference types
+                    </button>
+                    <div class="collapse" id="section-94afdb96a2af4523273de5c01dbd260b">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/references/file/">File type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/references/group/">Group type</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-8dae869a2f5644c95c032ef671a0fb60" aria-expanded="false">
+                      Special types
+                    </button>
+                    <div class="collapse" id="section-8dae869a2f5644c95c032ef671a0fb60">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/special/special/">Nested Fields</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/special/relationship/">Relationship type</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-0083e8388ec35cec4fb9c9f227eafce1" aria-expanded="false">
+                      Text types
+                    </button>
+                    <div class="collapse" id="section-0083e8388ec35cec4fb9c9f227eafce1">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/text/email/">Email type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/text/html/">HTML type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/text/long_text/">Long Text type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/text/masked_text/">Masked text type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/text/phone/">Phone type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/text/qr/">QR type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/text/text/">Text type</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/field-types/text/url/">URL type</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-2fae32629d4ef4fc6341f1751b405e45" aria-expanded="false">
+            Security
+          </button>
+          <div class="collapse" id="section-2fae32629d4ef4fc6341f1751b405e45">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/security/overview/">Security</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/security/groups/">Groups</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/security/users/">Users</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/security/single-sign-on/">Single sign on</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/security/external-tools/">External tools</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/security/oauth/">OAuth Support</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-214d236fbb08786d43f7158b9d8342db" aria-expanded="false">
+            User interface
+          </button>
+          <div class="collapse" id="section-214d236fbb08786d43f7158b9d8342db">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/overview/">Overview</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/navigation/">Navigation</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/grid-views/">Grid views</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/workflow-views/">Workflow views</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/calendar-views/">Calendar views</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/record-views/">Records views</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/action-views/">Action views</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/custom-views/">Custom views</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/dashboard-views/">Dashboard views</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/ui-plugins/">UI Plugins</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/line-chart-widget/">Line chart widget</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/linear-chart-widget/">Linear line chart widget</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/time-line-chart-widget/">Time line chart widget</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/bar-chart-widget/">Bar chart widget</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/custom-widget/">Custom widget</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/indicator-widget/">Indicator widget</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/pie-chart-widget/">Pie chart widget</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/user-interface/table-widget/">Table widget</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-66f1aed235ade25269a561e81cbbb43a" aria-expanded="false">
+            Scripting
+          </button>
+          <div class="collapse" id="section-66f1aed235ade25269a561e81cbbb43a">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/overview/">Overview</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/namespaces/">Namespaces</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-app/">sys.app</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys.auth/">sys.auth</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-commons/">sys.commons</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-context/">sys.context</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-data/">sys.data</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-endpoints/">sys.endpoints</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-events/">sys.events</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-exceptions/">sys.exceptions</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-files/">sys.files</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-i18n/">sys.i18n</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-jobs/">sys.jobs</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-logs/">sys.logs</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-storage/">sys.storage</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-ui/">sys.ui</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-users/">sys.users</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-utils/">sys.utils</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/scripting/javascript-es6/">Javascript ES6</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c647c38e64bd84c0fe9fe165f3fff0eb" aria-expanded="false">
+            Flows
+          </button>
+          <div class="collapse" id="section-c647c38e64bd84c0fe9fe165f3fff0eb">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/flows/overview/">Overview</a></li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-1e71baecf1aec86a47780a4502012f0d" aria-expanded="false">
+                      The flow designer
+                    </button>
+                    <div class="collapse" id="section-1e71baecf1aec86a47780a4502012f0d">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/overview/">Flow designer overview</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/establishing/">Establishing connections</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/group-container/">Group container steps</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/validation-rules/">Validation rules</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/keyboard-shortcuts/">Keyboard shortcuts</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-f3a29486bed19a90f2da6d007818b427" aria-expanded="false">
+                      Steps
+                    </button>
+                    <div class="collapse" id="section-f3a29486bed19a90f2da6d007818b427">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/steps/categories/">Categories</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/steps/system-steps/">System steps</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/steps/control-steps/">Control steps</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/steps/data-steps/">Data steps</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/steps/ui-steps/">UI steps</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/steps/library-steps/">Library steps</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-ad4e206408c1c59bfb8a057ba7857446" aria-expanded="false">
+                      Context
+                    </button>
+                    <div class="collapse" id="section-ad4e206408c1c59bfb8a057ba7857446">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/context/context-overview/">Context Overview</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+                
+                  
+                  <li class="my-1 ms-3">
+                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-ff7c0fcd6a31e735a61c001f75426961" aria-expanded="false">
+                      Examples
+                    </button>
+                    <div class="collapse" id="section-ff7c0fcd6a31e735a61c001f75426961">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/examples/start-task/">Start task</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/examples/update-tax-rates/">Update tax rates</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/examples/update-several-records/">Update several records</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/examples/delete-company/">Delete company</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/examples/delete-several-records/">Delete several records</a></li>
+                          
+                        
+                          
+                            
+                            <li><a class="docs-link rounded" href="/dev-reference/flows/examples/download-file/">Download file</a></li>
+                          
+                        
+                      </ul>
+                    </div>
+                  </li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-cf43137803fb51915f84cbc5c3068d34" aria-expanded="false">
+            Queries
+          </button>
+          <div class="collapse" id="section-cf43137803fb51915f84cbc5c3068d34">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/queries/query-language/">Query language</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/queries/aggregate-queries/">Aggregated queries</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/queries/ui-queries/">UI queries</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c257f5c852c12409e63afb17104f69c5" aria-expanded="false">
+            REST APIs
+          </button>
+          <div class="collapse" id="section-c257f5c852c12409e63afb17104f69c5">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/rest-apis/apps-api/">Apps REST API</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/rest-apis/apps-api-doc/">Apps REST API documentation</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-3d3803937f043e4f53261a3c6bc69a85" aria-expanded="false">
+            Embed API
+          </button>
+          <div class="collapse" id="section-3d3803937f043e4f53261a3c6bc69a85">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/embed-api/embedded-views/">Embedded views</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-423e555c5ec3885f2bb5d9d2d6627f63" aria-expanded="false">
+            Monitoring
+          </button>
+          <div class="collapse" id="section-423e555c5ec3885f2bb5d9d2d6627f63">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/monitoring/overview/">Overview</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/monitoring/dashboard/">Dashboard</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/monitoring/environment-settings/">Environment settings</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/monitoring/background-jobs/">Background jobs</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/monitoring/logs-and-alerts/">Monitoring logs and alerts</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/monitoring/endpoints/">Legacy services management</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/monitoring/database-and-files/">Database and storage</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/monitoring/other-tools/">Other tools</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-387baf0199e7c9cc944fae94e96448fa" aria-expanded="false">
+            Miscellaneous
+          </button>
+          <div class="collapse" id="section-387baf0199e7c9cc944fae94e96448fa">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/miscellaneous/icons/">Icons</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/dev-reference/miscellaneous/code-editor/">Code editor</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+    
+  </ul>
+  
+  <style>
+     
+    @media screen and (min-width: 768px) {
+      .mobile-only {
+        display: none;
+      }
+    }
+    
+  </style>
+
+        </ul>
+
+        <hr class="text-black-50 my-4 d-lg-none">
+        <form class="doks-search position-relative flex-grow-1 ms-lg-auto me-lg-2">
+          <input id="search" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
+          <div id="suggestions" class="shadow bg-white rounded d-none"></div>
+        </form>
+        <hr class="text-black-50 my-4 d-lg-none">
+
+        
+        
+        <ul class="nav flex-column flex-lg-row">
+          <li class="nav-item">
+              <a class="nav-link social-link" href="https://www.slingr.io/"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 20 20"><path fill="none" stroke="black" stroke-width="1.5" d="M18.5,10.5l-1.21,1.21v6.29h-5v-4h-4v4h-5v-6.29l-1.21-1.21L10,3.5l8.5,7Z"/></svg><small class="ms-2 d-lg-none">Home</small></a>
+            </li>
+            
+          </ul>
+        
+
+        <hr class="text-black-50 my-4 d-lg-none">
+        <button id="mode" class="btn btn-link" type="button" aria-label="Toggle user interface mode">
+          <span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        </button>
+        </div>
+    </div>
+  </nav>
+</header>
+
+
+</div>
+
+
+<div class="container-xxl">
+  <aside class="doks-sidebar">
+    <nav id="doks-docs-nav" class="collapse d-lg-none" aria-label="Tertiary navigation">
+      
+<ul class="list-unstyled collapsible-sidebar">
+  
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-3b878279a04dc47d60932cb294d96259" aria-expanded="false">
+          Overview
+        </button>
+        <div class="collapse" id="section-3b878279a04dc47d60932cb294d96259">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/overview/overview/">Understanding the Slingr Platform</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c5d4b3e1ba756b8008909f0e0c58db0a" aria-expanded="false">
+          Metadata management
+        </button>
+        <div class="collapse" id="section-c5d4b3e1ba756b8008909f0e0c58db0a">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/metadata-management/development-process/">Development process</a></li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-6d3b65a647bd552922b51c6f3bb6b816" aria-expanded="false">
+                    Metadata editor
+                  </button>
+                  <div class="collapse" id="section-6d3b65a647bd552922b51c6f3bb6b816">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/app-resources/">App resources</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/metadata-edition/">Metadata edition</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/app-explorer/">App explorer</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/console/">Console</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-8567a7dcf5be9efebce71c5fc2940fb8" aria-expanded="false">
+                    Metadata common
+                  </button>
+                  <div class="collapse" id="section-8567a7dcf5be9efebce71c5fc2940fb8">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/navigate-metadata/">Navigate metadata</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/metadata-history/">Metadata history</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/expressions/">Building expressions</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/data-events/">Data events</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/metadata-management/pushing-and-syncing/">Pushing and syncing changes</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/metadata-management/automatic-refactorings/">Automatic refactorings</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-ac863f346e618f9a959b5c95d5d28941" aria-expanded="false">
+          App
+        </button>
+        <div class="collapse" id="section-ac863f346e618f9a959b5c95d5d28941">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/app/settings/">App settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/app/global-type/">Global settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/app/public-files/">Public files</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/app/versions/">Versions</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-bcbb98645675d5c041a11b77efdb3d98" aria-expanded="false">
+          Environment settings
+        </button>
+        <div class="collapse" id="section-bcbb98645675d5c041a11b77efdb3d98">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/environment-var/">Environment variables</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/ui-settings/">UI settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/logs-and-alerts/">Logs and alerts settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/localization/">Localization</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/api-tokens/">API Tokens</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c8b29037c1e3abab39f0b7b3e2701db3" aria-expanded="true">
+          Data model and logic
+        </button>
+        <div class="collapse show" id="section-c8b29037c1e3abab39f0b7b3e2701db3">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/entities/">Entities</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/fields/">Fields</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/actions/">Actions</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/listeners/">Listeners</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/libraries/">Libraries</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded active" href="/dev-reference/data-model-and-logic/endpoints/">Legacy services</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/services/">Services</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/packages/">Packages</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/ui-services/">UI services</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-7ef70e5edf79eb2957833170f39b9c55" aria-expanded="false">
+          Field types
+        </button>
+        <div class="collapse" id="section-7ef70e5edf79eb2957833170f39b9c55">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/field-types/overview/">Field types</a></li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-8e4ee2c0d9ad8f2016555690ab1062be" aria-expanded="false">
+                    Date and time types
+                  </button>
+                  <div class="collapse" id="section-8e4ee2c0d9ad8f2016555690ab1062be">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-record-created/">Date record created type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-record-modified/">Date record modified type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date/">Date type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-time-no-timezone/">Date-Time no timezone type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-time/">Date-Time type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/month-day/">Month-day type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/time-duration/">Time duration type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/time/">Time type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/year-month/">Year-Month type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-d0dc71ca710f394767a103be41210e70" aria-expanded="false">
+                    Miscellaneous types
+                  </button>
+                  <div class="collapse" id="section-d0dc71ca710f394767a103be41210e70">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/miscellaneous_types/color/">Color type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/miscellaneous_types/rank/">Rank type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-fa674c33f660ba6a2064c3f359412271" aria-expanded="false">
+                    Multiple choice types
+                  </button>
+                  <div class="collapse" id="section-fa674c33f660ba6a2064c3f359412271">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/multiple_choice/boolean/">Boolean type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/multiple_choice/choice/">Choice type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/multiple_choice/dynamic-choice/">Dynamic choice type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-1d4408166f2342eb045acaf1df536cd8" aria-expanded="false">
+                    Number types
+                  </button>
+                  <div class="collapse" id="section-1d4408166f2342eb045acaf1df536cd8">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/auto-increment/">Auto-increment type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/big-number/">Big Number type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/decimal/">Decimal type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/integer/">Integer type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/money/">Money type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/percentage/">Percentage type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-94afdb96a2af4523273de5c01dbd260b" aria-expanded="false">
+                    Reference types
+                  </button>
+                  <div class="collapse" id="section-94afdb96a2af4523273de5c01dbd260b">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/references/file/">File type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/references/group/">Group type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-8dae869a2f5644c95c032ef671a0fb60" aria-expanded="false">
+                    Special types
+                  </button>
+                  <div class="collapse" id="section-8dae869a2f5644c95c032ef671a0fb60">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/special/special/">Nested Fields</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/special/relationship/">Relationship type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-0083e8388ec35cec4fb9c9f227eafce1" aria-expanded="false">
+                    Text types
+                  </button>
+                  <div class="collapse" id="section-0083e8388ec35cec4fb9c9f227eafce1">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/email/">Email type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/html/">HTML type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/long_text/">Long Text type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/masked_text/">Masked text type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/phone/">Phone type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/qr/">QR type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/text/">Text type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/url/">URL type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-2fae32629d4ef4fc6341f1751b405e45" aria-expanded="false">
+          Security
+        </button>
+        <div class="collapse" id="section-2fae32629d4ef4fc6341f1751b405e45">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/overview/">Security</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/groups/">Groups</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/users/">Users</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/single-sign-on/">Single sign on</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/external-tools/">External tools</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/oauth/">OAuth Support</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-214d236fbb08786d43f7158b9d8342db" aria-expanded="false">
+          User interface
+        </button>
+        <div class="collapse" id="section-214d236fbb08786d43f7158b9d8342db">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/overview/">Overview</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/navigation/">Navigation</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/grid-views/">Grid views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/workflow-views/">Workflow views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/calendar-views/">Calendar views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/record-views/">Records views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/action-views/">Action views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/custom-views/">Custom views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/dashboard-views/">Dashboard views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/ui-plugins/">UI Plugins</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/line-chart-widget/">Line chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/linear-chart-widget/">Linear line chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/time-line-chart-widget/">Time line chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/bar-chart-widget/">Bar chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/custom-widget/">Custom widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/indicator-widget/">Indicator widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/pie-chart-widget/">Pie chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/table-widget/">Table widget</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-66f1aed235ade25269a561e81cbbb43a" aria-expanded="false">
+          Scripting
+        </button>
+        <div class="collapse" id="section-66f1aed235ade25269a561e81cbbb43a">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/overview/">Overview</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/namespaces/">Namespaces</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-app/">sys.app</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys.auth/">sys.auth</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-commons/">sys.commons</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-context/">sys.context</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-data/">sys.data</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-endpoints/">sys.endpoints</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-events/">sys.events</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-exceptions/">sys.exceptions</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-files/">sys.files</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-i18n/">sys.i18n</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-jobs/">sys.jobs</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-logs/">sys.logs</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-storage/">sys.storage</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-ui/">sys.ui</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-users/">sys.users</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-utils/">sys.utils</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/javascript-es6/">Javascript ES6</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c647c38e64bd84c0fe9fe165f3fff0eb" aria-expanded="false">
+          Flows
+        </button>
+        <div class="collapse" id="section-c647c38e64bd84c0fe9fe165f3fff0eb">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/flows/overview/">Overview</a></li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-1e71baecf1aec86a47780a4502012f0d" aria-expanded="false">
+                    The flow designer
+                  </button>
+                  <div class="collapse" id="section-1e71baecf1aec86a47780a4502012f0d">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/overview/">Flow designer overview</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/establishing/">Establishing connections</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/group-container/">Group container steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/validation-rules/">Validation rules</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/keyboard-shortcuts/">Keyboard shortcuts</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-f3a29486bed19a90f2da6d007818b427" aria-expanded="false">
+                    Steps
+                  </button>
+                  <div class="collapse" id="section-f3a29486bed19a90f2da6d007818b427">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/categories/">Categories</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/system-steps/">System steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/control-steps/">Control steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/data-steps/">Data steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/ui-steps/">UI steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/library-steps/">Library steps</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-ad4e206408c1c59bfb8a057ba7857446" aria-expanded="false">
+                    Context
+                  </button>
+                  <div class="collapse" id="section-ad4e206408c1c59bfb8a057ba7857446">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/context/context-overview/">Context Overview</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-ff7c0fcd6a31e735a61c001f75426961" aria-expanded="false">
+                    Examples
+                  </button>
+                  <div class="collapse" id="section-ff7c0fcd6a31e735a61c001f75426961">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/start-task/">Start task</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/update-tax-rates/">Update tax rates</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/update-several-records/">Update several records</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/delete-company/">Delete company</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/delete-several-records/">Delete several records</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/download-file/">Download file</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-cf43137803fb51915f84cbc5c3068d34" aria-expanded="false">
+          Queries
+        </button>
+        <div class="collapse" id="section-cf43137803fb51915f84cbc5c3068d34">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/queries/query-language/">Query language</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/queries/aggregate-queries/">Aggregated queries</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/queries/ui-queries/">UI queries</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c257f5c852c12409e63afb17104f69c5" aria-expanded="false">
+          REST APIs
+        </button>
+        <div class="collapse" id="section-c257f5c852c12409e63afb17104f69c5">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/rest-apis/apps-api/">Apps REST API</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/rest-apis/apps-api-doc/">Apps REST API documentation</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-3d3803937f043e4f53261a3c6bc69a85" aria-expanded="false">
+          Embed API
+        </button>
+        <div class="collapse" id="section-3d3803937f043e4f53261a3c6bc69a85">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/embed-api/embedded-views/">Embedded views</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-423e555c5ec3885f2bb5d9d2d6627f63" aria-expanded="false">
+          Monitoring
+        </button>
+        <div class="collapse" id="section-423e555c5ec3885f2bb5d9d2d6627f63">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/overview/">Overview</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/dashboard/">Dashboard</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/environment-settings/">Environment settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/background-jobs/">Background jobs</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/logs-and-alerts/">Monitoring logs and alerts</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/endpoints/">Legacy services management</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/database-and-files/">Database and storage</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/other-tools/">Other tools</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-387baf0199e7c9cc944fae94e96448fa" aria-expanded="false">
+          Miscellaneous
+        </button>
+        <div class="collapse" id="section-387baf0199e7c9cc944fae94e96448fa">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/miscellaneous/icons/">Icons</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/miscellaneous/code-editor/">Code editor</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+  
+</ul>
+
+    </nav>
+  </aside>
+</div>
+
+    <div class="wrap container-xxl" role="document">
+      <div class="content">
+        
+	<div class="row flex-xl-nowrap">
+		<div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block">
+			<nav class="docs-links" aria-label="Main navigation">
+				<h3>Developer's Reference</h3>
+				
+<ul class="list-unstyled collapsible-sidebar">
+  
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-3b878279a04dc47d60932cb294d96259" aria-expanded="false">
+          Overview
+        </button>
+        <div class="collapse" id="section-3b878279a04dc47d60932cb294d96259">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/overview/overview/">Understanding the Slingr Platform</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c5d4b3e1ba756b8008909f0e0c58db0a" aria-expanded="false">
+          Metadata management
+        </button>
+        <div class="collapse" id="section-c5d4b3e1ba756b8008909f0e0c58db0a">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/metadata-management/development-process/">Development process</a></li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-6d3b65a647bd552922b51c6f3bb6b816" aria-expanded="false">
+                    Metadata editor
+                  </button>
+                  <div class="collapse" id="section-6d3b65a647bd552922b51c6f3bb6b816">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/app-resources/">App resources</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/metadata-edition/">Metadata edition</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/app-explorer/">App explorer</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-editor/console/">Console</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-8567a7dcf5be9efebce71c5fc2940fb8" aria-expanded="false">
+                    Metadata common
+                  </button>
+                  <div class="collapse" id="section-8567a7dcf5be9efebce71c5fc2940fb8">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/navigate-metadata/">Navigate metadata</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/metadata-history/">Metadata history</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/expressions/">Building expressions</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/metadata-management/metadata-common/data-events/">Data events</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/metadata-management/pushing-and-syncing/">Pushing and syncing changes</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/metadata-management/automatic-refactorings/">Automatic refactorings</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-ac863f346e618f9a959b5c95d5d28941" aria-expanded="false">
+          App
+        </button>
+        <div class="collapse" id="section-ac863f346e618f9a959b5c95d5d28941">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/app/settings/">App settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/app/global-type/">Global settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/app/public-files/">Public files</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/app/versions/">Versions</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-bcbb98645675d5c041a11b77efdb3d98" aria-expanded="false">
+          Environment settings
+        </button>
+        <div class="collapse" id="section-bcbb98645675d5c041a11b77efdb3d98">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/environment-var/">Environment variables</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/ui-settings/">UI settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/logs-and-alerts/">Logs and alerts settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/localization/">Localization</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/environment-settings/api-tokens/">API Tokens</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c8b29037c1e3abab39f0b7b3e2701db3" aria-expanded="true">
+          Data model and logic
+        </button>
+        <div class="collapse show" id="section-c8b29037c1e3abab39f0b7b3e2701db3">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/entities/">Entities</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/fields/">Fields</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/actions/">Actions</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/listeners/">Listeners</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/libraries/">Libraries</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded active" href="/dev-reference/data-model-and-logic/endpoints/">Legacy services</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/services/">Services</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/packages/">Packages</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/data-model-and-logic/ui-services/">UI services</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-7ef70e5edf79eb2957833170f39b9c55" aria-expanded="false">
+          Field types
+        </button>
+        <div class="collapse" id="section-7ef70e5edf79eb2957833170f39b9c55">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/field-types/overview/">Field types</a></li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-8e4ee2c0d9ad8f2016555690ab1062be" aria-expanded="false">
+                    Date and time types
+                  </button>
+                  <div class="collapse" id="section-8e4ee2c0d9ad8f2016555690ab1062be">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-record-created/">Date record created type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-record-modified/">Date record modified type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date/">Date type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-time-no-timezone/">Date-Time no timezone type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/date-time/">Date-Time type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/month-day/">Month-day type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/time-duration/">Time duration type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/time/">Time type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/date_and_time/year-month/">Year-Month type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-d0dc71ca710f394767a103be41210e70" aria-expanded="false">
+                    Miscellaneous types
+                  </button>
+                  <div class="collapse" id="section-d0dc71ca710f394767a103be41210e70">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/miscellaneous_types/color/">Color type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/miscellaneous_types/rank/">Rank type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-fa674c33f660ba6a2064c3f359412271" aria-expanded="false">
+                    Multiple choice types
+                  </button>
+                  <div class="collapse" id="section-fa674c33f660ba6a2064c3f359412271">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/multiple_choice/boolean/">Boolean type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/multiple_choice/choice/">Choice type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/multiple_choice/dynamic-choice/">Dynamic choice type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-1d4408166f2342eb045acaf1df536cd8" aria-expanded="false">
+                    Number types
+                  </button>
+                  <div class="collapse" id="section-1d4408166f2342eb045acaf1df536cd8">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/auto-increment/">Auto-increment type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/big-number/">Big Number type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/decimal/">Decimal type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/integer/">Integer type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/money/">Money type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/number/percentage/">Percentage type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-94afdb96a2af4523273de5c01dbd260b" aria-expanded="false">
+                    Reference types
+                  </button>
+                  <div class="collapse" id="section-94afdb96a2af4523273de5c01dbd260b">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/references/file/">File type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/references/group/">Group type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-8dae869a2f5644c95c032ef671a0fb60" aria-expanded="false">
+                    Special types
+                  </button>
+                  <div class="collapse" id="section-8dae869a2f5644c95c032ef671a0fb60">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/special/special/">Nested Fields</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/special/relationship/">Relationship type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-0083e8388ec35cec4fb9c9f227eafce1" aria-expanded="false">
+                    Text types
+                  </button>
+                  <div class="collapse" id="section-0083e8388ec35cec4fb9c9f227eafce1">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/email/">Email type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/html/">HTML type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/long_text/">Long Text type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/masked_text/">Masked text type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/phone/">Phone type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/qr/">QR type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/text/">Text type</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/field-types/text/url/">URL type</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-2fae32629d4ef4fc6341f1751b405e45" aria-expanded="false">
+          Security
+        </button>
+        <div class="collapse" id="section-2fae32629d4ef4fc6341f1751b405e45">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/overview/">Security</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/groups/">Groups</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/users/">Users</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/single-sign-on/">Single sign on</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/external-tools/">External tools</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/security/oauth/">OAuth Support</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-214d236fbb08786d43f7158b9d8342db" aria-expanded="false">
+          User interface
+        </button>
+        <div class="collapse" id="section-214d236fbb08786d43f7158b9d8342db">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/overview/">Overview</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/navigation/">Navigation</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/grid-views/">Grid views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/workflow-views/">Workflow views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/calendar-views/">Calendar views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/record-views/">Records views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/action-views/">Action views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/custom-views/">Custom views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/dashboard-views/">Dashboard views</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/ui-plugins/">UI Plugins</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/line-chart-widget/">Line chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/linear-chart-widget/">Linear line chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/time-line-chart-widget/">Time line chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/bar-chart-widget/">Bar chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/custom-widget/">Custom widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/indicator-widget/">Indicator widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/pie-chart-widget/">Pie chart widget</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/user-interface/table-widget/">Table widget</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-66f1aed235ade25269a561e81cbbb43a" aria-expanded="false">
+          Scripting
+        </button>
+        <div class="collapse" id="section-66f1aed235ade25269a561e81cbbb43a">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/overview/">Overview</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/namespaces/">Namespaces</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-app/">sys.app</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys.auth/">sys.auth</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-commons/">sys.commons</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-context/">sys.context</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-data/">sys.data</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-endpoints/">sys.endpoints</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-events/">sys.events</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-exceptions/">sys.exceptions</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-files/">sys.files</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-i18n/">sys.i18n</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-jobs/">sys.jobs</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-logs/">sys.logs</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-storage/">sys.storage</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-ui/">sys.ui</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-users/">sys.users</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/sys-utils/">sys.utils</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/scripting/javascript-es6/">Javascript ES6</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c647c38e64bd84c0fe9fe165f3fff0eb" aria-expanded="false">
+          Flows
+        </button>
+        <div class="collapse" id="section-c647c38e64bd84c0fe9fe165f3fff0eb">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/flows/overview/">Overview</a></li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-1e71baecf1aec86a47780a4502012f0d" aria-expanded="false">
+                    The flow designer
+                  </button>
+                  <div class="collapse" id="section-1e71baecf1aec86a47780a4502012f0d">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/overview/">Flow designer overview</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/establishing/">Establishing connections</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/group-container/">Group container steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/validation-rules/">Validation rules</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/flow-designer/keyboard-shortcuts/">Keyboard shortcuts</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-f3a29486bed19a90f2da6d007818b427" aria-expanded="false">
+                    Steps
+                  </button>
+                  <div class="collapse" id="section-f3a29486bed19a90f2da6d007818b427">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/categories/">Categories</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/system-steps/">System steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/control-steps/">Control steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/data-steps/">Data steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/ui-steps/">UI steps</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/steps/library-steps/">Library steps</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-ad4e206408c1c59bfb8a057ba7857446" aria-expanded="false">
+                    Context
+                  </button>
+                  <div class="collapse" id="section-ad4e206408c1c59bfb8a057ba7857446">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/context/context-overview/">Context Overview</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+              
+                
+                <li class="my-1 ms-3">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-ff7c0fcd6a31e735a61c001f75426961" aria-expanded="false">
+                    Examples
+                  </button>
+                  <div class="collapse" id="section-ff7c0fcd6a31e735a61c001f75426961">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/start-task/">Start task</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/update-tax-rates/">Update tax rates</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/update-several-records/">Update several records</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/delete-company/">Delete company</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/delete-several-records/">Delete several records</a></li>
+                        
+                      
+                        
+                          
+                          <li><a class="docs-link rounded" href="/dev-reference/flows/examples/download-file/">Download file</a></li>
+                        
+                      
+                    </ul>
+                  </div>
+                </li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-cf43137803fb51915f84cbc5c3068d34" aria-expanded="false">
+          Queries
+        </button>
+        <div class="collapse" id="section-cf43137803fb51915f84cbc5c3068d34">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/queries/query-language/">Query language</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/queries/aggregate-queries/">Aggregated queries</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/queries/ui-queries/">UI queries</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-c257f5c852c12409e63afb17104f69c5" aria-expanded="false">
+          REST APIs
+        </button>
+        <div class="collapse" id="section-c257f5c852c12409e63afb17104f69c5">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/rest-apis/apps-api/">Apps REST API</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/rest-apis/apps-api-doc/">Apps REST API documentation</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-3d3803937f043e4f53261a3c6bc69a85" aria-expanded="false">
+          Embed API
+        </button>
+        <div class="collapse" id="section-3d3803937f043e4f53261a3c6bc69a85">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/embed-api/embedded-views/">Embedded views</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-423e555c5ec3885f2bb5d9d2d6627f63" aria-expanded="false">
+          Monitoring
+        </button>
+        <div class="collapse" id="section-423e555c5ec3885f2bb5d9d2d6627f63">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/overview/">Overview</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/dashboard/">Dashboard</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/environment-settings/">Environment settings</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/background-jobs/">Background jobs</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/logs-and-alerts/">Monitoring logs and alerts</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/endpoints/">Legacy services management</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/database-and-files/">Database and storage</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/monitoring/other-tools/">Other tools</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-387baf0199e7c9cc944fae94e96448fa" aria-expanded="false">
+          Miscellaneous
+        </button>
+        <div class="collapse" id="section-387baf0199e7c9cc944fae94e96448fa">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/miscellaneous/icons/">Icons</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/dev-reference/miscellaneous/code-editor/">Code editor</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+  
+</ul>
+
+			</nav>
+		</div>
+		<nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+			<div class="d-xl-none">
+  <button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#onThisPage" aria-controls="doks-docs-nav" aria-expanded="false" aria-label="Toggle On this page navigation">
+    <span>On this page</span>
+    <span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
+    </span>
+  </button>
+  <div class="collapse" id="onThisPage">
+    <div class="card card-body mt-3 py-1">
+      <div class="page-links">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#global-vs-user-legacy-services"><strong>Global vs. user legacy services</strong></a></li>
+    <li><a href="#legacy-service-configuration"><strong>Legacy service configuration</strong></a>
+      <ul>
+        <li><a href="#label">Label</a></li>
+        <li><a href="#name">Name</a></li>
+        <li><a href="#initial-status">Initial status</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#force-end-user-configuration">Force end user configuration</a></li>
+        <li><a href="#groups">Groups</a></li>
+        <li><a href="#legacy-service-specific-configuration">Legacy service-specific configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#legacy-service-properties"><strong>Legacy service properties</strong></a>
+      <ul>
+        <li><a href="#_name">_name</a></li>
+        <li><a href="#_configuration">_configuration</a></li>
+        <li><a href="#_token">_token</a></li>
+      </ul>
+    </li>
+    <li><a href="#legacy-services-usage"><strong>Legacy services usage</strong></a>
+      <ul>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#user-legacy-service-functions">User legacy service functions</a></li>
+        <li><a href="#callbacks">Callbacks</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#user-legacy-service-events">User legacy service events</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-links d-none d-xl-block">
+  <h3>On this page</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#global-vs-user-legacy-services"><strong>Global vs. user legacy services</strong></a></li>
+    <li><a href="#legacy-service-configuration"><strong>Legacy service configuration</strong></a>
+      <ul>
+        <li><a href="#label">Label</a></li>
+        <li><a href="#name">Name</a></li>
+        <li><a href="#initial-status">Initial status</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#force-end-user-configuration">Force end user configuration</a></li>
+        <li><a href="#groups">Groups</a></li>
+        <li><a href="#legacy-service-specific-configuration">Legacy service-specific configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#legacy-service-properties"><strong>Legacy service properties</strong></a>
+      <ul>
+        <li><a href="#_name">_name</a></li>
+        <li><a href="#_configuration">_configuration</a></li>
+        <li><a href="#_token">_token</a></li>
+      </ul>
+    </li>
+    <li><a href="#legacy-services-usage"><strong>Legacy services usage</strong></a>
+      <ul>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#user-legacy-service-functions">User legacy service functions</a></li>
+        <li><a href="#callbacks">Callbacks</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#user-legacy-service-events">User legacy service events</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+		</nav>
+		<main class="docs-content col-lg-11 col-xl-9">
+		
+			<h1>Legacy services</h1>
+			<div class="summary"> Learn about legacy services and how to utilize them to establish connections with external applications. </div>
+
+
+			<nav class="d-xl-none" aria-label="Quaternary navigation">
+				<div class="d-xl-none">
+  <button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#onThisPage" aria-controls="doks-docs-nav" aria-expanded="false" aria-label="Toggle On this page navigation">
+    <span>On this page</span>
+    <span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
+    </span>
+  </button>
+  <div class="collapse" id="onThisPage">
+    <div class="card card-body mt-3 py-1">
+      <div class="page-links">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#global-vs-user-legacy-services"><strong>Global vs. user legacy services</strong></a></li>
+    <li><a href="#legacy-service-configuration"><strong>Legacy service configuration</strong></a>
+      <ul>
+        <li><a href="#label">Label</a></li>
+        <li><a href="#name">Name</a></li>
+        <li><a href="#initial-status">Initial status</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#force-end-user-configuration">Force end user configuration</a></li>
+        <li><a href="#groups">Groups</a></li>
+        <li><a href="#legacy-service-specific-configuration">Legacy service-specific configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#legacy-service-properties"><strong>Legacy service properties</strong></a>
+      <ul>
+        <li><a href="#_name">_name</a></li>
+        <li><a href="#_configuration">_configuration</a></li>
+        <li><a href="#_token">_token</a></li>
+      </ul>
+    </li>
+    <li><a href="#legacy-services-usage"><strong>Legacy services usage</strong></a>
+      <ul>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#user-legacy-service-functions">User legacy service functions</a></li>
+        <li><a href="#callbacks">Callbacks</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#user-legacy-service-events">User legacy service events</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-links d-none d-xl-block">
+  <h3>On this page</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#global-vs-user-legacy-services"><strong>Global vs. user legacy services</strong></a></li>
+    <li><a href="#legacy-service-configuration"><strong>Legacy service configuration</strong></a>
+      <ul>
+        <li><a href="#label">Label</a></li>
+        <li><a href="#name">Name</a></li>
+        <li><a href="#initial-status">Initial status</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#force-end-user-configuration">Force end user configuration</a></li>
+        <li><a href="#groups">Groups</a></li>
+        <li><a href="#legacy-service-specific-configuration">Legacy service-specific configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#legacy-service-properties"><strong>Legacy service properties</strong></a>
+      <ul>
+        <li><a href="#_name">_name</a></li>
+        <li><a href="#_configuration">_configuration</a></li>
+        <li><a href="#_token">_token</a></li>
+      </ul>
+    </li>
+    <li><a href="#legacy-services-usage"><strong>Legacy services usage</strong></a>
+      <ul>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#user-legacy-service-functions">User legacy service functions</a></li>
+        <li><a href="#callbacks">Callbacks</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#user-legacy-service-events">User legacy service events</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+			</nav>
+			<p>Legacy services are components that operate alongside your app. They possess their own resources and their primary purpose is to enhance the platform&rsquo;s capabilities.</p>
+<p>A prevalent use case is establishing connections between your app and other applications through the utilization of APIs for sending, receiving, and retrieving data. For instance, endpoints exist for services like Slack, Google Contacts, Google Calendar, and various other widely-used cloud platforms. This allows your app to seamlessly leverage the functionalities provided by these external services.</p>
+<h2 id="global-vs-user-legacy-services"><strong>Global vs. user legacy services</strong> <a href="#global-vs-user-legacy-services" class="anchor" aria-hidden="true">#</a></h2>
+<p>There are two categories of legacy services:</p>
+<ul>
+<li><strong><code>Global legacy services</code></strong>: These legacy services boast a universal configuration for the entire app, irrespective of the user. For instance, the SparkPost legacy service falls under this category as its operations aren&rsquo;t tied to any specific app user.</li>
+<li><strong><code>User legacy services</code></strong>: These legacy services feature both a global configuration and an individual configuration per user. This configuration is managed within the <strong><code>My integrations</code></strong> tab under <strong><code>My profile</code></strong> in the app runtime. This distinction becomes crucial when the external service necessitates awareness of the user initiating the calls. For instance, most Google legacy services require users to grant permissions so that all operations are executed on the user&rsquo;s behalf. Consider the Google Calendar legacy service configuration; each user must grant permission to access it. Two key considerations when employing user legacy services are:
+<ul>
+<li><strong><code>Valid Current User for Method Calls</code></strong>: When calling a method in the legacy service&rsquo;s API, the current user within the execution context must be connected to the legacy service. Failure to meet this requirement will result in an error. For instance, if a user creates a new record in a <strong><code>contacts</code></strong> entity, and the Slingr app user hasn&rsquo;t connected the Google Contacts endpoint, the attempt to create the contact in Google will fail.</li>
+<li><strong><code>User-Based Event Generation</code></strong>: Events generated per user might lead to multiple events when you expect only one. For example, with a Google Contacts endpoint and a <strong><code>Contact updated</code></strong> event listener, creating a new contact in Google results in an event <strong>p<code>er user</code></strong>, rather than a single event. This means that if 10 users in your app are connected to the Google Contacts endpoint, you will receive 10 events, assuming all 10 users have permission to view the new contact. This behavior acknowledges that each user may have varying levels of access in the external system based on settings or security rules. This way, users without access to specific content won&rsquo;t receive irrelevant events, sparing the need to replicate security rules within your app.</li>
+</ul>
+</li>
+</ul>
+<h2 id="legacy-service-configuration"><strong>Legacy service configuration</strong> <a href="#legacy-service-configuration" class="anchor" aria-hidden="true">#</a></h2>
+<p>While there are certain shared settings among legacy services, each legacy service may have distinct additional settings. Documentation for each specific legacy service should be consulted for detailed explanations of these settings.</p>
+<p>Here, we will elucidate common settings.</p>
+<h3 id="label">Label <a href="#label" class="anchor" aria-hidden="true">#</a></h3>
+<p>This stands as the human-readable legacy service name, serving no operational purpose during app execution.</p>
+<h3 id="name">Name <a href="#name" class="anchor" aria-hidden="true">#</a></h3>
+<p>This internal legacy service name is used within the JavaScript API.</p>
+<p>The name should exclusively consist of letters and numbers, with no special characters or spaces.</p>
+<p>It&rsquo;s worth noting that altering the legacy service name could have ramifications for scripts referencing the legacy service. For example, if the name changed from <strong><code>slack</code></strong> to something like <strong><code>slackmaster</code></strong>, calls like <strong><code>app.endpoints.slack.*</code></strong> might need to be updated to <strong><code>app.endpoints.slackmaster.*</code></strong>. Although we intend to provide tools to assist in such cases, for now, changes must be made manually.</p>
+<h3 id="initial-status">Initial status <a href="#initial-status" class="anchor" aria-hidden="true">#</a></h3>
+<p>This signifies the legacy service&rsquo;s initial status when first pushed or synced. This setting exclusively affects the initial deployment. Once the legacy service is pushed or synced, its status remains unchanged and should be modified through the app monitor.</p>
+<p>This flag is particularly useful when constructing template apps that will be cloned, but you wish to delay legacy service deployment until they are configured. Thus, the initial status can be set to <strong><code>Undeployed</code></strong>, ensuring it remains inactive until configured and deployed.</p>
+<h3 id="profile">Profile <a href="#profile" class="anchor" aria-hidden="true">#</a></h3>
+<p>Profiles represent distinct deployment configurations for a legacy service, encompassing resource allocation and other necessities. For instance, a Slack legacy service might feature profiles like <strong><code>Default</code></strong>, <strong><code>Medium team</code></strong>, and <strong><code>Big team</code></strong>, each accommodating a different number of concurrent Slack team users. The legacy service documentation should provide a comprehensive description of each profile, aiding in selecting the suitable one.</p>
+<p>This setting is only applicable to legacy services that support multiple profiles.</p>
+<h3 id="force-end-user-configuration">Force end user configuration <a href="#force-end-user-configuration" class="anchor" aria-hidden="true">#</a></h3>
+<p>This flag is exclusive to user legacy services. When enabled, users logging into the app will be prompted to configure the legacy service for their accounts. Although users can postpone this process and configure it later, the configuration screen will appear whenever they log in.</p>
+<h3 id="groups">Groups <a href="#groups" class="anchor" aria-hidden="true">#</a></h3>
+<p>Applicable only to user legacy services, this setting designates which groups are permitted to use the legacy service. Selection can be made from all groups or specific ones. Users must belong to at least one selected group to access the legacy service; otherwise, the legacy service will be invisible to them.</p>
+<h3 id="legacy-service-specific-configuration">Legacy service-specific configuration <a href="#legacy-service-specific-configuration" class="anchor" aria-hidden="true">#</a></h3>
+<p>In addition to common settings, legacy service-specific configuration options should be explored in each legacy service&rsquo;s documentation. These typically encompass credentials and configurations influencing legacy service behavior.</p>
+<p>Due to the environment-dependent nature of legacy services, employing environment variables for configuration, especially for sensitive information like credentials, is advisable. This facilitates the use of distinct accounts for development and production.</p>
+<h4 id="secure-legacy-service-specific-configuration">Secure legacy service-specific configuration <a href="#secure-legacy-service-specific-configuration" class="anchor" aria-hidden="true">#</a></h4>
+<p>Storing sensitive data, such as passwords and keys, in environment variables is highly recommended. Configuration properties can then reference these environment variables. For further details, consult the documentation on <a href="/dev-reference/environment-settings/environment-var/">Environment Variables</a>.</p>
+<h2 id="legacy-service-properties"><strong>Legacy service properties</strong> <a href="#legacy-service-properties" class="anchor" aria-hidden="true">#</a></h2>
+<p>For all configured legacy services, several properties prove useful to developers in certain scenarios. These properties are accessible through the <strong><code>app.endpoints.&lt;endpointName&gt;</code></strong> namespace, where <strong><code>endpointName</code></strong> represents the legacy service&rsquo;s name. While some are endpoint-specific, a couple of generic properties exist:</p>
+<h3 id="_name">_name <a href="#_name" class="anchor" aria-hidden="true">#</a></h3>
+<p>This is the internal name of the legacy service, used within the JavaScript API.</p>
+<h3 id="_configuration">_configuration <a href="#_configuration" class="anchor" aria-hidden="true">#</a></h3>
+<p>This property contains a <strong><code>JSON</code></strong> representation of the legacy-service-specific configuration.</p>
+<h3 id="_token">_token <a href="#_token" class="anchor" aria-hidden="true">#</a></h3>
+<p>This token is employed to validate messages exchanged between the legacy service and the platform.</p>
+<p>For example, if a legacy service is named <strong><code>fullcontact</code></strong>, the properties can be accessed like this:</p>
+<pre><code class="language-js">sys.logs.info(JSON.stringify(app.endpoints.fullcontact));
+</code></pre>
+<br>
+<p>Or having a legacy service called ftp you can print the <strong><code>_token</code></strong>:</p>
+<pre><code class="language-js">sys.logs.info(app.endpoints.ftp._token);
+</code></pre>
+<br>
+<h2 id="legacy-services-usage"><strong>Legacy services usage</strong> <a href="#legacy-services-usage" class="anchor" aria-hidden="true">#</a></h2>
+<p>When a legacy service is added, it introduces two new features to the app:</p>
+<ul>
+<li><strong><code>Functions</code></strong>: These functions can be invoked from any script and are typically used to send and retrieve data from an external app.</li>
+<li><strong><code>Events</code></strong>: These events are triggered by the external app and can be handled through listeners. By creating listeners for legacy services, you can intercept and process these events.</li>
+</ul>
+<h3 id="functions">Functions <a href="#functions" class="anchor" aria-hidden="true">#</a></h3>
+<p>Legacy service functions are accessible from any script using the namespace <strong><code>app.endpoints.&lt;endpointName&gt;</code></strong>, where <strong><code>endpointName</code></strong> refers to the legacy service&rsquo;s name. For instance, if there&rsquo;s a legacy service named <strong><code>slack</code></strong> that offers a function called <strong><code>sendMessage()</code></strong>, you can call it from any script using <strong><code>app.endpoints.slack.sendMessage()</code></strong>.</p>
+<p>For instance, the following is an example of a call to send a message using the Slack legacy service:</p>
+<pre><code class="language-js">const msg = action.field('message').val();
+app.endpoints.slack.sendMessage({channel: '#test', message: msg});
+</code></pre>
+<br>
+<p>If errors occur during the execution of a function, an exception will be raised. By default, this exception halts the execution of the script, and the error is logged. However, you have the option to handle it if desired:</p>
+<pre><code class="language-js">const msg = action.field('message').val();
+try {
+  app.endpoints.slack.sendMessage({channel: '#test', message: msg});
+} catch (e) {
+  sys.logs.warn('There was a problem sending a message through Slack: '+sys.exceptions.getMessage(e));
+}
+// execution will continue even if the message to Slack couldn't be sent
+</code></pre>
+<br>
+<p>You should refer to each legacy service&rsquo;s documentation to identify the functions that are available.</p>
+<p>For example, to learn about the functions provided by the Slack legacy service, consult the Slack legacy service&rsquo;s documentation.</p>
+<h3 id="user-legacy-service-functions">User legacy service functions <a href="#user-legacy-service-functions" class="anchor" aria-hidden="true">#</a></h3>
+<p>For user legacy services, most function calls are likely to be tied to a specific user. For instance, consider the case of using the Google Contacts user legacy service. When creating a new contact within this legacy service, it needs to be added to the Google account of the user currently utilizing the app.</p>
+<p>This determination hinges on the current user within the execution context (you can check this using the script: <strong><code>sys.context.getCurrentUser()</code></strong>. In the aforementioned example, when invoking the function to create a contact in Google Contacts, the legacy service identifies the current user and performs the contact creation on behalf of that user. Naturally, this assumes that the current user has previously connected to the legacy service; otherwise, the function call will fail.</p>
+<p>There are instances where the current user might be the system user. In such cases, if you attempt to call a legacy service method requiring association with a user, the call will fail. If you possess the information about the user intended for this function call, you can set it using the method <strong><code>sys.context.setCurrentUser()</code></strong> before calling the legacy service&rsquo;s function.</p>
+<p>All user legacy service incorporate the following functions:</p>
+<ul>
+<li>
+<p><strong><code>connectUser(config)</code></strong>: Establishes a connection between the current user and the legacy service. Here, <strong><code>config</code></strong> pertains to the user&rsquo;s configuration for that specific legacy service. For instance:</p>
+<pre><code class="language-js">const msg = {};
+msg.configuration = {};
+msg.configuration.code = 'user-code'; // code generated on the authentication page by the user
+try {
+    const response = app.endpoints.googleContacts.connectUser(msg, {
+        'userConnected': function(event) {
+            sys.logs.info('User connected to Google Contacts: '+sys.context.getCurrentUser().fullName());
+            sys.logs.info(' - Configuration: '+JSON.stringify(event.data.configuration));
+        },
+        'userDisconnected': function(event) {
+            sys.logs.info('Could not connect user to Google Contacts:'+sys.context.getCurrentUser().fullName());
+        }
+    });    
+    sys.logs.info('Response: '+JSON.stringify(response));
+} catch(e) {
+    sys.logs.error('Error when try to execute function ['+sys.exceptions.getMessage(e)+']');
+}
+</code></pre>
+<br>
+</li>
+<li>
+<p><strong><code>disconnectUser()</code></strong>: disconnects the current user from the endpoint. For example:</p>
+<pre><code class="language-js">const msg = {};
+try {
+    const response = app.endpoints.googleContacts.disconnectUser(msg, {
+        'userDisconnected': function(event) {
+            sys.logs.info('User disconnected from Google Contacts:'+sys.context.getCurrentUser().fullName());
+        }
+    });
+    sys.logs.info(&quot;Response: &quot;+JSON.stringify(response));
+} catch(e) {
+    sys.logs.error('Error when try to execute function ['+sys.exceptions.getMessage(e)+']');
+}
+</code></pre>
+<br>
+</li>
+<li>
+<p><strong><code>isUserConnected()</code></strong>: returns <strong><code>true</code></strong> if current user is connected to the endpoint, <strong><code>false</code></strong> otherwise.
+For example:</p>
+<pre><code class="language-js">if (app.endpoints.googleContacts.isUserConnected()){
+    sys.logs.info('User connected');
+} else {
+    sys.logs.info('User disconnected');
+}
+</code></pre>
+<br>
+</li>
+</ul>
+<h3 id="callbacks">Callbacks <a href="#callbacks" class="anchor" aria-hidden="true">#</a></h3>
+<p>Certain functions offer callbacks that enable easy handling of asynchronous responses. For instance, when utilizing the function to send an email with Mandrill, you can include a callback to perform an action when a reply to the email is received:</p>
+<pre><code class="language-js">let msg = {};
+msg.subject = &quot;A test subject.&quot;;
+msg.templateName = &quot;test-template&quot;;
+msg.important = true;
+msg.to = &quot;user1@test.com&quot;;
+msg.globalMergeVars = {
+  companyName: record.field('name').val(),
+  companyId: record.id()
+};
+msg.waitResponse = true;
+ 
+try {
+  let callbackData = {company: record, currentUserEmail: sys.context.getCurrentUserRecord().field('email').val()};
+  let response = app.endpoints.mandrill.sendEmail(msg, callbackData, {
+    responseArrived: function(event, data) {
+      // event data
+      sys.logs.info('Response arrived:');
+      sys.logs.info('Date/Time: '+event.data.eventTime);
+      sys.logs.info('From: '+event.data.fromName+' &lt;'+event.data.fromEmail+'&gt;');
+      sys.logs.info('Subject: '+event.data.subject);
+      sys.logs.info('Text: '+event.data.text);
+      // callback data
+      sys.logs.info('Record ID: '+data.company.id());
+      sys.logs.info('User email: '+data.currentUserEmail);
+    }
+  }); 
+  sys.logs.info(&quot;Mandrill response: &quot;+JSON.stringify(response));
+} catch(e) {
+   sys.logs.error('Error when try to send an email: '+sys.exceptions.getMessage(e));
+}
+</code></pre>
+<br>
+<p>When callbacks are supported, two parameters are available at the end:</p>
+<ul>
+<li><strong><code>callbackData</code></strong>: This object can be sent, and it will be returned when the callback is processed. This is crucial because, in the function processing the callback, access to variables outside the function is restricted. For instance, in the previously provided code, referencing the variable <strong><code>msg</code></strong> outside the callback function isn&rsquo;t feasible. This limitation arises due to the asynchronous nature of callbacks, causing a loss of context, which differs from standard JavaScript behavior. Hence, it&rsquo;s important to keep this in mind.</li>
+<li><strong><code>callbacks</code></strong>: This map allows you to listen for various callbacks. The earlier example only listens to the <strong><code>responseArrived</code></strong> callback. However, the Mandrill legacy service can trigger additional callbacks based on diverse events. Functions within this callback possess two parameters:
+<ul>
+<li><strong><code>event</code></strong>: This encompasses the event information, identical to the event available in listeners. Refer to the documentation on <a href="/dev-reference/data-model-and-logic/listeners/#endpoint-listeners">Legacy service Listeners</a>.</li>
+<li><strong><code>data</code></strong>: This constitutes the callback data dispatched when the function was called.</li>
+</ul>
+</li>
+</ul>
+<p>Please consult each legacy service&rsquo;s documentation to ascertain the available callbacks for each function.</p>
+<h3 id="events">Events <a href="#events" class="anchor" aria-hidden="true">#</a></h3>
+<p>Events signify occurrences within the external app that require notification. These events can originate from the external app itself, or the legacy service might identify certain events and relay them to the app. For instance, this could involve a message sent to a Slack channel or the FTP legacy service detecting a new file in a monitored folder.</p>
+<p>Events can be managed via <a href="/dev-reference/data-model-and-logic/listeners/#endpoint-listeners">Legacy service Listeners</a>. Each legacy service provides its own distinct events; therefore, consulting the documentation for each legacy service is advised.</p>
+<h3 id="user-legacy-service-events">User legacy service events <a href="#user-legacy-service-events" class="anchor" aria-hidden="true">#</a></h3>
+<p>A key aspect regarding user legacy services pertains to event processing. When events arrive, the current execution context is aligned with the user from whom the event originated. Consequently, during event handling within the listener, if you invoke <strong><code>'sys.context.getCurrentUserRecord()'</code></strong> you will get the user associated to the event:</p>
+<pre><code class="language-js">const currentUser = sys.context.getCurrentUserRecord();
+sys.logs.info('*** EVENT FOR USER: '+currentUser.field('email').val());
+</code></pre>
+<br>
+<p>Keep in mind that there might be global events in a user legacy service, so in those cases current user will be <strong><code>null</code></strong>.
+You should check that in the legacy service&rsquo;s documentation.</p>
+<p>Finally, user legacy services have two additional events that are always available:</p>
+<ul>
+<li>
+<p><strong><code>User connected</code></strong>: indicates that a user connected to the legacy service, which usually means that the user granted
+permissions. This event has some information about the configuration that you can get at <strong><code>event.data.configuration</code></strong>:</p>
+<pre><code class="language-js">sys.logs.info('User connected to Google Calendar: '+sys.context.getCurrentUserRecord().field('email').val());
+sys.logs.info(' - Configuration: '+JSON.stringify(event.data.configuration));
+</code></pre>
+<br>
+</li>
+<li>
+<p><code>User disconnected</code>: indicates that a user disconnected from the legacy service.</p>
+</li>
+</ul>
+
+			<div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
+				</div>
+			<div class="docs-navigation d-flex justify-content-between">
+	
+	<a href="/dev-reference/data-model-and-logic/libraries/">
+			<div class="card my-1">
+				<div class="card-body py-2">
+					&larr; Libraries
+				</div>
+			</div>
+		</a>
+	<a class="ms-auto" href="/dev-reference/data-model-and-logic/services/">
+			<div class="card my-1">
+				<div class="card-body py-2">
+					Services &rarr;
+				</div>
+			</div>
+		</a>
+	</div>
+
+			
+		</main>
+	</div>
+
+      </div>
+    </div>
+    
+    
+    <footer class="footer text-muted">
+  <div class="container-xxl">
+    <div class="row justify-content-center">
+      <div class="col-lg-4" >
+        <ul class="list-unstyled">
+          <img src="/images/vendor/slingr_blue.png">
+          <li>©2023 Slingr. All rights reserved. </li>
+          <li>Site last generated: Apr 11, 2023</li>
+
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Get started</h6>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/getting/where-to-start/">Where to start</a></li>
+          <li><a href="/getting-started/getting/what_is_slingr/">What's Slingr?</a></li>
+          <li><a href="/getting-started/getting/first-steps/main/">Take your first steps</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Platform <br> reference</h6>
+        <ul class="list-unstyled">
+          <li><a href="/platform-ref/slingr-platform/platform-concepts/">Platform concepts</a></li>
+          <li><a href="/platform-ref/slingr-dev-portal/dev-portal-overview/">Developer portal</a></li>
+          <li><a href="/platform-ref/slingr-dev-portal/managing-apps/">Managing apps</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Developer's reference</h6>
+        <ul class="list-unstyled">
+          <li><a href="/dev-reference/overview/overview/">Overview</a></li>
+          <li><a href="/dev-reference/scripting/overview/">Javascript API</a></li>
+          <li><a href="/dev-reference/rest-apis/apps-api/">REST API</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Extensions</h6>
+        <ul class="list-unstyled">
+          <li><a href="/extending/getting_started/overview/">Overview</a></li>
+          <li><a href="/extending/official-ui-plugins/overview/">Official endpoints</a></li>
+          <li><a href="/extending/extending-platform/create_your_own/">Create your endpoints</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="/js/bootstrap.min.f06fe6dc0efc9ee1e806021a0c338278256ecf163b547e8e8769fe60b0a1c0d505782852616ca4e1ff6a719eb8fc954e1d26031b8ab3ca71fb9d9998081b319e.js" integrity="sha512-8G/m3A78nuHoBgIaDDOCeCVuzxY7VH6Oh2n&#43;YLChwNUFeChSYWyk4f9qcZ64/JVOHSYDG4qzynH7nZmYCBsxng==" crossorigin="anonymous" defer></script>
+  <script src="/js/highlight.min.ec234bd8a5f487aaffe50a89f17b14501b1bb65633cf177cffd4cb84702dd7030edc08712dceb8dc27ac7e54b53240a08bf0b8d951572ee582bcdbbd06a48a7b.js" integrity="sha512-7CNL2KX0h6r/5QqJ8XsUUBsbtlYzzxd8/9TLhHAt1wMO3AhxLc643CesflS1MkCgi/C42VFXLuWCvNu9BqSKew==" crossorigin="anonymous" defer></script>
+  <script src="/main.min.82f836fcdb7efb9e9876a2c11dc1add66a5448bfe9ef02c535552b7b08758ea2f75787c25223520effc82119e5dec54ec57d8efcd6b20a562d02c463a8a3ba3b.js" integrity="sha512-gvg2/Nt&#43;&#43;56YdqLBHcGt1mpUSL/p7wLFNVUrewh1jqL3V4fCUiNSDv/IIRnl3sVOxX2O/NayClYtAsRjqKO6Ow==" crossorigin="anonymous" defer></script>
+  <script src="/index.min.3eff9330db34e22e53acb5f348a51c8ddb09094ecf40637c1efd69e7513c3416b2790c79039c5404578dd1e24f99da67f7271a912dbfe5a701657cd0b19259bc.js" integrity="sha512-Pv&#43;TMNs04i5TrLXzSKUcjdsJCU7PQGN8Hv1p51E8NBayeQx5A5xUBFeN0eJPmdpn9ycakS2/5acBZXzQsZJZvA==" crossorigin="anonymous" defer></script>
+  
+    
+  </body>
+</html>

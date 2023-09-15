@@ -12,198 +12,149 @@ toc: true
 weight: 54
 ---
 
-A line chart is a way of plotting data points on a line. Often, it is used to show trend data, or 
-the comparison of two data sets.
+A line chart is an effective way to visualize data points along a line. It is commonly used to display trend data or compare two data sets. There are three types of line charts:
 
-There are three types of line chart:
+- **`Category`:** The horizontal axis represents labels (categories) for each value. This chart type is defined using data from a single entity.
+- **`Linear`:** Numerical data is plotted for each point. The scatter chart type automatically configures a line chart to use one of these scales for the x-axis. Linear interpolation is used to position a value along the axis.
+- **`Time`:** Points are defined with date-number pairs. The time scale is used for displaying dates. The ticks are automatically determined based on the scale's size.
 
-- **Category:** horizontal axis are defined as labels (category) of each value. This kind of chart is defined from one entity.  
-- **Linear:** numerical data is defined for each point. The scatter chart type automatically configures a line chart to use 
-one of these scales for the x axis. As the name suggests, linear interpolation is used to determine where a value lies on the axis.
-- **Time:** a point is defined with the pair date-number. The time scale is used to display dates types. When building its 
-ticks, it will automatically calculate the most comfortable unit base on the size of the scale.
+## **Category line chart**
 
-## Category
- 
-Horizontal axis are defined as labels (category) of each value. This kind of chart is defined from one entity.
+The horizontal axis labels are derived from the values' categories. This type of chart is built using data from a single entity.
 
 ### Entity
 
-This is the entity the view will point to. Only records of this entity will be listed
-in the line chart widget.
+This refers to the entity that the view is associated with. Only records from this entity will be displayed in the line chart widget.
 
 ### Label
 
-This is a human-readable name of the view. You can use spaces, special characters and
-mix upper case and lower case letters.
+A human-readable name for the view. Special characters, spaces, and a mix of uppercase and lowercase letters can be used.
 
-This label will be displayed at the top of the table widget view, so make sure you use something
-users will understand.
+This label is displayed at the top of the widget view. Make sure it's user-friendly.
 
 ### Name
 
-This is the internal name of the view. It cannot hold special characters or spaces.
-
-Usually you will use the name of the view in scripts and the REST API, so changing it
-might affect your app and you will need to make some manual adjustments.
+The internal name of the view. It should not include special characters or spaces. You often use this view's name in scripts and the REST API. Changing it might impact your app, necessitating manual adjustments.
 
 ### Description
 
-This is a human-readable description of the widget. You can use spaces, special characters and
-mix upper case and lower case letters. You can internationalize it.
+A human-readable description of the widget. Special characters, spaces, and a mix of uppercase and lowercase letters can be used. Internationalization is possible.
 
-This description will be displayed in top of added widget in your dashboard.
+This description appears at the top of the added widget on your dashboard.
 
-### Allow Refresh
+### Allow refresh
 
-This is to Show/Hide refresh button. We can perform this action in order to update this widget 
-information. Is true by default.
+This option controls whether to show or hide the refresh button. Enabling this allows users to update the widget's information. It's enabled by default.
 
 ### List settings
 
 #### Dataset
 
-These settings indicate how the listing should behave.
+These settings define how the listing behaves.
 
-**Sort field:** This is the default sorting field for the listing. Users might be able to change the default sorting 
-if that's enabled in any of the columns.
+**`Sort Field`:** The default sorting field for the listing. If allowed, users might change the default sorting by column.
 
-**Sort type:** Indicates the direction of the sorting. Users might be able to change the default sorting if that's enabled in any of the columns.
+**`Sort Type`:** The sorting direction. If allowed, users might change the default sorting by column.
 
-**Filter type:** Can be expression or script. In case to select expression should set record filters. In other case should return
-the script.
+**`Filter Type`:** Can be an expression or a script. For expression selection, set record filters. For the script selection, the script should be returned.
 
-**Record filters:** Defines which records will be listed. Only records matching the given expression will be listed
-in the table widget view.
+**`Record Filters`:** Defines which records are listed. Only records matching the given expression will appear in the table widget view.
 
-**Script:** Return query parameter or queryMap. The query map object used to filter records. 
-Check the [Query language]({{site.baseurl}}/app-development-query-language.html) documentation for the query map version.
+**`Script`:** Returns a query parameter or queryMap. The query map object is used to filter records. See the [Query Language]({{{<ref "/dev-reference/queries/query-language.md">}}) documentation for query map usage.
 
-**Size:** The maximum number of records to fetch when the view is loaded and when clicking in `More` to fetch
-more records.
-
+**`Size`:** The maximum number of records to fetch when the view loads or when clicking "More" to fetch additional records.
 
 ### Horizontal axis settings
 
 #### View type
 
-Represent the field type to be used to generate the horizontal axis values. It can be an entity field or a
-calculated field.
+Specifies the field type used for generating the horizontal axis values. It can be an entity field or a calculated field.
 
 #### Entity field
 
-Allows to select an existing entity field. The value will be stored as a reference to metadata, being refactored in 
-the same way when changes happen. 
+Allows selection of an existing entity field. The value is stored as metadata reference, updating accordingly with changes.
 
 #### Calculated field
 
-The value of this kind of field is generated by script for horizontal axis.
+Generates field values by script for the horizontal axis.
 
 #### Grid lines
 
-If false, do not display grid lines for this axis.
+When set to false, grid lines for this axis are hidden.
 
 ### Vertical axis settings
 
 #### Label
 
-This is a human-readable name to be displayed in vertical axis. You can use spaces, special characters and
-mix upper case and lower case letters.
+A human-readable name displayed on the vertical axis. Special characters, spaces, and a mix of uppercase and lowercase letters can be used.
 
 #### Ticks suggested min / max
 
-The suggestedMax and suggestedMin settings only change the data values that are used to scale the axis. 
-These are useful for extending the range of the axis while maintaining the auto fit behaviour.
+The suggestedMax and suggestedMin settings affect the data values used for axis scaling. They extend the axis range while maintaining auto-fit behavior.
 
 #### Grid lines
 
-If false, do not display grid lines for this axis.
+When set to false, grid lines for this axis are hidden.
 
-## Series
+## **Series**
 
-You can add series base on entity field or a calculated series. 
+You can add series based on entity fields or calculated series.
 
 ### Entity field
 
-Allows to select an existing entity field. The value will be stored as a reference to metadata, being refactored in 
-the same way when changes happen. The default value will be set only when creating a new record, which means it
-won't have any effect when editing an existing record.
+Allows selection of an existing entity field. The value is stored as metadata reference, updating accordingly with changes. The default value is effective when creating new records, not when editing existing ones.
 
 ### Calculated field
 
-The value of this kind of field is generated by script for vertical axis.
+A field's value generated by script for the vertical axis.
 
 ### Line styling settings
 
-**Settings Mode:** It can be simple or advanced. In case of simple mode just need set line color and other settings are calculated or 
-set by default. For advanced the developer should define each value.
+**`Settings Mode`:** Can be simple or advanced. In simple mode, only the line color needs setting; other settings are calculated or set by default. Advanced mode requires developers to define each value.
 
-**Color:** This is the line color. It should be hexadecimal color code.
+**`Color`:** Specifies the line color using a hexadecimal code.
 
-**Line Tension:** Bezier curve tension of the line. Set to 0 to draw straightlines. Default value is 0.4
+**`Line Tension`:** Bezier curve tension of the line. Set to 0 to draw straight lines. Default value is 0.4.
 
-**Background Color:** The line fill color. It should be hexadecimal color code.
+**`Background Color`:** Fill color for the line. Use a hexadecimal code.
 
-**Border Width:** The line width (in pixels).
+**`Border Width`:** Width of the line (in pixels).
 
-**Border Dash:** Length and spacing of dashes.
+**`Border Dash`:** Length and spacing of dashes.
 
-**Stepped Line:** The following values are supported for stepped line:
-
-- None
-- Before
-- Middle
-- After
+**`Stepped Line`:** Supported values for stepped lines: None, Before, Middle, After.
 
 ### Point styling settings
 
-**Settings Mode:** It can be simple or advanced. In case of simple mode just need set line color and other settings are calculated or 
-set by default. For advanced the developer should define each value.
+**`Settings Mode`:** Can be simple or advanced. In simple mode, only the background color needs setting; other settings are calculated or set by default. Advanced mode requires developers to define each value.
 
-**Background Color:** The fill color for points. It should be hexadecimal color code.
+**`Background Color`:** Fill color for points. Use a hexadecimal code.
 
-**Style:** Style of the point. It can by:
+**`Style`:** Point style, options include circle, cross, crossRot, dash, line, rect, rectRounded, rectRot, star, triangle.
 
-- circle
-- cross
-- crossRot
-- dash
-- line
-- rect
-- rectRounded
-- rectRot
-- star
-- triangle
+**`Radius`:** Radius of the point shape.
 
-**Radius:** The radius of the point shape.
+**`Hover Background Color`:** Point background color on hover.
 
-**Hover Background Color:** Point background color when hovered.
+**`Border Width`:** Width of the point border (in pixels).
 
-**Border Width:** The width of the point border in pixels.
+**`Border Color`:** Border color for points.
 
-**Border Color:** The border color for points.
+## **UI messages**
 
-## UI Message
-
-Widgets can react to UI message. The common case is when need refresh the data or apply filters.
+Widgets can respond to UI messages, such as data refresh or filter application.
 
 ### Refresh and filter
 
-It is possible send a message to refresh the widget using its default settings. This messages are sending to dashboard 
-container and propagated to each widget. 
+You can send a message to refresh the widget with default settings. These messages are sent to the dashboard container and propagated to each widget.
 
-Additionally you can send a filter parameter in order to be applied to the query used to get the data. This query can be 
-a [query]({{site.baseurl}}/app-development-js-api-data.html#sys.data.Query) object or a query map. In case to use a query 
-object the filter just is applied if the entity is same to the entity set in the widget. Check the 
-[Query language]({{site.baseurl}}/app-development-query-language.html) for more infomation.  
+Additionally, you can send a filter parameter to apply it to the query used for data retrieval. The query can be a [query]({{<ref "/dev-reference/scripting/sys-data.md">}}) object or a query map. If using a query object, the filter is applied only when the entity matches that set in the widget. Refer to the [Query Language]({{<ref "/dev-reference/queries/query-language.md">}}) for more information.
 
-In order to apply filters is necessary set the `widgetContainer` with a list of objects in witch each one describes the 
-container `name` and the `filter` to be applied on each widget. Additionally you can send `title` to update the widget 
-title.
+To apply filters, set the **`widgetContainer`** with a list of objects, each describing the container **`name`** and the **`filter`** to be applied to each widget. The **`title`** can also be sent to update the widget title.
 
 #### Example
 
-In following example you can refresh and apply a filter sending the filter parameter to given widget container. 
+In this example, you can refresh and apply a filter by sending the filter parameter to a specified widget container.
 
 ```javascript
 var query = sys.data.createQuery('salesInfoPeriod');
@@ -221,38 +172,32 @@ sys.ui.sendMessage({
   ]   
 });
 ``` 
+<br>
 
-## Example
+## **Example**
 
 ### Use case
 
-This type of chart is created by connecting a series of data points together with a solid line. An example of data type 
-that you can represented in line chart are annual sales rates and monthly rainfall as examples, as it will be clear to 
-see the trend in the data over a continuous period of time.
+A line chart is designed by connecting a series of data points with a solid line. Examples of data types suitable for representation in a line chart include annual sales rates and monthly rainfall. This type of chart allows trends in the data to be clearly observed over a continuous period.
 
 ### Precondition
 
-You need have an entity in order to set the information in the line chart. We can have a calculated entity in witch have 
-the aggregated information.
+To set up information in a line chart, you need to have an entity. You can utilize a calculated entity to store aggregated information.
 
-By example the entity `salesInLastYear` has the year-month field type called `period`  and integer field type called 
-`totalSales`. This example assume that it is a calculated entity and it is updated each month. 
+For instance, consider the entity **`salesInLastYear`**. It possesses a year-month field named **`period`** and an integer field named **`totalSales`**. This example assumes that the entity is calculated and is updated on a monthly basis.
 
-### Create a line chart
+### Creating a Line Chart
 
-Following steps describe how to create 
+The following steps illustrate how to create a line chart:
 
-- Step 1: In order to create the widget from root layout of given dashboard in columns or row you go to `Assign widget`.
-- Step 2: You can assign an existent widget or create a new one. In this case we want to create a new one.
-- Step 3: Complete the label and name for the new widget and set `Line Chart` in widget type and subtype `category`. Also 
-we set the entity `salesInLastYear` described in preconditions and save changes in order to go to widget configurations.
-- Step 4: In **Dataset**  config the sorting information, for the example should by `period`. You can see that here you can 
-filter the information from `salesInLastYear`.
-- Step 5: In **Horizontal axis** we configure the continuous variable that in our example is the `period` field. You can 
-override display options for selected field here and show/hide grid lines. Check documentation above.
-- Step 6: In **Vertical axis settings** we can customize settings to vertical axis. Please check documentation above.
-- Step 7: In node **series** that you can ses expanded nodes of created line chart we add the fields (in this case series) 
-that represents the measurement information. In this example, add a `new series` from button in secondary menu.
-- Step 8: In `Model settings` we add the field that represent the measure. In this case it is `totalSales`.
-- Step 9: For added series you can customize colors for line and points. Also you can set advance options for more options.
+- **`Step 1`:** Within the root layout of the designated dashboard, navigate to **`Assign Widget`**.
+- **`Step 2`:** You can assign an existing widget or create a new one. In this scenario, we're creating a new widget.
+- **`Step 3`:** Provide a label and name for the new widget. Select **`Line Chart`** as the widget type and choose subtype **`category`**. Additionally, specify the **`salesInLastYear`** entity mentioned in the preconditions. Save the changes to proceed to widget configurations.
+- **`Step 4`:** In the **`Dataset`** configuration, arrange the sorting information. In this example, the sorting should be based on the **`period`** field. This is where you can also filter information from the **`salesInLastYear`** entity.
+- **`Step 5`:** Configure the continuous variable for the **`Horizontal Axis`**. In our case, this would be the **`period`** field. You can customize display options for the selected field and opt to show or hide grid lines as needed. Refer to the documentation for further details.
+- **`Step 6`:** Customize settings for the **`Vertical Axis Settings`**, allowing adjustments to the vertical axis appearance. More information can be found in the documentation.
+- **`Step 7`:** Under the **`Series`** node, you can add fields (series) representing measurement information. For instance, you can add a `new series` using the button in the secondary menu.
+- **`Step 8`:** In the **`Model Settings`**, add the field representing the measure. In our example, this would be the **`totalSales`** field.
+- **`Step 9`:** For the added series, you have the ability to customize colors for lines and points. Additionally, advanced options are available for more nuanced customization.
 
+These steps guide you through the process of creating a line chart.

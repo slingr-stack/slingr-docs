@@ -12,72 +12,48 @@ toc: true
 weight: 12
 ---
 
-As explained in [Development Process]({{<ref "/dev-reference/metadata-management/development-process.md">}}),
-Slingr tries to make it as easy as possible to follow agile methodologies when developing
-your apps. One of the things that helps on that side are automatic refactorings, because they allow
-to evolve your app a lot easier.
+As detailed in the [Development Process]({{<ref "/dev-reference/metadata-management/development-process.md">}}), Slingr simplifies the adoption of agile methodologies for app development. Automatic refactorings are an instrumental feature in this regard, greatly facilitating the evolution of your app.
 
-Basically, when you make changes in your app, we will try to propagate those changes as much as
-possible so you don't need to manually go over many places changing things. Here are some samples
-of automatic refactorings:
+When you introduce changes to your app, we strive to propagate these changes systematically, minimizing the need for manual adjustments across multiple areas. The following are examples of automatic refactorings:
 
-- If you add a new field to an entity, the field will be added to all managed views automatically.
-- If you delete a field, it will be removed from all views and actions.
-- If you rename a field, it will be renamed everywhere, even in the database.
-- If you sort fields in your entity, they will be sorted in managed views.
+- **`Field Addition`**: If you add a new field to an entity, the field will be automatically integrated into all managed views.
+- **`Field Deletion`**: When a field is deleted, it will be seamlessly removed from all views and actions.
+- **`Field Renaming`**: Should you rename a field, the change will be applied universally, including the database.
+- **`Field Sorting`**: Sorting fields within an entity will trigger the same sorting in managed views.
 
-The goal of all these automatic refactorings is to save time to developers when making changes to
-apps.
- 
-Keep in mind that not everything will be refactored. For example scripts aren't refactored. It's
-on the roadmap, but not there yet!
+The primary objective of these automatic refactorings is to expedite development by reducing the need for manual adjustments.
 
-Refactorings can be grouped in two categories: metadata refactorings and data refactorings. They
-are explained in more detail in the following sections.
+It's essential to note that not all aspects can be refactored automatically. For instance, scripts are not currently included in these automatic refactorings, although this is on our roadmap for future development.
 
-- **Metadata refactorings**: these are the refactorings that affect metadata only. For example
-  a field is deleted and it is removed automatically from all views as soon as you delete it.
-- **Data refactorings**: these are refactorings that affect the data. For example you rename a
-  field and all records in that entity get refactored to rename the field. These refactorings
-  happen when pushing or syncing changes.
+Refactorings can be classified into two categories: metadata refactorings and data refactorings, which are elucidated further in the subsequent sections.
 
-## Metadata refactorings
+### Metadata refactorings
 
-These are refactorings that, as the name suggests, propagate changes to the metadata of the app.
-For example if fields are sorted in an entity, managed views will be automatically refactored to
-follow the new order of fields.
+Metadata refactorings encompass changes that exclusively influence the metadata of the app. For instance, if fields are reordered within an entity, managed views will be automatically adjusted to match the new field order.
 
-These refactorings are applied as soon as changes are done in the app builder (of course, they
-won't be visible until you push changes). So following the above example, as soon as fields as
-sorted, the refactoring on views will be done. This means that if you go and open the views in
-the app builder you will see the new order of fields there.
+These refactorings take effect immediately after changes are made in the app builder (although they won't be visible until changes are pushed). Following the aforementioned example, once the fields are reordered, the views will be automatically reconfigured. Consequently, upon opening the views in the app builder, the new field arrangement will be evident.
 
-## Data refactorings
+### Data refactorings
 
-These refactorings, on the other side, will make changes in the data of the app. For example an
-entity is deleted, so all records in that entity will be removed from the database.
+Conversely, data refactorings result in modifications to the app's data. For example, if an entity is deleted, all records associated with that entity will be purged from the database.
 
-As changes are only available in the runtime, these refactorings will happen when changes are 
-pushed or synced.
+Since changes are only accessible at runtime, data refactorings occur during the process of pushing or synchronizing changes.
 
-Keep in mind that some changes could produce metadata refactorings as well as data refactorings.
-For example if you delete a field, metadata referencing that field will be refactored and records
-of that entity will be refactored as well to remove the deleted field.
+It's crucial to be aware that certain changes can trigger both metadata and data refactorings simultaneously. Deleting a field, for instance, will prompt the refactoring of metadata references to that field, as well as the adjustment of records to remove the deleted field.
 
-Here is a list of changes that would cause data refactorings:
+Here is a list of changes that trigger data refactorings:
 
-- Adding a required field that has a default value
-- Adding a calculated field
-- Renaming a field, which is changing the name; changing the label won't cause any refactoring
-- Removing a field
-- Changing copied fields in a relationship field
-- Changes in type rules that affect what's stored in the database
-- Changing the calculation of a field
+- Adding a required field with a default value
+- Introducing a calculated field
+- Renaming a field (changing the name, not the label)
+- Deleting a field
+- Modifying copied fields within a relationship field
+- Adjustments to type rules that impact stored data
+- Altering field calculation logic
 - Deleting an entity
 - Renaming an entity
-- Setting a field as unique or indexable (an index will be created)
-- Remove the unique or indexable flag to a field (an index will be removed)
-- Adding, modifying or removing an index
+- Setting a field as unique or indexable (leading to index creation)
+- Removing the unique or indexable flag from a field (resulting in index removal)
+- Adding, modifying, or removing an index
 
-If these changes are applied over entities with a lot of records be aware that it could take a
-while and your app will be down during that period of time.
+If these changes are applied to entities with substantial record counts, be aware that the process may take some time and your app will be temporarily unavailable during this period.

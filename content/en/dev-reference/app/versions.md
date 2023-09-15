@@ -1,6 +1,6 @@
 ---
 title: "Versions"
-lead: "Describes how versioning of apps work."
+lead: "Version management and backups"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,33 +12,21 @@ toc: true
 weight: 16
 ---
 
+During the process of pushing changes, a crucial flag comes into play: **`Backup version`**. Activating this flag results in the creation of a backup for the version being pushed. This backup can subsequently be restored from the **`App > Versions`** section within the app builder.
 
-When pushing changes there is a flag called `Backup version`. When this flag is set a backup of
-the version being pushed will be created. This way you can restore that version from the section
-`App > Versions` in the app builder.
+It's important to note that these backups exclusively encompass the app's metadata; data itself is not retained in these backups. Furthermore, when changes are synchronized to the production environment, an automatic backup of that version is generated.
 
-Keep in mind that backups only contain metadata of the app. No data is saves in these backups.
-Another thing to take into account is that when changes are synced to prod, a backup of the 
-version is created automatically.
+Upon inspecting the **`App > Versions`** listing, the following information is presented:
 
-In the listing in `App > Versions` you will find the following information:
+- **`Number`**: A distinct numerical identifier for the version. This appears in blue if the version hasn't been synced to production, yellow if synced but not the current production version, and green if it is the current production version.
+- **`Author`**: The developer responsible for pushing or syncing changes.
+- **`Date`**: The timestamp of backup creation.
+- **`Sync date`**: The timestamp of changes synchronization.
+- **`Comments`**: Comments composed during the changes' push.
+- **`Prod version`**: Indicates whether this version is the current one in the production environment.
 
-- `Number`: a unique number that identifies the version. It will be blue if the version was never
-  synced to prod, yellow if it was synced to prod but it isn't the current version in prod, and green
-  if it is the current version in prod.
-- `Author`: the developer that pushed or synced changes.
-- `Date`: the timestamp when the backup was created.
-- `Sync date`: the timestamp when changes were synced.
-- `Comments`: these are the comments written when pushing changes.
-- `Prod version`: indicates if it is the current version in the production environment.
+Within the context of a specific version selection, the following operations can be performed:
 
-If you select one version you can do the following operations
-
-- `View changes`: shows the changes done from the previous version to the selected one. These is
-  the same summary you see when pushing changes.
-- `Restore version`: when you use this operation, all app metadata in the builder will be restored
-  to what was on that specific version. Remember that backups only contain metadata so this won't 
-  restore any of the data (however refactorings could be applied to data based on the differences
-  with the restored version).
-  In order to see the restored version in execution, you should push changes and later sync those
-  changes to see them in production.
+- **`View changes`**: Offers insight into alterations made from the previous version to the chosen one. This mirrors the summary observed during changes' push.
+- **`Restore version`**: Executing this action results in the app builder's metadata being reverted to the state of the selected version. It's important to recognize that backups encompass solely metadata; hence, data restoration doesn't occur. However, data refactorings could be applied based on disparities with the restored version.
+  To witness the restored version in execution, pushing changes and subsequently syncing those changes are necessary for presentation in the production environment.

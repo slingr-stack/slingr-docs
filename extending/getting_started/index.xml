@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Getting Started on </title>
+    <link>/extending/getting_started/</link>
+    <description>Recent content in Getting Started on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="/extending/getting_started/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Overview</title>
+      <link>/extending/getting_started/overview/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/extending/getting_started/overview/</guid>
+      <description>What are legacy services? # Endpoints are crucial components that extend the functionality of the Slingr platform.
+👉 An legacy service is essentially a piece of software that operates alongside your app, providing additional features and capabilities. For instance, you can implement an legacy service that offers cryptographic algorithms, enabling your app to utilize them securely.
+Seamless app integration # One of the primary use cases for legacy services is seamless integration with other applications, especially cloud-based services.</description>
+    </item>
+    
+  </channel>
+</rss>

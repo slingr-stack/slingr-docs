@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+    <url>
+      <loc>/dev-reference/flows/steps/categories/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/flows/steps/system-steps/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/flows/steps/control-steps/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/flows/steps/data-steps/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/flows/steps/ui-steps/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    
+    <url>
+      <loc>/dev-reference/flows/steps/library-steps/</loc>
+      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+    </urlset>

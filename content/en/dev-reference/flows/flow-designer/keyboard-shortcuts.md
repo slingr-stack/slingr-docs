@@ -13,17 +13,16 @@ toc: true
 
 Shortcuts available in the flow designer:
 
-- `ctrl`+`alt`+`f` : to toggle the fullscreen mode.
-- `shift`+ `click, hold & drag`: to draw a multi-selection area. 
-- `Escape`: to remove any active multi-selection. Also removes the selection of the selected step and collapses the properties panel.
+- **`Ctrl`+`Alt`+`F`**: Toggle fullscreen mode.
+- **`Shift`+ `Click, Hold & Drag`**: Draw a multi-selection area.
+- **`Escape`**: Remove any active multi-selection. Also, removes the selection of the selected step and collapses the properties panel.
 
+## **Steps multi-selection**
 
-### Steps multi-selection:
+It is possible to select several steps or an entire flow at once by using the above shortcut. This is useful for quickly relocating the flow or a portion of it, as demonstrated in the image below:
 
-It is possible to select several steps or a full flow at once by pressing the above shortcut. This is a useful to relocate fast the flow or a portion of it as you can see in the below image:
-
-![](/images/vendor/flows/multiselect.gif)
+![Multi-Selection](/images/vendor/flows/multiselect.gif)
 
 {{< notes type="tip">}}
-To exit multi-selection mode, press the **Escape** key.
+To exit multi-selection mode, press the **`Escape`** key.
 {{< /notes >}}

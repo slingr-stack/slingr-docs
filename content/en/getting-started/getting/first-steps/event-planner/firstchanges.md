@@ -1,6 +1,6 @@
 ---
-title: "First changes to our app"
-lead: "Creating a new field in the existing 'Events' entity"
+title: "First changes"
+lead: "Summary: Creating a new field in the existing 'Events' entity"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,58 +12,84 @@ weight: 20
 toc: true
 ---
 
+In this section, we are going to take our first steps with the builder. If you are in the developer portal, you should see an app card similar to the one shown in the image:
 
-![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_open_builder.png)
+### Open the builder
 
+👉 Click on the button on the right (the one with the wrench icon 🔧 ) to open the builder in a new tab. 
 
-![Alt Text](/images/vendor/1.gif)
+![Card](/images/vendor/event-planner/first-changes/ww_event_planner_open_builder.png)
 
+---
 
-![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes.png)
+In this section, we are going to add a new field to the events. This can be used to improve metrics related to the events, for example. Alright, let's get to work. 
 
+👉 If you are in the builder, you should be seeing something like this:
 
-![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes_arrow.png)
+![Builder](/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes.png)
 
+---
 
+### Go to "App navigation" tree
 
+On the left, you will see a tab called "App navigation" with a tree inside. Each item here is referred to as a "Node" (Marked in red in the image above). Clicking on these nodes will allow you to navigate through the different pages of the builder. Some nodes have extra functionalities accessible through the right-click option. You will be able to distinguish them because when you hover over them, an arrow will appear like this:
 
+![Nav-tree](/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes_arrow.png)
 
+---
 
-![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_status_form.png)
+### Create the field
 
+Great! Now that we know how to navigate through the builder, let's go ahead and add our new field to the events entity. To do so, follow these steps:
 
-![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_status_default_value.png)
+👉 Right-click on the node ``Model > Entities > Events > Fields``, and a dropdown menu will be shown.
 
+👉 Click on "New Field".
+
+👉 Fill in the form with the following details:
+
+    Label: Status
+    Name: status
+    Type: Choice
+    Values:
+          1. Active
+          2. Done
+          3. Cancel
+
+---
+
+![status-form](/images/vendor/event-planner/first-changes/ww_event_planner_status_form.png)
+
+---
+### Save and Edit the field.
+
+👉 Click on ``Create and Edit``.
+
+👉 Set the default value to ``Active``.
+
+👉 Click on ``Save``.
+
+![create-edit-save](/images/vendor/event-planner/first-changes/ww_event_planner_status_default_value.png)
+
+---
+### Push Changes
+
+**Awesome!** We've made a small improvement to our app. To see the changes reflected in the runtime, follow these steps:
+
+👉 On the header of the builder, click the button next to your name (The hamburger button).
+
+👉 A dropdown menu will be shown. Click on "Push Changes."
+
+👉 A popup will appear, displaying the changes you have made. Review them, and if everything looks good, click on "Push Changes."
 
 ![Alt Text](/images/vendor/event-planner/first-changes/ww_event_planner_push_changes.png)
 
+---
 
-In this section, we will learn how to add a new field to the Events entity in the Slingr Event Planner app. This will allow us to improve the metrics of the events in the app.
+🥳
 
-### Opening the Builder
+**Fantastic!** 
 
-To get started, open the Slingr Developer Portal and navigate to the Event Planner app. Click on the app card to open it, then click on the wrench icon to open the builder in a new tab.
+We have finished with the builder for now. In the next section, we will see our changes in action.
 
-### Adding a new field to the Events entity
-
-Once you have opened the builder, you should see a navigation panel on the left side of the screen. This panel contains a tree with different nodes, each representing a different aspect of the app. To add a new field to the Events entity, follow these steps:
-
-1. Right-click on the node `Model > Entities > Events > Fields`.
-2. Select `New Field` from the dropdown menu.
-3. Fill in the form with the following details:
-   - Label: `Status`
-   - Name: `status`
-   - Type: `Choice`
-   - Values: 
-     - `Active`
-     - `Done`
-     - `Cancelled`
-4. Click `Create and Edit`.
-5. Set the default value to `Active`.
-6. Click `Save`.
-
-### Pushing changes to the runtime
-
-Once you have added the new field, you need to push the changes to the runtime so that they can take effect. To do this, click on the hamburger icon in the builder header, then select `Push changes` from the dropdown menu. In the popup that appears, review the changes you have made and click `Push changes`.
-
-That's it! You have now successfully added a new field to the Events entity in the Slingr Event Planner app.
+Let's move on to the next section: **"First Look at Our New App."**

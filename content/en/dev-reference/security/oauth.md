@@ -11,165 +11,90 @@ menu:
 toc: true
 ---
 
+External applications can access the Slingr App API through OAuth requests. We refer to these applications as OAuth Apps.
 
-External applications can access to the Slingr App API via OAuth requests. Those applications we will call as OAuth Apps.
+Follow the steps below to acquire and refresh the Access Token.
 
-Follow the next steps to obtain and refresh the Access Token.
+## **In the Slingr app**
 
-### In the Slingr App
+#### 1) Enabling OAuth support in builder and creating scopes
 
-**1) Enable OAuth support in Builder and create scopes**
+Navigate to **`Security -> OAuth`** and enable OAuth support. This action will activate a form for OAuth Scopes.
+OAuth tokens security is now managed through OAuth scope groups, rather than user groups.
 
-Go to `Security -> OAuth` and enable OAuth support. After that, a form for OAuth Scopes is enabled.
-Instead of user groups, oauth tokens security is managed by oauth scope groups.
+Field | Description
+--- | ---
+Name | This is the name of the OAuth Scope, which must be unique.
+Description | Provide a human-readable description of the OAuth Scope. Ensure it is under 140 characters since OAuth app scopes are displayed on the authorization page.
+Groups | Here, you can define the groups associated with the OAuth App. Security for OAuth tokens is regulated by these groups, instead of user groups. Before deleting a scope, verify if it's being used in any OAuth App.
 
-<table class="table">
-    <thead>
-        <tr class="header">
-            <th align="left">Field</th>
-            <th align="left">Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td align="left">
-                <p markdown="1">Name</p>
-            </td>
-            <td align="left">
-                <p markdown="1">This is the name of the OAuth Scope. Must be unique.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Description</p>
-            </td>
-            <td align="left">
-                <p markdown="1">This a human readable description of the OAuth Scope, as long as the oauth app scopes are shown in the authorize page, it must be shorter than 140 characters.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Groups</p>
-            </td>
-            <td align="left">
-                <p markdown="1">Here you can set the groups of the OAuth App. Oauth tokens security is managed by these groups, instead of user's groups. Before deleting a scope, remember to check if it is being used in an OAuth App.</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+Remember to save your changes after making modifications.
 
-Don't forget to push changes.
+#### 2) Registering the OAuth app in the Slingr app
 
-**2) Registering the OAuth App in the Slingr App**
+Once OAuth is enabled, head to the Runtime section. In the secondary menu, locate **`OAuth Apps`**.
 
-Once OAuth is enabled, Go to Runtime and in the secondary menu, you will find the `OAuth Apps`.
+Proceed to create an OAuth App with the following fields:
 
-Create an OAuth App with the following fields.
+Field | Description
+--- | ---
+Label | This is a user-friendly name for the OAuth App, displayed to users on the Authorization page.
+Name | Enter the name of the OAuth App.
+Icon | Upload an icon that will be presented to users on the authorization page. It should have dimensions of 64x64 px. If not provided, a default icon will be displayed.
+Description | Include a description for the OAuth App.
+Authorization Callback URL | After the authorization step, an authorization code will be appended to this URL and triggered.
+Scopes | OAuth tokens security is regulated by groups defined in scopes.
+Client Id | A randomly generated key assigned to identify the OAuth App in requests.
 
-<table class="table">
-    <thead>
-        <tr class="header">
-            <th align="left">Field</th>
-            <th align="left">Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td align="left">
-                <p markdown="1">Label</p>
-            </td>
-            <td align="left">
-                <p markdown="1">This is a human readable name for the OAuth App and will be shown to the user in the Authorize page.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Name</p>
-            </td>
-            <td align="left">
-                <p markdown="1">This the name of the OAuth App.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Icon</p>
-            </td>
-            <td align="left">
-                <p markdown="1">This is the icon shown to the user in the authorization page. It must be 64x64 px. If not set, puts a default icon in the Authorize page.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Description</p>
-            </td>
-            <td align="left">
-                <p markdown="1">A description of the OAuth App.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Authorization Callback URL</p>
-            </td>
-            <td align="left">
-                <p markdown="1">After the authorize step an authorization code will be appended to this URL and be called.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Scopes</p>
-            </td>
-            <td align="left">
-                <p markdown="1">Oauth tokens security is managed by groups set in scopes.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Client Id</p>
-            </td>
-            <td align="left">
-                <p markdown="1">A random generated key used to identify the OAuth App in requests.</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+---
 
-### In the OAuth App
+## **In the OAuth app**
 
-**1) Prompt the user to log in and authorize the OAuth App.**
+#### 1) Prompt the user to log in and authorize the OAuth App.
 
-Open the Authorize URL (with `response_type` and `client_id` parameters) in a new window and expect the user to log in and authorize the OAuth App. 
- 
+Prompt the user to log in and authorize the OAuth App by opening the Authorize URL in a new window. The URL should include the **`response_type`** and **`client_id`** parameters.
 
 ```
 https://<appName>.slingrs.io/<env>/runtime/authorize?response_type=code&client_id=<client_id>
 ```
+<br>
 
-where `appName` is the name of the app, `env` is the name of the environment, like `dev` and `prod` and `client_id` is the client id set in the OAuth App.
+In this URL:
+- **`appName`** refers to the app's name.
+- **`env`** is the environment name (e.g., **`dev`** or **`prod`**).
+- **`client_id`** should be the client id specified in the OAuth App.
 
-A form prompting the user to authorize the OAuth App will be shown if there exist an OAuth Authorization for the user and the OAuth App. 
-OAuth authorizations can be revoked from the Slingr App, in that case the authorization form will be appear again.
+If an OAuth Authorization exists for the user and the OAuth App, a form requesting the user's authorization for the OAuth App will be displayed. If the OAuth authorization is revoked from the Slingr App, the authorization form will reappear.
 
-After that, a callback URL with the `authorization_code` will be called from the Authorize page.
+After the user's authorization, a callback URL containing the **`authorization_code`** will be invoked from the Authorize page.
 
 ```
 https://<oAuthAppAuthorizationCallbackUrl>?code=<authorization_code>
 ```
+<br>
 
-where `oAuthAppAuthorizationCallbackUrl` is the callback URL set in the OAuth App and `authorization_code` is the authorization code you will need to request the access token.
+In this URL:
+- **`oAuthAppAuthorizationCallbackUrl`** stands for the callback URL set in the OAuth App.
+- **`authorization_code`** corresponds to the authorization code required for requesting the access token.
 
-It is expected that the endpoint executed by the callback URL, store the authorization code giving by the `code` parameter and close the authorization window.
+It's expected that the endpoint executed by the callback URL will store the authorization code provided by the **`code`** parameter and subsequently close the authorization window.
 
-**2) With the authorization code, ask an access token.**
+#### 2) Acquiring an Access Token with the Authorization Code
 
-Make a POST to the slingr app OAuth token endpoint.
+To obtain an access token, initiate a POST request to the slingr app's OAuth token endpoint.
 
 ```
 POST https://<appName>.slingrs.io/<env>/runtime/api/oauth/token?grant_type=authorization_code&client_id=<client_id>&code=<authorization_code>
 ```
+<br>
 
-where `appName` is the name of the app, `env` is the name of the environment, like `dev` and `prod`, `client_id` is the client id set in the OAuth App and `authorization_code` is the code given in step 1.
+In this URL:
+- **`appName`** is the app's name.
+- **`env`** refers to the environment name (e.g., **`dev`** or **`prod`**).
+- **`client_id`** corresponds to the client id established in the OAuth App.
+- **`authorization_code`** should be replaced with the code obtained in step 1.
 
-The authorization code is now expired. You receive the following information.
+If you encounter an expired authorization code while attempting to retrieve an access token, you will receive the following information:
 
 ```js
 {
@@ -180,78 +105,50 @@ The authorization code is now expired. You receive the following information.
     "scope": "scope1 scope2 scope3"
 }
 ```
-<table class="table">
-    <thead>
-        <tr class="header">
-            <th align="left">Field</th>
-            <th align="left">Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td align="left">
-                <p markdown="1">Access Token</p>
-            </td>
-            <td align="left">
-                <p markdown="1">The access token that will be used in an Authorization header in your requests to the REST API.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Refresh Token</p>
-            </td>
-            <td align="left">
-                <p markdown="1">You can use it to renew the Access Token when a request to the REST API throws 401 error.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Token type</p>
-            </td>
-            <td align="left">
-                <p markdown="1">Means that the token type is bearer.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Expires in</p>
-            </td>
-            <td align="left">
-                <p markdown="1">In seconds the time that the access token will be expired. Once expired, you can request a new token with the refresh token.</p>
-            </td>
-        </tr>
-        <tr>
-            <td align="left">
-                <p markdown="1">Scope</p>
-            </td>
-            <td align="left">
-                <p markdown="1">This show information about the scopes set for the OAuth App.</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<br>
 
-**3) Put the access token in an authorization header in your requests**
+Field | Description
+--- | ---
+Access Token | The access token to be included in the Authorization header of your REST API requests.
+Refresh Token | Use this token to refresh the Access Token in case a request to the REST API results in a 401 error.
+Token Type | Indicates that the token type is bearer.
+Expires in | Specifies the token's expiration time in seconds. Once expired, you can obtain a new token using the refresh token.
+Scope | Provides information about the scopes defined for the OAuth App.
 
-Example, to request a list of companies execute a get including the header Authorization with Bearer and the access token:
+#### 3) Put the access token in an authorization header in your requests
+
+Example: To retrieve a list of companies, execute a **`GET`** request while including the **`Authorization`** header with the **`Bearer`** token, which is the access token you obtained. Below is a sample request:
 
 ```
 GET https://<appName>.slingrs.io/<env>/runtime/api/data/companies
 > Authorization: Bearer <access_token>
 ```
-where `appName` is the name of the app, `env` is the name of the environment, like `dev` and `prod` and `access_token` is the code given in step 2.
+<br>
 
-More info about using the [REST API]({{site.baseurl}}/app-development-apps-rest-api.html)
+In this request:
 
-**4) Refresh the token**
+- **`appName`** stands for the app's name.
+- **`env`** represents the environment name, such as dev or prod.
+- **`access_token`** should be replaced with the actual access token obtained in step 2. Upon successful authentication, this request will retrieve the desired list of companies from the API.
 
-Use the refresh token code obtained in step 2, to request a new access token. This ables you to request a new access token without prompting the user (step 1).
+More info about using the [REST API]({{<ref "/dev-reference/rest-apis/apps-api.md">}})
+
+#### 4) Refresh the token
+
+Utilize the refresh token acquired in step 2 to initiate a request for a new access token. This enables you to obtain a new access token without requiring user involvement (as in step 1).
 
 ```
 POST https://<appName>.slingrs.io/<env>/runtime/api/oauth/token?grant_type=refresh_token&client_id=<client_id>&code=<refresh_token>
 ```
+<br>
 
-where `appName` is the name of the app, `env` is the name of the environment, like `dev` and `prod`, `client_id` is the client id set in the OAuth App and `refresh_token` is the refresh token obtain in step 2.
+In this URL:
+- **`appName`** is the name of the app.
+- **`env`** is the environment name (e.g., **`dev`** or **`prod`**).
+- **`client_id`** corresponds to the client id established in the OAuth App.
+- **`refresh_token`** is the refresh token obtained in step 2.
+
+This process will yield a new access token, allowing you to seamlessly continue API interactions.
 
 ```js
 {
@@ -259,119 +156,26 @@ where `appName` is the name of the app, `env` is the name of the environment, li
     "refresh_token": "gJYDedgagcZalmptnhBg",
     "token_type": "bearer",
     "expires_in": 28800,
-    "scope": "scope1 scope2 scope3
+    "scope": "scope1 scope2 scope3"
 }
 ```
+<br>
 
-### General error codes
+## **General Error Codes**
 
-Here are some general error descriptions. Then on each method you will see a better description to some
-of the errors that can show up.
+Below are descriptions for various general errors. More specific error descriptions for each method can be found in their respective sections.
 
-<table class="table">
-    <thead>
-    <tr class="header">
-        <th align="left">HTTP Status Code</th>
-        <th align="left">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td align="left">
-            <p markdown="1">200</p>
-        </td>
-        <td align="left">
-            <p markdown="1">Everything went fine. No errors.</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">400</p>
-        </td>
-        <td align="left">
-            <p markdown="1">Invalid client id. Check that the client id is correct</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">400</p>
-        </td>
-        <td align="left">
-            <p markdown="1">OAuth is not enabled. Make sure that the slingr app has OAuth support enabled</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">400</p>
-        </td>
-        <td align="left">
-            <p markdown="1">Invalid authorization code. The authorization code is invalid, request another one with authorize URL</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">400</p>
-        </td>
-        <td align="left">
-            <p markdown="1">Authorization code is expired.</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">400</p>
-        </td>
-        <td align="left">
-            <p markdown="1">App is not authorized by the user.</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">400</p>
-        </td>
-        <td align="left">
-            <p markdown="1">Invalid grant type.  Only `authorization_code` and `refresh_token` are allowed values</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">400</p>
-        </td>
-        <td align="left">
-            <p markdown="1">Refresh token has expired.</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">400</p>
-        </td>
-        <td align="left">
-            <p markdown="1">Token is not expired yet. When refreshing the token, check if Access Token is not expired yet</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">401</p>
-        </td>
-        <td align="left">
-            <p markdown="1">Unauthorized. You need to log in.</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">500</p>
-        </td>
-        <td align="left">
-            <p markdown="1">OAuth unknown error, please contact us. This happens when something went wrong and was not expected. If you get this type of errors please contact support.</p>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <p markdown="1">502</p>
-        </td>
-        <td align="left">
-            <p markdown="1">Token is not provided. Probably you are trying to authorize the OAuth App without a logged in user</p>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
+HTTP Status Code | Description
+--- | ---
+200 | Request successfully processed; no errors occurred.
+400 | Invalid client ID. Double-check the accuracy of the client ID.
+400 | OAuth is not enabled. Ensure that OAuth support is enabled for the Slingr app.
+400 | Invalid authorization code. The provided authorization code is invalid. Obtain a new one using the authorize URL.
+400 | Authorization code has expired.
+400 | App is not authorized by the user.
+400 | Invalid grant type. Only **`authorization_code`** and **`refresh_token`** are accepted values.
+400 | Refresh token has expired.
+400 | Token is not yet expired. While refreshing the token, verify if the Access Token is still valid.
+401 | Unauthorized. User login is required.
+500 | Unknown OAuth error. If you encounter this error unexpectedly, please contact support.
+502 | Token is missing. This error could occur when attempting to authorize the OAuth App without a logged-in user.

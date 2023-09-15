@@ -1,5 +1,5 @@
 ---
-title: "First steps with the builder"
+title: "First steps - Builder"
 lead: "First steps building our app."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -12,34 +12,44 @@ weight: 80
 toc: true
 ---
 
-Hello, welcome to the builder! Here, we will be creating an app. On the left-hand side, you can see a tree with several nodes. Let's begin building something amazing!
+Hi, welcome to the builder! Here, we are going to build the app. As you can see on the left, there is a tree with multiple items, we will call them: nodes. Let’s start building something great.
 
-![Alt Text](/images/vendor/task-mananger/first-steps/task_manager_builder_node.png)
+![builder-tree](/images/vendor/task-mananger/first-steps/task_manager_builder_node.png)
 
+### Creating the "Tasks" Entity
 
-To create a new entity, follow these steps:
+The **`tasks`** entity serves as the central component in the task manager application. It allows users to create, store, and manage task records efficiently. Through this entity, users can access various views of their tasks, granting them the flexibility to organize and handle records according to their preferences and needs.
 
-1. Right-click on the "Model" node and select "Entities" from the dropdown menu. Then, click on "New Entity".
-2. Fill out the form with the following details:
-   - Label: Tasks
-   - Name: tasks
-   - Type: Data
-3. Add a new field by filling out the following details:
-   - Label: Title
-   - Name: title
-   - Type: Text
-   - Multiplicity: One
-   - Click on "Add".
-4. Finally, set the record label. This label will be used to identify each record, so make sure it is easy to understand. Leave the option as "Field" and select "Title" from the dropdown menu.
+Now we will create the **`tasks`** entity and then some actions and views to display the records.
 
-If everything is correct, the form should look similar to the image provided. Click on "Create" to finish the process.
+**Let's go!**
 
-![Alt Text](/images/vendor/task-mananger/first-steps/task_manager_creating_entity.png)
+👉 Right-click on the node **`Model > Entities`**, and a dropdown menu will be shown.
 
+👉 Click on **`New Entity`**.
 
-Great! Now, let's create some additional fields for the entity. To do this, please right-click on the node Model > Entities > Tasks > Fields, and select New Field.
+👉 Fill in the form with the following details:
+   - ``Label``: Tasks
+   - ``Name``: tasks
+   - ``Type``: Data
 
-For each field, you will need to fill out the form with some basic information, including a label, name, type, and multiplicity.
+👉 Let’s add a simple field. Fill the label with **`Title`**, the name with **`title`**, the type should be **`text`**, and the multiplicity should be **`one`**. Click on **`Add`**.
+
+👉 Finally, let’s set the record label. The record label is calculated for every record, and it is something that will identify your record. It doesn’t need to be unique but should be human-friendly. Leave the option as **`Field`**, and in the dropdown, select **`Title`**.
+
+👉 The form should look something like this. If so, click on **`Create`**.
+
+![create-the-entity](/images/vendor/task-mananger/first-steps/task_manager_creating_entity.png)
+
+---
+
+### Create some adittional fields
+
+Great! Now that we have finished creating the entity, let’s add some more fields: 
+
+👉 Right-click on the node **`Model > Entities > Tasks > Fields`**, and click **`New Field`**. 
+
+For every field, you will need to complete the form with some basic information: label, name, type, and multiplicity. Create the following fields with these settings:
 
 <table class="table">
     <thead>
@@ -90,46 +100,69 @@ This is the status of the task. Possible values will be <code >To do</code>, <co
     </tbody>
 </table>
 
-Depending on the type of field, you may see additional options during creation. For example, when creating the Status field, you will need to add the four possible statuses: To do, In progress, Done, and Archived. The field creation should look similar to this:
+Depending on the type, you might see some additional options at creation time, which is the case for the **`Status`** field where you will need to add the four possible statuses: **`To do`, `In progress`, `Done`, and `Archived`**. It should look something like this:
 
-![Alt Text](/images/vendor/task-mananger/first-steps/2.png)
+![status-field](/images/vendor/task-mananger/first-steps/2.png)
 
-Clicking on `Save and edit` will create the field and will open the details view for that field, where you will be able to change other settings, like the default value and required flag. You can also open it by clicking the field node in the tree. In our sample app we need to take care of the following things for these fields:
-- `Title`: the setting `Required` should be `Always`.
-- `Status`: the setting `Required` should be `Always`. Also, in the `Default value`, you should choose `Value` and then select the value `To Do` from the dropdown.
+Clicking on **`Save and edit`** will create the field and will open the details view for that field, where you will be able to change other settings, like the default value and required flag. You can also open it by clicking the field node in the tree. In our sample app, we need to take care of the following things for these fields:
 
-Make sure to save all changes. Your final structure should look similar to this:
+👉 **`Title`**: the setting **`Required`** should be set to **`Always`**.
 
-![Alt Text](/images/vendor/task-mananger/first-steps/3.png)
+👉 **`Status`**: the setting **`Required`** should be set to **`Always`**. Also, in the **`Default value`**, you should choose **`Value`** and then select the value **`To Do`** from the dropdown.
 
+Remember to save all the changes. In the end, your structure should look similar to this one:
 
+![fields-structure](/images/vendor/task-mananger/first-steps/3.png)
 
-Now that we have created the fields for the entity, the next step is to create a view so that we can see something in our app. Let's create a simple grid view that will allow you to list, create, edit, and delete tasks. Follow these steps:
+---
 
+### Create a simple grid view
 
-1. Right-click on the node `Model > Entities > Tasks > Views`, a dropdown menu will be shown, click `New View > Grid View`.
-2. Fill in the form with:
-  - `Label`: All tasks
-  - `Name`: tallTasks
-  - `Columns`: Number, Title, Status.
-3. Click on `Create`.
+Now that we have created the fields for the entity, the next step is to create a view so we can see something in our app. For that, we will create a simple grid view that will allow you to list, create, edit, and delete tasks. To create the grid view, follow these steps:
 
- 
-![Alt Text](/images/vendor/task-mananger/first-steps/4.png)
+👉 Right-click on the node **`Model > Entities > Tasks > Views`**, and a dropdown menu will be shown.
 
-Once we have the view, we need to add it to the sidebar of our app so that users can navigate to it easily.
- Click the node `User interface > Navigation > Main menu` and follow these steps:
-1. Click on Add new menu entry on the top-right of the page, and select  `Add view entry`.
-2. Select the view All Tasks and enter the label All Tasks. You can also add an icon if you want.
-3. Click on `Create`.
- 
-![Alt Text](/images/vendor/task-mananger/first-steps/5.png)
+👉 Click on **`New View > Grid View`**.
 
+👉 Fill in the form with the following details:
+   - `Label`: All tasks
+   - `Name`: allTasks
+   - `Columns`: Number, Title, Status.
 
-Great! We now have a basic app configured. Let's see how it looks in the runtime. But first, we need to push the changes so that the runtime has the latest version of our app.
+👉 Click on **`Create`**.
 
-In the header, click on the icon next to your username (the hamburger icon), and select Push changes from the dropdown menu. You will see a modal displaying the changes that will be pushed to the runtime. You can add a description of the changes if you want. Click on Push changes. Once the process is done, the changes will be reflected in the runtime. To open the runtime, go back to the developer portal, navigate to the Apps page, and click on the runtime button (the first one). This will automatically open the runtime in a new tab.
+![grid-view](/images/vendor/task-mananger/first-steps/4.png)
 
-That's it for this section. We've made great progress! If you want to learn more, let's move on to the next section.
+Once we have the view, we need to indicate how to navigate to it. Let’s add it to what’s going to be the sidebar of our app. Click the node **`User interface > Navigation > Main menu`**, and follow these steps:
 
+👉 Click on **`Add new menu entry`** on the top-right of the page, and then click on the option **`Add view entry`**.
 
+👉 In the view, select the view **`All Tasks`**, and complete the label with **`All Tasks`**. You can add an icon if you want.
+
+👉 Click on **`Create`**.
+
+![navidation-tree](/images/vendor/task-mananger/first-steps/5.png)
+
+---
+
+### Push your changes
+
+**Great! We have a basic app already configured.**
+
+Let’s see how it looks at runtime, but first, we need to push the changes so the runtime has the latest version of our app. 
+
+👉 On the header of the builder, click the button next to your name (The hamburger button).
+
+👉 A dropdown menu will be shown. Click on **``"Push Changes."``**
+
+👉 A popup will appear, displaying the changes you have made. Review them, and if everything looks good, click on **`"Push Changes."`**
+
+Once the process is done, the changes will be reflected in the runtime. To open the runtime, go back to the developer portal, in the Apps page, click the runtime button (The first one). That will automatically open the runtime in a new tab.
+
+---
+
+🎉
+
+**Fantastic!** 
+
+Let’s wrap this section here; we have made great progress. If you want to learn more, let’s go to the next section: "First Look at Our App."

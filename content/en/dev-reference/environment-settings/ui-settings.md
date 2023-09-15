@@ -1,6 +1,6 @@
 ---
 title: "UI settings"
-lead: "Detailed explanation of global settings of the UI."
+lead: "UI Settings and Their Impact"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -11,55 +11,47 @@ menu:
 toc: true
 weight: 18
 ---
-These settings have a global impact in the UI of the app.
 
-## Theme
+These settings hold a global influence on the app's user interface (UI), impacting its appearance and behavior.
 
-It is possible to select between different themes that will change the styling of the app,
-especially colors. By changing the theme all parts in the app will be updated to use it.
+## **Theme**
+
+You can select from a range of themes that will alter the styling of the app, including color schemes. Enabling a different theme results in a comprehensive visual update across all app components.
 
 ### Show icons
 
-If it is disabled buttons and menu options does not show icons. This option is enabled by default.
+By disabling this option, buttons and menu choices within the app will not display icons. This option is enabled by default.
 
-## Header
+## **Header**
 
 ### Show app logo
 
-If set the logo of the app will be displayed on the header.
+When enabled, the app's logo will be presented within the header.
 
 ### Show app label
 
-If set the label of the app will be displayed on the header and there will a new
-setting called `Show app label in uppercase` that will let you decide if the name
-should be converted to uppercase or just leave it as it is.
+Upon activation, the app's label will be showcased within the header. An additional setting named **`Show App Label in Uppercase`**  becomes accessible, allowing you to determine whether the label should be presented in uppercase or its original format.
 
-## Login
+## **Login**
 
 ### Show default identity provider
 
-If there are additional identity providers configured and you don't want the default one to
-show up, you can unset this flag.
+If you have multiple identity providers configured and wish to exclude the default provider from view, you can deactivate this flag. This is particularly useful when, for instance, you've established an identity provider for Slack and want to prevent users from encountering the **`Login with <App Label>`** button.
 
-For example if you configure the identity provider for Slack and you don't want users to
-see the button `Login with <app label>` button you should unset this flag.
-
-If there aren't additional identity providers configured this flag doesn't have any effect.
+However, if no additional identity providers are configured, this flag has no effect.
 
 ### Show app logo
 
-If set the logo should be displayed in login page.
+Upon activation, the app's logo will be displayed on the login page.
 
 ### Show background image
 
-If set the background image that was previously set in the developer portal should be displayed in the login page.
-
-
+Enabling this option will exhibit the background image that was previously set within the developer portal on the login page.
 
 ### Change login panel color
 
-If set you can define the background color for the login page.
+When this option is enabled, you have the liberty to define the background color for the login page.
 
 ### Login panel opacity
 
-Here you can set the opacity that the login panel is going to have. You can set a value between zero and one hundred.
+This setting allows you to adjust the opacity of the login panel, with values ranging from zero to one hundred.

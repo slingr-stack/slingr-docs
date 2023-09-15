@@ -11,18 +11,21 @@ menu:
 toc: true
 weight: 4
 ---
-## General description
-After clicking on a single node of the [navigation tree]({{<ref "/dev-reference/metadata-management/metadata-editor/app-resources.md">}}), a view will be rendered in the **central panel** of the app builder. This view, depending on what resources correspond to, can be either a **table** showing information about some sub items, or an editable **form** with several labels and values showing all the different settings linked to that particular resource.
 
-## Central panel view
-The first thing you will notice in all of these views is that they all have a **top header** with certain elements. On the left side of this header you will find the **breadcrumb navigation** that will provide you the current context path in the metadata tree, and links to the view of each of the parent nodes. On the right side, you will find a group of buttons for performing several operations related to that particular resource. The most common operations you can find are: `cancel`, `reset`, `delete`, `apply`, `save`, `show history` and `find usages`.
+## **General description**
+
+Upon clicking on a node within the [navigation tree]({{<ref "/dev-reference/metadata-management/metadata-editor/app-resources.md">}}), a corresponding view will appear in the **`central panel`** of the app builder. Depending on the resources associated, this view may either present a **`table`** showcasing details about sub-items or an editable **`form`** featuring labels and values that reflect the various settings tied to the selected resource.
+
+## **Central panel view**
+
+In each of these views, you'll immediately notice a **top header** containing specific elements. On the left side of this header, the **breadcrumb navigation** displays the current context path within the metadata tree, along with links to each parent node's view. On the right side, a set of buttons enables various operations related to the particular resource. Common operations include: **`cancel`**, **`reset`**, **`delete`**, **`apply`**, **`save`**, **`show history`**, and **`find usages`**.
 
 ### Action buttons
 
-- **Cancel**: exits the current form and redirect to the parent metadata node.
-- **Reset**: reset the form and all its setting's values to the previously saved state.
-- **Delete**: deletes the current resource and redirects you to the parent metadata node.
-- **Apply**: attempts to save the form and all the current settings of a particular resource. It will not redirect you to any other url afterwards.
-- **Save**: attempts to save the form and all the current settings on a particular resource. After saving changes, it will redirect you to the parent's node of that resource.
-- **Show History**: this action is located inside the `tools` button. When clicking on this action, a view will be rendered in the central panel with a table showing the history of changes related to the current resource. [You can find more information about this view here]({{<ref "/dev-reference/app/settings.md">}}).
-- **Find Usages**: this action is located inside the `tools` button. When clicking on this action, the right panel will show up in the **usages** tab, and it will display a list of all the different places where the current resource has been used. 
+- **`Cancel`**: Closes the current form and redirects to the parent metadata node.
+- **`Reset`**: Restores the form and all associated setting values to the previously saved state.
+- **`Delete`**: Removes the current resource and redirects to the parent metadata node.
+- **`Apply`**: Attempts to save the form and all current settings of the specific resource. It won't redirect to another URL afterward.
+- **`Save`**: Tries to save the form and all current settings of a resource. After saving changes, it will redirect you to the parent node of that resource.
+- **`Show History`**: Located within the **`tools`** button. Clicking this action displays a view in the central panel featuring a table that outlines the history of changes connected to the present resource. [Find more information about this view here]({{<ref "/dev-reference/app/settings.md">}}).
+- **`Find Usages`**: Within the **`tools`** button, clicking this action reveals the right panel in the **`usages`** tab. It presents a list of all locations where the current resource has been utilized.

@@ -12,250 +12,239 @@ toc: true
 weight: 46
 ---
 
+Grid views facilitate the display of records from an entity in a list format. This list offers capabilities such as sorting, pagination, filtering, and more.
 
-Grid views allow to show records of an entity in a list. This list allows sorting, pagination,
-filtering and other features.
+Within the list, users can open, edit, and delete listed records. Additionally, new records can be created directly from this view.
 
-Records listed can be opened, edited and deleted. It is possible to create new records from
-there as well.
+Furthermore, grid views can incorporate subgrids for parent-child relationships.
 
-Finally grid views can also have subgrid for parent-children relationships.
+## **Entity**
 
-## Entity
+This specifies the entity to which the view is linked. Only records belonging to this entity will be listed within the grid view.
 
-This is the entity the view will point to. Only records of this entity will be listed
-in the grid view.
+## **Label**
 
-## Label
+This represents the human-readable name of the view. You can use spaces, special characters, and a mixture of uppercase and lowercase letters.
 
-This is a human-readable name of the view. You can use spaces, special characters and
-mix upper case and lower case letters.
+The label will be displayed at the top of the grid view, so choose something comprehensible to users.
 
-This label will be displayed at the top of the grid view, so make sure you use something
-users will understand.
+## **Name**
 
-## Name
+The internal name of the view. This name must exclude special characters and spaces.
 
-This is the internal name of the view. It cannot hold special characters or spaces.
+Commonly, this view name is utilized in scripts and the REST API. Altering it may impact your application and necessitate manual adjustments.
 
-Usually you will use the name of the view in scripts and the REST API, so changing it
-might affect your app and you will need to make some manual adjustments.
-
-## List settings
+## **List settings**
 
 ### Behavior
 
-These settings indicate how the listing should behave.
+These settings determine the behavior of the listing.
 
-#### Sort field
+### Sort field
 
-This is the default sorting field for the listing.
+This defines the default sorting field for the listing.
 
-Users might be able to change the default sorting if that's enabled in any of the columns.
+Users may be able to modify the default sorting if enabled in any of the columns.
 
-#### Sort type
+### Sort type
 
-Indicates the direction of the sorting. 
+Specifies the sorting direction.
 
-Users might be able to change the default sorting if that's enabled in any of the columns.
+Users may be able to change the default sorting if enabled in any of the columns.
 
-#### Page size
+### Page size
 
-The maximum number of records to fetch when the view is loaded and when clicking in `More` to fetch
-more records.
+This signifies the maximum number of records fetched when the view is loaded or when users click on **`More`** to fetch additional records.
 
-#### Infinite scroll
+### Infinite scroll
 
-Get more records automatically when user scroll down. 
+Enables automatic retrieval of more records as users scroll down.
 
+When this option is activated, the page size is fixed at 100 records, and the **`More`** button is concealed.
 
-When enable this option the page size is fixed in 100 records and the `More` button is not visible.
+### Show filters
 
-#### Show filters
+When enabled, filter controls are displayed beneath the header of each column, enabling users to filter records in the listing.
 
-When this flag is set, filter controls are shown below the header of each column so users can
-filter records in the listing.
+### Fixed header
 
-#### Fixed header
+Activating this option locks the grid header, allowing users to retain visibility while scrolling downward.
 
-When this flag is set, grid header will be fixed and users will be able to see it when scrolling down.
+### Main menu
 
-#### Main menu
+This setting governs the actions executable from the view header.
 
-This option controls the actions that can be executed from the view header.
+Available options include:
 
-The available options are:
+- **`All`**: All view-related actions in the entity will appear in the context menu.
+- **`Some`**: A custom selection of actions is presented. A new selector, **`Available actions`**, emerges, allowing you to pick which actions will be listed (you can select the actions' views here).
+- **`Custom Menu`**: Developers can customize action rendering. Actions can be grouped. Top-level groups will be rendered as dropdown buttons, while nested groups will be nested dropdowns. Various configuration options for button behavior during runtime are available, such as **`Label`**, **`Default options`** (which allows overriding of predefined configuration), **`Only icon`**, **`Icon`**, **`Style`**, and **`Label of action`**.
+- **`System Actions Only`**: Only system actions like **`CRUD`**, **`Import`**, and **`Refresh`** will be displayed.
+- **`None`**: No actions will be available.
 
-- `All`: Every action view available in the entity will be shown in the event context menu.
-- `Some`: A custom selection of actions will be available. A new selector will appear called `Available actions`,
-  which can be used to select which actions will be listed (you select the views of the actions here).
-- `Custom menu`: This option allows the developer to customize how actions are rendered. Actions can be grouped in groups. At root level groups will be rendered as dropdown buttons while nested groups will be nested dropdowns.
-  There are some options available to configure the behaviour of buttons in the runtime:
-  - `Label`: Only for `Groups`. Groups can have a label.
-  - `Default options`: If this flag is false it will allow to override some configuration of the actions views.
-    - `Only icon`: Only for elements at root level. Buttons can be rendered only with the icon.
-    - `Icon`: This overrides the predefined icon of the action. If empty, it won't override the icon
-    - `Style`: This overrides the predefined style of the action. If empty, it won't override the style.
-    - `Label of action`: This overrides the label of the action. If empty, it won't override the label.
-- `System Actions Only`: Only system actions like `CRUD`, `Import`, `Refresh`, etc. will be displayed.
-- `None`: No actions will be available.
+In all scenarios, action permissions and preconditions will be verified. Some actions may remain hidden if the user lacks the requisite permissions or preconditions are unmet.
 
-In all cases permissions and preconditions of actions will be verified, so some actions might be hidden if the
-user doesn't have permissions or preconditions aren't met.
+### Record menu
 
-#### Record menu
+This option regulates the actions executable from the listing itself. They appear when users click the **`Actions`** button on the secondary menu of the listing or in the actions column when [Display Record Menu Column](#show-actions-column) is enabled.
 
-This option controls the actions that can be executed from the listing itself. They will be displayed when 
-clicking on the `Actions` button on the secondary of the listing, or in the actions column when
-[Display record menu column](#show-actions-column) is enabled.
+Available options include:
 
-The available options are:
+- **`All`**: Every action in the entity is displayed under the **`Actions`** button on the secondary menu or in the actions column. Note that the default view of each action is used in this scenario.
+- **`Some`**: A custom selection of actions is available. A new selector, **`Available actions`**, allows you to pick which actions will be listed (you can select the actions' views here).
+- **`System Actions Only`**: Only system actions like **`CRUD`**, **`Import`**, and **`Refresh`** will be displayed.
+- **`None`**: No actions will be available.
 
-- `All`: Every action available in the entity will be shown in under the `Actions` button on the secondary 
-  of the listing, or in the actions column. Keep in mind that the default view of each action will be used
-  in this case.
-- `Some`: A custom selection of actions will be available. A new selector will appear called `Available actions`,
-  which can be used to select which actions will be listed (you select the views of the actions here).
-- `System Actions Only`: Only system actions like `CRUD`, `Import`, `Refresh`, etc. will be displayed.
-- `None`: No actions will be available.
+In all cases, action permissions and preconditions will be verified. Some actions may remain hidden if the user lacks the requisite permissions or preconditions are unmet.
 
-In all cases permissions and preconditions of actions will be verified, so some actions might be hidden if 
-user doesn't have permissions or preconditions aren't met.
+### Display record menu column
 
-#### Display record menu column
+When enabled, the last column of the listing serves as an actions column. It features a dropdown button that includes CRUD actions (edit, view, and delete), along with actions configured in the grid view. This permits quick execution of an action for a specific record without the need for prior selection.
 
-If enabled, the last column of the listing will be for actions, where a dropdown button will be rendered
-with the CRUD actions (edit, view and delete) as well as actions configured in the grid view (see 
-[Record menu](#show-actions)). This way it is possible to quickly execute an action for one 
-record without having to select it first.
+### Allow to rank records
 
-#### Allow to rank records
+Enabling this option enables sorting of records through drag-and-drop within the listing (utilizing arrows on the left of each row). To use this feature, the entity must possess a field of type [Rank]({{<ref "/dev-reference/field-types/miscellaneous_types/rank.md">}}).
 
-When this option is enabled, it is possible to sort records by drag and drop in the listing (using the
-arrows on the left of each row). In order to use this feature the entity must have a field of type 
-[Rank]({{site.baseurl}}/app-development-type-rank.html).
+The following settings must be configured when this option is enabled:
 
-These settings must be configured when this option is enabled:
+- **`Rank Field`**: The rank field utilized for sorting records in the list.
+- **`Rank Type`**: Specifies how ranking will be performed. **`Auto`** defers the decision to the platform, permitting records to be moved to any position. Select **`Manual`** to have more control and use a script to define ranking rules. This is beneficial for imposing restrictions or special rules. For example, if issues have dependencies, tasks with dependencies on other tasks cannot be above those dependent tasks. If **`Manual`** is selected, a script must be provided for context:
+  
+  ##### Parameters
 
-- `Rank field`: this is the rank field used to sort records in the list.
-- `Rank type`: indicates how the rank will be done. `Auto` leaves this to the platform,
-  which basically allows to move records to any position. If you need more control you
-  could set the `Manual` option and use a script to define how rank should happen, which
-  could be useful if you need to define restrictions or special rules. For example, if
-  issues have some dependencies defined, you might check that tasks with dependencies on
-  other tasks cannot be above those other tasks.
-  When you select `Manual` you will need to provide a script. This is the context of the
-  script:
-  {{< js_script_context context="rankManualScript">}}
+  | Name   | Type                | Description |
+  |--------|---------------------|-------------|
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) |This pertains to the record that is undergoing movement. Typically, you will update the rank field within this record using the methods available in the wrapper methods. <br> It's important to remember that after updating the rank field, you must save the record. Failing to save the record will result in the rank not being updated, and the record will not be repositioned.|
+  | recordBefore | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) | This refers to the record that precedes the intended position for the record being moved. It might be **`null`** in instances where the record is being moved to the first position, as there would be no preceding record.|
+  | recordAfter | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) | This denotes the record following the intended position for the record being moved. It could be **`null`** when moving the record to the last position, as there would be no succeeding record.|
 
-#### Record highlight
+  ##### Samples
 
-With this option you can define which records should be highlighted with colors. This is useful when
-you want users to quickly see something. For example if there is a listing of tasks and you want users to
-quickly see urgent ones, you can define a highlight expression for those fields so they have a red
-color.
+  ``` javascript
+  // rank records in a way that urgent ones are always at the top
+  var fieldName = 'rank';
+  var moved = false;
+  if (!recordBefore && recordAfter) { // the record is moved to the top
+    if (!recordAfter.field('urgent').val() || record.field('urgent').val()) {
+      record.field(fieldName).rankBefore(recordAfter.field(fieldName));
+      moved = true;
+    }
+  } else if (recordBefore && !recordAfter) { // the record is moved to the bottom
+    if (recordBefore.field('urgent').val() || !record.field('urgent').val()) {
+      record.field(fieldName).rankAfter(recordBefore.field(fieldName));
+      moved = true;
+    }
+  } else if (recordBefore && recordAfter) { // the record is placed between two other records
+    if ((!recordAfter.field('urgent').val() || record.field('urgent').val()) &&
+        (recordBefore.field('urgent').val() || !record.field('urgent').val())) {
+      record.field(fieldName).rankBetween(recordBefore.field(fieldName), recordAfter.field(fieldName));
+      moved = true;
+    }
+  }
+  // IMPORTANT!!! You need to save the record to make the new rank value permanent
+  if (moved) {
+    sys.data.save(record);
+  }
+  ```
+  <br>
 
-It is possible to define many highlight rules. For each one a color must be selected and a expression must be
-defined. All records matching the expression will use the selected color.
+  ---
 
-Please check the documentation for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html).
+### Record highlight
 
-Alternatively you can use a script instead of an expression:
- 
-{{< js_script_context context="gridViewHighlightScript">}}
+The "Record Highlight" option allows you to specify which records should be visually highlighted using colors. This is particularly helpful when you want users to quickly notice certain records. For instance, in a task listing, you might want to emphasize urgent tasks by assigning them a distinctive red color.
 
-#### Lookup field
+Multiple highlight rules can be defined. For each rule, a color must be chosen, and an expression must be provided. All records that match the expression will be displayed using the selected color.
 
-The lookup field affects how the URL of the record is built. By default the ID is used, you the URL is built
-like this:
+For more details on expressions, please refer to the [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) documentation.
+
+Alternatively, you have the option to use a script instead of an expression:
+
+  ##### Parameters
+
+  | Name   | Type                | Description |
+  |--------|---------------------|-------------|
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) |This represents the record that will undergo evaluation to determine if it should be highlighted.|
+
+  ##### Returns
+
+  **`boolean`** - You should return **`true`** if the record should be highlighted, and **`false`** if it should not be highlighted.
+
+  ##### Samples
+
+  ``` javascript
+  // the task will be highlighted if it is urgent
+  return record.field('urgent').val() == true;
+  ```
+  <br>
+
+### Lookup field
+
+The lookup field influences the construction of the record's URL. By default, the ID is utilized, resulting in the following URL structure:
 
 ```
 https://<app>.slingrs.io/<env>/runtime/#views/<viewId>/readOnly/<recordId>
 ```
+<br>
 
-When a lookup field is selected, the `recordId` is replaced by the value of the lookup field. For example
-if the field `name` is selected as the lookup field and the value for the record that is opened is `test1`,
-then the URL would be:
+When a lookup field is chosen, the **`recordId`** is substituted with the value of the lookup field. For instance, if the **`name`** field is selected as the lookup field, and the value of the opened record is **`test1`**, the resulting URL would be:
 
 ```
 https://<app>.slingrs.io/<env>/runtime/#views/<viewId>/readOnly/test1
 ```
+<br>
 
 The lookup field must have the unique flag set.
 
-#### Automatic refresh
+### Automatic refresh
 
-When this flag is enabled a dynamic listener will be created to allow to refresh automatically this view for all users
-if a record that belong to the entity that this view is pointing is created, updated or deleted. No mather if the event is
-being fired by a user or a script. Enabling this feature on card view we are also enabling it on his CRUD read only view.
+Enabling this option creates a dynamic listener that ensures the view refreshes automatically for all users when a record belonging to the entity this view points to is created, updated, or deleted. This applies whether the event is triggered by a user or a script. Enabling this feature for a card view also enables it for its corresponding CRUD read-only view.
 
-## Filtering settings
+## **Filtering settings**
 
 ### Record filters
 
-Defines which records will be listed. Only records matching the given expression will be listed
-in the grid view.
+This section defines the criteria for listing records. Only records that match the provided expression will appear in the grid view.
 
 ### Global search
 
-If the entity has global search enabled, it is possible to allow to use this feature by setting the
-flag `Enable global search`.
+For entities with global search enabled, you can enable the **`Enable global search`** flag to allow users to utilize this feature.
 
+## **Columns**
 
-## Columns
+This section allows you to add or remove fields as columns in the listing's table. These columns will initially utilize the default display options of the associated fields, but you can override these options. Refer to the documentation on [General Display Options]({{<ref "/dev-reference/data-model-and-logic/fields.md#general-display-options">}}) for more details.
 
-Here it is possible to add/remove fields as columns to the table in the listing. This columns
-will use the default display options of fields, but you can override them. Please check the
-documentation of [General display options]({{site.baseurl}}/app-development-model-fields.html#general-display-options)
-for more information.
+Columns offer additional options beyond those available for fields:
 
-Columns have some additional options apart from the ones available for fields:
+- **`Automatic Width`**: Determines if the column's width should adapt automatically based on available space and content, or if it should have a fixed width, either in pixels or as a percentage.
+- **`Allow Title Wrapping`**: By default, titles won't wrap unless this flag is enabled, which can be useful for fields with lengthy labels (you can also override the field's label in display options).
+- **`Allow Sorting`**: Indicates whether sorting arrows will be present for this column. This flag is set by default for fields with the indexable flag activated.
 
-- `Automatic width`: indicates if the browser should automatically adjust the width of the
-  column based on the available space and content, or if it should have a fixed width, that
-  could be in pixels or percentage.
-- `Allow to wrap title`: by default the title won't be wrapped except that this flag is enabled,
-  which might be useful for fields with long labels (you could also override the label of the
-  field in the display options).
-- `Allow sorting`: this flag indicates if the sorting arrows will be available on this column.
-  This flag is set by default for fields that have the indexable flag set.
+## **CRUD actions**
 
-## CRUD actions
+Grid views support creating, reading, updating, and deleting records. This section allows you to configure these actions.
 
-From grid views it is possible to create, read, update and delete records. In this section you will be able
-to configure how these actions can be done.
-
-If the entity has children entities, it is possible to configure the different views for each kind of 
-entity. So for example if you have entity A and then entities A1 and A2, if you create a record view for A, 
-it allows to configure the view for entities A1 and A2. 
-
-In this way, if you create a grid view for entity A you will see records from A1 and A2. Depending on the type 
-of record you open is the record view that will be displayed.
+If the entity has child entities, you can configure different views for each entity type. For instance, if you have entity A and its children entities A1 and A2, creating a record view for A lets you configure views for A1 and A2. As a result, when you create a grid view for entity A, you'll see records from A1 and A2. The displayed record view depends on the type of record you open.
 
 ### Create
 
-#### Allow to create
+####  Allow to create**
 
-This action is used to create new records in the entity. If enabled, a button to create new records will be
-available in the listing. In case the entity associated to the view has children entities a button dropdown
-with available options will be displayed.
+This action is used to generate new records within the entity. When enabled, a button for creating new records will appear in the listing. For entities associated with this view's entity that have child entities, a button dropdown displaying available options will be shown.
 
-You will be able to configure the record view to create a new record by clicking on `Configure view`. Please take a 
-look at the documentation of [Record views]({{site.baseurl}}/app-development-ui-record-views.html).
+You can configure the record view for creating a new record by clicking **`Configure View`**. For more details, refer to the [Record Views Documentation]({{<ref "/dev-reference/user-interface/record-views.md">}}).
 
-#### Open in modal
+####  Open in modal**
 
-If this flag is set, the view to create a new record will be displayed in a modal instead of replacing the
-listing as the main content.
+Enabling this flag displays the new record creation view in a modal instead of replacing the listing as the main content.
 
-#### Show Next button
+####  Show next button**
 
-If this option is set, when creating a new record, apart from the `Cancel` and `Save` buttons, you will see
-a `Next` button that will save the record and will show the form to create a new record immediately. This is
-useful when users need to create many records quickly.
+When this option is enabled, apart from the **`Cancel`** and **`Save`** buttons, a **`Next`** button will appear when creating a new record. This button saves the record and immediately shows the form for creating another new record. This feature proves useful for rapid creation of multiple records.
 
-#### Selected view
-It allows you to select the view for the create CRUD action. Available options for selection will be create type record views of the current entity, or custom views. if you select a `Custom View`, a context with some information will be passed as json through a `message event`. This event can be listened to by adding an event listener in the main file of the custom view. This way you are going to have the information set to be displayed in the custom view. Additionally `Create` action button will also trigger a message event to inform the custom view about the create button pressed. This way, the custom view could listen to this event and perform an action. This `add` event will also be trigger after executing other custom actions. 
+####  Selected view**
+
+This setting allows you to select the view for the create CRUD action. Available options for selection include create-type record views of the current entity or custom views. If you opt for a **`Custom View`**, a JSON context with information will be conveyed through a **`message event`**. To utilize this information in the custom view, add an event listener in the custom view's main file. Additionally, when the **`Create`** action button is pressed, a message event is triggered to inform the custom view. The custom view can listen for this event and perform an action. This **`add`** event is also triggered after executing other custom actions.
 
 **Sample of a listener set in a custom view in order to obtain some context information**
 
@@ -275,8 +264,9 @@ It allows you to select the view for the create CRUD action. Available options f
        }
     });
 ```
+<br>
 
-Once you listen to the `add` event. We should implement some functionality. Custom views have an util method to create new records and then inform back to the platform. There is more information about it in the `Custom View` section.
+Once you're listening for the **`add`** event, you can proceed to implement specific functionalities. Custom views offer a utility method for creating new records and subsequently notifying the platform. Additional details on this can be found in the **`Custom View`** section.
 
 **Sample of an implementation of a createRecord() method**
 
@@ -291,25 +281,23 @@ Once you listen to the `add` event. We should implement some functionality. Cust
         })
     };
 ```
+<br>
 
 ### Read
 
 #### Allow to see details
 
-This action is used to open a record from the listing. If enabled, users will be able to click on the record
-in the listing to see details and they will see the action `View` in the action column (if enabled).
+Enabling this action permits users to open a record from the listing. When enabled, users can click on a record within the listing to view its details. Additionally, the **`View`** action will be visible in the action column (if enabled).
 
-You will be able to configure the record view to see details by clicking on `Configure view`. Please take a 
-look at the documentation of [Record views]({{site.baseurl}}/app-development-ui-record-views.html).
+You can configure the record view to display details by clicking **`Configure View`**. For more information, refer to the [Record Views Documentation]({{<ref "/dev-reference/user-interface/record-views.md">}}).
 
 #### Open in modal
 
-If this flag is set, the view to see details of records will be displayed in a modal instead of replacing the
-listing as the main content.
+If this flag is set, the view for seeing details of records will be presented in a modal, instead of replacing the listing as the main content.
 
 #### Selected view
 
-It allows you to select the view for the readOnly CRUD action. Available options for selection will be readOnly record views of the current entity, or custom views. if you select a `Custom View`, a context with some information will be passed as json through a `message event`. This event can be listened to by adding an event listener in the main file of the custom view. This way you are going to have the information set to be displayed in the custom view. Additionally, `Refresh` action button will also trigger a message event to inform the custom view about the refresh button pressed. This way, the custom view could listen to this event and perform an action. This refresh event will also be trigger after executing other custom actions. 
+This setting enables you to choose the view for the read-only CRUD action. Available options for selection include read-only record views of the current entity or custom views. If you opt for a **`Custom View`**, a JSON context with information will be conveyed through a **`message event`**. To utilize this information in the custom view, add an event listener in the custom view's main file. Furthermore, when the **`Refresh`** action button is pressed, a message event is triggered to inform the custom view. The custom view can listen for this event and perform an action. This refresh event is also triggered after executing other custom actions.
 
 **Sample of a listener set in a custom view in order to obtain some context information** 
 
@@ -326,29 +314,25 @@ It allows you to select the view for the readOnly CRUD action. Available options
        }
     });
 ```
+<br>
 
 ### Update
 
 #### Allow to edit
 
-This action is used to edit a record from the listing. If enabled, users will see an `Edit` button in the
-read view of the record (it is needed to enable the read action) and they will see the action `Edit` in 
-the action column (if enabled).
+Enabling this action enables users to edit a record from the listing. When enabled, users will observe an **`Edit`** button in the read view of the record (the read action must be enabled), and they will also see the **`Edit`** action in the action column (if enabled).
 
-You will be able to configure the record view to edit by clicking on `Configure view`. Please take a 
-look at the documentation of [Record views]({{site.baseurl}}/app-development-ui-record-views.html).
+You can configure the record view for editing by clicking **`Configure View`**. Refer to the [Record Views Documentation]({{<ref "/dev-reference/user-interface/record-views.md">}}) for detailed information.
 
 #### Open in modal
 
-If this flag is set, the view to edit records will be displayed in a modal instead of replacing the
-listing as the main content.
+If this flag is set, the view for editing records will be displayed in a modal, instead of replacing the listing as the main content.
 
-Keep in mind that if the read view is configured to not show as a modal, this won't be shown in a
-modal when accessing the edit view from the read view and this setting will only apply when clicking
-on `Edit` in the action column of the listing.
+It's important to note that if the read view isn't configured to be shown in a modal, it won't appear as a modal when accessing the edit view from the read view. This setting solely applies when clicking the **`Edit`** option in the action column of the listing.
 
 #### Selected view
-It allows you to select the view for the update CRUD action. Available options for selection will be edit type record views of the current entity, or custom views. If you select a `Custom View`, a context with some information will be passed as json through a `message event`. This event can be listened to by adding an event listener in the main file of the custom view. This way you are going to have the information set to be displayed in the custom view. Additionally `Save` action button will also trigger a message event to inform the custom view about the save button pressed. This way, the custom view could listen to this event and perform an action. This `edit` event will also be trigger after executing other custom actions.
+
+This setting allows you to choose the view for the update CRUD action. Available options for selection include edit-type record views of the current entity or custom views. Opting for a **`Custom View`** sends a JSON context with information through a **`message event`**. To leverage this information in the custom view, add an event listener in the custom view's main file. Moreover, pressing the **`Save`** action button triggers a message event to inform the custom view about the save button being pressed. Consequently, the custom view can listen for this event and execute an action. This **`edit`** event is also triggered after performing other custom actions.
 
 **Sample of a listener set in a custom view in order to obtain some context information**
 
@@ -369,8 +353,9 @@ It allows you to select the view for the update CRUD action. Available options f
        }
     });
 ```
+<br>
 
-Once you listen to the `edit` event. We should implement some functionality. Custom views have an util method to update records and then inform back to the platform. There is more information about it in the `Custom View` section.
+Once you're listening for the **`edit`** event, you can proceed to implement specific functionalities. Custom views offer a utility method for updating records and subsequently notifying the platform. Additional details on this can be found in the **`Custom View`** section.
 
 **Sample of an implementation of a updateRecord() method**
 
@@ -390,72 +375,71 @@ Once you listen to the `edit` event. We should implement some functionality. Cus
 
 #### Allow to delete
 
-This action allows to delete records. When enabled you will see a `Delete` button in the listing where
-you will be able to delete all selected records. It will also show up in the dropdown of the action
-column and in the read view.
+Enabling this action allows records to be deleted. When enabled, a **`Delete`** button will be visible in the listing. This button permits the deletion of all selected records. The **`Delete`** option will also appear in the action column dropdown and in the read view.
 
-## Sub-grids
+## **Sub-Grids**
 
-Sub-grids are useful for one-to-many relationships. For example you have customers and each customer
-can have many contacts. In this case you could put contacts as a sub-grid for customers.
+Sub-grids are valuable for representing one-to-many relationships. Consider a scenario where you have customers and each customer can have multiple contacts. In this case, you could include contacts as a sub-grid within the customers' view.
 
-When the read view of a record is opened, sub-grids will be displayed below the record.
+When the read view of a record is opened, sub-grids will be displayed below the main record.
 
-Sub-grids have the following properties:
+Sub-grids possess the following attributes:
 
-- `Title`: this is the title that will be displayed for identify the sub-grid in the UI.
-- `Entity`: the entity the sub-grid will point to. It must have a relationship field pointing to the
-  entity of the main grid view.
-- `Related field`: this is the relationship field that points from the entity of the sub-grid to the
-  entity of the main grid view.
-- `Condition`: allows to conditionally show the sub-grid. For example you only want to show the orders
-  sub-grid when the customer is active.
-  Options for conditions are:
-  - `None`: the sub-grid will always be displayed.
-  - `Expression`: allows to define an expression the record in the main grid view should match in order
-    to display the sub-grid.
-  - `Script`: allows to write a script to determine if the sub-grid has to be displayed. This is the context:
-    {{< js_script_context context="gridViewSubGridConditionScript">}}
+- **`Title`**: This title identifies the sub-grid in the user interface.
+- **`Entity`**: This is the entity that the sub-grid points to. It must have a relationship field pointing to the entity of the main grid view.
+- **`Related Field`**: This is the relationship field that establishes a connection from the sub-grid's entity to the entity of the main grid view.
+- **`Condition`**: This permits conditional display of the sub-grid. For instance, you might want to display the orders sub-grid only when the customer is active. Options for conditions are:
+  - **`None`**: The sub-grid will always be displayed.
+  - **`Expression`**: This defines an expression that the record in the main grid view must satisfy to display the sub-grid.
+  - **`Script`**: This enables you to create a script to determine whether the sub-grid should be displayed. The context for this script is: 
+
+    ##### Parameters
+
+    | Name   | Type                | Description |
+    |--------|---------------------|-------------|
+    | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) |This is the record in the main grid view.|
+
+    ##### Returns
+
+    **`boolean`** - You should return **`true`** if the sub-grid has to be displayed, **`false`** otherwise.
 
 
-The configuration of sub-grids is exactly the same as the main view. There is only one small difference
-in behavior when creating a new record, where the field configured in `Related field` will be pre-populated
-with the record in the main view.
+    ##### Samples
 
-## Filters
+    ``` javascript
+    // only show contacts if customer is active 
+    return record.field('state').val() == 'active';
+    ```
+    <br>
+
+The configuration of sub-grids is identical to that of the main view. There's only a small behavioral difference when creating a new record: the field configured in **`Related Field`** will be pre-populated with the record from the main view.
+
+## **Filters**
 
 ### Global filters
 
-If the flag `Allow global filters` is enabled, the UI will allow the user to filter records in the grid
-by the fields indicated in `Global filter fields`.
+If the **`Allow Global Filters`** flag is enabled, the user interface allows users to filter records in the grid based on the fields indicated in **`Global Filter Fields`**.
 
 #### Override label
 
-If `Allow global filters` is enabled, on `Global filter fields` there is a flag `Override Label` that
-allow to override the filter label (default one is the field label).
+When **`Allow Global Filters`** is enabled, the **`Global Filter Fields`** section includes an **`Override Label`** flag, which allows overriding the default filter label (which is the field label).
 
 #### Enable global search
 
-If enabled, a search box will be displayed above the listing that allows to filter fields using
-the global search feature (finds words in any field of the record).
+Enabling this option displays a search box above the listing that facilitates filtering fields using the global search feature. This feature finds words in any field of the record.
 
 This option is only available if the entity has global search enabled.
 
 ### Quick filters
-Quick filters let you further filter the collection of cards easily by clicking/unclicking buttons.
 
-See [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html) for more information.
+Quick filters provide an effortless way to further filter the collection of records by clicking or unclicking buttons. Refer to [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) for additional information.
 
-## Permissions
+## **Permissions**
 
-Permissions allow to define which groups can access this view.
-  
-Permissions for a view can be handled right in the view definition, but it is just
-a different view of what you can configure in groups. It is oriented so you can easily
-configure permissions on the view for all existing groups.
+Permissions enable the definition of groups that can access this view.
 
-When a new view is created, if a group has permissions to the entity associated to that view, then the view 
-receives permission to be used for that group.
+Permissions for a view can be managed directly in the view definition, although it represents a different perspective of what can be configured in groups. This approach facilitates easy configuration of permissions for all existing groups.
 
-For more information about permissions please refer to [Groups]({{site.baseurl}}/app-development-security-groups.html).
+When a new view is created and a group has permissions for the entity associated with that view, the view automatically receives permission for usage by that group.
 
+For more comprehensive information about permissions, please consult the [Groups Documentation]({{<ref "/dev-reference/security/groups.md">}}).

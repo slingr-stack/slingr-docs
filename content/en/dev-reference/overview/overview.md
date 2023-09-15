@@ -12,182 +12,108 @@ weight: 1
 toc: true
 ---
 
-As explained in [What's Slingr?]({{<ref "/getting-started/getting/what_is_slingr.md">}}) ,
-Slingr is a platform to create cloud apps that can easily integrate with other SaaS solutions 
-out there or your internal apps as well. To increase developers' productivity Slingr lets
-developers focus on solving business problems instead of having to deal with technical issues.
+## **Introduction**
 
-The approach followed by Slingr is that you describe your data model and business rules, and 
-that information will be used to execute your application. We call that definition of your app the
-**metadata** of the app, which is what you will be able to modify in the app builder.
+As described in [What's Slingr?]({{<ref "/getting-started/getting/what_is_slingr.md">}}),
+Slingr is a platform designed for crafting cloud applications that seamlessly integrate with a range of SaaS solutions and internal apps. Its core purpose is to enhance developer productivity by enabling them to concentrate on solving business challenges, rather than grappling with technical intricacies.
 
-Next we will explain the most important elements in the app metadata that you need to understand
-in order to create apps in Slingr. To understand how metadata is deployed and executed, take
-a look at [Pushing and syncing changes]({{<ref "/dev-reference/metadata-management/pushing-and-syncing.md">}}), where 
-it is also explained how to make changes to apps.
+Slingr's methodology revolves around defining your application's data model and business rules. This definition, termed as the app's metadata, serves as the foundation that powers your app's execution. You can modify this metadata using the app builder.
 
-## Model
+## **Understanding app metadata**
 
-There is always a clear separation between the app model and the user interface. The former indicates
-the data structure and the behavior of the app, while the latter how to show that on the screen.
+In the succeeding sections, we will delve into the essential components of app metadata that are crucial for creating applications in Slingr. To gain insight into metadata deployment and execution, refer to the documentation on [Pushing and Syncing Changes]({{<ref "/dev-reference/metadata-management/pushing-and-syncing.md">}}), which also explains the process of making app alterations.
 
-Slingr tries to follow as much as possible a model-driven approach, where the UI will use as much
-information as possible from the model. This way the UI will be almost auto-generated, with the
-developer only having to define a few additional settings that cannot be derived from the model
-or you might want to override.
+## **Model**
 
-The model is basically composed by entities, listeners, libraries and endpoints, which are described 
-in the following sections.
+A clear demarcation exists between the app's model and its user interface. The former encapsulates the app's data structure and behavior, while the latter dictates how this information is presented visually.
+
+Slingr strives to follow a model-driven approach as much as possible. This means that the UI derives significant information from the model itself. Consequently, the UI is nearly auto-generated, with developers needing to specify only a few additional settings that can't be inferred from the model or that require customization.
+
+The model essentially comprises entities, listeners, libraries, and legacy services, which are comprehensively described in the following sections.
 
 ### Entities
 
-Entities are the most important concept in the app metadata. You can think them as a more powerful
-version of tables in database. Here you will define the structure of the data you want to persist
-in your app, but there are some features that make entities much more powerful than tables in
-traditional databases:
+Entities represent the cornerstone of app metadata. Think of them as an advanced version of database tables. In entities, you define the structure of the data you intend to persist within your app. However, entities offer features that elevate them far beyond traditional database tables:
 
-- **Complex data models**: unlike tables in traditional databases, entities allow to define complex
-  data structures with multiple nesting levels or multi-valued fields. This will reduce the number
-  of entities that you need, making your app more cleaner and easier to understand.
-- **Field's settings**: apart from the field name and data types, fields allow to specify a lot of
-  settings like when fields are required, when they should be read-only or editable, calculated
-  fields, default display options (so you don't need to repeat it over and over in the UI definition),
-  permissions, validation rules, etc. This means that while you define the fields in your entities,
-  at the same time you will be defining a lot of settings of your app that will be taken into
-  account when executing and rendering the app.
-- **Rich data types**: each type has its own settings and display options. For example the text type
-  has settings like minimum or maximum length and display options to indicate if you want to enter
-  values in an input box or a text area. Slingr provides many data types and each of them has many
-  settings so you can provide as much information as possible for every field of your entities.
-- **Actions**: apart from the default actions to create, read, edit and delete records in an entity,
-  you can define custom behavior through actions. For example an entity for tasks in a CRM app could
-  have an action called `Reject`. When executed from the UI the user will be asked to enter a reason
-  for rejection and then the task will be reopened and assigned back to the person working on it,
-  with the reason of rejection stored as a note in the task.
-  This way actions will allow to extend entities with custom behavior and create complex workflows
-  of execution in your apps.
-- **Listeners**: although listeners are more generic and can hook into many kinds of events, there
-  are some listeners specific for data events and can be associated to an entity. These listeners
-  allow to do something when some events in records happen, like a new record is created, a record
-  is deleted, or an action is executed.
-- **Permissions**: it is possible to define who can access records on the entity and which operations
-  can be performed (create, edit, delete, actions, etc.). It is possible to define fine-grained
-  permissions as the field level.
+- **`Complex Data Models`**: Unlike conventional tables, entities support intricate data structures with multiple nesting levels and multi-valued fields. This approach reduces the necessity for a high number of entities, enhancing the cleanliness and comprehensibility of your app.
+- **`Field Settings`**: Fields boast a multitude of settings beyond just their names and data types. These settings encompass requirements, read-only or editable statuses, calculated fields, default display preferences (thus eliminating repetitive UI definitions), permissions, validation rules, and more. While defining fields in entities, you concurrently configure numerous app settings that profoundly impact execution and rendering.
+- **`Diverse Data Types`**: Each data type possesses its unique settings and display options. For instance, the text type allows you to set parameters like minimum or maximum length and choose between input methods such as text boxes or text areas. Slingr provides a broad spectrum of data types, each equipped with extensive settings, enabling you to furnish comprehensive information for each field in your entities.
+- **`Actions`**: In addition to the standard actions of creating, reading, updating, and deleting records within an entity, you can define custom behaviors through actions. For instance, imagine an entity for tasks within a CRM app. This entity could include a custom action named "Reject." When executed via the UI, this action prompts users to input a reason for rejection. The task is subsequently reopened, assigned to the relevant personnel, and the reason for rejection is stored as a note within the task. Such actions empower entities with custom behaviors, facilitating the creation of intricate execution workflows within your apps.
+- **`Listeners`**: While listeners can serve a broader range of events, certain listeners are specifically designed for data events, aligning with entities. These listeners allow you to trigger actions when specific events occur within records, such as the creation of a new record, deletion of a record, or execution of an action.
+- **`Permissions`**: You can define access privileges for entities, specifying which operations (create, edit, delete, actions, etc.) can be performed by different roles. Furthermore, granular permissions can be established at the field level.
 
-As you can see many of the aspects of your app can be defined in entities. For this reasons here is
-where you will probably start when creating a new app, by defining the most important entities.
+Entities encapsulate numerous aspects of your app. Consequently, when embarking on the creation of a new app, it's advisable to begin by defining the most pivotal entities.
 
-[You can find more information about entities here]({{<ref "/dev-reference/data-model-and-logic/entities.md">}}).
+[For more in-depth information about entities, refer to this section]({{<ref "/dev-reference/data-model-and-logic/entities.md">}}).
 
 ### Listeners
 
-Listeners allow to hook into different events of the app. For example you could do something every 
-time a new record is created in one specific entity, or react to events coming from endpoint (for 
-example, create a new record when a contact is created in Google Contacts).
+Listeners serve as hooks for various app events. For instance, you can trigger actions whenever a new record is created in a specific entity or respond to events originating from legacy services (e.g., creating a new record upon the creation of a contact in Google Contacts).
 
-[You can find more information about listeners here]({{<ref "/dev-reference/data-model-and-logic/listeners.md">}}).
+[To explore listeners in greater detail, consult this section]({{<ref "/dev-reference/data-model-and-logic/listeners.md">}}).
 
 ### Libraries
- 
-Libraries are pieces of Javascript code that you want to reuse from different places of your app.
-For example you could have a function to encode a string in Base64 and you need to use it in many
-actions defined in your app. In this case you can put the function to encode a string to Base64
-in a library and easily call it from the actions that need it.
 
-[You can find more information about libraries here]({{<ref " /dev-reference/data-model-and-logic/libraries.md">}}).
+Libraries comprise reusable JavaScript code snippets that can be employed across different sections of your app. For example, if you possess a Base64 encoding function that's utilized by multiple app actions, you can encapsulate this function in a library, making it easily accessible for actions that require it.
 
-### Endpoints
+[For comprehensive insights into libraries, visit this section]({{<ref "/dev-reference/data-model-and-logic/libraries.md">}}).
 
-Endpoints allow to [extend the capabilities of the platform]({{<ref "/extending/getting_started/overview.md">}}).
-Usually endpoints allow to easily integrate with other SaaS solutions like Slack, Google Calendar, 
-SparkPost, etc. However endpoints are not limited to integrations, they can also be used for other
-purposes. For example let's suppose you have a library in Java to encrypt files and you want to use
-it in your app. In this case you could create an endpoint to with that library and use it from your 
-app.
+### Legacy services
 
-You can add many endpoints to your app and each endpoint will add more features to your app. You
-can check [existing endpoints]({{<ref "/extending/official-ui-pluggins/overview.md">}}) or [create one by yourself]({{<ref "/extending/extending-platform/create_your_own.md">}})!
-[You can find more information about how to use endpoints here]({{<ref "/dev-reference/data-model-and-logic/endpointss.md">}}).
-## Permissions
+Endpoints extend the capabilities of the platform, primarily facilitating seamless integration with various SaaS solutions like Slack, Google Calendar, SparkPost, and more. Nevertheless, legacy services aren't confined to integration purposes alone; they can also be harnessed for diverse use cases. For instance, let's assume you possess a Java library for file encryption that you intend to utilize within your app. In this scenario, you can create an legacy service integrating this Java library and subsequently leverage it within your app.
 
-Permissions allow you to indicate what can be done by users. Slingr allows very fine-grained
-definition of permissions:
+Feel free to incorporate multiple legacy services into your app, with each legacy service enhancing its functionalities. For information on existing legacy services or creating custom ones, refer to the relevant sections!
 
-- **Entities**: create, access, edit, delete, history, etc. You can indicate conditions in 
-  permissions as well. For example that a record can be edited only if field `assignee` is the
-  current user.
-- **Fields**: it is possible to define permissions for each field, which can be none, read-only or
-  read/write.
-- **Actions**: one every action you can define who can execute it as well as which parameters can
-  be passed over to the action.
-- **Views**: it is possible to define which views will be accessible.
+[For comprehensive insights into legacy services usage, explore this section]({{<ref "/dev-reference/data-model-and-logic/endpoints.md">}}).
 
-Permissions are configured in [groups]({{<ref "/dev-reference/security/groups.md">}}). Then [users]({{<ref "/dev-reference/security/users.md">}}) can be assigned to one or more groups, 
-which will grant permissions based on the configuration of those groups.
-Although permissions are defined in groups, to make it easier to configure them it is possible to
-edit them from the different elements they control (namely entities, fields, actions and views).
+## **Permissions**
 
-Permissions will be enforced in the UI (for example if a user doesn't have permissions to access 
-an entity field, the field won't be displayed) as well as in the REST API.
+Permissions empower you to define user capabilities within the app. Slingr offers highly granular permission control:
 
-## Workflows
+- **`Entities`**: Permissions cover actions like creation, access, editing, deletion, and history tracking. Conditions can also be defined within entity permissions. For example, you can stipulate that a record can only be edited if the "assignee" field matches the current user.
+- **`Fields`**: Permissions can be configured for each field, dictating whether it's read-only, read/write, or inaccessible.
+- **`Actions`**: Permissions extend to actions, defining who can execute them and the parameters that can be passed to these actions.
+- **`Views`**: Permissions encompass view accessibility.
 
-Together with entities, actions, listeners, endpoints, and permissions it is possible to create 
-powerful and complex workflows to meet any requirement.
+Permissions are organized within [groups]({{<ref "/dev-reference/security/groups.md">}}), and [users]({{<ref "/dev-reference/security/users.md">}}) can be assigned to one or multiple groups, resulting in permissions being dictated by the group configurations.
 
-So even there is not a specific "workflow" concept in the platform, you can combine other elements
-to build them, which allows much more flexibility to decide how to organize your app.
+Although permissions are structured in groups, streamlining configuration, they can also be edited from the specific elements they govern (entities, fields, actions, and views).
 
-## User interface
+Enforcement of permissions is evident both in the UI (e.g., users without permission to access an entity field won't see it) and in the REST API.
 
-Even though Slingr will try to get as much information as possible from the app model it is still
-possible to configure how the UI is organized and how it should behave, which gives more
-flexibility.
+## **Workflows**
 
-The UI of the app is organized in the following way:
+With the amalgamation of entities, actions, listeners, legacy services, and permissions, robust and intricate workflows can be constructed to meet diverse requirements. Although the platform doesn't inherently possess a distinct "workflow" concept, combining these elements offers substantial flexibility for organizing your app.
 
-- **Header**: this is the at the top and shows the app name and logo (which is configurable).
-- **Main menu**:  this is the main menu of the app, where users will find the different sections of
-  your app. When they click on one of the items, a view will be displayed on the main content area.
-- **Secondary menu**: allows to add items associated to views of the apps that will be rendered in the main content
-  area.
-- **User menu**: this menu contains some system operations like `My profile` or `Logout`, but
-  also allows to add items associated to views of the apps that will be rendered in the main content
-  area.
-- **Main content**: this is where app views are rendered.
+## **User interface**
 
-You are able to configure these things in the [User interface]({{<ref "/dev-reference/user-interface/overview.md">}}) section of the app builder, where you will usually start creating views for the entities you have
-and then add them to the menus so they can be navigated in the app.
+Despite Slingr's capability to derive a wealth of information from the app model, the user interface (UI) is still customizable to cater to your preferences.
 
-Below we describe the most important pieces of the UI.
+The UI of your app is structured as follows:
 
-### Views
+- **`Header`**: Positioned at the top, it displays the app name and logo, which you can configure.
+- **`Main Menu`**: This menu functions as the primary navigational tool, providing access to various sections of your app. Clicking menu items opens corresponding views in the main content area.
+- **`Secondary Menu`**: Designed for view-associated items, this menu adds further items that are rendered in the main content area.
+- **`User Menu`**: This menu encompasses system operations like "My Profile" or "Logout," alongside items linked to app views, displayed within the main content area.
+- **`Main Content`**: This region is dedicated to rendering the app's views.
 
-Views are the most important piece in the UI. The most generic definition of a view would be
-something that can be rendered in the UI of the app, however most views are associated to data
-in the app and allow to show it in different ways and usages.
+For customization of these UI components, refer to the [User Interface]({{<ref "/dev-reference/user-interface/overview.md">}}) section in the app builder. Typically, your journey starts with creating views for your entities and subsequently integrating them into the menus for seamless navigation.
 
-For example you could have a gird view associated to an entities for companies. This view will
-list companies in your app. Depending on the configuration of that view you will be able to
-see details, edit company records or create new ones.
+## **Views and navigation**
 
-[You can find more information about views here]({{<ref "/dev-reference/user-interface/overview.md">}}).
+Views form the bedrock of your app's UI. A view essentially represents a visual rendering within the app's interface. While views can encompass diverse data representations and functionalities, most views are linked to app data, enabling diverse ways of presenting and interacting with this data.
 
-### Navigation
+For instance, you might establish a grid view associated with an entity representing companies. This view would list companies within your app, and its configuration would determine whether you can view details, edit records, or create new ones.
 
-The navigation indicates how views can be accessed in your app. For example how the main menu is
-organized in configured in the navigation, where items in the menu point to the views that will
-be displayed in the main content area.
+[For a deeper exploration of views, refer to this section]({{<ref "/dev-reference/user-interface/overview.md">}}).
 
-[You can find more information about navigation here]({{<ref "/dev-reference/user-interface/overview.md">}}).
+Navigation structures the path users take through your app. For instance, the configuration of the main menu, which dictates the content within the main content area, is determined by the navigation settings.
 
-### Field types' display options
+[For more insights into navigation, refer to this section]({{<ref "/dev-reference/user-interface/overview.md">}}).
 
-Most views show data coming from records, which are defined in entities. Each field inside entities
-belongs to a type that has their own display options. For example a choice field could be displayed
-as a dropdown or as a switcher.
- 
-So each type will define how it has to be rendered in the UI and in most cases they offer settings
-to customize it. These settings can be defined in the entity, which will be taken as the default,
-but they can be override in specific views to provide more flexibility.
+## **Field types display options**
+
+Most views present data originating from records defined in entities. Each field within these entities corresponds to a specific type, each of which possesses unique display options. For example, a choice field could be displayed as a dropdown menu or a switch.
+
+While these type-specific rendering instructions are primarily configured at the entity level and serve as defaults, views can override these defaults to offer enhanced flexibility.
 

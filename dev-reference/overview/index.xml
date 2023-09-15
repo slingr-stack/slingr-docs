@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on </title>
+    <link>/dev-reference/overview/</link>
+    <description>Recent content in Overview on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="/dev-reference/overview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Understanding the Slingr Platform</title>
+      <link>/dev-reference/overview/overview/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>/dev-reference/overview/overview/</guid>
+      <description>Introduction # As described in What&amp;rsquo;s Slingr?, Slingr is a platform designed for crafting cloud applications that seamlessly integrate with a range of SaaS solutions and internal apps. Its core purpose is to enhance developer productivity by enabling them to concentrate on solving business challenges, rather than grappling with technical intricacies.
+Slingr&amp;rsquo;s methodology revolves around defining your application&amp;rsquo;s data model and business rules. This definition, termed as the app&amp;rsquo;s metadata, serves as the foundation that powers your app&amp;rsquo;s execution.</description>
+    </item>
+    
+  </channel>
+</rss>

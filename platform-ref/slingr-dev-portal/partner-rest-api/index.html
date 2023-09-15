@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preload" as="font" href="/fonts/vendor/jost/jost-v4-latin-regular.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="/fonts/vendor/jost/jost-v4-latin-500.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="/fonts/vendor/jost/jost-v4-latin-700.woff2" type="font/woff2" crossorigin>
+
+  <script>(()=>{var t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,e=localStorage.getItem("theme");t&&e===null&&(localStorage.setItem("theme","dark"),document.documentElement.setAttribute("data-dark-mode","")),t&&e==="dark"&&document.documentElement.setAttribute("data-dark-mode",""),e==="dark"&&document.documentElement.setAttribute("data-dark-mode","")})()</script>
+
+  <link rel="stylesheet" href="/main.8baf82da65d80590a37e20640d3a478fd8b8d815a422e20827a4d63356c295d7d6db94e9ea3a2daec3b71ee84a019efb69497303e2c70274e858a0a4018a38e2.css" integrity="sha512-i6&#43;C2mXYBZCjfiBkDTpHj9i42BWkIuIIJ6TWM1bCldfW25Tp6jotrsO3HuhKAZ77aUlzA&#43;LHAnToWKCkAYo44g==" crossorigin="anonymous">
+<noscript><style>img.lazyload { display: none; }</style></noscript>
+  <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <title>Partner REST API - Slingr</title>
+<meta name="description" content="This API is for partners that need to create accounts or apps on the Slingr platform on behalf of other people.
+You can access the API at the following endpoint:
+https://developer-portal.slingrs.io/api Notice that you always have to use HTTPS. Trying to access out API using HTTP will return an error.
+Additionally, all calls should have the following headers:
+Content-Type: application/json Accept: application/json token: &amp;lt;token received after login&amp;gt; General error codes # Here are some general error descriptions.">
+  <link rel="canonical" href="/platform-ref/slingr-dev-portal/partner-rest-api/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Partner REST API">
+<meta property="og:description" content="This API is for partners that need to create accounts or apps on the Slingr platform on behalf of other people.
+You can access the API at the following endpoint:
+https://developer-portal.slingrs.io/api Notice that you always have to use HTTPS. Trying to access out API using HTTP will return an error.
+Additionally, all calls should have the following headers:
+Content-Type: application/json Accept: application/json token: &lt;token received after login&gt; General error codes # Here are some general error descriptions.">
+<meta property="og:url" content="/platform-ref/slingr-dev-portal/partner-rest-api/">
+<meta property="og:site_name" content="Slingr">
+<meta property="article:published_time" content="2020-11-16T13:59:39+01:00">
+  <meta property="article:modified_time" content="2020-11-16T13:59:39+01:00">
+  
+  <meta property="og:image" content="/doks.png"/>
+      <meta property="og:image:alt" content="Slingr">
+    
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@getdoks">
+<meta name="twitter:creator" content="@henkverlinde">
+<meta name="twitter:title" content="Partner REST API">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="/doks.png">
+    <meta name="twitter:image:alt" content="Partner REST API">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+        "@id": "/#/schema/organization/1",
+      "name": "Doks",
+      "url": "/",
+      "sameAs": [
+        "https://twitter.com/getdoks"
+        , "https://github.com/h-enk/doks"
+        ],
+      "logo": {
+          "@type": "ImageObject",
+          "@id": "/#/schema/image/1",
+          "url": "/logo-doks.png",
+          "width":  512 ,
+          "height":  512 ,
+          "caption": "Doks"
+        },
+        "image": {
+          "@id": "/#/schema/image/1"
+        }
+      },
+    {
+      "@type": "WebSite",
+      "@id": "/#/schema/website/1",
+      "url": "/",
+      "name": "Slingr",
+      "description": "Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize.",
+      "publisher": {
+          "@id": "/#/schema/organization/1"
+        }
+      },
+    {
+      "@type": "WebPage",
+      "@id": "/platform-ref/slingr-dev-portal/partner-rest-api/",
+      "url": "/platform-ref/slingr-dev-portal/partner-rest-api/",
+      "name": "Partner REST API",
+      "description": "",
+      "isPartOf": {
+        "@id": "/#/schema/website/1"
+      },
+      "about": {
+          "@id": "/#/schema/organization/1"
+        },
+      "datePublished": "2020-11-16T13:59:39CET",
+      "dateModified": "2020-11-16T13:59:39CET",
+      "breadcrumb": {
+        "@id": "/platform-ref/slingr-dev-portal/partner-rest-api/#/schema/breadcrumb/1"
+      },
+      "primaryImageOfPage": {
+        "@id": "/platform-ref/slingr-dev-portal/partner-rest-api/#/schema/image/2"
+      },
+      "inLanguage": "en-US",
+      "potentialAction": [{
+        "@type": "ReadAction", "target": ["/platform-ref/slingr-dev-portal/partner-rest-api/"]
+      }]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "/platform-ref/slingr-dev-portal/partner-rest-api/#/schema/breadcrumb/1",
+      "name": "Breadcrumbs",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position":  1 ,
+        "item": {
+          "@type": "WebPage",
+          "@id": "/",
+          "url": "/",
+          "name": "Home"
+          }
+        },{
+        "@type": "ListItem",
+        "position":  2 ,
+        "item": {
+          "@id": "/platform-refslingr-dev-portalpartner-rest-api/"
+          }
+        }]
+    },
+
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ImageObject",
+          "@id": "/platform-ref/slingr-dev-portal/partner-rest-api/#/schema/image/2",
+          "url": "/doks.png",
+          "contentUrl": "/doks.png",
+          "caption": "Partner REST API"
+        }
+      ]
+    }
+
+  ]
+}
+</script>
+
+  <meta name="theme-color" content="#fff">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" crossorigin="use-credentials" href="/site.webmanifest">
+
+  
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="/css/material-design-iconic-font.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/fonts.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha512-rRQtF4V2wtAvXsou4iUAs2kXHi3Lj9NE7xJR77DE7GHsxgY9RTWy93dzMXgDIG8ToiRTD45VsDNdTiUagOFeZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+  <body class="platform-ref single">
+    <div class="sticky-top">
+<div class="header-bar"></div>
+
+<header class="navbar navbar-expand-lg navbar-light doks-navbar">
+  <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
+
+    <a class="navbar-brand order-0" href="/" aria-label="Slingr">
+      <img src="/images/vendor/logo.png" class="navbar-img">
+
+    </a>
+
+    <button class="btn btn-menu order-2 d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDoks" aria-controls="offcanvasDoks" aria-label="Open main menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="offcanvas offcanvas-end border-0 py-lg-1" tabindex="-1" id="offcanvasDoks" data-bs-backdrop="true" aria-labelledby="offcanvasDoksLabel">
+      <div class="header-bar d-lg-none"></div>
+      <div class="offcanvas-header d-lg-none">
+        <h2 class="h5 offcanvas-title ps-2" id="offcanvasDoksLabel"><a class="text-dark" href="/">Slingr</a></h2>
+        <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
+      </div>
+      <div class="offcanvas-body p-4 p-lg-0">
+        <ul class="nav flex-column flex-lg-row align-items-lg-center mt-2 mt-lg-0 ms-lg-2 me-lg-auto">
+              <li class="nav-item">
+                <a class="nav-link ps-0 py-1" href="/getting-started/getting/where-to-start/">Getting Started</a>
+              </li>
+            
+          
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle ps-0 py-1" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Documentation
+                  <span class="dropdown-caret"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-main shadow rounded border-0" aria-labelledby="navbarDropdownMenuLink">
+                  <li>
+                      <a class="dropdown-item" href="/platform-ref/slingr-platform/platform-concepts/">Platform reference</a>
+                    </li>
+                  <li>
+                      <a class="dropdown-item" href="/dev-reference/overview/overview/">Developer&#39;s reference</a>
+                    </li>
+                  <li>
+                      <a class="dropdown-item" href="/extending/getting_started/overview/">Extending the platform</a>
+                    </li>
+                  </ul>
+              </li>
+            
+          
+<ul class="list-unstyled collapsible-sidebar mobile-only">
+    
+    
+    <h5 style="color:#d8a31a">📍 platform-ref</h5>    
+    <hr >
+
+    
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-1cc9281467facf097edbb371730b8f11" aria-expanded="false">
+            Slingr platform
+          </button>
+          <div class="collapse" id="section-1cc9281467facf097edbb371730b8f11">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/platform-ref/slingr-platform/platform-concepts/">Main Concepts</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+        
+        <li class="mb-1">
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-6d685683d2cd724c18c50a4ceabd89e4" aria-expanded="true">
+            Slingr developer portal
+          </button>
+          <div class="collapse show" id="section-6d685683d2cd724c18c50a4ceabd89e4">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/platform-ref/slingr-dev-portal/dev-portal-overview/">Overview</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/platform-ref/slingr-dev-portal/managing-apps/">Managing apps</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded" href="/platform-ref/slingr-dev-portal/pricing-and-billing/">Pricing and billing</a></li>
+                
+              
+                
+                  
+                  <li><a class="docs-link rounded active" href="/platform-ref/slingr-dev-portal/partner-rest-api/">Partner REST API</a></li>
+                
+              
+            </ul>
+          </div>
+        </li>
+      
+    
+  </ul>
+  
+  <style>
+     
+    @media screen and (min-width: 768px) {
+      .mobile-only {
+        display: none;
+      }
+    }
+    
+  </style>
+
+        </ul>
+
+        <hr class="text-black-50 my-4 d-lg-none">
+        <form class="doks-search position-relative flex-grow-1 ms-lg-auto me-lg-2">
+          <input id="search" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
+          <div id="suggestions" class="shadow bg-white rounded d-none"></div>
+        </form>
+        <hr class="text-black-50 my-4 d-lg-none">
+
+        
+        
+        <ul class="nav flex-column flex-lg-row">
+          <li class="nav-item">
+              <a class="nav-link social-link" href="https://www.slingr.io/"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 20 20"><path fill="none" stroke="black" stroke-width="1.5" d="M18.5,10.5l-1.21,1.21v6.29h-5v-4h-4v4h-5v-6.29l-1.21-1.21L10,3.5l8.5,7Z"/></svg><small class="ms-2 d-lg-none">Home</small></a>
+            </li>
+            
+          </ul>
+        
+
+        <hr class="text-black-50 my-4 d-lg-none">
+        <button id="mode" class="btn btn-link" type="button" aria-label="Toggle user interface mode">
+          <span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+          <span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        </button>
+        </div>
+    </div>
+  </nav>
+</header>
+
+
+</div>
+
+
+<div class="container-xxl">
+  <aside class="doks-sidebar">
+    <nav id="doks-docs-nav" class="collapse d-lg-none" aria-label="Tertiary navigation">
+      
+<ul class="list-unstyled collapsible-sidebar">
+  
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-1cc9281467facf097edbb371730b8f11" aria-expanded="false">
+          Slingr platform
+        </button>
+        <div class="collapse" id="section-1cc9281467facf097edbb371730b8f11">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/platform-ref/slingr-platform/platform-concepts/">Main Concepts</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-6d685683d2cd724c18c50a4ceabd89e4" aria-expanded="true">
+          Slingr developer portal
+        </button>
+        <div class="collapse show" id="section-6d685683d2cd724c18c50a4ceabd89e4">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/platform-ref/slingr-dev-portal/dev-portal-overview/">Overview</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/platform-ref/slingr-dev-portal/managing-apps/">Managing apps</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/platform-ref/slingr-dev-portal/pricing-and-billing/">Pricing and billing</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded active" href="/platform-ref/slingr-dev-portal/partner-rest-api/">Partner REST API</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+  
+</ul>
+
+    </nav>
+  </aside>
+</div>
+
+    <div class="wrap container-xxl" role="document">
+      <div class="content">
+        
+	<div class="row flex-xl-nowrap">
+		<div class="col-lg-5 col-xl-4 docs-sidebar d-none d-lg-block">
+			<nav class="docs-links" aria-label="Main navigation">
+				<h3>Platform Reference</h3>
+				
+<ul class="list-unstyled collapsible-sidebar">
+  
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-1cc9281467facf097edbb371730b8f11" aria-expanded="false">
+          Slingr platform
+        </button>
+        <div class="collapse" id="section-1cc9281467facf097edbb371730b8f11">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/platform-ref/slingr-platform/platform-concepts/">Main Concepts</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+      
+      <li class="mb-1">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#section-6d685683d2cd724c18c50a4ceabd89e4" aria-expanded="true">
+          Slingr developer portal
+        </button>
+        <div class="collapse show" id="section-6d685683d2cd724c18c50a4ceabd89e4">
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+            
+              
+                
+                <li><a class="docs-link rounded" href="/platform-ref/slingr-dev-portal/dev-portal-overview/">Overview</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/platform-ref/slingr-dev-portal/managing-apps/">Managing apps</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded" href="/platform-ref/slingr-dev-portal/pricing-and-billing/">Pricing and billing</a></li>
+              
+            
+              
+                
+                <li><a class="docs-link rounded active" href="/platform-ref/slingr-dev-portal/partner-rest-api/">Partner REST API</a></li>
+              
+            
+          </ul>
+        </div>
+      </li>
+    
+  
+</ul>
+
+			</nav>
+		</div>
+		<nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
+			<div class="d-xl-none">
+  <button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#onThisPage" aria-controls="doks-docs-nav" aria-expanded="false" aria-label="Toggle On this page navigation">
+    <span>On this page</span>
+    <span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
+    </span>
+  </button>
+  <div class="collapse" id="onThisPage">
+    <div class="card card-body mt-3 py-1">
+      <div class="page-links">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#general-error-codes"><strong>General error codes</strong></a></li>
+    <li><a href="#authorization"><strong>Authorization</strong></a></li>
+    <li><a href="#create-an-account"><strong>Create an account</strong></a>
+      <ul>
+        <li><a href="#request">Request</a></li>
+        <li><a href="#response">Response</a></li>
+        <li><a href="#samples">Samples</a></li>
+      </ul>
+    </li>
+    <li><a href="#check-app-name"><strong>Check app name</strong></a>
+      <ul>
+        <li><a href="#request-1">Request</a></li>
+        <li><a href="#response-1">Response</a></li>
+        <li><a href="#possible-errors">Possible errors</a></li>
+        <li><a href="#samples-1">Samples</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-links d-none d-xl-block">
+  <h3>On this page</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#general-error-codes"><strong>General error codes</strong></a></li>
+    <li><a href="#authorization"><strong>Authorization</strong></a></li>
+    <li><a href="#create-an-account"><strong>Create an account</strong></a>
+      <ul>
+        <li><a href="#request">Request</a></li>
+        <li><a href="#response">Response</a></li>
+        <li><a href="#samples">Samples</a></li>
+      </ul>
+    </li>
+    <li><a href="#check-app-name"><strong>Check app name</strong></a>
+      <ul>
+        <li><a href="#request-1">Request</a></li>
+        <li><a href="#response-1">Response</a></li>
+        <li><a href="#possible-errors">Possible errors</a></li>
+        <li><a href="#samples-1">Samples</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+		</nav>
+		<main class="docs-content col-lg-11 col-xl-9">
+		
+			<h1>Partner REST API</h1>
+			<div class="summary"> General documentation for the partner REST API to create and manage accounts in the platform. </div>
+
+
+			<nav class="d-xl-none" aria-label="Quaternary navigation">
+				<div class="d-xl-none">
+  <button class="btn btn-outline-primary btn-sm doks-toc-toggle collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#onThisPage" aria-controls="doks-docs-nav" aria-expanded="false" aria-label="Toggle On this page navigation">
+    <span>On this page</span>
+    <span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-expand" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Expand</title><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="doks doks-collapse" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>Collapse</title><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 18 12 13 7 18"></polyline></svg>
+    </span>
+  </button>
+  <div class="collapse" id="onThisPage">
+    <div class="card card-body mt-3 py-1">
+      <div class="page-links">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#general-error-codes"><strong>General error codes</strong></a></li>
+    <li><a href="#authorization"><strong>Authorization</strong></a></li>
+    <li><a href="#create-an-account"><strong>Create an account</strong></a>
+      <ul>
+        <li><a href="#request">Request</a></li>
+        <li><a href="#response">Response</a></li>
+        <li><a href="#samples">Samples</a></li>
+      </ul>
+    </li>
+    <li><a href="#check-app-name"><strong>Check app name</strong></a>
+      <ul>
+        <li><a href="#request-1">Request</a></li>
+        <li><a href="#response-1">Response</a></li>
+        <li><a href="#possible-errors">Possible errors</a></li>
+        <li><a href="#samples-1">Samples</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-links d-none d-xl-block">
+  <h3>On this page</h3>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#general-error-codes"><strong>General error codes</strong></a></li>
+    <li><a href="#authorization"><strong>Authorization</strong></a></li>
+    <li><a href="#create-an-account"><strong>Create an account</strong></a>
+      <ul>
+        <li><a href="#request">Request</a></li>
+        <li><a href="#response">Response</a></li>
+        <li><a href="#samples">Samples</a></li>
+      </ul>
+    </li>
+    <li><a href="#check-app-name"><strong>Check app name</strong></a>
+      <ul>
+        <li><a href="#request-1">Request</a></li>
+        <li><a href="#response-1">Response</a></li>
+        <li><a href="#possible-errors">Possible errors</a></li>
+        <li><a href="#samples-1">Samples</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+
+			</nav>
+			<p>This API is for partners that need to create accounts or apps on the Slingr platform on behalf of other
+people.</p>
+<p>You can access the API at the following endpoint:</p>
+<pre><code class="language-js">https://developer-portal.slingrs.io/api
+</code></pre>
+<p>Notice that <strong>you always have to use HTTPS</strong>. Trying to access out API using HTTP will return an error.</p>
+<p>Additionally, all calls should have the following headers:</p>
+<ul>
+<li><code>Content-Type: application/json</code></li>
+<li><code>Accept: application/json</code></li>
+<li><code>token: &lt;token received after login&gt;</code></li>
+</ul>
+<h2 id="general-error-codes"><strong>General error codes</strong> <a href="#general-error-codes" class="anchor" aria-hidden="true">#</a></h2>
+<p>Here are some general error descriptions. Then on each method you will see a better description to some of the errors that can show up.</p>
+<table>
+  <tr>
+    <th>HTTP Status Code</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>200</td>
+    <td>Everything went fine. No errors.</td>
+  </tr>
+  <tr>
+    <td>400</td>
+    <td>Request is not valid. This can be due to validation errors in the data you are sending or because the operation you are trying to do is not valid.</td>
+  </tr>
+  <tr>
+    <td>401</td>
+    <td>Unauthorized. You need to log in or the provided token is not valid.</td>
+  </tr>
+  <tr>
+    <td>403</td>
+    <td>Forbidden. You have credentials, but you are trying to access data or execute an operation you don’t have permissions.</td>
+  </tr>
+  <tr>
+    <td>404</td>
+    <td>Not found. The resource you are trying to access does not exist.</td>
+  </tr>
+  <tr>
+    <td>409</td>
+    <td>Optimistic locking exception. This happens when two users tries to update the same record at the same time. The once that enters in the second place will get this error.</td>
+  </tr>
+  <tr>
+    <td>500</td>
+    <td>Internal error. This happens when something went wrong and was not expected. If you get this type of errors please contact support.</td>
+  </tr>
+  <tr>
+    <td>503</td>
+    <td>Service unavailable. This is when the application is under maintenance.</td>
+  </tr>
+</table>
+<h2 id="authorization"><strong>Authorization</strong> <a href="#authorization" class="anchor" aria-hidden="true">#</a></h2>
+<p>In order to call methods in this API you will need a partner token. You need to request this token to the Platform team support (<a href="mailto:support@slingr.io">support@slingr.io</a>). So for all request you will need to send the header <strong>token</strong> with the partner token.</p>
+<h2 id="create-an-account"><strong>Create an account</strong> <a href="#create-an-account" class="anchor" aria-hidden="true">#</a></h2>
+<pre><code class="language-js">POST /accounts
+</code></pre>
+<p>Creates a new account in the platform. This account will be associated to the partner that created it.</p>
+<h3 id="request">Request <a href="#request" class="anchor" aria-hidden="true">#</a></h3>
+<pre><code>POST /accounts
+&gt; Content-Type: application/json
+&gt; Accept: application/json
+&gt; token: token
+
+{
+  &quot;firstName&quot;: &quot;first name&quot;,
+  &quot;lastName&quot;: &quot;last name&quot;,
+  &quot;email&quot;: &quot;name@company.com&quot;,
+  &quot;password&quot;: &quot;abcd1234&quot;
+}
+</code></pre>
+<br>
+<table>
+  <tr>
+    <th>Path</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>firstName</td>
+    <td>First name of the owner of the account.</td>
+  </tr>
+  <tr>
+    <td>lastName</td>
+    <td>Last name of the owner of the account.</td>
+  </tr>
+  <tr>
+    <td>email</td>
+    <td>Email of the owner of the account.</td>
+  </tr>
+  <tr>
+    <td>password</td>
+    <td>Password to set this this account.</td>
+  </tr>
+</table>
+<br>
+<h3 id="response">Response <a href="#response" class="anchor" aria-hidden="true">#</a></h3>
+<p>The created account in JSON format.</p>
+<pre><code>POST /accounts
+&lt; Content-Type: application/json
+
+{
+  &quot;id&quot;: &quot;asdw432j4bu9bdf92323&quot;,
+  &quot;firstName&quot;: &quot;first name&quot;,
+  &quot;lastName&quot;: &quot;last name&quot;,
+  &quot;email&quot;: &quot;name@company.com&quot;,
+  &quot;status&quot;: &quot;ACTIVE&quot;,
+  &quot;timeZoneMode&quot;: &quot;AUTO&quot;
+}
+</code></pre>
+<br>
+<style>
+table {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+code {
+  display: block;
+  white-space: pre-wrap;
+  background-color: #f2f2f2;
+  margin-bottom: 10px;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+}
+
+td {
+  vertical-align: top;
+}
+</style>
+<table>
+  <tr>
+    <th>Error code</th>
+    <th>HTTP Status Code</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>validationErrors</td>
+    <td>400</td>
+    <td>
+      If there are validation errors. When this happens you will get the details of the errors in the body:
+      <code>
+        {
+          "code": "validationErrors",
+          "message": "There are validation errors",
+          "errors": [
+            {
+              "field": "firstName",
+              "fieldLabel": null,
+              "code": "required",
+              "message": "First name cannot be empty",
+              "additionalInfo": null
+            }
+          ]
+        }
+      </code>
+    </td>
+  </tr>
+  <tr>
+    <td>forbidden</td>
+    <td>403</td>
+    <td>
+      You don’t have permissions to create an account. You should check the token.
+    </td>
+  </tr>
+</table>
+<h3 id="samples">Samples <a href="#samples" class="anchor" aria-hidden="true">#</a></h3>
+<pre><code>creates a new account
+
+POST /accounts
+&gt; Content-Type: application/json
+&gt; Accept: application/json
+&gt; token: token
+
+{
+  &quot;firstName&quot;: &quot;first name&quot;,
+  &quot;lastName&quot;: &quot;last name&quot;,
+  &quot;email&quot;: &quot;name@company.com&quot;,
+  &quot;password&quot;: &quot;abcd1234&quot;
+}
+
+
+POST /accounts
+&lt; Content-Type: application/json
+
+{
+  &quot;id&quot;: &quot;asdw432j4bu9bdf92323&quot;,
+  &quot;firstName&quot;: &quot;first name&quot;,
+  &quot;lastName&quot;: &quot;last name&quot;,
+  &quot;email&quot;: &quot;name@company.com&quot;,
+  &quot;status&quot;: &quot;ACTIVE&quot;,
+  &quot;timeZoneMode&quot;: &quot;AUTO&quot;
+}
+</code></pre>
+<h2 id="check-app-name"><strong>Check app name</strong> <a href="#check-app-name" class="anchor" aria-hidden="true">#</a></h2>
+<pre><code>GET /utils/checkAppName
+</code></pre>
+<p>Checks if an app name is available.</p>
+<h3 id="request-1">Request <a href="#request-1" class="anchor" aria-hidden="true">#</a></h3>
+<pre><code>GET /utils/checkAppName
+&gt; Accept: application/json
+&gt; token: token
+
+</code></pre>
+<table>
+  <tr>
+    <th>Parameter</th>
+    <th>Required</th>
+    <th>Default</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>appName</td>
+    <td>yes</td>
+    <td>-</td>
+    <td>This is the app name to check availability.</td>
+  </tr>
+  <tr>
+  </tr>
+</table>
+<h3 id="response-1">Response <a href="#response-1" class="anchor" aria-hidden="true">#</a></h3>
+<p>The response indicating if the app name is available.</p>
+<pre><code>GET /utils/checkAppName
+&lt; Content-Type: application/json
+
+{
+  &quot;status&quot;: &quot;available&quot;
+}
+
+</code></pre>
+<table>
+  <tr>
+    <th>Path</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>status</td>
+    <td>
+      Indicates if it is available. Values could be:
+      <br><br/>
+      <table>
+        <tr>
+          <th>Status</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>available</td>
+          <td>App name is available.</td>
+        </tr>
+        <tr>
+          <td>notUnique</td>
+          <td>There is another app with the same name.</td>
+        </tr>
+        <tr>
+          <td>invalid</td>
+          <td>The name is not valid.</td>
+        </tr>
+      </table>
+  <div>For notUnique and invalid you will also get a field message with more details about the problem.</div>
+  </tr>
+  <tr>
+    <td>message</td>
+    <td>yes</td>
+  </tr>
+  </tr>
+</table>
+<h3 id="possible-errors">Possible errors <a href="#possible-errors" class="anchor" aria-hidden="true">#</a></h3>
+<table>
+  <tr>
+    <th>Error code</th>
+    <th>HTTP status code</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Unathorized</td>
+    <td>401</td>
+    <td>You are not authenticated or credentials are invalid.</td>
+  </tr>
+  <tr>
+  </tr>
+</table>
+<h3 id="samples-1">Samples <a href="#samples-1" class="anchor" aria-hidden="true">#</a></h3>
+<pre><code>checks a name that is available
+
+GET /utils/checkAppName?appName=uniqueAndValidName
+&gt; Accept: application/json
+&gt; token: token
+
+GET /utils/checkAppName?appName=uniqueAndValidName
+&lt; Content-Type: application/json
+
+{
+  &quot;status&quot;: &quot;available&quot;
+}
+</code></pre>
+<pre><code>checks a name that is not unique
+
+GET /utils/checkAppName?appName=notUniqueName
+&gt; Accept: application/json
+&gt; token: token
+
+
+
+GET /utils/checkAppName?appName=notUniqueName
+&lt; Content-Type: application/json
+
+{
+  &quot;status&quot;: &quot;notUnique&quot;,
+  &quot;message&quot;: &quot;Code is already in use.&quot;
+}
+
+</code></pre>
+<pre><code>checks an invalid name
+
+GET /utils/checkAppName?appName=$invalid#
+&gt; Accept: application/json
+&gt; token: token
+
+GET /utils/checkAppName?appName=$invalid#
+&lt; Content-Type: application/json
+
+{
+  &quot;status&quot;: &quot;invalid&quot;,
+  &quot;message&quot;: &quot;Only lowercase letters and numbers are allowed. The first character must be a letter.&quot;
+}
+</code></pre>
+
+			<div class="page-footer-meta d-flex flex-column flex-md-row justify-content-between">
+				</div>
+			<div class="docs-navigation d-flex justify-content-between">
+	
+	<a href="/platform-ref/slingr-dev-portal/pricing-and-billing/">
+			<div class="card my-1">
+				<div class="card-body py-2">
+					&larr; Pricing and billing
+				</div>
+			</div>
+		</a>
+	</div>
+
+			
+		</main>
+	</div>
+
+      </div>
+    </div>
+    
+    
+    <footer class="footer text-muted">
+  <div class="container-xxl">
+    <div class="row justify-content-center">
+      <div class="col-lg-4" >
+        <ul class="list-unstyled">
+          <img src="/images/vendor/slingr_blue.png">
+          <li>©2023 Slingr. All rights reserved. </li>
+          <li>Site last generated: Apr 11, 2023</li>
+
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Get started</h6>
+        <ul class="list-unstyled">
+          <li><a href="/getting-started/getting/where-to-start/">Where to start</a></li>
+          <li><a href="/getting-started/getting/what_is_slingr/">What's Slingr?</a></li>
+          <li><a href="/getting-started/getting/first-steps/main/">Take your first steps</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Platform <br> reference</h6>
+        <ul class="list-unstyled">
+          <li><a href="/platform-ref/slingr-platform/platform-concepts/">Platform concepts</a></li>
+          <li><a href="/platform-ref/slingr-dev-portal/dev-portal-overview/">Developer portal</a></li>
+          <li><a href="/platform-ref/slingr-dev-portal/managing-apps/">Managing apps</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Developer's reference</h6>
+        <ul class="list-unstyled">
+          <li><a href="/dev-reference/overview/overview/">Overview</a></li>
+          <li><a href="/dev-reference/scripting/overview/">Javascript API</a></li>
+          <li><a href="/dev-reference/rest-apis/apps-api/">REST API</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3">
+        <h6 class="text-uppercase">Extensions</h6>
+        <ul class="list-unstyled">
+          <li><a href="/extending/getting_started/overview/">Overview</a></li>
+          <li><a href="/extending/official-ui-plugins/overview/">Official endpoints</a></li>
+          <li><a href="/extending/extending-platform/create_your_own/">Create your endpoints</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+
+<script src="/js/bootstrap.min.f06fe6dc0efc9ee1e806021a0c338278256ecf163b547e8e8769fe60b0a1c0d505782852616ca4e1ff6a719eb8fc954e1d26031b8ab3ca71fb9d9998081b319e.js" integrity="sha512-8G/m3A78nuHoBgIaDDOCeCVuzxY7VH6Oh2n&#43;YLChwNUFeChSYWyk4f9qcZ64/JVOHSYDG4qzynH7nZmYCBsxng==" crossorigin="anonymous" defer></script>
+  <script src="/js/highlight.min.ec234bd8a5f487aaffe50a89f17b14501b1bb65633cf177cffd4cb84702dd7030edc08712dceb8dc27ac7e54b53240a08bf0b8d951572ee582bcdbbd06a48a7b.js" integrity="sha512-7CNL2KX0h6r/5QqJ8XsUUBsbtlYzzxd8/9TLhHAt1wMO3AhxLc643CesflS1MkCgi/C42VFXLuWCvNu9BqSKew==" crossorigin="anonymous" defer></script>
+  <script src="/main.min.82f836fcdb7efb9e9876a2c11dc1add66a5448bfe9ef02c535552b7b08758ea2f75787c25223520effc82119e5dec54ec57d8efcd6b20a562d02c463a8a3ba3b.js" integrity="sha512-gvg2/Nt&#43;&#43;56YdqLBHcGt1mpUSL/p7wLFNVUrewh1jqL3V4fCUiNSDv/IIRnl3sVOxX2O/NayClYtAsRjqKO6Ow==" crossorigin="anonymous" defer></script>
+  <script src="/index.min.3eff9330db34e22e53acb5f348a51c8ddb09094ecf40637c1efd69e7513c3416b2790c79039c5404578dd1e24f99da67f7271a912dbfe5a701657cd0b19259bc.js" integrity="sha512-Pv&#43;TMNs04i5TrLXzSKUcjdsJCU7PQGN8Hv1p51E8NBayeQx5A5xUBFeN0eJPmdpn9ycakS2/5acBZXzQsZJZvA==" crossorigin="anonymous" defer></script>
+  
+    
+  </body>
+</html>

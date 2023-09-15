@@ -6,7 +6,9 @@ Based on Ascetic by (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
 
 .hljs {
   display: block;
-  overflow-x: auto;
+  // overflow-x: auto;
+  white-space: pre-wrap;
+  overflow: hidden; 
   padding: 1.25rem 1.5rem;
   background: $beige;
   color: $body-color;

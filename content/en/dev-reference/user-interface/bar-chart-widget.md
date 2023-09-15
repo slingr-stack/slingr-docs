@@ -9,190 +9,168 @@ menu:
   docs:
     parent: "dev-reference"
 toc: true
+weight: 57
 ---
 
-A bar chart provides a way of showing data values represented as vertical bars. It is sometimes 
-used to show trend data, and the comparison of multiple data sets side by side.
+A bar chart provides a method of displaying data values using vertical bars. It is commonly employed to illustrate trend data and compare multiple datasets side by side.
 
-## Entity
+## **Entity**
 
-This is the entity the view will point to. Only records of this entity will be listed
-in the bar chart widget.
+This refers to the entity that the view will target. Only records from this entity will be listed in the bar chart widget.
 
-## Label
+## **Label**
 
-This is a human-readable name of the view. You can use spaces, special characters and
-mix upper case and lower case letters.
+This is a human-readable name for the view. You can use spaces, special characters, and a mixture of upper and lower case letters.
 
-This label will be displayed at the top of the table widget view, so make sure you use something
-users will understand.
+This label will appear at the top of the widget view, so ensure you use language that users will understand.
 
-## Name
+## **Name**
 
-This is the internal name of the view. It cannot hold special characters or spaces.
+This is the internal name of the view. It cannot contain special characters or spaces.
 
-Usually you will use the name of the view in scripts and the REST API, so changing it
-might affect your app and you will need to make some manual adjustments.
+You will usually utilize the view's name in scripts and the REST API. Changing it may impact your app, necessitating manual adjustments.
 
-## Description
+## **Description**
 
-This is a human-readable description of the widget. You can use spaces, special characters and
-mix upper case and lower case letters. You can internationalize it.
+This is a human-readable description of the widget. You can use spaces, special characters, and a mixture of upper and lower case letters. Internationalization is possible.
 
-This description will be displayed in top of added widget in your dashboard.
+This description will be visible at the top of the added widget in your dashboard.
 
-## Allow Refresh
+## **Allow refresh**
 
-This is to Show/Hide refresh button. We can perform this action in order to update this widget 
-information. Is true by default.
+This option determines whether the refresh button is displayed or hidden. This button facilitates the update of widget information. It's enabled by default.
 
-## List settings
+## **Filtering settings**
 
-### Filtering settings
+These settings define how the listing behaves.
 
-These settings indicate how the listing should behave.
-
-#### Sort field
+### Sort field
 
 This is the default sorting field for the listing.
 
+Users might be able to alter the default sorting if that functionality is enabled in any of the columns.
+
+### Sort type
+
+This indicates the sorting direction.
+
 Users might be able to change the default sorting if that's enabled in any of the columns.
 
-#### Sort type
+### Filter type
 
-Indicates the direction of the sorting. 
+It can be either an expression or a script. If "expression" is selected, record filters should be set. Otherwise, a script should be returned.
 
-Users might be able to change the default sorting if that's enabled in any of the columns.
+### Record filters
 
-#### Filter type
-
-Can be expression or script. In case to select expression should set record filters. In other case should return
-the script.
-
-#### Record filters
-
-Defines which records will be listed. Only records matching the given expression will be listed
+This defines which records will appear in the list. Only records that match the given expression will be listed
 in the table widget view.
 
-#### Script
+### Script
 
-Return query parameter or queryMap. The query map object used to filter records. 
-Check the [Query language]({{site.baseurl}}/app-development-query-language.html) documentation for the query map version.
+Returns a query parameter or queryMap. The query map object is used to filter records.
+For query map version, refer to the [Query Language]({{<ref "/dev-reference/queries/query-language.md">}}) documentation.
 
-#### Size
+### Size
 
-The maximum number of records to fetch when the view is loaded and when clicking in `More` to fetch
-more records.
+The maximum number of records to fetch when the view is initially loaded and when clicking "More" to fetchadditional records.
 
-
-## Horizontal axis settings
+## **Horizontal axis settings**
 
 ### View type
 
-Represent the field type to be used to generate the horizontal axis values. It can be an entity field or a
+Represents the field type used to generate the horizontal axis values. It can be an entity field or a
 calculated field.
 
 ### Entity field
 
-Allows to select an existing entity field. The value will be stored as a reference to metadata, being refactored in 
-the same way when changes happen. The default value will be set only when creating a new record, which means it
-won't have any effect when editing an existing record.
+Allows selection of an existing entity field. The value will be stored as a reference to metadata, being updated similarly when changes occur. The default value applies only when creating a new record, thus having no effect on editing an existing record.
 
 ### Calculated field
 
-The value of this kind of field is generated by script for horizontal axis.
+Values for this type of field are generated by a script for the horizontal axis.
 
 ### Horizontal bar
 
-The configuration options for the horizontal bar chart are the same as for the bar chart. However, 
-any options specified on the horizontal axis in a bar chart, are applied to the vertical axis in a horizontal bar chart.
+Configuration options for the horizontal bar chart mirror those of the bar chart. However, options specified on the horizontal axis in a bar chart are applied to the vertical axis in a horizontal bar chart.
 
 ### Grid lines
 
-If false, do not display grid lines for this axis.
+If set to false, grid lines for this axis are not displayed.
 
-## Vertical axis settings
+## **Vertical axis settings**
 
 ### Label
 
-This is a human-readable name to be displayed in vertical axis. You can use spaces, special characters and
-mix upper case and lower case letters.
+This is a human-readable name displayed on the vertical axis. You can use spaces, special characters, and
+a mixture of upper and lower case letters.
 
-### Ticks suggested min / max
+### Ticks suggested Min/Max
 
-The suggestedMax and suggestedMin settings only change the data values that are used to scale the axis. 
-These are useful for extending the range of the axis while maintaining the auto fit behaviour.
+The suggestedMax and suggestedMin settings adjust the data values used to scale the axis. 
+These settings extend the axis range while maintaining the auto-fit behavior.
 
 ### Grid lines
 
-If false, do not display grid lines for this axis.
+If set to false, grid lines for this axis are not displayed.
 
-## Series
+## **Series**
 
-You can add series base on entity field or a calculated series. 
+You can add series based on an entity field or a calculated series.
 
 ### Entity field
 
-Allows to select an existing entity field. The value will be stored as a reference to metadata, being refactored in 
-the same way when changes happen. The default value will be set only when creating a new record, which means it
-won't have any effect when editing an existing record.
+Allows selection of an existing entity field. The value will be stored as a reference to metadata, being updated similarly when changes occur. The default value applies only when creating a new record, thus having no effect on editing an existing record.
 
 ### Calculated field
 
-The value of this kind of field is generated by script for vertical axis.
+Values for this type of field are generated by a script for the vertical axis.
 
 ### Bar styling settings
 
-#### Settings Mode
+#### Settings mode
 
-It can be simple or advanced. In case of simple mode just need set bar color and other settings are calculated or 
-set by default. For advanced the developer should define each value.
+This can be either simple or advanced. In simple mode, only the bar color needs to be set; other settings are calculated or 
+set by default. For advanced mode, developers define each value.
 
 #### Background color
 
-This is the line color. It should be hexadecimal color code.
+This sets the line color. It should be a hexadecimal color code.
 
 #### Border color
- 
-The bar border color. It should be hexadecimal color code.
+
+The bar's border color. It should be a hexadecimal color code.
 
 #### Border skipped
 
-The edge to skip when drawing bar.
+Indicates the edge to skip when drawing the bar.
 
-#### Border Width
+#### Border width
 
-The bar border width (in pixels).
+The bar's border width (in pixels).
 
 #### Hover background color
 
-The bar background color when hovered.
+The bar's background color when hovered over.
 
 #### Hover border width
 
-The bar border width when hovered (in pixels).
+The bar's border width when hovered over (in pixels).
 
-## UI Message
+## **UI messages**
 
-Widgets can react to UI message. The common case is when need refresh the data or apply filters.
+Widgets can respond to UI messages. A common use case is when data needs refreshing or filters need applying.
 
 ### Refresh and filter
 
-It is possible send a message to refresh the widget using its default settings. This messages are sending to dashboard 
-container and propagated to each widget. 
+You can send a message to refresh the widget using its default settings. These messages are sent to the dashboard container and propagated to each widget.
 
-Additionally you can send a filter parameter in order to be applied to the query used to get the data. This query can be 
-a [query]({{site.baseurl}}/app-development-js-api-data.html#sys.data.Query) object or a query map. In case to use a query 
-object the filter just is applied if the entity is same to the entity set in the widget. Check the 
-[Query language]({{site.baseurl}}/app-development-query-language.html) for more infomation.  
+Additionally, you can send a filter parameter to apply to the query used to retrieve data. This query can be a [query]({{<ref "/dev-reference/scripting/sys-data.md">}}) object or a query map. When using a query object, the filter is only applied if the entity matches the one set in the widget. For more information, consult the [Query Language]({{<ref "/dev-reference/queries/query-language.md">}}).
 
-In order to apply filters is necessary set the `widgetContainer` with a list of objects in witch each one describes the 
-container `name` and the `filter` to be applied on each widget. Additionally you can send `title` to update the widget 
-title.
+To apply filters, set the **`widgetContainer`** with a list of objects. Each object describes the container **`name`** and the **`filter`** to be applied to each widget. You can also include **`title`** to update the widget title.
 
 #### Example
 
-In following example you can refresh and apply a filter sending the filter parameter to given widget container. 
+In the following example, you can refresh and apply a filter by sending the filter parameter to a specific widget container.
 
 ```javascript
 var query = sys.data.createQuery('salesInfoPeriod');

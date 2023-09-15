@@ -1,5 +1,5 @@
 ---
-title: "Create your own endpoints"
+title: "Create your own legacy services"
 lead: "Here you will find information to create your own endpoints to add more features to your app."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -12,99 +12,81 @@ toc: true
 weight: 14
 ---
 
-It is possible to create your own endpoints and use them in your apps. This will allow to expand the
-features available in Slingr with things that you need. For example an integration with an app that
-is not in the official endpoints, use some existing libraries that you have, etc.
+You have the ability to create your own custom endpoints and seamlessly integrate them into your apps, enhancing the capabilities of Slingr according to your specific requirements. This is particularly useful for integrating with applications not covered by the official endpoints, utilizing existing libraries, and more.
 
-There are three steps to follow in order to create a new endpoint:
- 
-1. Create a new endpoint
-1. Test it using the proxy endpoint
-1. Register your endpoint in Slingr
+The process of creating a new endpoint involves three fundamental steps:
 
-These steps will be detailed in the following sections.
+1. **Endpoint Creation**: Design and set up your new endpoint.
+2. **Testing via Proxy Endpoint**: Thoroughly test your endpoint using the proxy endpoint.
+3. **Endpoint Registration**: Register your developed endpoint within the Slingr developer portal.
 
-## Create a new endpoint
+## **Endpoint creation**
 
-The first thing you will need to do is creating a new endpoint. We recommend you to follow any of these to
-guides depending on your programming language preference:
+To get started, you need to create a new endpoint. We recommend following one of these guides based on your preferred programming language:
 
-- [Java SDK]({{site.baseurl}}/extensions-java-sdk.html)
-- [Node SDK]({{site.baseurl}}/extensions-node-sdk.html)
+- [Java SDK]({{<ref "/extending/extending-platform/java-sdk.md" >}})
+- [Node SDK]({{<ref "/extending/extending-platform/node-sdk.md" >}})
 
-## Development with proxy endpoint
+## **Testing via proxy endpoint**
 
-In order to develop and test your own endpoints, there is one special endpoint that will help you on that task 
-called the `Proxy endpoint`:
+### Overview
 
-![Endpoint proxy](/images/vendor/extending/endpoint-proxy.png)
+For developing and testing your custom endpoints, there's a dedicated endpoint designed to assist you—the **`Proxy Endpoint`**:
 
-When you create a new endpoint in the app builder you will see the `Proxy endpoint` in the list of
-available endpoints. This is an special endpoint that will proxy the one running on your local
-box as shown in the diagram above.
+![Endpoint Proxy](/images/vendor/extending/endpoint-proxy.png)
 
-{% include callout.html content="Keep in mind that the communication between the proxy endpoint and your local endpoint could be over HTTP and not HTTPS. If that's the case you shouldn't send sensitive information for security reasons.'" type="warning" %} 
+When you initiate the creation of a new endpoint in the app builder, you will find the option for the **`Proxy Endpoint`** in the list of available endpoints. This particular endpoint is designed to proxy the one running on your local machine, as depicted in the diagram above.
 
-Basically this is what the proxy endpoint will do:
+{{< callout type="warning" contend="" >}}
+Please be aware that communication between the proxy endpoint and your local endpoint might occur over HTTP instead of HTTPS. In such cases, refrain from transmitting sensitive information to ensure security.
+{{< /callout >}}
 
-- When your app calls a function on the endpoint's API, the proxy endpoint will make a call to your 
-  local endpoint, which will process the request and send the response back to the proxy endpoint.
-- When there is an event in your local endpoint, it will be sent to the proxy endpoint, which will
-  send it up to your app.
-- When the app loads the endpoint's metadata (like `endpoint.json` definition file), it will get it
-  from your local running endpoint.
-  
-This way you can run your endpoint locally, make changes, debug it, and see how it works in your
-app without needing anything else.
+### Proxy purposes
 
-For more information about the proxy endpoint, go to its [documentation page]({{site.baseurl}}/endpoints-proxy.html).
+The proxy endpoint serves the following purposes:
 
-## Register your endpoint
+- When your app invokes a function on the endpoint's API, the proxy endpoint initiates a call to your local endpoint. This local endpoint then processes the request and forwards the response back to the proxy endpoint.
+- Whenever an event occurs in your local endpoint, it is transmitted to the proxy endpoint, which subsequently relays it to your app.
+- Upon loading the metadata of the endpoint (such as the **`endpoint.json`** definition file), the app retrieves this information from your locally running endpoint.
 
-Once the endpoint has been implemented, it is required to register it on the platform so it is available to your apps or, 
-if you decide so, make it public so other people can also use it.
+This setup enables you to run and test your endpoint locally, facilitate debugging, and observe its behavior within your app ecosystem, all without any additional requirements.
 
-In the `Developer Portal`, in `Endpoints` section, developers are able to see the endpoints they can manage, allowing 
-to register new endpoints, update them or disable them.
+For a comprehensive understanding of the proxy endpoint's functionality, refer to the [documentation page]({{<ref "/extending/extending-platform/proxy-endpoint.md" >}}).
 
-When you register a new endpoint, this is the information you need to provide:
+## **Endpoint registration**
 
-- `Label`: the human-friendly name of the endpoint. 
-- `Name`: the name you will give to the endpoint. The name cannot be modified later and must match with the name used in 
-   the endpoint definition file (`endpoint.json`).
-- `Repository`: this will be the Git URL of the repository. The repository needs to be public. If it is private, today 
-   we only support GitHub repositories and you need to give read access to the repository to the user `slingr-builder`. 
-   The URL must be in `SSH` format like `git@github.com:workspace_id/repo_name.git`. 
-- `Folder`: in case the endpoint is under one specific folder. In most cases will be empty.
-- `Type`: here you can choose between `Java` and `Node.js`. 
-- `Visibility`: this could be private or public. If it is public any app will be able to use it. If it is private, you 
-   will be able to indicate which apps can access the endpoint and it will be available for them.
+Once your endpoint implementation is complete, it's essential to register it on the platform to make it accessible to your apps. Alternatively, you can choose to make it publicly available for others to use.
 
-When you register a new endpoint it is associated to the developer that registered it, but it is possible to transfer 
-the ownership to another account if needed through a tool available in the endpoint edition section.
+Within the **`Developer Portal`** and under the **`Endpoints`** section, developers can view and manage the endpoints under their purview. This section allows you to register new endpoints, update existing ones, or disable them as needed.
 
-Once the endpoint gets registered, the platform will find new versions of the endpoint automatically (which are tags with 
-the corresponding format `v1.15.1` for example). Those versions are displayed when you open the details of an endpoint. 
-Here you are able to manage versions:
+When registering a new endpoint, you'll need to provide the following information:
 
-- Force to find new versions: refreshes the list of versions for endpoint.
-- Build one specific version: allows to perform the build for one specific version.
-- Set one version as the latest/default one. 
+- **`Label`**: A user-friendly name for the endpoint.
+- **`Name`**: A unique name for the endpoint, which must match the name used in the **`endpoint.json`** definition file. Note that the name cannot be modified later.
+- **`Repository`**: The Git URL of the repository containing the endpoint's code. The repository must be public. If it's private, we currently support only GitHub repositories, and you'll need to grant read access to the user **`slingr-builder`**. The URL should be in **`SSH`** format, like **`git@github.com:workspace_id/repo_name.git`**.
+- **`Folder`**: Optional field for specifying the location of the endpoint within a specific folder.
+- **`Type`**: Choose between **`Java`** and **`Node.js`** to indicate the endpoint's programming language.
+- **`Visibility`**: Select either **`private`** or **`public`**. For public visibility, any app can utilize the endpoint. For private visibility, you can specify which apps can access the endpoint.
 
-It is possible to change the icon of the endpoint in the details of the endpoint. The icon requires to be: `PNG` format, 
-size `48x48px`.
+Upon registration, the endpoint is associated with the developer who registers it. However, if necessary, ownership of the endpoint can be transferred to another account using a tool available in the endpoint editing section.
 
-It isn't possible to delete endpoints. You can disable them, which means that they cannot be used on any app any longer.  
+After registration, the platform will automatically detect new versions of the endpoint (identified by tags with the format **`v1.15.1`**, for example). These versions are visible when viewing endpoint details, where you can perform version management tasks:
 
-## Summary
+- Trigger a search for new versions: Refreshes the list of available versions for the endpoint.
+- Build a specific version: Initiates the build process for a particular version.
+- Set a version as the latest/default: Designates a specific version as the latest or default choice.
 
-To summarize, what you need to start developing your endpoint is:
+Additionally, you can change the endpoint's icon within its details. The icon should be in **`PNG`** format and have a size of **`48x48px`**.
 
-1. Create your local endpoint using either the [Java SDK]({{site.baseurl}}/extensions-java-sdk.html) 
-  or the [Node SDK]({{site.baseurl}}/extensions-node-sdk.html).
-1. Create a proxy endpoint in your app.
-1. Configure the proxy endpoint to point to your local endpoint and the other way around.
-1. Develop, use and test your endpoint in your app! Don't forget to [check out what you can do in
-   your endpoints here]({{site.baseurl}}/extensions-common-features.html).
-1. Once it is working well, register it and build a version of your endpoint.
-1. Use your endpoint in your apps!
+Please note that endpoints cannot be deleted; however, you can disable them, preventing their usage in any app.
+
+## **Summary**
+
+To summarize, here's what you need to start developing your endpoint:
+
+1. Begin by creating your local endpoint using either the [Java SDK]({{<ref "/extending/extending-platform/java-sdk.md" >}}) or the [Node SDK]({{<ref "/extending/extending-platform/node-sdk.md" >}}).
+2. Next, create a proxy endpoint in your app.
+3. Configure the proxy endpoint to connect both to your local endpoint and vice versa.
+4. Develop, utilize, and test your endpoint within your app! Explore the available options for your endpoints [here]({{<ref "/extending/extending-platform/common.md" >}}).
+5. Once it's functioning effectively, register it and generate a version of your endpoint.
+6. Integrate your endpoint into your apps!

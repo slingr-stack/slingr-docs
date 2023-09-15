@@ -1,6 +1,6 @@
 ---
-title: "Creating our app"
-lead: "Learning about the event planner app."
+title: "About - Task Manager"
+lead: "Summary: Create a task manager from scratch."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -11,30 +11,42 @@ menu:
 weight: 70
 toc: true
 ---
+**Welcome to the Task Manager Tutorial!**
 
-Once you're logged into the developer portal, follow these steps:
+### What is a Task Manager App?
 
-1. Click on the New App button in the Your Apps section.
-2. Fill in the app label and name. The name must be unique on the platform.
-3. Select Slingr Free as your app's plan.
-4. Select the option to start from scratch.
-5. Wait for the app creation process to complete.
+A task manager is an application designed to help individuals or teams organize, track, and manage tasks efficiently. It provides a centralized platform for creating, assigning, and monitoring tasks to streamline workflows and improve productivity. Users can set task deadlines, priorities, and statuses, enabling them to stay on top of their responsibilities and collaborate effectively with others.
 
-Once your app is created, you'll see its details. By default, you'll be the owner of the app with developer permissions for the development environment, which is created by default.
+### Create the app from scratch
 
+Once you are logged into the developer portal, you should see the Home Page:
 
-![Alt Text](/images/vendor/task-mananger/creating/task_manager_app_details.png)
+- Click on the **``New App``** button in the **``Your Apps``** section.
+- Fill in the **``app label``** and **``name``**. Please note that the **``name``** must be unique on the platform.
+- Select **``Slingr Free``** as the plan for your app.
+- Choose the option to **``start from scratch``**.
+- Wait until the app is created. This process usually takes a minute to complete.
 
+---
 
-In the environment details, you can navigate through the different components of your app:
+### Discover the application components
 
-- Go To App: This button takes you to your running app. However, since you haven't done anything yet, the app is empty.
-- Monitor: From here, you can see the app's status, background jobs, logs, and more. If you need to know what's going on with your app, this is the place to look.
-- Builder: This is where you'll develop your app.
+Once your app is successfully created, you will see its details. By default, you will be the **``owner``** of the app, and you will have **``developer permissions``** for the **``development environment``**, which is created by default. In the environment details, you will be able to navigate through the different components of the app.
+
+![App-Details](/images/vendor/task-mananger/creating/task_manager_app_details.png)
+
+👉 **``Go To App``**: This button will take you to your running app. Right now, it doesn't provide much functionality as the app is empty.
+
+👉 **``Monitor``**: From here, we can see the app's status, background jobs, logs, etc. If you need to know what's going on, this is the place to look.
+
+👉 **``Builder``**: This is where we will develop our app.
+
+---
+
 You can also see the different environments and components on the Apps Page.
 
-![Alt Text](/images/vendor/task-mananger/creating/task_manager_apps_page.png)
+![App-Card-Details](/images/vendor/task-mananger/creating/task_manager_apps_page.png)
 
-The first button is the Runtime, the second the monitor, and the third one the builder. 
-As our new app is empty, the first thing we need to do is to go to the app builder, by clicking on the builder button (the one with the wrench). That will automatically open the builder in a new tab.
-Let's wrap this section here, if you want to learn more let's go to the next section!
+The first button represents the **``Runtime``**, the second is the **``Monitor``**, and the third one is the **``Builder``**. As our new app is empty, the first thing we need to do is to go to the app builder by clicking on the **``Builder``** button (the one with the wrench). That will automatically open the builder in a new tab.
+
+Let's wrap up this section here. If you want to learn more, let's proceed to the next section: *First steps with the builder*.

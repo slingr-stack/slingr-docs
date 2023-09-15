@@ -12,70 +12,116 @@ toc: true
 weight: 45
 ---
 
-Navigation refers at how users will be able to find the different views in your
-app.
+Navigation within your app refers to how users can access different views.
 
-Slingr allows two main ways of navigation:
+Slingr offers three primary navigation methods:
 
-- **Main menu**: this menu is located at the left of the app. Depending on the size of
-  the device it might be hidden or not. You can add menu items at the root of left
-  menu or you can use menu groups to add one level of nesting.
-- **Secondary menu**: this menu is located on the top-right area of the app. Here you will be able to
-  add menu items (it doesn't support menu groups) that will be placed left to the User menu.
-- **User menu**: this menu is located on the top-right corner of the app. It is the menu
-    used by other system actions like `My profile` or `Logout`. Here you will be able to
-    add menu items (it doesn't support menu groups) that will be placed above the `Logout`
-    action.
+- **`Main Menu`**: This menu is positioned on the left side of the app. Its visibility depends on the device's screen size; it may be hidden on smaller screens. You can add menu items at the root level or use menu groups to introduce one level of nesting.
+- **`Secondary Menu`**: Found in the top-right area of the app, this menu allows you to add menu items (without menu groups) that will appear to the left of the User menu.
+- **`User Menu`**: Located at the top-right corner, this menu serves as the platform for various system actions like **`My profile`** or **`Logout`**. You can include menu items (without menu groups) that will be positioned above the **`Logout`** action.
 
-Then some components will provide some additional features to navigate through the
-app (like relationship fields that allow to jump to other records), but those are
-explained on each component.
+Certain components provide supplementary navigation features (e.g., relationship fields enabling the jump to other records). These features are explained within each respective component's documentation.
 
-## Menu item
+## **Menu item**
 
-Menu items point to a view in the app. When they are clicked the view will be rendered
-in the main content area.
+Menu items direct users to specific views within the app. When clicked, the associated view will be displayed in the main content area.
 
-Menu items have the following settings:
+Menu items possess the following configurable settings:
 
-- `View`: this is the view the menu item points to.
-- `Label`: the label to show in the menu. By default it will be the same as the label
-  of the view.
-- `Icon`: this is the icon. You can leave this empty if you don't want any icon.
-- `Expression`: Allows to add filtering expressions that will be added to the selected
-  view. This is useful to avoid to create different collection views for the same entity
-  when the difference between each view is just an expression that filter the data. Please
-  check the documentation for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html)
-  to know how to configure the filter.
+- **`View`**: This indicates the target view for the menu item.
+- **`Label`**: The text to display in the menu. The default value is the same as the view's label.
+- **`Icon`**: An optional icon for the menu item. Leave this field blank if no icon is desired.
+- **`Expression`**: This permits the addition of filtering expressions to the chosen view. This feature is valuable when different collection views for the same entity only differ in the filtering expression. Refer to the [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) documentation for guidance on filter configuration.
 
-In the case of record views you will be asked to enter a script to select the record
-to show in the view:
+For record views, you will be prompted to provide a script to select the record to be displayed in the view:
 
-{{< js_script_context context="recordViewMenuItemScript">}}
+##### Returns
 
-## Dynamic menu item
+**`string`** - The ID of the record to be showcased in the record view.
 
-Dynamic menu items contain a script that returns a list of menu entries. Each entry will be added to
-the menu in the position of the dynamic menu entry.
+##### Samples
 
-Dynamic menu items have the following settings:
+``` javascript
+// finds one record based on current user 
+var settings;
+if (sys.context.getCurrentUser().isPrimaryGroup('Testing')) {
+  settings = sys.data.findOne('settings', {type: 'test'});
+} else {
+  settings = sys.data.findOne('settings', {type: 'prod'});
+}
+return settings.id();
+```
+<br>
 
-- `Label`: the label to identify this menu item.
-- `Script`: this script has to return an array of menu items. It can use the app data to determine
-  which entries will be available and how they are defined, which means which views they point to, label, icon,
-  or additional options like filters.
-  {{< js_script_context context="dynamicMenuEntryScript">}}
+---
 
+## **Dynamic menu item**
 
-## Menu group
+Dynamic menu items are equipped with a script that generates a list of menu entries. Each entry will be incorporated into the menu at the position of the dynamic menu entry.
 
-Menu groups can hold menu items. This way you can group items that are related under one
-label in the menu.
+Dynamic menu items entail the subsequent settings:
 
-Menu groups have the following settings:
+- **`Label`**: This label serves as an identifier for the menu item.
+- **`Script`**: This script must yield an array of menu items. It can leverage app data to ascertain which entries will be accessible and their attributes. This includes information like the associated views, labels, icons, and additional options such as filters.
 
-- `Label`: the label to show in the menu.
-- `Icon`: this is the icon. You can leave this empty if you don't want any icon.
+  ##### Returns
 
-This only works for the main menu. 
+  **`object []`** - An array of menu items. Each item should encompass the following details:
+
+  - **`label`**: This label will be displayed in the menu.
+  - **`icon`**: The icon's name ([you can reference icon names here]({{<ref "/dev-reference/miscellaneous/icons.md">}})).
+  - **`view`**: The ID or name of the view to be loaded upon selecting the menu entry.
+  - **`filters`**: If the view supports filters, this is where you can define them. 
+
+  ##### Samples
+
+  ``` javascript
+  // returns a list of menu items that point to Companies view 
+  var menuEntries = [];
+  
+  //this entry shows only active companies
+  menuEntries.push({
+    label: 'Active Companies',
+    icon: 'account-circle',
+    view: 'companies',
+    filters: {
+      active: 'true'
+    }
+  });
+  
+  // this entry shows only inactive companies
+  menuEntries.push({
+    label: 'Inactive Companies',
+    icon: 'flower',
+    view: 'companies',
+    filters: {
+      active: 'false'
+    }
+  });
+  
+  // this entry shows all the companies (no filter applyed)
+  menuEntries.push({
+    label: 'All the Companies',
+    icon: 'case',
+    view: 'companies'
+  });
+  
+  return menuEntries;
+  
+  ```
+  <br>
+
+  ---
+
+## **Menu group**
+
+Menu groups offer the ability to contain multiple menu items, allowing you to logically group related items under a single label in the menu.
+
+Menu groups come with the following configuration options:
+
+- **`Label`**: The label to be displayed in the menu.
+- **`Icon`**: An optional icon. If you prefer not to have an icon, you can leave this field blank.
+
+It's important to note that this functionality is applicable solely to the main menu.
+
 

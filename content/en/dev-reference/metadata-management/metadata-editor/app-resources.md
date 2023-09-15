@@ -12,26 +12,30 @@ toc: true
 weight: 3
 ---
 
-## Navigation Tree 
+## **Navigation tree**
 
-On the left side of the app builder you will find a panel with the navigation tree. This tree is going to be the main way of navigating across all the metadata, and it's formed by nodes, folders and sub-nodes that represents all the different resources of your app.
+On the left side of the app builder, you'll discover a panel housing the navigation tree. This tree serves as the primary means of navigating through all your app's metadata. It consists of nodes, folders, and sub-nodes that represent the various resources within your app.
+
 {{< notes type="tip">}}
-Keyboard shortcut <b>alt + left arrow</b> will expand or collapse the left panel with the app resources.{{< /notes >}}
-
-## Interacting with the navigation tree
-Except of the root nodes, clicking on any other node in the tree will render a view in the central panel of the builder with the details and properties belonging to that specific resource. New nodes in the tree will be created, updated or deleted automatically after creating any new resource from the central panel or after updating/deleting an already existing one.
-
-{{< notes type="important">}}
-There are some resources that can <b>not</b> be deleted.
+Quickly expand or collapse the left panel with app resources using the keyboard shortcut <b>Alt + Left Arrow</b>.
 {{< /notes >}}
 
-## Basic structure
-The navigation tree has five root nodes that group all the rest of the resources: 
+## **Interacting with the navigation tree**
+
+With the exception of root nodes, clicking on any node in the tree will display a view in the builder's central panel. This view contains the details and properties associated with that specific resource. Whenever you create a new resource from the central panel or update/delete an existing one, the navigation tree will automatically create, update, or delete corresponding nodes.
+
+{{< notes type="important">}}
+Keep in mind that certain resources cannot be deleted.
+{{< /notes >}}
+
+## **Basic structure**
+
+The navigation tree boasts five root nodes that serve as containers for all other resources:
 
 - [App]({{<ref "/dev-reference/app/settings.md">}})
-- [Environment settings]({{<ref "/dev-reference/environment-settings/environment-var.md">}})
+- [Environment Settings]({{<ref "/dev-reference/environment-settings/environment-var.md">}})
 - [Model]({{<ref "/dev-reference/data-model-and-logic/entities.md">}})
 - [Security]({{<ref "/dev-reference/security/overview.md">}})
 - [User Interface]({{<ref "/dev-reference/user-interface/overview.md">}})
 
-Each one of those nodes are explained in detailed in a particular section of this documentation.
+Each of these nodes is comprehensively explained in a dedicated section of this documentation.

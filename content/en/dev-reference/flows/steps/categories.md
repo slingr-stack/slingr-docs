@@ -11,35 +11,34 @@ menu:
 toc: true
 weight: 85
 ---
-Translated to Markdown format:
 
-### Definition
+## **Definition**
 
-The steps are predefined components that fulfill specific functionalities. They are used in a flow to create code in a more graphic way, so you don't have to learn to code in any specific language. Instead, you just need to drag and drop the steps from the steps palette and into the canvas area, and then connect them by dragging a connector from a source step and dropping it into a target step. Steps are divided into categories where each category contains multiple steps. You can find the documentation for each step in the following pages.
+Steps are predefined components that serve specific functionalities. They are used in a flow to create code in a more graphical way, eliminating the need to learn any specific coding language. Instead, you simply need to drag and drop steps from the steps palette onto the canvas area and then connect them by dragging a connector from a source step to a target step. Steps are categorized, and documentation for each step can be found on the following pages.
 
-### Categories
+## **Categories**
 
-#### System
+### System
 
-The first category in which you can find steps is called "System". Here you will find the steps that will help you with the construction of your flow. For example, here you can find the logger step that logs something on the monitor of your application or the set var step that creates a new variable in the context. All the steps that you will find in this category are: start, end, logger, script, and set var. You can find the documentation for each of these steps in the following pages.
+The first category of steps is labeled "System". Here, you'll discover steps that aid in constructing your flow. For instance, you'll find the logger step, which logs information to your application's monitor, and the set var step, which creates a new variable in the context. The steps in this category include: start, end, logger, script, and set var. Documentation for each of these steps can be found on the following pages.
 
 ![System Steps](/images/vendor/flows/system_steps.png)
 
-#### Control
+### Control
 
-The second category is called "Control". Here you will find the steps that will allow you to work with structures well known in all programming languages and some more. All the steps that you will find in this category are: For Each, If, Subflow, Try-Catch, and While. You can find the documentation for each of these steps in the following pages.
+The second category, "Control", contains steps that allow you to work with structures commonly used in programming languages and more. The steps in this category include: For Each, If, Subflow, Try-Catch, and While. You can find the documentation for each of these steps on the following pages.
 
 ![Control Steps](/images/vendor/flows/control_steps.png)
 
-#### Data
+### Data
 
-The third category is called "Data". Here you will find the steps related to the data stored in your application. Here you will find some useful steps to search, create, delete, update records, and much more. All the steps that you will find in this category are: Create record, Delete Data, Delete Record, Execute Action on data, Execute Action on record, Execute Global Action, Fin Data, Find Record, Find Record by id, Save Record, and Update Record. You can find the documentation for each of these steps in the following pages.
+The third category, "Data", includes steps related to the data stored in your application. Here, you'll find useful steps for searching, creating, deleting, updating records, and more. The steps in this category comprise: Create record, Delete Data, Delete Record, Execute Action on data, Execute Action on record, Execute Global Action, Fin Data, Find Record, Find Record by id, Save Record, and Update Record. You can access the documentation for each of these steps on the following pages.
 
 ![Data Steps](/images/vendor/flows/data_steps.png)
 
-#### User Interface
+### User Interface
 
-The final category is called "User Interface". Here you will find the steps that will let you control how the UI of your application works. All the steps that you will find in this category are: Download File, Go Back, Go To View, Open Action, Open External Link, Reload, Show Message, Start Task, and Update task. You can find the documentation for each of these steps in the following pages.
+The final category, "User Interface", provides steps for controlling the functionality of your application's user interface. The steps in this category include: Download File, Go Back, Go To View, Open Action, Open External Link, Reload, Show Message, Start Task, and Update task. Detailed documentation for each of these steps can be found on the following pages.
 
 ![UI Steps](/images/vendor/flows/ui_steps.png)
 

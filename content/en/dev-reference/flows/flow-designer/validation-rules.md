@@ -11,18 +11,18 @@ menu:
 toc: true
 weight: 82
 ---
-There are some rules that must be followed to successfully save a flow. If one of these rules are not followed after pressing the `Apply` or `Save` button, you will get a validation error notification and changes won't be saved.
+Certain rules must be adhered to in order to successfully save a flow. If any of these rules are not followed after clicking the **`Apply`** or **`Save`** button, a validation error notification will appear, and the changes won't be saved.
 
-### Validation rules:
+## **Rules**
 
-- The flow **name** must be unique in the app.
-- Each step **name** must be unique in the flow.
-- `Start` step and at least one `End` step are mandatory.
-- `Start` step should be unique.
-- Inputs need to pass their own validation rules.
-- Outputs need to pass their own validation rules.
-- There can not be steps without any connection except for the `Context step` and expanded version of `subflows`.
-- Outside of group containers: every step except for `Start` and `End` steps should be source and target of at least one connection.
-- Inside of group containers: there can only be one step that is no target of a connection. This will be the initial step in the flow execution within the group.
+- The flow **`name`** must be unique within the app.
+- Each step **`name`** must be unique within the flow.
+- Both a **`Start`** step and at least one **`End`** step are mandatory.
+- The **`Start`** step should be unique.
+- Inputs must pass their respective validation rules.
+- Outputs must pass their respective validation rules.
+- There should be no steps without any connections except for the **`Context step`** and expanded versions of **`subflows`**.
+- Outside of group containers, every step, except for **`Start`** and **`End`** steps, should serve as the source and target of at least one connection.
+- Inside of group containers, only one step should not be the target of any connection. This step will be the initial step in the flow execution within the group.
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Endpoints Node SDK"
+title: "Node SDK"
 lead: "Node SDK to create endpoints."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -12,58 +12,50 @@ toc: true
 weight: 17
 ---
 
-This document will guide through the creation of an endpoint using the Node SDK and will provide details about the
-framework.
+## **Create your new endpoint project**
 
-## Create your new endpoint project
+To streamline the creation of a new endpoint, we offer a sample GitHub repository containing a skeleton endpoint. You can fork this repository to quickly access the common features most users require for their endpoints. Here's the URL for the repository: [Node.js Skeleton Endpoint](https://github.com/slingr-stack/skeleton-endpoint)
 
-In order to simplify the creation of a new endpoint, we have a sample endpoint in GitHub that you can
-fork and has the most common features people need in endpoints. This is the URL of this repository:
+While you can certainly start building your endpoint from scratch, utilizing the skeleton endpoint can expedite your setup process.
 
-[Nodejs Skeleton Endpoint](https://github.com/slingr-stack/skeleton-endpoint)
+## **Customize the skeleton template**
 
-Of course you can start from scratch and do everything yourself, but we think that using the skeleton
-endpoint will help you to quickly get up and running.
-
-## Customize the skeleton endpoint template
-
-If you used the skeleton endpoint, there are a few things you will want to adjust:
+If you've chosen to use the skeleton endpoint, there are a few adjustments you may want to make:
 
 ### package.json file
 
-The `package.json` contains a few things that you may want to modify:
+The **`package.json`** file contains several elements that you might need to modify:
 
-- `name`: This a human-readable name for your endpoint.
-- `version`: This is the version of your endpoint. You can leave `1.0.0` as this version has nothing
-  to do with the versions registered in Slingr, which uses the tags in your repository instead.
-- `description`: Description of your what this endpoint is about.
-- `scripts`: Here you can set scripts for execution of your endpoints or tests.
-- `keywords`: Here you can set some keywords related to your endpoint.
-  
+- **`name`**: This is a user-friendly name for your endpoint.
+- **`version`**: This indicates the version of your endpoint. You can leave it as **`1.0.0`** since this version isn't related to the versions registered in Slingr; Slingr employs the tags in your repository instead.
+- **`description`**: Provide a description for what this endpoint is all about.
+- **`scripts`**: This section allows you to set up execution scripts for your endpoints or tests.
+- **`keywords`**: You can specify keywords relevant to your endpoint here.
+
 ### Endpoint descriptor
 
-The file `endpoint.json` contains at least two fields that you will want to update:
+The **`endpoint.json`** file contains at least two fields that require updates:
 
-- `label`: this is the human-friendly name of the endpoint.
-- `name`: this is the internal name of the endpoint and must match the name you use to register the endpoint
-  in Slingr.
+- **`label`**: This is the user-friendly name of the endpoint.
+- **`name`**: This is the internal endpoint name, and it must correspond with the name you use to register the endpoint in Slingr.
 
-To understand the other settings, you want to take a look at [Endpoints features]({{site.baseurl}}/extensions-common-features.html).
+For a better understanding of the other settings, refer to the [Endpoints Features]({{<ref "/extending/extending-platform/common.md" >}}) section.
 
-### Reading configuration
+### Accessing configuration settings
 
-You can access the endpoint configuration like this (always inside a function):
+You can access the endpoint configuration using the following code snippet (always within a function):
 
 ```js
 endpoint.functions.someFunction = (endpointRequest) => {
     const configs = endpoint.endpointConfig;
     //your code...
 } 
-``` 
+```
+<br>
 
 ### Hooks
 
-There are a few hooks in endpoints that you can use to perform some initializations or clean up.
+Endpoints provide a variety of hooks that allow you to execute initializations or perform cleanup tasks.
 
 ```js
 endpoint.hooks.onConfigurationReady = () => {
@@ -78,15 +70,16 @@ endpoint.hooks.onWebServicesReady = () => {
 endpoint.hooks.onEndpointStart = () => {
     //Some code here...
 }
-//This one receives a 'cause' parameter wich is the 'code' of the process.on('beforeExit') event
+//This one receives a 'cause' parameter which is the 'code' of the process.on('beforeExit') event
 endpoint.hooks.onEndpointStop = (cause) => {
     //Some code here...
 }
 ```
+<br>
 
 ### Functions
 
-To implement a function that is defined in the `endpoint.json` file, you should do the following:
+To implement a function defined in the **`endpoint.json`** file, follow these steps:
 
 ```js
 endpoint.functions.yourFunctionName = (endpointRequest) => {
@@ -95,13 +88,13 @@ endpoint.functions.yourFunctionName = (endpointRequest) => {
     return { someInfo: 'someValue'}
 }
 ``` 
-Endpoint functions will get a request parameter that includes the parameters sent to the function (among other info). 
-You must always return a `Json` object with the response. 
+<br>
+
+When implementing an endpoint function, it will receive a request parameter containing the function's parameters along with other relevant information. Remember, it's essential to always return a **`Json`** object as a response.
 
 ### Events
 
-You can send events to the app using the events' property of the endpoint.
-You can send an async event, or a sync one if you expect a response from the app:
+Sending events to the app is accomplished through the use of the **`events`** property within the endpoint. Depending on your requirements, you can dispatch either an asynchronous event or a synchronous event if you anticipate a response from the app:
 
 ```js
 endpoint.functions.fnThatSendsAsyncEvent = (endpointRequest) => {
@@ -117,17 +110,17 @@ endpoint.functions.fnThatSendsSyncEvent = (endpointRequest) => {
     //Do something with that response...
 }
 ```
+<br>
 
-Keep in mind that the `'someEventName'` should be defined in your `endpoint.json` file, under the `events` property. 
-The `data` argument will be the data you want to receive on the event.
-Finally, `requestId` will be the request id which can be retrieved from the request parameter on the defined function like shown above.
+**Note:** Ensure that the event named **`'someEventName'`** is specified within your **`endpoint.json`** file under the **`events`** property. The **`data`** argument within the event will carry the data you intend to receive.
+
+Additionally, the **`requestId`** parameter, as illustrated in the previous example, can be obtained from the request parameter defined in the respective function.
 
 ### Data stores
 
-If you endpoint needs to persist information, data stores are available for endpoints. They need to be defined in the 
-`endpoint.json` file and then you can use them in the endpoint.
+For endpoints requiring persistent data storage, data stores are at your disposal. Definition of these stores takes place within the **`endpoint.json`** file, enabling their subsequent utilization within the endpoint.
 
-The available methods to access the various datastores are the following:
+The subsequent methods offer access to the various data stores:
 
 ```js
 endpoints.functions.someFunction = async () => {
@@ -148,12 +141,13 @@ endpoints.functions.someFunction = async () => {
     endpoints.dataStores.someDataStore.count(filter);
 }
 ```
-You can either `await` the response or use the `then()` block depending on your needs.
+<br>
 
-### Webservices
+You have the option to either **`await`** the response or employ the **`then()`** block, depending on your specific requirements.
 
-If you want your endpoint to receive calls over HTTP, you can define them with the `webServices` property. You must define it
-as an object which will contain the `method`, `path` and `handler` of the webservice:
+### Web services
+
+To enable your endpoint to accept HTTP calls, you can specify these calls using the **`webServices`** property. It's essential to define this property as an object containing the webservice's **`method`**, **`path`**, and **`handler`**:
 
 ```js
 endpoint.webServices.nameForYourWebService = {
@@ -166,24 +160,26 @@ endpoint.webServices.nameForYourWebService = {
     }
 }
 ```
+<br>
 
-Given the above example, the following URL will be available and listening to requests:
+Taking the provided example into account, the subsequent URL will be operational and responsive to incoming requests:
 
 ```
 POST https://<yourAppName>.slingrs.io/<env>/endpoints/<endpointName>
 ```
+<br>
 
-When that URL is called, the handler will be invoked.
+Upon invoking this URL, the associated handler will be triggered.
 
-{% include callout.html content="You should always add some kind of verification (like a token) to avoid anyone calling your endpoints." type="warning" %} 
+{{< callout type="warning" contend="" >}}
+To ensure secure access to your endpoints, it's advisable to incorporate a form of verification, such as a token. This measure helps prevent unauthorized calls to your endpoints.
+{{< /callout >}} 
 
-### Handling files
+### File handling
 
-It is possible to upload and download files to/from the app using the utilities in the property `files`.
-If you want to handle the processing in a sync or async way, you will need to either `await` the service, or handle the 
-response in the `then()` block and send an event to the platform.
+The app provides utilities within the **`files`** property to facilitate the uploading and downloading of files. Depending on whether you intend to process these actions synchronously or asynchronously, you can either **`await`** the service or manage the response within the **`then()`** block. Subsequently, you can dispatch an event to the platform.
 
-Both scenarios are shown below:
+Both scenarios are illustrated below:
 
 ```js
 endpoint.functions.asyncDownloadFileFromEndpoint = async (endpointRequest) => {
@@ -247,12 +243,15 @@ endpoint.functions.uploadFileAsyncFromEndpoint = (endpointRequest) => {
     return { msg: 'A file will be downloaded and then uploaded to the platform. This processing will be made asynchronously. An event will be fired when the download/upload is complete.' }
 };
 ```
+<br>
 
-{% include important.html content="Remember that the events must be defined in the **`endpoint.json`** file, and if you are using callbacks, also in the function's callbacks array property."%}
+{{< callout type="warning" contend="" >}}
+Remember that the events must be defined in the **`endpoint.json`** file, and if you are using callbacks, also in the function's callbacks array property."
+{{< /callout >}}
 
 ### Logging
 
-It is possible to send logs to the app from your endpoint using the `AppLogs`:
+You can transmit logs from your endpoint to the app using **`AppLogs`**:
 
 ```js
 endpoint.functions.someFunctionThatLogs = (endpointRequest) => {
@@ -262,9 +261,9 @@ endpoint.functions.someFunctionThatLogs = (endpointRequest) => {
     endpoint.appLogger.error('Function executed!')
 }
 ```
+<br>
 
-You can send additional information that will be displayed when you click on `More Info` in the log in the app monitor by sending
-a second parameter to the appLogger functions like this:
+To include supplementary information that will be viewable upon clicking **`More Info`** within the app monitor logs, provide a second parameter to the **`appLogger`** functions in the following manner:
 
 ```js
 endpoint.functions.someFunctionThatLogs = (endpointRequest) => {
@@ -274,28 +273,26 @@ endpoint.functions.someFunctionThatLogs = (endpointRequest) => {
     endpoint.appLogger.error('Function executed!',someObjectOrMessage)
 }
 ```
+<br>
 
-*Debug logs will only be shown in dev and staging environments monitor.*
+**Note:** Debug logs will exclusively appear within development and staging environment monitors.
 
-## Creating a proxy endpoint
+## **Establishing a proxy endpoint**
 
-Before you can run your endpoint locally, you should set up a proxy endpoint in the app you will be using to test
-the development of your endpoint. You can find more information about this in [Create your own endpoints]({{site.baseurl}}/extensions-create-your-own-endpoints.html).
+Before you can initiate the local execution of your endpoint, it's essential to configure a proxy endpoint within the app you intend to use for testing your endpoint's development. For detailed guidance, refer to [Create Your Own Endpoints]({{<ref "/extending/extending-platform/create_your_own.md" >}}).
 
-When you add a new `Proxy endpoint` to you app, you will be asked to enter the `Endpoint URI` in the configuration. We
-recommend to use [ngrok](https://ngrok.com/) instead of opening a port in your router. With `ngrok` you can set up
-a URI like this:
+Upon adding a new **`Proxy endpoint`** to your app, you will be prompted to input the **`Endpoint URI`** within the configuration. We recommend utilizing [ngrok](https://ngrok.com/) in lieu of opening a port on your router. Through **`ngrok`**, you can configure a URI as demonstrated below:
 
 ```
 ./ngrok http 10000
 ```
+<br>
 
-This will give you an HTTP and HTTPS URL. We recommend using the HTTPS URL, so copy it into the configuration of
-your endpoint.
+This will provide both an HTTP and an HTTPS URL. Opt for the HTTPS URL, as it's more secure. Copy this HTTPS URL into your endpoint's configuration.
 
-Regarding the token we recommend to leave the autogenerated token, except that you have a reason not to do that.
+Regarding the token, we advise retaining the automatically generated token, unless you possess a specific reason to opt otherwise.
 
-Once you create the endpoint, you will see the configuration below, something like this:
+Upon creating the endpoint, you will encounter a configuration similar to the example below:
 
 ```
 _endpoint_name=proxy
@@ -312,10 +309,11 @@ _endpoints_services_api=https://yourtestapp.slingrs.io/dev/endpoints/proxy/api
 _token=91833a8b-929f-4eab-b7b4-2383c10cd629
 _endpoint_config={}
 ```
+<br>
 
-You should copy this configuration to `.env` file. Keep in mind that the last property, `_endpoint_config`,
-should have a valid JSON with the config of your endpoint, so you might want to override that. 
-If you used the skeleton endpoint you should have something like this:
+You should duplicate this configuration and place it within your **`.env`** file. Remember, the final property, **`_endpoint_config`**, necessitates a valid JSON containing your endpoint's configuration. Thus, you might need to customize this aspect.
+
+If you've employed the skeleton endpoint, your configuration might resemble the following:
 
 ```
 _endpoint_name=proxy
@@ -332,55 +330,60 @@ _endpoints_services_api=https://yourtestapp.slingrs.io/dev/endpoints/proxy/api
 _token=91833a8b-929f-4eab-b7b4-2383c10cd629
 _endpoint_config={"token":"123456"}
 ``` 
+<br>
 
-Keep in mind that `.env` is only used when you run the endpoint locally, but it does not affect the endpoint when running on the cloud because endpoint config is passed in another way.
+Please note that the **`.env`** file is only relevant when running the endpoint locally. It doesn't impact the endpoint's behavior when operating in the cloud, as the endpoint configuration is conveyed through a different mechanism.
 
-*If you need, you can have multiple `.env` for different environments or setups. For example, you could have additional `.staging.env` or `.myCustomEnv.env` files. In this case, you should execute your endpoint setting the `NODE_ENV` environment variable to match the name of the file. [Here it's how set env variables in different OSs and terminals](https://stackoverflow.com/a/9204973).
-By default, the `.env` file is loaded.*
+*Should the need arise, you can maintain multiple **`.env`** files for distinct environments or setups. For instance, you could incorporate supplementary files like **`.staging.env`** or **`.myCustomEnv.env`**. In such scenarios, you must run your endpoint with the **`NODE_ENV`** environment variable aligned with the respective file's name. For guidance on setting environment variables across various operating systems and terminals, refer to [this resource](https://stackoverflow.com/a/9204973). By default, the **`.env`** file is loaded.*
 
-Once you have created the proxy endpoint in your app, remember to push changes to initialize it.
+Once you have established the proxy endpoint within your app, remember to commit and push changes to initiate the setup.
 
-## Running your endpoint
+## **Executing your endpoint**
 
-Before running your endpoint, make sure that install all the dependencies:
+Before you execute your endpoint, ensure that you have installed all the required dependencies:
 
 ```
 cd ENDPOINT_FOLDER
 npm install
 ```
+<br>
 
-Then you can run your endpoint from the command line or using your IDE:
+Following this, you can proceed to run your endpoint either from the command line or through your integrated development environment (IDE):
 
 ```
 node endpoint.js
 ```
+<br>
+
 or
+
 ```
 npm start
 ```
-Or you can customize your own start script from the `package.json` file.
+<br> 
 
-## Testing that your endpoint is working
+Alternatively, you have the option to create a personalized start script within the **`package.json`** file.
 
-Now that the endpoint is running and the proxy endpoint is set up, we can do a quick test to verify everything
-is working. In order to do that execute the following code in your builder or monitor console:
+## **Testing the functionality of your endpoint**
+
+With your endpoint operational and the proxy endpoint configured, it's prudent to conduct a swift test to ensure all components are functioning as intended. To execute this test, implement the provided code within your builder or monitor console:
 
 ```js
 var res = app.endpoints.proxy.randomNumber({});
 log('res: '+JSON.stringify(res));
 ``` 
+<br>
 
-You should see an output like this:
+Upon execution, you should observe an output resembling the following:
 
 ```
 res: {"number":5560} 
 ```
+<br>
 
-We are assuming that you are using the skeleton endpoint template where this method is available. Otherwise,
-you should call a method that exists in your endpoint.
+Please note that we are making the assumption that you are utilizing the skeleton endpoint template, where this method is readily accessible. In case you are employing a different template, make sure to invoke a method that exists within your endpoint.
 
-## More samples
+## **Additional examples**
 
-There are dozens of endpoints already developed for the Slingr platform. You can [take a look at them](https://github.com/slingr-stack) to see
-more features in the endpoints' framework:
+The Slingr platform boasts an array of pre-developed endpoints, providing numerous features within the endpoint framework. To explore further functionalities within the endpoint framework, consider browsing through [this repository](https://github.com/slingr-stack).
 

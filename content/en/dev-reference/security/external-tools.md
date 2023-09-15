@@ -12,21 +12,18 @@ toc: true
 weight: 42
 ---
 
-## LastPass
+## **LastPass**
 
-LastPass is a password manager that stores encrypted passwords online. LastPass comes with a web interface, but also 
-includes plugins for various web browsers and apps for many smartphones.
+LastPass is a secure password manager designed to store encrypted passwords online. It offers a web interface and plugins for various web browsers, as well as mobile apps for smartphones.
 
-> There are cases where the application performance can be affected by external factors and here we try to give you some advice.
+👉 Sometimes, external factors can impact the performance of your application. Here are some tips to consider:
 
-If you are using the LastPass extension in Chrome and notice that the performance is not good you can:
+If you're using the LastPass extension on Chrome and notice performance issues, you can try the following steps:
 
-1. Go to edit the settings for your site by clicking on the LastPass plugin in the upper right corner and then 
-   clicking on the edit pen icon. Then expand the advanced settings tab and check disable autofill. Save the changes 
-   and reload the page.
+1. **`Adjust Site Settings`**: Access the LastPass plugin in the upper right corner, then click the edit pen icon for your site. Go to the advanced settings tab and disable the autofill feature. Save the changes and refresh the page.
 
-2. Right-clicking on the LastPass extension icon go to options. Then select the notifications tab and deselect 
-   "Show autofill icon in fields" and "Show notifications via browser toolbar icon". Save the changes and restart the browser.
-   
-3. If the problems persist after the previous configurations. Disable the LastPass extension. In Chrome go to 
-   "More tools" and then "Extensions". Deactivate the LastPass extension.
+2. **`Modify Extension Options`**: Right-click the LastPass extension icon and select "Options." Navigate to the notifications tab and uncheck "Show autofill icon in fields" and "Show notifications via browser toolbar icon." Save the changes and restart your browser.
+
+3. **T`emporarily Disable Extension`**: If the performance problems persist, consider disabling the LastPass extension. In Chrome, click "More tools," then "Extensions." Deactivate the LastPass extension.
+
+By implementing these steps, you may be able to enhance the performance of your application when using the LastPass extension.

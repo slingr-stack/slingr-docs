@@ -12,25 +12,24 @@ toc: true
 weight: 147
 ---
 
-In the dashboard of the app monitor you can take a quick look at the status of your app. By default it
-will show what happened in the last hour, but you can change that to span a longer period of time.
+In the App Monitor's dashboard, you can quickly assess the status of your app. By default, it displays activity from the last hour, but you have the flexibility to adjust the time frame to cover a longer period.
 
-There you will see:
+Here, you'll find the following key metrics:
 
-- `API Calls`: this is the number of API calls. It is an important indicator to make sure nothing odd is
-  going on. For example if you see that the number of API calls is dropped suddenly it probably means there
-  is something wrong. The same if they spike.
-- `Response time`: this information will show what's the response time of the app to API calls. If this
-  number grows and stays high persistently, you probably need to add more instances to your app to take it
-  to an acceptable value.
-- `Jobs queue`: indicates how much time jobs have been waiting for execution. If this number goes up and
-  it stays high, you might need to add more instances to your app.
-- `Database`: here you can quickly see the total size used in your database. Useful in case you are close
-  to the limit and you need to upgrade your database.
-- `Errors`: the number of error found in the logs in the specified period of time.
-- `Active users`: the number of active users in your app in the specified period of time.
-- `Storage`: how many keys you have in your app storage.
-- `Integrations`: here you can see the status of each of your endpoints with the number of events and
-  functions processed and discarded. If you don't see any activity in your endpoint, it probably means
-  there is an issue there.  
+- **`API Calls`**: This metric reflects the number of API calls made, serving as an essential indicator to identify any anomalies. A sudden drop or spike in API calls may indicate issues that require attention.
+
+- **`Response Time`**: This metric provides insight into your app's response time to API calls. If this value consistently increases and remains high, it may signal the need to scale your app by adding more instances to maintain an acceptable response time.
+
+- **`Jobs Queue`**: This metric measures the time jobs have spent waiting for execution. An increasing and consistently high value here may suggest the need to scale your app by adding more instances to process jobs efficiently.
+
+- **`Database`**: This metric offers a quick overview of the total database storage utilized. It's particularly valuable if you're approaching your storage limit and considering an upgrade.
+
+- **`Errors`**: This metric indicates the number of errors detected in the logs during the specified time frame.
+
+- **`Active Users`**: Here, you can find the count of active users within your app during the specified time period.
+
+- **`Storage`**: This metric shows the number of keys stored in your app's storage.
+
+- **`Integrations`**: In this section, you can assess the status of each of your legacy services, along with the number of events and functions processed and discarded. If you observe no activity in your legacy services, it may indicate underlying issues that require investigation.
+
 

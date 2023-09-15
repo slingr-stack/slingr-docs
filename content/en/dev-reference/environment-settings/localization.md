@@ -1,6 +1,6 @@
 ---
 title: "Localization"
-lead: "Explanation of localization settings by environment."
+lead: "App Localization Settings"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -12,14 +12,16 @@ toc: true
 weight: 20
 ---
 
-These are global settings of the app found in the app builder under `Environment settings > Localization`.
+These are comprehensive app-wide settings found within the app builder under **`Environment Settings > Localization`**.
 
-- `Timezone`: the default timezone of the app. This will be used if there isn't a user associated
-  to the current execution context (for example an event arrives from a global endpoint, where 
-  no user triggers that event). It is also used for defaults for timezone of time listeners, however
-  it can be changed.
-- `Language`: the default language for the app. Take into account that if the app is not correctly
-  internationalized you will see a mix of languages.
-  
-Keep in mind that users can configure their localization settings in their profile and those
-will override the app localization settings.
+## **Timezone**
+
+The **`Timezone`** setting designates the default timezone for the app. This default timezone is utilized in scenarios where no user is associated with the ongoing execution context. For instance, if an event originates from a global legacy service without a specific user triggering it, the default timezone is applied. Moreover, it serves as the default for time listeners, although this can be modified.
+
+## **Language**
+
+The **`Language`** setting establishes the default language for the app. It's important to note that if the app isn't appropriately internationalized, you might encounter a mixture of languages within the interface.
+
+{{< notes type="tip">}}
+It's worth highlighting that users possess the ability to configure their own localization preferences within their profiles. These individual settings will supersede the app-wide localization settings.
+{{< /notes >}}

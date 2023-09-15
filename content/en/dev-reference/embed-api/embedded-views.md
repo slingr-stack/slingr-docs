@@ -11,24 +11,26 @@ menu:
 toc: true
 weight: 144
 ---
-## Embedded views using private tokens
 
-In case authentication is required then the token needs to be obtained from the `REST API` and set it to the `iframe` that will
-embed the view.   
+## **Using private tokens**
 
-Views can be embedded in external web sites through `iframes`. In order to embed a view the following URL can be used:
+If authentication is required, you need to obtain a token from the **`REST API`** and set it within the **`iframe`** that will embed the view.
 
-```javascript
+Views can be embedded in external websites through **`iframes`**. To embed a view, you can use the following URL:
+
+```
 {app}.slingrs.io/{env}/runtime/#views/embed/{viewId}
 ```
+<br>
 
-or in case entity views the `recordId` parameter needs to be set:
+For entity views, you need to set the **`recordId`** parameter:
 
-```javascript
+```
 {app}.slingrs.io/{env}/runtime/#views/embed/{viewId}?recordId={recordId}`
 ```
+<br>
 
-When a page is loaded it requires the token that should be send using windows messages as
+When a page is loaded, it requires the token, which should be sent using window messages as follows:
 
 ```javascript
 window.postMessage({
@@ -36,9 +38,9 @@ window.postMessage({
     token: 'XwY8XPh6sQUDLmuhzDcdJd6bSMuEAHo0'
 }, '*');
 ```
+<br>
 
-When token expired the page should require the token send a message for `auth:requestLogin`. As you can see in the following
-example you can listen it to process the login
+When the token expires, the page will request the token by sending a message for **`auth:requestLogin`**. You can listen for this message to process the login.
 
 ```javascript
 window.addEventListener('message', function (event) {
@@ -54,18 +56,19 @@ window.addEventListener('message', function (event) {
    }
 });
 ``` 
+<br>
+<br>
 
-> Some times the `postMessage` should be sent to proper embed container. Check the documentation of your web content system (`Squarespace`, `Wix`, etc.)
+> Sometimes, the **`postMessage`** should be sent to the proper embed container. Refer to the documentation of your web content system, such as **`Squarespace`** or **`Wix`**, for more details.
 
+## **Using API tokens**
 
-## Embedded views using API tokens
-
-In this case authentication is not required. API tokens require to be already generated and they provide access to the `REST API`.
-[See more information about the API tokens here]({{site.baseurl}}/app-development-environment-api-tokens.html).
+In this case, authentication is not required. API tokens should already be generated, and they provide access to the **`REST API`**. [For more information about API tokens, see here]({{<ref "/dev-reference/environment-settings/api-tokens.md">}}).
 
 You can embed views with API tokens by setting up the URL like this:
 
 ```javascript
 {app}.slingrs.io/{env}/runtime/#views/embed/{viewId}?token={apiTokenKey}`
 ```
+<br>
 

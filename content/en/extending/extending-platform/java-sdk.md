@@ -1,5 +1,5 @@
 ---
-title: "Endpoints Java SDK"
+title: "Java SDK"
 lead: "Java SDK to create endpoints."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -11,79 +11,68 @@ menu:
 toc: true
 weight: 16
 ---
-This document will guide through the creation of an endpoint using the Java SDK and will provide details about the
-framework.
+This document will guide through the creation of an endpoint using the Java SDK and will provide details about the framework.
 
-## Create your new endpoint project
+## **Crate your new endpoint project**
 
-In order to simplify the creation of a new endpoint, we have a skeleton endpoint in GitHub that you can
-fork and has the most common features people need in endpoints. [You can find the repository here](https://github.com/slingr-stack/skeleton-endpoint)
+To simplify the creation of a new endpoint, we provide a skeleton endpoint on GitHub. You can fork this repository, which contains the common features required for most endpoints. [Visit the repository here](https://github.com/slingr-stack/skeleton-endpoint).
 
-You can also take a look at some sample endpoints that we have that showcase the features available in
-the integrations framework of Slingr:
+You can also explore our sample endpoints to understand the features available in the Slingr integrations framework:
 
-- [Sample endpoint](https://github.com/slingr-stack/sample-endpoint)
-- [Sample user endpoint](https://github.com/slingr-stack/sample-user-endpoint)
-- [Sample complex endpoint](https://github.com/slingr-stack/sample-complex-endpoint)
+- [Sample Endpoint](https://github.com/slingr-stack/sample-endpoint)
+- [Sample User Endpoint](https://github.com/slingr-stack/sample-user-endpoint)
+- [Sample Complex Endpoint](https://github.com/slingr-stack/sample-complex-endpoint)
 
-Another interesting endpoint to look at is the [HTTP endpoint](https://github.com/slingr-stack/http-endpoint) because 
-most endpoints will work with HTTP REST API, and the basic features are in this endpoint. You can see other endpoints 
-like the one for [Sparkpost](https://github.com/slingr-stack/sparkpost-endpoint) that make usage of these features.
+Additionally, take a look at the [HTTP Endpoint](https://github.com/slingr-stack/http-endpoint) since most endpoints interact with HTTP REST APIs, and this endpoint covers the basic features. You can also see how endpoints like [Sparkpost](https://github.com/slingr-stack/sparkpost-endpoint) utilize these features.
 
-Of course you can start from scratch and do everything yourself, but we think that using the skeleton
-endpoint will help you to quickly get up and running.
+While you can start from scratch, we recommend using the skeleton endpoint to get up and running quickly.
 
-## Customize the skeleton endpoint template
+## **Customize the skeleton template**
 
-If you used the skeleton endpoint, there are a few things you will want to adjust:
+If you've used the skeleton endpoint, there are a few adjustments you might want to make:
 
 ### POM file
 
-The `pom.xml` contains a few things that you will likely want to adjust:
+The **`pom.xml`** contains several elements you might want to adjust:
 
-- `groupId`: this is the group for your endpoint. You might have a group defined for your company.
-- `artifactId`: this is usually the name of your endpoint for Maven.
-- `version`: this is the version of your endpoint. You can leave `1.0-SNAPSHOT` as this version has nothing
-  to do with the versions registered in Slingr, which uses the tags in your repository instead.
-- `name`: this a human-readable name for your endpoint.
-- `properties > build.main-class`: if you change the package where the main class `io.sliongr.endpoints.skeleton.SkeletonEndpoiont`
-  (that you probably do), you need to update it so the packages matches (however leave `Runner` as the class). So let's
-  suppose that the main class of your endpoint is `yourcompany.endpoints.LegacyEndpoint`, then should should update
-  this value to `yourcompany.endpoints.Runner`. This is very important to get right.
-  
+- **`groupId`**: This specifies your endpoint's group, which could be your company's group.
+- **`artifactId`**: This typically represents your endpoint's name for Maven.
+- **`version`**: This is your endpoint's version. You can leave it as **`1.0-SNAPSHOT`** since Slingr uses repository tags for versioning.
+- **`name`**: This is a human-readable name for your endpoint.
+- **`properties > build.main-class`**: If you modify the package of the main class **`io.sliongr.endpoints.skeleton.SkeletonLegacyService`** (which you probably will), update it to match the package (except for the class **`Runner`**). For example, if your endpoint's main class is **`yourcompany.endpoints.LegacyEndpoint`**, update it to **`yourcompany.endpoints.Runner`**.
+
 ### Endpoint descriptor
 
-The file `endpoint.json` contains at least two fields that you will want to update:
+The **`endpoint.json`** file has at least two fields to update:
 
-- `label`: this is the human-friendly name of the endpoint.
-- `name`: this is the internal name of the endpoint and must match the name you use to register the endpoint
-  in Slingr.
+- **`label`**: This is a user-friendly endpoint name.
+- **`name`**: This is the internal endpoint name used for registration in Slingr.
 
-To understand the other settings, you want to take a look at [Endpoints features]({{site.baseurl}}/extensions-common-features.html).
+For other settings, refer to the [Endpoint Features documentation]({{<ref "/extending/extending-platform/common.md" >}}).
 
 ### Main class name
 
-You probably want to rename and change the package of the class `io.slingr.endpoints.skeleton.SkeletonEndpoint`. This
-is the main class of your endpoint.
+You'll likely want to rename and repackage the **`io.slingr.endpoints.skeleton.SkeletonEndpoint`** class, which is your endpoint's main class.
 
-Also, you will need to update the endpoint name in the `@SlingrEndpoint` annotation:
+Additionally, update the **`@SlingrEndpoint`** annotation:
 
 ```java
 @SlingrEndpoint(name = "name")
 public class SkeletonEndpoint extends Endpoint {
 }
 ```
+<br>
 
-This name needs to match to the name in `endpoints.json`.
+Ensure that this name matches the corresponding entry in **`endpoints.json`**.
 
-### Reading configuration
+## **Reading configuration**
 
-There are to ways to read the configuration from the endpoint:
+There are two ways to retrieve configuration settings from the endpoint:
 
 - Define individual fields
-- Access the whole configuration using a `Json` object
+- Access the entire configuration using a `Json` object
 
-You can define individual variables like this (in the class marked with `@SlingrEndpoint`):
+To define individual variables, follow this syntax within the class annotated with `@SlingrEndpoint`:
 
 ```java
 @SlingrEndpoint(name = "name")
@@ -92,12 +81,11 @@ public class SkeletonEndpoint extends Endpoint {
     private String token;    
 }
 ```
+<br>
 
-That will put the value of the configuration property `token` in the variable `token`. As you can see, by 
-convention the name of the variable is the name of the field, but you can change it using the attribute 
-`name` in the annotation `@EndpointProperty`.
+To store the value of the configuration property **`token`**, assign it to the variable **`token`**. Conventionally, the variable name matches the field name. However, you can customize it using the **`name`** attribute within the **`@EndpointProperty`** annotation.
 
-Also, you can use the annotation `@EndpointConfiguration` like this:
+Additionally, you have the option to utilize the **`@EndpointConfiguration`** annotation in the following manner:
 
 ```java
 @SlingrEndpoint(name = "name")
@@ -111,10 +99,11 @@ public class SkeletonEndpoint extends Endpoint {
     }    
 }
 ``` 
+<br>
 
 ### Hooks
 
-There are a few hooks in endpoints that you can use to perform some initialzation or clean up.
+Within endpoints, several hooks are available for executing initialization or cleanup tasks.
 
 ```java
 @SlingrEndpoint(name = "name")
@@ -145,11 +134,12 @@ public class SkeletonEndpoint extends Endpoint {
     }
 }
 ```
+<br>
 
 ### Functions
 
-In order to implement a function that is defined in the `endpoint.json` file, you should use the annotation
-`@SlingrFunction`:
+To implement a function defined in the **`endpoint.json`** file, employ the **`@SlingrFunction`** annotation:
+
 
 ```java
 @SlingrEndpoint(name = "sample")
@@ -168,13 +158,13 @@ public class SampleEndpoint extends Endpoint {
     
 }
 ``` 
+<br>
 
-As you can see, you will get a `Json` argument with the parameters sent to the function. Then, your function
-should return a `Json` object with the response. 
+Upon usage, your function will receive a **`Json`** argument containing the parameters sent to the function. Your function is expected to return a **`Json`** object as the response.
 
 ### Events
 
-You can send events to the app using the `Events` interface, that you can access through the `events()` method:
+Utilize the **`Events`** interface to dispatch events to the app, which can be accessed through the **`events()`** method:
 
 ```java
 @SlingrEndpoint(name = "sample")
@@ -188,11 +178,11 @@ public class SampleEndpoint extends Endpoint {
     
 }
 ```
+<br>
 
-In this case keep in mind that the event `inboundEvent` should be defined in your `endpoint.json` descriptor.
+Note that the event **`inboundEvent`** must be defined in your **`endpoint.json`** descriptor.
 
-Events sent using `send()` are asynchronous. If you want to wait for a response from the app, you will need to
-use `sendSync()`:
+When dispatching events using **`send()`**, it's important to note that the process is asynchronous. If you require a response from the app and wish to wait for it, employ **`sendSync()`** instead:
 
 ```java
 @SlingrEndpoint(name = "sample")
@@ -207,14 +197,13 @@ public class SampleEndpoint extends Endpoint {
 
 }
 ``` 
+<br>
 
-Keep in mind that in this case, in order to get a response, the listener in the app should use the keyword
-`return` to return the response.
+Remember that, in this scenario, to obtain a response, the listener in the app should utilize the keyword **`return`** to send back the desired response.
 
 ### Data stores
 
-If you endpoint needs to persist information, data stores are available for endpoints. They need to be defined
-it descriptor file and then you can use them in the endpoint:
+For endpoints requiring data persistence, data stores are accessible. These stores should be defined in the descriptor file, after which they can be utilized within the endpoint:
 
 ```java
 @SlingrEndpoint(name = "sample")
@@ -241,7 +230,7 @@ public class SampleEndpoint extends Endpoint {
 
 ### Webhooks
 
-If you want your endpoint to receive calls over HTTP, you can easily do that with the annotation `@EndpointWebService`:
+To enable your endpoint to receive HTTP calls, you can achieve this effortlessly by using the **`@EndpointWebService`** annotation:
 
 ```java
 @SlingrEndpoint(name = "sample")
@@ -261,6 +250,7 @@ public class SampleEndpoint extends Endpoint {
 
 }
 ```
+<br>
 
 Given the above sample, the following URLs will be available:
 
@@ -268,10 +258,13 @@ Given the above sample, the following URLs will be available:
 POST https://<yourAppName>.slingrs.io/<env>/endpoints/<endpointName>
 POST https://<yourAppName>.slingrs.io/<env>/endpoints/<endpointName>/orders
 ```
+<br>
 
 When those URLs are called, those methods will be invoked.
 
-{% include callout.html content="You should always add some kind of verification (like a token) to avoid anyone calling your endpoints." type="warning" %} 
+{{< callout type="warning" contend="" >}}
+You should always add some kind of verification (like a token) to avoid anyone calling your endpoints.
+{{< /callout >}}
 
 ### Handling files
 
@@ -298,10 +291,11 @@ public class SampleEndpoint extends Endpoint {
     }
 }
 ```
+<br>
 
 ### Logging
 
-It is possible to send logs to the app from your endpoint using the `AppLogs`:
+It is possible to send logs to the app from your endpoint using the **`AppLogs`**:
 
 ```java
 @SlingrEndpoint(name = "sample")
@@ -326,30 +320,26 @@ public class SampleEndpoint extends Endpoint {
 
 }
 ```
+<br>
 
-You can send a message as well sending additional information that will be displayed when you click
-on `More Info` in the log in the app monitor.
+In addition to sending a message, you have the option to include supplementary information that will be viewable by clicking on **`More Info`** within the app monitor log.
 
-## Creating a proxy endpoint
+## **Setting up a proxy endpoint**
 
-Before you can run your endpoint locally, you should setup a proxy endpoint in the app you will be using to test
-the development of your endpoint. You can find more information about this in [Create your own endpoints]({{site.baseurl}}/extensions-create-your-own-endpoints.html).
+Before proceeding to run your endpoint locally, it's essential to configure a proxy endpoint in the app you intend to use for testing your endpoint's development. Further details about this can be found in the guide: [Create your own endpoints]({{<ref "/extending/extending-platform/create_your_own.md" >}}).
 
-When you add a new `Proxy endpoint` to you app, you will be asked to enter the `Endpoint URI` in the configuration. We
-recommend to use [ngrok](https://ngrok.com/) instead of opening a port in your router. With `ngrok` you can setup
-a URI like this:
+Upon adding a new **`Proxy endpoint`** to your app, you will be prompted to provide the **`Endpoint URI`** in the configuration. We recommend employing [ngrok](https://ngrok.com/) as an alternative to opening a port on your router. With **`ngrok`**, you can establish a URI as follows:
 
 ```
 ./ngrok http 10000
 ```
+<br>
 
-This will give you an HTTP and HTTPS URL. We recommend using the HTTPS URL, so copy it into the configuration of
-your endpoint.
+This will provide you with both an HTTP and HTTPS URL. We highly recommend utilizing the HTTPS URL; therefore, copy it and paste it into your endpoint's configuration.
 
-Regarding the token we recommend to leave the autogenerated token, except that you have a reason not to do that.
+As for the token, we suggest retaining the auto-generated token, unless you have a specific reason not to.
 
-
-Once you create the endpoint, you will see the configuration below, something like this:
+After creating the endpoint, you will encounter a configuration section similar to the following:
 
 ```
 _endpoint_name=proxy
@@ -366,10 +356,9 @@ _endpoints_services_api=https://yourtestapp.slingrs.io/dev/endpoints/proxy/api
 _token=91833a8b-929f-4eab-b7b4-2383c10cd629
 _endpoint_config={}
 ```
+<br>
 
-You should copy this configuration to `endpoints.properties`. Keep in mind that the last property, `_endpoint_config`,
-should have a valid JSON with the config or your endpoint, so you might not want to override that. So if you used the 
-skeleton endpoint you should have something like this:
+Copy and paste this configuration into the **`endpoints.properties`** file. Please note that the final property, **`_endpoint_config`**, should contain valid JSON configuration for your endpoint. You may want to avoid overwriting this property. If you've utilized the skeleton endpoint, your configuration might resemble the following:
 
 ```
 _endpoint_name=proxy
@@ -386,69 +375,57 @@ _endpoints_services_api=https://yourtestapp.slingrs.io/dev/endpoints/proxy/api
 _token=91833a8b-929f-4eab-b7b4-2383c10cd629
 _endpoint_config={"token":"123456"}
 ``` 
+<br>
 
-If you prefer, you can have a separate file in case you don't want to commit sensitive credentials to your repository.
-We usually use `endpoint_proxy.properties`, which is already included in `.gitignore` in the skeleton endpoint, and
-you can pass this file when running your endpoint. This way this will be the configuration for your endpoint running
-with the proxy.
+If you prefer, an alternative approach is to utilize a separate file if you wish to avoid committing sensitive credentials to your repository. We typically employ **`endpoint_proxy.properties`** for this purpose, which is already included in the **`.gitignore`** of the skeleton endpoint. You can provide this file as an argument when executing your endpoint. Consequently, this configuration will be utilized when your endpoint runs with the proxy.
 
-Keep in mind that `endpoint.properties` is only used when you run the endpoint locally and it is useful as a template
-to create `endpoint_proxy.properties`, but it does not affect the endpoint when running on the cloud because endpoint
-config is passed in another way.
+Please bear in mind that **`endpoint.properties`** is exclusively used when you locally run the endpoint. It's valuable as a foundation for creating **`endpoint_proxy.properties`**. However, it doesn't impact the endpoint's behavior in the cloud since endpoint configuration is managed differently.
 
-Once you have created the proxy endpoint in your app, remember to push changes so it is initialized.
+Once the proxy endpoint has been established in your app, remember to commit and push changes to ensure proper initialization.
 
-## Running your endpoint
+## **Running your endpoint**
 
-Before running your endpoint, make sure that you build it:
+Before you proceed with running your endpoint, ensure that you have built it:
 
 ```
 cd ENDPOINT_FOLDER
 mvn package
 ```
+<br>
 
-Then you can run your endpoint from the command line or using your IDE. Just make sure you pass the 
-following things:
+You can proceed to run your endpoint either through the command line or using your Integrated Development Environment (IDE). Ensure that you provide the following details when launching:
 
-- **Main class**: should be set to `package.Runner`, where `package` is what you configure when
-  the endpoint was created. You will be able to see the class path in the `pom.xml` file.
-- **Configuration file to use**: this is the properties file to be used. It will be usually be
-  `endpoints.properties` or `endpoints_proxy.endpoint` or whatever other properties file you are using.
-- **VM options**: if you want you can specify the heap with `-Xmx256M`. Tis is to limit the memory of 
-  your endpoint and make sure there won't be problems when deployed on the cloud. Keep in mind that 
-  this is not exactly the same as the memory available for the endpoint when deployed on the cloud, as
-  you need to consider native memory used by the whole process. However it helps to limit at least
-  the heap memory.
-- **Working directory**: make sure the working directory is the one where the code of the endpoint is
-  located.
+- **Main Class**: Set this to **`package.Runner`**, where **`package`** corresponds to the configuration you established when creating the endpoint. You can find the class path within the **`pom.xml`** file.
+- **Configuration File**: Specify the properties file to use. Typically, this will be **`endpoints.properties`**, **`endpoints_proxy.properties`**, or any other designated properties file.
+- **VM Options**: Optionally, you can define the heap size using **`-Xmx256M`**. This helps restrict the memory usage of your endpoint, minimizing potential issues upon deployment to the cloud. Keep in mind that this memory setting doesn't precisely mirror the memory available when the endpoint is deployed in the cloud. Total memory consumption includes native memory used by the entire process. Nevertheless, limiting heap memory can be beneficial.
+- **Working Directory**: Confirm that the working directory aligns with the location of your endpoint's code.
 
-With Maven you can run it from the command line like this (in the root folder of the endpoint):
+Using Maven, you can execute the command below in the root folder of your endpoint:
 
 ```
 mvn exec:java -Dexec.mainClass="io.slingr.endpoints.skeleton.Runner" -Dexec.args="configurationFile=endpoint_proxy.properties" -DROOT_LOGGER=stdout
 ```
+<br>
 
-## Testing that your endpoint is working
+## **Testing that your endpoint is working**
 
-Now that the endpoint is running and the proxy endpoint is setup, we can do a quick test to verify everything
-is working. In order to do that execute the following code in your builder or monitor console:
+NWith your endpoint operational and the proxy endpoint established, let's perform a brief test to confirm that everything is functioning correctly. To carry out this test, execute the provided code within your builder or monitor console:
 
 ```js
 var res = app.endpoints.proxy.randomNumber({});
 log('res: '+JSON.stringify(res));
 ``` 
+<br>
 
 You should see an output like this:
 
 ```
 res: {"number":5560} 
 ```
+<br>
+We are making the assumption that you are utilizing the skeleton endpoint template, which includes the availability of this method. Alternatively, if you're not using the skeleton template, ensure that you call a method that exists within your own endpoint.
 
-We are assuming that you are using the skeleton endpoint template where this method is available. Otherwise
-you should call a method that exists in your endpoint.
+## **Exploring additional samples**
 
-## More samples
-
-There are dozens of endpoints already developed for the Slingr platform. You can [take a look at them](https://github.com/slingr-stack) to see
-more features in the endpoints framework.
+Numerous endpoints have already been developed for the Slingr platform. Feel free to [browse through them](https://github.com/slingr-stack) to gain insights into the various features offered by the endpoints framework.
 

@@ -12,62 +12,56 @@ toc: true
 weight: 152
 ---
 
-In app monitor in section `Database` it is possible to see some statistics about your data as
-well perform some maintenance operations.
+In the App Monitor's "Database" section, you'll find comprehensive insights into your app's data statistics and the tools to perform essential maintenance operations. This section is invaluable for managing your app's database effectively.
 
-## Database information
+## **Database information**
 
-At the top the following information about your data will be displayed:
+At the top of the page, you'll find essential information about your data:
 
-- **Total database size**: this is the total amount of space used by your database. This is the
-  space taken into account for billing and plans.
-- **App storage**: the space used by you app data, which is basically records in your entities,
-  indexes associated to those entities and history logs.
-- **System storage**: this is the space in the database used by system information like logs,
-  jobs, indexes, etc.
+- **`Total Database Size`**: This represents the total storage space used by your database, considered for billing and plans.
+
+- **`App Storage`**: The space allocated to your app's data, including records within your entities, associated indexes, and historical logs.
+
+- **`System Storage`**: This portion of the database is dedicated to system-related information such as logs, jobs, indexes, and more.
 
 ### Entities
 
-The list of entities shows the following information:
+The list of entities provides detailed information on each entity:
 
-- **Total data size**: the total space used by records of the entity, including indexes.
-- **Data size**: the space used by records of the entity, without indexes.
-- **Entries count**: the number of records in the entity.
-- **Indexes size**: the space used by indexes in the entity.
-- **Number of indexes**: the number of indexes in the entity.
-- **Percentage respect to data**: the relative usage of space of this entities against the whole 
-  size of the database.
-  
-Additionally if you click on an entity you will be able to see more details as well as information
-of indexes, where you can check their status and see if there was a problem creating them. Also will
-see two operations:
+- **`Total Data Size`**: This indicates the overall space used by records within the entity, including associated indexes.
 
-- `Refresh relationships`: this is in case some relationship fields get out dated. Running this
-  action will go through all the records in the entity updating relationship fields it might have.
-- `Refresh calculated fields`: if some calculated field have old values, you can run this action
-  that will go through all the records in the entity and will update calculated fields.
+- **`Data Size`**: The space used solely by records within the entity, excluding indexes.
+
+- **`Entries Count`**: Displays the total number of records stored in the entity.
+
+- **`Indexes Size`**: Represents the space used by indexes associated with the entity.
+
+- **`Number of Indexes`**: Indicates the total number of indexes configured for the entity.
+
+- **`Percentage Relative to Data`**: This provides insight into how much space the entity occupies compared to the total database size.
+
+By clicking on an entity, you can access more detailed information, including index statuses and two critical operations:
+
+- **`Refresh Relationships`**: Use this operation if your relationship fields become outdated. Running this action updates relationship fields across all records within the entity.
+
+- **`Refresh Calculated Fields`**: When your calculated fields contain outdated values, use this operation. It updates calculated fields across all records within the entity.
 
 ### Performance
 
-Here you can see information about slow queries. This is important if you notice performance issues
-in your app as you can find out which operations are taking more time and help you decide which
-indexes have to be created or what needs to be changed in your app.
+The "Performance" section is dedicated to monitoring slow queries. This is crucial if you're experiencing performance issues in your app. You can identify which operations are consuming more time and make informed decisions about creating indexes or making adjustments to enhance your app's performance.
 
 ### Tools
 
-Here you will find some maintenance tools for the database:
+Under the "Tools" section, you'll find maintenance utilities for your database:
 
-- **Repair database**: triggers some clean up tasks that could help to fix some odd behaviors in
-  the app. If you see weird things like the number of records is incorrect in an entity, try this
-  tool to fix your problem.
+- **`Repair Database`**: Trigger this option to initiate cleanup tasks that can resolve unusual behaviors in your app. For instance, if you notice discrepancies in record counts within an entity, using this tool might rectify the issue.
 
-## Files information
+## **Files information**
 
-At the top of the page there is one field called `Total files size`. This is the amount of space
-used in public and private files.
+At the top of the page, you'll find data on your app's files:
 
-Private files are those that are in file fields. See field type [File]({{site.baseurl}}/app-development-type-file.html))
-for more information.
+- **`Total Files Size`**: This is the cumulative space occupied by both public and private files.
 
-Public files are the ones that can be managed in the app builder. See [Public files]({{site.baseurl}}/app-development-app-public-files.html) 
-for more information.
+  - **`Private Files`**: These files reside in file fields within your app. Learn more about the "File" field type [here]({{<ref "/dev-reference/field-types/references/file.md">}}).
+
+  - **`Public Files`**: These files can be managed within the app builder. To learn more about public files, refer to the [Public Files documentation]({{<ref "/dev-reference/app/public-files.md">}}).

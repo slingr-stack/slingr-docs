@@ -23,7 +23,7 @@
   <h3>Step: <code style="background-color:transparent">{{ $step.label }}</code></h3>
   {{ end }}
 
-  <h5 style="font-size: 120%;">Inputs</h5>
+  <h5 style="font-size: 100%;">Inputs</h5>
   {{ if $step.inputs }}
   <table class="table" style="margin-bottom:0!important">
     <thead>
@@ -61,7 +61,7 @@
   <p>No configuration is needed.</p>
   {{ end }}
 
-  <h5 style="font-size: 120%;">Outputs</h5>
+  <h5 style="font-size: 100%;">Outputs</h5>
   {{ if $step.outputs }}
   <table class="table" style="margin-top:0!important">
     <thead>
@@ -94,7 +94,7 @@
   {{ end }}
 
   {{ if $step.context }}
-  <h5 style="font-size: 120%;">Context</h5>
+  <h5 style="font-size: 100%;">Context</h5>
   <div class="contextExamples">
     {{ range $context := $step.context }}
     <div class="context-item">

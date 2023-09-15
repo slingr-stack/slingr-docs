@@ -1,5 +1,5 @@
 ---
-title: "User interface overview"
+title: "Overview"
 lead: "Brief explanation of how the UI is generated. Enumeration of different types of views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -12,48 +12,30 @@ toc: true
 weight: 44
 ---
 
+Slingr streamlines the UI creation process by offering a range of features designed to expedite development. The ultimate goal is to empower developers to craft compelling UIs without getting bogged down in intricate details and boilerplate code.
 
-Slingr provides different features to make the creation of the UI as fast as possible. The
-goal is that developers don't need to spend a lot of time in small details and boilerplate
-code to create an appealing UI.
+Unlike many low-code platforms where developers still need to manually assemble UI elements within a form, carefully manage layout, and establish connections between the UI and data/operations, Slingr takes a different approach. While this approach might represent progress beyond raw HTML, CSS, and JavaScript, it often demands considerable time and effort, particularly when the app model undergoes changes.
 
-In most low-code platforms it is still needed to build the UI by placing widgets in a form
-manually, taking care of layout and linking of the UI with the data and operations. This
-might be a step forward compared to raw HTML, CSS and Javascript, but still requires a
-lot of time and rework, especially when there are changes in the app model.
+To simplify UI creation, Slingr introduces substantial building blocks called "views". These views present diverse methods for presenting information, each tailored to distinct use cases. For instance, grid views are available for listing records, and workflow views are suitable for displaying records as cards within a dashboard. Each view offers a variety of parameters that can be adjusted to suit different scenarios.
 
-To simplify the creation of the UI Slingr provides bigger building blocks called "views". These
-views offer different ways of rendering information that are useful for different purposes. For
-example there are grid views to show records in a listing and there are workflow views to show
-records as cards in a dashboard. Each view has different parameters that allow to customize
-them for different situations.
+These views are designed to extract as much information as possible from the app model, reducing the need for redundant tasks. For example, views can automatically decipher entity structures to construct forms or apply default display settings to fields.
 
-These views will try to get a much information as possible from the app model so you don't
-need to duplicate work. For example views will automatically recognize the structure of entities
-in order to build forms, or use default display options for fields.
+The app's UI is structured as follows:
 
-The UI of the app is organized in the following way:
+- **`Header`**: This section resides at the top, displaying the app name and logo (customizable). In the builder, it can also incorporate a browser for entities, actions, listeners, and more.
+- **`Main menu`**: The app's primary menu contains the different sections of your application. Selecting an item triggers the display of a corresponding view in the main content area.
+- **`Secondary menu`**: This menu accommodates items linked to app views that are rendered in the main content area.
+- **`User menu`**: In addition to containing system operations such as **`My profile`** or **`Logout`**, this menu permits the inclusion of items associated with app views rendered in the main content area.
+- **`Main content`**: This region is where app views are showcased.
 
-- **Header**: this is the at the top and shows the app name and logo (which is configurable). In the builder it can also include a browser of entities, actions, listeners, among other things.
-- **Main menu**:  this is the main menu of the app, where users will find the different sections of
-  your app. When they click on one of the items, a view will be displayed on the main content area.
-- **Secondary menu**: allows to add items associated to views of the apps that will be rendered in the main content
-  area.
-- **User menu**: this menu contains some system operations like `My profile` or `Logout`, but
-  also allows to add items associated to views of the apps that will be rendered in the main content
-  area.  
-- **Main content**: this is where app views are rendered.
+Configuration options for the left and top menus are accessible through the [Navigation]({{<ref "/dev-reference/user-interface/navigation.md">}}) section in the app builder. Conversely, adjustments to the header and certain other global settings can be made within the [UI settings]({{<ref "/dev-reference/environment-settings/ui-settings.md">}}) section.
 
-Left and top menu can be configured through the [Navigation]({{site.baseurl}}/app-development-ui-navigation.html) 
-section in app builder, while header and some other global settings can be configured in 
-[UI settings]({{site.baseurl}}/app-development-environment-ui-settings.html) section.
+Here are the available types of views:
 
-These are the available types of views:
-
-- [Grid views]({{site.baseurl}}/app-development-ui-grid-views.html)
-- [Workflow views]({{site.baseurl}}/app-development-ui-cards-views.html)
-- [Record views]({{site.baseurl}}/app-development-ui-record-views.html)
-- [Action views]({{site.baseurl}}/app-development-ui-action-views.html)
-- [Custom views]({{site.baseurl}}/app-development-ui-custom-views.html)
+- [Grid views]({{<ref "/dev-reference/user-interface/grid-views.md">}})
+- [Workflow views]({{<ref "/dev-reference/user-interface/workflow-views.md">}})
+- [Record views]({{<ref "/dev-reference/user-interface/record-views.md">}})
+- [Action views]({{<ref "/dev-reference/user-interface/action-views.md">}})
+- [Custom views]({{<ref "/dev-reference/user-interface/custom-views.md">}})
 
 

@@ -12,289 +12,368 @@ toc: true
 weight: 24
 ---
 
-Actions allow to define behavior of records of the entity apart from the basic operations like
-create or delete. For example, in an entity that holds tasks, you could have an action to 
-complete it, that will check that all pre-conditions are met, update the status and notify 
-people involved in the task.
+Actions allow you to define behaviors for records within an entity beyond basic operations like creation or deletion. For example, in an entity that manages tasks, you could implement an action to mark a task as complete. This action might involve checking preconditions, updating the task's status, and notifying relevant parties.
 
-When an action is defined for an entity, it is accessible from the UI, 
-[REST API]({{site.baseurl}}/app-development-apps-rest-api.html#actions) and 
-[Javascript API]({{site.baseurl}}/app-development-js-api-data.html).
+Once an action is defined for an entity, it becomes accessible through the UI, the [REST API]({{<ref "/dev-reference/scripting/overview.md">}}), and the [JavaScript API]({{<ref "/dev-reference/rest-apis/apps-api.md">}}).
 
-## Action settings
+## **Action settings**
 
 ### Label
 
-This is the human-readable name of the action. This label will be used in the UI.
+This is the human-readable name of the action, which will be displayed in the UI.
 
 ### Name
 
-This is the internal name of the action and it will be used in the REST and Javascript 
-APIs.
+The name serves as the internal identifier for the action and is used in both the REST and JavaScript APIs.
 
-The name cannot contain special characters or spaces. Only letters and numbers.
+The name must consist only of letters and numbers, without special characters or spaces. It's important to note that changing the action's name might have consequences:
 
-One thing to keep in mind is that changing the name of the action could have some side
-effects:
-
-- **REST API**: if external apps were using this action through the REST API, these apps
-  will need to be updated as the URL for the action will be different.
-- **Scripts**: if there were scripts in the app referencing this action, those scripts 
-  need to be updated manually. In the near feature there will be tools to help on these
-  cases.
+- **`REST API`**: External applications using this action through the REST API will need updates, as the action's URL will change.
+- **`Scripts`**: Any scripts in the app referencing this action will require manual updates. Future tools are planned to aid in such cases.
 
 ### Type
 
-The type indicates if the action will be executed to each record or if it is executed 
-to a group of records at the same time:
+The action's type indicates whether it is executed for each individual record or as a batch operation for a group of records:
 
-- `One record`: these actions are applied to one record at a time. Even when it is possible 
-  to select many records through the UI or send many IDs on the REST API, this action will be 
-  applied at one record at a time. The action doesn't know how many records are involved, it 
-  is only aware of the record the action is being applied.
-- `Many records`: these actions take a query as parameter that defines the selection of records. 
-  This way the action knows all the records involved and it can do something with all of them at 
-  the same time. For example you could have an action to send a summary of many tasks in one email, 
-  which is not possible to do with actions that are executed over individual records.
-  When the action is for many records the options to restrict to one record and
-  preconditions are not available.
-- `Global entity`: these actions do not receive any parameter to determine affected records. 
-  The action will be available to be selected in all grid views and workflow views (for last one in special section called 
-  `Global actions`). For example think of an action named Check payment status that is in the entity `Payments`, so when 
-  user executes it, it will execute a script to check the status of all payments that are pending.
+- **`One Record`**: These actions are applied to one record at a time, even if you can select multiple records through the UI or provide multiple IDs in the REST API. The action processes each record individually, unaware of the total number of records involved.
+- **`Many Records`**: These actions accept a query parameter that defines the record selection. This allows the action to operate on all selected records simultaneously. For example, you could create an action to send a summary of multiple tasks in a single email—a task not feasible with actions targeted at individual records. Actions for many records lack options like restricting to a single record and setting preconditions.
+- **`Global Entity`**: These actions do not receive any parameter to determine affected records. They appear in all grid views and workflow views under a special section called **`Global Actions`**. An example might be an action named "Check Payment Status" in the **`Payments`** entity. When executed, it would script to check the status of all pending payments.
 
 ### Visible
+
+This option controls the visibility of the action. If set to **`Never`**, even if the action is present in the view, it will remain hidden. This feature spares you the need to manually remove the action from each view.
+
+Keep in mind that this is solely a UI setting.
+
+The **`Visible`** options are:
+- **`Always`**: The action is always visible (default option).
+- **`Expression`**: The action becomes visible if the specified expression evaluates to **`true`**. Refer to the documentation for [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) for more information.
+- **`Script`**: The action's visibility depends on the return value of a script. If the script returns **`true`**, the action is visible; otherwise, it's hidden. Here's the script context:
+
+  ---
+
+  ##### Parameters
+
+  |Name|Type|Description|
+  |---|---|---|
+  |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record where the action will be executed.<br>This variable is only available if the type of the action is **`One record`**.|
+
+  ##### Returns
+
+  **`boolean`** - **`true`** if conditions are met, **`false`** otherwise.
+
+  ##### Samples
+
+  ```js
+  // make the action visible if the type is 'a'
+  return record.field('type').val() == 'a';
+  ```
+  <br>
   
-Allow to control the visibility of the actions. If this is set as `Never`, even when the action is in the view, 
-the action won't be displayed. This flag is useful so you don't need to go to each views an remove the action manually. 
+  ---
 
-Keep in mind this is just a UI setting.
-
-Visible has the following options:
-
-- `Always`: the action is always visible. Default option.
-- `Expression`: the action will be visible if the expression evaluates to `true`. You can find more
-information in the documentation for [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html).
-- `Script`: if the script returns `true` the action will be visible, otherwise it will be hidden.
-This is the context of the script:
-
-
-{{< js_script_context context="actionVisibleScript">}}
-
-
-
-- `Never`: the action will be hidden. 
+- **`Never`**: the action will be hidden. 
 
 ### Preconditions
 
-If the action is of type `One record` it will be possible to define preconditions to determine in
-which records the action can be applied. For example if you have an entity `tasks` and you have
-an action called `complete`, you might want to only allow this action when the field `status` is
-equals to `inProgress`.
+For actions of type **`One record`**, you can define preconditions that determine the records on which the action can be applied. For instance, consider an entity named **`tasks`** with an action named **`complete`**. You might only want to allow this action when the **`status`** field is set to **`inProgress`**.
 
-Preconditions can be defined in two ways:
+Preconditions can be established in two ways:
 
-- `Expression`: the action will be executable on the record if the expression evaluates to `true`.
-  Otherwise the action won't be available in the UI or will throw an error when trying to execute
-  it from the REST or Javascript API. You can find more information in the documentation for 
-  [Expressions]({{site.baseurl}}/app-development-metadata-management-metadata-common-tools-expressions.html).
-- `Script`:  the action will be executable on the record if the scripts returns `true`.
-  Otherwise the action won't be available in the UI or will throw an error when trying to execute
-  it from the REST or Javascript API.
-  This is the context of the script:
+- **`Expression`**: The action is executable on the record if the provided expression evaluates to **`true`**. Otherwise, the action won't be accessible in the UI, or it will result in an error when attempted through the REST or JavaScript API. For further details, consult the documentation on [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
+- **`Script`**: The action is executable on the record if the script returns **`true`**. If not, the action won't appear in the UI or will result in an error when invoked via the REST or JavaScript API.
 
-{{< js_script_context context="actionPreconditionScript">}}
+  ---
 
+  ##### Parameters
+
+  |Name|Type|Description|
+  |---|---|---|
+  |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record where the action will be executed.|
+
+  ##### Returns
+
+  **`boolean`** - **`true`** if preconditions are met, **`false`** otherwise.
+
+  ##### Samples
+
+  ```js
+  // preconditions of the action are met if type is 'a' and current user is in group 'test'
+  return record.field('type').val() == 'a' && sys.context.getCurrentUser().containsGroup('test');
+  ```
+  <br>
+  
+  ---
 
 ### Result as response
 
-If the action is of type `One record` or `Global entity` it is possible to indicate if the action should return a custom
-response. If that's the case what the action script returns will be returned as the response.
+For actions of type **`One record`** or **`Global entity`**, you can specify whether the action should return a custom response. If enabled, the result returned by the action script will be used as the response.
 
-For actions of type `Many records`, what the action script returns is always taken as the response
-of the action.
+For actions of type **`Many records`**, the return value of the action script is always utilized as the response for the action.
 
-Any value returned by the script and used as response is converted into a valid JSON (if necessary), and 
-the `Content-Type` is always `application/json`. If this is not possible, then an error will be triggered.
+Any value returned by the script and intended as a response is transformed into valid JSON (if needed). The **`Content-Type`** of the response is consistently set to **`application/json`**. If JSON conversion is not feasible, an error will be triggered.
 
-This setting does not affect in any way the behavior of the UI, and it is only useful when using the
-[REST API]({{site.baseurl}}/app-development-apps-rest-api.html#actions), where the returned value will be
-response's body of the request.
+This setting solely affects the behavior of the [REST API]({{<ref "/dev-reference/scripting/overview.md">}}) and is irrelevant to the UI. The returned value will be included in the response body of the request.
 
 ### Save linked parameters
 
-If the action is of type `One record` it is possible to add linked parameters to the action. If you
-want that the record gets automatically updated with values in linked parameters, you should make
-sure this flag is set. Otherwise you will be responsible for saving the record in the action script
-if you want to make changes permanent.
+For actions of type **`One record`**, it's possible to include linked parameters. Enabling this flag ensures that the record is automatically updated with the values from linked parameters. If this flag is not set, you will be responsible for saving the record within the action script to make the changes permanent.
 
-Keep in mind that if the set this option a record changed event will be triggered before executing
-the action script (that's when the record is saved). If you save the record again inside the action
-script another record changed event will be triggered (apart from the action performed event, which
-is also triggered).
+It's important to note that if this option is set, a record changed event will be triggered before executing the action script (when the record is saved). If you save the record again within the action script, another record changed event will be triggered, in addition to the event triggered by the action itself.
 
 ### Execute in background
 
-If this flag is set, when the action is executed it will return immediately with a reference to
-a job which will be responsible of executing the action in the background.
+If this flag is enabled, executing the action will immediately return with a reference to a job responsible for performing the action in the background.
 
-For example when you execute the action using the REST API, instead of returning the result of
-the action, it will return a reference of the job that will be executed in the background. Then
-you should check the status of the job if you need to know when it is completed.
+For instance, when using the REST API to execute the action, instead of receiving the action's result, you will receive a job reference that indicates the action will be carried out in the background. To determine completion, you should monitor the status of the job.
 
-This flag can be override for one specific call through the REST API or Javascript API. Also the
-UI might decide to override this flag. For example when more than one record is selected the UI
-will always send the action to the background even if this flag isn't set.
+This flag can be overridden for a specific call through the REST API or JavaScript API. Additionally, the UI might choose to override this flag. For instance, when multiple records are selected, the UI will always send the action to the background, even if this flag is not set.
 
-If the flag isn't set, the calls to the action will wait until it is completed and will return
-the result of executing the action.
+When this flag is not enabled, calls to the action will wait for its completion and return the action's result.
 
-Please read more about actions in the [REST API]({{site.baseurl}}/app-development-apps-rest-api.html#actions)
-and [Javascript API]({{site.baseurl}}/app-development-js-api-data.html).
+For more information on actions in the REST API and JavaScript API, refer to the documentation.
 
-### Avoid trigger UI events
-If this flag is set, when the action is executed in the background it will skip triggering notifications 
-to the UI. This is useful to avoid overhead during execution. A common scenario will be to execute an action
-for batch processing in which it is not required to notify end users about data changes.
+### Avoid triggering UI events
+
+Enabling this flag for executing the action in the background will prevent UI notifications from being triggered. This is valuable for efficiency during execution, particularly in batch processing scenarios where notifying end-users about data changes is unnecessary.
 
 ### Restrict to only one record
 
-If the action is of type `One record` this flag will indicate that you cannot select many records
-at the same time and execute the action. This is mainly in cases where there are parameters that
-doesn't make sense to send the same value to more than one record.
+For actions of type **`One record`**, enabling this flag signifies that only a single record can be selected and the action can be executed. This is particularly applicable when there are parameters that are not meaningful to apply to multiple records simultaneously.
 
-For example if the action is to update the title of a task, it doesn't make sense to execute it to
-more than one record because you will be setting the same title to many tasks.
+For instance, if the action's purpose is to update the title of a task, executing it on more than one record is illogical since the same title would be set for numerous tasks.
 
 ### Action script
 
-This is the main script of the action. It is evaluated when the action is executed (in the UI
-when the action confirms the execution) and here is where the action should perform the work.
+The action's core script is executed when the action is invoked. It runs when the action is executed in the UI (when the action's execution is confirmed), and it is the place where the action's intended operations should be carried out.
 
+  ---
 
-{{< js_script_context context="actionValidationScript">}}
+  ##### Parameters
 
+  |Name|Type|Description|
+  |---|---|---|
+  |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record where the action will be executed. <br>This variable is only available if the type of the action is **`One record`**.|
+  |oldRecord|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record before linked parameters are merged. <br>This variable is only available if the type of the action is **`One record`**.|
+  |query|[sys.data.Query]({{<ref "/dev-reference/scripting/sys-data.md">}})|A query object with filters to find all records afected by this action. <br>This variable is only available if the type of the action is **`Many Records`**.|
+  |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This allows access to the parameters of the action.|
 
+  ##### Samples
+
+  ```js
+  // updates some values in the record and save it
+  var newValue = action.field('param1') * 10;
+  record.field('field').val(newValue);
+  sys.data.save(newValue);
+  ```
+  <br>
+
+  ```js
+  // many records actions that sums up the number of employees on selected companies
+  var total = 0;
+  var records = sys.data.find(query);
+  while (records.hasNext()) {
+    total += records.next().field('numberOfEmployees').val();
+  }
+  return total;
+  ```
+  <br>
+  
+  ---
 
 ### Custom validations
 
-Action custom validations allow to perform more complex validations across all fields in the action and
-using other services that are not available in fields rules.
+Custom validations for actions enable more intricate validations that span across all fields within the action. These validations can utilize external services or functionalities that aren't accessible through field rules.
 
-For `ONE_RECORD` action types the record is available on the script context while for `MANY_RECORDS` a Query object
-can be used to determine witch records will be affected.
+For **`ONE_RECORD`** action types, the record is accessible within the script context. In the case of **`MANY_RECORDS`**, a Query object can be used to ascertain which records will be impacted.
 
-For example you might have an endpoint for an address validation service that you can use to
-validate addresses, or you just want to make sure that when one option is set in one field in the record or
-in the action, the value of another action field needs to match some specific pattern.
+For instance, consider an external endpoint for address validation that you can integrate to validate addresses. Alternatively, you might want to enforce a requirement that when a specific option is chosen in one field of the record or the action, another field's value must adhere to a specific pattern.
 
-This is the script context:
+Here is the script context for these custom validations:
 
-{{< js_script_context context="nestedFieldsLabelScript">}}
+  ---
 
+  ##### Parameters
 
-## Parameters
+  |Name|Type|Description|
+  |---|---|---|
+  |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record where the action is executed. You can use this information on your validation rules. This parameter is only available when action type is **`ONE_RECORD`**|
+  |query|[sys.data.Query]({{<ref "/dev-reference/scripting/sys-data.md">}})|A query object with filters to find all records afected by this action. This parameter is only available when action type is **`MANY_RECORDS`**|
+  |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|The action to validate.|
 
-Parameters are fields that will be asked when the action is executed. For example when
-executing the action from the UI, a popup will ask the user to enter the values for the
-parameters configured in the action (see [action views](#views) for more details on how to configure
-the UI of an action).
+  ##### Returns
 
-They can be of three types:
+  **`object`** - You should return an array of errors, something like this:
 
-- **Parameter**: these fields do not belong to the entity but to the action itself. They
-  have their own configuration and you don't need to store them in the record (however you can copy
-  the value to one of the fields in the record in the action script if you need).
-- **Linked parameter**: these fields are in defined in the entity and so you cannot change the
-  structure and settings they have (only display options in views). If the flag `Saved linked parameters`
-  is set, these fields will be updated in the record automatically before executing the action script
-  and triggering a record changed event.
+  ```js
+  [
+    {
+      path: 'addressLine', 
+      code: 'invalid', 
+      message: 'Not a valid address when running this action'
+    },
+    {
+      path: 'zipCode', 
+      code: 'invalid', 
+      message: 'Wrong zip code'
+    }
+  ]
+  ```
+  <br>
 
-Parameters will be accessible in the script of the action through the variable `action`. You can
-see that in [Init script](#init-script) and [Action script](#action-script). Entity field parameters 
-are also available on the `record` variable.
+  Where **`path`** is the path to the field experiencing issues. For nested fields, the full path should be provided, such as **`address.zipCode`**. For multi-valued fields, the index should be indicated, like **`addresses[1].zipCode`**.
 
-For more information about how to configure parameters, please check the documentation
-of [Fields]({{site.baseurl}}/app-development-model-fields.html).
+  The **`code`** is an error code that you can define according to your needs. This code will be included in the response when attempting to execute the action using the REST API or the JavaScript API.
 
-## Permissions
+  Finally, the **`message`** is what will be displayed in the UI and will also be included in the response along with the code.
 
-Permissions indicate which groups provide permissions to execute the action. As in other cases,
-permissions are enforced in the UI as well as in the REST API.
+  ##### Samples
 
-When a new action is added to an entity, if the group has permissions to all the actions in that 
-entity, then that action is also given the Allowed permission.
+  ```js
+  // validates the zip code using an external service
+  var errors = [];
+  var zipCode = action.field('address.zipCode').val();
+  if (!app.endpoints.addressValidator.isValidZipCode(zipCode)) {
+    errors.push({
+      path: 'address.zipCode',
+      code: 'invalid',
+      message: 'Wrong zip code'
+    });
+  }
+  return errors;
+  ```
+  <br>
+  
+  ---
 
-Permissions for parameters should be configured inside each parameter or in groups.
+## **Parameters**
 
-When a new parameter is added to an action, if a group has permissions to the action, read-write 
-permission is automatically assigned to that parameter in the group.
+Parameters are fields that will be prompted for when the action is executed. For instance, when executing the action from the UI, a popup will appear asking the user to input values for the parameters configured in the action (refer to [action views](#views) for more details on configuring the UI of an action).
 
-For more information about permissions please refer to [Groups]({{site.baseurl}}/app-development-security-groups.html).
+Parameters can fall into three types:
 
-## Views
+- **Parameter**: These fields are associated with the action itself, not the entity. They have their own configuration, and you're not required to store their values in the record (though you can copy the value to a record field within the action script if needed).
+- **Linked parameter**: These fields are part of the entity's structure and settings, which means their structure and settings cannot be altered (except for display options in views). If the **`Saved linked parameters`** flag is enabled, these fields will be automatically updated in the record before executing the action script, which then triggers a record changed event.
+- **Entity field parameter**: These parameters are also part of the entity but are not directly linked to the action. Instead, they are used within the context of the action and can be accessed through the **`record`** variable.
 
-In order to be able to execute an action from the UI it is needed to define a view for it. To
-make this simpler, when an action is created a default view will be created as well. This default
-view will be completely managed, which means that new fields will be added and removed as you
-change your actions, so in many cases you can just ignore action views.
+For more information on configuring parameters, please refer to the [Fields documentation]({{<ref "/dev-reference/data-model-and-logic/fields.md">}}).
 
-However it is possible to define many views for one action based on different settings you
-need in other parts of the UI. For example in a grid view you might want to request confirmation
-before executing the action as users can select many record while in the read-only view you just
-skip action confirmation to make it faster.
+## **Permissions**
 
-Each view has the following settings:
+Permissions dictate which groups are granted the authority to execute the action. As with other aspects of the application, these permissions are enforced both in the UI and the REST API.
 
-- `Label`: a human-friendly name for the action view. This is what users will see as the name
-  of the action. Doesn't need to be unique.
-- `Name`: a unique name for the action view. It cannot contain spaces or special characters. 
-- `Is default view`: indicates if this is the default view for the action. Default views will
-  be used for example in grid views when you select the option to show all actions. In this
-  case only the default view for each action will be listed (doesn't make much sense to show
-  all the views of each action in the same place).
-- `Managed`: if this flag is set, new parameters will be automatically added to the view and
-  order will be kept between parameters in the action and the view.
-- `Ask for confirmation`: if this flag is set, the user will be asked for confirmation before
-  being able to execute the action. This makes sense when there aren't parameters defined in
-  the view.
-- `Style`: this is the style for the action when showing it as a button in the UI.
-- `Icon`: this is the icon for the action when showing it in the UI.
+Upon adding a new action to an entity, if a group has permissions for all the actions in that entity, the action is automatically granted the Allowed permission.
+
+Permissions for parameters can be configured within each parameter or at the group level.
+
+Upon adding a new parameter to an action, if a group has permissions for the action, read-write permission is automatically assigned to that parameter within the group.
+
+For more details on permissions, please consult the [Groups documentation]({{<ref "/dev-reference/security/groups.md">}}).
+
+## **Views**
+
+To enable the execution of an action from the UI, a view must be defined. To simplify this process, a default view is automatically generated alongside the action. This default view is fully managed, meaning that new fields will be added or removed as you modify your actions. In most scenarios, you can simply rely on the default action views.
+
+However, it's possible to define multiple views for a single action based on different settings required for various parts of the UI. For example, in a grid view, you might want to prompt users for confirmation before executing an action, since they can select multiple records. On the other hand, in a read-only view, skipping action confirmation can enhance efficiency.
+
+Each view comes with the following settings:
+
+- **`Label`**: A user-friendly name for the action view, which users will see as the action's name. This label doesn't need to be unique.
+- **`Name`**: A unique name for the action view, which cannot contain spaces or special characters.
+- **`Is default view`**: Indicates whether this is the default view for the action. Default views are used, for instance, when you opt to display all actions in a grid view. In this case, only the default view of each action is listed, as it wouldn't make sense to display all views of each action in the same place.
+- **`Managed`**: If this option is enabled, new parameters will be automatically incorporated into the view, and the order will be maintained between action parameters and the view.
+- **`Ask for confirmation`**: Enabling this flag prompts users for confirmation before executing the action. This is useful when no parameters are defined in the view.
+- **`Style`**: Specifies the style of the action button in the UI.
+- **`Icon`**: Defines the icon displayed for the action in the UI.
 
 ### Events
 
 #### Before show
 
-The before show script will be evaluated before the action is executed. In the UI it is executed
-before showing the popup to the user, so it is possible to make some changes to the parameters 
-based on some special conditions.
+The before show script is evaluated before the action is executed. In the UI, it runs before displaying the popup to the user, allowing you to make changes to parameters based on special conditions.
 
-If many records are selected, the script is evaluated only once. You can check which
-records will be affected by using the `query` parameter in the script.
+If multiple records are selected, the script is executed only once. You can determine which records will be affected by using the **`query`** parameter within the script.
 
-{{< js_script_context context="actionInitScript">}}
+---
+
+  ##### Parameters
+
+  |Name|Type|Description|
+  |---|---|---|
+  |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record where the action will be executed.<br>This variable is only available if the type of the action is **`One record`** or if you are appliying the action to many records.|
+  |query|[sys.data.Query]({{<ref "/dev-reference/scripting/sys-data.md">}})|A query object with filters to find all records afected by this action. Only for type **`Many records.`**|
+  |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This allows access to the parameters of the action. When the action is executed from the UI, changes made here will be reflected in the UI.|
+
+  ##### Samples
+
+  ```js
+  // sets the default value as the email of the current user
+  action.field('sendTo').val(sys.context.getCurrentUser().email());
+  ```
+  <br>
+  
+---
 
 #### On action change
 
-The on action change script will be evaluated each time that an view parameter change its value. So it is possible
-to make some changes to the parameters based on some special conditions.
+The on action change script is evaluated each time a view parameter's value changes. Therefore, it is possible to modify parameters based on specific conditions.
 
-You can check which parameter has fired the event using the `modifiedParameter` parameter in the script.
+You can identify the parameter that triggered the event by utilizing the **`modifiedParameter`** parameter within the script.
 
-{{< js_script_context context="onActionChangeScript">}}
+---
+
+  ##### Parameters
+
+  |Name|Type|Description|
+  |---|---|---|
+  |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record where the action will be executed.<br>This variable is only available if the type of the action is **`One record`** or if you are appliying the action to **`many records`**. In case of on change event the record is read only.|
+  |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|This allows access to the parameters of the action. When the action is executed from the UI, changes made here will be reflected in the UI.|
+  |modifiedParameter|**`string`**|A string with the name of the field that fires the event.|
+
+  ##### Samples
+
+  ```js
+  // sets the value as the email of the current user only if the field 'sendTo' has changed and is empty
+  if (modifiedParameter == 'sendTo' && action.field('sendTo').isEmpty()) {
+    action.field('sendTo').val(sys.context.getCurrentUser().email());
+  }
+  ```
+  <br>
+  
+---
 
 #### After action executed
 
-The after action executed script is evaluated right after the user confirms the action execution
-(or just when they trigger the action if the flag `Ask for confirmation` is not set). Keep in
-mind that this is only done when the action is executed from the UI using this specific view.
+The after action executed script is evaluated immediately after the user confirms the execution of the action (or when they initiate the action if the **`Ask for confirmation`** flag is not set). It's important to note that this evaluation occurs exclusively when the action is executed through the UI using this specific view.
 
-If many records are selected, the script is evaluated only once. You can check which
-records will be affected by using the `query` parameter in the script.
+If multiple records are selected, the script is executed only once. You can ascertain which records will be affected by employing the **`query`** parameter within the script.
 
-Additionally if the action is sent to the background, a `job` object will be available that
-references the job in charge of executing the action over the record(s).
+Furthermore, if the action is dispatched to the background for execution, a **`job`** object becomes accessible. This **`job`** object refers to the job responsible for carrying out the action over the record(s).
 
+---
 
-{{< js_script_context context="actionAfterExecutedScript">}}
+  ##### Parameters
+
+  |Name|Type|Description|
+  |---|---|---|
+  |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|The record where the action will be executed.<br>This variable is only available if the type of the action is **`One record`** or if you are appliying the action to many records.|
+  |query|[sys.data.Query]({{<ref "/dev-reference/scripting/sys-data.md">}})|A query object with filters to find all records afected by this action. Only for type **`Many records.`**|
+  |action|[sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md">}})|Action object to access parameters of the action.|
+  |job|[sys.jobs.job]({{<ref "/dev-reference/scripting/sys-jobs.md">}})|This is the job object, which is only available when the action is executed in background.<br>Keep in mind that the after action executed script is executed right after you triggered the action from the UI and the job might be still pending or running.|
+
+  ##### Samples
+
+  ```js
+  // after action is executed redirect to read only view of given record
+  var record = sys.data.findOne(query);
+  sys.ui.sendMessage({
+      scope: 'global',
+      name: 'navigate',
+      view: '590ce2e38a2....',
+      recordId: record.id()
+  });
+  ```
+  <br>
+  
+---
 
