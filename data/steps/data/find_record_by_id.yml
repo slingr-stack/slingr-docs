@@ -15,7 +15,7 @@ outputs:
     type: record
     description: The found record.
 samples:
-  - img: {{site.baseurl}}/images/vendor/flows/find_record.png
+  - img: /slingrDoc/images/vendor/flows/find_record.png
     alt: Find record by id image.
     description: The flow starts, the find record by id step searches for a specific record by id, then the record is logged and then the execution finishes with the end step. 
 contexts:

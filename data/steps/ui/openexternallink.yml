@@ -12,6 +12,6 @@ inputs:
   default: true
   required: yes
 samples:
-- img: {{site.baseurl}}/images/vendor/flows/openexternallink_sample.png
+- img: /slingrDoc/images/vendor/flows/openexternallink_sample.png
   alt: Open external link Sample
   description: The flow starts, the open external link step opens the specified external URL and then the execution finished with the end step.

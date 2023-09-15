@@ -22,7 +22,7 @@ Following agile principles, we encourage developers to work in small iterations 
 
 The iterative cycle typically looks like this:
 
-![App metadata and environments]({{site.baseurl}}/images/vendor/platform-ref/development-process1.png)
+![App metadata and environments](/slingrDoc/images/vendor/platform-ref/development-process1.png)
 
 1. **`Model Your Entities`**: Begin by defining your app's entities, capturing the key aspects of your domain. Start by outlining the structure of fields and a few settings. You'll refine these settings over time as needed.
 2. **`Add Business Logic`**: Incorporate elements like actions, listeners, legacy services integrations, scripts for calculated values, and aggregations. These additions will transform your app from a mere record repository into a dynamic system.

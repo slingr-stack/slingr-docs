@@ -36,7 +36,7 @@ nextElementName|record / field|The name of the next element in the list.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/foreach_sample.png" alt="For each image">
+  <img src="/slingrDoc/images/vendor/flows/foreach_sample.png" alt="For each image">
   <figcaption>The flow initiates, the "foreach" step updates and saves each of the records discovered in the "find data" step, and finally, the execution concludes with the "end" step.</figcaption>
 </figure>
 
@@ -65,7 +65,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/if_sample.png" alt="If Sample image">
+  <img src="/slingrDoc/images/vendor/flows/if_sample.png" alt="If Sample image">
   <figcaption>The flow starts, the if step evaluates the condition, if the condition is true, runs the script and then the execution finished with the end step.</figcaption>
 </figure>
 
@@ -88,7 +88,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/subflow_sample.png" alt="Subflow image">
+  <img src="/slingrDoc/images/vendor/flows/subflow_sample.png" alt="Subflow image">
   <figcaption>The flow initiates, and the "subflow" step executes the set of steps specified within the subflow. If an error occurs during the execution of these steps, the error will be recorded, and the execution will be terminated.</figcaption>
 </figure>
 
@@ -111,7 +111,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/trycatch_sample.png" alt="Error handler image">
+  <img src="/slingrDoc/images/vendor/flows/trycatch_sample.png" alt="Error handler image">
   <figcaption>The flow begins, and the "try-catch" step runs the script. If an error occurs during the execution of the script, the error will be recorded, and the execution will be terminated.</figcaption>
 </figure>
 
@@ -140,6 +140,6 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/while_sample.png" alt="Loop image">
+  <img src="/slingrDoc/images/vendor/flows/while_sample.png" alt="Loop image">
   <figcaption>The flow commences, and the "while" step logs as long as a specified condition remains true. Subsequently, the execution concludes with the "end" step.</figcaption>
 </figure>

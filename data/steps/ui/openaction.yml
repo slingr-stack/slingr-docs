@@ -28,6 +28,6 @@ inputs:
     operator: is not
     value: 'GLOBAL_ENTITY'
 samples:
-- img: {{site.baseurl}}/images/vendor/flows/openaction_sample.png
+- img: /slingrDoc/images/vendor/flows/openaction_sample.png
   alt: Open action Sample
   description:  The flow starts, the open action step opens the specified action modal in the UI. and then the execution finished with the end step.

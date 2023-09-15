@@ -33,7 +33,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/downloadfile_sample.png" alt="Download file step image">
+  <img src="/slingrDoc/images/vendor/flows/downloadfile_sample.png" alt="Download file step image">
   <figcaption>The flow begins, and the "download file" step downloads the specified file. If an error occurs during the file download, the error will be logged, and the execution will be terminated.</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/goback_sample.png" alt="Go back step image">
+  <img src="/slingrDoc/images/vendor/flows/goback_sample.png" alt="Go back step image">
   <figcaption>The flow initiates, and the "go back" step navigates back in the browser's navigation history. Subsequently, the execution concludes with the "end" step.</figcaption>
 </figure>
  
@@ -86,7 +86,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/gotoview_sample.png" alt="Go to view step image">
+  <img src="/slingrDoc/images/vendor/flows/gotoview_sample.png" alt="Go to view step image">
   <figcaption>The flow begins, and the "go to view" step navigates to the specified view. Subsequently, the execution concludes with the "end" step.</figcaption>
 </figure>
 
@@ -114,7 +114,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/openaction_sample.png" alt="Open action step image">
+  <img src="/slingrDoc/images/vendor/flows/openaction_sample.png" alt="Open action step image">
   <figcaption>The flow initiates, and the "open action" step opens the specified action modal in the UI. Following this, the execution concludes with the "end" step.</figcaption>
 </figure>
 
@@ -140,7 +140,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/openexternallink_sample.png" alt="Open external link step image">
+  <img src="/slingrDoc/images/vendor/flows/openexternallink_sample.png" alt="Open external link step image">
   <figcaption>The flow begins, and the "open external link" step opens the specified external URL. Subsequently, the execution concludes with the "end" step.</figcaption>
 </figure>
 
@@ -165,7 +165,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/reload_sample.png" alt="Relod step image">
+  <img src="/slingrDoc/images/vendor/flows/reload_sample.png" alt="Relod step image">
   <figcaption>The flow begins, and the "reload" step refreshes the app. Subsequently, the execution concludes with the "end" step.</figcaption>
 </figure>
 
@@ -195,7 +195,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/showmessage_sample.png" alt="Show message step image">
+  <img src="/slingrDoc/images/vendor/flows/showmessage_sample.png" alt="Show message step image">
   <figcaption>The flow initiates, and the "show message" step displays the specified message. Following this, the execution concludes with the "end" step.</figcaption>
 </figure>
 
@@ -222,7 +222,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/starttask_sample.png" alt="Start task step image">
+  <img src="/slingrDoc/images/vendor/flows/starttask_sample.png" alt="Start task step image">
   <figcaption>The flow begins, and the "start task" step displays the specified task in the top right corner. If an error occurs during the task display, the error will be logged, and the execution will be terminated.</figcaption>
 </figure>
 
@@ -250,7 +250,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/updatetask_sample.png" alt="Update task step image">
+  <img src="/slingrDoc/images/vendor/flows/updatetask_sample.png" alt="Update task step image">
   <figcaption>The flow initiates, and the "update task" step updates the status of the specified task. If an error occurs during the task update, the error will be logged, and the execution will be terminated.</figcaption>
 </figure>
 

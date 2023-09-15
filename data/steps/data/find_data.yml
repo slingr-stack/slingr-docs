@@ -18,7 +18,7 @@ outputs:
     type: resultSet
     description: A list of records that can be iterated.
 samples:
-  - img: {{site.baseurl}}/images/vendor/flows/find_data.png
+  - img: /slingrDoc/images/vendor/flows/find_data.png
     alt: Find data image.
     description: The flow starts, the find data step searches for data using a query, then the data is logged and then the execution finishes with the end step. 
 contexts:

@@ -48,6 +48,6 @@ inputs:
         operator: is
         value: 'Script'
 samples:
-  - img: {{site.baseurl}}/images/vendor/flows/while_sample.png
+  - img: /slingrDoc/images/vendor/flows/while_sample.png
     alt: While Sample
     description: The flow starts, the while step logs as long as a specified condition is true and then the execution finished with the end step.

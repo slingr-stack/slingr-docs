@@ -17,7 +17,7 @@ inputs:
       operator: 
       value:
 samples:
-  - img: {{site.baseurl}}/images/vendor/flows/logger.png
+  - img: /slingrDoc/images/vendor/flows/logger.png
     alt: Image of end step.
     description:  The flow starts, the logger step logs something and then the execution finishes with the end step.
 contexts:

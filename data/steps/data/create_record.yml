@@ -15,7 +15,7 @@ outputs:
     type: record
     description: Created record instance.
 samples:
-  - img: {{site.baseurl}}/images/vendor/flows/create_record.png
+  - img: /slingrDoc/images/vendor/flows/create_record.png
     alt: Create record image
     description: The flow starts, the create record step creates a new record and then the execution finishes with the end step. In case of an error while creating the new record, the error will be logged and the execution will finish.
 

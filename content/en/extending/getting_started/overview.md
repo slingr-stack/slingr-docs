@@ -22,7 +22,7 @@ Endpoints are crucial components that extend the functionality of the Slingr pla
 
 One of the primary use cases for legacy services is seamless integration with other applications, especially cloud-based services. Slingr offers an official legacy services registry, which houses various legacy services designed to facilitate smooth integration with popular services such as Slack, Google Calendar, or SparkPost.
 
-![legacy services overview]({{site.baseurl}}/images/vendor/extending/endpoints-overview.png)
+![legacy services overview](/slingrDoc/images/vendor/extending/endpoints-overview.png)
 
 As shown in the diagram above, apps can use the API provided by the legacy service to send messages to
 another app. For example, it could be a method to retrieve available calendars from an external calendar

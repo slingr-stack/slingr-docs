@@ -15,7 +15,7 @@ inputs:
   type: text
   required: no
 samples:
-- img: {{site.baseurl}}/images/vendor/flows/starttask_sample.png
+- img: /slingrDoc/images/vendor/flows/starttask_sample.png
   alt: Start task Sample
   description: The flow starts, the start task step displays the specified task in the top right. In case of an error while displaying the task, the error will be logged and the execution will finish.
   

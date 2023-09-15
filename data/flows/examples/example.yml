@@ -41,5 +41,5 @@ contexts:
   - label: Entity
     type: entity
 samples:
-- img: {{site.baseurl}}/images/vendor/flows/updateTaskStatus_sample.png
+- img: /slingrDoc/images/vendor/flows/updateTaskStatus_sample.png
   alt: Update task status sample

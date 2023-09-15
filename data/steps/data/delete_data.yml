@@ -23,7 +23,7 @@ outputs:
     type: text
     description: The task ID in charge of the execution of the deletion.
 samples:
-  - img: {{site.baseurl}}/images/vendor/flows/delete_data.png
+  - img: /slingrDoc/images/vendor/flows/delete_data.png
     alt: Delete data image
     description: The flow starts, the delete data step deletes data of an entity and then the execution finishes with the end step. In case of an error while deleting the data, the error will be logged and the execution will finish.
 contexts:

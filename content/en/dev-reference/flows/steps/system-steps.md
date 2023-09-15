@@ -31,7 +31,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/logger.png" alt="Start step">
+  <img src="/slingrDoc/images/vendor/flows/logger.png" alt="Start step">
   <figcaption>The flow begins with the logger step, which logs a message, and concludes with the end step.</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ No configuration required.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/logger.png" alt="Image of end step.">
+  <img src="/slingrDoc/images/vendor/flows/logger.png" alt="Image of end step.">
   <figcaption>The flow begins with the logger step, logs a message, and concludes with the end step.</figcaption>
 </figure>
 
@@ -87,7 +87,7 @@ result | string | The name of the next element in the list.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/logger.png" alt="Image of end step.">
+  <img src="/slingrDoc/images/vendor/flows/logger.png" alt="Image of end step.">
   <figcaption>The flow begins with the logger step, logs a message, and concludes with the end step.</figcaption>
 </figure>
 
@@ -114,7 +114,7 @@ result | object | The final result of the script execution.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/script.png" alt="Script image">
+  <img src="/slingrDoc/images/vendor/flows/script.png" alt="Script image">
   <figcaption>The flow begins with the set script step, which executes custom code, and concludes with the end step. In case of an error during execution, the error will be logged, and the execution will terminate.</figcaption>
 </figure>
 
@@ -147,7 +147,7 @@ resultVariable | record/field | The variable created.
 ##### Sample
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/set_var.png" alt="Set var image">
+  <img src="/slingrDoc/images/vendor/flows/set_var.png" alt="Set var image">
   <figcaption>The flow begins with the set var step, which defines a new variable in the context, and concludes with the end step.</figcaption>
 </figure>
 

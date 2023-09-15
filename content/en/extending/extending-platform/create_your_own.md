@@ -33,7 +33,7 @@ To get started, you need to create a new endpoint. We recommend following one of
 
 For developing and testing your custom endpoints, there's a dedicated endpoint designed to assist you—the **`Proxy Endpoint`**:
 
-![Endpoint Proxy]({{site.baseurl}}/images/vendor/extending/endpoint-proxy.png)
+![Endpoint Proxy](/slingrDoc/images/vendor/extending/endpoint-proxy.png)
 
 When you initiate the creation of a new endpoint in the app builder, you will find the option for the **`Proxy Endpoint`** in the list of available endpoints. This particular endpoint is designed to proxy the one running on your local machine, as depicted in the diagram above.
 

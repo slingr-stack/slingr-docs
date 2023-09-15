@@ -15,7 +15,7 @@ outputs:
     type: record
     description: The updated record
 samples:
-  - img: {{site.baseurl}}/images/vendor/flows/update_record_and_save.png
+  - img: /slingrDoc/images/vendor/flows/update_record_and_save.png
     alt: Updated record image.
     description: The flow starts, the update record step updates the data of a record and then the changes are saved by the save record step, finally the execution finishes with the end step. In case of an error, the error will be logged and the execution will finish.
 contexts:

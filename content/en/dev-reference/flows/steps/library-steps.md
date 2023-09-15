@@ -29,7 +29,7 @@ In contrast to predefined steps, you have the flexibility to configure the categ
 **`By Generic Functionalities`:** Create steps with frequently used operations that streamline the development of your workflows.
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/libraries_steps_flow_editor.png" alt="Libraries step image">
+  <img src="/slingrDoc/images/vendor/flows/libraries_steps_flow_editor.png" alt="Libraries step image">
   <figcaption>In the Flow Editor, we have the libraries divided by the configured categories</figcaption>
 </figure>
 
@@ -44,7 +44,7 @@ Flow Step Libraries enable you to define your custom steps and seamlessly integr
 Inputs are versatile and optionally configurable. Each input can be customized extensively, from defining its data type to establishing general rules. This empowers users to employ expressions and scripts to tailor the behavior of the library step within the Flow Editor.
 
 <figure>
-  <img src="{{site.baseurl}}/images/vendor/flows/libraries_inputs.png" alt="Libraries inputs step image">
+  <img src="/slingrDoc/images/vendor/flows/libraries_inputs.png" alt="Libraries inputs step image">
   <figcaption>In the Flow Editor, we have the libraries divided by the configured categories</figcaption>
 </figure>
 
@@ -88,16 +88,16 @@ When an entity utilized within a Step Library undergoes changes or updates, the 
 
 1. **`Step Library Definition`**: To begin, we define our Business Logic step. In this example, it accepts a list as input and returns a list after applying a specific process to each element.
 
-![libraries_on_flow_editor]({{site.baseurl}}/images/vendor/flows/script_code_sample.png)
+![libraries_on_flow_editor](/slingrDoc/images/vendor/flows/script_code_sample.png)
 
 2. **`Enhancing Workflow`**: Following the definition of the Business Logic step, we navigate to the Flow Editor and realize that we need to process multiple lists. To simplify this operation, we decide to add a Library Step that streamlines the concatenation of these lists.
 
-![Enhacing workflow]({{site.baseurl}}/images/vendor/flows/libraries_flow_incomplete.png)
+![Enhacing workflow](/slingrDoc/images/vendor/flows/libraries_flow_incomplete.png)
 
 3. **`Ready for Use`**: With the new Step Library in place, we return to the Flow Editor, where the newly defined steps are now readily available for use.
 
-![Ready for Use]({{site.baseurl}}/images/vendor/flows/libraries_steps_flow_editor.png)
+![Ready for Use](/slingrDoc/images/vendor/flows/libraries_steps_flow_editor.png)
 
 4. **`Data Collection`**: In our sample scenario, we gather the data to be processed using Set Var steps. Once all the data lists are collected, the Concat List step effectively merges these values, preparing them for processing by the Business Logic Step.
 
-![Data Collection]({{site.baseurl}}/images/vendor/flows/libraries_on_flow_editor.png)
+![Data Collection](/slingrDoc/images/vendor/flows/libraries_on_flow_editor.png)

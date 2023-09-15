@@ -165,7 +165,7 @@ To make changes to the metadata, you must use the app builder, which is accessib
   <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
 
     <a class="navbar-brand order-0" href="/" aria-label="Slingr">
-      <img src="{{site.baseurl}}/images/vendor/logo.png" class="navbar-img">
+      <img src="/slingrDoc/images/vendor/logo.png" class="navbar-img">
 
     </a>
 
@@ -3610,7 +3610,7 @@ To make changes to the metadata, you must use the app builder, which is accessib
 <p>Next, we will outline the process for implementing changes to your apps and synchronizing those changes to the production environment.</p>
 <h2 id="making-changes-to-your-app"><strong>Making changes to your app</strong> <a href="#making-changes-to-your-app" class="anchor" aria-hidden="true">#</a></h2>
 <p>You can modify your app&rsquo;s metadata through the app builder. Here, you can view your app&rsquo;s definition and implement necessary changes. Note that these changes won&rsquo;t take effect immediately; they need to be pushed to the app runtime, where they will be applied. For instance, if you add a new field using the app builder, you won&rsquo;t see it in the app immediately after saving. First, you need to push the changes, and once this is done, the new field will appear in the app runtime of the development environment.</p>
-<p><img class="img-fluid lazyload blur-up" src="{{site.baseurl}}/images/vendor/platform-ref/push-changes.png" alt="Push changes"></p>
+<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/platform-ref/push-changes.png" alt="Push changes"></p>
 <p>You can push changes from the app builder using the <strong><code>Push changes</code></strong> action in the secondary menu (a shortcut is also available with <strong><code>Ctrl + P</code></strong>). When changes are pushed, you&rsquo;ll see a summary of the changes that will be pushed, and you&rsquo;ll have the option to create a backup and provide an explanation for the changes.</p>
 <p>Enabling the backup flag creates a <a href="/dev-reference/app/versions/">version</a> that can be restored later. Typically, you wouldn&rsquo;t create a backup with every push; rather, you&rsquo;d do so when you need a restore point.</p>
 <p>Importantly, understand the impact of pushing changes:</p>
@@ -3623,7 +3623,7 @@ To make changes to the metadata, you must use the app builder, which is accessib
 </ol>
 <h2 id="synchronizing-changes-to-production"><strong>Synchronizing changes to production</strong> <a href="#synchronizing-changes-to-production" class="anchor" aria-hidden="true">#</a></h2>
 <p>Once you&rsquo;ve tested all changes in the development environment, if you have a production environment in your app, you can sync these changes from development to production.</p>
-<p><img class="img-fluid lazyload blur-up" src="{{site.baseurl}}/images/vendor/platform-ref/sync-changes.png" alt="Sync changes"></p>
+<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/platform-ref/sync-changes.png" alt="Sync changes"></p>
 <p>From the app builder, use the <strong><code>Sync changes to prod</code></strong> action in the secondary menu to synchronize changes. During this process, you&rsquo;ll see a summary of the changes that will be moved to production. It&rsquo;s important to note that only changes that have been pushed will be synced. Any changes made in the app builder but not yet pushed won&rsquo;t be synchronized.</p>
 <p>When syncing changes, the following steps occur:</p>
 <ol>
@@ -3660,7 +3660,7 @@ To make changes to the metadata, you must use the app builder, which is accessib
 <p>You may have noticed that there is no app builder available in the production environment. This is because making direct changes in the production environment is discouraged. Changes should be made in the development or staging environment, tested, and then synced to production.</p>
 <p>However, your production environment might require slightly different behavior than your development or staging environments. This could involve using a different API key, an alternative alerts policy, or even a distinct theme for easy differentiation between production and development.</p>
 <p>This is where environment settings come into play. These settings can be customized per environment and, combined with metadata, influence how your app operates.</p>
-<p><img class="img-fluid lazyload blur-up" src="{{site.baseurl}}/images/vendor/platform-ref/metadata-to-environments.png" alt="App Metadata and Environments"></p>
+<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/platform-ref/metadata-to-environments.png" alt="App Metadata and Environments"></p>
 <p>You can modify environment settings from the app builder in the development or staging environment. For the production environment, these settings can be adjusted using the app monitor.</p>
 <p>For more information on different environment settings, refer to the following documentation:</p>
 <ul>
@@ -3703,7 +3703,7 @@ To make changes to the metadata, you must use the app builder, which is accessib
     <div class="row justify-content-center">
       <div class="col-lg-4" >
         <ul class="list-unstyled">
-          <img src="{{site.baseurl}}/images/vendor/slingr_blue.png">
+          <img src="/slingrDoc/images/vendor/slingr_blue.png">
           <li>©2023 Slingr. All rights reserved. </li>
           <li>Site last generated: Apr 11, 2023</li>
 

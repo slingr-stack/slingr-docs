@@ -18,7 +18,7 @@ In this section, we are going to take our first steps with the builder. If you a
 
 👉 Click on the button on the right (the one with the wrench icon 🔧 ) to open the builder in a new tab. 
 
-![Card]({{site.baseurl}}/images/vendor/event-planner/first-changes/ww_event_planner_open_builder.png)
+![Card](/slingrDoc/images/vendor/event-planner/first-changes/ww_event_planner_open_builder.png)
 
 ---
 
@@ -26,7 +26,7 @@ In this section, we are going to add a new field to the events. This can be used
 
 👉 If you are in the builder, you should be seeing something like this:
 
-![Builder]({{site.baseurl}}/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes.png)
+![Builder](/slingrDoc/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes.png)
 
 ---
 
@@ -34,7 +34,7 @@ In this section, we are going to add a new field to the events. This can be used
 
 On the left, you will see a tab called "App navigation" with a tree inside. Each item here is referred to as a "Node" (Marked in red in the image above). Clicking on these nodes will allow you to navigate through the different pages of the builder. Some nodes have extra functionalities accessible through the right-click option. You will be able to distinguish them because when you hover over them, an arrow will appear like this:
 
-![Nav-tree]({{site.baseurl}}/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes_arrow.png)
+![Nav-tree](/slingrDoc/images/vendor/event-planner/first-changes/ww_event_planner_builder_nodes_arrow.png)
 
 ---
 
@@ -58,7 +58,7 @@ Great! Now that we know how to navigate through the builder, let's go ahead and 
 
 ---
 
-![status-form]({{site.baseurl}}/images/vendor/event-planner/first-changes/ww_event_planner_status_form.png)
+![status-form](/slingrDoc/images/vendor/event-planner/first-changes/ww_event_planner_status_form.png)
 
 ---
 ### Save and Edit the field.
@@ -69,7 +69,7 @@ Great! Now that we know how to navigate through the builder, let's go ahead and 
 
 👉 Click on ``Save``.
 
-![create-edit-save]({{site.baseurl}}/images/vendor/event-planner/first-changes/ww_event_planner_status_default_value.png)
+![create-edit-save](/slingrDoc/images/vendor/event-planner/first-changes/ww_event_planner_status_default_value.png)
 
 ---
 ### Push Changes
@@ -82,7 +82,7 @@ Great! Now that we know how to navigate through the builder, let's go ahead and 
 
 👉 A popup will appear, displaying the changes you have made. Review them, and if everything looks good, click on "Push Changes."
 
-![Alt Text]({{site.baseurl}}/images/vendor/event-planner/first-changes/ww_event_planner_push_changes.png)
+![Alt Text](/slingrDoc/images/vendor/event-planner/first-changes/ww_event_planner_push_changes.png)
 
 ---
 

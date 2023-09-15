@@ -165,7 +165,7 @@ Let&#39;s go back to the builder and get to work. We already have the basic oper
   <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
 
     <a class="navbar-brand order-0" href="/" aria-label="Slingr">
-      <img src="{{site.baseurl}}/images/vendor/logo.png" class="navbar-img">
+      <img src="/slingrDoc/images/vendor/logo.png" class="navbar-img">
 
     </a>
 
@@ -750,7 +750,7 @@ Let&#39;s go back to the builder and get to work. We already have the basic oper
 <li><code>Name</code>: startWork.</li>
 </ul>
 <p>👉 In the Preconditions section, you will indicate under which conditions the action can be executed. For the <strong><code>&quot;startWork&quot;</code></strong> action, the precondition is that the field <strong><code>&quot;Status&quot;</code></strong> must be <strong><code>&quot;To do&quot;</code></strong>. This can be indicated with an expression. Select the option <strong><code>&quot;Expression&quot;</code></strong> for Preconditions, then set up the following expression by clicking on <strong><code>&quot;Add new rule&quot;</code></strong> and configure it like this:</p>
-<p><img class="img-fluid lazyload blur-up" src="{{site.baseurl}}/images/vendor/task-mananger/adding-actions/a.png" alt="Preconditions"></p>
+<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/task-mananger/adding-actions/a.png" alt="Preconditions"></p>
 <p>👉 In the field <strong><code>&quot;Action script&quot;</code></strong>, add the following script to the body of the function:</p>
 <pre><code class="language-js">record.lock(function(record) {
     record.field('status').val('inProgress');
@@ -820,7 +820,7 @@ sys.data.save(record);
 <li>For the option <strong><code>Read only</code></strong> select <strong><code>Always</code></strong>.</li>
 <li>Save changes by clicking on <strong><code>Apply</code></strong>.</li>
 </ol>
-<p><img class="img-fluid lazyload blur-up" src="{{site.baseurl}}/images/vendor/task-mananger/adding-actions/aa.png" alt="status-field"></p>
+<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/task-mananger/adding-actions/aa.png" alt="status-field"></p>
 <br>
 <div class="bs-callout bs-callout-warning">
   
@@ -874,7 +874,7 @@ sys.data.save(record);
     <div class="row justify-content-center">
       <div class="col-lg-4" >
         <ul class="list-unstyled">
-          <img src="{{site.baseurl}}/images/vendor/slingr_blue.png">
+          <img src="/slingrDoc/images/vendor/slingr_blue.png">
           <li>©2023 Slingr. All rights reserved. </li>
           <li>Site last generated: Apr 11, 2023</li>
 

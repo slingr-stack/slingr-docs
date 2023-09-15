@@ -16,7 +16,7 @@ weight: 131
 
 In this example, we demonstrate an action that dynamically updates the tax rate percentage based on the customer's location. When the customer's location is Colorado, the tax rate is set to 5%, while for customers in Arizona, the tax rate is adjusted to 6.5%. This showcases how you can use contextual information to make real-time adjustments and tailor processes to specific conditions.
 
-![Update tax rates]({{site.baseurl}}/images/vendor/flows/updateTaxRate_sample.png)
+![Update tax rates](/slingrDoc/images/vendor/flows/updateTaxRate_sample.png)
 
 ## **Step: start**
 
