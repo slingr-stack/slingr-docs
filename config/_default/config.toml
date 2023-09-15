@@ -108,8 +108,3 @@ rel  = "sitemap"
   [[module.mounts]]
     source = "node_modules/@hyas/images/layouts"
     target = "layouts"
-
-[params]
-  [params.images]
-    # Configuración de URL de imágenes
-    baseURL = "https://pmslingr.github.io/slingrDoc/"
