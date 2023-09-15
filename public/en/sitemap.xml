@@ -591,20 +591,6 @@
   </url>
   
   <url>
-    <loc>https://pmslingr.github.io/slingrDoc/blog/example-post/</loc>
-    <lastmod>2023-09-07T16:27:22+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://pmslingr.github.io/slingrDoc/blog/</loc>
-    <lastmod>2023-09-07T16:21:44+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/action-views/</loc>
     <lastmod>2020-11-16T13:59:39+01:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1230,48 +1216,6 @@
   <url>
     <loc>https://pmslingr.github.io/slingrDoc/getting-started/getting/first-steps/</loc>
     <lastmod>2020-11-16T13:59:39+01:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://pmslingr.github.io/slingrDoc/docs/guides/</loc>
-    <lastmod>2023-09-07T16:06:50+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://pmslingr.github.io/slingrDoc/docs/guides/example/</loc>
-    <lastmod>2023-09-07T16:04:48+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://pmslingr.github.io/slingrDoc/docs/reference/</loc>
-    <lastmod>2023-09-07T16:12:37+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://pmslingr.github.io/slingrDoc/docs/reference/example/</loc>
-    <lastmod>2023-09-07T16:13:18+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://pmslingr.github.io/slingrDoc/docs/</loc>
-    <lastmod>2023-09-07T16:12:03+02:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://pmslingr.github.io/slingrDoc/privacy/</loc>
-    <lastmod>2023-09-07T17:19:07+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
