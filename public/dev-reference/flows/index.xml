@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flows on </title>
+    <link>https://pmslingr.github.io/slingrDoc/dev-reference/flows/</link>
+    <description>Recent content in Flows on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/slingrDoc/dev-reference/flows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Overview</title>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/flows/overview/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/flows/overview/</guid>
+      <description>Introduction # Flow is a visual programming language tool that utilizes graphical blocks (steps) for creating algorithms.
+To describe the logic of a flow, you are required to perform a drag-and-drop action of steps and connect them together. In essence, a Flow is a sequence of predefined and configurable steps that can be employed to execute a wide array of business rules in various parts of an application.
+Flow settings # The table below outlines the general properties of flows:</description>
+    </item>
+    
+  </channel>
+</rss>

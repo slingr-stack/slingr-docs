@@ -1,0 +1,296 @@
+
+
+.footer img {
+  max-width: 150px; 
+  height: auto; 
+  margin-top: 10px; 
+  padding: 10px;
+  margin-bottom: 0px;
+}
+.frontbox .image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+
+.frontbox .title {
+    text-align: center;
+  }
+
+.col {
+    max-width: 250px; /* establece un ancho máximo para evitar que los bloques se hagan demasiado grandes */
+    max-height: 250px; /* establece una altura fija para crear bloques cuadrados */
+  }
+  
+
+
+
+@media screen and (min-width: 0px) {
+  .frontbox .image {
+    max-width: 70%;
+  }
+
+  }
+  
+  @media screen and (min-width: 480px) {
+    .frontbox .image {
+      max-width: 70%;
+    }
+
+    }
+@media screen and (min-width: 984px) {
+  .frontbox .image {
+    max-width: 70%;
+  }
+
+  }
+
+  
+@media screen and (min-width: 1280px) {
+  .frontbox .image {
+    max-width: 80%;
+  }
+
+    
+}
+
+.notes {
+  padding: 10px;
+  margin: 15px 0;
+  border-left-width: 5px;
+  border-radius: 3px;
+  background-color: #0d8ad2;
+}
+
+.bs-callout {
+    padding: 10px;
+    margin: 15px 0;
+    border: 2px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.notes-note {
+  background-color: #d9edf7;
+  color: #037cb8;
+}
+
+.notes-important {
+  background-color: #fcf8e3;
+  color: #c09853;
+}
+
+.notes-tip {
+  background-color: #dff0d8;
+  color: #61964c;
+}
+
+.notes-warning {
+  background-color: #f2dede;
+  color:#bc5351;
+}
+
+
+.notes-emoji {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+
+.bs-callout code {
+    border-radius: 3px;
+}
+
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+
+.bs-callout-default {
+    border-left-color: #777;
+}
+
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+
+.summary {
+    font-size: 100%;
+    color: #808080;
+    margin: 20px 0 20px 0;
+    border-left: 5px solid #808080;
+    padding-left: 10px;
+}
+
+
+
+.index-img .img {
+  max-width: 100%;
+  height: auto;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  max-height: 600px; /* set a maximum height for the image */
+}
+
+
+
+.getting-started-courses {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 0;
+}
+
+.getting-started-course {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-width: 47%;
+  padding: 30px;
+  text-align: center;
+}
+
+.getting-started-course-image {
+  margin-bottom: 30px;
+}
+
+.getting-started-course-image img {
+  max-width: 60%;
+}
+
+.getting-started-course-title {
+  color: #222;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.getting-started-course-description {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.getting-started-course-link {
+  background-color: #11a4eb;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.getting-started-course-link:hover {
+  background-color: #0d8ad2;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.contextExamples {
+  text-align: left;
+  right: 10px;
+  top: 73px;
+  min-height: 140px;
+  width: 180px;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  left: 594px;
+  border: solid 2px;
+  border-radius: 10px;
+}
+
+.contextExamples .context-item {
+  max-height: 16px !important;
+  margin: 0;
+  padding: 0;
+}
+
+.context-item .name {
+  padding-left: 3px;
+  text-transform: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: clip;
+}
+
+.context-item .type {
+  font-weight: lighter;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+
+.query-button {
+  background-color: green;
+}
+
+
+.titulo {
+  background-color: purple;
+}

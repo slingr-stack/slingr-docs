@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Metadata editor on </title>
+    <link>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/</link>
+    <description>Recent content in Metadata editor on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>App resources</title>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/app-resources/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/app-resources/</guid>
+      <description>Navigation tree # On the left side of the app builder, you&amp;rsquo;ll discover a panel housing the navigation tree. This tree serves as the primary means of navigating through all your app&amp;rsquo;s metadata. It consists of nodes, folders, and sub-nodes that represent the various resources within your app.
+✅ Quickly expand or collapse the left panel with app resources using the keyboard shortcut Alt + Left Arrow. Interacting with the navigation tree # With the exception of root nodes, clicking on any node in the tree will display a view in the builder&amp;rsquo;s central panel.</description>
+    </item>
+    
+    <item>
+      <title>Metadata edition</title>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/metadata-edition/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/metadata-edition/</guid>
+      <description>General description # Upon clicking on a node within the navigation tree, a corresponding view will appear in the central panel of the app builder. Depending on the resources associated, this view may either present a table showcasing details about sub-items or an editable form featuring labels and values that reflect the various settings tied to the selected resource.
+Central panel view # In each of these views, you&amp;rsquo;ll immediately notice a top header containing specific elements.</description>
+    </item>
+    
+    <item>
+      <title>App explorer</title>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/app-explorer/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/app-explorer/</guid>
+      <description>App explorer panel # Located on the right side of the app builder, the App Explorer panel provides quick access to different aspects of your app&amp;rsquo;s metadata. The panel consists of four tabs:
+Structure (default selection) Find Usages Help ✅ Use the keyboard shortcut alt + right arrow to expand or collapse the right panel with the App Explorer. Structure tab # When the Structure tab is active, an interactive tree resembling the navigation tree on the left panel is displayed.</description>
+    </item>
+    
+    <item>
+      <title>Console</title>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/console/</link>
+      <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
+      
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/console/</guid>
+      <description>Console panel # Situated at the bottom of the app builder is the console panel. By clicking on it, you can expand this panel. Within the console, you have the ability to execute scripts using the Javascript API of the platform. The results of these script executions will be displayed on the right side of this panel. This feature proves highly valuable for testing scripts prior to implementing them in other parts of your app.</description>
+    </item>
+    
+  </channel>
+</rss>
