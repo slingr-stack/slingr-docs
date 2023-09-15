@@ -24,7 +24,7 @@ outputs:
     type: text
     description: The task ID in charge of the execution of the action.
 samples:
-  - img: /slingrDoc/images/vendor/flows/execute_global_action.png
+  - img: /images/vendor/flows/execute_global_action.png
     alt: Execute global action image.
     description: The flow starts, the execute global action step executes an action at entity level and then the execution finishes with the end step. In case of an error while executing the action, the error will be logged and the execution will finish.
 contexts:

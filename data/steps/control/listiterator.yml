@@ -12,6 +12,6 @@ outputs:
   type: record / field
   description: The name of the next element in the list.
 samples:
-- img: /slingrDoc/images/vendor/flows/foreach_sample.png
+- img: /images/vendor/flows/foreach_sample.png
   alt: Foreach Sample
   description: The flow starts, the foreach step updates and saves each of the records found in the find data step and then the execution finished with the end step.

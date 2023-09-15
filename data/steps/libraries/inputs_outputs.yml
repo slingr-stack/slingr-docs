@@ -7,7 +7,7 @@ libraries_input: The inputs are optional and wide-range configurable. Each input
   library Step on the Flow Editor.
 
 input_samples:
-  - img: /slingrDoc/images/vendor/flows/libraries_inputs.png
+  - img: /images/vendor/flows/libraries_inputs.png
     description: In the Flow Editor, we have the libraries divided by the configured categories
 
 libraries_output: Outputs are also optional and each output has its Type.

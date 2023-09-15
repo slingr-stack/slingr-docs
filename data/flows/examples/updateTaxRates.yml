@@ -90,5 +90,5 @@ steps:
       - label: action
         type: Action
 samples:
-- img: /slingrDoc/images/vendor/flows/updateTaxRate_sample.png
+- img: /images/vendor/flows/updateTaxRate_sample.png
   alt: Update tax rates sample

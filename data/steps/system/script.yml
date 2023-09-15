@@ -11,7 +11,7 @@ outputs:
     type: object
     description: The final result to be returned by the execution of the script.
 samples:
-  - img: /slingrDoc/images/vendor/flows/script.png
+  - img: /images/vendor/flows/script.png
     alt: Script image
     description: The flow starts, the set script step executes custom code and then the execution finishes with the end step.In case of an error while executing the custom code, the error will be logged and the execution will finish.
 contexts:

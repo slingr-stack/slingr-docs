@@ -42,5 +42,5 @@ steps:
       - label: updatedTask
         type: record
 samples:
-- img: /slingrDoc/images/vendor/flows/start_task.png
+- img: /images/vendor/flows/start_task.png
   alt: Update task status sample

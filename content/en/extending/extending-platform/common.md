@@ -1064,7 +1064,7 @@ After creating these necessary files, you'll need to register your endpoint with
 
 Upon registering the new endpoint version and selecting that new version from the developer portal, the newly defined flow steps will be accessible in the flow editor.
 <div style="width:800px">
-<img src="/slingrDoc/images/vendor/extending/endpoint_flow_steps.png" alt="Endpoints steps" style="max-width:880px; border:1px solid grey;"/>
+<img src="/images/vendor/extending/endpoint_flow_steps.png" alt="Endpoints steps" style="max-width:880px; border:1px solid grey;"/>
 <br>
 <i>
 Steps available in the flow editor

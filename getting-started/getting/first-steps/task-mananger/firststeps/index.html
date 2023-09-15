@@ -165,7 +165,7 @@ Creating the &ldquo;Tasks&rdquo; Entity # The tasks entity serves as the central
   <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
 
     <a class="navbar-brand order-0" href="/" aria-label="Slingr">
-      <img src="/slingrDoc/images/vendor/logo.png" class="navbar-img">
+      <img src="/images/vendor/logo.png" class="navbar-img">
 
     </a>
 
@@ -736,7 +736,7 @@ Creating the &ldquo;Tasks&rdquo; Entity # The tasks entity serves as the central
 
 			</nav>
 			<p>Hi, welcome to the builder! Here, we are going to build the app. As you can see on the left, there is a tree with multiple items, we will call them: nodes. Let’s start building something great.</p>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/task-mananger/first-steps/task_manager_builder_node.png" alt="builder-tree"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/task-mananger/first-steps/task_manager_builder_node.png" alt="builder-tree"></p>
 <h3 id="creating-the-tasks-entity">Creating the &ldquo;Tasks&rdquo; Entity <a href="#creating-the-tasks-entity" class="anchor" aria-hidden="true">#</a></h3>
 <p>The <strong><code>tasks</code></strong> entity serves as the central component in the task manager application. It allows users to create, store, and manage task records efficiently. Through this entity, users can access various views of their tasks, granting them the flexibility to organize and handle records according to their preferences and needs.</p>
 <p>Now we will create the <strong><code>tasks</code></strong> entity and then some actions and views to display the records.</p>
@@ -752,7 +752,7 @@ Creating the &ldquo;Tasks&rdquo; Entity # The tasks entity serves as the central
 <p>👉 Let’s add a simple field. Fill the label with <strong><code>Title</code></strong>, the name with <strong><code>title</code></strong>, the type should be <strong><code>text</code></strong>, and the multiplicity should be <strong><code>one</code></strong>. Click on <strong><code>Add</code></strong>.</p>
 <p>👉 Finally, let’s set the record label. The record label is calculated for every record, and it is something that will identify your record. It doesn’t need to be unique but should be human-friendly. Leave the option as <strong><code>Field</code></strong>, and in the dropdown, select <strong><code>Title</code></strong>.</p>
 <p>👉 The form should look something like this. If so, click on <strong><code>Create</code></strong>.</p>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/task-mananger/first-steps/task_manager_creating_entity.png" alt="create-the-entity"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/task-mananger/first-steps/task_manager_creating_entity.png" alt="create-the-entity"></p>
 <hr>
 <h3 id="create-some-adittional-fields">Create some adittional fields <a href="#create-some-adittional-fields" class="anchor" aria-hidden="true">#</a></h3>
 <p>Great! Now that we have finished creating the entity, let’s add some more fields:</p>
@@ -807,12 +807,12 @@ This is the status of the task. Possible values will be <code >To do</code>, <co
     </tbody>
 </table>
 <p>Depending on the type, you might see some additional options at creation time, which is the case for the <strong><code>Status</code></strong> field where you will need to add the four possible statuses: <strong><code>To do</code>, <code>In progress</code>, <code>Done</code>, and <code>Archived</code></strong>. It should look something like this:</p>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/task-mananger/first-steps/2.png" alt="status-field"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/task-mananger/first-steps/2.png" alt="status-field"></p>
 <p>Clicking on <strong><code>Save and edit</code></strong> will create the field and will open the details view for that field, where you will be able to change other settings, like the default value and required flag. You can also open it by clicking the field node in the tree. In our sample app, we need to take care of the following things for these fields:</p>
 <p>👉 <strong><code>Title</code></strong>: the setting <strong><code>Required</code></strong> should be set to <strong><code>Always</code></strong>.</p>
 <p>👉 <strong><code>Status</code></strong>: the setting <strong><code>Required</code></strong> should be set to <strong><code>Always</code></strong>. Also, in the <strong><code>Default value</code></strong>, you should choose <strong><code>Value</code></strong> and then select the value <strong><code>To Do</code></strong> from the dropdown.</p>
 <p>Remember to save all the changes. In the end, your structure should look similar to this one:</p>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/task-mananger/first-steps/3.png" alt="fields-structure"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/task-mananger/first-steps/3.png" alt="fields-structure"></p>
 <hr>
 <h3 id="create-a-simple-grid-view">Create a simple grid view <a href="#create-a-simple-grid-view" class="anchor" aria-hidden="true">#</a></h3>
 <p>Now that we have created the fields for the entity, the next step is to create a view so we can see something in our app. For that, we will create a simple grid view that will allow you to list, create, edit, and delete tasks. To create the grid view, follow these steps:</p>
@@ -825,12 +825,12 @@ This is the status of the task. Possible values will be <code >To do</code>, <co
 <li><code>Columns</code>: Number, Title, Status.</li>
 </ul>
 <p>👉 Click on <strong><code>Create</code></strong>.</p>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/task-mananger/first-steps/4.png" alt="grid-view"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/task-mananger/first-steps/4.png" alt="grid-view"></p>
 <p>Once we have the view, we need to indicate how to navigate to it. Let’s add it to what’s going to be the sidebar of our app. Click the node <strong><code>User interface &gt; Navigation &gt; Main menu</code></strong>, and follow these steps:</p>
 <p>👉 Click on <strong><code>Add new menu entry</code></strong> on the top-right of the page, and then click on the option <strong><code>Add view entry</code></strong>.</p>
 <p>👉 In the view, select the view <strong><code>All Tasks</code></strong>, and complete the label with <strong><code>All Tasks</code></strong>. You can add an icon if you want.</p>
 <p>👉 Click on <strong><code>Create</code></strong>.</p>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/task-mananger/first-steps/5.png" alt="navidation-tree"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/task-mananger/first-steps/5.png" alt="navidation-tree"></p>
 <hr>
 <h3 id="push-your-changes">Push your changes <a href="#push-your-changes" class="anchor" aria-hidden="true">#</a></h3>
 <p><strong>Great! We have a basic app already configured.</strong></p>
@@ -877,7 +877,7 @@ This is the status of the task. Possible values will be <code >To do</code>, <co
     <div class="row justify-content-center">
       <div class="col-lg-4" >
         <ul class="list-unstyled">
-          <img src="/slingrDoc/images/vendor/slingr_blue.png">
+          <img src="/images/vendor/slingr_blue.png">
           <li>©2023 Slingr. All rights reserved. </li>
           <li>Site last generated: Apr 11, 2023</li>
 

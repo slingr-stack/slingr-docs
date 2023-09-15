@@ -16,7 +16,7 @@ weight: 132
 
 In this example, we present an action that performs a comprehensive search for all companies located in Arizona. For each company found, it updates the rating value to 5, logs the updated company details, and saves the changes to the database. In the event of an error occurring during the company update process, the error is also diligently logged for future reference. This example illustrates how to efficiently manage and update multiple records within a specific context while handling potential errors gracefully.
 
-![Update several records](/slingrDoc/images/vendor/flows/updateRatingArizonaCompanies.png)
+![Update several records](/images/vendor/flows/updateRatingArizonaCompanies.png)
 
 ## **Step: start**
 

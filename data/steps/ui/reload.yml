@@ -8,6 +8,6 @@ inputs:
   required: yes
   default: false
 samples:
-- img: /slingrDoc/images/vendor/flows/reload_sample.png
+- img: /images/vendor/flows/reload_sample.png
   alt: Reload Sample
   description: The flow starts, the reload step reloads the app and then the execution finished with the end step.  

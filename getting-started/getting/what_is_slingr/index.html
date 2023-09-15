@@ -165,7 +165,7 @@ The approach followed by Slingr is to have you describe your data model and busi
   <nav class="container-xxl flex-wrap flex-lg-nowrap" aria-label="Main navigation">
 
     <a class="navbar-brand order-0" href="/" aria-label="Slingr">
-      <img src="/slingrDoc/images/vendor/logo.png" class="navbar-img">
+      <img src="/images/vendor/logo.png" class="navbar-img">
 
     </a>
 
@@ -747,7 +747,7 @@ The approach followed by Slingr is to have you describe your data model and busi
 <p>The approach followed by Slingr is to have you describe your data model and business rules, which will then be used to create your application. The idea behind this approach is to allow you to <strong>focus on solving business problems rather than dealing with technical issues</strong> that often arise when using more low-level tools like Java or .Net.</p>
 <p><strong><code>Our goal is to significantly increase productivity when creating apps.</code></strong></p>
 <p>On the other hand, we acknowledge that many SaaS solutions are purpose-built and highly efficient for specific problems. Attempting to replicate them within Slingr would be counterproductive. Therefore, our approach is to provide tools that enable easy integration of existing cloud apps, freeing you to concentrate on creating custom workflows tailored to your business needs.</p>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/whats-slingr-stack.png" alt="hola"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/whats-slingr-stack.png" alt="hola"></p>
 <p>This means you define the business rules and data model, and in return, you automatically get a working app with a <strong>user interface and a REST API</strong> that allows your app to be used by other applications. Slingr offers a wide range of features to help you model your business requirements effectively. It is designed to create real-world apps, not just trivial prototypes.</p>
 <p>As every developer knows, businesses evolve, and apps must evolve with them. Slingr provides mechanisms that enable you to <strong>quickly and cost-effectively evolve your apps with minimal risk</strong>. When you make changes to your app, it is automatically refactored to reflect those modifications, simplifying the evolution process.</p>
 <p>Additionally, Slingr provides tools to monitor your apps, ensure data security, and maintain control at all times.</p>
@@ -766,7 +766,7 @@ The approach followed by Slingr is to have you describe your data model and busi
 <p>As explained before, you need to define your data model and business rules in the builder. The app runtime will then use this definition to execute the specified actions and conditions.</p>
 <p>To provide a simplified example of how it works, let&rsquo;s consider an entity called &ldquo;Companies&rdquo; with a few properties. This entity defines your data model. Additionally, you might have actions and conditions to activate/deactivate a company, along with some rules that trigger when a company changes its status, resulting in the owner being notified by email.</p>
 <p>Below, you can observe the data model definition and the resulting app displayed in a web browser:</p>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/how-it-works.png" alt="hola"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/how-it-works.png" alt="hola"></p>
 <p>Apart from the UI, the following REST API will be generated:</p>
 <pre><code class="language-js">  POST    /data/companies
   GET     /data/companies/{id}
@@ -782,11 +782,11 @@ The approach followed by Slingr is to have you describe your data model and busi
 <h2 id="use-cases">Use Cases <a href="#use-cases" class="anchor" aria-hidden="true">#</a></h2>
 <hr>
 <h3 id="create-an-app-to-support-your-business">Create an app to support your business <a href="#create-an-app-to-support-your-business" class="anchor" aria-hidden="true">#</a></h3>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/use-case.png" alt="hola">
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/use-case.png" alt="hola">
 In this scenario, you need an application to support your main business processes, and you want to integrate it with specific systems such as email and payment gateways. With Slingr, you can easily create this application by defining your business rules, permissions for different users, and more. Next, you should configure endpoints for the integrations you require and set up the integration points.</p>
 <hr>
 <h3 id="glue-your-existing-apps">Glue your existing apps <a href="#glue-your-existing-apps" class="anchor" aria-hidden="true">#</a></h3>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/glue.png" alt="hola"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/glue.png" alt="hola"></p>
 <p>In this case, you are already using various cloud apps. You can leverage Slingr to coordinate workflows in your business, breaking silos between different departments. Here are some use cases for the schema described above:</p>
 <ul>
 <li>Custom support will utilize Zendesk. Some information will flow into Slingr, such as log types of issues, resolutions, surveys from customers, or escalated issues to different departments. For example, if there&rsquo;s an issue that requires developer attention, the customer support representative will escalate the issue to development, creating an issue on the Slingr app, which in turn, will trigger the creation of a ticket in JIRA.</li>
@@ -797,12 +797,12 @@ In this scenario, you need an application to support your main business processe
 </ul>
 <hr>
 <h3 id="customize-a-template-app">Customize a template app <a href="#customize-a-template-app" class="anchor" aria-hidden="true">#</a></h3>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/customize.png" alt="hola"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/customize.png" alt="hola"></p>
 <p>In this case, instead of creating an app from scratch on Slingr, you can take one of the template apps and adapt them to your business needs.</p>
 <p>This can apply also to your own apps. Let&rsquo;s suppose you build an app for lawyers, and you want to sell it to different companies, but each company has its own requirements. In this case, you can have a template app, and then for each company, you can customize what they need without affecting other apps.</p>
 <hr>
 <h3 id="use-it-as-a-backend-for-mobile-apps">Use it as a backend for mobile apps <a href="#use-it-as-a-backend-for-mobile-apps" class="anchor" aria-hidden="true">#</a></h3>
-<p><img class="img-fluid lazyload blur-up" src="/slingrDoc/images/vendor/useit.png" alt="hola"></p>
+<p><img class="img-fluid lazyload blur-up" src="/images/vendor/useit.png" alt="hola"></p>
 <p>Due to the exceptional REST API automatically generated for your app, it becomes incredibly easy to develop mobile apps tailored to specific purposes. These mobile apps can effortlessly pull and push data to the Slingr app, effectively acting as a backend. As long as the mobile app can access the Slingr API, it can be either native or use HTML5.</p>
 <p>In the diagram example above, employees utilize the app on Slingr, whereas customers interact with mobile apps featuring enhanced user interfaces adapted for specific purposes.</p>
 
@@ -839,7 +839,7 @@ In this scenario, you need an application to support your main business processe
     <div class="row justify-content-center">
       <div class="col-lg-4" >
         <ul class="list-unstyled">
-          <img src="/slingrDoc/images/vendor/slingr_blue.png">
+          <img src="/images/vendor/slingr_blue.png">
           <li>©2023 Slingr. All rights reserved. </li>
           <li>Site last generated: Apr 11, 2023</li>
 

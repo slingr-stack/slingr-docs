@@ -2,6 +2,6 @@ name: Subflow
 category: Control
 description: A subflow is a collection of steps that are collapsed into a single step in the execution path. It can be used to reduce some visual complexity of a flow, or to package up a group of step as a reusable piece used in multiple places.
 samples:
-- img: /slingrDoc/images/vendor/flows/subflow_sample.png
+- img: /images/vendor/flows/subflow_sample.png
   alt: Subflow Sample
   description: The flow starts, the subflow step executes the collection of steps defined in the subflow. In case of an error while executing the steps, the error will be logged and the execution will finish.
