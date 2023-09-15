@@ -2,681 +2,681 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/overview/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/overview/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/metadata-management/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/app/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/app/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/environment-settings/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/field-types/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/security/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/user-interface/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/flows/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/queries/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/queries/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/rest-apis/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/rest-apis/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/embed-api/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/embed-api/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/monitoring/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/monitoring/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/miscellaneous/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/miscellaneous/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/overview/overview/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/overview/overview/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/development-process/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/metadata-management/development-process/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-editor/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-common/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-common/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/pushing-and-syncing/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/metadata-management/pushing-and-syncing/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/automatic-refactorings/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/metadata-management/automatic-refactorings/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/app/settings/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/app/settings/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/app/global-type/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/app/global-type/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/app/public-files/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/app/public-files/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/app/versions/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/app/versions/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/environment-var/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/environment-settings/environment-var/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/ui-settings/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/environment-settings/ui-settings/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/logs-and-alerts/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/environment-settings/logs-and-alerts/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/localization/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/environment-settings/localization/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/api-tokens/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/environment-settings/api-tokens/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/entities/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/entities/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/fields/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/fields/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/actions/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/actions/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/listeners/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/listeners/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/libraries/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/libraries/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/endpoints/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/endpoints/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/services/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/services/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/packages/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/packages/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/ui-services/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/ui-services/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/overview/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/field-types/overview/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/date_and_time/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/field-types/date_and_time/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/miscellaneous_types/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/field-types/miscellaneous_types/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/multiple_choice/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/field-types/multiple_choice/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/field-types/number/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/references/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/field-types/references/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/special/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/field-types/special/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/field-types/text/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/overview/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/security/overview/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/groups/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/security/groups/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/users/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/security/users/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/single-sign-on/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/security/single-sign-on/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/external-tools/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/security/external-tools/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/oauth/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/security/oauth/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/overview/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/overview/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/navigation/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/navigation/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/grid-views/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/grid-views/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/workflow-views/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/workflow-views/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/calendar-views/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/calendar-views/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/record-views/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/record-views/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/action-views/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/action-views/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/custom-views/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/custom-views/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/dashboard-views/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/dashboard-views/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/ui-plugins/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/ui-plugins/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/line-chart-widget/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/line-chart-widget/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/linear-chart-widget/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/linear-chart-widget/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/time-line-chart-widget/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/time-line-chart-widget/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/bar-chart-widget/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/bar-chart-widget/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/custom-widget/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/custom-widget/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/indicator-widget/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/indicator-widget/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/pie-chart-widget/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/pie-chart-widget/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/user-interface/table-widget/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/user-interface/table-widget/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/overview/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/overview/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/namespaces/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/namespaces/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-app/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-app/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys.auth/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys.auth/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-commons/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-commons/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-context/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-context/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-data/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-data/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-endpoints/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-endpoints/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-events/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-events/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-exceptions/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-exceptions/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-files/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-files/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-i18n/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-i18n/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-jobs/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-jobs/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-logs/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-logs/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-storage/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-storage/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-ui/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-ui/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-users/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-users/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-utils/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/sys-utils/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/javascript-es6/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/scripting/javascript-es6/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/overview/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/flows/overview/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/flow-designer/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/flows/flow-designer/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/steps/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/flows/steps/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/context/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/flows/context/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/flows/examples/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/queries/query-language/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/queries/query-language/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/queries/aggregate-queries/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/queries/aggregate-queries/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/queries/ui-queries/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/queries/ui-queries/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/rest-apis/apps-api/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/rest-apis/apps-api/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/rest-apis/apps-api-doc/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/rest-apis/apps-api-doc/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/embed-api/embedded-views/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/embed-api/embedded-views/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/monitoring/overview/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/monitoring/overview/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/monitoring/dashboard/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/monitoring/dashboard/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/monitoring/environment-settings/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/monitoring/environment-settings/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/monitoring/background-jobs/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/monitoring/background-jobs/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/monitoring/logs-and-alerts/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/monitoring/logs-and-alerts/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/monitoring/endpoints/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/monitoring/endpoints/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/monitoring/database-and-files/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/monitoring/database-and-files/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/monitoring/other-tools/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/monitoring/other-tools/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/miscellaneous/icons/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/miscellaneous/icons/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/miscellaneous/code-editor/</loc>
+        <loc>https://pmslingr.github.io/dev-reference/miscellaneous/code-editor/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>

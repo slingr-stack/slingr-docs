@@ -1,4 +1,4 @@
-baseurl = "https://pmslingr.github.io/slingrDoc/"
+baseurl = "/"
 canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true

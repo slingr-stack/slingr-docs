@@ -2,28 +2,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/app/settings/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/app/settings/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/app/global-type/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/app/global-type/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/app/public-files/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/app/public-files/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/app/versions/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/app/versions/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>

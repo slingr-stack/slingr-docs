@@ -2,63 +2,63 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/entities/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/entities/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/fields/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/fields/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/actions/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/actions/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/listeners/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/listeners/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/libraries/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/libraries/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/endpoints/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/endpoints/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/services/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/services/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/packages/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/packages/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/data-model-and-logic/ui-services/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/data-model-and-logic/ui-services/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>

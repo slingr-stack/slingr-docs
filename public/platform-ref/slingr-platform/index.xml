@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Slingr platform on </title>
-    <link>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-platform/</link>
+    <link>https://pmslingr.github.io/platform-ref/slingr-platform/</link>
     <description>Recent content in Slingr platform on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/slingrDoc/platform-ref/slingr-platform/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/platform-ref/slingr-platform/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Main Concepts</title>
-      <link>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-platform/platform-concepts/</link>
+      <link>https://pmslingr.github.io/platform-ref/slingr-platform/platform-concepts/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-platform/platform-concepts/</guid>
+      <guid>https://pmslingr.github.io/platform-ref/slingr-platform/platform-concepts/</guid>
       <description>Platform Concepts # Developer Account and Portal # To work with Slingr, you will need a developer account. You can create one here. After creating an account, you can log in to the Developer Portal to manage your apps and start building something great. Within the Developer Portal, developers can manage their apps, organizations, endpoints, and account billing settings.
 One developer account can have different roles in each app. There are three primary roles:</description>
     </item>

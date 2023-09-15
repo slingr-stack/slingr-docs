@@ -2,133 +2,133 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/overview/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/overview/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/namespaces/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/namespaces/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-app/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-app/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys.auth/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys.auth/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-commons/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-commons/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-context/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-context/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-data/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-data/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-endpoints/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-endpoints/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-events/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-events/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-exceptions/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-exceptions/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-files/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-files/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-i18n/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-i18n/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-jobs/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-jobs/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-logs/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-logs/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-storage/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-storage/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-ui/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-ui/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-users/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-users/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/sys-utils/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/sys-utils/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/scripting/javascript-es6/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/scripting/javascript-es6/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>

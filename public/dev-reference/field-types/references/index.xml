@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reference types on </title>
-    <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/references/</link>
+    <link>https://pmslingr.github.io/dev-reference/field-types/references/</link>
     <description>Recent content in Reference types on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/slingrDoc/dev-reference/field-types/references/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/dev-reference/field-types/references/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>File type</title>
-      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/references/file/</link>
+      <link>https://pmslingr.github.io/dev-reference/field-types/references/file/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/references/file/</guid>
+      <guid>https://pmslingr.github.io/dev-reference/field-types/references/file/</guid>
       <description>Overview # This type enables the storage of references to files. The UI and APIs also facilitate file uploads using this field.
 Available features # Name Supported Many multiplicity yes Default values no Unique flag no Required flag yes Indexable flag no Sensitive flag yes Calculated value no Automatic initialization no Calculated initial value no Aggregation no Default type rules no Default display options yes Display options # Enable preview # If this flag is enabled, a button to preview the file will be displayed in the UI.</description>
     </item>
     
     <item>
       <title>Group type</title>
-      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/references/group/</link>
+      <link>https://pmslingr.github.io/dev-reference/field-types/references/group/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/references/group/</guid>
+      <guid>https://pmslingr.github.io/dev-reference/field-types/references/group/</guid>
       <description>Overview # This field type enables the referencing of a group within the application.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag yes Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation no Default type rules yes Default display options no Type rules # Filtering # This feature allows you to specify which groups can be assigned in this field.</description>
     </item>

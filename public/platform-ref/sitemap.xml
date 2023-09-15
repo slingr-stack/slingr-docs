@@ -2,44 +2,44 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-platform/</loc>
+      <loc>https://pmslingr.github.io/platform-ref/slingr-platform/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/</loc>
+      <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-platform/platform-concepts/</loc>
+        <loc>https://pmslingr.github.io/platform-ref/slingr-platform/platform-concepts/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/dev-portal-overview/</loc>
+        <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/dev-portal-overview/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/managing-apps/</loc>
+        <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/managing-apps/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/pricing-and-billing/</loc>
+        <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/pricing-and-billing/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/partner-rest-api/</loc>
+        <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/partner-rest-api/</loc>
         <lastmod>2020-11-16T13:59:39+01:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>

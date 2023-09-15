@@ -2,42 +2,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/start-task/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/flows/examples/start-task/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/update-tax-rates/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/flows/examples/update-tax-rates/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/update-several-records/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/flows/examples/update-several-records/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/delete-company/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/flows/examples/delete-company/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/delete-several-records/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/flows/examples/delete-several-records/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/download-file/</loc>
+      <loc>https://pmslingr.github.io/dev-reference/flows/examples/download-file/</loc>
       <lastmod>2020-11-16T13:59:39+01:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>

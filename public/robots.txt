@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pmslingr.github.io/slingrDoc/sitemap.xml
+Sitemap: https://pmslingr.github.io/sitemap.xml
