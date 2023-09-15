@@ -1,5 +1,4 @@
-baseurl = "/"
-relativeURLs = true
+baseurl = "/slingrDoc/"
 canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
