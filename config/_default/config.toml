@@ -1,10 +1,9 @@
-baseurl = "/"
 baseURL = "https://pmslingr.github.io/slingrDoc/"
 canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
 enableEmoji = true
-enableGitInfo = false
+enableGitInfo = true
 enableRobotsTXT = true
 paginate = 7
 rssLimit = 10
