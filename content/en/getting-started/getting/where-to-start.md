@@ -11,7 +11,7 @@ menu:
 weight: 1
 toc: true
 ---
-![hola]({{ .Site.BaseURL }}/images/vendor/where-to.png)
+![hola](/images/vendor/where-to.png)
 
 Welcome to Slingr! On this page, we will guide you through the process of getting started with our platform.
 
