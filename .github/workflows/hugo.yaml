@@ -45,9 +45,6 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Replace image paths in Markdown files
-        run: |
-          find . -name "*.md" -exec sed -i 's/\/images\//\/{{ steps.pages.outputs.base_url }}\/images\//g' {} \;
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
@@ -72,7 +69,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.pages.outputs.base_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
