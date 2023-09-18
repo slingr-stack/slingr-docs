@@ -21,7 +21,7 @@ Shortcuts available in the flow designer:
 
 It is possible to select several steps or an entire flow at once by using the above shortcut. This is useful for quickly relocating the flow or a portion of it, as demonstrated in the image below:
 
-![Multi-Selection](/images/vendor/flows/multiselect.gif)
+![Multi-Selection](images/vendor/flows/multiselect.gif)
 
 {{< notes type="tip">}}
 To exit multi-selection mode, press the **`Escape`** key.

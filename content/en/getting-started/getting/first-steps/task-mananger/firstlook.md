@@ -18,17 +18,17 @@ Welcome back! In this section, let's take a first look at the app we've been wor
 
 👉 If you followed the previous instructions correctly, your view should look similar to this:
 
-![Runtime Tasks grid view](/images/vendor/task-mananger/first-look/f.png)
+![Runtime Tasks grid view](images/vendor/task-mananger/first-look/f.png)
 
 ### Create a task
 
 👉 In the top-right corner of the view, you'll find a **`Create`** button. Click on it, complete the form, and hit Create to see a read-only view of your new task:
 
-![Create a task](/images/vendor/task-mananger/first-look/ff.png)
+![Create a task](images/vendor/task-mananger/first-look/ff.png)
 
 👉 To go back to the table, you can either click on the element in the sidebar or use the **`All Tasks`** link located at the top-left corner of the view:
 
-![tasks](/images/vendor/task-mananger/first-look/fff.png)
+![tasks](images/vendor/task-mananger/first-look/fff.png)
 
 ### Runtime Tasks actions and filters
 
