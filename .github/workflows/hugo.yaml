@@ -59,7 +59,8 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"          
+            --verbose \
+            --baseURL "${{ steps.pages.outputs.base_url }}/slingrDoc/"          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
