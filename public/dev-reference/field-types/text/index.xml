@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Text types on </title>
-    <link>https://pmslingr.github.io/dev-reference/field-types/text/</link>
+    <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/</link>
     <description>Recent content in Text types on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/dev-reference/field-types/text/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Email type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/text/email/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/email/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/text/email/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/email/</guid>
       <description>Overview # This field type is designed to store email addresses, such as &amp;quot;user@test.com.&amp;quot; The field will be displayed as a mailto link.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag yes Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation no Default type rules no Default display options no REST API # Read format # The format is a straightforward string containing the email:</description>
     </item>
     
     <item>
       <title>HTML type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/text/html/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/html/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/text/html/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/html/</guid>
       <description>Overview # This field type is designed to store HTML code. It will display a user-friendly text editor in edit mode and render as HTML in read-only mode.
 However, it&amp;rsquo;s essential to note that, for security reasons, HTML code will undergo stripping. Only the following tags are allowed:
 &amp;lt;a href=&amp;quot;ftp|http|https|mailto&amp;quot; title=&amp;quot;&amp;quot;&amp;gt; &amp;lt;b&amp;gt; &amp;lt;blockquote cite=&amp;quot;http|https&amp;quot;&amp;gt; &amp;lt;br&amp;gt; &amp;lt;caption&amp;gt; &amp;lt;cite&amp;gt; &amp;lt;code&amp;gt; &amp;lt;col span=&amp;quot;&amp;quot; width=&amp;quot;&amp;quot;&amp;gt; &amp;lt;colgroup span=&amp;quot;&amp;quot; width=&amp;quot;&amp;quot;&amp;gt; &amp;lt;dd&amp;gt; &amp;lt;div&amp;gt; &amp;lt;dl&amp;gt; &amp;lt;dt&amp;gt; &amp;lt;em&amp;gt; &amp;lt;h1&amp;gt; &amp;lt;h2&amp;gt; &amp;lt;h3&amp;gt; &amp;lt;h4&amp;gt; &amp;lt;h5&amp;gt; &amp;lt;h6&amp;gt; &amp;lt;i&amp;gt; &amp;lt;img align=&amp;quot;&amp;quot; alt=&amp;quot;&amp;quot; height=&amp;quot;&amp;quot; src=&amp;quot;http|https&amp;quot; title=&amp;quot;&amp;quot; width=&amp;quot;&amp;quot;&amp;gt; &amp;lt;li&amp;gt; &amp;lt;ol start=&amp;quot;&amp;quot; type=&amp;quot;&amp;quot;&amp;gt; &amp;lt;p&amp;gt; &amp;lt;pre&amp;gt; &amp;lt;q cite=&amp;quot;http|https&amp;quot;&amp;gt; &amp;lt;small&amp;gt; &amp;lt;strike&amp;gt; &amp;lt;strong &amp;lt;sub&amp;gt; &amp;lt;sup&amp;gt; &amp;lt;table summary=&amp;quot;&amp;quot; width=&amp;quot;&amp;quot;&amp;gt; &amp;lt;tbody&amp;gt; &amp;lt;td abbr=&amp;quot;&amp;quot; axis=&amp;quot;&amp;quot; colspan=&amp;quot;&amp;quot; rowspan=&amp;quot;&amp;quot; width=&amp;quot;&amp;quot;&amp;gt; &amp;lt;tfoot&amp;gt; &amp;lt;th abbr=&amp;quot;&amp;quot; axis=&amp;quot;&amp;quot; colspan=&amp;quot;&amp;quot; rowspan=&amp;quot;&amp;quot; scope=&amp;quot;&amp;quot; width=&amp;quot;&amp;quot;&amp;gt; &amp;lt;thead&amp;gt; &amp;lt;tr&amp;gt; &amp;lt;u&amp;gt; &amp;lt;ul type=&amp;quot;&amp;quot;&amp;gt; &amp;lt;span&amp;gt; &amp;lt;div&amp;gt; &amp;lt;hr&amp;gt; Apart from those specific attributes, the &amp;quot;class&amp;quot; attribute is allowed for all tags.</description>
@@ -30,60 +30,60 @@ However, it&amp;rsquo;s essential to note that, for security reasons, HTML code 
     
     <item>
       <title>Long Text type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/text/long_text/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/long_text/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/text/long_text/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/long_text/</guid>
       <description>Overview # This field type is designed to store free text. Fields of this type are particularly useful for storing long-form text strings.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag yes Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation no Default type rules yes Default display options yes Type rules # Minimum Length: Specifies the minimum number of characters that values can have.</description>
     </item>
     
     <item>
       <title>Masked text type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/text/masked_text/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/masked_text/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/text/masked_text/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/masked_text/</guid>
       <description>Overview # A mask can be specified to enforce a specific pattern for the text stored in this field.
 It&amp;rsquo;s important to note that only the text entered by the user will be stored. This means that if there are characters coming from the mask, they won&amp;rsquo;t be saved in the database. For example, if the mask is &amp;ldquo;999-aaa&amp;rdquo; and the value entered is &amp;ldquo;123-ABC,&amp;rdquo; the value stored in the database will be &amp;ldquo;123ABC.</description>
     </item>
     
     <item>
       <title>Phone type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/text/phone/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/phone/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/text/phone/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/phone/</guid>
       <description>Overview # This type can store a phone number, such as &amp;ldquo;111-222-3333.&amp;rdquo; It&amp;rsquo;s also possible to store an international phone number if desired. In both cases, characters other than numbers are removed, and the phone number is automatically formatted for reading and display in the UI.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag yes Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation no Default type rules yes Default display options no Type rules # International # Indicates whether the field supports international phone numbers.</description>
     </item>
     
     <item>
       <title>QR type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/text/qr/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/qr/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/text/qr/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/qr/</guid>
       <description>Overview # This type stores text and displays it as a QR code in read-only view.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag yes Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation no Default type rules yes Default display options yes Type rules # Minimum length # The minimum number of characters that values can have.</description>
     </item>
     
     <item>
       <title>Text type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/text/text/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/text/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/text/text/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/text/</guid>
       <description>Overview # This type can store free text of up to 300 characters. If you require more space, consider using the Long Text type.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag yes Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation no Default type rules yes Default display options yes Type rules # Minimum length # Specifies the minimum number of characters allowed for field values.</description>
     </item>
     
     <item>
       <title>URL type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/text/url/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/url/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/text/url/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/text/url/</guid>
       <description>Overview # This field type is designed for storing URLs, such as http://www.test.com/path. The field will be displayed as a clickable link.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag yes Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation no Default type rules no Default display options yes Display options # Open in current tab # Enabling this flag causes the link to open in the same tab.</description>
     </item>

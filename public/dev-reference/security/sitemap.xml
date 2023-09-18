@@ -2,43 +2,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/security/overview/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/overview/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/security/groups/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/groups/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/security/users/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/users/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/security/single-sign-on/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/single-sign-on/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/security/external-tools/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/external-tools/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/security/oauth/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/security/oauth/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>

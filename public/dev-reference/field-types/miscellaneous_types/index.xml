@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Miscellaneous types on </title>
-    <link>https://pmslingr.github.io/dev-reference/field-types/miscellaneous_types/</link>
+    <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/miscellaneous_types/</link>
     <description>Recent content in Miscellaneous types on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/dev-reference/field-types/miscellaneous_types/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/slingrDoc/dev-reference/field-types/miscellaneous_types/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Color type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/miscellaneous_types/color/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/miscellaneous_types/color/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/miscellaneous_types/color/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/miscellaneous_types/color/</guid>
       <description>Overview # This field type is designed to store color information. Colors are stored in hexadecimal format, and in the user interface, they are typically displayed as actual colors.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag no Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation no Default type rules no Default display options no REST API # Read format # The format is a simple string with the hexadecimal code of the color:</description>
     </item>
     
     <item>
       <title>Rank type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/miscellaneous_types/rank/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/miscellaneous_types/rank/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/miscellaneous_types/rank/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/miscellaneous_types/rank/</guid>
       <description>Overview # The rank type is essentially a string with additional features designed for enabling users to rank records through drag and drop interactions in the user interface. This type is particularly useful when you want to allow users to rearrange records using fields of this type in grid views or workflow views.
 Rank fields are auto-populated with a value. When users rank records, and if the view is configured to use the field as a rank, the value will be automatically updated so that the lexical order matches the user&amp;rsquo;s desired arrangement in the UI.</description>
     </item>

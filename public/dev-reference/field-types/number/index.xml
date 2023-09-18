@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Number types on </title>
-    <link>https://pmslingr.github.io/dev-reference/field-types/number/</link>
+    <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/</link>
     <description>Recent content in Number types on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/dev-reference/field-types/number/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Nov 2020 13:59:39 +0100</lastBuildDate><atom:link href="https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Auto-increment type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/number/auto-increment/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/auto-increment/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/number/auto-increment/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/auto-increment/</guid>
       <description>Overview # This type generates auto-incremental unique numbers as new records are created within the entity.
 Fields of this type cannot be edited and are consistently managed by the app. As of now, there is no method to reset the counter or set it to a starting position other than zero.
 When a field of this type is added to an entity with existing records, it will be initialized by assigning values based on the creation order of the records.</description>
@@ -20,10 +20,10 @@ When a field of this type is added to an entity with existing records, it will b
     
     <item>
       <title>Big Number type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/number/big-number/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/big-number/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/number/big-number/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/big-number/</guid>
       <description>Overview # This type is designed to store large numbers and can accommodate up to 34 significant digits.
 The big number type utilizes bignumber.js within the JavaScript API. For performing operations using this data type, you can refer to bignumber.js&amp;rsquo;s documentation.
 To set the value, you can use a string, number, or a big number object. The BigNumber class is accessible through sys.utils.numbers.
@@ -33,10 +33,10 @@ For instance:
     
     <item>
       <title>Decimal type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/number/decimal/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/decimal/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/number/decimal/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/decimal/</guid>
       <description>Overview # This type is designed to store decimal numbers and offers options for rounding and specifying the number of decimals.
 As of now, this type does not support more than 4 decimals. However, this limitation is expected to be addressed in the near future.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag no Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation yes Default type rules yes Default display options yes Type rules # Minimum value # The minimum value (inclusive).</description>
@@ -44,10 +44,10 @@ Available features # Name Supported Many multiplicity yes Default values yes Uni
     
     <item>
       <title>Integer type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/number/integer/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/integer/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/number/integer/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/integer/</guid>
       <description>Overview # This type is designed to store integer numbers.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag yes Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation yes Default type rules yes Default display options yes Type rules # Minimum value # The minimum value (inclusive).
 Maximum value # The maximum value (inclusive).</description>
@@ -55,10 +55,10 @@ Maximum value # The maximum value (inclusive).</description>
     
     <item>
       <title>Money type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/number/money/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/money/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/number/money/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/money/</guid>
       <description>Overview # This type is designed to store decimal money amounts and offers options for rounding, specifying the number of decimals, displaying thousands separators, and indicating currency symbols.
 As of now, this type does not support more than 4 decimals. However, this limitation is expected to be resolved in the near future.
 Available features # Name Supported Many multiplicity yes Default values yes Unique flag no Required flag yes Indexable flag yes Sensitive flag yes Calculated value yes Automatic initialization no Calculated initial value no Aggregation yes Default type rules yes Default display options yes Type rules # Minimum value # The minimum value (inclusive).</description>
@@ -66,10 +66,10 @@ Available features # Name Supported Many multiplicity yes Default values yes Uni
     
     <item>
       <title>Percentage type</title>
-      <link>https://pmslingr.github.io/dev-reference/field-types/number/percentage/</link>
+      <link>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/percentage/</link>
       <pubDate>Mon, 16 Nov 2020 13:59:39 +0100</pubDate>
       
-      <guid>https://pmslingr.github.io/dev-reference/field-types/number/percentage/</guid>
+      <guid>https://pmslingr.github.io/slingrDoc/dev-reference/field-types/number/percentage/</guid>
       <description>Overview # This type is designed to store percentages and offers options for rounding and specifying the number of decimals.
 In the UI, percentage values will be displayed multiplied by 100, which makes more sense for human interpretation. However, at the code level—when utilizing the REST or JavaScript API—the value will not be multiplied. For instance, if the value is 50%, then the stored value will be 0.5.
 As of now, this type does not support more than 2 decimals.</description>

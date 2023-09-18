@@ -2,36 +2,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/environment-settings/environment-var/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/environment-var/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/environment-settings/ui-settings/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/ui-settings/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/environment-settings/logs-and-alerts/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/logs-and-alerts/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/environment-settings/localization/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/localization/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/environment-settings/api-tokens/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/environment-settings/api-tokens/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>

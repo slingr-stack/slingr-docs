@@ -2,84 +2,84 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/metadata-management/development-process/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/development-process/</loc>
+      <lastmod>2023-09-15T17:52:44-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-editor/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/</loc>
+      <lastmod>2023-06-22T10:29:40-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-common/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-common/</loc>
+      <lastmod>2023-06-22T10:29:40-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/metadata-management/pushing-and-syncing/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/pushing-and-syncing/</loc>
+      <lastmod>2023-09-15T17:52:44-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/metadata-management/automatic-refactorings/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/automatic-refactorings/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-editor/app-resources/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/app-resources/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-editor/metadata-edition/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/metadata-edition/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-editor/app-explorer/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/app-explorer/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-editor/console/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-editor/console/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-common/navigate-metadata/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-common/navigate-metadata/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-common/metadata-history/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-common/metadata-history/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-common/expressions/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-common/expressions/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/metadata-management/metadata-common/data-events/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/metadata-management/metadata-common/data-events/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>

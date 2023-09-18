@@ -2,113 +2,113 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/extending/getting_started/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/extending/getting_started/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/extending/endpoints/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/extending/endpoints/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/extending/official-ui-plugins/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/extending/official-ui-plugins/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/extending/extending-platform/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/extending/extending-platform/</loc>
+      <lastmod>2023-06-22T10:29:40-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://pmslingr.github.io/extending/getting_started/overview/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/getting_started/overview/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/endpoints/official_endpoints/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/endpoints/official_endpoints/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/endpoints/community_endpoints/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/endpoints/community_endpoints/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/official-ui-plugins/overview/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/official-ui-plugins/overview/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/official-ui-plugins/metamask/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/official-ui-plugins/metamask/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/official-ui-plugins/plaid/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/official-ui-plugins/plaid/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/official-ui-plugins/scandit/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/official-ui-plugins/scandit/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/official-ui-plugins/slaask/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/official-ui-plugins/slaask/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/official-ui-plugins/stripe/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/official-ui-plugins/stripe/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/extending-platform/create_your_own/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/extending-platform/create_your_own/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/extending-platform/common/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/extending-platform/common/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/extending-platform/java-sdk/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/extending-platform/java-sdk/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/extending-platform/node-sdk/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/extending-platform/node-sdk/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/extending/extending-platform/proxy-endpoint/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/extending/extending-platform/proxy-endpoint/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>

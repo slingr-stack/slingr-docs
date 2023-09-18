@@ -2,144 +2,144 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/flows/overview/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/overview/</loc>
+      <lastmod>2023-09-15T17:52:44-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/flows/flow-designer/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/flow-designer/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/flows/steps/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/steps/</loc>
+      <lastmod>2023-09-15T11:10:07-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/flows/context/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/context/</loc>
+      <lastmod>2023-06-22T10:29:40-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/dev-reference/flows/examples/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/</loc>
+      <lastmod>2023-06-22T10:29:40-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/flow-designer/overview/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/flow-designer/overview/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/flow-designer/establishing/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/flow-designer/establishing/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/flow-designer/group-container/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/flow-designer/group-container/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/flow-designer/validation-rules/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/flow-designer/validation-rules/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/flow-designer/keyboard-shortcuts/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/flow-designer/keyboard-shortcuts/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/steps/categories/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/steps/categories/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/steps/system-steps/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/steps/system-steps/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/steps/control-steps/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/steps/control-steps/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/steps/data-steps/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/steps/data-steps/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/steps/ui-steps/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/steps/ui-steps/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/steps/library-steps/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/steps/library-steps/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/context/context-overview/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/context/context-overview/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/examples/start-task/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/start-task/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/examples/update-tax-rates/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/update-tax-rates/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/examples/update-several-records/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/update-several-records/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/examples/delete-company/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/delete-company/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/examples/delete-several-records/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/delete-several-records/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/dev-reference/flows/examples/download-file/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/dev-reference/flows/examples/download-file/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>

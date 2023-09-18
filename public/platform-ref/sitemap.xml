@@ -2,45 +2,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://pmslingr.github.io/platform-ref/slingr-platform/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-platform/</loc>
+      <lastmod>2023-06-22T10:29:40-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     
     <url>
-      <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/</loc>
-      <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+      <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/</loc>
+      <lastmod>2023-06-22T10:29:40-03:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://pmslingr.github.io/platform-ref/slingr-platform/platform-concepts/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-platform/platform-concepts/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/dev-portal-overview/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/dev-portal-overview/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/managing-apps/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/managing-apps/</loc>
+        <lastmod>2023-09-15T17:52:44-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/pricing-and-billing/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/pricing-and-billing/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
       <url>
-        <loc>https://pmslingr.github.io/platform-ref/slingr-dev-portal/partner-rest-api/</loc>
-        <lastmod>2020-11-16T13:59:39+01:00</lastmod>
+        <loc>https://pmslingr.github.io/slingrDoc/platform-ref/slingr-dev-portal/partner-rest-api/</loc>
+        <lastmod>2023-09-15T11:10:07-03:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
       </url>
