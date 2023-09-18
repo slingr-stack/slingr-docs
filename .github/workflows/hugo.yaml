@@ -45,15 +45,15 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Replace image paths in Markdown files
-        run: |
-          find . -name "*.md" -exec sed -i 's/\/images\//\/{{ steps.pages.outputs.base_url }}\/images\//g' {} \;
-        working-directory: ./content
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Replace image paths in Markdown files
+        run: |
+          find . -name "*.md" -exec sed -i 's/\/images\//\/slingrDoc\/images\//g' {} \;
+        working-directory: ./content
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
@@ -63,7 +63,6 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --buildDrafts \
             --baseURL "${{ steps.pages.outputs.base_url }}/"          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
