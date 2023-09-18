@@ -45,6 +45,8 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: List Project Directory
+        run: ls -R  # Verificar la estructura de carpetas
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
