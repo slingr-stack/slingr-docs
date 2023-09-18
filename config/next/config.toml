@@ -1,2 +1,3 @@
 canonifyURLs = true
+baseURL = "https://pmslingr.github.io/slingrDoc/"
 
