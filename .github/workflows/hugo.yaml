@@ -45,8 +45,10 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: List Project Directory
-        run: ls -R  # Verificar la estructura de carpetas
+      - name: Replace image paths in Markdown files
+        run: |
+          find . -name "*.md" -exec sed -i 's/\/images\//\/{{ steps.pages.outputs.base_url }}\/images\//g' {} \;
+        working-directory: ./content
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
