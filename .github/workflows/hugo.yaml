@@ -74,5 +74,5 @@ jobs:
     needs: build
     steps:
       - name: Deploy to GitHub Pages
-        id: pages
+        id: deployment
         uses: actions/deploy-pages@v2
