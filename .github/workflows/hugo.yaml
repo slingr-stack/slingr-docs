@@ -52,7 +52,7 @@ jobs:
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Replace image paths in Markdown files
         run: |
-          find . -name "*.md" -exec sed -i 's/\/images\//\/https://pmslingr.github.io/slingrDoc\/images\//g' {} \;
+          find . -name "*.md" -exec sed -i 's/\/images\//\/{{ steps.pages.outputs.base_url }}/slingrDoc\/images\//g' {} \;
         working-directory: ./content
       - name: Build with Hugo
         env:
