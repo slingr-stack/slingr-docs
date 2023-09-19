@@ -18,7 +18,7 @@ We have completed the development of our app, but it's important to mention that
 
 To access the monitor, click on the **`Monitor`** button (the one with an eye) on the developer portal.
 
-![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/app-monitor/ap.png)
+![Alt Text](/images/vendor/task-mananger/app-monitor/ap.png)
 
 ---
 
@@ -26,7 +26,7 @@ To access the monitor, click on the **`Monitor`** button (the one with an eye) o
 
 On the app monitor, you can view information about your running apps. For example, you can see the logs of your app in the **`Logs`** section:
 
-![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/app-monitor/app.png)
+![Alt Text](/images/vendor/task-mananger/app-monitor/app.png)
 
 ---
 
@@ -34,7 +34,7 @@ On the app monitor, you can view information about your running apps. For exampl
 
 You can also manage the users of your app from the **`Users`** section:
 
-![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/app-monitor/app.png)
+![Alt Text](/images/vendor/task-mananger/app-monitor/app.png)
 
 The app monitor is a valuable tool, and we encourage you to explore its different features. 
 

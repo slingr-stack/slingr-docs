@@ -18,13 +18,13 @@ In this section, we'll review the changes made to our app in the previous sectio
 
 👉 Navigate to the `All Events` section and select an event to open a read-only view. 
 
-![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/firstlook/ww_event_planner_readonly_no_delete.png)
+![Alt Text](/images/vendor/event-planner/firstlook/ww_event_planner_readonly_no_delete.png)
 
 --- 
 
 👉 Click on the `Edit` button and change the status of the event to `Cancel`.
 
-![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/firstlook/ww_event_planner_status_field.png)
+![Alt Text](/images/vendor/event-planner/firstlook/ww_event_planner_status_field.png)
 
 ---
 

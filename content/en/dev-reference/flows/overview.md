@@ -58,6 +58,6 @@ Each step serves a distinct function and may include input parameters, generatin
 
 Steps are interconnected by drawing connections from the green rectangle of the source step to the destination step. Some steps feature a red square, indicating the flow to follow in case of an error during step execution.
 
-![Flow Example](https://pmslingr.github.io/slingrDoc/images/vendor/flows/quickstart_sample.png)
+![Flow Example](/images/vendor/flows/quickstart_sample.png)
 
 In the example above, the flow initiates with the start step, followed by the find data step searching for all companies. For each of the companies discovered in the previous step, the update record step is executed, and the corresponding log step is triggered, whether the operation succeeds or not. The flow concludes with the end step.

@@ -12,7 +12,7 @@ toc: true
 weight: 2
 ---
 
-![Developer Portal](https://pmslingr.github.io/slingrDoc/images/vendor/platform-ref/developer-portal.png)
+![Developer Portal](/images/vendor/platform-ref/developer-portal.png)
 
 The **Developer Portal** is a key component and the entry point of the **Slingr** Platform.
 

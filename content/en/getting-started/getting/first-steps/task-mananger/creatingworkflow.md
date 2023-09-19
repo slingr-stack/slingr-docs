@@ -14,7 +14,7 @@ toc: true
 
 At this point, we have an app with some fantastic features up and running. However, you might desire a different design for a specific use case. Let's consider adding a workflow view to make our app look even more impressive. To provide you with a visual representation of what I mean, here's an example of how it would look:
 
-![Tasks dashboard view](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/creating-wf/w.png)
+![Tasks dashboard view](/images/vendor/task-mananger/creating-wf/w.png)
 
 ---
 
@@ -67,7 +67,7 @@ Before defining the columns, we need to add a new field to the entity that will 
 
 6. Click on **`Save`** to save changes.
 
-![Rank Field](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/creating-wf/ww.png)
+![Rank Field](/images/vendor/task-mananger/creating-wf/ww.png)
 
 ---
 
@@ -96,7 +96,7 @@ Repeat the same process to create these two additional columns:
 
 <br>
 
-![workflow view columns result](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/creating-wf/www.png)
+![workflow view columns result](/images/vendor/task-mananger/creating-wf/www.png)
 
 ### Define transitions
 

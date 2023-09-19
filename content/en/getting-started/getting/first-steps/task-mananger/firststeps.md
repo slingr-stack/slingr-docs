@@ -14,7 +14,7 @@ toc: true
 
 Hi, welcome to the builder! Here, we are going to build the app. As you can see on the left, there is a tree with multiple items, we will call them: nodes. Let’s start building something great.
 
-![builder-tree](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/first-steps/task_manager_builder_node.png)
+![builder-tree](/images/vendor/task-mananger/first-steps/task_manager_builder_node.png)
 
 ### Creating the "Tasks" Entity
 
@@ -39,7 +39,7 @@ Now we will create the **`tasks`** entity and then some actions and views to dis
 
 👉 The form should look something like this. If so, click on **`Create`**.
 
-![create-the-entity](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/first-steps/task_manager_creating_entity.png)
+![create-the-entity](/images/vendor/task-mananger/first-steps/task_manager_creating_entity.png)
 
 ---
 
@@ -102,7 +102,7 @@ This is the status of the task. Possible values will be <code >To do</code>, <co
 
 Depending on the type, you might see some additional options at creation time, which is the case for the **`Status`** field where you will need to add the four possible statuses: **`To do`, `In progress`, `Done`, and `Archived`**. It should look something like this:
 
-![status-field](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/first-steps/2.png)
+![status-field](/images/vendor/task-mananger/first-steps/2.png)
 
 Clicking on **`Save and edit`** will create the field and will open the details view for that field, where you will be able to change other settings, like the default value and required flag. You can also open it by clicking the field node in the tree. In our sample app, we need to take care of the following things for these fields:
 
@@ -112,7 +112,7 @@ Clicking on **`Save and edit`** will create the field and will open the details 
 
 Remember to save all the changes. In the end, your structure should look similar to this one:
 
-![fields-structure](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/first-steps/3.png)
+![fields-structure](/images/vendor/task-mananger/first-steps/3.png)
 
 ---
 
@@ -131,7 +131,7 @@ Now that we have created the fields for the entity, the next step is to create a
 
 👉 Click on **`Create`**.
 
-![grid-view](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/first-steps/4.png)
+![grid-view](/images/vendor/task-mananger/first-steps/4.png)
 
 Once we have the view, we need to indicate how to navigate to it. Let’s add it to what’s going to be the sidebar of our app. Click the node **`User interface > Navigation > Main menu`**, and follow these steps:
 
@@ -141,7 +141,7 @@ Once we have the view, we need to indicate how to navigate to it. Let’s add it
 
 👉 Click on **`Create`**.
 
-![navidation-tree](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/first-steps/5.png)
+![navidation-tree](/images/vendor/task-mananger/first-steps/5.png)
 
 ---
 
