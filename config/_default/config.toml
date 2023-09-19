@@ -1,11 +1,11 @@
-baseURL = "https://pmslingr.github.io/slingrDoc/"
-relativeURLs = false
-canonifyURLs = true
+canonifyURLs = false
 disableAliases = true
-disableHugoGeneratorInject = false
+disableHugoGeneratorInject = true
 enableEmoji = true
 enableGitInfo = false
 enableRobotsTXT = true
+paginate = 7
+rssLimit = 10
 
 # Multilingual
 defaultContentLanguage = "en"
