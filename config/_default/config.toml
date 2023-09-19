@@ -1,4 +1,19 @@
-relativeURLs = false
+baseURL = "/"
+
+# doks theme settings
+theme = "doks"
+title = "My Hugo Project"
+description = "A Hugo project hosted on GitHub Pages"
+keywords = ["hugo", "github pages", "doks"]
+
+# GitHub Pages settings
+publishDir = "public"
+[github]
+  pages = true
+  publishBranch = "gh-pages"
+
+# Additional settings
+relativeURLs = true
 canonifyURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
@@ -7,12 +22,6 @@ enableGitInfo = false
 enableRobotsTXT = true
 paginate = 7
 rssLimit = 10
-
-# GitHub Pages settings
-publishDir = "docs"
-[github]
-  pages = true
-  publishBranch = "gh-pages"
 
 # Multilingual
 defaultContentLanguage = "en"
@@ -92,7 +101,7 @@ rel  = "sitemap"
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.80.0"
+    min = "0.118.2"
     max = ""
   [[module.mounts]]
     source = "assets"
@@ -115,3 +124,4 @@ rel  = "sitemap"
   [[module.mounts]]
     source = "node_modules/@hyas/images/layouts"
     target = "layouts"
+
