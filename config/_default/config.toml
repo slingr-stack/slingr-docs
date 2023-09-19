@@ -1,4 +1,4 @@
-canonifyURLs = false
+canonifyURLs = true
 relativeURLs = true
 disableAliases = true
 disableHugoGeneratorInject = true
