@@ -1,6 +1,5 @@
-relativeURLs = true
-canonifyURLs = true
-disableAliases = true
+baseURL = "https://pmslingr.github.io/slingrDoc/"
+disableAliases = false
 disableHugoGeneratorInject = true
 enableEmoji = true
 enableGitInfo = false
