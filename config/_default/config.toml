@@ -1,7 +1,7 @@
-canonifyURLs = true
+canonifyURLs = false
 relativeURLs = true
 disableAliases = false
-disableHugoGeneratorInject = true
+disableHugoGeneratorInject = false
 enableEmoji = true
 enableGitInfo = false
 enableRobotsTXT = true
