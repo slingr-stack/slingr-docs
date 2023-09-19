@@ -1,13 +1,11 @@
 baseURL = "/"
-relativeURLs = true
-canonifyURLs = false
+relativeURLs = false
+canonifyURLs = true
 disableAliases = true
-disableHugoGeneratorInject = true
+disableHugoGeneratorInject = false
 enableEmoji = true
 enableGitInfo = false
 enableRobotsTXT = true
-paginate = 7
-rssLimit = 10
 
 # Multilingual
 defaultContentLanguage = "en"
