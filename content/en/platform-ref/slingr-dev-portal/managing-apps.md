@@ -19,11 +19,11 @@ set up billing, and view invoices, etc.
 
 👉 To create a new app, simply click the **`Create app from scratch`** button located in the **`Home`** section of Slingr.
 
-![Create new app from Home](/images/vendor/platform-ref/managing-apps/home_create_new_app.png)
+![Create new app from Home](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/home_create_new_app.png)
 
 👉 You can also create new apps from the **`Apps`** section by clicking the **`+ Create Apps`** button
 
-![Create new app from Apps](/images/vendor/platform-ref/managing-apps/apps_create_new_app.png)
+![Create new app from Apps](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/apps_create_new_app.png)
 
 Then, you will be asked to complete the following fields:
 
@@ -47,7 +47,7 @@ Then, you will be asked to complete the following fields:
 
 - **`Template`**: You can choose to start from scratch, with an empty app, or you can choose one of the available templates. Here you will find global templates created by other people, or you can also create your own templates. See [App templates](#app-templates) for more information.
 
-  ![Choose template](/images/vendor/platform-ref/managing-apps/create_app_templates.png)
+  ![Choose template](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/create_app_templates.png)
 
   When you select a template, you might decide to make it linked by setting the flag **`Linked`**, which
   is only available if you select **`Slingr Pro`** as the plan. If this flag is set, the new app will be
@@ -76,7 +76,7 @@ Once an app is created, you will see the following options:
 
 - **`App logos`**: These are the logos, favicon, and background of the app. They will be displayed in different places, such as the **`Developer portal`**, your app's header, the browser's title, etc. We recommend using a transparent background, but you are free to choose any.
 
-![App logos](/images/vendor/platform-ref/managing-apps/app_details_logos.png)
+![App logos](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_details_logos.png)
 
 Any changes you make to these settings will be applied immediately.
 
@@ -100,7 +100,7 @@ you need them.
 
 👉 Each app environment has the following settings:
 
-![App environment details](/images/vendor/platform-ref/managing-apps/app_environment_details_1.png)
+![App environment details](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_environment_details_1.png)
 
 - **`Status`**: Indicates in which status the environment is. If the value is different than **`Deployed`**,
   it could be that some maintenance work is going on (for example, the platform is being upgraded) or
@@ -125,7 +125,7 @@ you need them.
   - **`Large (4GB)`**: This is for big apps when there are many entities, views, listeners,
     endpoints, etc.
 
-![App environment details](/images/vendor/platform-ref/managing-apps/app_environment_details_2.png)
+![App environment details](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_environment_details_2.png)
 
 - **`Database`**: Just adding more instances might not work to scale your app as there is a point where
   the database will be the bottleneck. When you reach that point (usually we try to size the database
@@ -185,8 +185,8 @@ you can add permissions to other developers to work in your app or give them adm
 
 ### Developers
 
-![App developers](/images/vendor/platform-ref/managing-apps/app_settings_developers.png)
-![App developers](/images/vendor/platform-ref/managing-apps/app_settings_add_developer.png)
+![App developers](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_settings_developers.png)
+![App developers](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_settings_add_developer.png)
 
 In the **`Developers`** section of the app details, you can add more developers by entering the email associated with their developer accounts. Once you add a developer, you can choose which environments they will have access to.
 
@@ -198,8 +198,8 @@ If you need to test permissions while developing your app, you should create oth
 
 ### Admins
 
-![App admins](/images/vendor/platform-ref/managing-apps/app_settings_admins.png)
-![App admins](/images/vendor/platform-ref/managing-apps/app_settings_add_admin.png)
+![App admins](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_settings_admins.png)
+![App admins](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_settings_add_admin.png)
 
 {{< notes type="note">}}
 Admins are not allowed to use the app. If you want to, the admin should also be a developer.
@@ -234,8 +234,8 @@ keeping your app. Later, if you need it again, you can wake it up and continue u
 
 This can be done by clicking the buttons **`Sleep app`** and **`Wake up app`**.
 
-![Sleep app](/images/vendor/platform-ref/managing-apps/sleep_app.png)
-![Wake up app](/images/vendor/platform-ref/managing-apps/wakeup_app.png)
+![Sleep app](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/sleep_app.png)
+![Wake up app](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/wakeup_app.png)
 
 {{< notes type="note">}}
 This action can only be performed by the app owner.
@@ -250,7 +250,7 @@ the development environment until you see the need for another environment.
 
 ### Production Environment
 
-![Add prod environment](/images/vendor/platform-ref/managing-apps/app_add_production_env.png)
+![Add prod environment](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_add_production_env.png)
 
 If you need a **`Production`** environment, you can easily add it by clicking the **`Add production environment`** button.
 
@@ -263,7 +263,7 @@ permissions, even if they already had permissions for the development environmen
 
 ### Staging Environment
 
-![Add staging environment](/images/vendor/platform-ref/managing-apps/app_add_staging_env.png)
+![Add staging environment](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_add_staging_env.png)
 
 Once you have a development and a production environment, you might see the need for an additional
 environment to work as a buffer between development and production. This is the **`Staging`** environment,
@@ -280,7 +280,7 @@ If you created the app from a template with the **`Linked`** flag, the app will 
 environment, and you won't be able to make changes. Instead, changes are made in the template app and
 synced to the clones.
 
-![Unlink app](/images/vendor/platform-ref/managing-apps/unlink_app.png)
+![Unlink app](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/unlink_app.png)
 
 If, at some point, you need to make changes to the app, you will need to unlink the app first. You can
 do that by clicking on the **`Unlink`** button in the app's details. When the app is unlinked, a
@@ -295,7 +295,7 @@ You won't be able to link it again to the template, and the apps will become ind
 There are cases where you need to make some changes to a linked app, but you don't want to unlink
 it because you still want to get updates from the master app.
 
-![Add development environment](/images/vendor/platform-ref/managing-apps/add_development_env.png)
+![Add development environment](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/add_development_env.png)
 
 In these cases, you can add a development environment by clicking on **`Add development environment`**.
 When you do this, how changes are synced will be altered. Please check the section
@@ -307,7 +307,7 @@ When you do this, how changes are synced will be altered. Please check the secti
 
 If you no longer need an app, you can delete it. This will remove all instances as well as the database, which means all data will be lost.
 
-![Delete App](/images/vendor/platform-ref/managing-apps/delete_app.png)
+![Delete App](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/delete_app.png)
 
 {{< notes type="warning" >}}
 This operation cannot be undone, so please be careful.
@@ -321,7 +321,7 @@ Only the app owner can perform this action.
 
 ## **App Templates**
 
-![Make App a Template](/images/vendor/platform-ref/managing-apps/app_make_a_template.png)
+![Make App a Template](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/app_make_a_template.png)
 
 If you want to turn an app into a template, you can do so by enabling the `Make this app a template` flag. Once this option is enabled, your app will appear in the list of templates when creating new apps (inside your account only).
 
@@ -329,7 +329,7 @@ If you want to turn an app into a template, you can do so by enabling the `Make 
 
 ## **Cloning Apps**
 
-![Clone App](/images/vendor/platform-ref/managing-apps/clone_app.png)
+![Clone App](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/managing-apps/clone_app.png)
 
 You can create a clone of your app by clicking the `Clone App` button. This will create a new app using the same plan as the current app with the selected environment. Please note that data will also be copied (up to 1,000 records per entity).
 

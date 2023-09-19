@@ -1,12 +1,14 @@
-relativeURLs = true
-canonifyURLs = false
+relativeURLs = false
+canonifyURLs = true
 disableAliases = true
+disablePathToLower = true
 disableHugoGeneratorInject = true
 enableEmoji = true
-enableGitInfo = false
+enableGitInfo = true
 enableRobotsTXT = true
 paginate = 7
 rssLimit = 10
+
 
 # Multilingual
 defaultContentLanguage = "en"
@@ -49,7 +51,7 @@ rel  = "sitemap"
 [caches]
   [caches.getjson]
     dir = ":cacheDir/:project"
-    maxAge = "1s"
+    maxAge = "10s"
 
 [sitemap]
   changefreq = "weekly"
@@ -63,7 +65,6 @@ rel  = "sitemap"
 
 [permalinks]
   blog = "/blog/:title/"
-  images = "/slingrDoc/:filename"
 # docs = "/docs/1.0/:sections[1:]/:title/"
 
 [minify.tdewolff.html]
