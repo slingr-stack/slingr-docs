@@ -8,6 +8,12 @@ enableRobotsTXT = true
 paginate = 7
 rssLimit = 10
 
+# GitHub Pages settings
+publishDir = "docs"
+[github]
+  pages = true
+  publishBranch = "gh-pages"
+
 # Multilingual
 defaultContentLanguage = "en"
 disableLanguages = ["de", "nl"]
@@ -63,7 +69,7 @@ rel  = "sitemap"
 
 [permalinks]
   blog = "/blog/:title/"
-  images = "/slingrDoc/:filename"
+  images = "/slingrDoc/:filename/"
 # docs = "/docs/1.0/:sections[1:]/:title/"
 
 [minify.tdewolff.html]
