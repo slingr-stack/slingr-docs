@@ -16,7 +16,7 @@ weight: 133
 
 In this example, we showcase an action designed to delete a company. If the deletion process encounters an error, the action is configured to display an appropriate error message. This example highlights a straightforward but essential feature in managing and handling potential errors during company deletion operations.
 
-![Delete company](/images/vendor/flows/delete_company_sample.png)
+![Delete company](/slingrDoc/images/vendor/flows/delete_company_sample.png)
 
 ## **Step: start**
 

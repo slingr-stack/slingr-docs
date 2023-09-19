@@ -36,7 +36,7 @@ Hovering over a step will give you a short description of what it does
 {{< /notes >}}
 <br>
 
-![Dropping from Palette](/images/vendor/flows/dropping_from_palette.gif)
+![Dropping from Palette](/slingrDoc/images/vendor/flows/dropping_from_palette.gif)
 
 ### The canvas
 
@@ -72,7 +72,7 @@ If the properties' panel is collapsed, you can **`double click`** on any step wi
 {{< /notes >}}
 <br>
 
-![Properties Panel](/images/vendor/flows/properties_panel.gif)
+![Properties Panel](/slingrDoc/images/vendor/flows/properties_panel.gif)
 
 ### The header
 
