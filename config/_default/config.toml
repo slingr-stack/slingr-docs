@@ -1,20 +1,5 @@
-baseURL = "/"
-
-# doks theme settings
-theme = "doks"
-title = "My Hugo Project"
-description = "A Hugo project hosted on GitHub Pages"
-keywords = ["hugo", "github pages", "doks"]
-
-# GitHub Pages settings
-publishDir = "public"
-[github]
-  pages = true
-  publishBranch = "gh-pages"
-
-# Additional settings
 relativeURLs = true
-canonifyURLs = true
+canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
 enableEmoji = true
@@ -78,7 +63,7 @@ rel  = "sitemap"
 
 [permalinks]
   blog = "/blog/:title/"
-  images = "/slingrDoc/:filename/"
+  images = "/slingrDoc/:filename"
 # docs = "/docs/1.0/:sections[1:]/:title/"
 
 [minify.tdewolff.html]
@@ -101,7 +86,7 @@ rel  = "sitemap"
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.118.2"
+    min = "0.80.0"
     max = ""
   [[module.mounts]]
     source = "assets"
@@ -124,4 +109,3 @@ rel  = "sitemap"
   [[module.mounts]]
     source = "node_modules/@hyas/images/layouts"
     target = "layouts"
-
