@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Modern Documentation Theme on </title>
+    <title>Slingr Docs on </title>
     <link>https://pmslingr.github.io/slingrDoc/</link>
-    <description>Recent content in Modern Documentation Theme on </description>
+    <description>Recent content in Slingr Docs on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright (c) 2020-2021 Henk Verlinde</copyright>
