@@ -16,7 +16,7 @@ weight: 134
 
 In this example, we illustrate an action that attempts to delete all companies located in Colorado. In the event that an error is encountered during the deletion of any company, the action diligently logs the error for further analysis. This example showcases a robust workflow for systematically managing the deletion of companies, with error handling to ensure smooth operation.
 
-![Delete several records](/slingrDoc/images/vendor/flows/delete_companies_in_colorado.png)
+![Delete several records](/images/vendor/flows/delete_companies_in_colorado.png)
 
 ## **Step: start**
 
