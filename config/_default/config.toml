@@ -1,4 +1,3 @@
-baseURL = "https://pmslingr.github.io/slingrDoc/"
 relativeURLs = true
 canonifyURLs = false
 disableAliases = true
@@ -50,7 +49,7 @@ rel  = "sitemap"
 [caches]
   [caches.getjson]
     dir = ":cacheDir/:project"
-    maxAge = "10s"
+    maxAge = "1s"
 
 [sitemap]
   changefreq = "weekly"
