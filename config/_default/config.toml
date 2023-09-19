@@ -1,14 +1,11 @@
-relativeURLs = false
 canonifyURLs = true
 disableAliases = true
-disablePathToLower = true
 disableHugoGeneratorInject = true
 enableEmoji = true
-enableGitInfo = true
+enableGitInfo = false
 enableRobotsTXT = true
 paginate = 7
 rssLimit = 10
-
 
 # Multilingual
 defaultContentLanguage = "en"
