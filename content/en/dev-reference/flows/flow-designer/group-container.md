@@ -16,7 +16,7 @@ Some steps in the flow designer also function as **`group containers`**. These g
 
 You can drag and drop other steps from the palette as well as the canvas into a group container step. Once a step is dropped into a group container, it becomes a part of that group, and a **`linked icon`** will appear on both the parent and child steps. This creates a sub-context, and the flow execution will proceed with the steps inside the group container before moving on to the next step connected to the group container. This means that you can place multiple steps inside a container and connect them with each other. The first step to be executed within a group container will be the one that has not been the target of any connection. Therefore, it's important to ensure that only one step inside a group container is not the target of a connection.
 
-![Adding to a Group Container](https://pmorales.github.io/slingrDoc/images/vendor/flows/add_to_group_container.gif)
+![Adding to a Group Container](https://pmslingr.github.io/slingrDoc/images/vendor/flows/add_to_group_container.gif)
 
 {{< notes type="tip">}}
 Group container steps can be resized to make them larger or smaller as needed. To do this, drag their edges from the bottom or right sides.

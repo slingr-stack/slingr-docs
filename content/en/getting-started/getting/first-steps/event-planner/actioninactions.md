@@ -20,7 +20,7 @@ In this section, we will explore how the actions implemented in the previous sec
 
 👉 In the header, you will notice a new button labeled "Actions." Click on it to proceed.
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_cancel_event_action_runtime.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_cancel_event_action_runtime.png)
 
 👉 Both actions should now be visible, but please note that you will only see them if the status of the event is "Active."
 
@@ -28,11 +28,11 @@ In this section, we will explore how the actions implemented in the previous sec
 
 👉 Locate and click on the ``"Cancel Event"`` action. A confirmation popup will appear. Click on ``"Cancel Event"`` again to confirm the action.
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_cancel_event_action_runtime.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_cancel_event_action_runtime.png)
 
 👉 Once the action has completed, the status of the event should be `Cancel`, and the actions should no longer be visible. It should look something like this:
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_event_cancelled.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_event_cancelled.png)
 
 ---
 
@@ -40,13 +40,13 @@ In this section, we will explore how the actions implemented in the previous sec
 
 👉 Now let's select another active event to execute the other action. In the read-only view of the other event, click on `Actions`, and then on `End Event`.
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_end_event_action_runtime.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_end_event_action_runtime.png)
 
 ---
 
 👉 A confirmation popup will appear, click on `End Event`. When the action completes, the status of the event should be `Done`. It should look something like this:
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_event_ended.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/action-in-actions/ww_event_planner_event_ended.png)
 
 ---
 

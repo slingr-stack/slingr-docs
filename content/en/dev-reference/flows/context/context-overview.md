@@ -32,7 +32,7 @@ Each item within the context stack operates within its designated scope. Context
 
 ## **Example**
 
-![Context Stack Example](https://pmorales.github.io/slingrDoc/images/vendor/flows/context_stack_example.png)
+![Context Stack Example](https://pmslingr.github.io/slingrDoc/images/vendor/flows/context_stack_example.png)
 
 *In the **`"updateRecord"`** step, nested within a **`"tryCatch"`** step, it's not possible to access the output of **`"findData" `** because it is not within the execution flow of **`"findData."`** However, it can access the output of the parent step: **`"tryCatchError."`***
 

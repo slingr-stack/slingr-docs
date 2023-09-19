@@ -14,7 +14,7 @@ weight: 1
 
 ## **Platform Concepts**
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/platform-ref/platform-concepts.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/platform-ref/platform-concepts.png)
 
 ### Developer Account and Portal
 

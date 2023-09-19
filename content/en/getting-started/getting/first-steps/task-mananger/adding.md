@@ -31,7 +31,7 @@ We already have the basic operations to **`create`**, **`edit`**, and **`delete`
 
 👉 In the Preconditions section, you will indicate under which conditions the action can be executed. For the **`"startWork"`** action, the precondition is that the field **`"Status"`** must be **`"To do"`**. This can be indicated with an expression. Select the option **`"Expression"`** for Preconditions, then set up the following expression by clicking on **`"Add new rule"`** and configure it like this:
 
-![Preconditions](https://pmorales.github.io/slingrDoc/images/vendor/task-mananger/adding-actions/a.png)
+![Preconditions](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/adding-actions/a.png)
 
 👉 In the field **``"Action script"``**, add the following script to the body of the function:
 
@@ -112,7 +112,7 @@ Good, now we have all the actions to manage the workflow! However, there is one 
 3. For the option **`Read only`** select **`Always`**.
 4. Save changes by clicking on **`Apply`**.
 
-![status-field](https://pmorales.github.io/slingrDoc/images/vendor/task-mananger/adding-actions/aa.png)
+![status-field](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/adding-actions/aa.png)
 
 <br>
 

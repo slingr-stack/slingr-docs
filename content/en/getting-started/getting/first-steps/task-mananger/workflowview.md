@@ -18,7 +18,7 @@ Hi! In this section, we will take a look at the new Workflow View.
 
 Make sure you are on the runtime of your app; if not, you can access it through the developer portal. Let's see what we have accomplished. This is how the new Workflow View should look like after a few configurations.
 
-![Screenshot of the Workflow View](https://pmorales.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wv.png)
+![Screenshot of the Workflow View](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wv.png)
 
 We have built an awesome app. Let's try it out and verify that the actions and transitions are working as expected.
 
@@ -28,7 +28,7 @@ We have built an awesome app. Let's try it out and verify that the actions and t
 
 To execute actions, click the button located at the top-right corner of the card. In this case, only the **``"Archive"``** action is available as per our configuration. You should also be able to perform other actions by moving the card through different columns.
 
-![Review actions](https://pmorales.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wvv.png)
+![Review actions](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wvv.png)
 
 ---
 
@@ -36,7 +36,7 @@ To execute actions, click the button located at the top-right corner of the card
 
 To create new tasks, click on the **`"Create"`** button, and a pop-up will appear.
 
-![Create through modal](https://pmorales.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wvvv.png)
+![Create through modal](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wvvv.png)
 
 ---
 
@@ -44,7 +44,7 @@ To create new tasks, click on the **`"Create"`** button, and a pop-up will appea
 
 You can move the cards between different columns. Keep in mind that only the movements we have configured will be allowed. For example, in our app, moving a card from the **`"To do"`** column to the **`"Done"`** column should not be possible.
 
-![Transitions](https://pmorales.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wvvvv.png)
+![Transitions](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wvvvv.png)
 
 ---
 
@@ -52,7 +52,7 @@ You can move the cards between different columns. Keep in mind that only the mov
 
 Lastly, you can rank tasks by moving them up and down.
 
-![Ranking records](https://pmorales.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wvvvvv.png)
+![Ranking records](https://pmslingr.github.io/slingrDoc/images/vendor/task-mananger/wf-view/wvvvvv.png)
 
 ---
 

@@ -27,7 +27,7 @@ Let's proceed with the following steps:
 
 👉 Click on `"Save"`.
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/event-planner/small-improvements/ww_event_planner_permissions.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/small-improvements/ww_event_planner_permissions.png)
 
 ---
 
@@ -47,13 +47,13 @@ To observe the changes, let's switch groups and emulate an Admin user.
 
 👉 A popup will appear, select only the ``Admin Group``, and click on Switch.
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/event-planner/small-improvements/ww_event_planner_switch_group_action.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/small-improvements/ww_event_planner_switch_group_action.png)
 
 👉 Now, go to All events and check that the option to delete an event is no longer available when you select an event. This should also be the case in the read-only view.
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/event-planner/small-improvements/ww_event_planner_list_no_delete.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/small-improvements/ww_event_planner_list_no_delete.png)
 
-![Alt Text](https://pmorales.github.io/slingrDoc/images/vendor/event-planner/small-improvements/ww_event_planner_readonly_no_delete.png)
+![Alt Text](https://pmslingr.github.io/slingrDoc/images/vendor/event-planner/small-improvements/ww_event_planner_readonly_no_delete.png)
 
 ---
 

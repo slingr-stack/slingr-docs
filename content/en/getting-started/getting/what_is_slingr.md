@@ -19,7 +19,7 @@ The approach followed by Slingr is to have you describe your data model and busi
 
 On the other hand, we acknowledge that many SaaS solutions are purpose-built and highly efficient for specific problems. Attempting to replicate them within Slingr would be counterproductive. Therefore, our approach is to provide tools that enable easy integration of existing cloud apps, freeing you to concentrate on creating custom workflows tailored to your business needs.
 
-![hola](https://pmorales.github.io/slingrDoc/images/vendor/whats-slingr-stack.png)
+![hola](https://pmslingr.github.io/slingrDoc/images/vendor/whats-slingr-stack.png)
 
 This means you define the business rules and data model, and in return, you automatically get a working app with a **user interface and a REST API** that allows your app to be used by other applications. Slingr offers a wide range of features to help you model your business requirements effectively. It is designed to create real-world apps, not just trivial prototypes.
 
@@ -49,7 +49,7 @@ To provide a simplified example of how it works, let's consider an entity called
 
 Below, you can observe the data model definition and the resulting app displayed in a web browser:
 
-![hola](https://pmorales.github.io/slingrDoc/images/vendor/how-it-works.png)
+![hola](https://pmslingr.github.io/slingrDoc/images/vendor/how-it-works.png)
 
 Apart from the UI, the following REST API will be generated:
 
@@ -73,13 +73,13 @@ This is a highly simplified example to demonstrate the basics of how Slingr work
 ---
 
 ### Create an app to support your business
-![hola](https://pmorales.github.io/slingrDoc/images/vendor/use-case.png)
+![hola](https://pmslingr.github.io/slingrDoc/images/vendor/use-case.png)
 In this scenario, you need an application to support your main business processes, and you want to integrate it with specific systems such as email and payment gateways. With Slingr, you can easily create this application by defining your business rules, permissions for different users, and more. Next, you should configure endpoints for the integrations you require and set up the integration points.
 
 ---
 
 ### Glue your existing apps
-![hola](https://pmorales.github.io/slingrDoc/images/vendor/glue.png)
+![hola](https://pmslingr.github.io/slingrDoc/images/vendor/glue.png)
 
 In this case, you are already using various cloud apps. You can leverage Slingr to coordinate workflows in your business, breaking silos between different departments. Here are some use cases for the schema described above:
 
@@ -93,7 +93,7 @@ In this case, you are already using various cloud apps. You can leverage Slingr 
 
 ### Customize a template app
 
-![hola](https://pmorales.github.io/slingrDoc/images/vendor/customize.png)
+![hola](https://pmslingr.github.io/slingrDoc/images/vendor/customize.png)
 
 In this case, instead of creating an app from scratch on Slingr, you can take one of the template apps and adapt them to your business needs.
 
@@ -103,7 +103,7 @@ This can apply also to your own apps. Let's suppose you build an app for lawyers
 
 ### Use it as a backend for mobile apps
 
-![hola](https://pmorales.github.io/slingrDoc/images/vendor/useit.png)
+![hola](https://pmslingr.github.io/slingrDoc/images/vendor/useit.png)
 
 Due to the exceptional REST API automatically generated for your app, it becomes incredibly easy to develop mobile apps tailored to specific purposes. These mobile apps can effortlessly pull and push data to the Slingr app, effectively acting as a backend. As long as the mobile app can access the Slingr API, it can be either native or use HTML5.
 
