@@ -30,19 +30,19 @@ There are four types of connection endpoints:
 
 - **`Green connection endpoints`**: Located on the right or sometimes the bottom side of all steps (except for the "end" step). Dragging a connection from one of these endpoints and dropping it onto a target step will establish a normal connection.
 
-![Regular Connection](images/vendor/flows/regular_connection.gif)
+![Regular Connection](/images/vendor/flows/regular_connection.gif)
 
 - **`Red connection endpoints`**: Positioned on the bottom side of certain steps. Creating a connection from one of these endpoints and connecting it to a target step will create an error connection.
 
-![Error Connection](images/vendor/flows/error_connection.gif)
+![Error Connection](/images/vendor/flows/error_connection.gif)
 
 - **`Else connection endpoints`**: Found on the bottom side of **`Condition`** type steps. Connecting a connection from one of these endpoints to a target step will establish an else connection.
 
-![Else Connection](images/vendor/flows/else_connection.gif)
+![Else Connection](/images/vendor/flows/else_connection.gif)
 
 - **`Target connection endpoints`**: Situated on the left side of group container steps. To establish a connection, drop it onto one of these endpoints. The connection can be regular, error, or else, depending on the source connection endpoint.
 
-![Target Connection](images/vendor/flows/target_connection.gif)
+![Target Connection](/images/vendor/flows/target_connection.gif)
 
 {{< notes type="note">}}
 Connection targets, such as regular steps or target connection's endpoints, will display a dashed outline border when a connection is being dragged on top of them.
@@ -52,7 +52,7 @@ Connection targets, such as regular steps or target connection's endpoints, will
 
 To delete a connection, simply click on the connector, and a delete button will appear. By clicking on that button, the connection will be deleted.
 
-![Deleting a Connection](images/vendor/flows/deleting_connection.gif)
+![Deleting a Connection](/images/vendor/flows/deleting_connection.gif)
 
 
 

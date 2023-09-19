@@ -11,7 +11,7 @@ menu:
 weight: 1
 toc: true
 ---
-![hola](images/vendor/where-to.png)
+![hola](/images/vendor/where-to.png)
 
 Welcome to Slingr! On this page, we will guide you through the process of getting started with our platform.
 
@@ -23,11 +23,11 @@ After you have created your account, we highly recommend that you follow these [
 
 To gain a solid understanding of the basics of app development with Slingr, we strongly encourage you to read through the following pages:
 
-- [App Development Overview]({{< ref "/dev-reference/overview/overview.md">}})
-- [Pushing and Syncing Changes]({{< ref "/dev-reference/metadata-management/pushing-and-syncing.md">}})
-- [Development Process]({{< ref "/dev-reference/metadata-management/development-process.md">}})
-- [Automatic Refactorings]({{< ref "/dev-reference/metadata-management/automatic-refactorings.md" >}})
+- [App Development Overview]({{<ref "/dev-reference/overview/overview.md">}})
+- [Pushing and Syncing Changes]({{<ref "/dev-reference/metadata-management/pushing-and-syncing.md">}})
+- [Development Process]({{<ref "/dev-reference/metadata-management/development-process.md">}})
+- [Automatic Refactorings]({{<ref "/dev-reference/metadata-management/automatic-refactorings.md" >}})
 
-For more information on how to manage your apps, take a look at our [Managing Apps]({{< ref "/platform-ref/slingr-dev-portal/managing-apps.md">}}) page.
+For more information on how to manage your apps, take a look at our [Managing Apps]({{<ref "/platform-ref/slingr-dev-portal/managing-apps.md">}}) page.
 
-If you have any questions or issues, feel free to post them on [Stack Overflow](https://stackoverflow.com/) with the tag `slingr`. We will get back to you as soon as possible!
+If you have any questions or issues, feel free to post them on [Stack Overflow](https://stackoverflow.com/) with the tag **`slingr`**. We will get back to you as soon as possible!

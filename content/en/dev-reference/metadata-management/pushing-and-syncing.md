@@ -22,7 +22,7 @@ Next, we will outline the process for implementing changes to your apps and sync
 
 You can modify your app's metadata through the app builder. Here, you can view your app's definition and implement necessary changes. Note that these changes won't take effect immediately; they need to be pushed to the app runtime, where they will be applied. For instance, if you add a new field using the app builder, you won't see it in the app immediately after saving. First, you need to push the changes, and once this is done, the new field will appear in the app runtime of the development environment.
 
-![Push changes](images/vendor/platform-ref/push-changes.png)
+![Push changes](/images/vendor/platform-ref/push-changes.png)
 
 You can push changes from the app builder using the **`Push changes`** action in the secondary menu (a shortcut is also available with **`Ctrl + P`**). When changes are pushed, you'll see a summary of the changes that will be pushed, and you'll have the option to create a backup and provide an explanation for the changes.
 
@@ -40,7 +40,7 @@ Importantly, understand the impact of pushing changes:
 
 Once you've tested all changes in the development environment, if you have a production environment in your app, you can sync these changes from development to production.
 
-![Sync changes](images/vendor/platform-ref/sync-changes.png)
+![Sync changes](/images/vendor/platform-ref/sync-changes.png)
 
 From the app builder, use the **`Sync changes to prod`** action in the secondary menu to synchronize changes. During this process, you'll see a summary of the changes that will be moved to production. It's important to note that only changes that have been pushed will be synced. Any changes made in the app builder but not yet pushed won't be synchronized.
 
@@ -95,7 +95,7 @@ However, your production environment might require slightly different behavior t
 
 This is where environment settings come into play. These settings can be customized per environment and, combined with metadata, influence how your app operates.
 
-![App Metadata and Environments](images/vendor/platform-ref/metadata-to-environments.png)
+![App Metadata and Environments](/images/vendor/platform-ref/metadata-to-environments.png)
 
 You can modify environment settings from the app builder in the development or staging environment. For the production environment, these settings can be adjusted using the app monitor.
 

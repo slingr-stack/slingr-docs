@@ -32,16 +32,16 @@ Let's get started by creating an action to cancel events using a feature called 
 
 ---
 
-![Alt Text](images/vendor/event-planner/creating-actions/ww_event_planner_cancel_event_action.png)
+![Alt Text](/images/vendor/event-planner/creating-actions/ww_event_planner_cancel_event_action.png)
 
-![Alt Text](images/vendor/event-planner/creating-actions/ww_event_planner_cancel_event_action_2.png)
+![Alt Text](/images/vendor/event-planner/creating-actions/ww_event_planner_cancel_event_action_2.png)
 
 ---
 ### Configure action flow
 
 👉 Click on Open Editor.
 
-![Alt Text](images/vendor/event-planner/creating-actions/ww_event_planner_flow_editor.png)
+![Alt Text](/images/vendor/event-planner/creating-actions/ww_event_planner_flow_editor.png)
 
 This is what we call the **``Flow Designer``**, and the boxes on the left are referred to as "steps." Each step has different functionality, and you can connect them to build a flow. You can learn more about flows [here]({{<ref "/dev-reference/flows/overview.md" >}}). We are going to use it to change the status of the record.
 
@@ -49,7 +49,7 @@ This is what we call the **``Flow Designer``**, and the boxes on the left are re
 
 1. Create an "Update Record" step and connect it to the "Start" step.
 
-![Alt Text](images/vendor/event-planner/creating-actions/ww_event_planner_update_record_step.png)
+![Alt Text](/images/vendor/event-planner/creating-actions/ww_event_planner_update_record_step.png)
 
 2. On the right, fill the form to the following details:
 
@@ -61,7 +61,7 @@ This is what we call the **``Flow Designer``**, and the boxes on the left are re
 
 3. Create an "End" step and connect it to the "Update Record" step. 
 
-![Alt Text](images/vendor/event-planner/creating-actions/cc.png)
+![Alt Text](/images/vendor/event-planner/creating-actions/cc.png)
 
 4. Click on Create.
 
@@ -96,9 +96,9 @@ Let's do it:
          
 ---
 
-![Alt Text](images/vendor/event-planner/creating-actions/ccc.png)
+![Alt Text](/images/vendor/event-planner/creating-actions/ccc.png)
 
-![Alt Text](images/vendor/event-planner/creating-actions/cccc.png)
+![Alt Text](/images/vendor/event-planner/creating-actions/cccc.png)
 
 👉 Click on Create.
 

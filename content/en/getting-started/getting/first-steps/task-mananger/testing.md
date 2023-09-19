@@ -19,15 +19,15 @@ As you can observe in the grid view, a new column called "Actions" has been adde
 
 ### From "All tasks" view actions column
 
-![Actions Column](images/vendor/task-mananger/testing-actions/t.png)
+![Actions Column](/images/vendor/task-mananger/testing-actions/t.png)
 
 ### From "All tasks" view main menu
 
-![All tasks main menu actions](images/vendor/task-mananger/testing-actions/tt.png)
+![All tasks main menu actions](/images/vendor/task-mananger/testing-actions/tt.png)
 
 ### From task record view main menu
 
-![Task record main menu actions](images/vendor/task-mananger/testing-actions/ttt.png)
+![Task record main menu actions](/images/vendor/task-mananger/testing-actions/ttt.png)
 
 Great! Our actions are now running. Please verify that the preconditions are working as expected. Additionally, ensure that in the **`edit view`**, the status cannot be changed. If you encounter any issues, refer back to the previous section to see if there is something you might have missed.
 
