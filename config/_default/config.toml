@@ -1,5 +1,5 @@
 canonifyURLs = false
-relativeURLs = false
+relativeURLs = true
 disableAliases = false
 disableHugoGeneratorInject = false
 enableEmoji = true
