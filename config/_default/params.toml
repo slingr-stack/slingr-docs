@@ -63,9 +63,9 @@ imageAddClass = "img-fluid lazyload blur-up"
 # Edit Page
 # repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster
 repoHost = "GitHub"
-docsRepo = "https://github.com/pmslingr/slingr-docs"
-docsURL = "https://pmslingr.github.io/slingr-docs"
-docsRepoBranch = "gh-pages"
+docsRepo = "https://github.com/slingr-stack/slingr-docs"
+docsURL = "https://slingr-stack.github.io/slingr-docs"
+docsRepoBranch = "main"
 docsRepoSubPath = ""
 editPage = true
 lastMod = false
