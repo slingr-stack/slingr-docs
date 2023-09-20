@@ -122,7 +122,7 @@ Source:
         {{ else -}}
           description: {{ .Summary | plainify | jsonify }},
         {{ end -}}
-        content: {{ .Plain | jsonify }}
+        content: {{ .Plain | markdownify | jsonify }}
       }
     );
   {{ end -}}
