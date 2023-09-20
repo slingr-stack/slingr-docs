@@ -81,7 +81,7 @@ repoHost = "GitHub"
 docsRepo = "https://github.com/pmslingr/slingrDoc"
 docsRepoBranch = "gh-pages"
 docsRepoSubPath = ""
-editPage = false
+editPage = true
 lastMod = false
 
 [sections]
