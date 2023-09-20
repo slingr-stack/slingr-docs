@@ -1,7 +1,6 @@
 ---
 title: "sys.commons"
 lead: "Documentation for common classes in the Javascript API."
-description: "Documentation for common classes in the Javascript API."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

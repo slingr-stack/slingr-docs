@@ -1,7 +1,6 @@
 ---
 title: "sys.data"
 lead: "Describes utilities in the Javascript API to access and manipulate application data."
-description: "Describes utilities in the Javascript API to access and manipulate application data."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

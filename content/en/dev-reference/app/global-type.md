@@ -1,7 +1,6 @@
 ---
 title: "Global settings"
 lead: "Describes how global settings for types work."
-description: ""
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
