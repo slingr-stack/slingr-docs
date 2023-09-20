@@ -3,7 +3,7 @@ var docs = [
   {
     id: {{ $index }},
     title: "{{ .Title }}",
-    description: "{{ .Params.lead }}",
+    description: "{{ .Params.description }}",
     href: "{{ .URL | relURL }}"
   },
 {{ end -}}
