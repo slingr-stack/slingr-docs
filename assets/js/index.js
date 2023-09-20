@@ -115,7 +115,7 @@ Source:
     index.add(
       {
         id: {{ $index }},
-        href: "{{ .RelPermalink }}",
+        href: "{{ .Site.Params.docsRepo }}{{ .RelPermalink }}",
         title: {{ .Title | jsonify }},
         {{ with .Description -}}
           description: {{ . | jsonify }},
