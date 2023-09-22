@@ -468,7 +468,7 @@ $navbar-dark-active-color:          $link-color-dark;
 
 @include media-breakpoint-up(md) {
   [data-dark-mode] body .alert-dismissible .btn-close {
-    background-size: 1.25rem;
+    background-size: 1.05rem;
   }
 }
 
