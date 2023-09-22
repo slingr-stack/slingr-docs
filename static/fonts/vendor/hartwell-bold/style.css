@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Hartwell';
+    src: local('Hartwell Bold'), local('Hartwell-Bold'),
+        url('Hartwell-Bold.woff2') format('woff2'),
+        url('Hartwell-Bold.woff') format('woff'),
+        url('Hartwell-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
