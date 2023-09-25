@@ -1,159 +1,83 @@
-<p align="center">
-  <a href="https://getdoks.org/">
-    <img alt="Doks" src="https://doks.netlify.app/doks.svg" width="60">
-  </a>
-</p>
+# Slingr documentation README
 
-<h1 align="center">
-  Doks
-</h1>
+Welcome to the Slingr documentation repository! This README provides instructions on how to edit the documentation content and set up a local development environment with all the necessary components.
 
-<h3 align="center">
-  Modern Documentation Theme
-</h3>
+Before diving into the details, let's take a look at the technology used to develop this documentation:
 
-<p align="center">
-  Doks is a Hugo theme for building secure, fast, and SEO-ready documentation websites, which you can easily update and customize.
-</p>
+## Hugo - the static site generator
 
-<p align="center">
-  <a href="https://github.com/h-enk/doks/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/h-enk/doks?style=flat-square" alt="GitHub">
-  </a>
-  <a href="https://github.com/h-enk/doks/releases">
-    <img src="https://img.shields.io/github/v/release/h-enk/doks?include_prereleases&style=flat-square"alt="GitHub release (latest SemVer including pre-releases)">
-  </a>
-  <a href="https://www.npmjs.com/package/@hyas/doks">
-    <img src="https://img.shields.io/npm/v/@hyas/doks?style=flat-square" alt="npm (scoped)">
-  </a>
-  <a href="https://github.com/h-enk/doks/actions?query=workflow%3A%22Hyas+CI%22">
-    <img src="https://img.shields.io/github/workflow/status/h-enk/doks/Hyas%20CI/master?style=flat-square" alt="GitHub Workflow Status (branch)">
-  </a>
-  <a href="https://app.netlify.com/sites/doks/deploys">
-    <img src="https://img.shields.io/netlify/8a1009d5-88ac-413e-96ef-3f928674a083?style=flat-square" alt="Netlify">
-  </a>
-</p>
+[Hugo](https://gohugo.io/) is an open-source static site generator designed to help developers create fast and efficient websites. Written in the Go programming language, Hugo is acclaimed for its speed and simplicity.
 
-![Doks — Modern Documentation Theme](https://raw.githubusercontent.com/h-enk/doks/master/images/doks.png)
+### Key features and functions
 
-## Demo
+- **Static site generation**: Hugo generates static HTML files as output, resulting in faster website loading times and enhanced security.
 
-- [doks.netlify.app](https://doks.netlify.app/)
+- **Speed**: Hugo is exceptionally fast, thanks to its efficient use of Go's concurrency and minimal dependencies.
 
-## Why Doks?
+- **Markdown support**: Hugo primarily uses Markdown for content authoring, making it accessible to a wide range of users.
 
-Nine main reasons why you should use Doks:
+- **Themes**: It supports themes, enabling users to easily customize the appearance of their websites.
 
-1. __Security aware__. Get A+ scores on [Mozilla Observatory](https://observatory.mozilla.org/analyze/doks.netlify.app) out of the box. Easily change the default Security Headers to suit your needs.
+- **Content organization**: Hugo employs a flexible content organization system, ensuring a clear separation of content from presentation.
 
-2. __Fast by default__. Get 100 scores on [Google Lighthouse](https://googlechrome.github.io/lighthouse/viewer/?gist=59aafe464a68f8bc30b8e9a636d5b053) by default. Doks removes unused css, prefetches links, and lazy loads images.
+- **Extensibility**: Developers can extend Hugo's functionality through templates, shortcodes, and custom output formats.
 
-3. __SEO-ready__. Use sensible defaults for structured data, open graph, and Twitter cards. Or easily change the SEO settings to your liking.
+- **Multilingual support**: Hugo includes built-in support for creating multilingual websites.
 
-4. __Development tools__. Code with confidence. Check styles, scripts, and markdown for errors and fix automatically or manually.
+- **Command-Line interface (CLI)**: Hugo is operated via the command line, providing fine-grained control over site generation and customization.
 
-5. __Bootstrap framework__. Build robust, flexible, and intuitive websites with Bootstrap 5. Easily customize your Doks site with the source Sass files.
+- **Cross-platform**: It is cross-platform and runs on Linux, macOS, and Windows.
 
-6. __Netlify-ready__. Deploy to Netlify with sensible defaults. Easily use Netlify Functions, Netlify Redirects, and Netlify Headers.
+Hugo proves to be a powerful tool for creating websites, blogs, documentation, and more. Its speed, simplicity, and flexibility make it a top choice for web developers and content creators who value performance and ease of use in their projects.
 
-7. __Full text search__. Search your Doks site with FlexSearch. Easily customize index settings and search options to your liking.
+### Selected theme
 
-8. __Page layouts__. Build pages with a landing page, blog, or documentation layout. Add custom sections and components to suit your needs.
+For this project, we have chosen the "Doks" theme. You can find its documentation [here](https://getdoks.org/).
 
-9. __Dark mode__. Switch to a low-light UI with the click of a button. Change colors with variables to match your branding.
+---
 
-### Other features
+## Editing documentation content
 
-- __Multilingual and i18n__ support
-- __Versioning__ documentation support
-- __KaTeX__ math typesetting
-- __Mermaid__ diagrams and visualization
-- __highlight.js__ syntax highlighting
+### Content guidelines
 
-## Requirements
+To maintain consistency and quality, please follow these content guidelines when editing the documentation:
 
-- [Git](https://git-scm.com/) — latest source release
-- [Node.js](https://nodejs.org/) — latest LTS version or newer
+1. **New content**: As we've utilized AI to enhance the wording throughout the documentation, it's important to maintain this improved wording. Use a prompt like the following to request AI assistance: **`Chat, I'm working on the Slingr documentation project. In this conversation, I will send you text from the page I'm modifying/creating, and I want you to review the wording and spelling.`**
 
-<details>
-<summary>Why Node.js?</summary>
+2. **Title styling**: Titles should be written in sentence case, not title case. For example, "Write titles like this."
 
-Doks uses npm (included with Node.js) to centralize dependency management, making it [easy to update](https://getdoks.org/docs/help/how-to-update/) resources, build tooling, plugins, and build scripts.
+3. **Header 2/##**: Use highlighted H2 Markdown titles with double hashtags (##) for better visual hierarchy, like this: ## **Like this**
 
-</details>
+4. **Highlights**: Utilize **`highlighted code snippets`** to emphasize certain words or phrases.
 
-## Get started
+### Making changes
 
-Start a new Doks project in three steps:
+1. **Clone the repository**: If you haven't already, clone this repository to your local machine using Git.
+    ```shell
+    git clone https://github.com/slingr-stack/slingr-docs
+    cd slingr-docs
+    ```
 
-### 1. Create a new site
+2. **Install Hugo**: Ensure that Hugo is installed on your local machine. You can download it from the [Hugo website](https://gohugo.io/getting-started/installing/) and follow the installation instructions. For more information about Hugo, refer to the [Hugo section](#hugo) above.
 
-Doks is available as a child theme and a starter theme.
+3. **Install Node.js dependencies**: Run the following command to install Node.js dependencies:
+    ```shell
+    npm install
+    ```
 
-#### Child theme
+4. **Edit content**: Use your preferred text editor to modify the documentation content. The content is located in the `content.en` directory. You can make changes to Markdown files (`*.md`), and the styles will be automatically applied.
 
-- Intended for novice to intermediate users
-- Intended for minor customizations
-- [Easily update npm packages](https://getdoks.org/docs/help/how-to-update/) — __including__ [Doks](https://www.npmjs.com/package/@hyas/doks)
+5. **Preview changes**: To preview your changes locally, run Hugo's development server:
+    ```shell
+    hugo server
+    ```
+   This command starts a local server, and you can access the documentation at [http://localhost:1313/](http://localhost:1313/) in your web browser.
 
-```bash
-git clone https://github.com/h-enk/doks-child-theme.git my-doks-site && cd my-doks-site
-```
+6. **Commit and push**: Once you are satisfied with your changes, commit them using Git and push them to the repository:
+    ```shell
+    git add .
+    git commit -m "Updated documentation"
+    git push
+    ```
 
-#### Starter theme
-
-- Intended for intermediate to advanced users
-- Intended for major customizations
-- [Easily update npm packages](https://getdoks.org/docs/help/how-to-update/)
-
-```bash
-git clone https://github.com/h-enk/doks.git my-doks-site && cd my-doks-site
-```
-
-<details>
-<summary>Help me choose</summary>
-
-Not sure which one is for you? Pick the child theme.
-
-</details>
-
-### 2. Install dependencies
-
-```bash
-npm install
-```
-
-### 3. Start development server
-
-```bash
-npm run start
-```
-
-## Other commands
-
-Doks comes with [commands](https://getdoks.org/docs/prologue/commands/) for common tasks.
-
-## Documentation
-
-- [Netlify](https://docs.netlify.com/)
-- [Hugo](https://gohugo.io/documentation/)
-- [Doks](https://getdoks.org/)
-
-## Communities
-
-- [Netlify Community](https://community.netlify.com/)
-- [Hugo Forums](https://discourse.gohugo.io/)
-- [Doks Discussions](https://github.com/h-enk/doks/discussions)
-
-## Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
-
-[![OC sponsor 0](https://opencollective.com/doks/tiers/sponsor/0/avatar.svg)](https://opencollective.com/doks/tiers/sponsor/0/website)
-[![OC sponsor 1](https://opencollective.com/doks/tiers/sponsor/1/avatar.svg)](https://opencollective.com/doks/tiers/sponsor/1/website)
-
-## Backers
-
-Support this project by becoming a backer. Your avatar will show up here.
-
-[![Backers](https://opencollective.com/doks/tiers/backer.svg?49741992)](https://opencollective.com/doks)
+We appreciate your efforts in improving the Slingr documentation!
