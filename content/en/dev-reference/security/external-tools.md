@@ -1,6 +1,6 @@
 ---
 title: "External tools"
-lead: "Tips when use external tools."
+description: "Tips when use external tools."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

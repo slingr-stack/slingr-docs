@@ -1,6 +1,6 @@
 ---
 title: "Number types"
-lead: "Documentation for number types."
+description: "Documentation for number types."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-lead: "Briefly description of the Slingr Developer Portal."
+description: "Briefly description of the Slingr Developer Portal."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Linear line chart widget"
-lead: "Detailed explanation of settings available for linear chart widget that can be used in dashboard views."
+description: "Detailed explanation of settings available for linear chart widget that can be used in dashboard views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

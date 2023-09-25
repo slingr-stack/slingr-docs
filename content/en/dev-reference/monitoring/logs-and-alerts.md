@@ -1,6 +1,6 @@
 ---
 title: "Monitoring logs and alerts"
-lead: "Explore the capabilities of Slingr's monitoring logs and alerts to keep a close eye on your application's performance."
+description: "Explore the capabilities of Slingr's monitoring logs and alerts to keep a close eye on your application's performance."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Decimal type"
-lead: "Decimal type documentation.
+description: "Decimal type documentation.
 "
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00

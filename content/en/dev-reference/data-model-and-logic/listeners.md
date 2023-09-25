@@ -1,6 +1,6 @@
 ---
 title: "Listeners"
-lead: "Explains what listeners are and how they can be used to work with events of the app."
+description: "Explains what listeners are and how they can be used to work with events of the app."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

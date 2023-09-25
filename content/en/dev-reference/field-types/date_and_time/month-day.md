@@ -1,6 +1,6 @@
 ---
 title: "Month-day type"
-lead: "Month-day type documentation."
+description: "Month-day type documentation."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

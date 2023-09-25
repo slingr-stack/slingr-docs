@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-lead: "Brief explanation of how the UI is generated. Enumeration of different types of views."
+description: "Brief explanation of how the UI is generated. Enumeration of different types of views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

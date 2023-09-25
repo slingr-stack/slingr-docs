@@ -1,6 +1,6 @@
 ---
 title: "Custom views"
-lead: "Explanation of custom views. Settings and API available for custom views."
+description: "Explanation of custom views. Settings and API available for custom views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

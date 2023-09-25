@@ -1,6 +1,6 @@
 ---
 title: "Creating actions"
-lead: "Learning how to create actions with flows and scripts."
+description: "Learning how to create actions with flows and scripts."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

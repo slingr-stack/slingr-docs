@@ -1,6 +1,6 @@
 ---
 title: "Building expressions"
-lead: "Describes how to build and use expressions."
+description: "Describes how to build and use expressions."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

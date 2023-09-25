@@ -1,6 +1,6 @@
 ---
 title: "Apps REST API"
-lead: "General documentation for the automatic generated REST API for Slingr apps. Security and authentication. Data manipulation."
+description: "General documentation for the automatic generated REST API for Slingr apps. Security and authentication. Data manipulation."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

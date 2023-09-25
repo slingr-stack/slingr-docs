@@ -1,6 +1,6 @@
 ---
 title: "Action views"
-lead: "Detailed explanation of settings available for action views."
+description: "Detailed explanation of settings available for action views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

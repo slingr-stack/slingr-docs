@@ -1,6 +1,6 @@
 ---
 title: "Field types"
-lead: "Documentation for field types."
+description: "Documentation for field types."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

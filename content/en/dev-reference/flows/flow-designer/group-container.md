@@ -1,6 +1,6 @@
 ---
 title: "Group container steps"
-lead: "Description of group containers steps"
+description: "Description of group containers steps"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

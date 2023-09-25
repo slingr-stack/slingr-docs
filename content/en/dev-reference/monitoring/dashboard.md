@@ -1,6 +1,6 @@
 ---
 title: "Dashboard"
-lead: "A brief explanation of the app monitor dashboard"
+description: "A brief explanation of the app monitor dashboard"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

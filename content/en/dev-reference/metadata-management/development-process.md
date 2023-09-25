@@ -1,6 +1,6 @@
 ---
 title: "Development process"
-lead: "Describes the recommended steps and processes to create apps in Slingr."
+description: "Describes the recommended steps and processes to create apps in Slingr."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

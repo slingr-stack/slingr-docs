@@ -1,6 +1,6 @@
 ---
 title: "Nested Fields"
-lead: "Nested fields type documentation."
+description: "Nested fields type documentation."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

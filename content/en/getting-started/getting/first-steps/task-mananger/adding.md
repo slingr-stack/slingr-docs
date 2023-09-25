@@ -1,6 +1,6 @@
 ---
 title: "Adding actions to an entity"
-lead: "Summary: Working with actions."
+description: "Summary: Working with actions."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

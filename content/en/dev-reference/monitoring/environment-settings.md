@@ -1,6 +1,6 @@
 ---
 title: "Environment settings"
-lead: "Learn how to modify environment settings through the App Monitor and understand their immediate impact on your running app."
+description: "Learn how to modify environment settings through the App Monitor and understand their immediate impact on your running app."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

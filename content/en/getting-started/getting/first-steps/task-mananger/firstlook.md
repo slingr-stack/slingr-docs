@@ -1,6 +1,6 @@
 ---
 title: "First look at our App"
-lead: "Summary: discover the runtime and see the changes."
+description: "Summary: discover the runtime and see the changes."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

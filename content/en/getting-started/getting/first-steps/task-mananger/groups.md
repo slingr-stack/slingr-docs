@@ -1,6 +1,6 @@
 ---
 title: "Groups and permissions"
-lead: "Summary: Learning how to work with groups and permissions."
+description: "Summary: Learning how to work with groups and permissions."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

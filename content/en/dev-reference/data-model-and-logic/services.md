@@ -1,6 +1,6 @@
 ---
 title: "Services"
-lead: "Learn about services and how to utilize them for connecting with external applications."
+description: "Learn about services and how to utilize them for connecting with external applications."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

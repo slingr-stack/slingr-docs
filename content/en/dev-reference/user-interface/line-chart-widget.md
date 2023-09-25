@@ -1,6 +1,6 @@
 ---
 title: "Line chart widget"
-lead: "This section describes settings available for line chart widgets that can be used in dashboard views."
+description: "This section describes settings available for line chart widgets that can be used in dashboard views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
