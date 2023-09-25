@@ -1,6 +1,6 @@
 ---
 title: "Actions in action"
-lead: "Watch how the new actions work."
+description: "Watch how the new actions work."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

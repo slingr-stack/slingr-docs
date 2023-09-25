@@ -1,6 +1,6 @@
 ---
 title: "Pushing and syncing changes"
-lead: "Describes the procedure for modifying your app's metadata and transitioning it from the development environment to the production environment."
+description: "Describes the procedure for modifying your app's metadata and transitioning it from the development environment to the production environment."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

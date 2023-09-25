@@ -1,6 +1,6 @@
 ---
 title: "Packages"
-lead: "This section provides an overview of what packages are and how to leverage them to establish connections with external applications."
+description: "This section provides an overview of what packages are and how to leverage them to establish connections with external applications."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Groups"
-lead: "Detailed description of groups and how they allow to define permissions."
+description: "Detailed description of groups and how they allow to define permissions."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Metadata history"
-lead: "Describes how to review the changes made to a specific metadata resource"
+description: "Describes how to review the changes made to a specific metadata resource"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

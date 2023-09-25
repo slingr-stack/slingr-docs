@@ -1,6 +1,6 @@
 ---
 title: "UI Plugins"
-lead: "Description of what UI plugins are and how to use them to connect client with external apps."
+description: "Description of what UI plugins are and how to use them to connect client with external apps."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

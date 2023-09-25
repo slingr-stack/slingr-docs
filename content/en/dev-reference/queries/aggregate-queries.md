@@ -1,6 +1,6 @@
 ---
 title: "Aggregated queries"
-lead: "Explains how to make aggregate queries over data. Samples demostrating some common use cases."
+description: "Explains how to make aggregate queries over data. Samples demostrating some common use cases."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

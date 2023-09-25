@@ -1,6 +1,6 @@
 ---
 title: "Managing apps"
-lead: "Explains how to create and manage apps in Slingr."
+description: "Explains how to create and manage apps in Slingr."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

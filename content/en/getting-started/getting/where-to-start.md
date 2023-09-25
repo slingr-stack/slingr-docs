@@ -1,6 +1,6 @@
 ---
 title: "Where to start"
-lead: "If you are new to Slingr, this is the perfect place to start. Here, you'll find guidance to help you learn and use the platform effectively."
+description: "If you are new to Slingr, this is the perfect place to start. Here, you'll find guidance to help you learn and use the platform effectively."
 date: 2020-10-06T08:48:57+00:00
 lastmod: 2020-10-06T08:48:57+00:00
 draft: false

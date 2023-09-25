@@ -1,6 +1,6 @@
 ---
 title: "Logs and alerts settings"
-lead: "App-Level Logs and Alerts"
+description: "App-Level Logs and Alerts"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

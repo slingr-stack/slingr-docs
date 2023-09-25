@@ -1,6 +1,6 @@
 ---
 title: "Percentage type"
-lead: "Percentage type documentation.
+description: "Percentage type documentation.
 "
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00

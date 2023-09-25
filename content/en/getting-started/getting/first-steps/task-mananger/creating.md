@@ -1,6 +1,6 @@
 ---
 title: "About - Task Manager"
-lead: "Summary: Create a task manager from scratch."
+description: "Summary: Create a task manager from scratch."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Legacy services"
-lead: "Learn about legacy services and how to utilize them to establish connections with external applications."
+description: "Learn about legacy services and how to utilize them to establish connections with external applications."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

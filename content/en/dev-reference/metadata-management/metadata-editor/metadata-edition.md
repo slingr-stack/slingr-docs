@@ -1,6 +1,6 @@
 ---
 title: "Metadata edition"
-lead: "Overview of how metadata can be edited."
+description: "Overview of how metadata can be edited."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

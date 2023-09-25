@@ -1,6 +1,6 @@
 ---
 title: "sys.context"
-lead: "Describes utilities in the Javascript API to get information about the context of execution."
+description: "Describes utilities in the Javascript API to get information about the context of execution."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

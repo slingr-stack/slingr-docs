@@ -1,6 +1,6 @@
 ---
 title: "Entities"
-lead: "Explanation of what entities are, features they have, and how they are used."
+description: "Explanation of what entities are, features they have, and how they are used."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

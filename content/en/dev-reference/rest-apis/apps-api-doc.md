@@ -1,6 +1,6 @@
 ---
 title: "Apps REST API documentation"
-lead: "Let's dive into the process of effortlessly generating REST API documentation, making it easier for external developers to work with your app's API."
+description: "Let's dive into the process of effortlessly generating REST API documentation, making it easier for external developers to work with your app's API."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

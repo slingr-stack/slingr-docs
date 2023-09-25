@@ -1,6 +1,6 @@
 ---
 title: "sys.utils"
-lead: "Describes misc utilities in the Javascript API."
+description: "Describes misc utilities in the Javascript API."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

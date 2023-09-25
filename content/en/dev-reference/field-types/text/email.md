@@ -1,6 +1,6 @@
 ---
 title: "Email type"
-lead: "Email type documentation.
+description: "Email type documentation.
 "
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00

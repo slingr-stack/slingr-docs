@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-lead: "This section offers an overview of how flows can streamline tasks that would typically be accomplished with scripts, offering a more straightforward approach."
+description: "This section offers an overview of how flows can streamline tasks that would typically be accomplished with scripts, offering a more straightforward approach."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

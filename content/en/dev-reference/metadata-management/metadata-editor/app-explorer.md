@@ -1,6 +1,6 @@
 ---
 title: "App explorer"
-lead: "Describes the app explorer panel."
+description: "Describes the app explorer panel."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

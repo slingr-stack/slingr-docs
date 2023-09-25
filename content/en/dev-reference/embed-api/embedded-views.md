@@ -1,6 +1,6 @@
 ---
 title: "Embedded views"
-lead: "Integration based on the embed of views."
+description: "Integration based on the embed of views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

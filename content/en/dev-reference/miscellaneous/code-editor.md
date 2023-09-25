@@ -1,6 +1,6 @@
 ---
 title: "Code editor"
-lead: "Learn how to utilize the features of the code editor component."
+description: "Learn how to utilize the features of the code editor component."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

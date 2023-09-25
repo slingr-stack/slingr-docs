@@ -1,6 +1,6 @@
 ---
 title: "Automatic refactorings"
-lead: "Details about how automatic refactorings work and how they are applied."
+description: "Details about how automatic refactorings work and how they are applied."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

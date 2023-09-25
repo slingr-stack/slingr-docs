@@ -1,6 +1,6 @@
 ---
 title: "Creating a workflow view"
-lead: "Summary: let's create a cards-dashboard view with Slingr."
+description: "Summary: let's create a cards-dashboard view with Slingr."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

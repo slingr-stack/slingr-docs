@@ -1,6 +1,6 @@
 ---
 title: "UI queries"
-lead: "Describe the queries that can be done at the UI level."
+description: "Describe the queries that can be done at the UI level."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

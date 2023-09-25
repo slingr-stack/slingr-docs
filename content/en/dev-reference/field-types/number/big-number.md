@@ -1,6 +1,6 @@
 ---
 title: "Big Number type"
-lead: "Big Number type documentation.
+description: "Big Number type documentation.
 "
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00

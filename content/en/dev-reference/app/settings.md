@@ -1,6 +1,6 @@
 ---
 title: "App settings"
-lead: "Explanation of the global app settings."
+description: "Explanation of the global app settings."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

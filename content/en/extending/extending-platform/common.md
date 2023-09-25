@@ -1,6 +1,6 @@
 ---
 title: "Common features"
-lead: "Explains features of endpoints that are independent fo the SDK used to create the endpoint."
+description: "Explains features of endpoints that are independent fo the SDK used to create the endpoint."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

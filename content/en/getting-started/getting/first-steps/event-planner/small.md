@@ -1,6 +1,6 @@
 ---
 title: "Small change (optional)"
-lead: "Removing permissions for Admin users."
+description: "Removing permissions for Admin users."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

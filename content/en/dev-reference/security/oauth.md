@@ -1,6 +1,6 @@
 ---
 title: "OAuth Support"
-lead: "Explanation of OAuth Support."
+description: "Explanation of OAuth Support."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
