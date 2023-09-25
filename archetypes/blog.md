@@ -1,6 +1,5 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-description: ""
 excerpt: ""
 date: {{ .Date }}
 lastmod: {{ .Date }}

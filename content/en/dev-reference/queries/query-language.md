@@ -1,6 +1,6 @@
 ---
 title: "Query language"
-lead: "Describe the query language, which is shared by the REST API as well as the Javascript API"
+description: "Describe the query language, which is shared by the REST API as well as the Javascript API"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

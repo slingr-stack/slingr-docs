@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-lead: "Here, you will find information about integrating your apps with other applications and extending the platform's features."
+description: "Here, you will find information about integrating your apps with other applications and extending the platform's features."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

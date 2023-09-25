@@ -1,6 +1,6 @@
 ---
 title: "Background jobs"
-lead: "Discover how to effectively manage background jobs using the App Monitor."
+description: "Discover how to effectively manage background jobs using the App Monitor."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

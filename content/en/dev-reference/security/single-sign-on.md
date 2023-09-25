@@ -1,6 +1,6 @@
 ---
 title: "Single sign on"
-lead: "Explanation of what are identity providers. Description of each supported identity provider."
+description: "Explanation of what are identity providers. Description of each supported identity provider."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

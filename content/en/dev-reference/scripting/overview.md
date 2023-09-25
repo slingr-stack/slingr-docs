@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-lead: "The Slingr platform empowers you to leverage JavaScript scripts to define behaviors and processes. This section offers an overview of how scripts can be harnessed to expand the functionality of your app."
+description: "The Slingr platform empowers you to leverage JavaScript scripts to define behaviors and processes. This section offers an overview of how scripts can be harnessed to expand the functionality of your app."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

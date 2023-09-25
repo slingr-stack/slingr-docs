@@ -1,6 +1,6 @@
 ---
 title: "Establishing connections"
-lead: "Description on how connections between steps are established in the flow designer"
+description: "Description on how connections between steps are established in the flow designer"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

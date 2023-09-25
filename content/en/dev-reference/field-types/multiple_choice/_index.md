@@ -1,6 +1,6 @@
 ---
 title: "Multiple choice types"
-lead: "Documentation for multiple choice types."
+description: "Documentation for multiple choice types."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

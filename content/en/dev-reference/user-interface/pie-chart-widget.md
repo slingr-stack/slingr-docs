@@ -1,6 +1,6 @@
 ---
 title: "Pie chart widget"
-lead: "Detailed explanation of settings available for pie chart widget views."
+description: "Detailed explanation of settings available for pie chart widget views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

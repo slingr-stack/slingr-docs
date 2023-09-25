@@ -1,6 +1,6 @@
 ---
 title: "Delete company"
-lead: "Delete company sample flow."
+description: "Delete company sample flow."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

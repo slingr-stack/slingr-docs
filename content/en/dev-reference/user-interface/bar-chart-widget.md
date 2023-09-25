@@ -1,6 +1,6 @@
 ---
 title: "Bar chart widget"
-lead: "Detailed explanation of settings available for bar chart widget views."
+description: "Detailed explanation of settings available for bar chart widget views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

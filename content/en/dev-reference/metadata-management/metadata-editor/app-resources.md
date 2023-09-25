@@ -1,6 +1,6 @@
 ---
 title: "App resources"
-lead: "Describes the app resources panel."
+description: "Describes the app resources panel."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

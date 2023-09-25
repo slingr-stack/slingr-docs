@@ -1,6 +1,6 @@
 ---
 title: "Libraries"
-lead: "Provides an explanation of libraries and their utilization for organizing shared code within your application."
+description: "Provides an explanation of libraries and their utilization for organizing shared code within your application."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

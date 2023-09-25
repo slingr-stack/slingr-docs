@@ -1,6 +1,6 @@
 ---
 title: "API Tokens"
-lead: "Management of API tokens."
+description: "Management of API tokens."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

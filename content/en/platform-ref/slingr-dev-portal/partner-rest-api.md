@@ -1,6 +1,6 @@
 ---
 title: "Partner REST API"
-lead: "General documentation for the partner REST API to create and manage accounts in the platform."
+description: "General documentation for the partner REST API to create and manage accounts in the platform."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Database and storage"
-lead: "Explains the database statistics in the app monitor"
+description: "Explains the database statistics in the app monitor"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

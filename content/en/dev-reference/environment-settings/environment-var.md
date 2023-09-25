@@ -1,6 +1,6 @@
 ---
 title: "Environment variables"
-lead: "Describes what are environment variables and how they can be used."
+description: "Describes what are environment variables and how they can be used."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

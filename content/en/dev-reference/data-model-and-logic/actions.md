@@ -1,6 +1,6 @@
 ---
 title: "Actions"
-lead: "Explains what action are and how they can be used to define behavior in entities."
+description: "Explains what action are and how they can be used to define behavior in entities."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

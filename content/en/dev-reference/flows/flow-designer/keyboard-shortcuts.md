@@ -1,6 +1,6 @@
 ---
 title: "Keyboard shortcuts"
-lead: "List of keyboard shortcuts"
+description: "List of keyboard shortcuts"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

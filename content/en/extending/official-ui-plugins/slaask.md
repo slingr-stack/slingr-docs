@@ -1,6 +1,6 @@
 ---
 title: "Slaask"
-lead: "Detailed description of how the Slaask plugin works and its configuration."
+description: "Detailed description of how the Slaask plugin works and its configuration."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

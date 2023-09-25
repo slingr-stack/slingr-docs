@@ -1,6 +1,6 @@
 ---
 title: "Community legacy services"
-lead: "List of community legacy services."
+description: "List of community legacy services."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

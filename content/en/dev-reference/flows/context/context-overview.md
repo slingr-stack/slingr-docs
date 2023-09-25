@@ -1,6 +1,6 @@
 ---
 title: "Context Overview"
-lead: "In this section, we will explore the concept of the Context and how it allows you to inject variables into step inputs."
+description: "In this section, we will explore the concept of the Context and how it allows you to inject variables into step inputs."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

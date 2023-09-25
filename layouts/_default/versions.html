@@ -1,7 +1,7 @@
 {{ define "main" }}
   <article>
     <h1>{{ .Title }}</h1>
-    <p class="lead">{{ .Params.lead | safeHTML }}</p>
+    <p class="lead">{{ .Params.description | safeHTML }}</p>
     {{ .Content }}
     <div class="row">
       {{ range $release := sort (index $.Site.Data "docs-versions") "group" "desc" -}}

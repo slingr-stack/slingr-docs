@@ -1,6 +1,6 @@
 ---
 title: "First changes"
-lead: "Summary: Creating a new field in the existing 'Events' entity"
+description: "Summary: Creating a new field in the existing 'Events' entity"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

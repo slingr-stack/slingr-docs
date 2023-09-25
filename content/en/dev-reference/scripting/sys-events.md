@@ -1,6 +1,6 @@
 ---
 title: "sys.events"
-lead: "Describes event utilities in the Javascript API."
+description: "Describes event utilities in the Javascript API."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

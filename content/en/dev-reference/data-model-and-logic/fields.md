@@ -1,6 +1,6 @@
 ---
 title: "Fields"
-lead: "Explanation of the features available for fields."
+description: "Explanation of the features available for fields."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

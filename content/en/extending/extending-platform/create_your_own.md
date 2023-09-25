@@ -1,6 +1,6 @@
 ---
 title: "Create your own legacy services"
-lead: "Here you will find information to create your own endpoints to add more features to your app."
+description: "Here you will find information to create your own endpoints to add more features to your app."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

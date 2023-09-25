@@ -1,6 +1,6 @@
 ---
 title: "Javascript ES6"
-lead: "Describes features, examples and limitations of the ES6 implementation"
+description: "Describes features, examples and limitations of the ES6 implementation"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false

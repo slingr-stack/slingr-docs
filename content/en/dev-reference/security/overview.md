@@ -1,6 +1,6 @@
 ---
 title: "Security"
-lead: "Overview of the security features available for apps on Slingr."
+description: "Overview of the security features available for apps on Slingr."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
