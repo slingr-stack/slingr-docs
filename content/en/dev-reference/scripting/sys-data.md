@@ -899,7 +899,7 @@ This exception is raised if **`entityName`** or **`actionName`** are invalid
 // executes the global action 'quickAdd' on companies entity and then finds the created company and log some properties
 var actionParams = {'name': 'Quick company', 'address': {'addressLine1': 'Siempre viva street'}};
 var options = {async: false};
-var jobId = sys.data.executeGlobalAction('companies', 'quickAdd', actionParams, );
+var jobId = sys.data.executeGlobalAction('companies', 'quickAdd', actionParams, options);
 sys.jobs.waitForJob(jobId, 'FINISHED', 1000*10);
 var dataCursor = sys.data.find('companies', {name: 'Quick company'});
 var dataFound = dataCursor.next();
