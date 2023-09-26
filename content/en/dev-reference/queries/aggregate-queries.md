@@ -445,7 +445,7 @@ description="Sorts records by proximity and filters them by min and max distance
 entity="companies"
 jsQueryMap=" [{geoNear: {coordinates: {longitude:10,latitude:5},distanceField:'distance',minDistance:5566,maxDistance:9460000}}]"
 jsQueryBuilder="query_.geoNear().coordinates({longitude:10,latitude:05}).distanceField('distance').minDistance(5566).maxDistance(9460000);"
-restApi="[{\"geoNear\": {\"coordinates\": {\"longitude\":10, \"latitude\":5}}, \"distanceField\": \"distance\", \"minDistance\": 5566, \"maxDistance\":9460000}]
+restApi="[{\"geoNear\": {\"coordinates\": {\"longitude\":10, \"latitude\":5}}, \"distanceField\": \"distance\", \"minDistance\": 5566, \"maxDistance\":9460000}]"
 
 >}}
 
