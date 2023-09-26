@@ -577,7 +577,7 @@ entityName|string|yes|The name of the entity.
 
 ##### Returns
 
-[sys.data.Record](#sysdatarecord)  - The empty record object. 
+[sys.data.Record](#sysdatarecord)  - The empty record object.
 
 ##### Exceptions
 
@@ -881,6 +881,7 @@ Performs the execution of a global action.
 entityName|string|yes|The name of the entity
 actionName|string|yes|The name of the action to be executed.
 params|object|no|If the action has parameters you should put them here. The format is the same used by the REST API.
+options|object|no|If the action has options you should put them here.For example, use async: false if you don't want it to run in the background.
 
 ##### Returns
 
@@ -897,7 +898,8 @@ This exception is raised if **`entityName`** or **`actionName`** are invalid
 ``` javascript
 // executes the global action 'quickAdd' on companies entity and then finds the created company and log some properties
 var actionParams = {'name': 'Quick company', 'address': {'addressLine1': 'Siempre viva street'}};
-var jobId = sys.data.executeGlobalAction('companies', 'quickAdd', actionParams);
+var options = {async: false};
+var jobId = sys.data.executeGlobalAction('companies', 'quickAdd', actionParams, );
 sys.jobs.waitForJob(jobId, 'FINISHED', 1000*10);
 var dataCursor = sys.data.find('companies', {name: 'Quick company'});
 var dataFound = dataCursor.next();
@@ -2080,7 +2082,7 @@ callback|function|yes|The function to evaluate if an element needs to be removed
 
 **badRequest**
 
-If **`callback`** is invalid. 
+If **`callback`** is invalid.
 
 ##### Samples
 
@@ -2164,7 +2166,7 @@ callback|function|yes|The function to that will process all elements. It will re
 
 **badRequest**
 
-If **`callback`** is invalid. 
+If **`callback`** is invalid.
 
 ##### Samples
 
@@ -2276,7 +2278,7 @@ Returns the number of elements in the list.
 
 **`number`** - The number of elements in the list.
 
-##### Samples 
+##### Samples
 
 ``` javascript
 // counts the number of elements in the list
@@ -2363,7 +2365,7 @@ path|string|yes|The path of the field. It could be a nested or multi-valued fiel
 
 **badRequest**
 
-If **`path`** is invalid. 
+If **`path`** is invalid.
 
 ##### Samples
 
@@ -2564,7 +2566,7 @@ path|string|yes|The path of the field. It could be a nested or multi-valued fiel
 
 **badRequest**
 
-If **`path`** is invalid. 
+If **`path`** is invalid.
 
 ##### Samples
 
@@ -3234,7 +3236,7 @@ path|string|yes|The path of the field. It could be a nested or multi-valued fiel
 
 **badRequest**
 
-If **`path`** is invalid. 
+If **`path`** is invalid.
 
 ##### Samples
 
@@ -3274,7 +3276,7 @@ conditions|[sys.data.QueryField](#sysdataqueryfield) or [sys.data.ComplexQueryCr
 
 **badRequest**
 
-If parameters sent to the AND operator are invalid. 
+If parameters sent to the AND operator are invalid.
 
 ##### Samples
 
@@ -3317,7 +3319,7 @@ conditions|[sys.data.QueryField](#sysdataqueryfield) or [sys.data.ComplexQueryCr
 
 **badRequest**
 
-If parameters sent to the OR operator are invalid. 
+If parameters sent to the OR operator are invalid.
 
 ##### Samples
 
@@ -3479,7 +3481,7 @@ If the **`path`** is invalid.
 ##### Samples
 
 ```js
-// 
+//
 var query = sys.data.createAggregateQuery('contacts');
 query.group()
     .by('company')
