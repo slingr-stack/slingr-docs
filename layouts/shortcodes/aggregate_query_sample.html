@@ -1,0 +1,137 @@
+{{- $id := .Get "id" -}}
+{{- $description := .Get "description" -}}
+{{- $entity := .Get "entity" -}}
+{{- $jsQueryMap := .Get "jsQueryMap" -}}
+{{- $jsQueryBuilder := .Get "jsQueryBuilder" -}}
+{{- $restApi := .Get "restApi" -}}
+
+<style>
+    .nav.nav-tabs {
+        background-color: #e3f0ff;
+        border-bottom: none;
+        display: flex; /* Mostramos los botones en línea */
+        padding: 5px;
+    }
+
+    .nav.nav-tabs button {
+        background-color: transparent;
+        border: none;
+        border-top: 2px solid transparent;
+        color: #333;
+        cursor: pointer;
+        flex: 1;
+        padding: 10px 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .nav.nav-tabs button.active {
+        border-top-color: #0073D9;
+        color: #0073D9;
+    }
+
+    .nav.nav-tabs button:hover {
+        background-color: #f0f0f0;
+    }
+
+    .query-sample-container {
+        margin-top: 15px;
+    }
+
+    .tab-content pre code {
+        background-color: #e3f0ff;
+        color: #555;
+        padding: 2%;
+        white-space: pre-wrap;
+        overflow: hidden;
+    }
+</style>
+
+<div style="margin-top: 15px;" id="query-sample-{{ $id }}" class="query-sample-container">
+    <ul style="margin-bottom: 5px;"class="nav nav-tabs">
+        {{- if $jsQueryMap -}}
+        <li><button onclick="showTab('{{ $id }}', 'jsQueryMap-{{ $id }}')" class="{{ if $jsQueryMap }}active slide-color{{ end }}">JS Query Map</button></li>
+        {{- end -}}
+        {{- if $jsQueryBuilder -}}
+        <li><button onclick="showTab('{{ $id }}', 'jsQueryBuilder-{{ $id }}')" class="{{ if and (not $jsQueryMap) $jsQueryBuilder }}active slide-color{{ end }}">JS Query Builder</button></li>
+        {{- end -}}
+        {{- if $restApi -}}
+        <li><button onclick="showTab('{{ $id }}', 'rest-{{ $id }}')" class="{{ if and (not $jsQueryMap) (not $jsQueryBuilder) }}active slide-color{{ end }}">REST API</button></li>
+        {{- end -}}
+    </ul>
+
+    <div class="tab-content">
+        {{- if $jsQueryMap -}}
+        <div role="tabpanel" class="tab-pane {{ if $jsQueryMap }}active{{ end }}" id="jsQueryMap-{{ $id }}">
+            <div>
+                <pre><code>// {{ $description }}
+var records_{{ $id }} = sys.data.aggregate('{{ $entity }}', {{ $jsQueryMap }});
+log('total: '+records_{{ $id }}.count());
+while (records_{{ $id }}.hasNext()) {
+    log(records_{{ $id }}.next().label());
+}</code></pre>
+            </div>
+        </div>
+        {{- end -}}
+        {{- if $jsQueryBuilder -}}
+        <div role="tabpanel" class="tab-pane {{ if not $jsQueryMap }}active{{ end }}" id="jsQueryBuilder-{{ $id }}">
+            <div>
+                <pre><code>// {{ $description }}
+var query_{{ $id }} = sys.data.createQuery('{{ $entity }}')
+    {{ $jsQueryBuilder }}
+var records_{{ $id }} = sys.data.aggregate(query_{{ $id }});
+log('total: '+records_{{ $id }}.count());
+while (records_{{ $id }}.hasNext()) {
+    log(records_{{ $id }}.next().label());
+}</code></pre>
+            </div>
+        </div>
+        {{- end -}}
+        {{- if $restApi -}}
+        <div role="tabpanel" class="tab-pane {{ if and (not $jsQueryMap) (not $jsQueryBuilder) }}active{{ end }}" id="rest-{{ $id }}">
+            <div>
+                <pre><code>// {{ $description }}
+PUT /data/companies/aggregate
+
+{{ $restApi }}</code></pre>
+            </div>
+        </div>
+        {{- end -}}
+    </div>
+</div>
+
+<script>
+    function showTab(id, tabId) {
+        var tab = document.getElementById(tabId);
+        tab.classList.add('active');
+
+        var tabButton = document.querySelector('button[onclick="showTab(\'' + id + '\', \'' + tabId + '\')"]');
+        tabButton.classList.add('active');
+
+        var otherTabs = Array.from(tab.parentNode.children).filter(function(child) {
+            return child !== tab;
+        });
+
+        var otherTabButtons = Array.from(tabButton.parentNode.parentNode.children).filter(function(child) {
+            return child !== tabButton.parentNode;
+        });
+
+        otherTabs.forEach(function(otherTab) {
+            otherTab.classList.remove('active');
+        });
+
+        otherTabButtons.forEach(function(otherTabButton) {
+            otherTabButton.firstChild.classList.remove('active');
+        });
+    }
+
+    // Seleccionar el tab por defecto según la prioridad
+    window.addEventListener('DOMContentLoaded', function() {
+        var defaultTab = document.querySelector('.default-tab');
+
+        if (defaultTab) {
+            var tabId = defaultTab.getAttribute('onclick').split('\'')[3];
+            showTab('{{ $id }}', tabId);
+        }
+    });
+</script>
