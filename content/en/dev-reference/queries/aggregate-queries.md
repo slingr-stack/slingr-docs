@@ -445,11 +445,11 @@ description="Sorts records by proximity and filters them by min and max distance
 entity="companies"
 jsQueryMap=" [{geoNear: {coordinates: {longitude:10,latitude:5},distanceField:'distance',minDistance:5566,maxDistance:9460000}}]"
 jsQueryBuilder="query_.geoNear().coordinates({longitude:10,latitude:05}).distanceField('distance').minDistance(5566).maxDistance(9460000);"
-restApi="[{\"geoNear\": {\"coordinates\": {\"longitude\":10, \"latitude\":5}}, \"distanceField\": \"distance\", \"minDistance\": 5566, \"maxDistance\":9460000}]"
+restApi="[{\"geoNear\": {\"coordinates\": {\"longitude\":10, \"latitude\":5}}, \"distanceField\": \"distance\", \"minDistance\": 5566, \"maxDistance\":9460000}]
 
 >}}
 
-Pagination of records with geo near operator. Instead of skipping values to paginate it is recommended to use the min distance parameter. Here you can find an interesting [example](URL "https://emptysqua.re/blog/paging-geo-mongodb/"):
+Pagination of records with geo near operator. Instead of skipping values to paginate it is recommended to use the min distance parameter. Here you can find an interesting [example](https://emptysqua.re/blog/paging-geo-mongodb/):
 the following example paginates results by 10.
 
 ```
