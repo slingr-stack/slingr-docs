@@ -63,3 +63,7 @@ weight: 31
 
 - [Color]({{<ref "/dev-reference/field-types/miscellaneous_types/color.md">}})
 - [Rank]({{<ref "/dev-reference/field-types/miscellaneous_types/rank.md">}})
+
+## Geospatial
+
+- [Geo point]({{<ref "/dev-reference/field-types/geoSpatial/geoPoint.md">}})
