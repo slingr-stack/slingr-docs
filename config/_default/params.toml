@@ -4,7 +4,7 @@
 title = "Slingr"
 titleSeparator = "-"
 titleAddition = "Slingr Docs"
-description = "Slingr Docs"
+description = "Slingr Documentation"
 
 ## Documentation
 # docsVersion = "0.3"
@@ -75,7 +75,7 @@ defaultImage = "default-image.png" # put in `./assets/images/`
 fillImage = "1270x740 Center" # normalize image size
 
 # Footer
-footer = "©2023 Slingr. All rights reserved. Site last generated: Apr 11, 2023"
+footer = "©2023 Slingr. All rights reserved. Site last generated: Sep 26, 2023"
 # Feed
 copyRight = "Copyright (c) 2020-2021 Henk Verlinde"
 

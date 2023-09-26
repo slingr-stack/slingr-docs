@@ -15,7 +15,7 @@ toc: true
 The best way to learn how to use Slingr is to build something. Fortunately, we have made some tutorials to help you get started. In these tutorials, we won’t go through all the features of the platform. The goal is that you get a general idea of how it works, and then you can start building something great by yourself.
 
 {{< callout type="primary" contend="" >}}
-In these tutorials, we are going to assume you already have a developer account. If not, go ahead and <a href="https://developer-portal.slingrs.io/signUp.html">create one here</a>
+In these tutorials, we are going to assume you already have a developer account. If not, go ahead and <a href="https://developer-portal.slingrs.io/signUp.html" target="_blank">create one here</a>
 {{< /callout >}}
 
 
