@@ -450,7 +450,8 @@ restApi="[{\"geoNear\": {\"coordinates\": {\"longitude\":10, \"latitude\":5}}, \
 >}}
 
 Pagination of records with geo near operator. Instead of skipping values to paginate it is recommended to use the min distance parameter. Here you can find an interesting [example](https://emptysqua.re/blog/paging-geo-mongodb/):
-the following example paginates results by 10.
+
+The following example paginates results by 10.
 
 ```
      var totals = [];
