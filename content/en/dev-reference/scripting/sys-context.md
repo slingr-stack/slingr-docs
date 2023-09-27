@@ -67,7 +67,7 @@ Please note that if you don't manually restore the current user in the execution
 
 Name|Type|Required|Description
 ---|---|---|---
-user| [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) | The user to set as the current one in the context of execution.
+user| [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})| yes | The user to set as the current one in the context of execution.
 
 ##### Samples
 
@@ -91,7 +91,7 @@ Please bear in mind that if you don't manually restore the current user in the e
 
 Name|Type|Required|Description
 ---|---|---|---
-userId| string | The ID of the user to set as the current one in the context of execution.
+userId| string | yes | The ID of the user to set as the current one in the context of execution.
 
 ##### Samples
 
@@ -114,7 +114,7 @@ Please bear in mind that if you don't manually restore the current user in the e
 
 Name|Type|Required|Description
 ---|---|---|---
-userEmail| string | The email of the user to set as the current one in the context of execution.
+userEmail| string| yes | The email of the user to set as the current one in the context of execution.
 
 ##### Samples
 
