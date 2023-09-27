@@ -1,10 +1,5 @@
 <!doctype html>
 <html lang="{{ .Site.Params.languageTag | default "en-US" }}">
-  <head>
-    {{ partial "head/head.html" . }}
-    <link rel="shortcut icon" href="/favicon.ico" />
-    ...
-  </head>
   {{ partial "head/head.html" . }}
   {{ if eq .Kind "home" -}}
     {{ .Scratch.Set "class" "home" -}}
