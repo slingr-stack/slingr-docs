@@ -247,9 +247,7 @@ th, td {
   border: 1px solid #ddd;
 }
 
-th {
-  background-color: #f2f2f2;
-}
+
 
 .contextExamples {
   text-align: left;
@@ -293,4 +291,21 @@ th {
 
 .titulo {
   background-color: purple;
+}
+
+[data-dark-mode] body table {
+  --bs-table-color: #fff;
+  --bs-table-bg: #212529;
+  --bs-table-border-color: #373b3e;
+  --bs-table-striped-bg: #2c3034;
+  --bs-table-striped-color: #fff;
+  --bs-table-active-bg: #373b3e;
+  --bs-table-active-color: #fff;
+  --bs-table-hover-bg: #323539;
+  --bs-table-hover-color: #fff;
+  background-color: var(--bs-table-bg);
+}
+
+[data-dark-mode] body .card-body {
+  color: white;
 }

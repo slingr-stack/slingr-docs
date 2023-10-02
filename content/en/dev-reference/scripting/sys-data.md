@@ -870,7 +870,7 @@ log('completed!');
 ```
 <br>
 
-###  executeAction(entityName, actionName, params)
+###  executeGlobalAction(entityName, actionName, params)
 
 Performs the execution of a global action.
 
@@ -1632,7 +1632,7 @@ log('new: '+company.isNew());
 ```
 <br>
 
-###  action(actionName, prams)
+###  action(actionName, params)
 
 This function executes the specified action over the record. The record must be saved into the database before executing an action.
 

@@ -93,7 +93,7 @@ log('token: ' + sys.storage.get('token', {decrypt: true})); // display plain tok
 ```
 <br>
 
-###  put(key, value, options)
+###  putIfAbsent(key, value, options)
 
 This method stores an object or primitive value in the storage at the specified key if it hasn't been set already.
 
