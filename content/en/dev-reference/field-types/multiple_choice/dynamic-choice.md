@@ -89,7 +89,10 @@ record.field('dynamicChoice').val({
   "selectedValue": "AZ"
 });
 ```
-<br>
+
+{{< notes type="important" >}}
+ Both <b>name</b> and <b>label</b> must be strings. If the value is of a different type, you can easily convert it to a string using JavaScript's built-in methods like `toString()` or `String.valueOf()`
+{{< /notes >}}
 
 If you provide only a string, it will be considered as the selected value, and the possible values will be automatically generated with a single option using the provided string as both the name and label:
 
