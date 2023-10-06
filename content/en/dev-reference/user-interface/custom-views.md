@@ -58,7 +58,7 @@ Keep in mind that there might be a slight delay in setting these variables. If y
 
 In most scenarios, direct use of these variables won't be necessary, as you'll likely employ the provided utilities for interacting with the REST API.
 
-## **REST API utils** 
+## **REST API utils**
 
 These utilities are designed to facilitate seamless access to your app's REST API from scripts within the custom view. For additional information regarding the app's REST API, refer to [this resource]({{<ref "/dev-reference/rest-apis/apps-api-doc.md">}}).
 
@@ -388,7 +388,7 @@ You have the option to designate a custom view as a readOnly CRUD action view wi
 
 **Sample of a listener in the custom view**
 
-``` javascript 
+``` javascript
 // Logs the context and the event type
 window.addEventListener('message', function (event) {
   if(event.data.eventType){
@@ -485,7 +485,9 @@ self.createRecord = function () {
 ```
 <br>
 
-## **Resize container**
+## **JS API**
+
+### **Resize container**
 
 To ensure that the **`custom view`** container doesn't exceed the size of the containing view and display incorrectly, you can adjust its size accordingly. This can be achieved by utilizing the **`sys.ui.resizeContainer`** method as outlined below.
 
@@ -516,6 +518,11 @@ const listenToHeightChanges = function() {
 ```
 <br>
 
-## **Refresh custom view**
+### **Refresh custom view**
 
 **`sys.ui.refreshCustomView()`**: This method instructs the UI to initiate a refresh of the custom view. This functionality becomes valuable when any modification within the custom view impacts the actions that should be accessible in the header.
+
+## **Custom view preview**
+
+From the builder you have the option to see a preview of the custom view, if the custom view is used as a record view, you can see it with real data by sending both **`_collectionViewId`** and **`_recordId`** in the URL as parameters. For example: **`https://test1.slingrs.io/dev/builder/api/customViews/5506fc43c2eee6b1770268f9?_collectionViewId=5506fc3cc2eee3b1a7025c1a&&_recordId=5506fc3cc2eee3b1a5525c19`**
+
