@@ -28,7 +28,7 @@ methods:
 - name: getEnv
   summary: Returns the name of the environment in execution.
   description: |
-    Returns the name of the environment in execution. It could be `prod` or `dev`.
+    Returns the name of the environment in execution.
   parameters:
   returnType: string
   returnDescription: The name of the environment in execution.
