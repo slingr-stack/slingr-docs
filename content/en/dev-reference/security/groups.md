@@ -174,7 +174,7 @@ In this section it is possible to user's session settings.
 
 #### Automatic logout time
 
-Specifies the period of time in which the user session will be terminated due to inactivity.
+Specifies the period of time in which the user session will be terminated due to inactivity. If the user has more than one group, the lowest configured period has priority.
 
 #### Login notifications
 
