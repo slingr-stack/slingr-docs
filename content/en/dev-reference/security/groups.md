@@ -169,32 +169,41 @@ Specifies the frequency at which users are required to change their passwords. S
 Sets the maximum number of consecutive failed login attempts allowed per user. If this limit is exceeded, the user's access will be blocked.
 
 ## **Session policies**
+
 In this section it is possible to user's session settings.
 
 #### Automatic logout time
+
 Specifies the period of time in which the user session will be terminated due to inactivity.
 
 #### Login notifications
+
 If enabled, it will send email notification on user login. It is possible to restrict those notifications through the following flags:
 - Notify only when login from new IP.
 - Notify only when login from new location.
 
 ## **Rest API permissions**
+
 This is to restrict access to certain resources in the app REST API.
 
 #### Allow UI API
+
 If enabled, it will allow requests to access to the UI REST API.
 
 #### Allow data API
+
 If enabled, it will allow requests to access to the data REST API.
 
 #### Allow read files API
+
 If enabled, it will allow requests to read files through the REST API.
 
 #### Allow upload files API
+
 If enabled, it will allow requests to upload files through the REST API.
 
 #### Allow jobs API
+
 If enabled, it will allow requests to access the REST API to manage jobs.
 
 ## **Impersonate users**
