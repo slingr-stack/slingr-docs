@@ -465,7 +465,7 @@ Uses a secret key and a algorithm to generate a JWT token of a JSON object.
 |---|---|---|---|
 payload|object|yes|The payload in JSON format to be encoded.
 privateKey|string|yes|The private key to sign the token.
-algorithm|string|yes|The algorithm to use for the signature.
+algorithm|string|yes|The algorithm to use for the signature, possible values "HS256" or "RS256".
 
 #### Returns
 
@@ -526,6 +526,80 @@ var tokenJWT = sys.utils.crypto.jwt.decodeToken("ey.js.wt");
 log('JWT token: ' + tokenJWT);
 ```
 <br>
+
+###  hashHmac(message, secret, algorithm)
+
+This function generates hash signature with Hmac technique.
+
+#### Parameters
+
+| Name  | Type  | Required | Description |
+|---|---|---|---|
+message|string|yes|The string to be converted
+secret|string|yes|The private key to sign the token
+algorithm|string|yes|Possible values:  "HmacMD5", "HmacSHA1", "HmacSHA224", "HmacSHA256", "HmacSHA384", "HmacSHA512"
+#### Returns
+
+**`string`** - The result hash as String.
+
+##### Samples
+
+``` javascript
+// hash a string
+var convertedMessage = sys.utils.crypto.jwt.hashHmac('my custom message', "mySecretKey", "HmacSHA256");
+log('Hmac String : '+convertedMessage);
+```
+<br>
+
+###  hs256(message, secret)
+
+This function converts a string to HS-256 hash.
+
+#### Parameters
+
+| Name  | Type  | Required | Description |
+|---|---|---|---|
+message|string|yes|The string to be converted
+secret|string|yes|The private key to sign the token
+#### Returns
+
+**`string`** - The result hash as String.
+
+##### Samples
+
+``` javascript
+// converts a message to the hash
+var convertedMessage = sys.utils.crypto.hs256('my custom message','mySecretKey');
+log('HS-256 string: '+convertedMessage);
+```
+<br>
+
+###  verifySignatureWithHmac(payload,  signature,  secret,  algorithm)
+
+This function verifies a signature with Hmac technique.
+
+#### Parameters
+
+| Name  | Type  | Required | Description |
+|---|---|---|---|
+message|string|yes|The message that was encrypted
+signature|string|yes|The signature to be verified
+secret|string|yes|The key used to encrypt
+algorithm|string|yes|Possible values:  "HmacMD5", "HmacSHA1", "HmacSHA224", "HmacSHA256", "HmacSHA384", "HmacSHA512"
+#### Returns
+
+**`boolean`** - **`true`** If the signature is valid, **`false`** otherwise.
+
+##### Samples
+
+``` javascript
+// hash a string
+var result = sys.utils.crypto.jwt.verifySignatureWithHmac('my custom message',"signature","mySecretKey","HmacSHA256");
+log('The signature is valid: '+result);
+```
+<br>
+
+
 
 ## **sys.utils.time**
 
