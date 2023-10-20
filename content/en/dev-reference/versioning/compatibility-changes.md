@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "dev-reference"
 toc: true
-weight: 155
+weight: 40
 ---
 
 The Slingr team regularly updates the platform new features, bug fixes, and improvements. Some of those changes can affect the compatibility with your app.
