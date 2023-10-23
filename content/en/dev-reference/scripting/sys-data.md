@@ -489,7 +489,7 @@ Once the record is successfully saved, the following events will be triggered:
 | Name  | Type  | Required | Description |
 |---|---|---|---|
 record|[sys.data.Record](#sysdatarecord)|yes|The record to save into the database. Please note that this object will be updated with the saved version of the record. For instance, if an ID is not present, it will be set, and calculated fields will also be included.
-options|object|no|This is a map containing options that can modify the behavior of the save operation, some of which can enhance import performance when dealing with a large number of records. These are the available options:<br>- **`calculateFields`**: When set to **`false`**, calculated fields won't be evaluated and will remain as **`null`** in the saved record. Default is **`true`**.<br> - **`performValidations`**: Indicates whether validations should be executed on the record before saving. Note that type validations are always performed. This option works in conjunction with validations defined in type rules. Default is **`true`**. <br> - **`filterByReadWriteAccess`**: When set to **`false`**, the save process will disregard the read/write access options defined for the fields. This means that all fields will be saved into the database. Default is **`true`**.<br> - **`triggerEvents`**: If set to **`false`**, events such as "on record create" or "on record change" will not be triggered during the save operation. Default is **`true`**.<br> - **`defaultValues`**: When set to **`false`**, default values will not be set during the save operation. Default is **`true`**. <br> - **`cascadeOperations`**: If set to **`false`**, cascade updates for relationship fields or aggregate fields won't be executed. Default is **`true`**.<br> - **`lockRecord`**: If set to **`false`**, the record won't have concurrency protection. This means that listeners or actions could be executed concurrently. Default is **`true`**.<br><br>To configure these settings as defaults, you can use the following parameter:<br> - **`mode`**: Possible values are "standard" and "raw." "Standard" executes the operation using the default values for the parameters described above (this is the default mode). In cases where high performance is required and it's not critical to apply all metadata rules during the save operation, a special "raw" mode is available. In "raw" mode, the record is directly stored in the database without applying validations, permissions, read/write rules, default values, expression calculations, event triggering, cascading, or locking. No result is returned in "raw" mode.
+options|object|no|This is a map containing options that can modify the behavior of the save operation, some of which can enhance import performance when dealing with a large number of records. These are the available options:<br>- **`calculateFields`**: When set to **`false`**, calculated fields won't be evaluated and will remain as **`null`** in the saved record. Default is **`true`**.<br> - **`performValidations`**: Indicates whether validations should be executed on the record before saving. Note that type validations are always performed. This option works in conjunction with validations defined in type rules. Default is **`true`**. <br> - **`filterByReadWriteAccess`**: When set to **`false`**, the save process will disregard the read/write access options defined for the fields. This means that all fields will be saved into the database. Default is **`true`**.<br> - **`triggerEvents`**: If set to **`false`**, events such as "on record create" or "on record change" will not be triggered during the save operation. Default is **`true`**.<br> - **`defaultValues`**: When set to **`false`**, default values will not be set during the save operation. Default is **`true`**. <br> - **`cascadeOperations`**: If set to **`false`**, cascade updates for relationship fields or aggregate fields won't be executed. Default is **`true`**.<br> - **`lockRecord`**: If set to **`false`**, the record won't have concurrency protection. This means that listeners or actions could be executed concurrently. Default is **`true`**.<br><br>To configure these settings as defaults, you can use the following parameter:<br> - **`mode`**: Possible values are "standard", "lite" and "raw" (deprecated). "Standard" executes the operation using the default values for the parameters described above (this is the default mode). In cases where high performance is required and it's not critical to apply all metadata rules during the save operation, a special "lite" mode is available. In "lite" mode, the record is directly stored in the database without applying validations, permissions, read/write rules, default values, expression calculations, event triggering, cascading, or locking. No result is returned in "lite" mode. The "raw" mode behaves in the same way as the "lite" mode but it is going to be deprecated.
 
 ##### Returns
 
@@ -577,7 +577,7 @@ entityName|string|yes|The name of the entity.
 
 ##### Returns
 
-[sys.data.Record](#sysdatarecord)  - The empty record object. 
+[sys.data.Record](#sysdatarecord)  - The empty record object.
 
 ##### Exceptions
 
@@ -870,7 +870,7 @@ log('completed!');
 ```
 <br>
 
-###  executeAction(entityName, actionName, params)
+###  executeGlobalAction(entityName, actionName, params)
 
 Performs the execution of a global action.
 
@@ -881,6 +881,7 @@ Performs the execution of a global action.
 entityName|string|yes|The name of the entity
 actionName|string|yes|The name of the action to be executed.
 params|object|no|If the action has parameters you should put them here. The format is the same used by the REST API.
+options|object|no|If the action has options you should put them here.For example, use async: false if you don't want it to run in the background.
 
 ##### Returns
 
@@ -897,7 +898,8 @@ This exception is raised if **`entityName`** or **`actionName`** are invalid
 ``` javascript
 // executes the global action 'quickAdd' on companies entity and then finds the created company and log some properties
 var actionParams = {'name': 'Quick company', 'address': {'addressLine1': 'Siempre viva street'}};
-var jobId = sys.data.executeGlobalAction('companies', 'quickAdd', actionParams);
+var options = {async: false};
+var jobId = sys.data.executeGlobalAction('companies', 'quickAdd', actionParams, options);
 sys.jobs.waitForJob(jobId, 'FINISHED', 1000*10);
 var dataCursor = sys.data.find('companies', {name: 'Quick company'});
 var dataFound = dataCursor.next();
@@ -1630,7 +1632,7 @@ log('new: '+company.isNew());
 ```
 <br>
 
-###  action(actionName, prams)
+###  action(actionName, params)
 
 This function executes the specified action over the record. The record must be saved into the database before executing an action.
 
@@ -2080,7 +2082,7 @@ callback|function|yes|The function to evaluate if an element needs to be removed
 
 **badRequest**
 
-If **`callback`** is invalid. 
+If **`callback`** is invalid.
 
 ##### Samples
 
@@ -2164,7 +2166,7 @@ callback|function|yes|The function to that will process all elements. It will re
 
 **badRequest**
 
-If **`callback`** is invalid. 
+If **`callback`** is invalid.
 
 ##### Samples
 
@@ -2276,7 +2278,7 @@ Returns the number of elements in the list.
 
 **`number`** - The number of elements in the list.
 
-##### Samples 
+##### Samples
 
 ``` javascript
 // counts the number of elements in the list
@@ -2363,7 +2365,7 @@ path|string|yes|The path of the field. It could be a nested or multi-valued fiel
 
 **badRequest**
 
-If **`path`** is invalid. 
+If **`path`** is invalid.
 
 ##### Samples
 
@@ -2564,7 +2566,7 @@ path|string|yes|The path of the field. It could be a nested or multi-valued fiel
 
 **badRequest**
 
-If **`path`** is invalid. 
+If **`path`** is invalid.
 
 ##### Samples
 
@@ -3234,7 +3236,7 @@ path|string|yes|The path of the field. It could be a nested or multi-valued fiel
 
 **badRequest**
 
-If **`path`** is invalid. 
+If **`path`** is invalid.
 
 ##### Samples
 
@@ -3274,7 +3276,7 @@ conditions|[sys.data.QueryField](#sysdataqueryfield) or [sys.data.ComplexQueryCr
 
 **badRequest**
 
-If parameters sent to the AND operator are invalid. 
+If parameters sent to the AND operator are invalid.
 
 ##### Samples
 
@@ -3317,7 +3319,7 @@ conditions|[sys.data.QueryField](#sysdataqueryfield) or [sys.data.ComplexQueryCr
 
 **badRequest**
 
-If parameters sent to the OR operator are invalid. 
+If parameters sent to the OR operator are invalid.
 
 ##### Samples
 
@@ -3479,7 +3481,7 @@ If the **`path`** is invalid.
 ##### Samples
 
 ```js
-// 
+//
 var query = sys.data.createAggregateQuery('contacts');
 query.group()
     .by('company')

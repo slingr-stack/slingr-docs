@@ -24,8 +24,7 @@ The app's UI is structured as follows:
 
 - **`Header`**: This section resides at the top, displaying the app name and logo (customizable). In the builder, it can also incorporate a browser for entities, actions, listeners, and more.
 - **`Main menu`**: The app's primary menu contains the different sections of your application. Selecting an item triggers the display of a corresponding view in the main content area.
-- **`Secondary menu`**: This menu accommodates items linked to app views that are rendered in the main content area.
-- **`User menu`**: In addition to containing system operations such as **`My profile`** or **`Logout`**, this menu permits the inclusion of items associated with app views rendered in the main content area.
+- **`Header menu`**: This menu is located in the `Header` and accommodates items linked to app views that are rendered in the main content area.
 - **`Main content`**: This region is where app views are showcased.
 
 Configuration options for the left and top menus are accessible through the [Navigation]({{<ref "/dev-reference/user-interface/navigation.md">}}) section in the app builder. Conversely, adjustments to the header and certain other global settings can be made within the [UI settings]({{<ref "/dev-reference/environment-settings/ui-settings.md">}}) section.

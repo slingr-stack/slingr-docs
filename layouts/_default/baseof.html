@@ -13,7 +13,9 @@
     {{ .Scratch.Add "class" " list" -}}
   {{ end -}}
   <body class="{{ .Scratch.Get "class" }}"{{ if eq .Site.Params.options.scrollSpy true }} data-bs-spy="scroll" data-bs-target="#toc" data-bs-root-margin="0px 0px -90%" data-bs-smooth-scroll="true" tabindex="0"{{ end }}>
-    {{ partial "header/header.html" . }}
+    <div id="header-content" class="sticky-top">
+      {{ partial "header/header.html" . }}
+    </div>
     <div class="wrap container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }}" role="document">
       <div class="content">
         {{ block "main" . }}{{ end }}
@@ -21,12 +23,27 @@
     </div>
     {{ block "sidebar-prefooter" . }}{{ end }}
     {{ block "sidebar-footer" . }}{{ end }}
-    {{ partial "footer/footer.html" . }}
-    {{ partial "footer/script-footer.html" . }}
+    <div id="footer-content">
+      {{ partial "footer/footer.html" . }}
+      {{ partial "footer/script-footer.html" . }}
+      {{ partial "footer/chat-bot.html" . }}
+    </div>
     {{ if eq .Site.Params.options.toTopButton true -}}
     <div class="d-flex fixed-bottom pb-4 pb-lg-5 pe-4 pe-lg-5">
       <a id="toTop" href="#" class="btn btn-outline-primary rounded-circle ms-auto p-2"><span class="visually-hidden">Top</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></a>
     </div>
     {{ end }}
   </body>
+  <script>
+    // this hides the header and the footer if isEmbeddedContainer is present and its value equals true
+    let params = new URLSearchParams(document.location.search);
+    if(params && params.size) {
+      let isEmbedded = params.get("isEmbeddedContainer");
+      if(isEmbedded === 'true') {
+        document.getElementById("header-content").classList.add('d-none');
+        document.getElementById("footer-content").classList.add('d-none');
+        document.getElementById("site-paginator").classList.add('d-none');
+      }
+    }
+  </script>
 </html>

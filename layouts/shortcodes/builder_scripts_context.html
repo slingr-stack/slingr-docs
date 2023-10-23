@@ -1,0 +1,50 @@
+{{- $context := .Get "context" -}}
+{{- $filePath := printf "data/script_contexts/%s.yml" $context -}}
+{{- $yamlContent := readFile $filePath -}}
+{{- $myobject := $yamlContent | unmarshal -}}
+
+{{ if $myobject.description }}
+<h6>Description</h6>
+<p>{{ $myobject.description | markdownify }}</p>
+{{end}}
+
+{{ if $myobject.params }}
+<h6>Parameters</h6>
+<table class="w-100 table table-bordered">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{- range $param := $myobject.params -}}
+    <tr>
+      <td>{{ $param.name | markdownify }}</td>
+      <td><a target="_blank" href="/dev-reference/scripting/sys-data/#{{$param.type}}">{{ $param.type }}</a></td>
+      <td>{{ $param.description | markdownify }}</td>
+    </tr>
+    {{- end -}}
+  </tbody>
+</table>
+{{end}}
+
+{{ if and $myobject.returnType $myobject.returnDescription }}
+<h6>Returns</h6>
+<code>{{ $myobject.returnType }}</code> - {{ $myobject.returnDescription | markdownify }}
+{{ end }}
+
+{{ if $myobject.samples }}
+<h6>Samples</h6>
+{{- range $param := $myobject.samples -}}
+<pre class="mb-2"><code style="padding: 0; margin-top: -1rem;">{{ $code := printf "//%s\n%s" $param.title $param.code }} {{ transform.Highlight $code "js" "style=vs" }}</code></pre>
+{{- end -}}
+<div class="mb-1"></div>
+{{ end }}
+
+<style>
+    body {
+        background-color: transparent;
+    }
+</style>

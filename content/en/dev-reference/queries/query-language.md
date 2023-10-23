@@ -71,7 +71,7 @@ var query = {
 In this case, the key **`name`** appears twice in the map and won't work as expected.
 
 Another consideration is exception handling. When using the query builder, exceptions may be thrown during query construction. For example:
- 
+
 ```js
 try {
   var query = sys.data.createQuery('companies')
@@ -216,6 +216,21 @@ If the nested group field is multi-valued, you can still perform a query like th
 >}}
 <br>
 
+If the entity has a geo point type, a `near` operator can be used to perform a query. The operator takes 4 parameters:
+* latitude
+* longitude
+* minDistance(optional)
+* maxDistance(optional)
+
+{{< query_sample
+id="sample"
+description="sorts companies by proximity to [ lat: 10, long: 22 ] that are at a min distance of 5000 m and at a maximum of 10000 m"
+entity="companies"
+jsQueryMap="{'location':'near(5,10,5000,10000)'}"
+jsQueryBuilder=".field('location').near(5,10,5000,10000)"
+restApi="near(5,10,5000,10000)"
+>}}
+<br>
 Available operators for filtering:
 
 ```js
@@ -250,7 +265,7 @@ If you don't specify any operator, the default one is <b>equals()</b>.
 
 {{< callout type="info" >}}
 It's a good practice to consult the documentation for each type when filtering by field values, as each type may support different querying methods and alternative formats for simplifying usage.
-{{< /callout >}} 
+{{< /callout >}}
 <br>
 
 ## **Complex queries**
@@ -322,7 +337,7 @@ The REST and Javascript APIs will return the total number of records matched by 
 
 {{< callout type="warning" >}}
 For the REST API, the maximum value you can specify is 1,000, with a default value of 20 if not specified. These limits and defaults do not apply to the Javascript API, as it uses a cursor to iterate over the results.
-{{< /callout >}} 
+{{< /callout >}}
 <br>
 
 ### Skip records
@@ -349,10 +364,10 @@ For instance, if you query 5 records and receive the following record IDs:
 
 ```js
 [
-  '57fd2d65e4b0ce322b0c8665', 
-  '57fd2d65e4b0ce322b0c8565', 
-  '57fd2d65e4b0ce322b0c8547', 
-  '57fd2d65e4b0ce322b0c84b1', 
+  '57fd2d65e4b0ce322b0c8665',
+  '57fd2d65e4b0ce322b0c8565',
+  '57fd2d65e4b0ce322b0c8547',
+  '57fd2d65e4b0ce322b0c84b1',
   '57fd2d64e4b0ce322b0c8349'
 ]
 ```
@@ -374,7 +389,7 @@ This query will not return the record with **`ID 57fd2d64e4b0ce322b0c8349`** but
 
 {{< callout type="success" >}}
 If you need to iterate over all records using the REST API and want to avoid fetching the same record twice, it's advisable to use IDs as offsets. Using numbers might result in duplicated or missed records due to modifications of records affecting your query.
-{{< /callout >}} 
+{{< /callout >}}
 <br>
 
 ### Sorting
@@ -443,7 +458,7 @@ System field will always be returned (`id`, `version`, `label`).
 
 {{< callout type="warning" >}}
 This parameter only functions with the REST API; it will not have any effect when used with the Javascript API.
-{{< /callout >}} 
+{{< /callout >}}
 
 If you wish to reduce the number of requests to the server, you can retrieve a record and its related records by using the **`_relationshipsToFetch`** parameter. This parameter accepts a comma-separated list of relationship fields.
 
@@ -467,7 +482,7 @@ If you wish to reduce the number of requests to the server, you can retrieve a r
 
 {{< callout type="warning" >}}
 This is only allowed for entities with global search enabled.
-{{< /callout >}} 
+{{< /callout >}}
 
 When querying using the global search feature, it will attempt to match the provided string in any field within the entity, rather than targeting a specific field. For example:
 
@@ -499,7 +514,7 @@ Please be aware that all searches are case-insensitive.
 
 {{< callout type="warning" >}}
 This parameter only works with the REST API; it will not have any effect when used with the Javascript API.
-{{< /callout >}} 
+{{< /callout >}}
 
 In the REST API, you can utilize the **`_format`** parameter to specify the format of the returned records. There are two options:
 

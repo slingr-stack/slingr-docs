@@ -56,7 +56,7 @@ As you can see, you get a simple JavaScript object (it follows the JSON represen
 
 Aggregated queries, like other queries, can be expressed using a query map, a query builder, and the REST API. Below, you'll find samples for all versions.
 
-## **Operations** 
+## **Operations**
 
 ### Count
 
@@ -64,7 +64,7 @@ The Count operation allows you to count elements and store the result in a field
 
 Here are some samples of how you can use it:
 
-{{< query_sample
+{{< aggregate_query_sample
   id="01"
   description="Counts companies from New York"
   entity="companies"
@@ -87,7 +87,7 @@ The Skip operation allows you to skip a specified number of elements. This opera
 
 Here are some samples of how you can use it:
 
-{{< query_sample 
+{{< aggregate_query_sample
 id="02"
 description="Retrieves contacts while skipping the first 3 results"
 entity="contacts"
@@ -103,7 +103,7 @@ The Limit operation allows you to limit the number of elements in your aggregati
 
 Here are some samples of how you can use it:
 
-{{< query_sample 
+{{< aggregate_query_sample
 id="03"
 description="retrieves first 5 contacts"
 entity="contacts"
@@ -118,7 +118,7 @@ The Unwind operation allows you to unwind multi-valued fields. This operator is 
 
 Here are some samples of how you can use it:
 
-{{< query_sample 
+{{< aggregate_query_sample
 id="04"
 description="retrieves companies unwinding services"
 entity="companies"
@@ -131,13 +131,13 @@ restApi="{\"unwind\": {\"fieldPath\": \"services\", \"includeEmpty\": true}}"
 When you run the above query, you will get output similar to this:
 
 ```js
-{"id":"57fd2d64e4b0ce322b0c8349","name":"Photolist","services":"SERVICE_A"} 
-{"id":"57fd2d64e4b0ce322b0c8349","name":"Photolist","services":"SERVICE_C"} 
-{"id":"57fd2d62e4b0ce322b0c6268","name":"DabZ","services":"SERVICE_A"} 
-{"id":"57fd2d62e4b0ce322b0c6268","name":"DabZ","services":"SERVICE_B"} 
-{"id":"57fd2d62e4b0ce322b0c6268","name":"DabZ","services":"SERVICE_D"} 
-{"id":"57fd2d60e4b0ce322b0c50f0","name":"Mydo","services":null} 
-{"id":"57fd2d64e4b0ce322b0c7d12","name":"Zazio","services":"SERVICE_C"} 
+{"id":"57fd2d64e4b0ce322b0c8349","name":"Photolist","services":"SERVICE_A"}
+{"id":"57fd2d64e4b0ce322b0c8349","name":"Photolist","services":"SERVICE_C"}
+{"id":"57fd2d62e4b0ce322b0c6268","name":"DabZ","services":"SERVICE_A"}
+{"id":"57fd2d62e4b0ce322b0c6268","name":"DabZ","services":"SERVICE_B"}
+{"id":"57fd2d62e4b0ce322b0c6268","name":"DabZ","services":"SERVICE_D"}
+{"id":"57fd2d60e4b0ce322b0c50f0","name":"Mydo","services":null}
+{"id":"57fd2d64e4b0ce322b0c7d12","name":"Zazio","services":"SERVICE_C"}
 ...
 ```
 <br>
@@ -148,7 +148,7 @@ The Lookup operation allows you to lookup elements from other entities in curren
 
 Here are some samples of how you can use it:
 
-{{< query_sample 
+{{< aggregate_query_sample
 id="05"
 description="retrieves companies with related contacts"
 entity="companies"
@@ -188,7 +188,7 @@ When you run the above query, you will get output like this:
     "lastName": "Smith",
     "email": "martin.smith@abcinc.com"
   }]
-} 
+}
 {"id":"57fd2d62e4b0ce322b0c6268","name":"DabZ","relatedContacts":[
   {
     "id": "5506fc44c2eee3b1a702694e",
@@ -203,9 +203,9 @@ When you run the above query, you will get output like this:
       "3039514211",
       "3039514210"
     ]}]
-  } 
-{"id":"57fd2d60e4b0ce322b0c50f0","name":"Mydo","relatedContacts":[]} 
-{"id":"57fd2d64e4b0ce322b0c7d12","name":"Zazio","relatedContacts":[]} 
+  }
+{"id":"57fd2d60e4b0ce322b0c50f0","name":"Mydo","relatedContacts":[]}
+{"id":"57fd2d64e4b0ce322b0c7d12","name":"Zazio","relatedContacts":[]}
 ...
 ```
 <br>
@@ -218,29 +218,38 @@ This filter works the same way as the ones for regular queries, which means you 
 
 Here are some samples of matching operations:
 
-{{< query_sample
+{{< aggregate_query_sample
 id="06"
 description="Counts the number of skills for contacts of customers // see how the match operator filters contacts where company is a customer"
 entity="contacts"
-jsQueryMap="{match: {'company.isCustomer': true}}, {group: {totalNumberOfSkills: 'sum(numberOfSkills)'}}"
+jsQueryMap="[{match: {'company.isCustomer': true}}, {group: {totalNumberOfSkills: 'sum(numberOfSkills)'}}]"
 jsQueryBuilder="query.match().field('company.isCustomer').equals(true); query.group().accumulate('totalNumberOfSkills').sum('numberOfSkills');"
-restApi="{\"match\": {\"company.isCustomer\": true}}, {\"group\": {\"totalNumberOfSkills\": \"sum(numberOfSkills)\"}}"
+restApi="[{\"match\": {\"company.isCustomer\": true}}, {\"group\": {\"totalNumberOfSkills\": \"sum(numberOfSkills)\"}}]"
+>}}
+
+{{< aggregate_query_sample
+id="07"
+description=" the match operator filters contacts by the company name"
+entity="contacts"
+jsQueryMap="[{match: {'company.isCustomer': true, 'address.state': 'NJ'}}, {group: {totalNumberOfSkills: 'sum(numberOfSkills)'}}]" jsQueryBuilder="query.match().field('company.isCustomer').equals(true).field('address.state').equals('NJ'); query.group().accumulate('totalNumberOfSkills').sum('numberOfSkills');" restApi="[{\"match\": {\"company.isCustomer\": true, \"address.state\": \"NJ\"}}, {\"group\": {\"totalNumberOfSkills\": \"sum(numberOfSkills)\"}}]"
+>}}
+
+{{< aggregate_query_sample
+id="07b"
+description="Retrieves contacts with a looked up company. The contacts are filtered by the name of the related company"
+entity="contacts"
+jsQueryMap="[{'lookup': {'localFieldPath': 'company.id', 'foreignFieldPath': 'id', 'foreignEntityName': 'companies', 'as': 'relatedCompanies'}},{match: {'relatedCompany.name': 'ABC'}}]"
+jsQueryBuilder="query.lookup().localField('company.id').foreignField(.id').foreignEntity('companies').as('relatedContacts')\n;query.match().field('relatedCompanies.name').equals('ABC');"
+restApi="[{\"lookup\": {\"localFieldPath\": \"id\", \"foreignFieldPath\": \"company.id\", \"foreignEntityName\": \"contacts\", \"as\": \"relatedContacts\"}},{\"match\": {\"relatedCompany.name\": \"ABC\"}}]"
 >}}
 <br>
-
-{{< query_sample 
-id="07" 
-description="counts the number of skills for contacts // the match operator filters contacts by customers and state equals to New Jersey" 
-entity="contacts" 
-jsQueryMap="{match: {'company.isCustomer': true, 'address.state': 'NJ'}}, {group: {totalNumberOfSkills: 'sum(numberOfSkills)'}}" jsQueryBuilder="query.match().field('company.isCustomer').equals(true).field('address.state').equals('NJ'); query.group().accumulate('totalNumberOfSkills').sum('numberOfSkills');" restApi="{\"match\": {\"company.isCustomer\": true, \"address.state\": \"NJ\"}}, {\"group\": {\"totalNumberOfSkills\": \"sum(numberOfSkills)\"}}" >}}
-
 ### Sort
 
 Allows to change the sorting of records in your aggregation pipeline. This is useful for sorting the final result or to use together with accumulators like **`first()`** or **`last()`** in the **`group`** operator.
 
 Here are some samples of how you can use it:
 
-{{< query_sample
+{{< aggregate_query_sample
 id="08"
 description="finds the contact with more skills per company"
 entity="contacts"
@@ -250,7 +259,7 @@ restApi="{\"sort\": {\"numberOfSkills\": \"desc\"}}, {\"group\": {\"by\": \"comp
 >}}
 <br>
 
-{{< query_sample
+{{< aggregate_query_sample
 id="09"
 description="finds the contact with more skills per company and sorts the result by skills and last name"
 entity="contacts"
@@ -265,7 +274,7 @@ The Project operation allows you to remove fields from records and reduce memory
 
 Here are some samples of how to use it:
 
-{{< query_sample
+{{< aggregate_query_sample
 id="10"
 description="leaves only number of employees and the sums up"
 entity="companies"
@@ -277,10 +286,10 @@ restApi="{\"project\": \"name,numberOfEmployees\"}"
 When you run the above query, you will get output like this:
 
 ```js
-{"id":"57fd2d64e4b0ce322b0c8349","name":"Photolist","numberOfEmployees":83} 
-{"id":"57fd2d62e4b0ce322b0c6268","name":"DabZ","numberOfEmployees":635} 
-{"id":"57fd2d60e4b0ce322b0c50f0","name":"Mydo","numberOfEmployees":917} 
-{"id":"57fd2d64e4b0ce322b0c7d12","name":"Zazio","numberOfEmployees":618} 
+{"id":"57fd2d64e4b0ce322b0c8349","name":"Photolist","numberOfEmployees":83}
+{"id":"57fd2d62e4b0ce322b0c6268","name":"DabZ","numberOfEmployees":635}
+{"id":"57fd2d60e4b0ce322b0c50f0","name":"Mydo","numberOfEmployees":917}
+{"id":"57fd2d64e4b0ce322b0c7d12","name":"Zazio","numberOfEmployees":618}
 ...
 ```
 <br>
@@ -293,7 +302,7 @@ The Group operation is the most important operation in your aggregation pipeline
 
 For example:
 
-{{< query_sample
+{{< aggregate_query_sample
 id="11"
 description="calculate the total number of skills per company"
 entity="contacts"
@@ -327,7 +336,7 @@ Then you can define any number of accumulators. Each accumulator will be a field
 
 This operation returns the number of records in the group. For example, you can count the number of contacts for each company.
 
-{{< query_sample
+{{< aggregate_query_sample
 id="12"
 description="counts contacts on each company"
 entity="contacts"
@@ -340,7 +349,7 @@ restApi="{\"project\": \"company\"}, {\"group\": {\"by\": \"company\", \"numberO
 
 This operation calculates the sum of the values in a specified field for the records in the group. For example, you can calculate the total number of skills per company.
 
-{{< query_sample
+{{< aggregate_query_sample
 id="13"
 description="calculate the total number of skills per company"
 entity="contacts"
@@ -356,7 +365,7 @@ This only works for number fields like integer, money, decimal or percentage.
 
 This operation calculates the average of the values in a specified field for the records in the group. It works for number fields like **`integer`**, **`money`**, **`decimal`**, or **`percentage`**.
 
-{{< query_sample
+{{< aggregate_query_sample
 id="14"
 description="calculate the average number of skills per company per contact"
 entity="contacts"
@@ -372,7 +381,7 @@ Keep in mind that if the value of the field is `null` or the field isn't  presen
 
 This operation selects the value of the first record as the value of the output. It is often used in combination with the **`sort`** operator to find the first value of a field.
 
-{{< query_sample
+{{< aggregate_query_sample
 id="15"
 description="finds the contact with more skills per company"
 entity="contacts"
@@ -385,7 +394,7 @@ restApi="{\"sort\": {\"numberOfSkills\": \"desc\"}}, {\"group\": {\"by\": \"comp
 
 This operation selects the value of the last record as the value of the output. It is often used in combination with the **`sort`** operator to find the last value of a field.
 
-{{< query_sample
+{{< aggregate_query_sample
 id="16"
 description="finds the contact with more skills per company"
 entity="contacts"
@@ -398,7 +407,7 @@ restApi="{\"sort\": {\"numberOfSkills\": \"asc\"}}, {\"group\": {\"by\": \"compa
 
 This operation selects the maximum value from all records as the value of the output.
 
-{{< query_sample
+{{< aggregate_query_sample
 id="17"
 description="finds the maximum number of skills per company for one contact"
 entity="contacts"
@@ -411,7 +420,7 @@ restApi="{\"group\": {\"by\": \"company\", \"skills\": \"max(numberOfSkills)\"}}
 
 This operation selects the minimum value from all records as the value of the output.
 
-{{< query_sample
+{{< aggregate_query_sample
 id="18"
 description="finds the minimum number of skills per company for one contact"
 entity="contacts"
@@ -419,6 +428,80 @@ jsQueryMap="{group: {by: 'company', skills: 'min(numberOfSkills)'}}"
 jsQueryBuilder="query.group().by('company').accumulate('skills').min('numberOfSkills');"
 restApi="{\"group\": {\"by\": \"company\", \"skills\": \"min(numberOfSkills)\"}}"
 >}}
+
+
+### GeoNear
+
+The GeoNear operation outputs documents in order of nearest to farthest from a specified point. You can only as the first stage of a pipeline.
+
+Here there are some options accepted by this operator:
+Field|Type|Description
+---|---|---
+distanceField|string|The output field that contains the calculated distance.
+distanceMultiplier|number|Optional. The factor to multiply all distances returned by the query.
+includeLocs|string|Optional. This specifies the output field that identifies the location used to calculate the distance. This option is useful when a location field contains multiple locations.
+key|string|Optional. Specify the geospatial field to use when calculating the distance. An error will be thrown if you have many location fields and you don't specify which one to use.
+maxDistance|number|Optional. The maximum distance from the center point that the documents can be. Specify this in meters.
+minDistance|number|Optional. The minimum distance from the center point that the documents can be. Specify this in meters.
+coordinates|object|The point for which to find the closest documents. should be a js object specifying longitude and latitude.
+
+#### GeoNear Samples
+Simple aggregate queries:
+
+{{< aggregate_query_sample
+id=""
+description="Sorts records by proximity and filters them by min and max distance. Provides the calculated distance value in a custom field "
+entity="companies"
+jsQueryMap=" [{geoNear: {coordinates: {longitude:10,latitude:5},distanceField:'distance',minDistance:5566,maxDistance:9460000}}]"
+jsQueryBuilder="query_.geoNear().coordinates({longitude:10,latitude:05}).distanceField('distance').minDistance(5566).maxDistance(9460000);"
+restApi="[{\"geoNear\": {\"coordinates\": {\"longitude\":10, \"latitude\":5}}, \"distanceField\": \"distance\", \"minDistance\": 5566, \"maxDistance\":9460000}]"
+
+>}}
+<br>
+Pagination of records with geo near operator. Instead of skipping values to paginate it is recommended to use the min distance parameter. Here you can find an interesting [example](https://emptysqua.re/blog/paging-geo-mongodb/):
+
+The following example paginates results by 10.
+
+```
+     var totals = [];
+     let minDistance = 0;
+     let lastId;
+     var resultSet = sys.data.aggregate('companies', [
+       {geoNear: {
+          coordinates: {longitude:10,latitude:5},
+          distanceField:'distance',
+          minDistance:minDistance}
+       },
+       {limit: 10}
+      ]);
+       while (resultSet.hasNext()) {
+       let value = resultSet.next()
+           totals.push(value);
+           minDistance = value.distance
+           lastId = value.id
+       }\n
+
+        // second pagination. We set the latest minimum distance and we skip the first value by id
+
+     let minDistance = minDistance;
+     var resultSet = sys.data.aggregate('companies', [
+       {geoNear: {
+          coordinates: {longitude:10,latitude:5},
+          distanceField:'distance',
+          minDistance:minDistance}
+       },
+       {match: {id: 'notEquals(lastId)'}},
+       {limit: 10}
+      ]);
+       while (resultSet.hasNext()) {
+       let value = resultSet.next()
+           totals.push(value);
+           minDistance = value.distance
+           lastId = value.id
+       }\n
+
+```
+
 
 ## **Limitations**
 

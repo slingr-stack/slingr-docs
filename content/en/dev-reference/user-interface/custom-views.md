@@ -280,14 +280,15 @@ Allows to execute a certain action from a custom view
 
 ##### Parameters
 
-| Name   | Type                | Required |  Description |
-|--------|---------------------|----------|--------------|
-| entityNameOrId | string  | yes | The name or ID of the entity.
-| actionNameOrId | string | yes | The name or ID of the action to execute.
-| recordIds | object[]  | no | These are the IDs of the records on which the action will be executed. It can be a single string containing an ID or an array of strings representing multiple IDs.
-| successCallback | function | yes | This script runs after the action has been successfully executed. It receives the result of the action as a parameter.
-| errorCallback | function  | yes | It runs when the action fails.
-| canceledCallback | function | yes | It runs when the action is canceled.
+| Name             | Type     | Required |  Description |
+|------------------|----------|----------|--------------|
+| entityNameOrId   | string   | yes      | The name or ID of the entity.
+| actionNameOrId   | string   | yes      | The name or ID of the action to execute.
+| recordIds        | object[] | no       | These are the IDs of the records on which the action will be executed. It can be a single string containing an ID or an array of strings representing multiple IDs.
+| successCallback  | function | yes      | This script runs after the action has been successfully executed. It receives the result of the action as a parameter.
+| errorCallback    | function | yes      | It runs when the action fails.
+| canceledCallback | function | yes      | It runs when the action is canceled.
+| defaultParams    | object   | no       | If the action have parameters, you can send the default value that will be used for those parameters.
 
 ##### Samples
 
@@ -302,6 +303,9 @@ sys.ui.executeAction('employees', 'timeTrack', "xxxxx",
     },
     function(result) {
        console.info("> canceled", result);
+    },
+    {
+      nameOfParam: "default value"
     });
 
 ```
@@ -318,6 +322,9 @@ sys.ui.executeAction('sampleEntity', 'globalAction', null,
   },
   function(result) {
      console.info("> canceled", result);
+  },
+  {
+    nameOfParam: "default value"
   });
 ```
 <br>
@@ -357,7 +364,7 @@ Apart from the main file, you have the option to craft additional files to segme
 
 You can amalgamate them within the main file in this manner:
 
-``` html
+```  html
 <html>
 <head>
 ...
@@ -373,6 +380,29 @@ ${templates.html}
 <br>
 
 CSS files will be encapsulated within a **`<style>`** tag, while JavaScript files will be enclosed within the **`<script>`** tag. Consequently, there's no need to include these tags within the files themselves. HTML contents are inserted exactly as they appear in the file.
+
+### Access to app resources
+
+You can include the css and js files that are used in the application in order to have the custom view better integrated. For this we have some reserved file names:
+
+ * `appStyles` for css files.
+ * `appScripts` for javascript files.
+
+You can integrate them the same way you would include other files related to the custom view:
+
+``` html
+<html>
+<head>
+...
+${appStyles}
+${appScripts}
+</head>
+<body>
+...
+</body>
+</html>
+```
+<br>
 
 ## **Permissions**
 

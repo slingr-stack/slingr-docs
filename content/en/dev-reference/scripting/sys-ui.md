@@ -445,6 +445,7 @@ recordId|string|no|The ID of the record the action will be executed over. This i
 recordsIds|object|no|The IDs array of the record the action will be executed over. This is optional in case it is a global action.
 actionView|string|no|Name or ID of the action view.
 action|string|no|If actionView is not provided, you can send only action with the name or ID of the action and the default view will be used.
+defaultParams|object|no|If the action has parameters, you can send the default value that will be used for those parameters.
 success|function|no|Callback when the action is executed successfully.
 error|function|no|Callback when there is an error executing the action.
 canceled|function|no|Callback when the action execution is canceled.
@@ -459,6 +460,11 @@ sys.ui.sendMessage({
   target: 'allUsers',
   recordIds: ['5be99071b10c3e09893300d2', '5be99082b10c3e09893300e2'],
   action: 'setCompanyType',
+  defaultParams: {
+      isPresent: true,
+      message: "Hi from Holly Rollers",
+      nameOfParamNumeric: 14
+  },
   success: function() {
     sys.logs.debug("> Success!");
   },

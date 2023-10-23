@@ -17,8 +17,7 @@ Navigation within your app refers to how users can access different views.
 Slingr offers three primary navigation methods:
 
 - **`Main Menu`**: This menu is positioned on the left side of the app. Its visibility depends on the device's screen size; it may be hidden on smaller screens. You can add menu items at the root level or use menu groups to introduce one level of nesting.
-- **`Secondary Menu`**: Found in the top-right area of the app, this menu allows you to add menu items (without menu groups) that will appear to the left of the User menu.
-- **`User Menu`**: Located at the top-right corner, this menu serves as the platform for various system actions like **`My profile`** or **`Logout`**. You can include menu items (without menu groups) that will be positioned above the **`Logout`** action.
+- **`Header menu`**: Found in the top-right area of the app, this menu allows you to add menu items and also menu groups, actions, links to views and system actions like `Logout` or `My profile`.
 
 Certain components provide supplementary navigation features (e.g., relationship fields enabling the jump to other records). These features are explained within each respective component's documentation.
 

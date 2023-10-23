@@ -76,6 +76,9 @@ methods:
             },
             function(result) {
                console.info("> canceled", result);
+            },
+            {
+              nameOfParam: "default value"
             });
     - title: execute a global action
       code: |
@@ -88,4 +91,7 @@ methods:
           },
           function(result) {
              console.info("> canceled", result);
+          },
+          {
+            nameOfParam: "default value"
           });
