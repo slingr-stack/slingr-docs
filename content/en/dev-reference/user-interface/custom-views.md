@@ -524,5 +524,5 @@ const listenToHeightChanges = function() {
 
 ## **Custom view preview**
 
-From the builder you have the option to see a preview of the custom view, if the custom view is used as a record view, you can see it with real data by sending both **`_collectionViewId`** and **`_recordId`** in the URL as parameters. For example: **`https://test1.slingrs.io/dev/builder/api/customViews/5506fc43c2eee6b1770268f9?_collectionViewId=5506fc3cc2eee3b1a7025c1a&&_recordId=5506fc3cc2eee3b1a5525c19`**
+From the builder you have the option to see a preview of the custom view, if the custom view is used as a record view, you can see it with real data by sending both **`collectionViewId`** and **`recordId`** in the URL as parameters. For example: **`https://test1.slingrs.io/dev/builder/api/customViews/5506fc43c2eee6b1770268f9?collectionViewId=5506fc3cc2eee3b1a7025c1a&&recordId=5506fc3cc2eee3b1a5525c19`**
 
