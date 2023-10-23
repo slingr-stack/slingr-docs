@@ -236,10 +236,10 @@ jsQueryMap="[{match: {'company.isCustomer': true, 'address.state': 'NJ'}}, {grou
 
 {{< aggregate_query_sample
 id="07b"
-description="retrieves companies with related contacts"
-entity="companies"
-jsQueryMap="[{'lookup': {'localFieldPath': 'id', 'foreignFieldPath': 'company.id', 'foreignEntityName': 'contacts', 'as': 'relatedContacts'}},{match: {'relatedCompany.name': 'ABC'}}]"
-jsQueryBuilder="query.lookup().localField('id').foreignField('company.id').foreignEntity('contacts').as('relatedContacts')\n;query.match().field('relatedCompanies.name').equals('ABC');"
+description="Retrieves contacts with a looked up company. The contacts are filtered by the name of the related company"
+entity="contacts"
+jsQueryMap="[{'lookup': {'localFieldPath': 'company.id', 'foreignFieldPath': 'id', 'foreignEntityName': 'companies', 'as': 'relatedCompanies'}},{match: {'relatedCompany.name': 'ABC'}}]"
+jsQueryBuilder="query.lookup().localField('company.id').foreignField(.id').foreignEntity('companies').as('relatedContacts')\n;query.match().field('relatedCompanies.name').equals('ABC');"
 restApi="[{\"lookup\": {\"localFieldPath\": \"id\", \"foreignFieldPath\": \"company.id\", \"foreignEntityName\": \"contacts\", \"as\": \"relatedContacts\"}},{\"match\": {\"relatedCompany.name\": \"ABC\"}}]"
 >}}
 <br>
