@@ -381,6 +381,25 @@ ${templates.html}
 
 CSS files will be encapsulated within a **`<style>`** tag, while JavaScript files will be enclosed within the **`<script>`** tag. Consequently, there's no need to include these tags within the files themselves. HTML contents are inserted exactly as they appear in the file.
 
+### Slingr files
+
+You can include the css and js files that are used in the Slingr applications in order to have the custom view better integrated to the app. They can be injected as follows:
+
+
+``` html
+<html>
+<head>
+...
+${appStyles}
+${appScripts}
+</head>
+<body>
+...
+</body>
+</html>
+```
+<br>
+
 ## **Permissions**
 
 Permissions allow you to specify which groups have access to a particular view.
