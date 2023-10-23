@@ -222,18 +222,27 @@ Here are some samples of matching operations:
 id="06"
 description="Counts the number of skills for contacts of customers // see how the match operator filters contacts where company is a customer"
 entity="contacts"
-jsQueryMap="{match: {'company.isCustomer': true}}, {group: {totalNumberOfSkills: 'sum(numberOfSkills)'}}"
+jsQueryMap="[{match: {'company.isCustomer': true}}, {group: {totalNumberOfSkills: 'sum(numberOfSkills)'}}]"
 jsQueryBuilder="query.match().field('company.isCustomer').equals(true); query.group().accumulate('totalNumberOfSkills').sum('numberOfSkills');"
-restApi="{\"match\": {\"company.isCustomer\": true}}, {\"group\": {\"totalNumberOfSkills\": \"sum(numberOfSkills)\"}}"
+restApi="[{\"match\": {\"company.isCustomer\": true}}, {\"group\": {\"totalNumberOfSkills\": \"sum(numberOfSkills)\"}}]"
 >}}
-<br>
 
 {{< aggregate_query_sample
 id="07"
-description="counts the number of skills for contacts // the match operator filters contacts by customers and state equals to New Jersey"
+description=" the match operator filters contacts by the company name"
 entity="contacts"
-jsQueryMap="{match: {'company.isCustomer': true, 'address.state': 'NJ'}}, {group: {totalNumberOfSkills: 'sum(numberOfSkills)'}}" jsQueryBuilder="query.match().field('company.isCustomer').equals(true).field('address.state').equals('NJ'); query.group().accumulate('totalNumberOfSkills').sum('numberOfSkills');" restApi="{\"match\": {\"company.isCustomer\": true, \"address.state\": \"NJ\"}}, {\"group\": {\"totalNumberOfSkills\": \"sum(numberOfSkills)\"}}" >}}
+jsQueryMap="[{match: {'company.isCustomer': true, 'address.state': 'NJ'}}, {group: {totalNumberOfSkills: 'sum(numberOfSkills)'}}]" jsQueryBuilder="query.match().field('company.isCustomer').equals(true).field('address.state').equals('NJ'); query.group().accumulate('totalNumberOfSkills').sum('numberOfSkills');" restApi="[{\"match\": {\"company.isCustomer\": true, \"address.state\": \"NJ\"}}, {\"group\": {\"totalNumberOfSkills\": \"sum(numberOfSkills)\"}}]"
+>}}
 
+{{< aggregate_query_sample
+id="07b"
+description="retrieves companies with related contacts"
+entity="companies"
+jsQueryMap="[{'lookup': {'localFieldPath': 'id', 'foreignFieldPath': 'company.id', 'foreignEntityName': 'contacts', 'as': 'relatedContacts'}},{match: {'relatedCompany.name': 'ABC'}}]"
+jsQueryBuilder="query.lookup().localField('id').foreignField('company.id').foreignEntity('contacts').as('relatedContacts')\n;query.match().field('relatedCompanies.name').equals('ABC');"
+restApi="[{\"lookup\": {\"localFieldPath\": \"id\", \"foreignFieldPath\": \"company.id\", \"foreignEntityName\": \"contacts\", \"as\": \"relatedContacts\"}},{\"match\": {\"relatedCompany.name\": \"ABC\"}}]"
+>}}
+<br>
 ### Sort
 
 Allows to change the sorting of records in your aggregation pipeline. This is useful for sorting the final result or to use together with accumulators like **`first()`** or **`last()`** in the **`group`** operator.
@@ -448,7 +457,7 @@ jsQueryBuilder="query_.geoNear().coordinates({longitude:10,latitude:05}).distanc
 restApi="[{\"geoNear\": {\"coordinates\": {\"longitude\":10, \"latitude\":5}}, \"distanceField\": \"distance\", \"minDistance\": 5566, \"maxDistance\":9460000}]"
 
 >}}
-
+<br>
 Pagination of records with geo near operator. Instead of skipping values to paginate it is recommended to use the min distance parameter. Here you can find an interesting [example](https://emptysqua.re/blog/paging-geo-mongodb/):
 
 The following example paginates results by 10.
