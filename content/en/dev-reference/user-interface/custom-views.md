@@ -58,7 +58,7 @@ Keep in mind that there might be a slight delay in setting these variables. If y
 
 In most scenarios, direct use of these variables won't be necessary, as you'll likely employ the provided utilities for interacting with the REST API.
 
-## **REST API utils** 
+## **REST API utils**
 
 These utilities are designed to facilitate seamless access to your app's REST API from scripts within the custom view. For additional information regarding the app's REST API, refer to [this resource]({{<ref "/dev-reference/rest-apis/apps-api-doc.md">}}).
 
@@ -374,6 +374,25 @@ ${templates.html}
 
 CSS files will be encapsulated within a **`<style>`** tag, while JavaScript files will be enclosed within the **`<script>`** tag. Consequently, there's no need to include these tags within the files themselves. HTML contents are inserted exactly as they appear in the file.
 
+### Slingr files
+
+You can include the css and js files that are used in the Slingr applications in order to have the custom view better integrated to the app. They can be injected as follows:
+
+
+``` html
+<html>
+<head>
+...
+${appStyles}
+${appScripts}
+</head>
+<body>
+...
+</body>
+</html>
+```
+<br>
+
 ## **Permissions**
 
 Permissions allow you to specify which groups have access to a particular view.
@@ -388,7 +407,7 @@ You have the option to designate a custom view as a readOnly CRUD action view wi
 
 **Sample of a listener in the custom view**
 
-``` javascript 
+``` javascript
 // Logs the context and the event type
 window.addEventListener('message', function (event) {
   if(event.data.eventType){
