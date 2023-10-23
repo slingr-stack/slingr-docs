@@ -364,7 +364,7 @@ Apart from the main file, you have the option to craft additional files to segme
 
 You can amalgamate them within the main file in this manner:
 
-``` html
+```  html
 <html>
 <head>
 ...
