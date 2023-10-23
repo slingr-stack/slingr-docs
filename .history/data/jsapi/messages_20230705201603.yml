@@ -276,6 +276,12 @@ availableMessages:
       default: null
       description: |
         If actionView is not provided, you can send only action with the name or ID of the action and the default view will be used.
+    - name: defaultParams
+      type: object
+      required: false
+      default: null
+      description: |
+        If the action has parameters, you can send the default value that will be used for those parameters.
     - name: success
       type: function
       required: false
@@ -292,8 +298,8 @@ availableMessages:
       type: function
       required: false
       default: null
-      description: 
-      Callback when the action execution is canceled.
+      description:
+        Callback when the action execution is canceled.
 methods:
 - name: sendMessage
   summary: Allows to send a message to the UI
@@ -439,6 +445,11 @@ methods:
         target: 'allUsers',
         recordIds: ['5be99071b10c3e09893300d2', '5be99082b10c3e09893300e2'],
         action: 'setCompanyType',
+        defaultParams: {
+            isPresent: true,
+            message: "Hi from Holly Rollers",
+            nameOfParamNumeric: 14
+        },
         success: function() {
           sys.logs.debug("> Success!");
         },

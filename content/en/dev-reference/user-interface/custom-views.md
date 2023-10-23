@@ -280,14 +280,15 @@ Allows to execute a certain action from a custom view
 
 ##### Parameters
 
-| Name   | Type                | Required |  Description |
-|--------|---------------------|----------|--------------|
-| entityNameOrId | string  | yes | The name or ID of the entity.
-| actionNameOrId | string | yes | The name or ID of the action to execute.
-| recordIds | object[]  | no | These are the IDs of the records on which the action will be executed. It can be a single string containing an ID or an array of strings representing multiple IDs.
-| successCallback | function | yes | This script runs after the action has been successfully executed. It receives the result of the action as a parameter.
-| errorCallback | function  | yes | It runs when the action fails.
-| canceledCallback | function | yes | It runs when the action is canceled.
+| Name             | Type     | Required |  Description |
+|------------------|----------|----------|--------------|
+| entityNameOrId   | string   | yes      | The name or ID of the entity.
+| actionNameOrId   | string   | yes      | The name or ID of the action to execute.
+| recordIds        | object[] | no       | These are the IDs of the records on which the action will be executed. It can be a single string containing an ID or an array of strings representing multiple IDs.
+| successCallback  | function | yes      | This script runs after the action has been successfully executed. It receives the result of the action as a parameter.
+| errorCallback    | function | yes      | It runs when the action fails.
+| canceledCallback | function | yes      | It runs when the action is canceled.
+| defaultParams    | object   | no       | If the action have parameters, you can send the default value that will be used for those parameters.
 
 ##### Samples
 
@@ -302,6 +303,9 @@ sys.ui.executeAction('employees', 'timeTrack', "xxxxx",
     },
     function(result) {
        console.info("> canceled", result);
+    },
+    {
+      nameOfParam: "default value"
     });
 
 ```
@@ -318,6 +322,9 @@ sys.ui.executeAction('sampleEntity', 'globalAction', null,
   },
   function(result) {
      console.info("> canceled", result);
+  },
+  {
+    nameOfParam: "default value"
   });
 ```
 <br>
