@@ -152,7 +152,7 @@ Here are some samples of how you can use it:
 id="05"
 description="retrieves companies with related contacts"
 entity="companies"
-jsQueryMap="{'lookup': {'localFieldPath': 'id', 'foreignFieldPath': 'company.id', 'foreignEntityName': 'contacts', 'as': 'relatedContacts'}}"
+jsQueryMap="{lookup: {localFieldPath: 'id', foreignFieldPath: 'company.id', foreignEntityName: 'contacts', 'as': 'relatedContacts'}}"
 jsQueryBuilder="query.lookup().localField('id').foreignField('company.id').foreignEntity('contacts').as('relatedContacts');"
 restApi="{\"lookup\": {\"localFieldPath\": \"id\", \"foreignFieldPath\": \"company.id\", \"foreignEntityName\": \"contacts\", \"as\": \"relatedContacts\"}}"
 >}}
@@ -452,7 +452,7 @@ Simple aggregate queries:
 id=""
 description="Sorts records by proximity and filters them by min and max distance. Provides the calculated distance value in a custom field "
 entity="companies"
-jsQueryMap=" [{geoNear: {coordinates: {longitude:10,latitude:5},distanceField:'distance',minDistance:5566,maxDistance:9460000}}]"
+jsQueryMap=`{geoNear: {coordinates: {longitude:10, latitude:5}, distanceField:'distance', minDistance:5566, maxDistance:9460000}}`
 jsQueryBuilder="query_.geoNear().coordinates({longitude:10,latitude:05}).distanceField('distance').minDistance(5566).maxDistance(9460000);"
 restApi="[{\"geoNear\": {\"coordinates\": {\"longitude\":10, \"latitude\":5}}, \"distanceField\": \"distance\", \"minDistance\": 5566, \"maxDistance\":9460000}]"
 

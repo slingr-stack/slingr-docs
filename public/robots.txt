@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://pmslingr.github.io/slingrDoc/sitemap.xml
