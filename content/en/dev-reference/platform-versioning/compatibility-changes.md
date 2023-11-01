@@ -15,6 +15,14 @@ weight: 158
 The Slingr team regularly updates the platform new features, bug fixes, and improvements. Some of those changes can affect the compatibility with your app.
 It is important that developers pay attention to these changes.
 
+### **Release 440**
+
+#### Simplified billing
+
+- **Deprecation notice**: the SLINGR Pro plan is deprecated and free apps will no longer exists. Free apps will be migrated to a basic plan called personal with a free trial.
+- **Developer actions**: it requires the owner of SLINGR Pro apps to change to a new plan.
+- **End of the feature**: the SLINGR Pro will be permanently removed on **December 05, 2023** (release 442).
+
 ### **Release 439**
 
 #### Raw mode in data Javacript API
