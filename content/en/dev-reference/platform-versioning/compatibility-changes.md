@@ -17,11 +17,17 @@ It is important that developers pay attention to these changes.
 
 ### **Release 440**
 
-#### Simplified billing
+#### Simplified billing for apps
 
-- **Deprecation notice**: the SLINGR Pro plan is deprecated and free apps will no longer exists. Free apps will be migrated to a basic plan called personal with a free trial.
-- **Developer actions**: it requires the owner of SLINGR Pro apps to change to a new plan.
-- **End of the feature**: the SLINGR Pro will be permanently removed on **December 05, 2023** (release 442).
+- **Deprecation notice**: the SLINGR Pro plan is deprecated. New plans with a simplified billing will be available
+- **Developer actions**: it requires the owner of SLINGR Pro apps to change the subscription to a new plan.
+- **End of the feature**: the SLINGR Pro will be permanently removed on **February 2023**.
+
+#### Free plan migration to personal plan
+
+- **Deprecation notice**: The SLINGR free apps plan will no longer exists. Free apps will be migrated to a basic plan called personal with a free trial of 14 days.
+- **Developer actions**: After the migration, free apps will be sleeping and it requires the owners of apps to wake it up.
+- **End of the feature**: the SLINGR Free plan will be permanently removed on this release.
 
 ### **Release 439**
 
