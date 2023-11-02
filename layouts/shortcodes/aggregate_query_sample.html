@@ -79,9 +79,9 @@ while (resultSet.hasNext()) {
         <div role="tabpanel" class="tab-pane {{ if not $jsQueryMap }}active{{ end }}" id="jsQueryBuilder-{{ $id }}">
             <div>
                 <pre><code>// {{ $description }}
-var query_{{ $id }} = sys.data.createQuery('{{ $entity }}')
+var query = sys.data.createQuery('{{ $entity }}')
     {{ $jsQueryBuilder }}
-var resultSet = sys.data.aggregate(query_{{ $id }});
+var resultSet = sys.data.aggregate(query);
 log('total: ' + resultSet.count());
 while (resultSet.hasNext()) {
     log(resultSet.next().label());
