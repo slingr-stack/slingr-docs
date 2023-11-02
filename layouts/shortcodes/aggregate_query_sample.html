@@ -65,12 +65,12 @@
         <div role="tabpanel" class="tab-pane {{ if $jsQueryMap }}active{{ end }}" id="jsQueryMap-{{ $id }}">
             <div>
                 <pre><code>// {{ $description }}
-var records_{{ $id }} = sys.data.aggregate('{{ $entity }}', [
+var resultSet = sys.data.aggregate('{{ $entity }}', [
     {{ $jsQueryMap }}
 ]);
-log('total: ' + records_{{ $id }}.count());
-while (records_{{ $id }}.hasNext()) {
-    log(records_{{ $id }}.next().label());
+log('total: ' + resultSet.count());
+while (resultSet.hasNext()) {
+    log(resultSet.next().label());
 }</code></pre>
             </div>
         </div>
@@ -81,10 +81,10 @@ while (records_{{ $id }}.hasNext()) {
                 <pre><code>// {{ $description }}
 var query_{{ $id }} = sys.data.createQuery('{{ $entity }}')
     {{ $jsQueryBuilder }}
-var records_{{ $id }} = sys.data.aggregate(query_{{ $id }});
-log('total: ' + records_{{ $id }}.count());
-while (records_{{ $id }}.hasNext()) {
-    log(records_{{ $id }}.next().label());
+var resultSet = sys.data.aggregate(query_{{ $id }});
+log('total: ' + resultSet.count());
+while (resultSet.hasNext()) {
+    log(resultSet.next().label());
 }</code></pre>
             </div>
         </div>
