@@ -309,3 +309,11 @@ th, td {
 [data-dark-mode] body .card-body {
   color: white;
 }
+
+img {
+  cursor: zoom-in !important;
+}
+
+img.medium-zoom-image--opened{
+  cursor: zoom-out !important;
+}
