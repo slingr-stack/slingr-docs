@@ -136,9 +136,11 @@ We are almost there! Let's do a few improvements:
 
 3. Click on the node **`Model > Entities > Tasks > Views > Task board`**.
 
-4. Inside **`Cards settings`**, in the setting **`Record menu`** select **`Some`**.
+4. Inside **`Menu settings`**, in the setting **`Record menu`** select **`Some`**.
 
-5. Then in **`Available actions`** click on **`Add`** and select the action **`Archive (tasksArchive)`**. This is to be able to archive tasks because we didn’t create a column for the **`Archived`** status to keep this view clean.
+5. Then in **`Record menu actions`** click on **`Add`** and select the action **`Archive (tasksArchive)`**. This is to be able to archive tasks because we didn’t create a column for the **`Archived`** status to keep this view clean.
+
+6. Finally, click on **`Apply`** to save the new changes.
 
 ---
 

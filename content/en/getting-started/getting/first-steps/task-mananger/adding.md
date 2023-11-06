@@ -120,12 +120,14 @@ Good, now we have all the actions to manage the workflow! However, there is one 
 <b>To keep it simple, we just made the field read-only</b>. However, the correct way to do it is to remove permissions to change that field, which will be enforced at the API level and not just the UI. We will see that later.
 {{< /callout >}}
 
-### Adding a column to the grid view
+### Adding the actions column to the grid view
 
 Finally, we will add a column to the grid view that shows the actions available for that record:
 
+![status-field](/images/vendor/task-mananger/adding-actions/task_manager_add_actions_column.png)
+
 1. Click on the node **``Model > Entities > Tasks > Views > All tasks``**.
-2. Inside List settings, set the option **``"Record menu"``** to **``"All"``** and set the flag **``"Display record menu column"``** to **``"active"``**.
+2. Inside Menu settings, set the option **``"Record menu"``** to **``"All"``** and set the flag **``"Display record menu column"``** to **``"active"``**.
 3. Save changes by clicking on **``"Apply"``**.
 
 **`Awesome! Go ahead and push the changes. `**

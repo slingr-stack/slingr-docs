@@ -129,15 +129,21 @@ Now that we have created the fields for the entity, the next step is to create a
    - `Name`: allTasks
    - `Columns`: Number, Title, Status.
 
-👉 Click on **`Create`**.
-
 ![grid-view](/images/vendor/task-mananger/first-steps/4.png)
+
+It's time to configure the CRUD views (Create, Read, Update, Delete) within our grid view. This action will generate and configure generic views for creating, updating, and accessing records in read-only mode.
+
+👉 Click on **`Create View`** for each `Create`, `Read` and `Update` sections.
+
+![grid-view](/images/vendor/task-mananger/first-steps/create_crud_views.png)
+
+Finally, 👉 Click on **`Create`**.
 
 Once we have the view, we need to indicate how to navigate to it. Let’s add it to what’s going to be the sidebar of our app. Click the node **`User interface > Navigation > Main menu`**, and follow these steps:
 
-👉 Click on **`Add new menu entry`** on the top-right of the page, and then click on the option **`Add view entry`**.
+👉 Click on **`Add new menu entry`** on the top-right of the page, and then click on the option **`Add view`**.
 
-👉 In the view, select the view **`All Tasks`**, and complete the label with **`All Tasks`**. You can add an icon if you want.
+👉 In the view, select the view **`All Tasks`**, and complete the label with **`All Tasks`**. You can add an icon if you want or select a color style.
 
 👉 Click on **`Create`**.
 

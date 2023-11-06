@@ -310,7 +310,7 @@ th, td {
   color: white;
 }
 
-img {
+img.img-fluid {
   cursor: zoom-in !important;
 }
 
