@@ -228,21 +228,21 @@ If the entity has child entities, you can configure different views for each ent
 
 ### Create
 
-####  Allow to create**
+####  Allow to create
 
 This action is used to generate new records within the entity. When enabled, a button for creating new records will appear in the listing. For entities associated with this view's entity that have child entities, a button dropdown displaying available options will be shown.
 
 You can configure the record view for creating a new record by clicking **`Configure View`**. For more details, refer to the [Record Views Documentation]({{<ref "/dev-reference/user-interface/record-views.md">}}).
 
-####  Open in modal**
+####  Open in modal
 
 Enabling this flag displays the new record creation view in a modal instead of replacing the listing as the main content.
 
-####  Show next button**
+####  Show next button
 
 When this option is enabled, apart from the **`Cancel`** and **`Save`** buttons, a **`Next`** button will appear when creating a new record. This button saves the record and immediately shows the form for creating another new record. This feature proves useful for rapid creation of multiple records.
 
-####  Selected view**
+####  Selected view
 
 This setting allows you to select the view for the create CRUD action. Available options for selection include create-type record views of the current entity or custom views. If you opt for a **`Custom View`**, a JSON context with information will be conveyed through a **`message event`**. To utilize this information in the custom view, add an event listener in the custom view's main file. Additionally, when the **`Create`** action button is pressed, a message event is triggered to inform the custom view. The custom view can listen for this event and perform an action. This **`add`** event is also triggered after executing other custom actions.
 
@@ -281,7 +281,10 @@ Once you're listening for the **`add`** event, you can proceed to implement spec
         })
     };
 ```
-<br>
+
+####  Redirect to list after create
+
+<div>This setting allows you to be able after creating a record in the create view you will be redirected to the list view. This parameter introduces an option that allows users to define another behavior after creating a new record.</div>
 
 ### Read
 
