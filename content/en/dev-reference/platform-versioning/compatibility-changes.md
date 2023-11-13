@@ -27,7 +27,7 @@ It is important that developers pay attention to these changes.
 
 - **Deprecation notice**: The SLINGR Free and SLINGR Dev plans will no longer exists. They will be migrated to a basic plan called **personal** with a free trial of 14 days.
 - **Developer actions**: After the migration, free apps will be sleeping and it requires the owners of apps to wake it up.
-- **End of the feature**: the SLINGR Free plan will be permanently removed on this release.
+- **End of the feature**: The SLINGR Free and Dev plans will be permanently removed on this release.
 
 ### **Release 439**
 
