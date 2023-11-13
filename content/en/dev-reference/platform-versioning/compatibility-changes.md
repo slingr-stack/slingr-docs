@@ -23,7 +23,7 @@ It is important that developers pay attention to these changes.
 - **Developer actions**: it requires the owner of SLINGR Pro apps to change the subscription to a new plan.
 - **End of the feature**: the SLINGR Pro will be permanently removed on **February 2023**.
 
-#### Free plan migration to personal plan
+#### Free and Dev plan migration to personal plan
 
 - **Deprecation notice**: The SLINGR Free and SLINGR Dev plans will no longer exists. They will be migrated to a basic plan called **personal** with a free trial of 14 days.
 - **Developer actions**: After the migration, free apps will be sleeping and it requires the owners of apps to wake it up.
