@@ -21,7 +21,7 @@ It is important that developers pay attention to these changes.
 
 - **Deprecation notice**: the SLINGR Pro plan is deprecated. New plans with a simplified billing will be available
 - **Developer actions**: it requires the owner of SLINGR Pro apps to change the subscription to a new plan.
-- **End of the feature**: the SLINGR Pro will be permanently removed on **February 2023**.
+- **End of the feature**: the SLINGR Pro will be permanently removed on **February 2024**.
 
 #### Free and Dev plan migration to personal plan
 
