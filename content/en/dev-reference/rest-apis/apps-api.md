@@ -133,9 +133,9 @@ Developer users or users with the appropriate permissions, such as the "manage g
 
 - **`username`**: Your own username for authentication.
 - **`password`**: Your own password for authentication.
-- **`adminUserEmail`**: The email address of the user you wish to impersonate.
+- **`emailImpersonatedUser`**: The email address of the user you wish to impersonate.
 
-When you provide the **`adminUserEmail`** field in the request body, you will log in as the specified user with their permissions and privileges. This feature is particularly valuable for testing and administrative purposes, allowing authorized users to perform actions on behalf of different users.
+When you provide the **`emailImpersonatedUser`** field in the request body, you will log in as the specified user with their permissions and privileges. This feature is particularly valuable for testing and administrative purposes, allowing authorized users to perform actions on behalf of different users.
 
 Ensure that user impersonation is used responsibly and only by users with the necessary permissions to prevent any unauthorized actions within the system.
 
