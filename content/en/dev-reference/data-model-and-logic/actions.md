@@ -121,6 +121,10 @@ For actions of type **`One record`**, it's possible to include linked parameters
 
 It's important to note that if this option is set, a record changed event will be triggered before executing the action script (when the record is saved). If you save the record again within the action script, another record changed event will be triggered, in addition to the event triggered by the action itself.
 
+{{< notes type="note" >}}
+ This option will only be visible when editing the action and if it has [linked parameters]({{<ref "/dev-reference/data-model-and-logic/actions.md#parameters-4">}}) configured.
+{{< /notes >}}
+
 ### Execute in background
 
 If this flag is enabled, executing the action will immediately return with a reference to a job responsible for performing the action in the background.
