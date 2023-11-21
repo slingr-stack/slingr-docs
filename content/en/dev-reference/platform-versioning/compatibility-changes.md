@@ -15,6 +15,13 @@ weight: 158
 The Slingr team regularly updates the platform new features, bug fixes, and improvements. Some of those changes can affect the compatibility with your app.
 It is important that developers pay attention to these changes.
 
+### **Release 441**
+
+#### Raw mode in data Javacript API
+
+- **Deletion notice**: `raw` mode in data Javacript API has been removed.
+- **Developer actions**: it requires to refactor usages of `raw` mode in app scripts. The new `lite` mode requires to be used.
+
 ### **Release 440**
 
 #### Simplified billing for apps
