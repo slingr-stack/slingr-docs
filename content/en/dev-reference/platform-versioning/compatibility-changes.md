@@ -1,6 +1,6 @@
 ---
 title: "Compatibility changes"
-description: "List of platform changes that may affect compatibility"
+description: "List of platform changes that may affect apps compatibility"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
