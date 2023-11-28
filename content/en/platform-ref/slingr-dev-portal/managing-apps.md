@@ -39,7 +39,7 @@ Then, you will be asked to complete the following fields:
 
 - **`App owner`**: You can choose to be the owner of the app or select an organization that you belong to.
 - **`Plan`**: This is the plan your app will run on. You can choose between three different plans depending on your needs:
-  - **`Slingr Personal`**: This plan is trial and is useful to understand the platform and learn how to use it, however, it is not suited for complex or production apps.
+  - **`Personal`**: This plan has a free 15-day trial period and is useful to understand the platform and learn how to use it, however, it is not suited for complex or production apps.
   - **`Slingr Dev`**: This is an isolated environment with a fixed price that allows developers to have personal apps for a reasonable price. It has some limitations.
   - **`Slingr Pro`**: This is a usage-based plan meant for applications in production environments that need dedicated resources and outstanding performance. There are no limitations with the **Slingr Pro** plan.
 
