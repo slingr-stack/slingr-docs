@@ -13,7 +13,7 @@ weight: 4
 ---
 Pricing of the platform is based on apps. Each app will have a corresponding subscription, which can be associated with any of the three products we offer:
 
-👉 **`Slingr Free:`** These apps are free and won't incur any charges.
+👉 **`Slingr Personal:`** These apps are trial and won't incur any charges.
 
 👉 **`Slingr Dev:`** These apps have a fixed monthly fee. [You can check the pricing here](https://www.slingr.io/pricing).
 

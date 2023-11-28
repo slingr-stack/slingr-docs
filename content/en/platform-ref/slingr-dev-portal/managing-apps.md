@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "slingr-dev-portal"
 toc: true
-weight: 3 
+weight: 3
 ---
 Apps can be managed in the [Slingr Developer Portal](https://developer-portal.slingr.io).
 From there, you will be able to manage apps, endpoints, organizations, handle developer permissions,
@@ -39,7 +39,7 @@ Then, you will be asked to complete the following fields:
 
 - **`App owner`**: You can choose to be the owner of the app or select an organization that you belong to.
 - **`Plan`**: This is the plan your app will run on. You can choose between three different plans depending on your needs:
-  - **`Slingr Free`**: This plan is free and is useful to understand the platform and learn how to use it, however, it is not suited for complex or production apps.
+  - **`Slingr Personal`**: This plan is trial and is useful to understand the platform and learn how to use it, however, it is not suited for complex or production apps.
   - **`Slingr Dev`**: This is an isolated environment with a fixed price that allows developers to have personal apps for a reasonable price. It has some limitations.
   - **`Slingr Pro`**: This is a usage-based plan meant for applications in production environments that need dedicated resources and outstanding performance. There are no limitations with the **Slingr Pro** plan.
 
@@ -53,7 +53,7 @@ Then, you will be asked to complete the following fields:
   is only available if you select **`Slingr Pro`** as the plan. If this flag is set, the new app will be
   linked to the template. This means that the new app will only have a production environment, and when changes are synced in the template app, those changes will be applied to this new app as well.
   If you don't set this flag, only a development environment will be created using the app template, but it will be completely independent from the original app, which means new changes in the template won't affect the new app, and vice versa.
-    
+
 By default, when you create a new app, only the development environment (unless you have set the **`Linked`** flag) is created with the selected plan.
 
 {{< notes type="tip" >}}
@@ -91,7 +91,7 @@ Apps can have three different environments:
 - **`Staging`**: This environment can be used as a buffer between development and production. Additionally,
   when you are in production and you need to fix something, this environment is ideal to apply
   hotfixes in **`Production`** without syncing all the changes in **`Development`**.
-  
+
 - **`Production`**: This is the production environment your users will access. This environment does
   not have the builder component because you should never change your app directly in production.
 
@@ -130,7 +130,7 @@ you need them.
 - **`Database`**: Just adding more instances might not work to scale your app as there is a point where
   the database will be the bottleneck. When you reach that point (usually we try to size the database
   based on data size so you know when to switch), you should update the database of the app environment
-  from here. Please take a look at [Pricing and Billing]({{site.baseurl}}/platform-pricing-and-billing.html) 
+  from here. Please take a look at [Pricing and Billing]({{site.baseurl}}/platform-pricing-and-billing.html)
   to understand how this will impact your invoice.
 
 - **`Custom domain`**: By default, your app will be available at **`<appname>.slingrs.io`**; however,
@@ -142,16 +142,16 @@ There are a few cases that need changes in settings that deserve more attention:
 
 ### Scaling Up and Down Your App
 
-The way to scale your app is by adding more instances. How many instances you need depends on your 
+The way to scale your app is by adding more instances. How many instances you need depends on your
 app and the load it has, so it is hard to say how many users or API requests an instance can handle.
 
 What we recommend is to watch out for the response time of your app and add more instances when you see
 it goes above your maximum desired value or when you see that the waiting time of background jobs
 is growing. You can check those things in the app monitor.
- 
+
 Also, keep in mind that adding more instances might not help if the database is the bottleneck. In
 this case, you should upgrade your database to take advantage of the additional instances. You can
-check the [slow queries]({{<ref "/dev-reference/monitoring/database-and-files.md">}}) 
+check the [slow queries]({{<ref "/dev-reference/monitoring/database-and-files.md">}})
 report in the app monitor to see if the database is the bottleneck.
 
 The same way you can add instances, you can remove them. When you do that, some instances will be
@@ -206,7 +206,7 @@ Admins are not allowed to use the app. If you want to, the admin should also be 
 {{< /notes >}}
 
 👉 In the **`Admins`** section of the app details, you can indicate which developer accounts will
-have admin permissions over the app. 
+have admin permissions over the app.
 
 👉 Admins can perform the following actions:
 
