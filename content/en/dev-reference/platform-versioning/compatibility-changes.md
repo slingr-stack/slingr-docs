@@ -22,10 +22,12 @@ It is important that developers pay attention to these changes.
 - **Deletion notice**: `raw` mode in data Javacript API has been removed.
 - **Developer actions**: it requires to refactor usages of `raw` mode in app scripts. The new `lite` mode requires to be used.
 
-#### Simplified billing for apps
+#### SLINGR Pro plan is replaced by the Enterprise plan 
 
-- **Deletion notice**: the SLINGR Pro plan has been removed.
-- **Developer actions**: it requires the owner of SLINGR Pro apps to change the subscription to a new plan.
+Apps with the SLINGR Pro plan are migrated to a new plan called enterprise. This new plan has a simplified way of billing with the format "Pay as you go".
+
+- **Deletion notice**: the SLINGR Pro plan has been removed. 
+- **Developer actions**: no actions required.
 
 ### **Release 440**
 
