@@ -22,13 +22,18 @@ It is important that developers pay attention to these changes.
 - **Deletion notice**: `raw` mode in data Javacript API has been removed.
 - **Developer actions**: it requires to refactor usages of `raw` mode in app scripts. The new `lite` mode requires to be used.
 
+#### Simplified billing for apps
+
+- **Deletion notice**: the SLINGR Pro plan has been removed.
+- **Developer actions**: it requires the owner of SLINGR Pro apps to change the subscription to a new plan.
+
 ### **Release 440**
 
 #### Simplified billing for apps
 
 - **Deprecation notice**: the SLINGR Pro plan is deprecated. New plans with a simplified billing will be available
 - **Developer actions**: it requires the owner of SLINGR Pro apps to change the subscription to a new plan.
-- **End of the feature**: the SLINGR Pro will be permanently removed on **February 2024**.
+- **End of the feature**: the SLINGR Pro will be permanently removed on **December 6, 2023** (relese 441).
 
 #### Free and Dev plan migration to personal plan
 
