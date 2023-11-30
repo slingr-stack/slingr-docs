@@ -2,7 +2,7 @@
 title: "Managing apps"
 description: "Explains how to create and manage apps in Slingr."
 date: 2020-11-16T13:59:39+01:00
-lastmod: 2020-11-16T13:59:39+01:00
+lastmod: 2023-11-30T13:59:39+01:00
 draft: false
 images: []
 menu:
@@ -39,9 +39,10 @@ Then, you will be asked to complete the following fields:
 
 - **`App owner`**: You can choose to be the owner of the app or select an organization that you belong to.
 - **`Plan`**: This is the plan your app will run on. You can choose between three different plans depending on your needs:
-  - **`Personal`**: This plan has a free 15-day trial period and is useful to understand the platform and learn how to use it, however, it is not suited for complex or production apps.
-  - **`Slingr Dev`**: This is an isolated environment with a fixed price that allows developers to have personal apps for a reasonable price. It has some limitations.
-  - **`Slingr Pro`**: This is a usage-based plan meant for applications in production environments that need dedicated resources and outstanding performance. There are no limitations with the **Slingr Pro** plan.
+  - **`Slingr Personal Plan`**: This plan has a free 15-day trial period and is useful to understand the platform and learn how to use it, however, it is not suited for complex or production apps.
+  - **`Slingr Professional Plan`**: This is an isolated environment with a fixed price that allows developers to have personal apps for a reasonable price. It has some limitations.
+  - **`Slingr Business Plan`**: Here you can start to have an isolated production environment with a fixed price, it gives greater possibilities than the previous plans.
+  - **`Slingr Enterprise Plan`**: This is a usage-based plan meant for applications in production environments that need dedicated resources and outstanding performance. There are no limitations with the **Slingr Enterprise Plan**.
 
   You can see the full comparison in [Pricing and Billing](https://www.slingr.io/pricing).
 
@@ -50,9 +51,10 @@ Then, you will be asked to complete the following fields:
   ![Choose template](/images/vendor/platform-ref/managing-apps/create_app_templates.png)
 
   When you select a template, you might decide to make it linked by setting the flag **`Linked`**, which
-  is only available if you select **`Slingr Pro`** as the plan. If this flag is set, the new app will be
+  is only available if you select **`Slingr Enterprise Plan`** as the plan.
+- If this flag is set, the new app will be
   linked to the template. This means that the new app will only have a production environment, and when changes are synced in the template app, those changes will be applied to this new app as well.
-  If you don't set this flag, only a development environment will be created using the app template, but it will be completely independent from the original app, which means new changes in the template won't affect the new app, and vice versa.
+  If you don't set this flag, only a development environment will be created using the app template. However, it will be completely independent of the original app, which means new changes in the template won't affect the new app, and vice versa.
 
 By default, when you create a new app, only the development environment (unless you have set the **`Linked`** flag) is created with the selected plan.
 
@@ -89,7 +91,7 @@ Apps can have three different environments:
 - **`Development`**: This is the main environment that developers will use to make their changes. It's the **default environment**.
 
 - **`Staging`**: This environment can be used as a buffer between development and production. Additionally,
-  when you are in production and you need to fix something, this environment is ideal to apply
+  when you are in production, and you need to fix something, this environment is ideal to apply
   hotfixes in **`Production`** without syncing all the changes in **`Development`**.
 
 - **`Production`**: This is the production environment your users will access. This environment does
@@ -129,7 +131,7 @@ you need them.
 
 - **`Database`**: Just adding more instances might not work to scale your app as there is a point where
   the database will be the bottleneck. When you reach that point (usually we try to size the database
-  based on data size so you know when to switch), you should update the database of the app environment
+  based on data size, so you know when to switch), you should update the database of the app environment
   from here. Please take a look at [Pricing and Billing]({{site.baseurl}}/platform-pricing-and-billing.html)
   to understand how this will impact your invoice.
 
@@ -214,7 +216,7 @@ have admin permissions over the app.
 - Change general settings of the app
 - Change settings of the app environment
 
-👉 Furthermore, there is only one admin who is also the owner of the app (by default the creator of the app).
+👉 Furthermore, there is only one admin who is also the owner of the app (by default, the creator of the app).
 The owner can perform the following actions:
 
 - Add/remove admins
@@ -287,7 +289,7 @@ do that by clicking on the **`Unlink`** button in the app's details. When the ap
 **`Development`** environment is added to the app.
 
 {{< notes type="important" >}}
-You won't be able to link it again to the template, and the apps will become independent from each other.
+You won't be able to link it again to the template, and the apps will become independent of each other.
 {{< /notes >}}
 
 ### Development environment in linked apps
