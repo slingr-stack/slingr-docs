@@ -165,4 +165,4 @@ Great! We are done. I know this section was difficult so thanks for sticking wit
 
 Now let's just **`push the changes`** and open the runtime tab. 
 
-In the next section, we are going to see the changes we have made. 
+[In the next section](/getting-started/getting/first-steps/task-mananger/workflowview/), we are going to see the changes we have made. 

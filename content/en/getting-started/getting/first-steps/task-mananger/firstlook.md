@@ -38,4 +38,4 @@ Welcome back! In this section, let's take a first look at the app we've been wor
 
 ### Next step
 
-I understand that our app is still very basic, but in the next section, we'll add some actions to our entity, allowing us to change the status of a task without having to go inside the edit view. For now, let's go to the builder tab or open it through the developer portal. See you in the next section!
+I understand that our app is still very basic, but in the next section, we'll add some actions to our entity, allowing us to change the status of a task without having to go inside the edit view. For now, let's go to the builder tab or open it through the developer portal. [See you in the next section](/getting-started/getting/first-steps/task-mananger/adding/)!

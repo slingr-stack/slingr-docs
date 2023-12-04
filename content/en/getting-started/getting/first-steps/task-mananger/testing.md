@@ -31,4 +31,4 @@ As you can observe in the grid view, a new column called "Actions" has been adde
 
 Great! Our actions are now running. Please verify that the preconditions are working as expected. Additionally, ensure that in the **`edit view`**, the status cannot be changed. If you encounter any issues, refer back to the previous section to see if there is something you might have missed.
 
-That’s it for this section. In the next one, we will create a new type of view that complements our current implementation. For more information, proceed to the next section: **"Creating a workflow view."**
+That’s it for this section. In the next one, we will create a new type of view that complements our current implementation. For more information, proceed to the next section: [Creating a workflow view](/getting-started/getting/first-steps/task-mananger/creatingworkflow/).

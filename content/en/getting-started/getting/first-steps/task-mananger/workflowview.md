@@ -60,4 +60,4 @@ Lastly, you can rank tasks by moving them up and down.
 
 **`Pretty awesome, right? Our app is starting to look amazing! `**
 
-In the next section, we will create different roles for app users and assign them specific permissions. See you in the next section: **"Groups and Permissions."**
+In the next section, we will create different roles for app users and assign them specific permissions. See you in the next section: [Groups and Permissions](/getting-started/getting/first-steps/task-mananger/groups/).

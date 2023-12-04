@@ -140,7 +140,7 @@ To do that, you need to click the icon next to your username (The hamburger icon
 
 Congratulations! Now you have learned how to create actions to model the behavior of the entity fields and records.
 
-Let's wrap up this session here. Go to the runtime tab, and we will continue on to the next session **`"Testing actions on runtime"`**.
+Let's wrap up this session here. Go to the runtime tab, and we will continue on to the next session [Testing actions on runtime](/getting-started/getting/first-steps/task-mananger/testing/)
 
 
 

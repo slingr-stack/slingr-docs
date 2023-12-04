@@ -104,4 +104,4 @@ Let's do it:
 
 👉 Push to see the changes.
 
-That's it! We have implemented our two actions. After pushing the changes, go to the runtime and proceed to the next section, **Actions in Action**, to see the results.
+That's it! We have implemented our two actions. After pushing the changes, go to the runtime and proceed to the next section, [Actions in Action](/getting-started/getting/first-steps/event-planner/actioninactions/), to see the results.

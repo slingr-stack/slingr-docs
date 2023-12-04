@@ -49,4 +49,4 @@ You can also see the different environments and components on the Apps Page.
 
 The first button represents the **``Runtime``**, the second is the **``Monitor``**, and the third one is the **``Builder``**. As our new app is empty, the first thing we need to do is to go to the app builder by clicking on the **``Builder``** button (the one with the wrench). That will automatically open the builder in a new tab.
 
-Let's wrap up this section here. If you want to learn more, let's proceed to the next section: *First steps with the builder*.
+Let's wrap up this section here. If you want to learn more, let's proceed to the next section: [First steps with the builder](/getting-started/getting/first-steps/task-mananger/firststeps/).
