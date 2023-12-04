@@ -23,9 +23,9 @@ Once you are logged into the developer portal, you should see the Home Page:
 
 - Click on the **``New App``** button in the **``Your Apps``** section.
 - Fill in the **``app label``** and **``name``**. Please note that the **``name``** must be unique on the platform.
-- Select **``Slingr Free``** as the plan for your app.
+- Select **``Personal``** as the plan for your app. This plan has a free 15-day trial period.
 - Choose the option to **``start from scratch``**.
-- Wait until the app is created. This process usually takes a minute to complete.
+- Wait until the app is created. This process usually can take a few minutes to complete.
 
 ---
 
