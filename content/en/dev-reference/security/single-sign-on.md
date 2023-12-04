@@ -2,7 +2,7 @@
 title: "Single sign on"
 description: "Explanation of what are identity providers. Description of each supported identity provider."
 date: 2020-11-16T13:59:39+01:00
-lastmod: 2020-11-16T13:59:39+01:00
+lastmod: 2023-12-4T13:59:39+01:00
 draft: false
 images: []
 menu:
@@ -50,19 +50,71 @@ Enabling this option automatically adds an identity provider when a user attempt
 
 ---
 
+## **Facebook**
+
+The Facebook identity provider enables users with Facebook accounts to log in to your application.
+
+###
+
+To create an app on facebook,
+you will have to be registered as a developer on facebook and create an app that has the option
+to "Allow people to log in with their Facebook account."
+
+1. Go to the [Facebook Developers](https://developers.facebook.com/).
+2. Create an App.
+3. Go to Use Cases and click on Customize.
+4. You have to Add the field email so that data is sent to Slingr App.
+5. In the same page make click on "Go to settings."
+6. Enable the option: "Login with the JavaScript SDK."
+7. Add your "OAuth redirect URI" on the field "Allowed Domains for the JavaScript SDK" (have this format: **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer`** and **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer/authCallback`**)
+8. Save changes
+9. Go to App settings -> Basic.
+10. Copy App ID and App secret.
+11. Complete all required fields.
+
+### App ID
+
+When you create an App, a unique and permanent ID is automatically generated.
+This value serves as the Client ID that you need to configure in the Slingr app.
+
+### OAuth redirect URI
+
+The OAuth redirect URI is the URI you need to configure in your Facebook App. The standard format is:
+**`https://<appName>.slingrs.io/<environment>/runtime/api/sso/google/<providerName>/consumer`**.
+
+### Default user group
+
+If it is allowed to create users when signing in through this identity provider,
+any new user created will be automatically assigned to this group.
+
+After configuring app settings in Slingr and applying the changes,
+a "Sign In" button will automatically appear on the login page of the app.
+
+### Redirect to a URL after login
+
+This flag allows generating a redirection after a successful login.
+It can redirect to a view, an external page or a html from the public files.
+The user token will be sent as header and as query param to maintain a context.
+
+
+<br>
+
+---
+
 ## **Google**
 
 The Google identity provider enables users with Google accounts to log in to your application.
 
-### Service account of google
+### Service account of Google
 
 To generate a service account in Google, follow these steps:
 
 1. Go to the Google Cloud console and log in as a super administrator.
 2. Create a project in the Google Cloud console.
 3. Activate the APIs for the service account.
-4. Create a service account in the Google Cloud console.
+4. Create a service account (OAuth 2.0 Client ID) in the Google Cloud console. (On the [Credentials menu](https://console.cloud.google.com/apis/credentials))
 5. Assign roles to the service account to provide access to GCP resources.
+6. Add your app url in the Authorized Javascript Origins field. **`https://<appName>.slingrs.io`**
 
 ### Client ID
 
@@ -79,6 +131,12 @@ If it is allowed to create users when signing in through this identity provider,
 After configuring app settings in Slingr and applying the changes, a "Sign In" button will automatically appear on the login page of the app.
 
 When a user clicks the button, a popup will open, allowing the user to select their Google account to use for signing in.
+
+### Redirect to a URL after login
+
+This flag allows generating a redirection after a successful login.
+It can redirect to a view, an external page or a html from the public files.
+The user token will be sent as header and as query param to maintain a context.
 
 <br>
 
@@ -185,11 +243,11 @@ If you decide to provide a custom mapping, here is the context of the script:
 
   ##### Parameters
 
-  Name|Type|Description|
-  ---|---|---
-  idpAttributes|object|This object contains all the attributes comming from the SAML identity provider. For example if the identity providers sends an attribute with name firstName, you should be able to access it using idpAttributes.firstName.
+| Name          | Type   | Description                                                                                                                                                                                                                  |
+|---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| idpAttributes | object | This object contains all the attributes coming from the SAML identity provider. For example if the identity providers sends an attribute with name firstName, you should be able to access it using idpAttributes.firstName. |
 
-  ##### Returns
+##### Returns
 
   **`object`** - The script should return an object with the following attributes:
 
@@ -202,7 +260,7 @@ If you decide to provide a custom mapping, here is the context of the script:
   ##### Samples
 
   ```js
-  // this is a mapping script where some values are encoded in Base64 
+  // this is a mapping script where some values are encoded in Base64
   var Base64 = {
       _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
       check: function(s) {
