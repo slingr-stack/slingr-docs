@@ -54,8 +54,6 @@ Enabling this option automatically adds an identity provider when a user attempt
 
 The Facebook identity provider enables users with Facebook accounts to log in to your application.
 
-###
-
 To create an app on facebook,
 you will have to be registered as a developer on facebook and create an app that has the option
 to "Allow people to log in with their Facebook account."

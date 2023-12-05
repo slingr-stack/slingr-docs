@@ -29,6 +29,9 @@ Apps with the SLINGR Pro plan are migrated to a new plan called enterprise. This
 - **Deletion notice**: the SLINGR Pro plan has been removed. 
 - **Developer actions**: no actions required.
 
+#### Changes in OAuth Redirect URI
+- **Developer actions**: it requires to update the OAuth redirect URI if [Google SSO](/dev-reference/security/single-sign-on/#google) is configured. This action should be taken in [Google Console portal](https://console.cloud.google.com/apis/credentials).
+
 ### **Release 440**
 
 #### Simplified billing for apps
