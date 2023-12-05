@@ -23,9 +23,9 @@ Once you are logged into the developer portal, you should see the Home Page:
 
 - Click on the **``New App``** button in the **``Your Apps``** section.
 - Fill in the **``app label``** and **``name``**. Please note that the **``name``** must be unique on the platform.
-- Select **``Slingr Free``** as the plan for your app.
+- Select **``Personal``** as the plan for your app. This plan has a free 15-day trial period.
 - Choose the option to **``start from scratch``**.
-- Wait until the app is created. This process usually takes a minute to complete.
+- Wait until the app is created. This process usually can take a few minutes to complete.
 
 ---
 
@@ -49,4 +49,4 @@ You can also see the different environments and components on the Apps Page.
 
 The first button represents the **``Runtime``**, the second is the **``Monitor``**, and the third one is the **``Builder``**. As our new app is empty, the first thing we need to do is to go to the app builder by clicking on the **``Builder``** button (the one with the wrench). That will automatically open the builder in a new tab.
 
-Let's wrap up this section here. If you want to learn more, let's proceed to the next section: *First steps with the builder*.
+Let's wrap up this section here. If you want to learn more, let's proceed to the next section: [First steps with the builder](/getting-started/getting/first-steps/task-mananger/firststeps/).

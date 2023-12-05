@@ -171,4 +171,4 @@ Once the process is done, the changes will be reflected in the runtime. To open 
 
 **Fantastic!** 
 
-Let’s wrap this section here; we have made great progress. If you want to learn more, let’s go to the next section: "First Look at Our App."
+Let’s wrap this section here; we have made great progress. If you want to learn more, let’s go to the next section: [First Look at Our App](/getting-started/getting/first-steps/task-mananger/firstlook/).

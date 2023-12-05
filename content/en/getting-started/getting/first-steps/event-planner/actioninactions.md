@@ -18,7 +18,7 @@ In this section, we will explore how the actions implemented in the previous sec
 
 👉 Click on a record to view its details. You should see the read-only view.
 
-👉 In the header, you will notice a new button labeled "Actions." Click on it to proceed.
+👉 In the header, you will notice a new button labeled "More." Click on it to proceed.
 
 ![Alt Text](/images/vendor/event-planner/action-in-actions/ww_event_planner_cancel_event_action_runtime.png)
 
@@ -54,5 +54,5 @@ In this section, we will explore how the actions implemented in the previous sec
 
 The purpose of this tutorial was to guide you through your first steps with Slingr. If you're interested, there's an additional section where we make a small improvement to our app.
 
-Feel free to join me in the next section: **Small Improvement (Optional)**.
+Feel free to join me in the next section: [Small Improvement (Optional)](/getting-started/getting/first-steps/event-planner/small/).
 

@@ -32,4 +32,4 @@ In this section, we'll review the changes made to our app in the previous sectio
 
 With this simple step, we've successfully added a new field to our events. 
 
-In the next section, we'll **create some actions** to change the status of an event without editing the record.
+In the next section, we'll [**create some actions**](/getting-started/getting/first-steps/event-planner/creatingactions/) to change the status of an event without editing the record.

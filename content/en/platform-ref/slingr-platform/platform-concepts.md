@@ -44,5 +44,5 @@ Environments in Slingr are fully isolated from each other to ensure stability an
 
 
 {{< callout type="info" contend="" >}}
-There is also a Slingr Free plan where instances are shared. Those are not meant for production.
+There is also a Personal plan that offers a 15-day free trial access. Those are not meant for production.
 {{< /callout >}}

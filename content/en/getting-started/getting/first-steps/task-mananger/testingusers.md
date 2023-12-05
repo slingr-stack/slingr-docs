@@ -56,5 +56,5 @@ That’s the basics about permissions, but there are more features to allow more
 
 **Almost Finished!**
 
-Awesome, we are almost finished with our app. Hopefully, everything is working as expected. But if not, don’t worry! In the next section, we will learn how to find out what’s going on by using the app monitor.
+Awesome, we are almost finished with our app. Hopefully, everything is working as expected. But if not, don’t worry! [In the next section](/getting-started/getting/first-steps/task-mananger/monitor/), we will learn how to find out what’s going on by using the app monitor.
 

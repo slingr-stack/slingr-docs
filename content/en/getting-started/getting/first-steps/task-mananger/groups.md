@@ -152,4 +152,4 @@ You don't need to push changes when working with users because users are modifie
 
 **Awesome!** We have finished this section and are almost done with our app.
 
-In the next section, we will learn how to work with different users in the runtime.
+[In the next section](/getting-started/getting/first-steps/task-mananger/testingusers/), we will learn how to work with different users in the runtime.

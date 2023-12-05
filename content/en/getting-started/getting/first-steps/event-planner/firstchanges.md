@@ -92,4 +92,4 @@ Great! Now that we know how to navigate through the builder, let's go ahead and 
 
 We have finished with the builder for now. In the next section, we will see our changes in action.
 
-Let's move on to the next section: **"First Look at Our New App."**
+Let's move on to the next section: [First Look at Our New App.](/getting-started/getting/first-steps/event-planner/firstlook/)
