@@ -67,10 +67,11 @@ to "Allow people to log in with their Facebook account."
 5. In the same page make click on "Go to settings."
 6. Enable the option: "Login with the JavaScript SDK."
 7. Add your "OAuth redirect URI" on the field "Allowed Domains for the JavaScript SDK" (have this format: **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer`** and **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer/authCallback`**)
-8. Save changes
-9. Go to App settings -> Basic.
-10. Copy App ID and App secret.
-11. Complete all required fields.
+8. Add your App base url on the field "Allowed Domains for the JavaScript SDK" (have this format: **`https://<appName>.slingrs.io/`**)
+9. Save changes
+10. Go to App settings -> Basic.
+11. Copy App ID and App secret.
+12. Complete all required fields.
 
 ### App ID
 
