@@ -81,7 +81,7 @@ This value serves as the Client ID that you need to configure in the Slingr app.
 ### OAuth redirect URI
 
 The OAuth redirect URI is the URI you need to configure in your Facebook App. The standard format is:
-**`https://<appName>.slingrs.io/<environment>/runtime/api/sso/google/<providerName>/consumer`**.
+**`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer`**.
 
 ### Default user group
 
@@ -123,7 +123,7 @@ When you create a service account, a unique and permanent ID is automatically ge
 
 ### OAuth redirect URI
 
-The OAuth redirect URI is the URI you need to configure in your Google Cloud console, in the same Google service account you created earlier. The standard format is: **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/google/<providerName>/consumer`**.
+The OAuth redirect URI is the URI you need to configure in your Google Cloud console, in the same Google service account you created earlier. The standard format is: **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer`**.
 
 ### Default user group
 
