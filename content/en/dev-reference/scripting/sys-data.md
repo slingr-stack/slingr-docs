@@ -2160,7 +2160,7 @@ Iterate over all elements in the list.
 
 | Name  | Type  | Required | Description |
 |---|---|---|---|
-callback|function|yes|The function to that will process all elements. It will receive the element wrapper as parameter and should return **`true`** if the element has to be removed or **`false`** otherwise.
+callback|function|yes|The function to that will process all elements. It will receive two parameters: the wrapper element and the current index of the iteration. In order to stop iteration it is possible to return `false` explicitly.
 
 ##### Exceptions
 
