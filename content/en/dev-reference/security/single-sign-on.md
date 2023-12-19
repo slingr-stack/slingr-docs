@@ -141,6 +141,52 @@ The user token will be sent as header and as query param to maintain a context.
 
 ---
 
+## **Microsoft**
+
+The Microsoft identity provider enables users with Microsoft and Azure accounts to log in to your application.
+
+### Create Microsoft Entra app
+
+To create a new Microsoft Entra app, follow these steps:
+
+1. Sign in into [Microsoft Entra](https://entra.microsoft.com/) portal.
+2. In the side menu, collapse `Applications` and click on `App registrations`.
+3. Set a name for the app and in the `Supported account types` section, select the following option:
+    - **Accounts in any organizational directory and personal Microsoft accounts**
+4. Click on `Register`
+5. Once created, in the app overview, go to **Authentication**.
+6. Add a platform configuration by clicking on `Add a platform`.
+7. Select **Single-page application**, then configure the OAuth2 redirect URI in the required input and check the following options:
+    - **Access tokens (used for implicit flows)**
+    - **ID tokens (used for implicit and hybrid flows)**
+8. Click on **Configure**.
+
+### Application ID
+
+When you register an app, a unique and permanent ID is automatically generated. The ID format is similar to UUID.
+
+### OAuth redirect URI
+
+The OAuth redirect URI is the URI you need to configure in your Microsoft app, in the same app you registered earlier. The standard format is: **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer`**.
+
+### Default user group
+
+If it is allowed to create users when signing in through this identity provider, any new user created will be automatically assigned to this group.
+
+After configuring app settings in Slingr and applying the changes, a "Sign In" button will automatically appear on the login page of the app.
+
+When a user clicks the button, a popup will open, allowing the user to select their Google account to use for signing in.
+
+### Redirect to a URL after login
+
+This flag allows generating a redirection after a successful login.
+It can redirect to a view, an external page or a html from the public files.
+The user token will be sent as header and as query param to maintain a context.
+
+<br>
+
+---
+
 ## **Slack**
 
 The Slack identity provider permits Slack users to log in to your app.
