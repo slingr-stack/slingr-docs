@@ -795,10 +795,12 @@ entityName|string|yes|The name of the entity
 queryMap|object|yes|The query map object used to filter records. Check the [Query language documentation]({{<ref "/dev-reference/queries/query-language.md">}}) for the query map version.
 actionName|string|yes|The name of the action to be executed.
 params|object|no|If the action has parameters you should put them here. The format is the same used by the REST API.
+options|object|no|If the action has options you should put them here. For example, use async: false if you don't want it to run in the background.
+
 
 ##### Returns
 
-**`string`** - The ID of the background job responsible for executing the action over all records. To monitor progress (including any errors), you should check the status of the background job.
+**`string`** - The ID of the background job responsible for executing the action over all records. To monitor progress (including any errors), you should check the status of the background job. **If you set async to false, it will not return the ID of the background; instead, it will return the result of the action**
 
 ##### Exceptions
 
