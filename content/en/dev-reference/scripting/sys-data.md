@@ -493,7 +493,7 @@ options|object|no|This is a map containing options that can modify the behavior 
 
 ##### Returns
 
-[sys.data.Record](#sysdatarecord) - The saved or updated record. The ID will be set and calculated or default values will be there.
+[sys.data.Record](#sysdatarecord) or **null**- The saved or updated record. The ID will be set and calculated or default values will be there. When using the lite mode, null is returned.
 
 ##### Exceptions
 
