@@ -1,8 +1,8 @@
 verb: GET
-path: /data/{entityName}/{id}/history
-summary: Returns the history of a record
+path: /data/{entityName}/{id}/auditLogs
+summary: Returns the audit logs of a record
 description: |
-  Returns the history of a record. The entity needs to have history logs enabled.
+  Returns the audit logs of a record. The entity needs to have audit logs enabled.
 request:
   description:
   headers:
@@ -14,20 +14,20 @@ request:
     - name: id
       default:
       required: yes
-      description: The ID of the record to get its history.
+      description: The ID of the record to get its audit logs.
     - name: _size
       default: 20
       required: no
-      description: The number of history records to fetch. Always the latests logs will be retrieved.
+      description: The number of audit logs records to fetch. Always the latests logs will be retrieved.
     - name: _offset
       default:
       required: no
-      description: Specifies an ID of a history log to start fetching logs from. This is to allow pagination.
+      description: Specifies an ID of a audit logs to start fetching logs from. This is to allow pagination.
   body:
   bodyFields:
 response:
   description: |
-    The list of history logs for that record, sorted from the newest to the oldest ones.
+    The list of audit logs for that record, sorted from the newest to the oldest ones.
   headers:
   body: |
     {
@@ -110,13 +110,13 @@ response:
     }
   bodyFields:
     - path: total
-      description: The total number of history logs for the record.
+      description: The total number of audit logs for the record.
     - path: offset
       description: |
-        The ID of the latest history log, which needs to be sent in the `_offset` parameter to get the following
+        The ID of the latest audit log, which needs to be sent in the `_offset` parameter to get the following
         records when using pagination.
     - path: items
-      description: The history logs. Most of the fields are self explanatory. Next we will describe a few ones.
+      description: The audit logs. Most of the fields are self explanatory. Next we will describe a few ones.
     - path: items[].eventCategory
       description: |
         The category of the event. These are the possible values:
@@ -162,16 +162,16 @@ errors:
   - code: forbidden
     status: 403
     description: |
-      You don't have permissions to see history of records for the entity.
+      You don't have permissions to see audit logs of records for the entity.
   - code: notFound
     status: 404
     description: |
       The entity name does not exist. Keep in mind that this method won't return this error if the record ID
       does not exists because you could be asking for a deleted record.
 samples:
-  - title: gets the history of a company record
+  - title: gets the audit logs of a company record
     description:
-    path: /data/companies/588f8b99b45fc9000bc1bfc4/history
+    path: /data/companies/588f8b99b45fc9000bc1bfc4/auditLogs
     request:
       body:
     response:

@@ -20,7 +20,7 @@ To access the Slingr API, you can make requests to the following endpoint:
 
 ```
 https://<appName>.slingrs.io/<env>/runtime/api
-``` 
+```
 <br>
 
 Where:
@@ -396,7 +396,7 @@ GET /data/{entityName}
 
 Path|Description
 ---|---
-total|The total number of records matched. If there are more than the records returned, you should use pagination to fetch more records. 
+total|The total number of records matched. If there are more than the records returned, you should use pagination to fetch more records.
 offset|The offset to pass to get more records.
 items|This is the list of records fetched.
 
@@ -767,7 +767,7 @@ DELETE /data/{entityName}/{id}
 ```
 <br>
 
-> Deletes a record from the database. You won’t be able to recover the deleted record (except that you have enabled history for that entity).
+> Deletes a record from the database. You won’t be able to recover the deleted record (except that you have enabled audit logs for that entity).
 
 ##### Request
 
@@ -874,7 +874,7 @@ DELETE /data/{entityName}/{ids}
 ```
 <br>
 
-> This method allows you to delete multiple records from the database. It's important to note that once records are deleted, they cannot be recovered unless you have enabled history tracking for the respective entity.
+> This method allows you to delete multiple records from the database. It's important to note that once records are deleted, they cannot be recovered unless you have enabled audit logs tracking for the respective entity.
 
 Upon initiating this method, a job will be created to handle the record deletions in the background. While the method itself returns immediately, you can monitor the status of the job to determine when it completes.
 
@@ -897,10 +897,10 @@ DELETE /data/{entityName}/{ids}
 
 The response varies depending on the value of the **`_async`** parameter. There are two possible responses:
 
-**1. Map with Records (if `_async` is `false`):**  
+**1. Map with Records (if `_async` is `false`):**
    If the **`_async`** parameter is set to `false`, the result will be a map. Each record's ID will serve as the key, and the corresponding value will be a map containing fields for the status and response (which represents the deleted record in JSON format). In case of an error, the value will contain an **`errorMessage`**.
 
-**2. Job Reference (if `_async` is `true`):**  
+**2. Job Reference (if `_async` is `true`):**
    When the **`_async`** parameter is set to **`true`**, the method returns a reference to the job responsible for executing the deletion process. Once the job is completed, you can find the response of the process within the job's results.
 
 ##### Posible errors
@@ -1030,7 +1030,7 @@ DELETE /data/{entityName}
 ```
 <br>
 
-> This method is used to delete all records that match a specified query. It's important to note that once records are deleted, they cannot be recovered unless you have enabled history tracking for the corresponding entity.
+> This method is used to delete all records that match a specified query. It's important to note that once records are deleted, they cannot be recovered unless you have enabled audit logs tracking for the corresponding entity.
 
 Upon initiating this method, a job will be generated to handle the deletion of the records in the background. While the method itself returns promptly, you have the option to monitor the job's status to determine when the deletion process is complete.
 
@@ -1044,7 +1044,7 @@ DELETE /data/{entityName}
 <br>
 
 | Parameter   | Required  | Default | Description
-| ----------- | -------- | ------ | --- 
+| ----------- | -------- | ------ | ---
 | **`entityName`**            | yes      | -| Name of the entity records belongs to.|
 | **`queryParameters`**| no| - |These are the query parameters. See Query language for more information.
 | **`_async`** | no | - | This parameter indicates whether the deletion should be executed in the background, which is necessary if the execution is expected to take more than 30 seconds or you want to delete more than 1,000 records. When you set this parameter to **`true`**, the response from this method will provide a reference to the job responsible for executing the deletion.
@@ -1056,10 +1056,10 @@ DELETE /data/{entityName}
 
 The response varies depending on the value of the **`_async`** parameter. There are two possible responses:
 
-**1. Map with Records (if `_async` is `false`):**  
+**1. Map with Records (if `_async` is `false`):**
    If the **`_async`** parameter is set to **`false`**, the result will be a map. Each record's ID will serve as the key, and the corresponding value will be a map containing fields for the status and response (which represents the deleted record in JSON format). In case of an error, the value will contain an **`errorMessage`**.
 
-**2. Job Reference (if `_async` is `true`):**  
+**2. Job Reference (if `_async` is `true`):**
    When the **`_async`** parameter is set to **`true`**, the method returns a reference to the job responsible for executing the deletion process. Once the job is completed, you can find the response of the process within the job's results.
 
 ##### Posible errors
@@ -1288,13 +1288,13 @@ PUT /data/{entityName}/{id}/{actionName}
 
 The response varies based on the action type and the **`_async`** parameter. There are three possible response scenarios:
 
-**1. Record Response (if `_async` is `false` and the action type is 'One record'):**  
+**1. Record Response (if `_async` is `false` and the action type is 'One record'):**
    When **`_async`** is set to **`false`** and the action does not return a custom response, this method will return the updated record. This scenario is applicable only to actions of type 'One record.'
 
-**2. Custom Action's Response (if `_async` is `false` and the action returns a custom response):**  
+**2. Custom Action's Response (if `_async` is `false` and the action returns a custom response):**
    When **`_async`** is **`false`**, and the action returns a custom response, that specific response will be returned. Note that actions of type 'Many records' should always provide a custom response. If they do not return anything, an empty response will be generated.
 
-**3. Job Reference (if `_async` is `true`):**  
+**3. Job Reference (if `_async` is `true`):**
    In cases where **`_async`** is set to **`true`**, the method will return a reference to the job responsible for executing the action. Once the action is completed, you can locate the response of the action within the job's results.
 
 Below, you can find examples illustrating each of these response types.
@@ -1444,13 +1444,13 @@ PUT /data/{entityName}/{ids}/{actionName}
 
 The response varies based on the action type and the **`_async`** parameter. There are three possible response scenarios:
 
-**1. Map with Records (if `_async` is `false` and the action type is 'One record'):**  
+**1. Map with Records (if `_async` is `false` and the action type is 'One record'):**
    When **`_async`** is set to **`false`**, and the action does not return a custom response, the result will be a map. Each record's ID serves as the key, and the corresponding value includes fields for the status and response (representing the record as JSON) or an errorMessage in case of an error. This applies specifically to actions of type 'One record.'
 
-**2. Custom Action's Responses (if `_async` is `false` and the action returns a custom response):**  
+**2. Custom Action's Responses (if `_async` is `false` and the action returns a custom response):**
    When **`_async`** is **`false`**, and the action returns a custom response, a map is returned with each record's ID (for each record) serving as a key. Each key is associated with a map containing the status ("ok" or "error") and a response field containing the custom response. Note that actions of type 'Many records' should always provide a custom response. If they do not return anything, an empty response will be generated.
 
-**3. Job Reference (if `_async` is `true`):**  
+**3. Job Reference (if `_async` is `true`):**
    In cases where **`_async`** is set to **`true`**, the method will return a reference to the job responsible for executing the action. Once the action is completed, you can find the response of the action within the results of the job.
 
 Below, you can find examples illustrating each of these response types.
@@ -1668,13 +1668,13 @@ PUT /data/{entityName}/{actionName}
 
 The response varies based on the action type and the **`_async`** parameter. There are three possible response scenarios:
 
-**1. Map with Records (if `_async` is `false` and the action type is 'One record'):**  
+**1. Map with Records (if `_async` is `false` and the action type is 'One record'):**
    When **`_async`** is set to **`false`**, and the action does not return a custom response, the result will be a map. Each record's ID serves as the key, and the corresponding value includes fields for the status and response (representing the record as JSON) or an errorMessage in case of an error. This applies specifically to actions of type 'One record.'
 
-**2. Custom Action's Responses (if `_async` is `false` and the action returns a custom response):**  
+**2. Custom Action's Responses (if `_async` is `false` and the action returns a custom response):**
    When **`_async`** is **`false`**, and the action returns a custom response, a map is returned with each record's ID (for each record) serving as a key. Each key is associated with a map containing the status ("ok" or "error") and a response field containing the custom response. Note that actions of type 'Many records' should always provide a custom response. If they do not return anything, an empty response will be generated.
 
-**3. Job Reference (if `_async` is `true`):**  
+**3. Job Reference (if `_async` is `true`):**
    In cases where **`_async`** is set to **`true`**, the method will return a reference to the job responsible for executing the action. Once the action is completed, you can find the response of the action within the results of the job.
 
 Below, you can find examples illustrating each of these response types.
@@ -1862,23 +1862,23 @@ POST /data/{entityName}/import
 
 This feature allows you to import records from a CSV file into your system. When preparing the CSV file, please adhere to the following rules:
 
-**Headers:**  
+**Headers:**
 Headers in the CSV file should correspond to the field paths you wish to import. For instance, a field named "name" located at the root of the entity should have "name" as its header. For nested fields, use the full path, such as "address.state." When dealing with multi-valued fields, specify the index, like "phoneNumbers[0]" or "phoneNumbers[1]."
 
-**Data Format:**  
+**Data Format:**
 The data format in the CSV file should match the type of each field being imported. Refer to the documentation for each field type to ensure you are using the correct format.
 
-**Template Creation:**  
+**Template Creation:**
 To create a CSV file template, you can often export existing records using field names instead of labels as a starting point.
 
-**Record Handling:**  
+**Record Handling:**
 - Records will be created if they do not already exist in the system.
 - If records already exist, they will be updated. To determine if a record exists, a unique field must be included in the CSV file's headers. If multiple unique fields are present, the first one encountered will be used.
 
-**Importing into Related Entities:**  
-It is also possible to import records into related entities. For example, if you have a "contacts" entity with a relationship called "company" pointing to the "companies" entity, your CSV file headers can reflect this relationship structure: 
+**Importing into Related Entities:**
+It is also possible to import records into related entities. For example, if you have a "contacts" entity with a relationship called "company" pointing to the "companies" entity, your CSV file headers can reflect this relationship structure:
 
-``` 
+```
 company.name,company.type,firstName,lastName,email
 ```
 <br>
@@ -1994,7 +1994,7 @@ PUT /data/{entityName}/export
 
 | Parameter                  | Required  | Description |
 | -------------------------- | --------- | ----------- |
-| **`entityName`**           | Yes       | Name of the entity the record belongs to.| 
+| **`entityName`**           | Yes       | Name of the entity the record belongs to.|
 | **`_useFieldNames`**       | No        | This flag modifies how headers are generated. If it is set to true it will use the name instead of the label to build the headers. Otherwise the label will be used, which is the default.
 | **`queryParameters`**      | No        | These are the query parameters. See [Query language]({{<ref "/dev-reference/queries/query-language.md">}}) for more information.
 
@@ -2078,39 +2078,39 @@ PUT /data/companies/export?type=b&_size=50&_fields=name,address.state,mainContac
 ```
 <br>
 
-### History
+### Audit logs
 
-#### History for one record
+#### Audit logs for one record
 
 ``` js
-GET /data/{entityName}/{id}/history
+GET /data/{entityName}/{id}/auditLogs
 ```
 <br>
 
-> Returns the history of a record. The entity needs to have history logs enabled.
+> Returns the audit logs of a record. The entity needs to have audit logs enabled.
 
 ##### Request
 
 ``` js
-GET /data/{entityName}/{id}/history
+GET /data/{entityName}/{id}/auditLogs
 > Accept: application/json
 > token: token
 ```
 <br>
 
-| Parameter                  | Required  | Description |
-| -------------------------- | --------- | ----------- |
-| **`entityName`**           | Yes       | Name of the entity the record belongs to.| 
-| **`id`**                   | Yes       | The ID of the record to get its history.| 
-| **`_size`**                | No        | The number of history records to fetch. Always the latests logs will be retrieved.| 
-| **`_offset`**              | No        | Specifies an ID of a history log to start fetching logs from. This is to allow pagination.| 
+| Parameter                  | Required  | Description                                                                              |
+| -------------------------- | --------- |------------------------------------------------------------------------------------------|
+| **`entityName`**           | Yes       | Name of the entity the record belongs to.                                                |
+| **`id`**                   | Yes       | The ID of the record to get its audits logs.                                             |
+| **`_size`**                | No        | The number of audit logs records to fetch. Always the latests logs will be retrieved.    |
+| **`_offset`**              | No        | Specifies an ID of a audit log to start fetching logs from. This is to allow pagination. |
 
 ##### Response
 
-The list of history logs for that record, sorted from the newest to the oldest ones.
+The list of audit logs for that record, sorted from the newest to the oldest ones.
 
 ``` js
-GET /data/{entityName}/{id}/history
+GET /data/{entityName}/{id}/auditLogs
 < Content-Type: application/json
 
 {
@@ -2194,12 +2194,12 @@ GET /data/{entityName}/{id}/history
 ```
 <br>
 
-| Path | Description |
-| -------------------|-------------------------------------------------- |
-| **`total`**            | Total number of history logs for the record.                                                                     |
-| **`offset`**           | ID of the latest history log; include it as the **`_offset`** parameter for pagination to retrieve subsequent records. |
-| **`items`**            | History logs with various fields; explanations for some key fields are provided below.                          |
-| **`items[].eventCategory`** | Category of the event, with possible values: **`'USER'`** (change made by a user), **`'SCRIPT'`** (change made by a script), **`'SYSTEM'`** (system changes like cascade updates). |
+| Path | Description                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| -------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **`total`**            | Total number of audit logs for the record.                                                                                                                                                                                                                                                                                                                                                                                                        |
+| **`offset`**           | ID of the latest audit log; include it as the **`_offset`** parameter for pagination to retrieve subsequent records.                                                                                                                                                                                                                                                                                                                              |
+| **`items`**            | Audit logs with various fields; explanations for some key fields are provided below.                                                                                                                                                                                                                                                                                                                                                                  |
+| **`items[].eventCategory`** | Category of the event, with possible values: **`'USER'`** (change made by a user), **`'SCRIPT'`** (change made by a script), **`'SYSTEM'`** (system changes like cascade updates).                                                                                                                                                                                                                                                                |
 | **`items[].eventType`**      | Type of event, depending on the category; options include:<br> - **`'USER_RECORD_CREATED'`**,<br> - **`'USER_RECORD_CHANGED'`**,<br> -  **`'USER_RECORD_DELETED'`**, <br> - **`'USER_ACTION_PERFORMED'`**, <br> - **`'SCRIPT_RECORD_CREATED'`**, <br> - **`'SCRIPT_RECORD_CHANGED'`**, <br> - **`'SCRIPT_RECORD_DELETED'`**, <br> - **`'SCRIPT_ACTION_PERFORMED'`**, <br> - **`'SYSTEM_CASCADE_UPDATE'`**, and <br> - **`'SYSTEM_REFACTORING'`**. |
 | **`items[].contextPath`**   | Path describing where the change occurred; for example, it specifies which script made the change if it was a script. |
 | **`items[].recordDeleted`** | Indicates if the record has been deleted (true or false). |
@@ -2210,23 +2210,23 @@ GET /data/{entityName}/{id}/history
 ##### Posible errors
 
 | Error code    | HTTP Status Code | Description
-|---------------| -----------------|---
-| badRequest  | 400             | Invalid record ID provided. |
-| forbidden   | 403             | Insufficient permissions to view the history of records for the entity.|
+|---------------| -----------------|----------------------------------------------------------------------------------------------------------------------------------------------
+| badRequest  | 400             | Invalid record ID provided.                                                                                                                  |
+| forbidden   | 403             | Insufficient permissions to view the audit logs of records for the entity.                                                                      |
 |  notFound   | 404             | Entity name does not exist. Note that this error may not be returned if the record ID does not exist, as it could refer to a deleted record. |
 
 ##### Samples
 
 ``` js
-// gets the history of a company record
+// gets the audit logs of a company record
 
-GET /data/companies/588f8b99b45fc9000bc1bfc4/history
+GET /data/companies/588f8b99b45fc9000bc1bfc4/auditLogs
 > Accept: application/json
 > token: token
 
 
 
-GET /data/companies/588f8b99b45fc9000bc1bfc4/history
+GET /data/companies/588f8b99b45fc9000bc1bfc4/auditLogs
 < Content-Type: application/json
 
 {
@@ -2312,19 +2312,19 @@ GET /data/companies/588f8b99b45fc9000bc1bfc4/history
 ```
 <br>
 
-#### History in entity
+#### Audit logs in entity
 
 ``` js
-GET /data/{entityName}/history
+GET /data/{entityName}/auditLogs
 ```
 <br>
 
-> Returns the history logs for all records in an entity, which needs to have history logs enabled.
+> Returns the audit logs for all records in an entity, which needs to have audit logs enabled.
 
 ##### Request
 
 ``` js
-GET /data/{entityName}/history
+GET /data/{entityName}/auditLogs
 > Accept: application/json
 > token: token
 ```
@@ -2332,20 +2332,20 @@ GET /data/{entityName}/history
 
 | Parameter                  | Required  | Description |
 | -------------------------- | --------- | ----------- |
-| **`entityName`**           | Yes       | Name of the entity the record belongs to.| 
+| **`entityName`**           | Yes       | Name of the entity the record belongs to.|
 | **`eventTypes`**           | No        |Allows to filter by some specific type of events. You can select many separating them by commas. Possible values are: <br> - **`'USER_RECORD_CREATED'`**,<br> - **`'USER_RECORD_CHANGED'`**,<br> -  **`'USER_RECORD_DELETED'`**, <br> - **`'USER_ACTION_PERFORMED'`**, <br> - **`'SCRIPT_RECORD_CREATED'`**, <br> - **`'SCRIPT_RECORD_CHANGED'`**, <br> - **`'SCRIPT_RECORD_DELETED'`**, <br> - **`'SCRIPT_ACTION_PERFORMED'`**, <br> - **`'SYSTEM_CASCADE_UPDATE'`**, and <br> - **`'SYSTEM_REFACTORING'`**. |
 | **`to`**                   | No        | Allows to filter logs by timestamp. This is the maximum date and you should pass the number of milliseconds since Epoch.
 | **`from`**                 | No        | Allows to filter logs by timestamp. This is the minimum date and you should pass the number of milliseconds since Epoch.
-| **`_size`**                | No        | The number of history records to fetch. Always the latests logs will be retrieved.
-| **`_offset`**              | No        | Specifies an ID of a history log to start fetching logs from. This is to allow pagination.
+| **`_size`**                | No        | The number of audit logs records to fetch. Always the latests logs will be retrieved.
+| **`_offset`**              | No        | Specifies an ID of a audit log to start fetching logs from. This is to allow pagination.
 
 
 ##### Response
 
-The list of history logs for that record, sorted from the newest to the oldest ones.
+The list of audit logs for that record, sorted from the newest to the oldest ones.
 
 ``` js
-GET /data/{entityName}/history
+GET /data/{entityName}/auditLogs
 < Content-Type: application/json
 
 {
@@ -2432,32 +2432,32 @@ GET /data/{entityName}/history
 ```
 <br>
 
-| Path | Description |
-| -------------------|-------------------------------------------------- |
-| **`total`**            | Total number of history logs for the record.                                                                     |
-| **`offset`**           | ID of the latest history log; include it as the **`_offset`** parameter for pagination to retrieve subsequent records. |
-| **`items`**            | History logs. |
+| Path | Description                                                                                                          |
+| -------------------|----------------------------------------------------------------------------------------------------------------------|
+| **`total`**            | Total number of audit logs for the record.                                                                           |
+| **`offset`**           | ID of the latest audit log; include it as the **`_offset`** parameter for pagination to retrieve subsequent records. |
+| **`items`**            | Audit logs.                                                                                                              |
 
 ##### Posible errors
 
 | Error code    | HTTP Status Code | Description
-|---------------| -----------------|---
-| badRequest  | 400             | Invalid query provided. |
-| forbidden   | 403             | Insufficient permissions to view the history of records for the entity.|
-|  notFound   | 404             | Entity name does not exist. |
+|---------------| -----------------|-------------------------------------------------------------------
+| badRequest  | 400             | Invalid query provided.                                           |
+| forbidden   | 403             | Insufficient permissions to view the audit of records for the entity. |
+|  notFound   | 404             | Entity name does not exist.                                       |
 
 ##### Samples
 
 ``` js
-// gets the last two history logs in entity 'companies'
+// gets the last two audit logs in entity 'companies'
 
-GET /data/companies/history?_size=2
+GET /data/companies/auditLogs?_size=2
 > Accept: application/json
 > token: token
 
 
 
-GET /data/companies/history?_size=2
+GET /data/companies/auditLogs?_size=2
 < Content-Type: application/json
 
 {
@@ -2629,7 +2629,7 @@ GET /files/{id}
 
 ``` js
 GET /files/{id}
-> token: 
+> token:
 > : token
 ```
 <br>
@@ -2663,7 +2663,7 @@ notFound|404|The file does not exist.
 // fetches a file
 
 GET /files/588f9f1eb45fc9000bc1c010
-> token: 
+> token:
 > : token
 
 GET /files/588f9f1eb45fc9000bc1c010

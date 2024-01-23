@@ -275,21 +275,21 @@ methods:
       var company = sys.data.findOne('companies', {name: 'Blogpad'});
       company.action('logSomething', {param1: 'a', param2: 'b'});
       log('completed!');
-- name: history
-  summary: Returns an object of type `sys.data.RecordHistoryLogs` to query history logs
+- name: auditLogs
+  summary: Returns an object of type `sys.data.RecordAuditLogs` to query audit logs
   description: |
-    Returns an object of type `sys.data.RecordHistoryLogs` to query history logs.
+    Returns an object of type `sys.data.RecordAuditLogs` to query audit logs.
 
-    See `sys.data.RecordHistoryLogs` for more information on how to query record's history logs.
+    See `sys.data.RecordAuditLogs` for more information on how to query record's audit logs.
   parameters:
-  returnType: sys.data.RecordHistoryLogs
-  returnDescription: An object of type `sys.data.RecordHistoryLogs` to query history logs
+  returnType: sys.data.RecordAuditLogs
+  returnDescription: An object of type `sys.data.RecordAuditLogs` to query audit logs
   throws:
   samples:
   - title: prints who created the record
     code: |
       var company = sys.data.findOne('companies', {name: 'Blogpad'});
-      log('creator: '+company.history().createLog().user());
+      log('creator: '+company.auditLogs().createLog().user());
 - name: toJson
   summary: Converts the record to JSON
   description: |

@@ -18,7 +18,7 @@ Once an entity is created, you can create records within that entity. For instan
 
 An entity defines the following aspects:
 
-- **`Settings`**: These encompass details such as name, label, history logs, indexes, etc.
+- **`Settings`**: These encompass details such as name, label, audit logs, indexes, etc.
 - **`Fields`**: Fields establish the structure of the entity, affecting both the database and the UI.
 - **`Actions`**: Here, you can define the "behavior" or actions associated with the entity.
 - **`Permissions`**: Specify who has access to operations, actions, and fields within the entity.
@@ -98,11 +98,11 @@ Two methods exist to define record labels:
 ##### Samples
 
 ```js
-// builds the label using first and last names 
+// builds the label using first and last names
 return record.field('firstName').val()+' '+record.field('lastName').val();
 ```
 <br>
- 
+
 ---
 
 Modifying the record label definition triggers data refactorings across the entity's records. This also applies to records within entities that possess relationship fields pointing to records in the entity where the label was altered.
@@ -163,12 +163,12 @@ To handle errors effectively, return an array of error objects following this st
 ```js
 [
   {
-    path: 'addressLine', 
+    path: 'addressLine',
     code: 'invalid',
     message: 'This is not a valid US address'
   },{
-    path: 'zipCode', 
-    code: 'invalid', 
+    path: 'zipCode',
+    code: 'invalid',
     message: 'This is not a valid US zip code'
   }
 ]
@@ -191,7 +191,7 @@ if (!app.endpoints.addressValidator.isValidZipCode(zipCode)) {
 return errors;
 ```
 <br>
- 
+
 ---
 ### Lookup fields
 
@@ -206,18 +206,18 @@ This feature enables more detailed logging for various record operations: create
 Activate this feature at the entity level through this setting:
 - **`Enable Detailed Logging`**: Toggle to enable detailed logging for record operations.
 
-### History logs
+### Audit logs
 
 This feature allows you to log changes in records, which is useful for auditing purposes. You can track when a record was created, the different changes made to it over time, as well as the modified fields and people involved in those changes.
 
-When history logs are enabled for an entity, you can query logs for a specific record (or even all records at the same time) using the REST API or the UI. See [History]({{<ref "/dev-reference/rest-apis/apps-api.md#history">}}) for more details.
+When audit logs are enabled for an entity, you can query logs for a specific record (or even all records at the same time) using the REST API or the UI. See [AuditLogs]({{<ref "/dev-reference/rest-apis/apps-api.md#audit-logs">}}) for more details.
 
-Several settings control what gets logged in the history of records:
+Several settings control what gets logged in the audit trail of records:
 
 - **`Logs Expiration`**: Define rules to determine when logs should expire.
-  - **`Delete Policy`**: Indicate what to do with the history of a record when it is deleted.
-    - **`Delete History with Record`**: Delete the history logs when the record is deleted.
-    - **`Keep History`**: Keep the history logs of the record. When this option is selected, specify how long the history logs will be kept (e.g., number of days, weeks, or months).
+  - **`Delete Policy`**: Indicate what to do with the audit logs of a record when it is deleted.
+    - **`Expire When Record Is Deleted`**: Delete the audit logs when the record is deleted.
+    - **`Keep Audit Logs`**: Keep the audit logs of the record. When this option is selected, specify how long the audit logs will be kept (e.g., number of days, weeks, or months).
 - **`User Events`**: Track changes made as a consequence of an external request, such as from the REST API or the UI. These events include:
   - **`Ignore Fields`**: Exclude specific fields from change tracking when changes are made through the REST API or the UI. This can be useful for fields that are updated frequently or contain extensive content.
   - **`Record Created`**: Log the creation of records via the REST API or the UI.
@@ -264,7 +264,7 @@ This flag allows to configure the behavior when data **it’s being generated**.
 
 Fields define what information will be stored in records of the entity.
 
-Slingr allows to have more complex structures than you usually can use in traditional 
+Slingr allows to have more complex structures than you usually can use in traditional
 relational database. For example it is allowed to have multi-valued fields as well as
 nested fields. These features make it is easy to define a more natural model.
 
@@ -277,10 +277,10 @@ For example you might have an entity with this structure:
   - **`addressLine`**
   - **`zipCode`**
   - **`state`**
-  
+
 Each field has a type, which defines which data can be stored there as well as rules and
 display options. [You can check the copied field types here]({{<ref "/dev-reference/field-types/overview.md">}}).
- 
+
 Apart from the type-specific settings, all fields share some common features. For more
 details check [Fields]({{<ref "/dev-reference/data-model-and-logic/fields.md">}}).
 
@@ -338,16 +338,16 @@ status and notify people involved in the task.
 
 There are basically two types of actions:
 
-- **`One record`**: these actions are applied to one record at a time. Even when it is possible to 
-  select many records through the UI or send many IDs on the REST API, this action will be applied 
-  at one record at a time. The action doesn't know how many records are involved, it is only aware 
+- **`One record`**: these actions are applied to one record at a time. Even when it is possible to
+  select many records through the UI or send many IDs on the REST API, this action will be applied
+  at one record at a time. The action doesn't know how many records are involved, it is only aware
   of the record the action is being applied.
-- **`Many records`**: these actions take a query as parameter that defines the selection of records. 
-  This way the action knows all the records involved and it can do something with all of them at 
-  the same time. For example you could have an action to send a summary of many tasks in one email, 
+- **`Many records`**: these actions take a query as parameter that defines the selection of records.
+  This way the action knows all the records involved and it can do something with all of them at
+  the same time. For example you could have an action to send a summary of many tasks in one email,
   which is not possible to do with actions that are executed over individual records.
-  
-For more information about actions, please check the documentation for 
+
+For more information about actions, please check the documentation for
 [Actions]({{<ref "/dev-reference/data-model-and-logic/actions.md">}}).
 
 ## **Record listeners**
@@ -371,7 +371,7 @@ For more information check the documentation of [Listeners]({{<ref "/dev-referen
 ## **Permissions**
 
 Permissions allow to define which operations can be done for each group on records of the entity.
-  
+
 Permissions for an entity can be handled right in the entity definition, but it is just a different view of what you can configure in groups. It is oriented so you can easily configure permissions on the entity for all existing groups.
 
 When a new entity is added, no permissions are added to any group by default.

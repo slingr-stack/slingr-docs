@@ -1,8 +1,8 @@
 verb: GET
-path: /data/{entityName}/history
-summary: Returns the history logs for all records in an entity
+path: /data/{entityName}/auditLogs
+summary: Returns the audit logs for all records in an entity
 description: |
-  Returns the history logs for all records in an entity, which needs to have history logs enabled.
+  Returns the audit logs for all records in an entity, which needs to have audit logs enabled.
 request:
   description:
   headers:
@@ -10,7 +10,7 @@ request:
     - name: entityName
       default:
       required: yes
-      description: Name of the entity the fetch history logs.
+      description: Name of the entity the fetch audit logs.
     - name: eventTypes
       default:
       required: no
@@ -43,16 +43,16 @@ request:
     - name: _size
       default: 20
       required: no
-      description: The number of history records to fetch. Always the latests logs will be retrieved.
+      description: The number of audit logs to fetch. Always the latest logs will be retrieved.
     - name: _offset
       default:
       required: no
-      description: Specifies an ID of a history log to start fetching logs from. This is to allow pagination.
+      description: Specifies an ID of an audit log to start fetching logs from. This is to allow pagination.
   body:
   bodyFields:
 response:
   description: |
-    The list of history logs, sorted from the newest to the oldest ones.
+    The list of audit logs, sorted from the newest to the oldest ones.
   headers:
   body: |
     {
@@ -138,13 +138,13 @@ response:
     }
   bodyFields:
     - path: total
-      description: The total number of history logs matched by the query.
+      description: The total number of audit logs matched by the query.
     - path: offset
       description: |
-        The ID of the latest history log, which needs to be sent in the `_offset` parameter to get the following
+        The ID of the latest audit log, which needs to be sent in the `_offset` parameter to get the following
         records when using pagination.
     - path: items
-      description: The history logs. Please check the documentation for [History for one record](#history-for-one-record).
+      description: The audit logs. Please check the documentation for [Audit logs for one record](#audit-logs-for-one-record).
 errors:
   - code: badRequest
     status: 400
@@ -153,15 +153,15 @@ errors:
   - code: forbidden
     status: 403
     description: |
-      You don't have permissions to see history of records for the entity.
+      You don't have permissions to see audit logs of records for the entity.
   - code: notFound
     status: 404
     description: |
       The entity name does not exist.
 samples:
-  - title: gets the last two history logs in entity 'companies'
+  - title: gets the last two audit logs in entity 'companies'
     description:
-    path: /data/companies/history?_size=2
+    path: /data/companies/auditLogs?_size=2
     request:
       body:
     response:
