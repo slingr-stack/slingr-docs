@@ -75,12 +75,12 @@ app keeps working, and vice versa. If events happened in the middle, operations 
 so no events are lost.
 
 If you no longer need an legacy service, you can remove it from the app builder, and the legacy service will be
-deleted when changes are pushed. Remember to manually delete usages of an legacy service in scripts if you are going 
+deleted when changes are pushed. Remember to manually delete usages of an legacy service in scripts if you are going
 to delete it.
 
 ## **Create your own legacy services**
 
 Finally, it is possible to create your own legacy services to extend what the platform can do and connect
-to other services that aren't included in the official legacy services. [Learn more about that 
-here]({{<ref "/extending/extending-platform/create_your_own.md" >}}).
+to other services that aren't included in the official legacy services. [Learn more about that
+here]({{<ref "/extending/extensions/extending-platform/create_your_own.md" >}}).
 

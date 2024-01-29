@@ -48,7 +48,7 @@ The **`endpoint.json`** file has at least two fields to update:
 - **`label`**: This is a user-friendly endpoint name.
 - **`name`**: This is the internal endpoint name used for registration in Slingr.
 
-For other settings, refer to the [Endpoint Features documentation]({{<ref "/extending/extending-platform/common.md" >}}).
+For other settings, refer to the [Endpoint Features documentation]({{<ref "/extending/extensions/extending-platform/common.md" >}}).
 
 ### Main class name
 
@@ -78,7 +78,7 @@ To define individual variables, follow this syntax within the class annotated wi
 @SlingrEndpoint(name = "name")
 public class SkeletonEndpoint extends Endpoint {
     @EndpointProperty
-    private String token;    
+    private String token;
 }
 ```
 <br>
@@ -92,13 +92,13 @@ Additionally, you have the option to utilize the **`@EndpointConfiguration`** an
 public class SkeletonEndpoint extends Endpoint {
     @EndpointConfiguration
     private Json config;
-    
+
     @Override
     public void endpointStarted() {
         logger.info(String.format("Domain [%s]", config.string("domain")));
-    }    
+    }
 }
-``` 
+```
 <br>
 
 ### Hooks
@@ -144,7 +144,7 @@ To implement a function defined in the **`endpoint.json`** file, employ the **`@
 ```java
 @SlingrEndpoint(name = "sample")
 public class SampleEndpoint extends Endpoint {
-    
+
     @EndpointFunction(name = "randomNumber")
     public Json generateRandomNumber(Json data){
         Json res = Json.map();
@@ -155,9 +155,9 @@ public class SampleEndpoint extends Endpoint {
         }
         return res;
     }
-    
+
 }
-``` 
+```
 <br>
 
 Upon usage, your function will receive a **`Json`** argument containing the parameters sent to the function. Your function is expected to return a **`Json`** object as the response.
@@ -169,13 +169,13 @@ Utilize the **`Events`** interface to dispatch events to the app, which can be a
 ```java
 @SlingrEndpoint(name = "sample")
 public class SampleEndpoint extends Endpoint {
-    
+
     @EndpointWebService(methods = {RestMethod.POST})
     private WebServiceResponse inboundEvent(WebServiceRequest request) {
         events().send("inboundEvent", Json.map().set("data", request.getJsonBody()));
         return new WebServiceResponse();
     }
-    
+
 }
 ```
 <br>
@@ -187,7 +187,7 @@ When dispatching events using **`send()`**, it's important to note that the proc
 ```java
 @SlingrEndpoint(name = "sample")
 public class SampleEndpoint extends Endpoint {
-    
+
     @EndpointWebService(methods = {RestMethod.POST})
     private WebServiceResponse inboundEvent(WebServiceRequest request) {
         Object res = events().sendSync("inboundEvent", Json.map().set("data", request.getJsonBody()));
@@ -196,7 +196,7 @@ public class SampleEndpoint extends Endpoint {
     }
 
 }
-``` 
+```
 <br>
 
 Remember that, in this scenario, to obtain a response, the listener in the app should utilize the keyword **`return`** to send back the desired response.
@@ -211,7 +211,7 @@ public class SampleEndpoint extends Endpoint {
 
     @EndpointDataStore(name = "test_data_store")
     private DataStore dataStore;
-    
+
     @EndpointWebService(methods = {RestMethod.POST})
     private WebServiceResponse processItems(WebServiceRequest request) {
         Json body = request.getJsonBody();
@@ -226,7 +226,7 @@ public class SampleEndpoint extends Endpoint {
     }
 
 }
-``` 
+```
 
 ### Webhooks
 
@@ -235,7 +235,7 @@ To enable your endpoint to receive HTTP calls, you can achieve this effortlessly
 ```java
 @SlingrEndpoint(name = "sample")
 public class SampleEndpoint extends Endpoint {
-    
+
     @EndpointWebService(methods = {RestMethod.POST})
     private WebServiceResponse genericCommand(WebServiceRequest request) {
         // do something with the res
@@ -273,7 +273,7 @@ It is possible to upload and download files to/from the app using the utilities 
 ```java
 @SlingrEndpoint(name = "sample")
 public class SampleEndpoint extends Endpoint {
-    
+
     @ApplicationLogger
     private AppLogs appLogger;
 
@@ -300,7 +300,7 @@ It is possible to send logs to the app from your endpoint using the **`AppLogs`*
 ```java
 @SlingrEndpoint(name = "sample")
 public class SampleEndpoint extends Endpoint {
-    
+
     @ApplicationLogger
     private AppLogs appLogger;
 
@@ -326,7 +326,7 @@ In addition to sending a message, you have the option to include supplementary i
 
 ## **Setting up a proxy endpoint**
 
-Before proceeding to run your endpoint locally, it's essential to configure a proxy endpoint in the app you intend to use for testing your endpoint's development. Further details about this can be found in the guide: [Create your own endpoints]({{<ref "/extending/extending-platform/create_your_own.md" >}}).
+Before proceeding to run your endpoint locally, it's essential to configure a proxy endpoint in the app you intend to use for testing your endpoint's development. Further details about this can be found in the guide: [Create your own endpoints]({{<ref "/extending/extensions/extending-platform/create_your_own.md" >}}).
 
 Upon adding a new **`Proxy endpoint`** to your app, you will be prompted to provide the **`Endpoint URI`** in the configuration. We recommend employing [ngrok](https://ngrok.com/) as an alternative to opening a port on your router. With **`ngrok`**, you can establish a URI as follows:
 
@@ -374,7 +374,7 @@ _webservices_port=10000
 _endpoints_services_api=https://yourtestapp.slingrs.io/dev/endpoints/proxy/api
 _token=91833a8b-929f-4eab-b7b4-2383c10cd629
 _endpoint_config={"token":"123456"}
-``` 
+```
 <br>
 
 If you prefer, an alternative approach is to utilize a separate file if you wish to avoid committing sensitive credentials to your repository. We typically employ **`endpoint_proxy.properties`** for this purpose, which is already included in the **`.gitignore`** of the skeleton endpoint. You can provide this file as an argument when executing your endpoint. Consequently, this configuration will be utilized when your endpoint runs with the proxy.
@@ -414,13 +414,13 @@ NWith your endpoint operational and the proxy endpoint established, let's perfor
 ```js
 var res = app.endpoints.proxy.randomNumber({});
 log('res: '+JSON.stringify(res));
-``` 
+```
 <br>
 
 You should see an output like this:
 
 ```
-res: {"number":5560} 
+res: {"number":5560}
 ```
 <br>
 We are making the assumption that you are utilizing the skeleton endpoint template, which includes the availability of this method. Alternatively, if you're not using the skeleton template, ensure that you call a method that exists within your own endpoint.

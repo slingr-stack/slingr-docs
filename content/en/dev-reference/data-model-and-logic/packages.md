@@ -12,7 +12,7 @@ toc: true
 weight: 29
 ---
 
-Packages are a convenient way to import a set of metadata into your application. Their primary purpose is to streamline the implementation of predefined functionalities, saving developers a significant amount of time.
+Packages are a convenient way to import a set of metadata into your application. In simpler words, a way to import a set of prebuilt functionalities. Their primary purpose is to streamline the implementation of predefined functionalities, saving developers a significant amount of time.
 
 The most common use cases for packages include importing utility libraries to perform common operations and connecting your application with external services by sending, receiving, and fetching data via their APIs. Packages contain all the logic necessary for utilizing an HTTP service and consuming these external APIs. For instance, there are packages available for Slack, Google Contacts, Google Calendar, and other popular cloud services, allowing your application to seamlessly leverage the features offered by these apps.
 
