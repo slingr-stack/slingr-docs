@@ -417,6 +417,37 @@ Options:
 - `allowCustom`: indicates that a placeholder can be set as value, creating an input next right to buttons to select
   it. This is important if the value of this field might need to change between different environments of your app.
 
+### Configuration builder
+
+You need to pass the path of a js file that contains the configuration builder script.
+
+For the cases where we have dependencies on other packages that also needs to be configured, we can pass the configuration from parent pkg to child pkg with this script.
+This way the app developer will configure the packages in one place. For example, if you are developing a package for google-contacts that will
+use the `oauth` package as a dependency. You will configure the `oauthCallback` property the Google contacts packages. With the configuration builder
+you will be able to pass that value to the `oauth` package that is imported in the dependencies.
+
+The script of this file must contain function called `configurationBuilder` with a parameter config that should be returned.
+In this parameter of the function you will have the parent configuration, and you can configure the child dependency. In this example we
+are configuring the `oauth` pkg that is a dependency of our pkg.
+
+```javascript
+let configurationBuilder = function (config) {
+    config.oauth = {
+        id: 'installationInfo-GooglContacts-User-'+sys.context.getCurrentUserRecord().id(),
+        authUrl: config.authUrl,
+        accessTokenUrl: config.accessTokenUrl,
+        clientId: config.clientId,
+        clientSecret: config.clientSecret,
+        oauthCallback: config.oauthCallback
+    }
+    return config;
+}
+```
+
+
+You can see that in this script we can use the js methods of slingr and that we can use the context of the application. Also, values of parent configurations can be manipulated before setting the children's configurations.
+In the provided example, the id of the oauth package is then used to store the tokens of users encrypted in data stores.
+
 ### Metadata
 
 In the descriptor file we must define the metadata we want to include in the package. The structure would be:
