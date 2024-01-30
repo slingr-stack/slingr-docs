@@ -48,7 +48,7 @@ The **`endpoint.json`** file has at least two fields to update:
 - **`label`**: This is a user-friendly endpoint name.
 - **`name`**: This is the internal endpoint name used for registration in Slingr.
 
-For other settings, refer to the [Endpoint Features documentation]({{<ref "/extending/extensions/extending-platform/common.md" >}}).
+For other settings, refer to the [Endpoint Features documentation]({{<ref "/extending/extending-platform/common.md" >}}).
 
 ### Main class name
 
@@ -326,7 +326,7 @@ In addition to sending a message, you have the option to include supplementary i
 
 ## **Setting up a proxy endpoint**
 
-Before proceeding to run your endpoint locally, it's essential to configure a proxy endpoint in the app you intend to use for testing your endpoint's development. Further details about this can be found in the guide: [Create your own endpoints]({{<ref "/extending/extensions/extending-platform/create_your_own.md" >}}).
+Before proceeding to run your endpoint locally, it's essential to configure a proxy endpoint in the app you intend to use for testing your endpoint's development. Further details about this can be found in the guide: [Create your own endpoints]({{<ref "/extending/extending-platform/create_your_own.md" >}}).
 
 Upon adding a new **`Proxy endpoint`** to your app, you will be prompted to provide the **`Endpoint URI`** in the configuration. We recommend employing [ngrok](https://ngrok.com/) as an alternative to opening a port on your router. With **`ngrok`**, you can establish a URI as follows:
 

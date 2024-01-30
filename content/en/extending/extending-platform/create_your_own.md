@@ -24,8 +24,8 @@ The process of creating a new endpoint involves three fundamental steps:
 
 To get started, you need to create a new endpoint. We recommend following one of these guides based on your preferred programming language:
 
-- [Java SDK]({{<ref "/extending/extensions/extending-platform/java-sdk.md" >}})
-- [Node SDK]({{<ref "/extending/extensions/extending-platform/node-sdk.md" >}})
+- [Java SDK]({{<ref "/extending/extending-platform/java-sdk.md" >}})
+- [Node SDK]({{<ref "/extending/extending-platform/node-sdk.md" >}})
 
 ## **Testing via proxy endpoint**
 
@@ -51,7 +51,7 @@ The proxy endpoint serves the following purposes:
 
 This setup enables you to run and test your endpoint locally, facilitate debugging, and observe its behavior within your app ecosystem, all without any additional requirements.
 
-For a comprehensive understanding of the proxy endpoint's functionality, refer to the [documentation page]({{<ref "/extending/extensions/extending-platform/proxy-endpoint.md" >}}).
+For a comprehensive understanding of the proxy endpoint's functionality, refer to the [documentation page]({{<ref "/extending/extending-platform/proxy-endpoint.md" >}}).
 
 ## **Endpoint registration**
 
@@ -84,9 +84,9 @@ Please note that endpoints cannot be deleted; however, you can disable them, pre
 
 To summarize, here's what you need to start developing your endpoint:
 
-1. Begin by creating your local endpoint using either the [Java SDK]({{<ref "/extending/extensions/extending-platform/java-sdk.md" >}}) or the [Node SDK]({{<ref "/extending/extensions/extending-platform/node-sdk.md" >}}).
+1. Begin by creating your local endpoint using either the [Java SDK]({{<ref "/extending/extending-platform/java-sdk.md" >}}) or the [Node SDK]({{<ref "/extending/extending-platform/node-sdk.md" >}}).
 2. Next, create a proxy endpoint in your app.
 3. Configure the proxy endpoint to connect both to your local endpoint and vice versa.
-4. Develop, utilize, and test your endpoint within your app! Explore the available options for your endpoints [here]({{<ref "/extending/extensions/extending-platform/common.md" >}}).
+4. Develop, utilize, and test your endpoint within your app! Explore the available options for your endpoints [here]({{<ref "/extending/extending-platform/common.md" >}}).
 5. Once it's functioning effectively, register it and generate a version of your endpoint.
 6. Integrate your endpoint into your apps!

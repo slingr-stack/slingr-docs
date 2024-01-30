@@ -7,7 +7,7 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "extensions"
+    parent: "extending"
 toc: true
 weight: 13
 ---

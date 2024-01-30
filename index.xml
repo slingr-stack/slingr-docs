@@ -8,45 +8,53 @@
     <language>en-US</language>
     <copyright>Copyright (c) 2020-2021 Henk Verlinde</copyright>
     <lastBuildDate>Tue, 06 Oct 2020 08:47:36 +0000</lastBuildDate>
-    
+
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+
+
     <item>
       <title>Get</title>
       <link>/getting-started/</link>
       <pubDate>Tue, 06 Oct 2020 08:48:45 +0000</pubDate>
-      
+
       <guid>/getting-started/</guid>
       <description></description>
     </item>
-    
+
     <item>
       <title>Developer&#39;s reference</title>
       <link>/dev-reference/</link>
       <pubDate>Tue, 06 Oct 2020 08:48:45 +0000</pubDate>
-      
+
       <guid>/dev-reference/</guid>
       <description></description>
     </item>
-    
+
     <item>
       <title>Extending the platform</title>
       <link>/extending/</link>
       <pubDate>Tue, 06 Oct 2020 08:48:45 +0000</pubDate>
-      
+
       <guid>/extending/</guid>
       <description></description>
     </item>
-    
+
     <item>
       <title>Platform reference</title>
       <link>/platform-ref/</link>
       <pubDate>Tue, 06 Oct 2020 08:48:45 +0000</pubDate>
-      
+
       <guid>/platform-ref/</guid>
       <description></description>
     </item>
-    
+
+    <item>
+      <title>Extensions</title>
+      <link>/extensions/</link>
+      <pubDate>Tue, 06 Oct 2020 08:48:45 +0000</pubDate>
+
+      <guid>/extensions/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

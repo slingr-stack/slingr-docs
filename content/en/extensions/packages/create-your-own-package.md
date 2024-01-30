@@ -26,7 +26,7 @@ The process of creating a new endpoint involves three fundamental steps:
 ## Package creation
 
 The first thing you will need to do is creating a git-hub repo that will contain the new package data. We recommend you start the package creation by making a fork of the [skeleton-package](https://github.com/slingr-stack/sample-endpoint)  that contains a basic structure of a package already implemented.
-and that you follow this [guide]({{<ref "/extending/extensions/packages/packages_features.md">}}).
+and that you follow this [guide].
 
 ## Package registration
 

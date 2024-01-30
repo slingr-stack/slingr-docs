@@ -82,5 +82,5 @@ to delete it.
 
 Finally, it is possible to create your own legacy services to extend what the platform can do and connect
 to other services that aren't included in the official legacy services. [Learn more about that
-here]({{<ref "/extending/extensions/extending-platform/create_your_own.md" >}}).
+here]({{<ref "/extending/extending-platform/create_your_own.md" >}}).
 
