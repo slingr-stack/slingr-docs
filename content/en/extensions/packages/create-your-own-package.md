@@ -44,8 +44,8 @@ When registering a new package, provide the following information:
 
 When a new package is registered, it is associated with the developer who registered it. However, it is possible to transfer ownership to another account through a tool available in the package edition section.
 
-After registration, you can update available versions in the Developer Portal. Every time a new tag is pushed to the repo, update the versions this way.
-It is not possible to replace versions of packages; for new versions, create new versions.
+After registration, you can update available versions in the Developer Portal. Versions of packages are managed through git tags. The first tag of the repo must point to the master branch of the repo.
+It is not possible to replace versions of packages; for new versions, create new tags/versions.
 
 You can change the icon of the package in the package details. The icon must be in `png` format, size `48x48px.
 
