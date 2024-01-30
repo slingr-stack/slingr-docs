@@ -16,7 +16,7 @@ You have the ability to create your packages and  import them into your apps. Th
 to your apps. This is useful to replicate common business rules in many apps. The most common example is a package that helps to use the http
 service and consume a specific external service.
 
-The process of creating a new endpoint involves three fundamental steps:
+The process of creating a new pacakges involves three fundamental steps:
 
 1. **Package creation**: Design and set up your new package in git-hub repo.
 2. **Package registration**: Register your developed package within the Slingr developer portal.
@@ -25,12 +25,12 @@ The process of creating a new endpoint involves three fundamental steps:
 
 ## Package creation
 
-The first thing you will need to do is creating a git-hub repo that will contain the new package data. We recommend you start the package creation by making a fork of the [skeleton-package](https://github.com/slingr-stack/sample-endpoint)  that contains a basic structure of a package already implemented.
-and that you follow this [guide].
+The first thing you will need to do is creating a git-hub repo that will contain the new package data. We recommend you start the package creation by making a fork of the [skeleton-package](https://github.com/slingr-stack/skeleton-package)
+that contains a basic structure of a package already implemented and check this [document]({{<ref "/extensions/packages/packages-features.md">}}) with all the features of packages you follow this
 
 ## Package registration
 
-Once the package has been implemented, it is required to register it on the platform so it is available to your apps or,
+Once the package has been implemented, it is required that you register it on the platform so it is available to your apps or,
 if you decide so, make it public so other people can also use it.
 
 In the `Developer Portal`, in `Packages` section, developers are able to see the packages they can manage, allowing
