@@ -90,8 +90,8 @@ These are the settings required for each dependency:
 ...
 ```
 
-Events are originated on the package and sent to the app that can process them through listeners. A more detailed
-description of how to process events from packages in found [here]({{<ref "/dev-reference/data-model-and-logic/listeners.md#package-event-listeners">}}).
+Events originate from the package and are sent to the app, which can process them through listeners.
+For a more detailed description of how to process events from packages, refer to the documentation [here]({{<ref "/dev-reference/data-model-and-logic/listeners.md#package-event-listeners">}}).
 
 The definition of the events just contains a few properties. The content of the event is defined by the package and
 the app will receive it as a JSON, but no need to define the structure here.
@@ -419,16 +419,12 @@ Options:
 
 ### Configuration builder
 
-You need to pass the path of a js file that contains the configuration builder script.
+You need to pass the path of a JavaScript file that contains the configuration builder script.
 
-For the cases where we have dependencies on other packages that also needs to be configured, we can pass the configuration from parent pkg to child pkg with this script.
-This way the app developer will configure the packages in one place. For example, if you are developing a package for google-contacts that will
-use the `oauth` package as a dependency. You will configure the `oauthCallback` property the Google contacts packages. With the configuration builder
-you will be able to pass that value to the `oauth` package that is imported in the dependencies.
+In cases where dependencies on other packages require configuration, you can pass the configuration from the parent package to the child package using this script. This allows app developers to configure packages in one central location. For instance, if you're developing a package for
+Google Contacts that relies on the `oauth` package as a dependency, you can configure the `oauthCallback` property in the `Google Contacts package. With the configuration builder, you can then pass that value to the `oauth` package imported as a dependency.
 
-The script of this file must contain function called `configurationBuilder` with a parameter config that should be returned.
-In this parameter of the function you will have the parent configuration, and you can configure the child dependency. In this example we
-are configuring the `oauth` pkg that is a dependency of our pkg.
+The script in this file must contain a function called `configurationBuilder` with a parameter `config` that should be returned. Within this function's parameter, you will have access to the parent configuration, allowing you to configure the child dependency. In the following example, we demonstrate configuring the `oauth` package, which serves as a dependency for our package.
 
 ```javascript
 let configurationBuilder = function (config) {
@@ -445,8 +441,7 @@ let configurationBuilder = function (config) {
 ```
 
 
-You can see that in this script we can use the js methods of slingr and that we can use the context of the application. Also, values of parent configurations can be manipulated before setting the children's configurations.
-In the provided example, the id of the oauth package is then used to store the tokens of users encrypted in data stores.
+In this script, you can utilize Slingr's JavaScript methods and access the application's context. Additionally, you have the flexibility to manipulate values from parent configurations before setting the children's configurations. In the provided example, the ID of the oauth package is used to store encrypted user tokens in data stores.
 
 ### Metadata
 
