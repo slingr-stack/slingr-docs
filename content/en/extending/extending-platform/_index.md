@@ -7,7 +7,7 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "extending-platform"
+    parent: "extending"
 toc: true
 weight: 13
 ---

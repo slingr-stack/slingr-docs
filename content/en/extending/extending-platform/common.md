@@ -25,7 +25,7 @@ weight: 15
   - Scripts
   - Listeners
   - Flow Steps
-  
+
 ```
 
 ## **Descriptor file settings**
@@ -270,7 +270,7 @@ This field type has no options.
 
 Type: **`info`**
 
-This type enables the display of an alert that accommodates the insertion of HTML code. 
+This type enables the display of an alert that accommodates the insertion of HTML code.
 
 ```
 {
@@ -464,7 +464,7 @@ Options:
 - **`color`**: The available values are **`info`**, **`default`**, **`primary`**, **`success`**, **`warning`**, and **`danger`**.
 - **`action`**: This is an expression that will be parsed and executed as a JavaScript function on the client side. Some interesting examples can be found in the official endpoints. For instance, the Google Calendar endpoint uses buttons to trigger the OAuth process.
 
-### Buttons group 
+### Buttons group
 
 Type: **`buttonsGroup`**
 
@@ -504,7 +504,7 @@ Options:
 - **`possibleValues`**: This is an array of elements with **`label`** (text shown as options) and **`name`** (string stored as value). These elements constitute the available options.
 - **`allowCustom`**: Indicates whether a placeholder can be set as a value, creating an input right next to the buttons for selection. This feature is important if the value of this field might need to vary across different environments of your app.
 
-### Drop-down 
+### Drop-down
 
 Type: **`dropDown`**
 
@@ -543,7 +543,7 @@ Options:
 - **`possibleValues`**: This is an array of elements with **`label`** (text shown as options) and **`name`** (string stored as value). These elements constitute the available options.
 - **`allowCustom`**: Indicates whether a placeholder can be set as a value, creating an input next to buttons for selection. This feature is important if the value of this field might need to change between different environments of your app.
 
-### Entity 
+### Entity
 
 Type: **`entity`**
 
@@ -837,7 +837,7 @@ Options:
 
 - **`allowToCreateEntity`**: If set to **`true`**, a **`Create entity`** button will appear, allowing developers to create an entity with the configuration described in the mapper. A popup will be displayed to insert **`label`** and **`name`**. If the process completes successfully, the popup will close, and the configuration will be automatically populated with entity information. This feature greatly speeds up the integration process. For instance, a Google Calendar endpoint could have a mapper for events. Instead of manually creating the entity, users could click on **`Create entity`** to automatically generate the entity and configure it to sync with events in Google Calendar.
   - **WARNING**: If the configuration has dependencies on other fields, such as relationship fields pointing to an entity, and these dependencies are not set at the moment of triggering the create operation, the creation process will fail, showing a validation error.
-  
+
 - **`allowToSelectDirection`**: If set to **`true`**, a button group will be displayed, allowing the selection of one of three possible values:
   - **`App to Endpoint`**: Changes in the app are synchronized to the endpoint.
   - **`Endpoint to App`**: Changes on the endpoint side must be synced to the Slingr app.
@@ -1079,7 +1079,7 @@ Examples for `step.js` file:
 /**
  * Generates a random number.
  *
- * @param {object} inputs {number} bound, This is used to get a random number between 0 (inclusive) and the number 
+ * @param {object} inputs {number} bound, This is used to get a random number between 0 (inclusive) and the number
  * passed in this argument, exclusive.
  */
 step.numberGenerator = function (inputs) {

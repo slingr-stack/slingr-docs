@@ -49,7 +49,7 @@ You can access the endpoint configuration using the following code snippet (alwa
 endpoint.functions.someFunction = (endpointRequest) => {
     const configs = endpoint.endpointConfig;
     //your code...
-} 
+}
 ```
 <br>
 
@@ -87,7 +87,7 @@ endpoint.functions.yourFunctionName = (endpointRequest) => {
     //Your custom code goes here...
     return { someInfo: 'someValue'}
 }
-``` 
+```
 <br>
 
 When implementing an endpoint function, it will receive a request parameter containing the function's parameters along with other relevant information. Remember, it's essential to always return a **`Json`** object as a response.
@@ -125,7 +125,7 @@ The subsequent methods offer access to the various data stores:
 ```js
 endpoints.functions.someFunction = async () => {
     //Find documents by some flter: Filter here is the same as the one in sys.data.find(). eg: {someField: 'someValue'}
-    endpoints.dataStores.someDataStore.find(filter); 
+    endpoints.dataStores.someDataStore.find(filter);
     endpoints.dataStores.someDataStore.findOne(filter);
     //Find document by id:
     endpoints.dataStores.someDataStore.findById('documentId');
@@ -155,7 +155,7 @@ endpoint.webServices.nameForYourWebService = {
     path: '/',
     //As this is an express endpoint, you receive the req, and res objects
     handler: (req, res) => {
-        //Do something... and then return a response to the caller 
+        //Do something... and then return a response to the caller
         res.json({status: 'ok'})
     }
 }
@@ -173,7 +173,7 @@ Upon invoking this URL, the associated handler will be triggered.
 
 {{< callout type="warning" contend="" >}}
 To ensure secure access to your endpoints, it's advisable to incorporate a form of verification, such as a token. This measure helps prevent unauthorized calls to your endpoints.
-{{< /callout >}} 
+{{< /callout >}}
 
 ### File handling
 
@@ -212,7 +212,7 @@ endpoint.functions.uploadFileSyncFromEndpoint = async (endpointRequest) => {
     }
     //And upload it to the platform
     var fileInfo = await endpoint.files.upload('somefile.pdf', downloadResponse.data);
-    //The info is returned to the app synchronously 
+    //The info is returned to the app synchronously
     return fileInfo;
 };
 
@@ -329,7 +329,7 @@ _webservices_port=10000
 _endpoints_services_api=https://yourtestapp.slingrs.io/dev/endpoints/proxy/api
 _token=91833a8b-929f-4eab-b7b4-2383c10cd629
 _endpoint_config={"token":"123456"}
-``` 
+```
 <br>
 
 Please note that the **`.env`** file is only relevant when running the endpoint locally. It doesn't impact the endpoint's behavior when operating in the cloud, as the endpoint configuration is conveyed through a different mechanism.
@@ -360,7 +360,7 @@ or
 ```
 npm start
 ```
-<br> 
+<br>
 
 Alternatively, you have the option to create a personalized start script within the **`package.json`** file.
 
@@ -371,13 +371,13 @@ With your endpoint operational and the proxy endpoint configured, it's prudent t
 ```js
 var res = app.endpoints.proxy.randomNumber({});
 log('res: '+JSON.stringify(res));
-``` 
+```
 <br>
 
 Upon execution, you should observe an output resembling the following:
 
 ```
-res: {"number":5560} 
+res: {"number":5560}
 ```
 <br>
 
