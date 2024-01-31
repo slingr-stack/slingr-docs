@@ -841,7 +841,7 @@ Options:
   - **`App to Service`**: Changes in the app are synchronized to the service.
   - **`Service to App`**: Changes on the service side must be synced to the Slingr app.
   - **`Both`**: If **`allowToSelectDirection`** is **`false`**, the **`defaultDirection`** field is required.
-- **`defaultDirection`**: This field indicates the default synchronization direction. It can be set to **`appTolegacyService`**, **`serviceToApp`**, or **`both`**.
+- **`defaultDirection`**: This field indicates the default synchronization direction. It can be set to **`appToService`**, **`serviceToApp`**, or **`both`**.
 - **`recordNameField`**: Specifies which of the root fields will be used in the entity as the record name. This value is only used when clicking the **`Create entity`** button.
 - **`fields`**: This list includes the fields that can be mapped. Mandatory fields are **`label`**, **`name`**, and **`type`**. The **`multiplicity`** is optional, with a default value of **`one`**.
   - For types **`choice`**, **`relationship`**, and **`nestedFields`**, the **`options`** object is required to specify **`possibleValues`**, **`entity`**, and **`nestedFields`**, respectively.

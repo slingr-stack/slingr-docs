@@ -52,7 +52,7 @@ These can be handled using service listeners so the app can act upon a received 
 
 Services can be added to an app in the app builder, in the **`Model > Services`** section. Here, you can
 set the configuration of services, which basically consists of the type of service, name, and some
-legacy-service-specific settings like API keys, users, passwords, etc.
+service specific settings like API keys, users, passwords, etc.
 
 By default, the latest version of the service will be selected, and if the service is updated, it will always deploy the latest version. If you select a specific version of the service, you can choose the upgrade policy to automatically upgrade to compatible versions or to fix the version you previously selected.
 
