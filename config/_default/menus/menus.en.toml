@@ -62,7 +62,7 @@
 name = "Extensions"
 weight = 60
 identifier = "extensions"
-url = "/extensions/packages/create-your-own-package/"
+url = "/extensions/getting_started/overview/"
 parent = "documentation"
 
 
