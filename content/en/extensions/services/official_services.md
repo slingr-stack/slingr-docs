@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "services"
 toc: true
-weight: 4
+weight: 20
 ---
 
 Here you can find the list of our officially-supported services:

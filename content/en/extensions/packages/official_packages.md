@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "packages"
 toc: true
-weight: 4
+weight: 11
 ---
 
 Here you can find the list of our officially-supported packages:
