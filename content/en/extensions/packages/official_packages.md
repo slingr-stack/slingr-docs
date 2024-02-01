@@ -14,7 +14,7 @@ weight: 11
 
 Here you can find the list of our officially-supported packages:
 
-- [Http](https://github.com/slingr-stack/http-package)
+- [HTTP](https://github.com/slingr-stack/http-package)
 - [OAuth](https://github.com/slingr-stack/oauth-package)
 - [Slingr](https://github.com/slingr-stack/slingr-package)
 - [Utils](https://github.com/slingr-stack/utils-package)
