@@ -46,7 +46,7 @@ _Note: the helper functions can typically be accessed similarly as is the name o
 
 ## Creating a Http Service
 
-1. Once inside, go, according to the App navigation panel, to: **Model -> Services** .
+1. Once inside, go, according to the App navigation panel, to: **Extensions -> Services** .
 
 _Note: as an important improvement, it is no longer necessary to Deploy each endpoint to be able to access the services. If you have an endpoint that connects to an external system you can use the Deploy of a single specialized service._
 
@@ -69,7 +69,7 @@ _Note: if you have a large transaction load and you need a unique and customized
 
 ## Creating a Package
 
-1. From here we can go to the section (of the App navigation) **App -> Packages**.
+1. From here we can go to the section (of the App navigation) **Extensions -> Packages**.
 
 2. Click on the "**MARKETPLACE**" tab.
 
@@ -98,7 +98,7 @@ The calls of the helpers were previously connected from the Javascript API to th
 
 Currently the helpers, which are in the packages, contain all the necessary logic to handle a direct dependency with the Http Service.
 
-_Note: you can see the whole implementation of a package, with its configurations, dependencies, helpers and listeners directly under the tree from the App Navigator: App -> Packages -> pandadoc -> Script | Listeners ._
+_Note: you can see the whole implementation of a package, with its configurations, dependencies, helpers and listeners directly under the tree from the App Navigator: Extensions -> Packages -> pandadoc -> Script | Listeners ._
 
 ![view script](/images/vendor/extensions/view_script.png)
 
@@ -112,7 +112,7 @@ _Note: you can see the whole implementation of a package, with its configuration
 
 5. Verify that it is a script that you can modify.
 
-6. Migrate scripts starting with "**app.endpoint.{endpointName}**" and rename them to "**pkg.{packageName}.{fileNameMain}**" (e.g. "app.endpoint.pandadoc" will change to "pkg.pandadoc.functions").
+6. Migrate scripts starting with "**app.endpoint.{endpointName}**" and rename them to "**pkg.{packageName}.{fileNameMain}**" (e.g. "app.endpoint.pandadoc" will change to "pkg.pandadoc.api").
 
 7. Click on the "**Save**" button.
 
@@ -152,7 +152,7 @@ All Flow Steps must be removed and replaced by a new Step. If the endpoint has b
 
 Once you have completed the above steps, you can delete the endpoint and push changes.
 
-1. You have to go from the App Navigation to **Model -> Endpoints**.
+1. You have to go from the App Navigation to **Model -> Legacy services**.
 
 2. Select your Endpoint
 
