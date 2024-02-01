@@ -22,7 +22,7 @@ Services are crucial components that extend the functionality of the Slingr plat
 
 One of the primary use cases for services is seamless integration with other applications, especially cloud-based services. Slingr offers an official services registry, which houses various services designed to facilitate smooth integration with popular services such as http, proxy pdf, or ftp.
 
-![services overview](/images/vendor/extending/endpoints-overview.png)
+![services overview](/images/vendor/extensions/service-overview.png)
 
 As shown in the diagram above, apps can use the API provided by the service to send messages to another app. For example, it could be a method to request an external service:
 
