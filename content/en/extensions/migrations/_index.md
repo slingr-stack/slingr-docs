@@ -1,5 +1,5 @@
 ---
-title: "Migrations Legacy Service"
+title: "Legacy services migration"
 description: "Here we will describe how to perform the migration task from endpoints to packages and services"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
