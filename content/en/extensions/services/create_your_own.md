@@ -33,7 +33,7 @@ To get started, you need to create a new service. We recommend following one of 
 
 For developing and testing your custom services, there's a dedicated service designed to assist you—the **`Proxy Service`**:
 
-![Service Proxy](/images/vendor/extending/endpoint-proxy.png)
+![Service Proxy](/images/vendor/extensions/service-proxy.png)
 
 When you initiate the creation of a new service in the app builder, you will find the option for the **`Proxy Service`** in the list of available services. This particular service is designed to proxy the one running on your local machine, as depicted in the diagram above.
 
@@ -47,7 +47,7 @@ The proxy service the following purposes:
 
 - When your app invokes a function on the service's API, the proxy service initiates a call to your local service. This local service then processes the request and forwards the response back to the proxy service.
 - Whenever an event occurs in your local service, it is transmitted to the proxy service, which subsequently relays it to your app.
-- Upon loading the metadata of the service (such as the **`service.json`** definition file), the app retrieves this information from your locally running service.
+- Upon loading the metadata of the service (such as the **`appService.json`** definition file), the app retrieves this information from your locally running service.
 
 This setup enables you to run and test your service locally, facilitate debugging, and observe its behavior within your app ecosystem, all without any additional requirements.
 
@@ -62,7 +62,7 @@ Within the **`Developer Portal`** and under the **`Services`** section, develope
 When registering a new service, you'll need to provide the following information:
 
 - **`Label`**: A user-friendly name for the service.
-- **`Name`**: A unique name for the service, which must match the name used in the **`service.json`** definition file. Note that the name cannot be modified later.
+- **`Name`**: A unique name for the service, which must match the name used in the **`appService.json`** definition file. Note that the name cannot be modified later.
 - **`Repository`**: The Git URL of the repository containing the service's code. The repository must be public. If it's private, we currently support only GitHub repositories, and you'll need to grant read access to the user **`slingr-builder`**. The URL should be in **`SSH`** format, like **`git@github.com:workspace_id/repo_name.git`**.
 - **`Folder`**: Optional field for specifying the location of the service within a specific folder.
 - **`Type`**: Choose between **`Java`** and **`Node.js`** to indicate the service's programming language.
