@@ -1,5 +1,5 @@
 ---
-title: "Endpoint migration for apps"
+title: "Legacy service migration for apps"
 description: "Here we will describe how to perform the migration task from endpoints to packages and services for Slingr apps. For App Developers"
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -12,7 +12,7 @@ toc: true
 weight: 14
 ---
 
-Endpoint Migration for Apps
+Legacy Services (Endpoints) for Apps
 
 Technical documentation
 
