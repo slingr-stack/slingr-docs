@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "packages"
 toc: true
-weight: 1
+weight: 2
 ---
 
 You have the capability to create your packages and import them into your apps. Through this, you can easily incorporate prebuilt functionalities into your apps. This is particularly useful for replicating common business rules across multiple apps. A common example is a package that facilitates the use of the HTTP service and the consumption of a specific external service.
