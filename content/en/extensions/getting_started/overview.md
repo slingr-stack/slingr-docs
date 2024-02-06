@@ -12,7 +12,7 @@ toc: true
 weight: 2
 ---
 
-## **What is extensions?**
+## **What are extensions?**
 
 Extensions are crucial for development, materializing through services and packages. These components offer flexibility and effectiveness in extending application capabilities. Developers, when utilizing extensions, can efficiently optimize and customize projects. Acting as foundational blocks, these extensions seamlessly facilitate connections with external APIs, authentication management, and key operations. By encapsulating specific solutions, extensions foster a collaborative and diverse ecosystem, driving continuous innovation and the creation of more robust, personalized solutions. In summary, extensions, supported by services and packages, are fundamental for the creation of modern and adaptable applications.
 
