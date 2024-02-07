@@ -1,5 +1,5 @@
 ---
-title: "Getting Started"
+title: "Legacy services "
 description: "Brief explanation of Slingr and use cases for it."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -7,7 +7,7 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "extending"
+    parent: "migrations"
 toc: true
-weight: 1
+weight: 3
 ---

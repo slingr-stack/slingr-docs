@@ -14,7 +14,7 @@ weight: 18
 ---
 
 ## **Overview**
-This endpoint acts as a proxy for an endpoint running on your local server within the Slingr platform. It's primarily designed for endpoint development. For more details, refer to the ["Create Your Own Endpoint"]({{<ref "/extending/extending-platform/create_your_own.md" >}}) section.
+This endpoint acts as a proxy for an endpoint running on your local server within the Slingr platform. It's primarily designed for endpoint development. For more details, refer to the ["Create Your Own Endpoint"]({{<ref "/extensions/migrations/extending-platform/create_your_own.md" >}}) section.
 
 ## **Configuration**
 
@@ -28,8 +28,8 @@ This token serves as a verification mechanism for validating messages sent to an
 Here is the fundamental configuration that should be applied to your local endpoint. Consult the SDK documentation you're using to find out where this configuration needs to be placed.
 
 ## **Javascript API**
-The Javascript API is determined by the functions and scripts within your endpoint. To understand the range of possibilities, please review the ["Endpoint Features"]({{<ref "/extending/extending-platform/common.md" >}}) section.
+The Javascript API is determined by the functions and scripts within your endpoint. To understand the range of possibilities, please review the ["Endpoint Features"]({{<ref "/extensions/migrations/extending-platform/common.md" >}}) section.
 
 ## **Events**
-Events are specified within your endpoint's configuration file. For more details, refer to the ["Endpoint Features"]({{<ref "/extending/extending-platform/common.md" >}}) section.
+Events are specified within your endpoint's configuration file. For more details, refer to the ["Endpoint Features"]({{<ref "/extensions/migrations/extending-platform/common.md" >}}) section.
 

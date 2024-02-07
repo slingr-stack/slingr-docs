@@ -708,7 +708,7 @@ Allows the developer to define an entity event while configuring the endpoint. T
 ```
 <br>
 
-This events can be used later to define [listeners]({{<ref "/extending/extending-platform/common.md#listeners" >}}).
+This events can be used later to define [listeners]({{<ref "/extensions/migrations/extending-platform/common.md#listeners" >}}).
 
 Options:
 
@@ -1060,11 +1060,11 @@ Flow steps should be defined in the **`flowSteps`** folder of your endpoint, and
 - **`step.js`**: This file should contain the function that will be executed as part of the step. The function must receive a unique object parameter called 'inputs', which contains the function parameters.
 - **`step.json`**: This file should contain the name of the step, along with its inputs and outputs.
 
-After creating these necessary files, you'll need to register your endpoint with a new version. Additional details can be found in the [Endpoint Registration]({{<ref "/extending/extending-platform/create_your_own.md#endpoint-registration" >}}) section.
+After creating these necessary files, you'll need to register your endpoint with a new version. Additional details can be found in the [Endpoint Registration]({{<ref "/extensions/migrations/extending-platform/create_your_own.md#endpoint-registration" >}}) section.
 
 Upon registering the new endpoint version and selecting that new version from the developer portal, the newly defined flow steps will be accessible in the flow editor.
 <div style="width:800px">
-<img src="/images/vendor/extending/endpoint_flow_steps.png" alt="Endpoints steps" style="max-width:880px; border:1px solid grey;"/>
+<img src="/images/vendor/extensions/migrations/endpoint_flow_steps.png" alt="Endpoints steps" style="max-width:880px; border:1px solid grey;"/>
 <br>
 <i>
 Steps available in the flow editor

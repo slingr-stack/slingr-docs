@@ -12,11 +12,9 @@ toc: true
 weight: 23
 ---
 
-Technical documentation
-
 ## Summary
 
-Here we will describe how to perform the migration task from endpoints to packages and services for Slingr apps. For App Developers
+Here we will describe how to perform the migration from a legacy service to packages and services for Slingr apps.
 
 For this example case we will use the application "test1" in its "dev" environment: <https://test1.slingrs.io/dev/builder/> . And the endpoint we will migrate will be "PandaDoc" with version v3.8.4.
 
@@ -45,7 +43,7 @@ _Note: the helper functions can typically be accessed similarly as is the name o
 
 1. Once inside, go, according to the App navigation panel, to: **Extensions -> Services** .
 
-_Note: as an important improvement, it is no longer necessary to Deploy each endpoint to be able to access the services. If you have an endpoint that connects to an external system you can use the Deploy of a single specialized service._
+_Note: as an important improvement, it is no longer necessary to have an especific instance deployed to access an external service. If all your endpoints made http request you can replace them with just one http service.
 
 Here we are going to create the service "http" (only if it doesn't exist, you don't need more than one) which allows us to centralize all the calls that use this protocol and use this single component to make external calls.
 
@@ -53,7 +51,7 @@ Here we are going to create the service "http" (only if it doesn't exist, you do
 
 As already specified you can use a single instance of this component to replace all the endpoints that use this protocol, you can even use the same component for different apps.
 
-3. You can select "**Instance type**" as "**Shared**". Here for most endpoints you will not need any further configuration.
+3. You can select "**Instance type**" as "**Shared**" or "**dedicated**". If shared is selected you will be using a shared http service with other apps. The shared http service is free but keep in mind that this may affect the app performance as it is also used by other apps.
 
 4. So you can confirm the creation by clicking on the “**+ Create**” button.
 
@@ -91,13 +89,17 @@ _Note: As you can notice the configuration of the package is very similar to the
 
 ### Calls to Helpers/Scripts
 
-The calls of the helpers were previously connected from the Javascript API to the Endpoint that had been created.
+Before, app calls to endpoints were done through helpers provided by the endpoint.
 
-Currently the helpers, which are in the packages, contain all the necessary logic to handle a direct dependency with the Http Service.
+Currently, endpoints helpers are replaced by script libraries from the package. They contain all the necessary logic to perform all the HTTP requests methods through the service. Also, they contain methods that help the developer to consume the external service.
+
+The authentication is managed by the package. Some packages may include some methods related to specific authentications flows, like OAuth 2.0.
 
 _Note: you can see the whole implementation of a package, with its configurations, dependencies, helpers and listeners directly under the tree from the App Navigator: Extensions -> Packages -> pandadoc -> Script | Listeners ._
 
 ![view script](/images/vendor/extensions/view_script.png)
+
+#### Migration tip:
 
 1. Go to the panel on the right, to the **App explorer & help**.
 
@@ -109,7 +111,7 @@ _Note: you can see the whole implementation of a package, with its configuration
 
 5. Verify that it is a script that you can modify.
 
-6. Migrate scripts starting with "**app.endpoint.{endpointName}**" and rename them to "**pkg.{packageName}.{fileNameMain}**" (e.g. "app.endpoint.pandadoc" will change to "pkg.pandadoc.api").
+6. Migrate the script to use a package method (e.g. "app.endpoint.pandadoc.get" will change to "pkg.pandadoc.api.get").
 
 7. Click on the "**Save**" button.
 
@@ -119,7 +121,7 @@ _Note: you can see the whole implementation of a package, with its configuration
 
 ### Listeners
 
-Package listeners are created automatically if they are included in the repository and version installed, if not or if you have custom listeners then proceed with the following steps.
+If you have listeners that are listening to endpoints events then proceed with the following steps.
 
 1. Go from the App Navigation to **Model -> Listeners -> Endpoint**.
 
@@ -127,7 +129,8 @@ Package listeners are created automatically if they are included in the reposito
 
 3. Creates a new listener for each event used:
 
-   1. If it is an event that comes from the external service, create an event of type "**Service**" here you will use the webhook provided by the Http Service and wait for it in the specialized URI for your Package.
+   1. Packages may include a listener that will process webhooks that arrive to the http service, do some processing, like webhook verification and trigger a package event that you can listen to. You can have a  “**Package**” listener  for this
+   2. Also you can create a listener of type "**Service**", listen to the http service and add a condition that filters webhooks by the package path. For example, `/pandadoc.
 
 2. If it is an internal event to your application that does not wait for external system calls, create a listener of type “**Package**”.
 

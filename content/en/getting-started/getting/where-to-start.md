@@ -15,7 +15,7 @@ toc: true
 
 Welcome to Slingr! On this page, we will guide you through the process of getting started with our platform.
 
-First of all, you might be wondering, what exactly is Slingr? Slingr is a cloud app creation platform that seamlessly integrates with other SaaS solutions available. You can learn more about Slingr [here]({{<ref "what_is_slingr.md" >}}). Additionally, if you want to understand how our platform works, you can take a look [here]({{<ref "/extending/getting_started/overview.md" >}}).
+First of all, you might be wondering, what exactly is Slingr? Slingr is a cloud app creation platform that seamlessly integrates with other SaaS solutions available. You can learn more about Slingr [here]({{<ref "what_is_slingr.md" >}}). Additionally, if you want to understand how our platform works, you can take a look [here]({{<ref "/extensions/migrations/overview.md" >}}).
 
 Once you have a better understanding of what Slingr is, the next step is to create a developer account. By doing so, you can begin creating apps and experimenting with our platform, which is the best way to learn how to use it. To create a developer account, simply visit the [Developer Portal sign-up page](https://developer-portal.slingrs.io/signUp.html).
 

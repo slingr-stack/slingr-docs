@@ -14,7 +14,7 @@ weight: 2
 
 ## **What are legacy services?**
 
-Endpoints are crucial components that extend the functionality of the Slingr platform.
+Legacy services, formerly called endpoints, are crucial components that extend the functionality of the Slingr platform.
 
 👉 An legacy service is essentially a piece of software that operates alongside your app, providing additional features and capabilities.  For instance, you can implement an legacy service that offers cryptographic algorithms, enabling your app to utilize them securely.
 
@@ -22,7 +22,7 @@ Endpoints are crucial components that extend the functionality of the Slingr pla
 
 One of the primary use cases for legacy services is seamless integration with other applications, especially cloud-based services. Slingr offers an official legacy services registry, which houses various legacy services designed to facilitate smooth integration with popular services such as Slack, Google Calendar, or SparkPost.
 
-![legacy services overview](/images/vendor/extending/endpoints-overview.png)
+![legacy services overview](/images/vendor/extensions/migrations/endpoints-overview.png)
 
 As shown in the diagram above, apps can use the API provided by the legacy service to send messages to
 another app. For example, it could be a method to retrieve available calendars from an external calendar
@@ -82,5 +82,5 @@ to delete it.
 
 Finally, it is possible to create your own legacy services to extend what the platform can do and connect
 to other services that aren't included in the official legacy services. [Learn more about that
-here]({{<ref "/extending/extending-platform/create_your_own.md" >}}).
+here]({{<ref "/extensions/migrations/extending-platform/create_your_own.md" >}}).
 

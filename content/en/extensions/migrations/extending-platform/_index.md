@@ -7,7 +7,7 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "extending"
+    parent: "migrations"
 toc: true
 weight: 13
 ---

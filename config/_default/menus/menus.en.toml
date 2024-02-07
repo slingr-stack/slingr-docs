@@ -53,12 +53,6 @@
   parent = "documentation"
 
 [[main]]
-  name = "Extending the platform"
-  weight = 50
-  identifier = "tutorial"
-  url = "/extending/getting_started/overview/"
-  parent = "documentation"
-[[main]]
 name = "Extensions"
 weight = 60
 identifier = "extensions"
