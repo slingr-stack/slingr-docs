@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "migrations"
 toc: true
-weight: 6
+weight: 50
 ---
 
 ## Summary

@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "migrations"
 toc: true
-weight: 5
+weight: 20
 ---
 
 Here you can find the list of the community legacy services:

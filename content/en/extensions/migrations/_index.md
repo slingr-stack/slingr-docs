@@ -9,5 +9,5 @@ menu:
   docs:
     parent: "packages"
 toc: true
-weight: 22
+weight:
 ---

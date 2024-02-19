@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "extending-platform"
 toc: true
-weight: 4
+weight: 10
 ---
 
 Here you can find the list of our officially-supported legacy services:
