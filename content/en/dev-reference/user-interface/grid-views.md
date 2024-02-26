@@ -109,7 +109,7 @@ The following settings must be configured when this option is enabled:
 
 - **`Rank Field`**: The rank field utilized for sorting records in the list.
 - **`Rank Type`**: Specifies how ranking will be performed. **`Auto`** defers the decision to the platform, permitting records to be moved to any position. Select **`Manual`** to have more control and use a script to define ranking rules. This is beneficial for imposing restrictions or special rules. For example, if issues have dependencies, tasks with dependencies on other tasks cannot be above those dependent tasks. If **`Manual`** is selected, a script must be provided for context:
-  
+
   ##### Parameters
 
   | Name   | Type                | Description |
@@ -302,7 +302,7 @@ If this flag is set, the view for seeing details of records will be presented in
 
 This setting enables you to choose the view for the read-only CRUD action. Available options for selection include read-only record views of the current entity or custom views. If you opt for a **`Custom View`**, a JSON context with information will be conveyed through a **`message event`**. To utilize this information in the custom view, add an event listener in the custom view's main file. Furthermore, when the **`Refresh`** action button is pressed, a message event is triggered to inform the custom view. The custom view can listen for this event and perform an action. This refresh event is also triggered after executing other custom actions.
 
-**Sample of a listener set in a custom view in order to obtain some context information** 
+**Sample of a listener set in a custom view in order to obtain some context information**
 
 ```
 // Logs the context and the event type
@@ -394,7 +394,7 @@ Sub-grids possess the following attributes:
 - **`Condition`**: This permits conditional display of the sub-grid. For instance, you might want to display the orders sub-grid only when the customer is active. Options for conditions are:
   - **`None`**: The sub-grid will always be displayed.
   - **`Expression`**: This defines an expression that the record in the main grid view must satisfy to display the sub-grid.
-  - **`Script`**: This enables you to create a script to determine whether the sub-grid should be displayed. The context for this script is: 
+  - **`Script`**: This enables you to create a script to determine whether the sub-grid should be displayed. The context for this script is:
 
     ##### Parameters
 
@@ -410,7 +410,7 @@ Sub-grids possess the following attributes:
     ##### Samples
 
     ``` javascript
-    // only show contacts if customer is active 
+    // only show contacts if customer is active
     return record.field('state').val() == 'active';
     ```
     <br>
@@ -436,6 +436,7 @@ This option is only available if the entity has global search enabled.
 ### Quick filters
 
 Quick filters provide an effortless way to further filter the collection of records by clicking or unclicking buttons. Refer to [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) for additional information.
+You can have quick filters separately or groups of quick filters. Groups can be configured in order to select only one button within groups. When you click a button of a group, other group buttons are deselected.
 
 ## **Permissions**
 
