@@ -111,12 +111,19 @@ This policy allows you to specify whether copied fields should be automatically 
 
 #### Representation
 
-Determines how the value will be displayed:
+Determines how the value will be rendered:
 
 - **`Drop down`**: A dropdown menu will be employed for selecting the field's value.
 - **`Boxes`**: All records eligible as the field's value will be presented in individual boxes, enabling users to easily select one. It's advisable to use this representation when the number of available options is limited. Note that this representation supports a maximum of 100 records.
-   
+
 In both cases, these representations are applicable only in edit mode.
+
+#### Display value
+
+Determines how the related record will be displayed:
+
+- **`Label`**: The label of the related record is set by its entity configuration.
+- **`Field`**: A field will be used to show the value of a record.
 
 #### Filtering
 
@@ -338,7 +345,7 @@ Or provide a record object:
   ##### Returns
 
   **`string`** - The ID of the referenced record.
-  
+
   ##### Samples
 
   ```js
@@ -357,7 +364,7 @@ Or provide a record object:
   ##### Returns
 
   **`string`** - The label of the referenced record
-  
+
   ##### Samples
 
   ```js
@@ -473,7 +480,7 @@ Or provide a record object:
   **badRequest**
 
   If **`path`** is invalid
-  
+
   ##### Samples
 
   ```js
