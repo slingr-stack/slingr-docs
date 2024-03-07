@@ -151,7 +151,8 @@ Shares a file by returning a public URL for it. This link is valid for an hour.
 Name|Type|Required|Default|Description
 ---|---|---|---|---
 fileId|string|yes|-|ID of the file to be read.|ID of the file to share.
-ttl|number|no|3600000 (1 hour)|Time in milliseconds to expire.
+ttl|number|no|3600000 (1 hour)|Time in milliseconds to expire. **If TTL is set to 0, the URL never expires**.
+
 
 ##### Exceptions
 
