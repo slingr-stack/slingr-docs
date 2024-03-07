@@ -182,6 +182,14 @@ log(publicUrl);
 ```
 <br>
 
+``` javascript
+// prints a public URL for a file that never expires.
+var record = sys.data.findOne('files', {code: 'test'});
+var publicUrl = sys.files.share(record.field('file').id(), 0);
+log(publicUrl);
+```
+<br>
+
 
 ###  unshare(fileId)
 
