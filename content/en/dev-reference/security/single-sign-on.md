@@ -50,6 +50,12 @@ Enabling this option automatically adds an identity provider when a user attempt
 
 ---
 
+
+## **Slingr**
+
+The Slingr identity provider enables users with a custom form to sign in to your application.
+
+In the tree of the builder, on the SSO option, you can see the Slingr identity provider. Inside of that, you have some fields like label, name icon, and type. In the last place, you can see the Sign-up flag. This flag allows to you configure a create view that then will be shown in the Sign-up view in the runtime and the group that the new user will have.
 ## **Google**
 
 The Google identity provider enables users with Google accounts to log in to your application.
