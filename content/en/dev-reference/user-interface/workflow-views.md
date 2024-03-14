@@ -79,7 +79,7 @@ The following settings must be configured when this option is enabled:
 
 - **`Rank Field`**: The rank field utilized for sorting records in the column.
 - **`Rank Type`**: Specifies how ranking will be performed. **`Auto`** defers the decision to the platform, permitting records to be moved to any position. Select **`Manual`** to have more control and use a script to define ranking rules. This is beneficial for imposing restrictions or special rules. For example, if issues have dependencies, tasks with dependencies on other tasks cannot be above those dependent tasks. If **`Manual`** is selected, a script must be provided for context:
-  
+
   ##### Parameters
 
   | Name   | Type                | Description |
@@ -159,7 +159,7 @@ Two methods exist for defining the header:
     ##### Samples
 
     ``` javascript
-    // builds the header using the task number and summary 
+    // builds the header using the task number and summary
     return record.field('number').val() + '. ' + record.field('summary').val();
     ```
     <br>
@@ -186,7 +186,7 @@ Two approaches exist for defining the summary:
     ##### Samples
 
     ``` javascript
-    // builds the summary using different fields 
+    // builds the summary using different fields
     var summary = '';
     if (record.field('description').isEmpty()) {
       summary += 'No description';
@@ -245,7 +245,7 @@ The subsequent options are available for tags:
     ##### Samples
 
     ``` javascript
-    // adds the company state as tag 
+    // adds the company state as tag
     return record.field('company').fetch().field('state').val();
     ```
     <br>
@@ -273,7 +273,7 @@ Alternatively, a script can be employed in place of an expression:
   ##### Samples
 
   ``` javascript
-  // the task will be highlighted if it is urgent 
+  // the task will be highlighted if it is urgent
   return record.field('urgent').val() == true;
   ```
   <br>
@@ -314,7 +314,7 @@ The available options are:
 - **`System Actions Only`**: Only system actions such as **`CRUD`**, **`Import`**, **`Refresh`**, etc., will be displayed.
 - **`None`**: No actions will be available.
 
-In all cases, permissions and preconditions of actions will be verified, potentially resulting in the hiding of certain actions if the 
+In all cases, permissions and preconditions of actions will be verified, potentially resulting in the hiding of certain actions if the
 user lacks the requisite permissions or preconditions are not met.
 
 ### Automatic refresh
@@ -329,7 +329,7 @@ Workflow views support the creation, reading, updating, and deletion of records.
 
 If the entity encompasses child entities, distinct views can be configured for each type of entity. For instance, if Entity A has entities A1 and A2 as its children, creating a record view for A facilitates the configuration of views for entities A1 and A2.
 
-Consequently, a card view for Entity A will display records from A1 and A2. Depending on the type 
+Consequently, a card view for Entity A will display records from A1 and A2. Depending on the type
 of record opened, the corresponding record view will be displayed.
 
 ### Create
@@ -368,7 +368,7 @@ listing as the primary content.
 #### Allow to edit
 
 This action facilitates the editing of records from within the listing. Enabling this option will present an **`Edit`** button within the
-detailed view of a record (which requires the read action to be enabled). Additionally, the **`Edit`** action will be available in 
+detailed view of a record (which requires the read action to be enabled). Additionally, the **`Edit`** action will be available in
 the action column (if enabled).
 
 The configuration of the record view for editing can be accessed by clicking **`Configure View`**. For a comprehensive understanding of record views, consult the [Record Views]({{<ref "/dev-reference/user-interface/record-views.md">}}) documentation.
@@ -398,14 +398,13 @@ For entities with enabled global search, it is possible to activate the **`Allow
 
 ### Quick filters
 
-Quick filters enable effortless card filtering through the simple act of clicking or unclicking buttons.
-
-For more information, consult [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
+Quick filters enable effortless card filtering through the simple act of clicking or unclicking buttons. For more information, consult [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
+You can have quick filters separately or groups of quick filters. Groups can be configured in order to select only one button within groups. When you click a button of a group, other group buttons are deselected.
 
 ## **Permissions**
 
 Permissions determine which groups can access this view.
-  
+
 While permissions for a view can be configured directly within the view definition, it mirrors the capabilities available in group configuration. The objective is to facilitate easy permission configuration for all existing groups.
 
 Upon the creation of a new view, if a group holds permissions for the entity associated with that view, the view will inherently be granted permission for use by that group.

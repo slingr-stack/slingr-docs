@@ -221,7 +221,7 @@ listing as the main content.
 #### Allow editing
 
 This action is used to edit a record from the listing. Enabling this displays an **`Edit`** button in the
-read view of the record (this requires the read action to be enabled), and it also shows the **`Edit`** action in 
+read view of the record (this requires the read action to be enabled), and it also shows the **`Edit`** action in
 the action column (if enabled).
 
 You can configure the record view for editing by clicking on **`Configure view`**. Please refer to the documentation on [Record Views]({{<ref "/dev-reference/user-interface/record-views.md">}}).
@@ -248,14 +248,16 @@ When **`Allow Global Filters`** is enabled, within **`Global Filter Fields`**, a
 ### Quick Filters
 
 Quick filters enable you to further filter the collection of cards easily by clicking/unclicking buttons.
+You can have quick filters separately or groups of quick filters. Groups can be configured in order to select only one button within groups. When you click a button of a group, other group buttons are deselected.
+
 
 ## **Permissions**
 
 Permissions define which groups can access this view.
-  
+
 While permissions for a view can be managed directly in the view definition, they can also be configured within groups. This approach makes it easy to configure permissions for all existing groups specifically on the view.
 
-When a new view is created, if a group has permissions for the entity associated with that view, then the view 
+When a new view is created, if a group has permissions for the entity associated with that view, then the view
 inherits permission to be used for that group.
 
 For more detailed information about permissions, please refer to the [Groups]({{<ref "/dev-reference/security/groups.md">}}) documentation.

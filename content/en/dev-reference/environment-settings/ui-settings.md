@@ -14,7 +14,9 @@ weight: 18
 
 These settings hold a global influence on the app's user interface (UI), impacting its appearance and behavior.
 
-## **Theme**
+## **General**
+
+### Theme
 
 You can select from a range of themes that will alter the styling of the app, including color schemes. Enabling a different theme results in a comprehensive visual update across all app components.
 

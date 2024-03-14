@@ -15,6 +15,13 @@ weight: 158
 The Slingr team regularly updates the platform new features, bug fixes, and improvements. Some of those changes can affect the compatibility with your app.
 It is important that developers pay attention to these changes.
 
+### **Release 443**
+
+#### History logs refactored to Audit logs
+
+- **Developer actions**: histroy logs controllers have been refactored and will use the path /auditLogs. Check the docs here [audit logs]({{<ref "/dev-reference/data-model-and-logic/entities.md#auditLogs">}})
+- **End of the feature**: histroy logs controllers will be permanently removed on **February ,2024** (relese 443).
+
 ### **Release 441**
 
 #### Raw mode in data Javacript API
@@ -22,12 +29,15 @@ It is important that developers pay attention to these changes.
 - **Deletion notice**: `raw` mode in data Javacript API has been removed.
 - **Developer actions**: it requires to refactor usages of `raw` mode in app scripts. The new `lite` mode requires to be used.
 
-#### SLINGR Pro plan is replaced by the Enterprise plan 
+#### SLINGR Pro plan is replaced by the Enterprise plan
 
 Apps with the SLINGR Pro plan are migrated to a new plan called enterprise. This new plan has a simplified way of billing with the format "Pay as you go".
 
-- **Deletion notice**: the SLINGR Pro plan has been removed. 
+- **Deletion notice**: the SLINGR Pro plan has been removed.
 - **Developer actions**: no actions required.
+
+#### Changes in OAuth Redirect URI
+- **Developer actions**: it requires to update the OAuth redirect URI if [Google SSO](/dev-reference/security/single-sign-on/#google) is configured. This action should be taken in [Google Console portal](https://console.cloud.google.com/apis/credentials).
 
 ### **Release 440**
 

@@ -493,7 +493,7 @@ options|object|no|This is a map containing options that can modify the behavior 
 
 ##### Returns
 
-[sys.data.Record](#sysdatarecord) - The saved or updated record. The ID will be set and calculated or default values will be there.
+[sys.data.Record](#sysdatarecord) or **null**- The saved or updated record. The ID will be set and calculated or default values will be there. When using the lite mode, null is returned.
 
 ##### Exceptions
 
@@ -795,10 +795,12 @@ entityName|string|yes|The name of the entity
 queryMap|object|yes|The query map object used to filter records. Check the [Query language documentation]({{<ref "/dev-reference/queries/query-language.md">}}) for the query map version.
 actionName|string|yes|The name of the action to be executed.
 params|object|no|If the action has parameters you should put them here. The format is the same used by the REST API.
+options|object|no|If the action has options you should put them here. For example, use async: false if you don't want it to run in the background.
+
 
 ##### Returns
 
-**`string`** - The ID of the background job responsible for executing the action over all records. To monitor progress (including any errors), you should check the status of the background job.
+**`string`** - The ID of the background job responsible for executing the action over all records. To monitor progress (including any errors), you should check the status of the background job. **If you set async to false, it will not return the ID of the background; instead, it will return the result of the action**
 
 ##### Exceptions
 
@@ -826,7 +828,7 @@ log('completed!');
 
 ###  executeAction(queryBuilder, actionName, body)
 
-Executes an action in the background over the records returned by the query.
+Executes an action in the background or synchronously over the records returned by the query
 
 ##### Parameters
 
@@ -835,10 +837,12 @@ Executes an action in the background over the records returned by the query.
 queryBuilder|[sys.data.Query](#sysdataquery)|yes|The query builder object used to filter records. Check the [Query language documentation]({{<ref "/dev-reference/queries/query-language.md">}}) for the query builder version.
 actionName|string|yes|The name of the action to be executed.
 body|object|no|If the action has parameters you should put them here. The format is the same used by the REST API.
+options|object|no|If the action has options you should put them here. For example, use async: false if you don't want it to run in the background.
+
 
 ##### Returns
 
-**`string`** - The ID of the background job responsible for executing the action over all records. To monitor progress (including any errors), you should check the status of the background job.
+**`string`** - The ID of the background job responsible for executing the action over all records. To monitor progress (including any errors), you should check the status of the background job. **If you set async to false, it will not return the ID of the background; instead, it will return the result of the action**
 
 ##### Exceptions
 
@@ -1674,20 +1678,20 @@ log('completed!');
 ```
 <br>
 
-###  history()
+###  auditLogs()
 
-This function returns an object of type [`sys.data.RecordHistoryLogs`](#sysdatarecordhistorylogs) that allows you to query history logs. For more information on how to query a record's history logs, please refer to [`sys.data.RecordHistoryLogs`](#sysdatarecordhistorylogs).
+This function returns an object of type [`sys.data.RecordAuditLogs`](#sysdatarecordauditlogs) that allows you to query audit logs. For more information on how to query a record's audit logs, please refer to [`sys.data.RecordAuditLogs`](#sysdatarecordauditlogs).
 
 ##### Returns
 
-[sys.data.RecordHistoryLogs](#sysdatarecordhistorylogs)  - An object of type [sys.data.RecordHistoryLogs](#sysdatarecordhistorylogs) to query history logs
+[sys.data.RecordAuditLogs](#sysdatarecordauditlogs)  - An object of type [sys.data.RecordAuditLogs](#sysdatarecordauditlogs) to query audit logs
 
 ##### Samples
 
 ``` javascript
 // prints who created the record
 var company = sys.data.findOne('companies', {name: 'Blogpad'});
-log('creator: '+company.history().createLog().user());
+log('creator: '+company.auditLogs().createLog().user());
 ```
 <br>
 
@@ -2160,7 +2164,7 @@ Iterate over all elements in the list.
 
 | Name  | Type  | Required | Description |
 |---|---|---|---|
-callback|function|yes|The function to that will process all elements. It will receive the element wrapper as parameter and should return **`true`** if the element has to be removed or **`false`** otherwise.
+callback|function|yes|The function to that will process all elements. It will receive two parameters: the wrapper element and the current index of the iteration. In order to stop iteration it is possible to return `false` explicitly.
 
 ##### Exceptions
 
@@ -2375,23 +2379,23 @@ sys.logs.info('param1: '+action.field('param1').val());
 ```
 <br>
 
-## **sys.data.RecordHistoryLogs**
+## **sys.data.RecordAuditLogs**
 
-This class enables the querying of history logs for a record. It's important to note that the feature to log history must be enabled on the entity to which the record belongs.
+This class enables the querying of audit logs for a record. It's important to note that the feature to log audit must be enabled on the entity to which the record belongs.
 
 ###  find(options)
 
-This method finds history logs based on a specified query.
+This method finds audit logs based on a specified query.
 
 ##### Parameters
 
 | Name  | Type  | Required | Description |
 |---|---|---|---|
-options|object|no|This is the query to retrieve history logs. The parameters are as follows:<br> - **`eventType`**: The type of the event. Possible values include: **`USER_RECORD_CREATED`**, **`USER_RECORD_CHANGED`**, **`USER_RECORD_DELETED`**, **`USER_ACTION_PERFORMED`**, **`SCRIPT_RECORD_CREATED`**, **`SCRIPT_RECORD_CHANGED`**, **`SCRIPT_RECORD_DELETED`**, **`SCRIPT_ACTION_PERFORMED`**, **`SYSTEM_CASCADE_UPDATE`**, **`SYSTEM_REFACTORING`**. Multiple types can be specified, separated by commas. <br> - **`from`**: The minimum timestamp in milliseconds since the Epoch. <br> - **`to`**: The maximum timestamp in milliseconds since the Epoch. <br> - **`size`**: The maximum number of logs to retrieve. The default value is 20.<br> - **`offset`**: The offset to use when fetching additional logs for pagination.
+options|object|no|This is the query to retrieve audit logs. The parameters are as follows:<br> - **`eventType`**: The type of the event. Possible values include: **`USER_RECORD_CREATED`**, **`USER_RECORD_CHANGED`**, **`USER_RECORD_DELETED`**, **`USER_ACTION_PERFORMED`**, **`SCRIPT_RECORD_CREATED`**, **`SCRIPT_RECORD_CHANGED`**, **`SCRIPT_RECORD_DELETED`**, **`SCRIPT_ACTION_PERFORMED`**, **`SYSTEM_CASCADE_UPDATE`**, **`SYSTEM_REFACTORING`**. Multiple types can be specified, separated by commas. <br> - **`from`**: The minimum timestamp in milliseconds since the Epoch. <br> - **`to`**: The maximum timestamp in milliseconds since the Epoch. <br> - **`size`**: The maximum number of logs to retrieve. The default value is 20.<br> - **`offset`**: The offset to use when fetching additional logs for pagination.
 
 ##### Returns
 
-[sys.data.RecordHistoryLog](#sysdatarecordhistorylog) - A field object that you can use to read and manipulate the value.
+[sys.data.RecordAuditLog](#sysdatarecordauditlog) - A field object that you can use to read and manipulate the value.
 
 ##### Exceptions
 
@@ -2404,30 +2408,30 @@ If the query is not valid.
 ``` javascript
 // finds changes performed by users and logs the user that did it
 var company = sys.data.findOne('companies', {name: 'Blogpad'});
-var historyLogs = company.history().find({
+var auditLogs = company.auditLogs().find({
   eventType: 'USER_RECORD_CHANGED'
 });
-for (var i = 0; i < historyLogs.length; i++) {
-  var historyLog = historyLogs[i];
-  log('changed by user: '+historyLog.user());
+for (var i = 0; i < auditLogs.length; i++) {
+  var auditLog = auditLogs[i];
+  log('changed by user: '+auditLog.user());
 }
 ```
 <br>
 
 ###  createLog()
 
-Returns the create log of the record. It could be null if history log was not enabled when the record was created.
+Returns the create log of the record. It could be null if audit log was not enabled when the record was created.
 
 ##### Returns
 
-[sys.data.RecordHistoryLog](#sysdatarecordhistorylog) -  The create history log or null if not found.
+[sys.data.RecordAuditLog](#sysdatarecordauditlog) -  The create audit log or null if not found.
 
 ##### Samples
 
 ``` javascript
 // prints who created the record
 var company = sys.data.findOne('companies', {name: 'Blogpad'});
-var createLog = company.history().createLog();
+var createLog = company.auditLogs().createLog();
 if (createLog) {
   log('creator: '+createLog.user());
 }
@@ -2436,75 +2440,75 @@ if (createLog) {
 
 ###  lastModifiedLog()
 
-Returns the last modified log of the record. This value could be **`null`** if the history log was not enabled when the record was last modified or if it has not been modified at all. The type of event associated with this log should be **`USER_RECORD_CHANGE`**. Consequently, if the record was modified by a script or by a system process, it won't be returned.
+Returns the last modified log of the record. This value could be **`null`** if the audit log was not enabled when the record was last modified or if it has not been modified at all. The type of event associated with this log should be **`USER_RECORD_CHANGE`**. Consequently, if the record was modified by a script or by a system process, it won't be returned.
 
 ##### Returns
 
-[sys.data.RecordHistoryLog](#sysdatarecordhistorylog) -  The create history log or **`null`** if not found.
+[sys.data.RecordAuditLog](#sysdatarecordauditlog) -  The create audit log or **`null`** if not found.
 
 ##### Samples
 
 ``` javascript
 // prints who modified the record for the last time
 var company = sys.data.findOne('companies', {name: 'Blogpad'});
-var modifiedLog = company.history().lastModifiedLog();
+var modifiedLog = company.auditLogs().lastModifiedLog();
 if (modifiedLog) {
   log('user last modified: '+modifiedLog.user());
 }
 ```
 <br>
 
-## **sys.data.RecordHistoryLog**
+## **sys.data.RecordAuditLog**
 
-Contains information about a history log of a record.
+Contains information about a audit log of a record.
 
 ###  id()
 
-Returns the ID of the history log
+Returns the ID of the audit log
 
 ##### Returns
 
-**`string`** -  ID of the history log
+**`string`** -  ID of the audit log
 
 ###  timestamp()
 
-Returns the date in which the history log has been recorded.
+Returns the date in which the audit log has been recorded.
 
 ##### Returns
 
-**`string`** -  The date in which the history log has been recorded.
+**`string`** -  The date in which the audit log has been recorded.
 
 ###  eventCategory()
 
-Returns the event category of the history log. It could be **`USER`**, **`SCRIPT`**, or **`SYSTEM`**.
+Returns the event category of the audit log. It could be **`USER`**, **`SCRIPT`**, or **`SYSTEM`**.
 
 ##### Returns
 
-**`string`** -  The event category of the history log.
+**`string`** -  The event category of the audit log.
 
 ###  eventType()
 
-Returns the event type of the history log. Possible values include: **`USER_RECORD_CREATED`**, **`USER_RECORD_CHANGED`**, **`USER_RECORD_DELETED`**, **`USER_ACTION_PERFORMED`**, **`SCRIPT_RECORD_CREATED`**, **`SCRIPT_RECORD_CHANGED`**, **`SCRIPT_RECORD_DELETED`**, **`SCRIPT_ACTION_PERFORMED`**, **`SYSTEM_CASCADE_UPDATE`**, **`SYSTEM_REFACTORING`**
+Returns the event type of the audit log. Possible values include: **`USER_RECORD_CREATED`**, **`USER_RECORD_CHANGED`**, **`USER_RECORD_DELETED`**, **`USER_ACTION_PERFORMED`**, **`SCRIPT_RECORD_CREATED`**, **`SCRIPT_RECORD_CHANGED`**, **`SCRIPT_RECORD_DELETED`**, **`SCRIPT_ACTION_PERFORMED`**, **`SYSTEM_CASCADE_UPDATE`**, **`SYSTEM_REFACTORING`**
 
 ##### Returns
 
-**`string`** -  he event type of the history log.
+**`string`** -  he event type of the audit log.
 
 ###  user()
 
-Returns the email of the user that generated the history log.
+Returns the email of the user that generated the audit log.
 
 ##### Returns
 
-**`string`** -  The email of the user that generated the history log.
+**`string`** -  The email of the user that generated the audit log.
 
 ###  ip()
 
-Returns the IP of the user when the history log was generated.
+Returns the IP of the user when the audit log was generated.
 
 ##### Returns
 
-**`string`** - The IP of the user when the history log was generated.
+**`string`** - The IP of the user when the audit log was generated.
 
 ###  oldRecord()
 

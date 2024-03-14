@@ -4,3 +4,4 @@ docs
 public
 .netlify
 .hugo_build.lock
+.idea/

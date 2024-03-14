@@ -17,7 +17,7 @@ Plugins are components that operate on the client side and enable the expansion 
 
 A common scenario for plugins is facilitating interaction with external applications on the client side. For instance, a Twilio UI plugin could display incoming calls and provide users the ability to answer them.
 
-A comprehensive [list of official plugins can be accessed here]({{<ref "/extending/official-ui-plugins/overview.md">}}).
+A comprehensive [list of official plugins can be accessed here]({{<ref "/extensions/migrations/official-ui-plugins/overview.md">}}).
 
 ## **Configuration**
 

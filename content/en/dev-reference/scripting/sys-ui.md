@@ -391,13 +391,13 @@ sys.ui.sendMessage({
 
 ---
 
-## **Plugin message names**
+## **Ui service message names**
 
 ### anyEvent
 
 ##### Scope
 
-**`plugin:pluginName`**
+**`uiService:uiServiceName`**
 
 ##### Parameters
 
@@ -406,9 +406,9 @@ No parmeters required
 ##### Samples
 
 ``` javascript
-// dispatch `event1` in `sample` plugin
+// dispatch `event1` in `sample` ui service
 sys.ui.sendMessage({
-  scope: 'plugin:sample',
+  scope: 'uiService:sample',
   name: 'event1',
   companyId: record.id(),
   callbacks: {

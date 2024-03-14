@@ -108,7 +108,7 @@ record.field('startDate').val('2016-07-09');
 
 If the value provided is not valid, the field will be **set to null** silently.
 
-### Wrapper ethod: <br> **toMillis()**
+### Wrapper method: <br> **toMillis()**
 
   This method returns the date-time in milliseconds since the Unix Epoch.
 
@@ -148,7 +148,7 @@ If the value provided is not valid, the field will be **set to null** silently.
   **`badRequest`**
 
   If **`pattern`** or **`timeZoneId`** is invalid
-  
+
   ##### Samples
 
   ```js
@@ -159,7 +159,7 @@ If the value provided is not valid, the field will be **set to null** silently.
   <br>
 
   ```js
-  // formats date-time using default display options 
+  // formats date-time using default display options
   var company = sys.data.findOne('companies', {name: 'Blogpad'});
   log('last update millis: '+company.field('lastUpdate').format());
   ```
