@@ -1,6 +1,6 @@
 ---
-title: "Single sign on"
-description: "Explanation of what are identity providers. Description of each supported identity provider."
+title: "Sign Up and Single Sign On"
+description: "Explanation of what are identity providers. Description of each supported identity provider. Description of the App Sign Up."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2023-12-4T13:59:39+01:00
 draft: false
@@ -52,10 +52,61 @@ Enabling this option automatically adds an identity provider when a user attempt
 
 ## **Slingr**
 
-The Slingr identity provider enables users with a custom form to sign in to your application.
+The Slingr identity provider enables users with a custom form to register in your application.
 
-In the tree of the builder, on the SSO option, you can see the Slingr identity provider. Inside of that, you have some fields like label, name icon, and type. In the last place, you can see the Sign-up flag. This flag allows to you configure a create view that then will be shown in the Sign-up view in the runtime and the group that the new user will have.
+In the tree of the builder, on the SSO option, you can see the Slingr identity provider.
+Inside that, you have some fields like label, name icon, and type.
+In the last place, you can see the flag to enable the Sign-Up.
+This flag allows you to configure a Create View,
+that then will be shown in the Sign-Up view in the runtime and the group that the new user will have.
 
+### Form view
+
+This is the reference to a Record View of type Create that is under the entity Users (sys.users).
+
+### Default user group
+
+Any new user created will be automatically assigned to this group as the Primary group.
+
+### Step by step in Custom Sign Up
+
+1. Create under the entity Users a Record View and assign it the type Create.
+2. In the view fields, delete the field Send Welcome Email.
+3. Go to Identity Provider Slingr and configure the created view.
+   * For example, if you want an email to be sent to activate the user and enter a password after activated,
+     * Delete only the field Authorization -> Generate Password.
+     * In the before show event, you configure:
+   ```js
+          record.field('sendWelcomeEmail').val(true);
+          record.field('authentication.generatePassword').val(true);
+    ```
+   * If you do not want an email to be sent and in the registration, and the user enters his password.
+     * Delete only the field Authorization -> Generate Password.
+     * In the before show event, you configure:
+   ```js
+          record.field('sendWelcomeEmail').val(false);
+          record.field('authentication.generatePassword').val(false);
+    ```
+   * If you want the user to register but not activate his account and activate it manually after resetting his password.
+     * Delete only the field Authorization -> Generate Password.
+     * In the before show event, you configure:
+   ```js
+          record.field('sendWelcomeEmail').val(false);
+          record.field('authentication.generatePassword').val(true);
+    ```
+4. After configuring app settings in Slingr and applying the changes,
+a "Sign Up" button will automatically appear on the login page of the app.
+
+![Sign Up access](/images/vendor/event-planner/sign-up/login-signup.png)
+
+5. When you enter the sign-up page of the application, you will see the form with the fields to create a user.
+   **`https://<appName>.slingrs.io/<environment>/runtime/signUp.html`**
+
+![Sign Up form](/images/vendor/event-planner/sign-up/signup-form.png)
+
+<br>
+
+---
 
 ## **Facebook**
 
