@@ -54,11 +54,13 @@ Enabling this option automatically adds an identity provider when a user attempt
 
 The Slingr identity provider enables users with a custom form to register in your application.
 
-In the tree of the builder, on the SSO option, you can see the Slingr identity provider.
-Inside that, you have some fields like label, name icon, and type.
-In the last place, you can see the flag to enable the Sign-Up.
-This flag allows you to configure a Create View,
-that then will be shown in the Sign-Up view in the runtime and the group that the new user will have.
+In the tree of the builder, on the SSO option, you can see the Slingr identity provider. 
+
+![Slingr identity provider](/images/vendor/slingr-identity-provider/builder/slingr-identity-provider-on-list.png)
+
+Inside that, you have some fields like label, name icon, and type. In the last place, you can see the flag to enable the Sign-Up. This flag allows you to configure a Create View, that then will be shown in the Sign-Up view in the runtime and the group that the new user will have.
+
+![Slingr identity provider configuration form](/images/vendor/slingr-identity-provider/builder/slingr-identity-provider-configuration-form.png)
 
 ### Form view
 
