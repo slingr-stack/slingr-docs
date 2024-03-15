@@ -138,7 +138,7 @@ you need them.
 - **`Custom domain`**: By default, your app will be available at **`<appname>.slingrs.io`**; however,
   you can use your domain as well, for example, **`myapp.com`**. To do that, you need to
   own the domain and have a valid SSL certificate. Just click on **`Set your domain`**, and you will
-  be asked to enter the domain and SSL certificate information.
+  be asked to enter the domain and SSL certificate information. Upon creation you will be provided with an external IP to be configured on your domain provider.
 
 There are a few cases that need changes in settings that deserve more attention:
 
