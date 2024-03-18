@@ -17,12 +17,18 @@ It is important that developers pay attention to these changes.
 
 ### **Release 446**
 
+#### Nested views deprecation
+
+- **Change notice**: former nested views will be removed and apps will only have the latest type of nested views.
+- **Developer actions**: deprecated views should be manually replaced with nested collections that point to an existing grid view.
+- **Date of change**: these changes are planned for **June 2024**
+
 #### Measure Unit of time in Javascript API
 
-- **Change notice**: All methods that have time setting options will be updated to receive the parameter in milliseconds.
+- **Change notice**: all methods that have time setting options will be updated to receive the parameter in milliseconds.
 For example, the `ttl` option of the method `sys.data.lock`
 - **Developer actions**: it requires to refactor methods that use another unit of time such as seconds, hours or days in app scripts.
-- **Date of change**: this changes are planned for **April 2024** (Release 447).
+- **Date of change**: these changes are planned for **April 2024** (Release 447).
 
 ### **Release 443**
 
