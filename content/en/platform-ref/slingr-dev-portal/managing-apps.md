@@ -109,8 +109,8 @@ you need them.
   there is a problem, and you should contact support.
 
 - **`Version`**: This is the current version your app is running on. We periodically release new updates
-  to the platform, and we automatically update apps when that's possible. If your app is behind, you
-  will be able to manually trigger an update when you find it more convenient.
+  to the platform, and we automatically update apps when that's possible. You can set the upgrade strategy for your apps.
+  See [Upgrade Strategy](#upgrade-strategy) for more information.
 
 - **`Instances`**: This is the number of runtime instances for this environment. The more instances you
   have, the more requests and work your environment can handle, so this is a good way to scale your
