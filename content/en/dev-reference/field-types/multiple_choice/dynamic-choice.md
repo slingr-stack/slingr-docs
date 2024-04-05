@@ -161,7 +161,7 @@ record.field('state').val(
         "label": "Alabama",
         "name": "AL"
       }, {
-        "label": "Alaska", 
+        "label": "Alaska",
         "name": "AK"
       }, {
         "label": "Arizona",
@@ -197,10 +197,10 @@ record.field('state').options([{
     "label": "Alabama",
     "name": "AL"
   },{
-    "label": "Alaska", 
+    "label": "Alaska",
     "name": "AK"
   },{
-    "label": "Arizona", 
+    "label": "Arizona",
     "name": "AZ"
   }]
 );
@@ -214,7 +214,7 @@ record.field('state').options([{
   ##### Returns
 
   **`string`** -  The label of the current value.
-  
+
   ##### Samples
 
   ```js
@@ -280,29 +280,32 @@ record.field('state').options([{
 
   // this will save the options to be used as possible values:
   record.field('state').options([{
-      "label": "Alabama", 
+      "label": "Alabama",
       "name": "AL"
     },{
-      "label": "Alaska", 
+      "label": "Alaska",
       "name": "AK"
     },{
-      "label": "Arizona", 
+      "label": "Arizona",
       "name": "AZ"
     }
   ]);
   ```
   <br>
-  
+
   ---
 
 ## **Export/Import**
 
 ### Export format
 
-The export format is a string representation of a JSON with the name of the selected value and its possible values as options:
-
+The export format is a string representation of the selected value. For example:
 ```js
+// Dynamic choice configuration
 "{options: [{label: Alabama, name: AL}, {label: Alaska, name: AK},{label: Arizona, name: AZ}], selectedValue: AZ}"
+
+// the export value would be:
+"AZ"
 ```
 <br>
 
