@@ -339,3 +339,12 @@ You can create a clone of your app by clicking the `Clone App` button. This will
 Cloning your apps is useful when you want to test some changes in your app without affecting the original version.
 {{< /notes >}}
 
+## **Upgrade Strategy**
+
+You can change the upgrade strategy of your app by selecting `Stable` or `Latest`. By default every app will be created with a `Stable` upgrade strategy. This means that your app will be running the stable version of the platform. 
+If you want the latest features available you can change by selecting the `Latest` upgrade strategy. Note that this change will be applied instantly and can take a few moments for your environments to redeploy with the new version.
+If you are downgrading from a `Latest` to a `Stable` version, the setting will be saved but not applied until a new release of the platform.
+
+{{< notes type="note" >}}
+Only the app owner can perform this action.
+{{< /notes >}}
