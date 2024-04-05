@@ -548,7 +548,7 @@ For **`Text`** addon type, specifies the text to add to the right side of the in
 
 For **`Icon`** addon type, specifies the icon to add to the right side of the input field.
 
-## **Type display pptions**
+## **Type display options**
 
 In this section, you configure display options specific to the data type. Three methods are available:
 
