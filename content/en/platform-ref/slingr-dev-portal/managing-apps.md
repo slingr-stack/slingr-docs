@@ -339,6 +339,8 @@ You can create a clone of your app by clicking the `Clone App` button. This will
 Cloning your apps is useful when you want to test some changes in your app without affecting the original version.
 {{< /notes >}}
 
+---
+
 ## **Upgrade Strategy**
 
 ![Upgrade Strategy](/images/vendor/platform-ref/managing-apps/upgrade_strategy.png)
