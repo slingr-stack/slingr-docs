@@ -1,5 +1,5 @@
 ---
-title: "Flex record views"
+title: "Overview"
 description: "Detailed explanation of settings available for flex record views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -65,7 +65,7 @@ When enabled, a dynamic listener will be established to facilitate the automatic
 
 This represents the user defined layout of widgets to be displayed in the view.
 
-For further details, consult the documentation on [Flex Designer]({{<ref "/dev-reference/flex-designer/overview">}}).
+For further details, consult the documentation on [View Designer]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/overview">}}).
 
 ## **Events**
 
@@ -170,4 +170,3 @@ Permissions for a view can be managed directly within the view definition. Howev
 When a new view is created, if a group has permissions to access the entity associated with that view, the view automatically inherits permission for use within that group.
 
 For detailed information about permissions, please consult the [Groups]({{<ref "/dev-reference/security/groups.md">}}) documentation.
-

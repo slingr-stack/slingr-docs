@@ -1,5 +1,5 @@
 ---
-title: "Header"
+title: "Alert"
 description: ""
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -9,18 +9,26 @@ menu:
   docs:
     parent: "widgets"
 toc: true
-weight: 82
+weight: 104
 ---
 
-This type of widget represents a **Header block** that can be useful for sectioning or defining dividers. Can be configured along with actions.
+This type of widget represents a **Alert block** that can be useful for showing users a highlighted block. Can be configured along with actions.
 
 ## **Settings**
 
 The available settings are described as below:
 
-### Label
+### Title
 
-This represents the human-readable widget name. It's what appears in the UI when the header is displayed.
+This represents the human-readable widget name. It's what appears in the heading section of the alert when is displayed.
+
+### Body
+
+This is the body content of the alert.
+
+{{< notes type="note">}}
+To enhance the user experience, refrain from composing lengthy texts in the body.
+{{< /notes >}}
 
 ### Name
 
@@ -63,12 +71,22 @@ Indicates the visibility of the widget, can be configured with the following opt
 
 ### Style
 
-- **`Filled background`**: Uses a background.
-- **`Line divider`**: Uses a bottom line divider.
+The emphasis color of the alert.
+
+- Primary
+- Secondary
+- Success
+- Warning
+- Danger
+
+### Dismissible
+
+This option enables the user to close the alert when it's shown.
+- **Default value**: `false`
 
 ### Menu
 
-This options enables to set entity related [actions]({{<ref "/dev-reference/data-model-and-logic/actions">}}) to the header. The available settings are:
+This options enables to set entity related [actions]({{<ref "/dev-reference/data-model-and-logic/actions">}}) to the alert. The available settings are:
 
 - **`All`**: Includes all the actions present in the entity.
 - **`Custom`**: Custom set of actions and groups defined by the developer.
