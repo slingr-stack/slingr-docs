@@ -527,17 +527,18 @@ log('JWT token: ' + tokenJWT);
 ```
 <br>
 
-###  hashHmac(message, secret, algorithm)
+###  hashHmac(message, secret, algorithm, encoding)
 
-This function generates hash signature with Hmac technique.
+This function generates hash signature with Hmac technique. The hash is encoded to a Hexadecimal or a base64 string.
 
 #### Parameters
 
 | Name  | Type  | Required | Description |
-|---|---|---|---|
-message|string|yes|The string to be converted
-secret|string|yes|The private key to sign the token
-algorithm|string|yes|Possible values:  "HmacMD5", "HmacSHA1", "HmacSHA224", "HmacSHA256", "HmacSHA384", "HmacSHA512"
+|---|---|----------|---|
+message|string| yes      |The string to be converted
+secret|string| yes      |The private key to sign the token
+algorithm|string| yes      |Possible values:  "HmacMD5", "HmacSHA1", "HmacSHA224", "HmacSHA256", "HmacSHA384", "HmacSHA512"
+encoding|string| no       | DefaultValue: "HEX", Possible values:  "HEX", "BASE64"
 #### Returns
 
 **`string`** - The result hash as String.
@@ -547,7 +548,10 @@ algorithm|string|yes|Possible values:  "HmacMD5", "HmacSHA1", "HmacSHA224", "Hma
 ``` javascript
 // hash a string
 var convertedMessage = sys.utils.crypto.hashHmac('my custom message', "mySecretKey", "HmacSHA256");
-log('Hmac String : '+convertedMessage);
+log('Hmac hex String : '+convertedMessage);
+
+convertedMessage = sys.utils.crypto.hashHmac('my custom message', "mySecretKey", "HmacSHA256","BASE64");
+log('Hmac base64 String : '+convertedMessage);
 ```
 <br>
 
