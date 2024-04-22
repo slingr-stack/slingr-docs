@@ -546,7 +546,7 @@ algorithm|string|yes|Possible values:  "HmacMD5", "HmacSHA1", "HmacSHA224", "Hma
 
 ``` javascript
 // hash a string
-var convertedMessage = sys.utils.crypto.jwt.hashHmac('my custom message', "mySecretKey", "HmacSHA256");
+var convertedMessage = sys.utils.crypto.hashHmac('my custom message', "mySecretKey", "HmacSHA256");
 log('Hmac String : '+convertedMessage);
 ```
 <br>
