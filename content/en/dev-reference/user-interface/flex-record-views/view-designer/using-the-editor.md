@@ -1,6 +1,6 @@
 ---
 title: "Using the editor"
-description: "This section is a walkthrough on how to create a flex view using the flex designer."
+description: "This section is a walkthrough on how to create a flex view using the view designer."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -9,18 +9,19 @@ menu:
   docs:
     parent: "dev-reference"
 toc: true
-weight: 76
+weight: 78
 ---
 
-Flex Designer is a powerful and user-friendly interface editor designed to streamline the creation of flex record views. The editor is divided into two primary sections: the Toolbox section and the Canvas section. These sections work in tandem to provide a seamless design experience, allowing you to construct complex layouts with ease.
+
+View Designer is a powerful and user-friendly interface editor designed to streamline the creation of flex record views. The editor is divided into two primary sections: the Toolbox section and the Canvas section. These sections work in tandem to provide a seamless design experience, allowing you to construct complex layouts with ease.
 
 ## Toolbox section
 
 The Toolbox section contains all the building blocks needed to create your interface. This section is further divided into two categories:
 
-- **Layout Grid**: Here, you'll find various grid options that serve as the structural foundation for your design. Please refer to [Layout grid]({{<ref "/dev-reference/flex-designer/categories#layout-grid">}}) for more details.
+- **Layout Grid**: Here, you'll find various grid options that serve as the structural foundation for your design. Please refer to [Layout grid]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/categories#layout-grid">}}) for more details.
 
-- **Components**: This is where the functional elements of your interface reside. You can select from a range of widgets. Please refer to [Components]({{<ref "/dev-reference/flex-designer/categories#components">}}) for more details.
+- **Components**: This is where the functional elements of your interface reside. You can select from a range of widgets. Please refer to [Components]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/categories#components">}}) for more details.
 
 Each widget in the Toolbox section can be easily dragged into the Canvas section. Additionally, there's a convenient tab system that allows you to toggle between viewing available widgets and their respective properties of each widget.
 
@@ -33,10 +34,10 @@ As you add widgets to the Canvas, you can rearrange, resize, and nest them withi
 ## Building views
 
 {{< notes type="note">}}
-Please review the [**rules**]({{<ref "/dev-reference/flex-designer/overview#general-rules">}}) of the flex designer to gain a clear understanding on how the editor behaves.
+Please review the [**rules**]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/overview#general-rules">}}) of the view designer to gain a clear understanding on how the editor behaves.
 {{< /notes >}}
 
-To begin using Flex Designer, simply drag a widget from the Toolbox section to the Canvas section. It's that straightforward. The intuitive drag-and-drop interface means there's no steep learning curve, so you can focus on building complex views with no effort.
+To begin using the View Designer, simply drag a widget from the Toolbox section to the Canvas section. It's that straightforward. The intuitive drag-and-drop interface means there's no steep learning curve, so you can focus on building complex views with no effort.
 
 ![Flex editor](/images/vendor/flex-designer/flex-designer.gif)
 

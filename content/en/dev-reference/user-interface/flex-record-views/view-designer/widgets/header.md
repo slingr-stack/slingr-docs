@@ -1,5 +1,5 @@
 ---
-title: "Menu"
+title: "Header"
 description: ""
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -9,28 +9,24 @@ menu:
   docs:
     parent: "widgets"
 toc: true
-weight: 84
+weight: 103
 ---
 
-This type of widget represents a **Menu block** that can be useful for grouping actions to execute.
+This type of widget represents a **Header block** that can be useful for sectioning or defining dividers. Can be configured along with actions.
 
 ## **Settings**
 
 The available settings are described as below:
+
+### Label
+
+This represents the human-readable widget name. It's what appears in the UI when the header is displayed.
 
 ### Name
 
 This is the internal widget name, used as for database storage within entities.
 
 The name must not contain special characters or spaces; only letters and numbers are allowed.
-
-### Alignment
-
-This defines the positioning of the menu.
-
-- **`Left`**
-- **`Center`**
-- **`Menu`**
 
 ### Visible
 
@@ -64,9 +60,15 @@ Indicates the visibility of the widget, can be configured with the following opt
 - **`Expression`**: The widget becomes accessible if the expression evaluates to `true`. More information is available in the [Expressions documentation]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
 - **`Never`**: The widget will never be accessible.
 
+
+### Style
+
+- **`Filled background`**: Uses a background.
+- **`Line divider`**: Uses a bottom line divider.
+
 ### Menu
 
-This options enables to set entity related [actions]({{<ref "/dev-reference/data-model-and-logic/actions">}}) to the alert. The available settings are:
+This options enables to set entity related [actions]({{<ref "/dev-reference/data-model-and-logic/actions">}}) to the header. The available settings are:
 
 - **`All`**: Includes all the actions present in the entity.
 - **`Custom`**: Custom set of actions and groups defined by the developer.

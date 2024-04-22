@@ -7,7 +7,7 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "widgets"
+    parent: "flex-record-views"
 toc: true
-weight: 77
+weight: 80
 ---

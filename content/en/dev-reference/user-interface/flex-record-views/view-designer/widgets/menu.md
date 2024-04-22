@@ -1,5 +1,5 @@
 ---
-title: "Alert"
+title: "Menu"
 description: ""
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -9,32 +9,28 @@ menu:
   docs:
     parent: "widgets"
 toc: true
-weight: 83
+weight: 105
 ---
 
-This type of widget represents a **Alert block** that can be useful for showing users a highlighted block. Can be configured along with actions.
+This type of widget represents a **Menu block** that can be useful for grouping actions to execute.
 
 ## **Settings**
 
 The available settings are described as below:
-
-### Title
-
-This represents the human-readable widget name. It's what appears in the heading section of the alert when is displayed.
-
-### Body
-
-This is the body content of the alert.
-
-{{< notes type="note">}}
-To enhance the user experience, refrain from composing lengthy texts in the body.
-{{< /notes >}}
 
 ### Name
 
 This is the internal widget name, used as for database storage within entities.
 
 The name must not contain special characters or spaces; only letters and numbers are allowed.
+
+### Alignment
+
+This defines the positioning of the menu.
+
+- **`Left`**
+- **`Center`**
+- **`Menu`**
 
 ### Visible
 
@@ -67,22 +63,6 @@ Indicates the visibility of the widget, can be configured with the following opt
 
 - **`Expression`**: The widget becomes accessible if the expression evaluates to `true`. More information is available in the [Expressions documentation]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
 - **`Never`**: The widget will never be accessible.
-
-
-### Style
-
-The emphasis color of the alert.
-
-- Primary
-- Secondary
-- Success
-- Warning
-- Danger
-
-### Dismissible
-
-This option enables the user to close the alert when it's shown.
-- **Default value**: `false`
 
 ### Menu
 

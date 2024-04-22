@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-description: "This section offers an overview of how flex designer let developers design complex layouts, offering more customizable views"
+description: "Breif explanation of settings available for view designer."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -9,12 +9,12 @@ menu:
   docs:
     parent: "dev-reference"
 toc: true
-weight: 75
+weight: 76
 ---
 
 ## **Introduction**
 
-The Flex designer allows to create views with a custom layout using different widgets that enhance the user experience.
+The View designer allows to create views with a custom layout using different widgets that enhance the user experience.
 
 ## **General rules**
 
@@ -27,6 +27,6 @@ The following list outlines the rules that must be adhered to in all flex layout
 
 ## **Quick start**
 
-The flex designer comprises [available widgets]({{<ref "/dev-reference/flex-designer/categories.md">}}), which can be dragged and ordered to construct the flex view.
+The view designer comprises [available widgets]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/categories.md">}}), which can be dragged and ordered to construct the flex view.
 
 ![Flex editor](/images/vendor/flex-designer/flex-designer.png)
