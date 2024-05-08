@@ -32,7 +32,7 @@ methods:
   - title: finds changes performed by users and logs the user that did it
     code: |
       var company = sys.data.findOne('companies', {name: 'Blogpad'});
-      var auditLogs = company.auditLogs().find({
+      var auditLogs = company.getAuditLogs().find({
         eventType: 'USER_RECORD_CHANGED'
       });
       for (var i = 0; i < auditLogs.length; i++) {
@@ -51,7 +51,7 @@ methods:
   - title: prints who created the record
     code: |
       var company = sys.data.findOne('companies', {name: 'Blogpad'});
-      var createLog = company.auditLogs().createLog();
+      var createLog = company.getAuditLogs().createLog();
       if (createLog) {
         log('creator: '+createLog.user());
       }
@@ -68,7 +68,7 @@ methods:
   - title: prints who modified the record for the last time
     code: |
       var company = sys.data.findOne('companies', {name: 'Blogpad'});
-      var modifiedLog = company.auditLogs().lastModifiedLog();
+      var modifiedLog = company.getAuditLogs().lastModifiedLog();
       if (modifiedLog) {
         log('user last modified: '+modifiedLog.user());
       }
