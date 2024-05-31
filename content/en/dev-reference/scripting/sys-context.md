@@ -50,7 +50,6 @@ log('current user id: ' + currentUserId);
 ```
 <br>
 
-
 ### getCurrentIp()
 
 Retrieves the IP address of the current request. If the script is running in a context without an associated request, this method will return **`null`**.
