@@ -18,24 +18,35 @@ This package provides methods to retrieve information about the execution contex
 
 ### getCurrentUserRecord()
 
-Returns a [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) object containing the extended user fields for the user in the ongoing execution context. If there is no user defined in the current execution context, this method will return **`null`**.
+Returns a [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) object containing the current user in the ongoing execution context. If there is no user defined in the current execution context, this method will return **`null`**.
 
 ##### Returns
 
 **[`sys.data.record`]({{<ref "/dev-reference/scripting/sys-data.md">}})**  - The user in the current execution context, or **`null`** if not set.
 
-##### Exceptions
+##### Samples
 
-**badRequest**
+``` javascript
+// prints the current user information for the current user
+var currentUser = sys.context.getCurrentUserRecord();
+log('current user record: ' + JSON.stringify(sys.utils.text.recordToString(currentUser)));
+```
+<br>
 
-Thrown if extended user fields are not configured.
+### getCurrentUserId()
+
+Returns the id of the current user in session. If there is no user set in the current context of execution, this method will return **null**.
+
+##### Returns
+
+**`string`**  - The current user id.
 
 ##### Samples
 
 ``` javascript
 // prints the extended user information for the current user
-var record = sys.context.getCurrentUserRecord();
-log('current user extra info: ' + JSON.stringify(sys.utils.text.recordToString(record)));
+var currentUserId = sys.context.getCurrentUserId();
+log('current user id: ' + currentUserId);
 ```
 <br>
 
