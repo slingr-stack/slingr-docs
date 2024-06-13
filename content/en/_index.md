@@ -19,7 +19,7 @@ images: []
       {{< frontbox title="Start Learning" href="/getting-started/getting/where-to-start/" img="/images/vendor/start-learning.png" >}}
     </div>
     <div class="col mb-4 d-flex align-items-center justify-content-center slingr-channel">
-      {{< frontbox title="Slingr channel" href="https://www.youtube.com/channel/UCVC7opcy2Yi3vFf73CuajXw" img="/images/vendor/slingr-channel.png" target="_blank" >}}
+      {{< frontbox title="Slingr channel" href="https://discord.gg/aaGBumur" img="/images/vendor/slingr-channel.png" target="_blank" >}}
     </div>
   </div>
 </div>
