@@ -151,7 +151,8 @@ Shares a file by returning a public URL for it. This link is valid for an hour.
 Name|Type|Required|Default|Description
 ---|---|---|---|---
 fileId|string|yes|-|ID of the file to be read.|ID of the file to share.
-ttl|number|no|3600000 (1 hour)|Time in milliseconds to expire.
+ttl|number|no|3600000 (1 hour)|Time in milliseconds to expire. **If TTL is set to 0, the URL never expires**.
+
 
 ##### Exceptions
 
@@ -177,6 +178,14 @@ log(publicUrl);
 // prints a public URL for a file with expiration equals to a minute
 var record = sys.data.findOne('files', {code: 'test'});
 var publicUrl = sys.files.share(record.field('file').id(), 60000);
+log(publicUrl);
+```
+<br>
+
+``` javascript
+// prints a public URL for a file that never expires.
+var record = sys.data.findOne('files', {code: 'test'});
+var publicUrl = sys.files.share(record.field('file').id(), 0);
 log(publicUrl);
 ```
 <br>

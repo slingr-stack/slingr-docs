@@ -74,34 +74,7 @@ The format is a JSON containing the name of the value and the possible options f
 
 To set the value, provide a JSON with the selected value's name and the possible values as options:
 
-```js
-record.field('dynamicChoice').val({
-  "options": [{
-      "label": "Alabama",
-      "name": "AL"
-    }, {
-      "label": "Alaska",
-      "name": "AK"
-    }, {
-      "label": "Arizona",
-      "name": "AZ"
-    }],
-  "selectedValue": "AZ"
-});
-```
-
-{{< notes type="important" >}}
- Both <b>name</b> and <b>label</b> must be strings. If the value is of a different type, you can easily convert it to a string using JavaScript's built-in methods like `toString()` or `String.valueOf()`
-{{< /notes >}}
-
-If you provide only a string, it will be considered as the selected value, and the possible values will be automatically generated with a single option using the provided string as both the name and label:
-
-```js
-record.field('dynamicChoice').val('AZ');
-```
-<br>
-
-```js
+```json
 {
   "options": [{
       "label": "AZ",
@@ -110,7 +83,13 @@ record.field('dynamicChoice').val('AZ');
   "selectedValue": "AZ"
 }
 ```
-<br>
+
+{{< notes type="important" >}}
+ Both <b>name</b> and <b>label</b> must be strings. If the value is of a different type, you can easily convert it to a string using JavaScript's built-in methods like `toString()` or `String.valueOf()`
+{{< /notes >}}
+
+If you provide only a string, it will be considered as the selected value, and the possible values will be automatically generated with a single option using the provided string as both the name and label:
+
 
 ## **JavaScript API**
 
@@ -161,7 +140,7 @@ record.field('state').val(
         "label": "Alabama",
         "name": "AL"
       }, {
-        "label": "Alaska", 
+        "label": "Alaska",
         "name": "AK"
       }, {
         "label": "Arizona",
@@ -197,10 +176,10 @@ record.field('state').options([{
     "label": "Alabama",
     "name": "AL"
   },{
-    "label": "Alaska", 
+    "label": "Alaska",
     "name": "AK"
   },{
-    "label": "Arizona", 
+    "label": "Arizona",
     "name": "AZ"
   }]
 );
@@ -214,7 +193,7 @@ record.field('state').options([{
   ##### Returns
 
   **`string`** -  The label of the current value.
-  
+
   ##### Samples
 
   ```js
@@ -280,29 +259,32 @@ record.field('state').options([{
 
   // this will save the options to be used as possible values:
   record.field('state').options([{
-      "label": "Alabama", 
+      "label": "Alabama",
       "name": "AL"
     },{
-      "label": "Alaska", 
+      "label": "Alaska",
       "name": "AK"
     },{
-      "label": "Arizona", 
+      "label": "Arizona",
       "name": "AZ"
     }
   ]);
   ```
   <br>
-  
+
   ---
 
 ## **Export/Import**
 
 ### Export format
 
-The export format is a string representation of a JSON with the name of the selected value and its possible values as options:
-
+The export format is a string representation of the selected value. For example:
 ```js
+// Dynamic choice configuration
 "{options: [{label: Alabama, name: AL}, {label: Alaska, name: AK},{label: Arizona, name: AZ}], selectedValue: AZ}"
+
+// the export value would be:
+"AZ"
 ```
 <br>
 

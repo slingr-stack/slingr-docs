@@ -109,8 +109,8 @@ you need them.
   there is a problem, and you should contact support.
 
 - **`Version`**: This is the current version your app is running on. We periodically release new updates
-  to the platform, and we automatically update apps when that's possible. If your app is behind, you
-  will be able to manually trigger an update when you find it more convenient.
+  to the platform, and we automatically update apps when that's possible. You can set the upgrade strategy for your apps.
+  See [Upgrade Strategy](#upgrade-strategy) for more information.
 
 - **`Instances`**: This is the number of runtime instances for this environment. The more instances you
   have, the more requests and work your environment can handle, so this is a good way to scale your
@@ -138,7 +138,7 @@ you need them.
 - **`Custom domain`**: By default, your app will be available at **`<appname>.slingrs.io`**; however,
   you can use your domain as well, for example, **`myapp.com`**. To do that, you need to
   own the domain and have a valid SSL certificate. Just click on **`Set your domain`**, and you will
-  be asked to enter the domain and SSL certificate information.
+  be asked to enter the domain and SSL certificate information. Upon creation you will be provided with an external IP to be configured on your domain provider.
 
 There are a few cases that need changes in settings that deserve more attention:
 
@@ -339,3 +339,16 @@ You can create a clone of your app by clicking the `Clone App` button. This will
 Cloning your apps is useful when you want to test some changes in your app without affecting the original version.
 {{< /notes >}}
 
+---
+
+## **Upgrade Strategy**
+
+![Upgrade Strategy](/images/vendor/platform-ref/managing-apps/upgrade_strategy.png)
+
+You can change the upgrade strategy of your app by selecting `Stable` or `Latest`. By default every app will be created with a `Stable` upgrade strategy. This means that your app will be running the stable version of the platform. 
+If you want the latest features available you can change by selecting the `Latest` upgrade strategy. Note that this change will be applied instantly and can take a few moments for your environments to redeploy with the new version.
+If you are downgrading from a `Latest` to a `Stable` version, the setting will be saved but not applied until a new release of the platform.
+
+{{< notes type="note" >}}
+Only the app owner can perform this action.
+{{< /notes >}}

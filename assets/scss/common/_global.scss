@@ -44,6 +44,18 @@ body.docs {
   padding-top: 0 !important;
 }
 
+.custom-btn-color {
+  background-color: #0f1435;
+  color: white;
+  border-color: #0f1435;
+}
+
+.custom-btn-color:hover,
+.custom-btn-color:focus {
+  background-color: #0b176b;
+  border-color: #0b176b;
+}
+
 @include media-breakpoint-up(md) {
   body {
     font-size: $font-size-md;

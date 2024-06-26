@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "dev-reference"
 toc: true
-weight: 50
+weight: 51
 ---
 
 To enable the execution of an action from the UI, it's necessary to define a corresponding view for it. Simplifying this process, when an action is created, a default view is also generated. This default view is fully managed, meaning new parameters will be automatically added and removed as you modify your actions. In many cases, you can simply disregard action views and utilize the default view.

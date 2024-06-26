@@ -35,10 +35,26 @@ $navbar-dark-active-color:          $link-color-dark;
   color: $body-color-dark !important;
 }
 
+[data-dark-mode] body h3.main-phrase {
+  color: #ffffff !important;
+}
+
 [data-dark-mode] body .btn-primary {
   @include button-variant($button-color-dark, $button-color-dark);
 
   color: $body-bg-dark !important;
+}
+
+[data-dark-mode] body .btn-primary {
+  @include button-variant($button-color-dark, $button-color-dark);
+
+  background-color: #8ed6fb;
+}
+
+[data-dark-mode] body .btn-primary:hover {
+  @include button-variant($button-color-dark, $button-color-dark);
+
+  background-color: #9fdcfc;
 }
 
 [data-dark-mode] body .btn-outline-primary {
