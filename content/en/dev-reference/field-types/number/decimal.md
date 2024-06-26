@@ -16,8 +16,6 @@ toc: true
 
 This type is designed to store decimal numbers and offers options for rounding and specifying the number of decimals.
 
-As of now, this type does not support more than 4 decimals. However, this limitation is expected to be addressed in the near future.
-
 ## **Available features**
 
 Name|Supported
