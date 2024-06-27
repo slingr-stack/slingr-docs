@@ -1,5 +1,5 @@
 ---
-title: "Flex record views"
+title: "Widgets"
 description: ""
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -7,7 +7,7 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "dev-reference"
+    parent: "flex-views"
 toc: true
-weight: 50
+weight: 80
 ---

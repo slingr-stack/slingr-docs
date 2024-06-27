@@ -1,5 +1,5 @@
 ---
-title: "Overview"
+title: "Flex record views"
 description: "Detailed explanation of settings available for flex record views."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
@@ -7,12 +7,12 @@ draft: false
 images: []
 menu:
   docs:
-    parent: "dev-reference"
+    parent: "flex-views"
 toc: true
-weight: 49
+weight: 50
 ---
 
-Flex record views enable you to display the content of a record with a custom layout. You can specify which fields are shown, override default display options, and indicate which actions can be performed, create complex layouts following row/column standard.
+Flex record views enable you to display the content of a record with a custom layout. You can specify which fields are shown, override default display options, select the set of available actions and create complex layouts following row/column standard.
 
 ## **Label**
 
@@ -34,7 +34,11 @@ This designates the entity that the view will be associated with. Only records f
 
 The type specifies the purpose of the flex record view. The available options are:
 
-- **`Read only`**: In this scenario, the view won't include editable fields (they will be restricted to read-only). Nonetheless, this type of record view is the only one that supports executing actions on the record (actions like edit or create views cannot be executed). Consequently, when this feature is enabled, the "Main menu" option becomes accessible, offering these choices:
+#### Read only 
+
+In this scenario, the view won't include editable fields (they will be restricted to read-only). Nonetheless, this type of record view is the only one that supports executing actions on the record (actions like edit or create views cannot be executed). 
+
+Consequently, when this feature is enabled, the "Main menu" option becomes accessible, offering these choices:
   - **`All`**: All action views available in the entity will be presented in the context menu.
   - **`Some`**: A personalized selection of actions will be available. A new selector, "Available actions," will emerge. This selector can be used to pick the actions that will be listed (you choose the action views here).
   - **`Custom menu`**: Developers can customize how actions are displayed using this option. Actions can be organized into groups. At the root level, groups will be showcased as dropdown buttons, while nested groups will form nested dropdowns. Several options are available to configure button behavior during runtime:
@@ -47,9 +51,13 @@ The type specifies the purpose of the flex record view. The available options ar
   - **`System Actions Only`**: Only system actions such as **`CRUD`**, **`Import`**, **`Refresh`**, etc., will be presented.
   - **`None`**: No actions will be available.
 
-{{< notes type="note">}}
-Currently only Read-only views are supported
-{{< /notes >}}
+#### Create
+
+This view allows the creation of a new record. In this case, fields can be editable (you can also have read-only fields), and buttons to create the record or cancel the creation process will be available. 
+
+#### Edit
+
+Permits the modification of an existing record. You can have both editable and read-only fields, and buttons to save or cancel the changes will be provided.
 
 ## **Show refresh button**
 
@@ -65,7 +73,7 @@ When enabled, a dynamic listener will be established to facilitate the automatic
 
 This represents the user defined layout of widgets to be displayed in the view.
 
-For further details, consult the documentation on [View Designer]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/overview">}}).
+For further details, consult the documentation on [View Designer]({{<ref "/dev-reference/user-interface/flex-views/view-designer/overview">}}).
 
 ## **Events**
 

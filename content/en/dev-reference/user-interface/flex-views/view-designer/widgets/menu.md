@@ -14,6 +14,10 @@ weight: 105
 
 This type of widget represents a **Menu block** that can be useful for grouping actions to execute.
 
+{{< notes type="note" >}}
+ This widget can only be configured in **[Flex record views]({{<ref "/dev-reference/user-interface/flex-views/flex-record-views">}})**
+{{< /notes >}}
+
 ## **Settings**
 
 The available settings are described as below:

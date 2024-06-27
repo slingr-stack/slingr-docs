@@ -27,6 +27,6 @@ The following list outlines the rules that must be adhered to in all flex layout
 
 ## **Quick start**
 
-The view designer comprises [available widgets]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/categories.md">}}), which can be dragged and ordered to construct the flex view.
+The view designer comprises [available widgets]({{<ref "/dev-reference/user-interface/flex-views/view-designer/categories.md">}}), which can be dragged and ordered to construct the flex view.
 
 ![Flex editor](/images/vendor/flex-designer/flex-designer.png)
