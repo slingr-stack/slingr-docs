@@ -19,9 +19,9 @@ View Designer is a powerful and user-friendly interface editor designed to strea
 
 The Toolbox section contains all the building blocks needed to create your interface. This section is further divided into two categories:
 
-- **Layout Grid**: Here, you'll find various grid options that serve as the structural foundation for your design. Please refer to [Layout grid]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/categories#layout-grid">}}) for more details.
+- **Layout Grid**: Here, you'll find various grid options that serve as the structural foundation for your design. Please refer to [Layout grid]({{<ref "/dev-reference/user-interface/flex-views/view-designer/categories#layout-grid">}}) for more details.
 
-- **Components**: This is where the functional elements of your interface reside. You can select from a range of widgets. Please refer to [Components]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/categories#components">}}) for more details.
+- **Components**: This is where the functional elements of your interface reside. You can select from a range of widgets. Please refer to [Components]({{<ref "/dev-reference/user-interface/flex-views/view-designer/categories#components">}}) for more details.
 
 Each widget in the Toolbox section can be easily dragged into the Canvas section. Additionally, there's a convenient tab system that allows you to toggle between viewing available widgets and their respective properties of each widget.
 
@@ -34,7 +34,7 @@ As you add widgets to the Canvas, you can rearrange, resize, and nest them withi
 ## Building views
 
 {{< notes type="note">}}
-Please review the [**rules**]({{<ref "/dev-reference/user-interface/flex-record-views/view-designer/overview#general-rules">}}) of the view designer to gain a clear understanding on how the editor behaves.
+Please review the [**rules**]({{<ref "/dev-reference/user-interface/flex-views/view-designer/overview#general-rules">}}) of the view designer to gain a clear understanding on how the editor behaves.
 {{< /notes >}}
 
 To begin using the View Designer, simply drag a widget from the Toolbox section to the Canvas section. It's that straightforward. The intuitive drag-and-drop interface means there's no steep learning curve, so you can focus on building complex views with no effort.
@@ -69,6 +69,8 @@ Deleting a widget will reset its previous configuration.
 
 ### Adding new columns
 
+![Flex editor](/images/vendor/flex-designer/add_column.gif)
+
 To add a new **Column** to a row, just drag the **`Add column`** item to an existing row.
 
 ### Resizing a column
@@ -85,5 +87,5 @@ To take a quick look at the settings configured for a widget, you can switch the
 
 
 {{< notes type="tip">}}
-Remember to apply changes to save you flex design.
+Remember to apply changes to save your flex design.
 {{< /notes >}}
