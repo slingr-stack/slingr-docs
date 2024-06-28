@@ -1,6 +1,6 @@
 ---
 title: "Packages"
-description: "This section provides an overview of what packages are and how to leverage them to establish connections with external applications."
+description: "This section provides an overview of what packages are and how to leverage them to extends the capabilities of your apps."
 date: 2020-11-16T13:59:39+01:00
 lastmod: 2020-11-16T13:59:39+01:00
 draft: false
@@ -41,6 +41,7 @@ This indicates the current version of the package.
 ### Upgrade policies
 
 This setting defines how the package behaves when new versions are available. Versions follow the format X.Y.Z. The available options are:
+
   - **`Compatible version`**: Shows updates when the Y or Z values are updated.
   - **`Bug fixes`**: Shows updates when the Z value is updated.
   - **`Manual`**: Updates won't be shown for new versions.

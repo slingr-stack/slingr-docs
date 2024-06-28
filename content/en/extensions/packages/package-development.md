@@ -520,7 +520,7 @@ These are the properties of events:
 - `name`: this is the internal name of the event that will be used to identify it in the code.
 - `description`: a brief description about what this event is and when it is triggered.
 
-The package can trigger events using the [events API]({{ref "/dev-references/scripting/sys-events.md}}) like this:
+The package can trigger events using the [events API]({{ref "/dev-reference/scripting/sys-events.md"}}) like this:
 
 ```javascript
 sys.events.triggerEvent('sharepoint:webhook', {
@@ -529,7 +529,7 @@ sys.events.triggerEvent('sharepoint:webhook', {
 });
 ```
 
-For webhooks, the most common type of events, you will probably define a listener to capture the webhook from the HTTP service and then trigger it as a package event. You can see an example in the [Listeners](#listeners) section.
+For webhooks, the most common type of events, you will probably define a listener to capture the webhook from the HTTP service and then trigger it as a package event. You can see an example in the sections about [trigger events](#trigger-package-events) and [listeners](#listeners).
 
 ### Metadata
 
@@ -561,14 +561,39 @@ These are the different metadata elements that can be included in a package.
 
 ### Scripts libraries
 
-Javascript files are imported into the app and each one represents a script library. Exposed variables/functions should be included in `exports` as it is done in app libraries. Scripts should be put in the `scripts` folder of your package and the names of the files need to match the ones in
-the descriptor.
+Javascript files are imported into the app and each one represents a script library. Exposed variables/functions should be included in `exports` as it is done in app libraries. Scripts should be put in the `scripts` folder of your package and the names of the files need to match the ones in the descriptor. For example, let's assume you have the following scripts defined:
 
-This scripts provided by the package are executed in the context of the app as any other script library. These libraries can be called from anywhere inside the app.
+```json
+{
+  "metadata": [
+    {
+      "type": "script",
+      "namespace": "helpers",
+      "path": "/scripts/helpers.js"
+    },
+    {
+      "type": "script",
+      "namespace": "api",
+      "path": "/scripts/api.js"
+    }
+  ]
+}
+```
 
-A script file will look like this:
+The `namespace` will tell you how to call the elements exposed by the script from the app. More about that later.
+
+Then you will have the following file structure:
+
+```
+package.json
+scripts/helpers.js
+scripts/api.js
+```
+
+Here is a sample script that showcase different features. Look at the comments to understand what is being demonstrated.
 
 ```js
+// simple functions
 var s = function(a, b){
     return a+b;
 };
@@ -578,154 +603,189 @@ exports.rnd = function(){
     return Math.random();
 };
 
+// variable exposed
 exports.PI_VALUE = Math.PI;
 
 exports.rndSum = function(){
-    return this.sum(this.rnd(), this.PI_VALUE);
+  // you can acess the functions in the package using "this"
+  return this.sum(this.rnd(), this.PI_VALUE);
 };
 
-exports.getAccessToken = function () {
+// you can call libraries in dependencies using the "dependencies" object
+exports.getAccessToken = function() {
   return dependencies.oauth.functions.connectUser(); // using package dependency
 }
 
-exports.makeApiCall = function (sitesId, httpOptions) {
-  if (!sitesId) {
-    sys.logs.error('Invalid argument received. This helper should receive the following parameters as non-empty strings: [sitesId].');
-    return;
-  }
-  var url = parse('/v1.0/sites/:sitesId/permissions', [sitesId]);
-  sys.logs.debug('[pkgName] POST to: ' + url);
-
-  let pkgConfig = config.get(); // getting package configuration
-  sys.logs.debug('[pkgName] config: '+JSON.stringify(pkgConfig));
-  var options = checkHttpOptions(url, httpOptions);
-  options.authorization = mergeJSON(authorization, {
-    type: "oauth2",
-    accessToken: pkgConfig.token,
-    headerPrefix: "Bearer"
+// access the configuration and call a service that is a dependency
+exports.getProducts = function(query) {
+  sys.logs.debug('[sample] Querying products: ' + query);
+  let token = config.get('token');
+  return dependencies.http.get({
+    path: '/products',
+    params: {
+      query: query
+    }
   });
-  return dependencies.http.post(options); // using service dependency
 };
 ```
 
-#### Package config
+Then, in the app where you are installing the package, you will be able to access the exposed variables/functions in the following way (assuming the script's namespace is `helpers`):
 
-The values of the package configuration can be accessed within the js files like it is shown next:
+```js
+let products = pkg.pkgName.helpers.getProducts('*');
+let pi = pkg.pkgName.helpers.PI_VALUE;
+```
+
+You can find more information about how to use package [here]({{ref "/dev-reference/data-model-and-logic/packages.md"}}).
+
+Next we will explain some interesting features you can use in scripts in a package.
+
+#### Package configuration
+
+The values of the package configuration can be accessed within the script files like this:
 
 ```
 config.get(); // returns configuration map
 config.get(parameterName);// returns parameter value of the configuration
 ```
 
+It is important to note that calling `config.get()` might return different configurations if there is a dynamic configuration set. Look at the [package usage documentation]({{ref "/dev-reference/data-model-and-logic/packages.md"}}) for more information about dynamic configurations.
+
+TODO talk about the ID of the config
+
 #### Usage of package dependencies
 
 Package dependencies can be accessed this way:
 
-```
+```js
 // for dependencies on packages: dependencies.<depName>.<library>.<function>
 dependencies.oauth.functions.connectUser();
 // for dependencies on services: dependencies.<depName>
  dependencies.http.post()
 ```
-#### Stores
 
-If your package needs to store data persistently, you will need to use the [app storage](https://platform-docs.slingr.io/app-development-js-api-storage.html). In this key value storage you can save
-JSON documents, find them by keys, update or remove them. Elements can be stored encrypted:
+Keep in mind that when you are referencing a service, the name is the name of the service no matter what name has been given to it in the app. For example, you could add an HTTP service in the app with the name `secureHttp` and the package will have it as a dependency. To access it you will still use `http` which is the name of the service. You don't need to worry about packages because the name cannot be changed when installing them.
 
-```
+#### Store persistent data
+
+If your package needs to store data persistently, you will need to use the [app storage](https://platform-docs.slingr.io/app-development-js-api-storage.html). In this key-value storage you can save JSON documents or simple values, find them by keys, update or remove them. Elements can be stored encrypted as well. Here are some examples:
+
+```js
 // store a user token
-sys.storage.put(config.id + ' - access_token', response.access_token, {encrypt: true});
+sys.storage.put('pkgName_access_token', response.access_token, {encrypt: true});
 // get a user token
-sys.storage.get(config.id + ' - access_token', {decrypt: true})
+let totken = sys.storage.get('pkgName_access_token', {decrypt: true})
 ```
+
+It is important to mention that to avoid collisions you should always prefix your keys with the package name.
+
+This feature is very useful for cases where you need to obtain tokens and save them for later use. This is more effective than storing information in a variable in the script for the following reasons:
+
+- If the app is restarted or the cache is cleared, the information will be preserved.
+- If you have multiple instances, by putting information in the storage you make it available to all the instances of the app.
+
 #### Trigger package events
 
-The way of triggering package events is using the method `sys.events.triggerEvent({pkgName}:{eventName})`. You will see more useful examples ahed but here there is a simple case:
+The way of triggering package events is using the method `sys.events.triggerEvent('{pkgName}:{eventName}')`. For example, you could have a [listener](#listeners) that catches an HTTP webhook through the HTTP service and triggers the package event like this:
 
-You received a webhook from github in the http service and you want to do some refactoring on the received data and then send the event to the app.
+```js
+sys.events.triggerEvent('stripe:webhook', event.data);
 ```
-      sys.events.triggerEvent('github:webhook', {
-        eventName: "reopened",
-        type: "pullRequest",
-        data: data
-      });
+
+This will trigger an event that can be captured with a listener of type `Package`. This makes it easier to organize listeners instead of just trying to catch the event from the HTTP service directly.
+
+Another use case could be a polling script that is executed every X minutes and trigger events for the updates:
+
+```js
+let lastUpdate = sys.storage.get('pkgName_last_update');
+if (lastUpdate) {
+  lastUpdate = new Date(lastUpdate);
+} else {
+  // look for the last hour by default
+  lastUpdate = new Date();
+  lastUpdate.setHours(lastUpdate.getHours() - 1);
+}
+let res = dependencies.http.get({
+  path: '/orders',
+  params: {
+    updatedAfter: lastUpdate
+  }
+});
+sys.storage.put('pkgName_last_update', new Date());
+if (res && res.orders) {
+  sys.events.triggerEvent('pkgName:ordersUpdated', res.orders);
+}
 ```
+
+This would be inside a [time listener](#listeners) that will be executed periodically.
 
 ### Listeners
 
-You need to define listeners in a js file.
+You can include listeners in a package. This will allow to do things automatically by just installing a package in your app. Here are some example of when listeners in packages can be useful:
 
-In this scripts you will be able to define listeners dynamically. This way, when developers add the package to their
-apps, listeners will be automatically appended.
+- Listen to HTTP events and re-trigger the event as a more specific package event
+- Automatically sends webhooks when data changes in the app
+- Perform periodic actions, like polling data from another service and trigger events in the app
 
-For example, you could use this feature to process a webhook sent to a service related to the package.
+You define the listeners in the descriptor like this:
 
-Listeners should be added as properties to the object `listeners`:
-
-```js
-listeners.defaultWebhookSharepoint = {
-  label: 'Catch HTTP sharepoint events',
-  type: 'service',
-  options: {
-    service: 'http',
-    event: 'webhook',
-    matching: {
-      path: '/sharepoint',
-    }
-  },
-  callback: function(event) {
-    sys.logs.info('Received Sharepoint webhook. Processing and triggering a package event.');
-    var body = JSON.stringify(event.data.body);
-    var params = event.data.parameters;
-    if(true) {
-      sys.logs.info('Valid webhook received. Triggering event.');
-      sys.events.triggerEvent('sharepoint:webhook', {
-        body: body,
-        params: params
-      });
-      return "ok";
-    }
-    else throw new Error("Invalid webhook");
-  }
-};
-```
-
-The name of the variable will be the name of listener, in addition the user must configure the `label` of the listener, then `type` (it can be `data`, `service` and `job`). The `options`
-field represents the proper configuration for the type. Finally, the `callback` is the action executed by the listener.
-The header of this function is ignored, only the inner code is used, developers must consider the parameters coming based
-on listener type. See [documentation](https://platform-docs.slingr.io/app-development-model-listeners.html#action)
-
-Next we will briefly describe the different types of listeners:
-
-#### Data
-
-See the example:
-
-```js
-
-listeners.listenerForCompaniesChanges = { //The name will be taken from this namespace
-    label: 'Listener for Companies changes', //label configuration
-    type: 'data',
-    options: {
-        executeInBackground: true, //Indicates if the listener must be executed in background
-        entity: 'companies', //The name or id of the entity listened
-        events: [ //entity events configuration
-            {type: 'recordCreated'}, //the type of entity event, it can be 'recordCreated', 'recordChanged', 'recordDeleted', 'actionPerformed'
-            {type: 'actionPerformed', action: 'assignCompanyType'} //not all event types are available, in addition, for 'actionPerformed' the name or id can be specify
-        ]
+```json
+{
+  "metadata": [
+    {
+      "type": "listener",
+      "path": "/listeners/webhooks.js"
     },
-    callback: function(event, record, oldRecord) {// available parameters are 'event', 'record' and 'oldRecord'
-        sys.logs.info('Entering to listener handler'); //JS API functions are available
-        sys.logs.info('Event: '+JSON.stringify(event));
-        sys.logs.info('Record: '+JSON.stringify(record));
-        sys.logs.info('Old record: '+(oldRecord ? JSON.stringify(oldRecord) : ''));
+    {
+      "type": "listener",
+      "path": "/scripts/polling.js"
     }
+  ]
+}
+```
+
+Then, in your file structure you will have the following files:
+
+```
+package.json
+listeners/webhooks.js
+listeners/polling.js
+```
+
+As you can see, listeners are defined in script files like this:
+
+```js
+listeners.defaultWebhookSharepoint = {
+  label: 'Catch HTTP Stripe events',
+  type: 'service',
+  options: {
+    service: 'http',
+    event: 'webhook',
+    matching: {
+      path: '/stripe',
+    }
+  },
+  callback: function(event) {
+    sys.logs.info('Received stripe webhook');
+    sys.events.triggerEvent('stripe:webhook', event.data);
+  }
 };
 ```
 
-#### Services
+The key is to add an element to the object `listeners` where the key will be the name of listener. Then, inside the object you will provide more information:
 
-See the example:
+- `label`: human-friendly name of the listener.
+- `type`: it can be `service`,`job` and `data`.
+- `options`: this will depend on the type of listener. In the following sections we provide more details about that.
+- `callback`: this is the function that will be executed when the listener is triggered. To see more information about what's in the `event` parameter, look at the [listener's action documentation](https://platform-docs.slingr.io/app-development-model-listeners.html#action).
+
+Next we will briefly describe the different types of listeners.
+
+#### Service
+
+Service listeners catch events coming from services. The most common scenario is catching events from an HTTP service, which are usually webhooks coming from another systems. You can check more information about service listeners [here]({{ref "/dev-reference/data-model-and-logic/listeners.md"}}).
+
+Here is an example of a service listener inside a package with the most common use case, which is capturing HTTP webhooks and re-triggering them as package events and maybe performing a validation like the example above:
 
 ```js
 listeners.defaultWebhookSharepoint = {
@@ -739,41 +799,89 @@ listeners.defaultWebhookSharepoint = {
     }
   },
   callback: function(event) {
-    sys.logs.info('Received Sharepoint webhook. Processing and triggering a package event.');
-    var body = JSON.stringify(event.data.body);
-    var params = event.data.parameters;
-    if(true) {
-      sys.logs.info('Valid webhook received. Triggering event.');
-      sys.events.triggerEvent('sharepoint:webhook', {
-        body: body,
-        params: params
-      });
+    sys.logs.info('[sharepoint] Received webhook [${event.data.id}}]');
+    if (pkg.sharepoint.validateWebhookSignature(event.data)) {
+      sys.events.triggerEvent('sharepoint:webhook', event.data);
       return "ok";
+    } else {
+      sys.logs.warn('[sharepoint] Invalid signature for webhook [${event.data.id}]');
     }
-    else throw new Error("Invalid webhook");
   }
 };
 ```
+
+In the `options` property you need to specify the following information:
+
+- `service`: this is the name of the service the listener will be listening to. Keep in mind that the service you are listing to must be a dependency of the package, and the name will always be the name of the service, no matter what name it was given in the app. For example, you might have a service installed with the name `secureHttp` but you still need to use `http`.
+- `event`: the name of the event the listener will catch.
+- `matching`: this is to filter events that contain specific elements in the data of the event. In the example above, we expect that the property `path` in the data of the event is `/sharepoint`. This is a very common case when you want to use the HTTP service to receive webhooks through HTTP, but you only want to get the ones that are interesting for the package.
+
+Re-triggering service events as a package event has the following advantages:
+
+- You can perform some validations like, for example, validation of a signature.
+- You could make transformations to the data that you consider are convenient.
+- Having listeners for specific package events is clearer on the app side, making it easier to manage them.
+
+However, keep in mind that the package could listen for service events and do something else, it is not needed to always re-trigger them as package event. We describe this use case in more detail because it is the most common one.
 
 #### Job
 
-See the example:
+Job listeners catch events related to background jobs in the application. In this way, the package could do something based on some jobs, like when the app is started or a service is undeployed. You can check more information about job listeners [here]({{ref "/dev-reference/data-model-and-logic/listeners.md"}}).
+
+Here is an example of a listener that will be executed when the app is started:
 
 ```js
-
-listeners.listenerForExportRecords = { //The name will be taken from this namespace
-    label: 'Listener for Export records', //label configuration
+listeners.initializeFtpIntegration = {
+    label: 'Initialize FTP integration',
     type: 'job',
     options: {
-        jobType: 'exportRecords',//job type, available are: `startApp`, `stopApp`, `importRecords`, `exportRecords`, `importUsers`, `exportUsers`
-        event: 'finished'// status listened, available are: `created`, `started`, `finished`, `stopped`, `resumed`, and `canceled`
+        jobType: 'startApp',
+        event: 'finished'
     },
-    callback: function(event) {// only `event` is a available parameter for this function
-        sys.logs.info('Entering to listener handler'); //JS API functions are available
-        sys.logs.info('Event: '+JSON.stringify(event));
+    callback: function(event) {
+        sys.logs.info('[ftp] Initializing FTP integration');
+        pkg.ftp.initialize();
     }
 };
 ```
+
+In the `options` property you need to specify the following information:
+
+- `jobType`: the type of job you want to listen events from. Available options are `startApp`, `stopApp`, `importRecords`, `exportRecords`.
+- `event`: this is the event we want to listen from the job. It could be `created`, `started`, `finished`, `stopped`, `resumed` or `canceled`. Keep in mind that the job type `startApp` only has the `finished` event as you cannot execute any listener before the app has been started. Similarly, for the job type `stopApp` it only makes sense to put a listener for the event `created`.
+
+#### Data
+
+Data listeners catch events when data in the app is modified. For example, it could hae a listener that makes a request to another service whenever a record is created. You can check more information about data listeners [here]({{ref "/dev-reference/data-model-and-logic/listeners.md"}}).
+
+Here is an example of a listener that sends a webhook to another service when a record in an entity is created:
+
+```js
+let config = pkg.orderProcessor.getConfiguration();
+let ordersEntityName = config.ordersEntityName;
+
+listeners.sendWebhookToProcessor = {
+    label: 'Send webhook to processor',
+    type: 'data',
+    options: {
+        executeInBackground: true,
+        entity: ordersEntityName,
+        events: [
+            {type: 'recordCreated'}
+        ]
+    },
+    callback: function(event, record, oldRecord) {
+        sys.logs.info('[orderProcessor] Sending order to processor');
+        pkg.orderProcessor.sendOrderToProcessor(record.toJson());
+    }
+};
+```
+
+In the `options` property you need to specify the following information:
+
+- `entity`: the name of the entity you will be listening for data changes.
+- `events`: this is the list of events you can define. Options are: `recordCreated`, `recordChanged`, `recordDeleted`, `actionPerformed`. If the event type is `actionPerformed`, you also need to provide the `action` property with the name of the action like this: `{type: 'actionPerformed', action: 'actionName'}`. You can specify several events.
+- `executeInBackground`: a boolean indicating if the listener needs to be executed in the background.
 
 ### Flow steps
 
