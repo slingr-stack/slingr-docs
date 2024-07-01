@@ -885,214 +885,261 @@ In the `options` property you need to specify the following information:
 
 ### Flow steps
 
-You can create customized flow steps for your package.
+You can create customized flow steps for your packages. You can find more about flow steps [here]({{ref "/dev-reference/flows/steps/library-steps.md"}}). Basically, by providing new flow steps, you can extend the functionality in flows. For example, when installing a package to integrate with Stripe, the package can add steps to start payments and do payouts, so developers don't need to write code for those things when using flows.
 
-Flow steps should be defined in folders that match the ones in the descriptor. There must be one folder per flow step.
-For each flow step defined you should provide 3 files for it:
+You can define flow steps in the descriptor like this:
 
-- `icon.png`: this is the icon for the step in the flow editor. The icon requires to have the PNG format and, be of size 18x18px.
-- `step.js`: this file should contain the function that will be executed as part of the step. This function must receive a unique object parameter called 'inputs' containing the function parameters.
-- `step.json`: this file should contain the name of the step along with inputs and outputs for it.
-
-After registering the new package version and setting that new version from the developer portal
-you will be able to see the new flow steps available at the flow editor.
-
-#### Required files examples
-
-Examples for `step.js` file:
-```js
-
-/**
- * Generates a random number.
- *
- * @param {object} inputs {number} bound, This is used to get a random number between 0 (inclusive) and the number
- * passed in this argument, exclusive.
- */
-step.numberGenerator = function (inputs) {
-
-  var data = pkg.utils.functions.randomNumber({bound: inputs.bound});
-  return {
-    "generatedNumber": data['number']
-  };
-};
-```
-Examples for `step.json` file:
-```
+```json
 {
-  "label": "Random numb",
+  "metadata": [
+    {
+      "type": "flowStep",
+      "namespace": "apiCallStripe",
+      "path": "/flowSteps/apiCallStripe"
+    }
+  ]
+}
+```
+
+Then, you will have a file structure like this:
+
+```
+package.json
+flowSteps/apiCallStripe/icon.png
+flowSteps/apiCallStripe/step.js
+flowSteps/apiCallStripe/step.json
+```
+
+Keep it mind that each step will have its own folder and it has to match with the path specified in the descriptor. For each flow step defined you should provide the following files:
+
+- `icon.png`: this is the icon for the step in the flow editor. It has to be a PNG image of 18x18 pixels.
+- `step.js`: this file should contain the function that will be executed as part of the step. This function must receive an object parameter called 'inputs' containing the function parameters.
+- `step.json`: this is the descriptor of the step which indicates the name, category, inputs and outputs.
+
+Below we explain all the files in more detail.
+
+#### step.json
+
+Let's suppose we want to create a flow step to generate a random number. For that, the user needs to provide a minimum and maximum number to be generated. Then, the descriptor will look something like this:
+
+```json
+{
+  "label": "Number Generator",
   "name": "numberGenerator",
-  "category": "integrations",
+  "category": "utils",
   "description": "Generates a new random number.",
   "inputs": [
     {
-      "label": "Bound",
-      "name": "bound",
-      "type": "text",
-      "description": "This is used to get a random number between 0 (inclusive) and the number passed in this argument, exclusive",
+      "label": "Min",
+      "name": "min",
+      "type": "number",
+      "description": "This is the minimum number to generate",
       "required": "true",
-      "defaultValue": 2000
+      "defaultValue": "0"
+    },
+    {
+      "label": "Max",
+      "name": "max",
+      "type": "number",
+      "description": "This is the maximum number to generate",
+      "required": "true",
+      "defaultValue": "1"
     }
   ],
   "outputs": [
     {
-      "label": "Generated number",
+      "label": "Generated Number",
       "name":  "generatedNumber",
       "type": "number",
-      "description": "The generated random number"
+      "description": "The randomly generated number"
     }
   ]
 }
 ```
 
-Inputs examples:
-```
-  "inputs": [
-    {
-      "label": "Operation",
-      "name": "operation",
-      "type": "choice",
-      "defaultValue": "SUM",
-      "required": "true",
-      "options": {
-        "possibleValues": [
-          {
-            "label": "Sum",
-            "name": "SUM"
-          },
-          {
-            "label": "Rest",
-            "name": "REST"
-          },
-          {
-            "label": "Division",
-            "name": "DIV"
-          },
-          {
-            "label": "Multiplication",
-            "name": "MULT"
-          }
-        ],
-        "allowContextSelector": "false"
-      }
+#### step.js
 
-    },
-    {
-      "label": "First operand",
-      "name": "firstOperand",
-      "type": "text",
-      "description": "First operand",
-      "required": "true"
-    },
-    {
-      "label": "Second operand",
-      "name": "secondOperand",
-      "type": "text",
-      "description": "Second operand",
-      "required": "true"
-    }
-  ]
+Let's follow the same example of the random number generator and see how the file `step.js` would look like:
+
+```js
+step.numberGenerator = function(inputs) {
+  let min = inputs.min ? inputs.min : 0;
+  let max = inputs.max ? inputs.max : 1;
+  return Math.random() * max + min;
+}
 ```
 
-Output examples:
-```
-  "outputs": [
-    {
-      "label": "result",
-      "name":  "result",
-      "type": "object",
-      "description": "Result object containing temperature, pressure and humidity for the given city"
-    }
-  ]
-```
-
-```
-  "outputs": [
-    {
-      "label": "city",
-      "name":  "city",
-      "type": "text",
-      "description": "name of the city"
-    },
-    {
-      "label": "temperature",
-      "name":  "temperature",
-      "type": "number",
-      "description": "temperature for the given city"
-    },
-    {
-      "label": "pressure",
-      "name":  "pressure",
-      "type": "number",
-      "description": "pressure for the given city"
-    },
-    {
-      "label": "humidity",
-      "name":  "humidity",
-      "type": "number",
-      "description": "humidity for the given city"
-    }
-  ]
-```
-For more information about flows you can go to Developer's reference: [flows overview]({{<ref "/dev-reference/flows/overview.md">}}).
+As you can see, there is on function with the name of the flow step that goes into the object `step` and it takes only one parameter named `inputs`. This will contain the values configured in the flow for this step.
 
 ### UI services
 
-UI services are useful to put custom code client side enhancing its functionalities. A good example of this are the pop up window that is opened in the oauth authentication.
+UI services allow putting code on client side. They will be loaded when the user opens the app in the browser and can add new functionality. For example, the OAuth package has features to show the authentication screen in the UI. But here are other use cases:
 
-Ui services should be defined in folders that match the ones in the descriptor. There must be one folder per ui service.
-For each flow step defined you should provide 3 files for it:
+- Enter payment details popup for Stripe
+- A QR code scanner
+- Integration with a browser plugin, like Metamask
 
-- `uiService.js`: this file should contain the scripts  that will be loaded in the client side.
-- `uiService.json`: this file should will describe the characteristics of the ui service.
+You can find more information about UI services [here]({{ref "/dev-reference/data-model-and-logic/ui-services.md"}}).
+
+Here is how you define UI services in the descriptor of the package:
+
+```json
+{
+  "metadata": [
+    {
+      "type": "uiService",
+      "namespace": "scanner",
+      "path": "/uiServices/scanner"
+    }
+  ]
+}
+```
+
+Then, you will have the following file structure:
+
+```
+package.json
+uiServices/oauth/uiService.json
+uiServices/oauth/uiService.js
+```
+
+Here are the most important things about these files:
+
+- `uiService.js`: this is the script file that will be loaded in client side and should contain functions and event handlers.
+- `uiService.json`: this is the descriptor of the UI service.
+
+In the next sections we provide more details about these files.
 
 #### uiService.json
 
-This file will describe the ui service and set it's configuration. The structure of the json is:
- - name: string.
- - places: list of strings. Where the ui service will be loadead. Options are: `APP`, `LOGIN`.
- - dependencies: list of jsons. Where you can add dependencies to external sources. Each dependency should contain:
-   - file: string. Pointing to external source
-   - placement: string. Options: `HEAD`,`BOTTOM`
-   - places: list of strings. Options: `APP`. `LOGIN`
- - functions: the methods that are exposed to be called from the app.
-   - label: string
-   - name: string
-   - callbacks: list of strings.
- - events: list of jsons. Events that can be triggered by the ui service and be sent to the app
-   - label
-   - name
+This is the descriptor of the UI service. Here is an example of it:
+
+```json
+{
+  "name": "scanner",
+  "label": {
+    "translation": {
+      "en": "Scanner"
+    }
+  },
+  "places": [
+    "app"
+  ],
+  "dependencies": [
+    {
+      "file": "https://cdn.jsdelivr.net/npm/@undecaf/zbar-wasm@0.9.14/dist/index.js",
+      "placement": "head",
+      "places": [
+        "app"
+      ]
+    },
+    {
+      "file": "https://cdn.jsdelivr.net/npm/@undecaf/barcode-detector-polyfill@0.9.17/dist/index.js",
+      "placement": "head",
+      "places": [
+        "app"
+      ]
+    }
+  ],
+  "byGroups": false,
+  "functions": [
+    {
+      "label": "Open scanner",
+      "name": "openScanner",
+      "callbacks": []
+    }
+  ],
+  "events": [
+    {
+      "label": "Code Scanned",
+      "name": "codeSuccessfullyScanned"
+    }
+  ]
+}
+```
+
+Here are more details about this file:
+
+- `name`: the name of the UI service. It must be unique and has to match the name of the folder.
+- `places`: where the UI service will be loaded in the app. Options are: `app` or `login`.
+- `dependencies`: these are external files (like Javascript) that need to be added as dependencies. These files will be loaded on client side.
+  - `file`: the URL of the file.
+  - `placement`: where this file needs to be loaded on the page. Options are: `head`,`bottom`.
+  - `places`: where the file will be loaded in the app. Options are: `app`. `login`.
+- `functions`: these are the functions that are exposed by the UI service and can be called by the app.
+  - `label`: a human-friendly name of the function.
+  - `name`: the name of the function in the code.
+  - `callbacks`: callbacks available for this function.
+- `events`: these are the vents that can be triggered by the UI service.
+  - `label`: a human-friendly name of the event.
+  - `name`: the code of the event.
 
 #### uiService.js
 
-This file will contain the scripts to be run in the client side. Methods that want to be called from the app should be added to an object called `services`.
-For example:
+This script will be loaded on client side and will contain any logic needed by the UI service and should have the definition of the functions that were declared in the descriptor file. For example, it could look like this:
 
-```
-service.testFunction = function (message) {
-    var config = message.config;
-    console.log('test function arrived ',message);
-    service.callback(message, 'callbackEvent', config);
+```js
+service.isOpen = false;
+service.BarcodeDetectorInstance = {};
+service.closeAfterCodeScanned = null;
+
+// this is the function declared in the descriptor
+service.openScanner = async function (message) {
+    service.closeAfterCodeScanned = message.config.closeAfterCodeScanned;
+    service.BarcodeDetectorInstance = service.initScanner(message.config.formats);
+    let camElement = service.createModal();
+    let codeScanned = await openCamera(camElement);
+    codeScanned = codeScanned[0].rawValue;
+    // sending an event to the app
+    service.sendEvent("codeSuccessfullyScanned", {code: codeScanned});
+};
+
+service.initScanner = function (formats) {
+    if (!("BarcodeDetector" in window)) {
+        window.BarcodeDetector = barcodeDetectorPolyfill.BarcodeDetectorPolyfill
+    }
+    return new BarcodeDetector({
+        formats: formats && formats.length ? formats : ['code_128', 'qr_code'],
+    });
+};
+
+service.createModal = function () {
+  // creates the modal and returns the camera HTMLVideoElement
+  // ...
+};
+
+service.closeScan = function () {
+    const videoTrack = document.getElementById('camera').srcObject.getVideoTracks()[0];
+    videoTrack.stop();
+    document.getElementById('camera').srcObject = null;
+    document.getElementById('scanner-window').remove();
+    service.isOpen = false;
+};
+
+async function openCamera(videoElement) {
+  // ...
+}
+
+async function processVideoFrame(resolve) {
+  // ...
 }
 ```
-The method testFunction from the slingr application with this script:
 
-```javascript
+You can see in this example how the function `openScanner` is defined under the `service` object. From the backend of the Slingr app, you could call this function like this:
 
-    sys.ui.sendMessage({
-        scope: 'uiService:{descriptiorPkgName}.{uiServiceName}',
-        name: 'testFunction',
-        config: {
-            data: "event data"
-        },
-        callbacks: {
-          callbackEvent: function (originalMessage, callbackData) {
-                //do something
-            }
-        }
-    });
+```js
+  sys.ui.sendMessage({
+    scope: 'uiService:scanner.scanner',
+    name: 'openScanner',
+    config: {
+      closeAfterCodeScanned: true
+    }
+  });
 ```
 
-For more information on how ui services work you can see [ui services]({{<ref "/dev-reference/data-model-and-logic/ui-services.md">}}).
+Additionally, you can see how an event is sent back to the backend using the method `service.sendEvent(eventCode, message)`. You could create a UI service listener to capture these events.
+
+You can find more information about what is available for scripts in [here]({{<ref "/dev-reference/data-model-and-logic/ui-services.md">}}).
 
 
 
