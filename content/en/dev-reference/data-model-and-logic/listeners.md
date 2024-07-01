@@ -103,7 +103,7 @@ sys.logs.info('*** DATA: '+event.data);
 
 | Name         | Type              | Description |
 |--------------|-------------------|-----------|
-| **`event`**    | object            | Contains information about the event. It has the following structure: <br><pre><code>{&#13;  "type": "SERVICE",&#13;  "date": 1486673333420,&#13;  "endpoint": "sample",&#13;  "endpointEvent": "inboundEvent",&#13;  "data": {&#13;    "token": "123456",&#13;    "number": 4468&#13;  }&#13;}</code></pre><br><br> **`date`** is the timestamp when the event was sent.<br> **`service`** is the name of the service.<br>**`serviceEvent`** is the name of the event.<br> **`data`** is data sent by the endpoint which is specific for each event and you should check the documentation for each service.
+| **`event`**    | object            | Contains information about the event. It has the following structure: <br><pre><code>{&#13;  "type": "SERVICE",&#13;  "date": 1486673333420,&#13;  "service": "sample",&#13;  "serviceEvent": "inboundEvent",&#13;  "data": {&#13;    "token": "123456",&#13;    "number": 4468&#13;  }&#13;}</code></pre><br><br> **`date`** is the timestamp when the event was sent.<br> **`service`** is the name of the service.<br>**`serviceEvent`** is the name of the event.<br> **`data`** is data sent by the endpoint which is specific for each event and you should check the documentation for each service.
 
 ##### Samples
 
