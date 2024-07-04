@@ -22,7 +22,10 @@ The process of creating a new package involves three fundamental steps:
 
 ## Package development
 
-The first step is to create a Git repository that will contain the new package. We recommend starting the package by forking the [`skeleton-package`](https://github.com/slingr-stack/skeleton-package), which already implements the basic structure. Check out this [document]({{<ref "/extensions/packages/packages-development.md">}}) to better understand how to develop a new package.
+The first step is to create a Git repository that will contain the new package.
+We recommend starting the package by forking the [`skeleton-package`](https://github.com/slingr-stack/skeleton-package),
+which already implements the basic structure.
+Check out this [document]({{<ref "/extensions/packages/package-development.md">}}) to better understand how to develop a new package.
 
 ## Package registration
 
