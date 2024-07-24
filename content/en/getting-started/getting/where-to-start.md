@@ -23,7 +23,7 @@ After you have created your account, we highly recommend that you follow these [
 To gain a solid understanding of the basics of app development with Slingr, we strongly encourage you to read through the following pages:
 
 - [App Development Overview]({{<ref "/dev-reference/overview/overview.md">}})
-- [Pushing and Syncing Changes]({{<ref "/dev-reference/metadata-management/syncing-changes.md">}})
+- [Pushing and Syncing Changes]({{<ref "/dev-reference/metadata-management/pushing-and-syncing.md">}})
 - [Development Process]({{<ref "/dev-reference/metadata-management/development-process.md">}})
 - [Automatic Refactorings]({{<ref "/dev-reference/metadata-management/automatic-refactorings.md" >}})
 
