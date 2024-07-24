@@ -21,7 +21,7 @@ Slingr's methodology revolves around defining your application's data model and 
 
 ## **Understanding app metadata**
 
-In the succeeding sections, we will delve into the essential components of app metadata that are crucial for creating applications in Slingr. To gain insight into metadata deployment and execution, refer to the documentation on [Pushing and Syncing Changes]({{<ref "/dev-reference/metadata-management/syncing-changes.md">}}), which also explains the process of making app alterations.
+In the succeeding sections, we will delve into the essential components of app metadata that are crucial for creating applications in Slingr. To gain insight into metadata deployment and execution, refer to the documentation on [Pushing and Syncing Changes]({{<ref "/dev-reference/metadata-management/pushing-and-syncing.md">}}), which also explains the process of making app alterations.
 
 ## **Model**
 

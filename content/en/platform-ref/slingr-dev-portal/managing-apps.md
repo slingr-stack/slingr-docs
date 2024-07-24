@@ -301,7 +301,7 @@ it because you still want to get updates from the master app.
 
 In these cases, you can add a development environment by clicking on **`Add development environment`**.
 When you do this, how changes are synced will be altered. Please check the section
-[Pushing and Syncing changes]({{< ref "/dev-reference/metadata-management/syncing-changes.md" >}}) for more details.
+[Pushing and Syncing changes]({{< ref "/dev-reference/metadata-management/pushing-and-syncing.md" >}}) for more details.
 
 ---
 
