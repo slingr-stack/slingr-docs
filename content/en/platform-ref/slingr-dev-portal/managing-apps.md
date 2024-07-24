@@ -301,7 +301,7 @@ it because you still want to get updates from the master app.
 
 In these cases, you can add a development environment by clicking on **`Add development environment`**.
 When you do this, how changes are synced will be altered. Please check the section
-[Pushing and Syncing changes]({{< ref "/dev-reference/metadata-management/pushing-and-syncing.md" >}}) for more details.
+[Pushing and Syncing changes]({{< ref "/dev-reference/metadata-management/syncing-changes.md" >}}) for more details.
 
 ---
 
@@ -345,7 +345,7 @@ Cloning your apps is useful when you want to test some changes in your app witho
 
 ![Upgrade Strategy](/images/vendor/platform-ref/managing-apps/upgrade_strategy.png)
 
-You can change the upgrade strategy of your app by selecting `Stable` or `Latest`. By default every app will be created with a `Stable` upgrade strategy. This means that your app will be running the stable version of the platform. 
+You can change the upgrade strategy of your app by selecting `Stable` or `Latest`. By default every app will be created with a `Stable` upgrade strategy. This means that your app will be running the stable version of the platform.
 If you want the latest features available you can change by selecting the `Latest` upgrade strategy. Note that this change will be applied instantly and can take a few moments for your environments to redeploy with the new version.
 If you are downgrading from a `Latest` to a `Stable` version, the setting will be saved but not applied until a new release of the platform.
 
