@@ -36,13 +36,13 @@ Importantly, understand the impact of pushing changes:
 4. Changes to legacy services are deployed, removed, or redeployed.
 5. The app is restarted.
 
-## **Synchronizing changes to production**
+## **Synchronizing changes**
 
-Once you've tested all changes in the development environment, if you have a production environment in your app, you can sync these changes from development to production.
+Once you've tested all changes in the development environment, if you have a staging or production environment in your app, you can sync these changes from development to production.
 
 ![Sync changes](/images/vendor/platform-ref/sync-changes.png)
 
-From the app builder, use the **`Sync changes to prod`** action in the secondary menu to synchronize changes. During this process, you'll see a summary of the changes that will be moved to production. It's important to note that only changes that have been pushed will be synced. Any changes made in the app builder but not yet pushed won't be synchronized.
+From the app builder, use the **`Sync changes to <target env>`** action in the secondary menu to synchronize changes. During this process, you'll see a summary of the changes that will be moved to production. It's important to note that only changes that have been pushed will be synced. Any changes made in the app builder but not yet pushed won't be synchronized.
 
 When syncing changes, the following steps occur:
 
@@ -69,23 +69,6 @@ A staging environment can be added as an intermediary between development and pr
 - **`QA`**: After completing a development iteration, instead of syncing directly to production, you can sync to staging, perform regression testing, and then sync to production once testing is complete.
 
 When a staging environment is present, changes made in development are synced to staging first, and then you can proceed to sync them to production.
-
-### Pulling Changes
-
-The pull process involves two stages:
-
-- **`Fetch Changes`**: Obtain changes from the source environment you want to merge with.
-- **`Merge Changes`**: Apply changes from the source environment into your development environment. The source could be staging or a parent app.
-
-If changes are made in the staging environment, you won't be able to directly sync changes from development to staging. Instead, you need to first pull changes from staging. This requires accessing the app builder in your development environment and executing the **`Pull changes`** action from the secondary menu.
-
-This operation merges changes from staging into the development environment, allowing you to subsequently sync them to staging.
-
-### Pulling changes in linked apps
-
-For apps created from a template with the **`Linked`** flag set, updates from the master app are received automatically. However, if you've added a development environment to your linked app, changes in the master app won't be applied automatically to production. Instead, you'll need to go to your development environment and pull the changes made in the template.
-
-This step is necessary to handle potential conflicts between changes in the master app and your linked app. After pulling changes, you can then incorporate them into your app.
 
 ## **Environment settings**
 
