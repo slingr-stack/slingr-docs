@@ -1,0 +1,13 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the action is executed
+  - name: action
+    type: sys.data.Action
+    description: |
+      The action that you want execute.
+returnType: Object{}
+returnDescription: |
+  Path to a JavaScript function that dynamically builds the chart to be displayed in the widget.
+  So that the process of writing the script for this type of widget will have the following feature: chart snippets. Developers can click on a button labeled Chart snippets associated with the chart widget instance. This button can be located right next to the Show docs button. This action opens a modal dialog where developers can select the type of chart they want to generate code. Options might include bar charts, line charts, pie charts, etc. Based on the developer's selection, the modal dynamically generates sample JavaScript code snippets. These snippets are pre-configured to create the selected type of chart using Chart.js. Finally, developers can easily review the generated code, copy and paste the snippet to the script setting.
