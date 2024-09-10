@@ -71,4 +71,4 @@ In the model, the variables that you want to expose to the view are calculated, 
 
 ### Template
 
-The view is described via HTML. Here the developer can mix expressions from the template language. Also, custom tags
+The view is described via HTML. Here the developer can mix expressions from the template language. Also, it can make use of the [HTML API]({{<ref "/dev-reference/user-interface/html-api/overview">}}) to render custom components.

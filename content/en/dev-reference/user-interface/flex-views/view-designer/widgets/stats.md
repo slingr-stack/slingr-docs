@@ -83,7 +83,7 @@ If the icon is set then this setting allows to specify the contextual class for 
 
 ## Footnote
 
-Additional text or notes displayed at the bottom of the widget, providing supplementary information. HTML can be used for this setting. Also, the Slingr HTML tags will be available. This setting can be overwritten in the script.
+Additional text or notes displayed at the bottom of the widget, providing supplementary information. HTML can be used for this or even the components provided by the [HTML API]({{<ref "/dev-reference/user-interface/html-api/overview">}}). This setting can be overwritten in the script.
 
 ## Script
 
