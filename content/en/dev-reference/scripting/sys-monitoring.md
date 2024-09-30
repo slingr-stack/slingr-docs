@@ -42,6 +42,7 @@ This method retrieve system metrics, including memory (native and heap) and CPU 
   }
 }
 ```
+
 **Attributes description**
 - **memory**: represents the overall memory usage of the app.
   - **totalMemory**: total physical memory available in bytes
