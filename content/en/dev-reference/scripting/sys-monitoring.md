@@ -25,23 +25,37 @@ This method retrieve system metrics, including memory (native and heap) and CPU 
 **`object`**  - A key-value JSON structure with the information of memory, heap memory and CPU metrics. This is the returned structure:
 ```
 {
-  "memory": {    // Represents the overall memory usage of the app.
-    "totalMemory": 16000000000, // Total physical memory available in bytes
-    "usedMemory": 9000000000,   // Memory currently in use by the app in bytes
-    "freeMemory": 7000000000    // Memory available for use in bytes
+  "memory": {
+    "totalMemory": 16000000000,
+    "usedMemory": 9000000000,
+    "freeMemory": 7000000000
   },
-  "heapMemory": {   //  Represents memory used by the Java Virtual Machine (JVM) for dynamic memory allocation.
-    "totalHeapMemory": 4000000000, // Total heap memory allocated for the JVM in bytes
-    "usedHeapMemory": 2500000000,   // Heap memory currently in use by the JVM in bytes
-    "freeHeapMemory": 1500000000     // Heap memory available for allocation in bytes
+  "heapMemory": {
+    "totalHeapMemory": 4000000000,
+    "usedHeapMemory": 2500000000,
+    "freeHeapMemory": 1500000000
   },
-  "cpu": {   //  Represents CPU-related metrics for the app and the JVM process.
-    "processCpuLoad": 25.0,        // CPU load percentage used by the JVM process
-    "systemCpuLoad": 65.0,         // Overall CPU load percentage of the system
-    "systemCpuUsage": 1.5          // Average CPU usage over a specific time frame
+  "cpu": {
+    "processCpuLoad": 25.0,
+    "systemCpuLoad": 65.0,
+    "systemCpuUsage": 1.5
   }
 }
 ```
+Attributes description
+- **memory**: represents the overall memory usage of the app.
+  - **totalMemory**: total physical memory available in bytes
+  - **usedMemory**: memory currently in use by the app in bytes
+  - **freeMemory**: memory available for use in bytes
+- **heapMemory**: represents memory used by the Java Virtual Machine for dynamic memory allocation.
+  - **totalHeapMemory**: total heap memory allocated for the JVM in bytes
+  - **usedHeapMemory**: heap memory currently in use by the JVM in bytes
+  - **freeHeapMemory**: heap memory available for allocation in bytes
+- **cpu**: represents CPU-related metrics for the app and the JVM process.
+  - **processCpuLoad**: CPU load percentage used by the JVM process
+  - **systemCpuLoad**: overall CPU load percentage of the system
+  - **systemCpuUsage**: average CPU usage over the last 1 second
+
 
 ##### Sample
 Logging CPU and memory usage metrics information
