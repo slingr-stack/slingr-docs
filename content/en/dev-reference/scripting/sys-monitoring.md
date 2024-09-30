@@ -64,7 +64,7 @@ This is the returned structure:
 Logging CPU and memory usage metrics information
 
 ``` javascript
-let appMetrics = sys.monitoring.getAppMetrics();
+let appMetrics = sys.monitoring.getMetrics();
 log('App Metrics: ' + JSON.stringify(appMetrics));
 // access CPU and memory metrics
 let cpuLoad = appMetrics.cpu.processCpuLoad;
