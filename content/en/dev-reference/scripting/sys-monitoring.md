@@ -22,7 +22,8 @@ This method retrieve system metrics, including memory (native and heap) and CPU 
 
 ##### Returns
 
-**`object`**  - A key-value JSON structure with the information of memory, heap memory and CPU metrics. This is the returned structure:
+**`object`**  - A key-value JSON structure with the information of memory, heap memory and CPU metrics.
+This is the returned structure:
 ```
 {
   "memory": {
