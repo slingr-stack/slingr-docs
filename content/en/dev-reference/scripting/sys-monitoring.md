@@ -44,6 +44,7 @@ This is the returned structure:
 }
 ```
 
+
 **Attributes description**
 - **memory**: represents the overall memory usage of the app.
   - **totalMemory**: total physical memory available in bytes
