@@ -11,7 +11,7 @@ menu:
 toc: true
 weight: 4
 ---
-Pricing of the platform is based on apps. [You can check the pricing here](https://www.slingr.io/pricing).
+Pricing of the platform is based on apps. [You can check the pricing here](https://www.slingr.io/platform/pricing).
 
 Each app will have a corresponding subscription, which can be associated with any of the four products we offer:
 
