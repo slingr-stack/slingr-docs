@@ -86,6 +86,10 @@ Pagination is disabled by default. To enable it, activate the Enable pagination 
 	+ Per-page pagination: Content is split into pages. The page size (number of items per page) must be defined, and users can navigate through pages using a paginator.
 	+ Progressive pagination: Comming soon.
 
+{{< notes type="note" >}}
+ Keep in mind that if pagination is not enabled and many records are displayed, the table may take longer to render.
+{{< /notes >}}
+
 ### Sticky header
 
 To make the table header sticky during scrolling, set the **Sticky header** flag to `true`. The default is `false`.
@@ -246,6 +250,10 @@ return {
   ]
 };
 ```
+
+{{< notes type="note" >}}
+ This is an example using mock data. Filtering, sorting, and pagination will not work unless you manually implement the necessary algorithms.
+{{< /notes >}}
 
 #### Explanation:
 - **Header**: Each header column is defined with a `name`, `label`, and optional `css` for styling. Some columns also have the `sortable` property, indicating that they can be sorted by the user.
