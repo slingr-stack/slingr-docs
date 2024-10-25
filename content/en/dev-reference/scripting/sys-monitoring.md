@@ -18,34 +18,38 @@ The **`sys.monitoring`** package provides methods for making it easier to monito
 
 ###  getMetrics()
 
-This method retrieve system metrics, including memory (native and heap) and CPU usage.
+This method retrieve system metrics, including memory (native and heap) and CPU usage for each instance of the application.
 
 ##### Returns
 
-**`object`**  - A key-value JSON structure with the information of memory, heap memory and CPU metrics.
+**`array`**  - An array of objects with key-value JSON structures containing information on memory, heap memory, and CPU metrics.
 This is the returned structure:
 ```
-{
-  "memory": {
-    "totalMemory": 16000000000,
-    "usedMemory": 9000000000,
-    "freeMemory": 7000000000
-  },
-  "heapMemory": {
-    "totalHeapMemory": 4000000000,
-    "usedHeapMemory": 2500000000,
-    "freeHeapMemory": 1500000000
-  },
-  "cpu": {
-    "processCpuLoad": 25.0,
-    "systemCpuLoad": 65.0,
-    "systemCpuUsage": 1.5
+[
+  {
+    "instanceId": "test-dr-deployment-vax8-54585cbfb6-jngd7",
+    "memory": {
+      "usedMemory": 872607744,
+      "totalMemory": 2147483648,
+      "freeMemory": 1274875904
+    },
+    "heapMemory": {
+      "totalHeapMemory": 404750336,
+      "usedHeapMemory": 329141584,
+      "freeHeapMemory": 75608752
+    },
+    "cpu": {
+      "processCpuLoad": 72.2137798833964,
+      "systemCpuLoad": 72.21346706388304,
+      "systemCpuUsage": 10.6
+    }
   }
-}
+]
 ```
 
 
 **Attributes description**
+- **instanceId**: uniquely identifies each instance of the app runtime.
 - **memory**: represents the overall memory usage of the app.
   - **totalMemory**: total physical memory available in bytes
   - **usedMemory**: memory currently in use by the app in bytes
@@ -65,15 +69,20 @@ Logging CPU and memory usage metrics information
 
 ``` javascript
 let appMetrics = sys.monitoring.getMetrics();
-log('App Metrics: ' + JSON.stringify(appMetrics));
-// access CPU and memory metrics
-let cpuLoad = appMetrics.cpu.processCpuLoad;
-log('CPU load: ' + cpuLoad);
-let totalMemory = appMetrics.memory.totalMemory;
-log('Total memory: ' + totalMemory);
-let usedMemory = appMetrics.memory.usedMemory;
-log('Used memory: ' + usedMemory);
-let usedMemoryPercentage = (usedMemory / totalMemory) * 100;
-log('Used memory %: ' + usedMemoryPercentage);
+appMetrics.forEach(function (instanceMetric) {
+  log('App Metrics: ' + JSON.stringify(instanceMetric));
+  // access app runtime instance id
+  let instanceId = instanceMetric.instanceId;
+  log('Instance ID: ' + instanceId);
+  // access CPU and memory metrics
+  let cpuLoad = instanceMetric.cpu.processCpuLoad;
+  log('CPU load: ' + cpuLoad);
+  let totalMemory = instanceMetric.memory.totalMemory;
+  log('Total memory: ' + totalMemory);
+  let usedMemory = instanceMetric.memory.usedMemory;
+  log('Used memory: ' + usedMemory);
+  let usedMemoryPercentage = (usedMemory / totalMemory) * 100;
+  log('Used memory %: ' + usedMemoryPercentage);
+});
 ```
 
