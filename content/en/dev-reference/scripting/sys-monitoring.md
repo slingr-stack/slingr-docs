@@ -18,7 +18,7 @@ The **`sys.monitoring`** package provides methods for making it easier to monito
 
 ###  getMetrics()
 
-This method retrieve system metrics, including memory (native and heap) and CPU usage for each instance of the application.
+This method retrieves system metrics, including memory (native and heap) and CPU usage for each instance of the application.
 
 ##### Returns
 
