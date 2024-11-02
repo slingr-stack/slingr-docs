@@ -487,3 +487,116 @@ If you decide to provide a custom mapping, here is the context of the script:
   <br>
 
   ---
+
+## **OAuth**
+
+OAuth is an open-standard authorization protocol that allows secure third-party access to a user's resources without sharing their credentials (see [OAuth 2.0](https://en.wikipedia.org/wiki/OAuth)).
+
+OAuth is widely used in web and mobile applications, enabling users to grant your Slingr app access to their data on other platforms, such as social media or cloud services, without the need to provide their usernames and passwords directly. This enhances security and user experience by leveraging existing accounts for seamless authentication
+
+### OAuth redirect URI
+
+The OAuth redirect URI is the URI you need to configure in your service account settings. The standard format is:
+**`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer`**.
+
+### Authorization URL
+
+The Authorization URL is the endpoint where users are directed for authentication. It typically follows a structure like **`https://<provider>.com/oauth/authorize`**, though the exact URL may vary depending on the provider.
+
+### Access token URL
+
+The Access Token URL is the endpoint used to obtain access tokens after the user has completed authentication. This URL generally follows a structure like **`https://<provider>.com/oauth/token`**, although the specific URL may vary by provider.
+
+When making a request to the Authorization URL, the following parameters are typically required:
+
+- **`response_type`**: Specifies the type of response desired (e.g., code, token).
+- **`client_id`**: The unique identifier for your application.
+- **`redirect_uri`**: The URI to which the user will be redirected after authentication.
+- **`scope`**: The permissions that your application is requesting from the user.
+- **`state`**: A unique string to maintain state between the request and callback (used for preventing CSRF attacks).
+
+Ensure to consult the provider's documentation for any additional required parameters specific to their implementation."
+
+### Client ID
+
+When you register an app, a unique and permanent ID is automatically generated. The ID format is similar to UUID.
+
+### Client Secret
+
+When you register an application, a unique and permanent secret is automatically generated. The secret format is typically a long string of alphanumeric characters.
+
+### Scope
+
+The scope parameter defines the permissions requested by the application from the user during OAuth authentication and may vary by provider.
+
+### Default user group
+
+Any new user created will be automatically assigned to this group as the Primary group.
+
+### Redirect to a URL after login
+
+This flag allows generating a redirection after a successful login.
+It can redirect to a view, an external page or a html from the public files.
+The user token will be sent as header and as query param to maintain a context.
+
+### Oauth user handler script
+
+In the OAuth User Handler Script, three parameters are received: `code`, `config`, and `userRecord`.
+
+- **`code`**: This parameter is the code received from the user's authorization process.
+- **`config`**: This is a JSON object that contains all the configuration settings defined for the identity provider, including `client_id`, `client_secret`, `scope`, `oauthRedirectUri` (which corresponds to the OAuth redirect URI), and `token_url` (which corresponds to the Access Token URL).
+- **`userRecord`**: This parameter represents the user being authenticated.
+
+As the first step, the script must obtain the `access_token` by making a call to the API defined by the provider, using the required parameters. This process may vary from provider to provider. Once the `access_token` is obtained, a call can be made to the provider's API to retrieve the user's data. The script should first check if the user already exists by searching for their email. If the user exists, return their record along with the associated firstName and lastName. If the user does not exist, the developer must ensure that the fields `firstName`, `lastName`, and `email` are filled out; otherwise, the user record cannot be saved, as these fields are required. Finally, the script must return the userRecord.
+
+##### Samples
+
+  ```js
+    // get access token
+  const accessTokenResponse = svc.http.post({
+    url: config.tokenUrl,
+    params: {
+      grant_type: 'authorization_code',
+      client_id: config.clientId,
+      redirect_uri: config.oauthRedirectUri,
+      code: code
+    },
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  if (!accessTokenResponse || !accessTokenResponse.access_token) throw('Error obtaining access_token')
+  // get user data
+  const userDataResponse = svc.http.post({
+    url: 'https://shopify.com/87175397693/account/customer/api/2024-10/graphql',
+    params: {
+      query: 'query { customer { id firstName lastName emailAddress {emailAddress} } }'
+    },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization : accessTokenResponse.access_token
+    }
+  });
+  if (!userDataResponse || !userDataResponse.data || !userDataResponse.data.customer) throw('Error obtaining customer data')
+  // fill out userRecord
+  let email;
+  if (userDataResponse.data.customer.emailAddress) {
+    email = userDataResponse.data.customer.emailAddress.emailAddress;
+    if (email) {
+      const userRegistered = sys.data.findOne('sys.users', {email: email});
+      if (userRegistered) {
+        return userRegistered;
+      }
+    }
+  }
+  const firstName = userDataResponse.data.customer.firstName || 'Default first name';
+  const lastName = userDataResponse.data.customer.lastName || 'Default last name';
+  if (!email) throw('Missing required fields: email') // you might throw an exception for firstName and lastName
+  userRecord.field('firstName').val(firstName);
+  userRecord.field('lastName').val(lastName)
+  userRecord.field('email').val(email)
+  return sys.data.save(userRecord);
+  ```
+  <br>
+
+  ---
