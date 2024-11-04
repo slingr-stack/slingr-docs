@@ -490,7 +490,7 @@ If you decide to provide a custom mapping, here is the context of the script:
 
 ## **OAuth**
 
-OAuth is an open-standard authorization protocol that allows secure third-party access to a user's resources without sharing their credentials (see [OAuth 2.0](https://en.wikipedia.org/wiki/OAuth)).
+OAuth is an open-standard authorization protocol that allows secure third-party access to a user's resources without sharing their credentials (see [OAuth 2.0](https://auth0.com/intro-to-iam/what-is-oauth-2)).
 
 OAuth is widely used in web and mobile applications, enabling users to grant your Slingr app access to their data on other platforms, such as social media or cloud services, without the need to provide their usernames and passwords directly. This enhances security and user experience by leveraging existing accounts for seamless authentication
 
