@@ -594,7 +594,10 @@ As the first step, the script must obtain the `access_token` by making a call to
   if (!email) throw('Missing required fields: email') // you might throw an exception for firstName and lastName
   userRecord.field('firstName').val(firstName);
   userRecord.field('lastName').val(lastName)
-  userRecord.field('email').val(email)
+  userRecord.field('firstName').val(firstName);                              // Required
+  userRecord.field('lastName').val(lastName);                              // Required
+  userRecord.field('email').val(email);                                           // Required
+  userRecord.field('currentlyWorkingOn').val("Google");              // Optional
   sys.data.save(userRecord);
   return userRecord;
   ```
