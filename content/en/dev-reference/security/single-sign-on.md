@@ -595,7 +595,8 @@ As the first step, the script must obtain the `access_token` by making a call to
   userRecord.field('firstName').val(firstName);
   userRecord.field('lastName').val(lastName)
   userRecord.field('email').val(email)
-  return sys.data.save(userRecord);
+  sys.data.save(userRecord);
+  return userRecord;
   ```
   <br>
 
