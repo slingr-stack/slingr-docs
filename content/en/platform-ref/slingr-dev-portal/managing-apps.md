@@ -44,7 +44,7 @@ Then, you will be asked to complete the following fields:
   - **`Slingr Business Plan`**: Here you can start to have an isolated production environment with a fixed price, it gives greater possibilities than the previous plans.
   - **`Slingr Enterprise Plan`**: This is a usage-based plan meant for applications in production environments that need dedicated resources and outstanding performance. There are no limitations with the **Slingr Enterprise Plan**.
 
-  You can see the full comparison in [Pricing and Billing](https://www.slingr.io/pricing).
+  You can see the full comparison in [Pricing and Billing](https://www.slingr.io/platform/pricing).
 
 - **`Template`**: You can choose to start from scratch, with an empty app, or you can choose one of the available templates. Here you will find global templates created by other people, or you can also create your own templates. See [App templates](#app-templates) for more information.
 

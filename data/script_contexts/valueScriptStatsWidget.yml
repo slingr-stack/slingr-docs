@@ -1,0 +1,20 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the action is executed
+  - name: action
+    type: sys.data.Action
+    description: |
+      The action that you want execute.
+returnType: Object{} | value
+returnDescription: |
+  Path to a JavaScript function that calculates or fetches the data to be displayed in the widget. This enables the widget to display relevant and context-specific information, adjusting its appearance and content dynamically based on the calculated values and conditions.
+
+  This script can return either a simple value or a structure. If a structure is returned, it can override the default attributes of the widget, including:
+  value,
+  valueStyle,
+  icon,
+  iconStyle,
+  footNote,
+

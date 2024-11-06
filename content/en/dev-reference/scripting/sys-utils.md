@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "dev-reference"
 toc: true
-weight: 74
+weight: 75
 ---
 
 ## **sys.utils.text**

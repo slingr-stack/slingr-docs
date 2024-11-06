@@ -1,0 +1,14 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the action is executed
+  - name: action
+    type: sys.data.Action
+    description: |
+      The action that you want execute.
+returnType: Object{}
+returnDescription: |
+  The object with the parameters that you want have resolved in the UI of the widget.
+  This widget allows the developer to write HTML and bind variables to a model through a template language. As in other places in the platform, we will use Freemarker as a template language to enable writing expressions within HTML
+  A template widget is composed of a view expressed in HTML and a model that is calculated through a script.

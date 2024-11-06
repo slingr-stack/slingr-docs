@@ -37,3 +37,4 @@ Subsequent sections delve into comprehensive information about each segment of t
 - [UI]({{<ref "/dev-reference/scripting/sys-ui.md">}}
 - [Users]({{<ref "/dev-reference/scripting/sys-users.md">}})
 - [Utils]({{<ref "/dev-reference/scripting/sys-utils.md">}})
+- [Monitoring]({{<ref "/dev-reference/scripting/sys-monitoring.md">}})
