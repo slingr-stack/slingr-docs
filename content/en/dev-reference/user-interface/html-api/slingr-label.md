@@ -1,8 +1,8 @@
 ---
 title: "Slingr label"
 description: "Detailed explanation of the slingr label component and it's settings."
-date: 2020-11-16T13:59:39+01:00
-lastmod: 2020-11-16T13:59:39+01:00
+date: 2024-11-06T13:59:39+01:00
+lastmod: 2024-11-06T13:59:39+01:00
 draft: false
 images: []
 menu:
