@@ -22,6 +22,7 @@ The platform currently supports these components:
 - **[Slingr action]({{<ref "/dev-reference/user-interface/html-api/slingr-action">}})**
 - **[Slingr file]({{<ref "/dev-reference/user-interface/html-api/slingr-file">}})**
 - **[Slingr icon]({{<ref "/dev-reference/user-interface/html-api/slingr-icon">}})**
+- **[Slingr label]({{<ref "/dev-reference/user-interface/html-api/slingr-label">}})**
 - **[Slingr link]({{<ref "/dev-reference/user-interface/html-api/slingr-link">}})**
 - **[Slingr tooltip]({{<ref "/dev-reference/user-interface/html-api/slingr-tooltip">}})**
 
