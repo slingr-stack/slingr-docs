@@ -370,11 +370,11 @@ sys.ui.sendMessage({
 **`view`**
 
 ##### Parameters
-
-Name|Type|Required|Default|Description
+Name | Type | Required | Default | Description
 ---|---|---|---|---
-views|object|yes|-|The list of view names that will be notified by the event. The view types that can process this event are: **`grid`**, **`card`**, **`calendar`** and **`read only`** views.
-widgetContainers|onject|no|-|In case to dashbaord view you can send the array a list to containers to be refresh. This can be an array of string or can be specify an object with container name and query parameters. Check widgets documentation for more information.
+views | object | yes | - | The list of view names that will be notified by the event. The view types that can process this event are: **`grid`**, **`card`**, **`calendar`** and **`read only`** views.
+widgetContainers | object | no | - | In case of a dashboard view, you can send an array listing containers to refresh. This can be an array of strings or an object specifying the container name and query parameters. Check widgets documentation for more information.
+recordId | string | no | - | Used in entity views, entity flex views, and custom views.
 
 ##### Samples
 
