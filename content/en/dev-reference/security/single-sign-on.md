@@ -537,7 +537,7 @@ Ensure to consult the provider's documentation for any additional required param
 This section will be available when the `Script` option has been chosen under the `Access Token Retrieval Method.` You will need to obtain the access token manually and return it under the key name `accessToken` (see [HTTP Service](https://github.com/slingr-stack/http-service) and [HTTP Package](https://github.com/slingr-stack/http-package)). The `code` obtained as part of the authorization flow will be provided as a parameter, also you will be able to access the configuration defined for the provided under the `config` parameter. For example:
 
   ```js
-    const accessTokenResponse = svc.http.post({
+    const accessTokenResponse = pkg.http.post({
     url: config.tokenUrl,
     params: {
         grant_type: 'authorization_code',
