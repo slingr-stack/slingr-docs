@@ -32,4 +32,7 @@ Here, you'll find the following key metrics:
 
 - **`Integrations`**: In this section, you can assess the status of each of your legacy services, along with the number of events and functions processed and discarded. If you observe no activity in your legacy services, it may indicate underlying issues that require investigation.
 
+- **`Go Maintenance`**: If the app is alive, this button switches the application to maintenance mode. This means that users cannot access or use the runtime if they are logged in.
+  **Important: admins and developers of the app can still log in to the runtime**.
 
+- **`Go Live`**: If the app is in maintenance this button switches the application to live mode.
