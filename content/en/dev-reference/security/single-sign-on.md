@@ -566,7 +566,7 @@ In the User mapping script, three parameters are received: `accessToken`, `confi
 A call should be made to the provider's API to retrieve the user's data (see [HTTP Service](https://github.com/slingr-stack/http-service) and [HTTP Package](https://github.com/slingr-stack/http-package)). The script should first check if the user already exists by searching for their email. If the user exists, return their record along with the associated firstName and lastName. If the user does not exist, the developer must ensure that the fields `firstName`, `lastName`, and `email` are filled out; otherwise, the user record cannot be saved, as these fields are required. Finally, the script must return the userRecord.
 
   ```js
-  const userDataResponse = svc.http.get({
+  const userDataResponse = pkg.http.get({
     url: 'https://api.example.com/user' // Replace with the actual API endpoint,
     body: {
       fields: ['firstName', 'lastName', 'email'] // Replace with the actual API implementation
