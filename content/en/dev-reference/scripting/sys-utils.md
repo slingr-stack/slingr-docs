@@ -565,6 +565,7 @@ This function converts a string to HS-256 hash.
 |---|---|---|---|
 message|string|yes|The string to be converted
 secret|string|yes|The private key to sign the token
+encoding|string|no|DefaultValue: “HEX”, Possible values: “HEX”, “BASE64”
 #### Returns
 
 **`string`** - The result hash as String.
