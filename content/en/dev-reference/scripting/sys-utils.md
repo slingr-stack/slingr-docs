@@ -555,7 +555,7 @@ log('Hmac base64 String : '+convertedMessage);
 ```
 <br>
 
-###  hs256(message, secret)
+###  hs256(message, secret, encoding)
 
 This function converts a string to HS-256 hash.
 
