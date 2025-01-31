@@ -9,13 +9,13 @@ menu:
   docs:
     parent: "widgets"
 toc: true
-weight: 101
+weight: 103
 ---
 
 This type of widget represents a [field]({{<ref "/dev-reference/data-model-and-logic/fields">}}) that belongs to an `Entity`.
 
 {{< notes type="note" >}}
- This widget can only be configured in **[Flex record views]({{<ref "/dev-reference/user-interface/flex-views/flex-record-views">}})**
+This widget can only be configured in **[Flex record views]({{<ref "/dev-reference/user-interface/flex-views/flex-record-views">}})**
 {{< /notes >}}
 
 ## Settings

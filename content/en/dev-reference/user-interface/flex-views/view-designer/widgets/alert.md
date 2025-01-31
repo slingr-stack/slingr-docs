@@ -9,7 +9,7 @@ menu:
   docs:
     parent: "widgets"
 toc: true
-weight: 104
+weight: 100
 ---
 
 This type of widget represents a **Alert block** that can be useful for showing users a highlighted block. Can be configured along with actions.
@@ -43,31 +43,31 @@ Indicates the visibility of the widget, can be configured with the following opt
 - **`Always`**: The widget is perpetually accessible.
 - **`Script`**: When the script returns **`true`**, the widget becomes accessible; otherwise, it remains inaccessible. Here's the script's context:
 
-    ---
+  ***
 
-    ##### Parameters
+  ##### Parameters
 
-    |Name|Type|Description|
-    |---|---|---|
-    |record|[sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}})|This record is linked to the ongoing operation.
+  | Name   | Type                                                                              | Description                                     |
+  | ------ | --------------------------------------------------------------------------------- | ----------------------------------------------- |
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) | This record is linked to the ongoing operation. |
 
-    ##### Returns
+  ##### Returns
 
-    **`boolean`** - You should return **`true`**  if there is access to the widget, **`false`** otherwise.
+  **`boolean`** - You should return **`true`** if there is access to the widget, **`false`** otherwise.
 
-    ##### Samples
+  ##### Samples
 
-    ```js
-    // if 'numberOfExmployees' is bigger than 10, then this field is visible
-    return record.field('numberOfEmployees').val() > 10;
-    ```
+  ```js
+  // if 'numberOfExmployees' is bigger than 10, then this field is visible
+  return record.field("numberOfEmployees").val() > 10;
+  ```
+
     <br>
-    
-    ---
+
+  ***
 
 - **`Expression`**: The widget becomes accessible if the expression evaluates to `true`. More information is available in the [Expressions documentation]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
 - **`Never`**: The widget will never be accessible.
-
 
 ### Style
 
@@ -82,6 +82,7 @@ The emphasis color of the alert.
 ### Dismissible
 
 This option enables the user to close the alert when it's shown.
+
 - **Default value**: `false`
 
 ### Menu
