@@ -75,17 +75,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: hugo-artifact
-          path: ./downloaded-artifact
-
-      - name: List downloaded files
-        run: |
-          echo "Listing files in the downloaded directory:"
-          ls -l ./downloaded-artifact
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+        with:
+          artifact_name: hugo-artifact
