@@ -58,7 +58,7 @@ jobs:
         run: |
           hugo --gc --minify
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact
         with:
           path: ./public
 
