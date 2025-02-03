@@ -81,4 +81,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
         with:
-          path: ./artifact/public
+          artifact_name: hugo-artifact
