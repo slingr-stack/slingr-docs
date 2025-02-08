@@ -65,9 +65,25 @@ Indicates the visibility of the widget, can be configured with the following opt
 - **`Expression`**: The widget becomes accessible if the expression evaluates to `true`. More information is available in the [Expressions documentation]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
 - **`Never`**: The widget will never be accessible.
 
-### Expanded
+#### Layout/Sections
 
-Indicates the expanded of the accordion widget, can be configured with the following options:
+The layout sections are configured adding sections through the add button so it'll add the section with a row and column inside. The user will configure widgets, like configuring a normal row and column, building a sub-layout inside the global layout of the view. Below this section, you will see an example with pictures of how to build the layout and configure the accordion.
+
+Like the accordion, sections can be configure. These have the following settings
+
+### Label
+
+This represents the human-readable widget label. It's what appears in the heading section of the accordion when is displayed.
+
+### Name
+
+This is the internal widget name, used as for database storage within entities.
+
+The name must not contain special characters or spaces; only letters and numbers are allowed.
+
+### Visible
+
+Indicates the visibility of the widget, can be configured with the following options:
 
 - **`Always`**: The widget is perpetually accessible.
 - **`Script`**: When the script returns **`true`**, the widget becomes accessible; otherwise, it remains inaccessible. Here's the script's context:
@@ -76,36 +92,65 @@ Indicates the expanded of the accordion widget, can be configured with the follo
 
   ##### Parameters
 
-| Name   | Type                                                                              | Description                                     |
-| ------ | --------------------------------------------------------------------------------- | ----------------------------------------------- |
-| record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) | This record is linked to the ongoing operation. |
-| action | [sys.data.Action]({{<ref "/dev-reference/scripting/sys-data.md#sysdataaction">}}) | This action is linked to the ongoing operation. |
+  | Name   | Type                                                                              | Description                                     |
+  | ------ | --------------------------------------------------------------------------------- | ----------------------------------------------- |
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) | This record is linked to the ongoing operation. |
 
-##### Returns
+  ##### Returns
 
-**`boolean`** - You should return **`true`** if there is access to the widget, **`false`** otherwise.
+  **`boolean`** - You should return **`true`** if there is access to the widget, **`false`** otherwise.
 
-##### Samples
+  ##### Samples
 
-```js
-// if 'numberOfExmployees' is bigger than 10, then this field is visible
-return record.field("numberOfEmployees").val() > 10;
-```
+  ```js
+  // if 'numberOfExmployees' is bigger than 10, then this field is visible
+  return record.field("numberOfEmployees").val() > 10;
+  ```
 
-<br>
+    <br>
+
+  ***
 
 - **`Expression`**: The widget becomes accessible if the expression evaluates to `true`. More information is available in the [Expressions documentation]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
 - **`Never`**: The widget will never be accessible.
 
-#### Layout
+### Expanded
 
-The layout settings is configured dropping or dragging row and inside columns and then widgets to build a sub layout inside the global layout of the view. Below this section, you will see an example with pictures of how to build the layout and configure the accordion.
+Indicates if the section is expanded or not by default, can be configured with the following options:
+
+- **`Always`**: The widget is perpetually accessible.
+- **`Script`**: When the script returns **`true`**, the widget becomes accessible; otherwise, it remains inaccessible. Here's the script's context:
+
+  ***
+
+  ##### Parameters
+
+  | Name   | Type                                                                              | Description                                     |
+  | ------ | --------------------------------------------------------------------------------- | ----------------------------------------------- |
+  | record | [sys.data.Record]({{<ref "/dev-reference/scripting/sys-data.md#sysdatarecord">}}) | This record is linked to the ongoing operation. |
+
+  ##### Returns
+
+  **`boolean`** - You should return **`true`** if there is access to the widget, **`false`** otherwise.
+
+  ##### Samples
+
+  ```js
+  // if 'numberOfExmployees' is bigger than 10, then this field is visible
+  return record.field("numberOfEmployees").val() > 10;
+  ```
+
+    <br>
 
 ### Example
 
 All the settings except the layout can be configured clicked on the accordion container or on the configure widget button. You will see a view like this
-![Accordion settings example](./images/vendor/flex-designer/widgets/accordionSettingsExample.png)
+![Accordion settings example](./images/vendor/flex-designer/widgets/AccordionSettingsExample.png)
 <br>
 
-The layout will be configured with drag and drop the row/columns/widgets inside the accordion block how to can see in the next picture.
-![Accordion layout example](./images/vendor/flex-designer/widgets/accordionLayoutExample.png)
+The section also has the settings
+![Accordion section settings example](./images/vendor/flex-designer/widgets/AccordionSectionSettingsExample.png)
+<br>
+
+The layout will be configured adding sections by the add button and then with drag and drop the row/columns/widgets inside the accordion section block how to can see in the next picture.
+![Accordion layout example](./images/vendor/flex-designer/widgets/AccordionLayoutExample.png)
