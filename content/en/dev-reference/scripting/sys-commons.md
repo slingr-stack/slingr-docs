@@ -139,3 +139,23 @@ companies.forEach(function(company) {
 });
 ```
 <br>
+
+### close()
+
+Closes the cursor if it is still active and open. This action will release resources associated with the cursor (such as memory and connections).
+
+##### Samples
+
+``` javascript
+// iterates over all companies and release cursor at the end
+var companies = sys.data.find('companies', {});
+try {
+  while (companies.hasNext()) {
+    log(companies.next().label());
+  }
+} finally {
+   // release cursor resources
+   companies.close();
+}
+```
+<br>
