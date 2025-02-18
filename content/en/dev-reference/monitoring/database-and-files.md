@@ -46,9 +46,27 @@ By clicking on an entity, you can access more detailed information, including in
 
 - **`Refresh Calculated Fields`**: When your calculated fields contain outdated values, use this operation. It updates calculated fields across all records within the entity.
 
-### Performance
+### Performance 
 
-The "Performance" section is dedicated to monitoring slow queries. This is crucial if you're experiencing performance issues in your app. You can identify which operations are consuming more time and make informed decisions about creating indexes or making adjustments to enhance your app's performance.
+The "Performance" section is dedicated to monitoring slow queries. This is crucial if you're experiencing performance issues in your app. You can identify which operations are consuming more time and make informed decisions about creating indexes or making adjustments to enhance your app's performance.  
+
+#### Suggested indexes
+
+To help optimize query performance, this section also provides suggested indexes retrieved from the MongoDB Atlas *Performance Advisor*. These indexes are based on an analysis of slow queries and are designed to enhance efficiency by reducing the number of scanned documents.  
+
+##### How suggested indexes work
+
+- It recommends indexes that can improve query performance by optimizing how MongoDB searches for data.  
+- Suggested indexes are displayed in a structured format, specifying the fields that should be indexed and their order.  
+
+##### Using suggested indexes effectively
+
+- **Evaluate query behavior**: Ensure that the suggested indexes align with frequently executed queries to maximize their impact.  
+- **Balance performance and storage**: While indexes enhance query speed, excessive indexing can increase storage costs and affect write performance.  
+- **Monitor the impact**: After implementing an index, track query execution times to validate improvements and adjust as needed.  
+
+Leveraging suggested indexes can significantly improve database performance, making applications more efficient and responsive.  
+
 
 ### Tools
 
