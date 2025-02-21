@@ -1,0 +1,21 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the action will be executed.
+  - name: interaction
+    type: sys.data.Interaction
+    description: |
+      Interaction object to access parameters of the interaction.
+  - name: modifiedParameter
+    type: string
+    description: |
+      A string with the name of the field that fires the event.
+returnType: null
+returnDescription: null
+samples:
+  - title: sets the value as the email of the current user only if the field 'sendTo' has changed and is empty
+    code: |
+      if (modifiedParameter == 'sendTo' && interaction.field('sendTo').isEmpty()) {
+        interaction.field('sendTo').val(sys.context.getCurrentUser().email());
+      }

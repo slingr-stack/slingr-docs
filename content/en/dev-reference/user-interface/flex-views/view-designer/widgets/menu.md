@@ -12,7 +12,7 @@ toc: true
 weight: 105
 ---
 
-This type of widget represents a **Menu block** that can be useful for grouping actions to execute.
+This type of widget represents a **Menu block** that can be useful for grouping actions and interactions to execute.
 
 {{< notes type="note" >}}
  This widget can only be configured in **[Flex record views]({{<ref "/dev-reference/user-interface/flex-views/flex-record-views">}})**
@@ -70,8 +70,8 @@ Indicates the visibility of the widget, can be configured with the following opt
 
 ### Menu
 
-This options enables to set entity related [actions]({{<ref "/dev-reference/data-model-and-logic/actions">}}) to the alert. The available settings are:
+This options enables to set entity related [actions]({{<ref "/dev-reference/data-model-and-logic/actions">}}) and view related [interactions]({{<ref "/dev-reference/user-interface/interactions">}}) to the menu. The available settings are:
 
-- **`All`**: Includes all the actions present in the entity.
-- **`Custom`**: Custom set of actions and groups defined by the developer.
-- **`None`**: No actions will be shown.
+- **`All`**: Includes all the actions and interactions present in the entity/view.
+- **`Custom`**: Custom set of actions, interactions and groups defined by the developer.
+- **`None`**: No actions or interactions will be shown.

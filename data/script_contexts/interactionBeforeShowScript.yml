@@ -1,0 +1,15 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the interaction will be executed.
+  - name: interaction
+    type: sys.data.Interaction
+    description: |
+      Interaction object to access parameters of the interaction.
+returnType: null
+returnDescription: null
+samples:
+  - title: before interaction show set a field value.
+    code: |
+      interaction.field('sendTo').val(sys.context.getCurrentUser().email());

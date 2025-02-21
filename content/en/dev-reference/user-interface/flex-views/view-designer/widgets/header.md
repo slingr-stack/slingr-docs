@@ -70,6 +70,6 @@ Indicates the visibility of the widget, can be configured with the following opt
 
 This options enables to set entity related [actions]({{<ref "/dev-reference/data-model-and-logic/actions">}}) to the header. The available settings are:
 
-- **`All`**: Includes all the actions present in the entity.
-- **`Custom`**: Custom set of actions and groups defined by the developer.
-- **`None`**: No actions will be shown.
+- **`All`**: Includes all the actions and interactions present in the entity/view.
+- **`Custom`**: Custom set of actions, interactions and groups defined by the developer.
+- **`None`**: No actions or interactions will be shown.

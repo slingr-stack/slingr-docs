@@ -2379,6 +2379,54 @@ sys.logs.info('param1: '+action.field('param1').val());
 ```
 <br>
 
+## **sys.data.Interaction**
+
+When an interaction is executed, an object of this class will be accessible in the context of the interaction's scripts with the name **`interaction`**. This allows access to fields within the interaction in a similar way to how you would interact with record fields.
+
+###  name()
+
+Returns the name of the interaction being executed.
+
+##### Returns
+
+**`string`** - Name of the interaction being executed.
+
+##### Samples
+
+``` javascript
+// print name of the action; only works inside scripts of an interaction
+sys.logs.info('interaction being executed: '+ interaction.name());
+```
+<br>
+
+###  field(path)
+
+Returns the interaction field at the given path. It works exactly the same as [sys.data.Record.field()](#👉-fieldpath) but it works over the fields defined on the interaction.
+
+##### Parameters
+
+| Name  | Type  | Required | Description |
+|---|---|---|---|
+path|string|yes|The path of the field. It could be a nested or multi-valued field.
+
+##### Returns
+
+[sys.data.Wrapper](#sysdatawrapper) or [sys.data.ManyWrapper](#sysdatamanywrapper) - A field object that you can use to read and manipulate the value.
+
+##### Exceptions
+
+**badRequest**
+
+If **`path`** is invalid.
+
+##### Samples
+
+``` javascript
+// logs the value of field 'param1'; only works inside a script of an interaction that has a 'param1' field
+sys.logs.info('param1: ' + interaction.field('param1').val());
+```
+<br>
+
 ## **sys.data.RecordAuditLogs**
 
 This class enables the querying of audit logs for a record. It's important to note that the feature to log audit must be enabled on the entity to which the record belongs.
