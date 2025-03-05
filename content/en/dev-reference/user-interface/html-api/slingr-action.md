@@ -27,7 +27,8 @@ Render the action associated with a single record.
   label="${label}"
   icon="${icon}"
   display-type="${displayType}"
-  button-style="${buttonStyle}">
+  button-style="${buttonStyle}"
+  defaultParams="${defaultActionParams}">
 </slingr-action>
 ```
 
@@ -39,6 +40,8 @@ Render the action associated with a single record.
 - **`icon`**: (Optional) The icon for the action button or link.
 - **`display-type`**: (Optional) Specifies whether the action should be displayed as a button or a link. Default is a button.
 - **`button-style`**: (Optional) Specifies the style of the button. Only applicable if `display-type` is set to "button". Possible values include `default`, `primary`, `secondary`, `success`, `danger`, `warning`, `info`.
+- **`defaultParams`**: (Optional) A set of key-value pair to specify default values for action parameters.
+
 
 ### **Example**
 ```html
@@ -46,7 +49,8 @@ Render the action associated with a single record.
   entity="customer"
   action="update"
   record-id="60f5d0a2f1d7c91d5b63d14f"
-  label="Customers">
+  label="Customers"
+  defaultParams="'customerName': 'John'}">
 </slingr-action>
 ```
 
@@ -63,7 +67,8 @@ Render the action that applies to multiple records.
   label="${label}"
   icon="${icon}"
   display-type="${displayType}"
-  button-style="${buttonStyle}">
+  button-style="${buttonStyle}"
+  defaultParams="${defaultActionParams}">
 </slingr-action>
 ```
 
@@ -75,6 +80,8 @@ Render the action that applies to multiple records.
 - **`icon`**: (Optional) The icon for the action button or link.
 - **`display-type`**: (Optional) Specifies whether the action should be displayed as a button or a link. Default is a button.
 - **`button-style`**: (Optional) Specifies the style of the button. Only applicable if `display-type` is set to "button". Possible values include `default`, `primary`, `secondary`, `success`, `danger`, `warning`, `info`.
+- **`defaultParams`**: (Optional) A set of key-value pair to specify default values for action parameters.
+
 
 ### **Example**
 ```html
@@ -82,7 +89,8 @@ Render the action that applies to multiple records.
   entity="customer"
   action="bulkUpdate"
   record-ids="60f5d0a2f1d7c91d5b63d14f,60f5d0a2f1d7c91d5b63d150"
-  label="Customers">
+  label="Customers"
+  defaultParams="'customerName': 'John'}">
 </slingr-action>
 ```
 
@@ -100,7 +108,8 @@ Render an action without specifying the affected data (global action).
   label="${label}"
   icon="${icon}"
   display-type="${displayType}"
-  button-style="${buttonStyle}">
+  button-style="${buttonStyle}"
+  defaultParams="${defaultActionParams}">
 </slingr-action>
 ```
 
@@ -111,12 +120,15 @@ Render an action without specifying the affected data (global action).
 - **`icon`**: (Optional) The icon for the action button or link. Overrides the default icon of the entity action.
 - **`display-type`**: (Optional) Specifies whether the action should be displayed as a button or a link. Default is a button.
 - **`button-style`**: (Optional) Specifies the style of the button. Only applicable if `display-type` is set to "button". Possible values include `default`, `primary`, `success`, `danger`, `warning`, etc.
+- **`defaultParams`**: (Optional) A set of key-value pair to specify default values for action parameters.
+
 
 ### **Example**
 ```html
 <slingr-action
   entity="payments"
   action="checkStatus"
-  label="Payments">
+  label="Payments"
+  defaultParams="'amount': '500'}">
 </slingr-action>
 ```
