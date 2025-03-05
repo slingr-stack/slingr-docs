@@ -50,7 +50,7 @@ Render the action associated with a single record.
   action="update"
   record-id="60f5d0a2f1d7c91d5b63d14f"
   label="Customers"
-  defaultParams="'customerName': 'John'}">
+  defaultParams="{'customerName': 'John'}">
 </slingr-action>
 ```
 
@@ -90,7 +90,7 @@ Render the action that applies to multiple records.
   action="bulkUpdate"
   record-ids="60f5d0a2f1d7c91d5b63d14f,60f5d0a2f1d7c91d5b63d150"
   label="Customers"
-  defaultParams="'customerName': 'John'}">
+  defaultParams="{'customerName': 'John'}">
 </slingr-action>
 ```
 
@@ -129,6 +129,6 @@ Render an action without specifying the affected data (global action).
   entity="payments"
   action="checkStatus"
   label="Payments"
-  defaultParams="'amount': '500'}">
+  defaultParams="{'amount': '500'}">
 </slingr-action>
 ```
