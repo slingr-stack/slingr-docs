@@ -16,7 +16,7 @@ Interactions provide a straightforward way to interact with UI fields and contro
 
 ## Overview
 
-An interaction belongs to a specific view and allows you to define scripts that modifies the UI fields. Multiple interactions can be configured for a single view, enabling complex dynamic behaviors.
+An interaction belongs to a specific view and allows you to define scripts that modify the UI fields. Multiple interactions can be configured for a single view, enabling complex dynamic behaviors.
 
 {{< notes type="note" >}}
  Interactions are momentaneously only supported in [**Flex record views**]({{<ref "/dev-reference/user-interface/flex-views/flex-record-views">}}) and [**Flex action views**]({{<ref "/dev-reference/user-interface/flex-views/flex-action-views">}}). Next platform versions will support regular views as well.
@@ -34,7 +34,7 @@ The name serves as the internal identifier for the interaction. The name must co
 
 ### Visible
 
-This option controls the visibility of the interaction. If set to **`Never`**, even if the interaction is present in the view, it will remain hidden. This feature spares you the need to manually remove the interaction from each view.
+This option controls the visibility of the interaction. If set to **`Never`**, even if the interaction is present in the view, it will remain hidden. This feature eliminates the the need to manually remove the interaction from each view.
 
 Keep in mind that this is solely a UI setting.
 
@@ -70,7 +70,7 @@ The **`Visible`** options are:
 
 ### Ask for confirmation
 
-This boolean flag allows to prompt user before executing the interaction.
+This boolean flag allows you to prompt user before executing the interaction.
 
 ### Style
 
@@ -82,7 +82,7 @@ This specifies the icon to represent the interaction when displayed in the UI.
 
 ### Modal size
 
-Since interactions always opens in a modal, this switcher allows to choose the size of the modal to be rendered. 
+Since interactions always open in a modal, this switcher allows you to choose the size of the modal to be rendered. 
 
 The options are:
 - **`Automatic`** (default option).
