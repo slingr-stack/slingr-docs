@@ -1,0 +1,24 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the interaction will be executed.
+  - name: interaction
+    type: sys.data.Interaction
+    description: |
+      Interaction object to access parameters of the interaction.
+returnType: null
+returnDescription: null
+samples:
+  - title: validates the zip code using an external service
+    code: |
+      var errors = [];
+      var zipCode = interaction.field('address.zipCode').val();
+      if (!app.endpoints.addressValidator.isValidZipCode(zipCode)) {
+        errors.push({
+          path: 'address.zipCode',
+          code: 'invalid',
+          message: 'Wrong zip code'
+        });
+      }
+      return errors;

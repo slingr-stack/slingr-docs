@@ -60,12 +60,12 @@
     "markdownlint-cli2": "^0.17.2",
     "netlify-plugin-submit-sitemap": "^0.4.0",
     "node-fetch": "^3.3",
-    "postcss": "^8.4",
+    "postcss": "^8.5",
     "postcss-cli": "^11.0",
     "purgecss-whitelister": "^2.4",
     "shx": "^0.3.4",
-    "stylelint": "^14.16",
-    "stylelint-config-standard-scss": "^6.1"
+    "stylelint": "^16.14",
+    "stylelint-config-standard-scss": "^14.0"
   },
   "otherDependencies": {
     "hugo": "0.107.0"

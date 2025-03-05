@@ -89,6 +89,6 @@ This option enables the user to close the alert when it's shown.
 
 This options enables to set entity related [actions]({{<ref "/dev-reference/data-model-and-logic/actions">}}) to the alert. The available settings are:
 
-- **`All`**: Includes all the actions present in the entity.
-- **`Custom`**: Custom set of actions and groups defined by the developer.
-- **`None`**: No actions will be shown.
+- **`All`**: Includes all the actions and interactions present in the entity/view.
+- **`Custom`**: Custom set of actions, interactions and groups defined by the developer.
+- **`None`**: No actions or interactions will be shown.
