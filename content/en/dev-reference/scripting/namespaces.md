@@ -34,7 +34,7 @@ Subsequent sections delve into comprehensive information about each segment of t
 - [Jobs]({{<ref "/dev-reference/scripting/sys-jobs.md">}})
 - [Logs]({{<ref "/dev-reference/scripting/sys-logs.md">}})
 - [Storage]({{<ref "/dev-reference/scripting/sys-storage.md">}})
-- [UI]({{<ref "/dev-reference/scripting/sys-ui.md">}}
+- [UI]({{<ref "/dev-reference/scripting/sys-ui.md">}})
 - [Users]({{<ref "/dev-reference/scripting/sys-users.md">}})
 - [Utils]({{<ref "/dev-reference/scripting/sys-utils.md">}})
 - [Monitoring]({{<ref "/dev-reference/scripting/sys-monitoring.md">}})

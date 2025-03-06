@@ -1,0 +1,16 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The record where the interaction will be executed.
+  - name: interaction
+    type: sys.data.Interaction
+    description: |
+      Interaction object to access parameters of the interaction.
+returnType: null
+returnDescription: null
+samples:
+  - title: updates some values in the record
+    code: |
+      var newValue = interaction.field('param1') * 10;
+      record.field('field').val(newValue);

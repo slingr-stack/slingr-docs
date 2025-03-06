@@ -12,7 +12,7 @@ toc: true
 weight: 100
 ---
 
-This type of widget represents a **Accordion block** that can be useful like a block to order and configure a sub-layout inside the view.
+This type of widget represents a **Accordion block** that can be useful as a block to order and configure a sub-layout inside the view.
 
 {{< notes type="note" >}}
 This widget can only be configured in **[Flex record views]({{<ref "/dev-reference/user-interface/flex-views/flex-record-views">}})**
@@ -24,7 +24,7 @@ The available settings are described as below:
 
 ### Label
 
-This represents the human-readable widget label. It's what appears in the heading section of the accordion when is displayed.
+This represents the human-readable widget label. It's what appears in the heading section of the accordion when it is displayed.
 
 ### Name
 
@@ -34,7 +34,7 @@ The name must not contain special characters or spaces; only letters and numbers
 
 ### Visible
 
-Indicates the visibility of the widget, can be configured with the following options:
+Indicates the visibility of the widget, which can be configured with the following options:
 
 - **`Always`**: The widget is perpetually accessible.
 - **`Script`**: When the script returns **`true`**, the widget becomes accessible; otherwise, it remains inaccessible. Here's the script's context:
@@ -67,13 +67,13 @@ Indicates the visibility of the widget, can be configured with the following opt
 
 #### Layout/Sections
 
-The layout sections are configured adding sections through the add button so it'll add the section with a row and column inside. The user will configure widgets, like configuring a normal row and column, building a sub-layout inside the global layout of the view. Below this section, you will see an example with pictures of how to build the layout and configure the accordion.
+The layout sections are configured by adding sections through the add button, which will add the section with a row and column inside. The user will configure widgets, like configuring a normal row and column, building a sub-layout inside the global layout of the view. Below this section, you will see an example with pictures of how to build the layout and configure the accordion.
 
-Like the accordion, sections can be configure. These have the following settings
+Like the accordion, sections can be configured. These have the following settings
 
 ### Label
 
-This represents the human-readable widget label. It's what appears in the heading section of the accordion when is displayed.
+This represents the human-readable widget label. It's what appears in the heading section of the accordion when it is displayed.
 
 ### Name
 
@@ -83,7 +83,7 @@ The name must not contain special characters or spaces; only letters and numbers
 
 ### Visible
 
-Indicates the visibility of the widget, can be configured with the following options:
+Indicates the visibility of the widget, which can be configured with the following options:
 
 - **`Always`**: The widget is perpetually accessible.
 - **`Script`**: When the script returns **`true`**, the widget becomes accessible; otherwise, it remains inaccessible. Here's the script's context:
@@ -116,7 +116,7 @@ Indicates the visibility of the widget, can be configured with the following opt
 
 ### Expanded
 
-Indicates if the section is expanded or not by default, can be configured with the following options:
+Indicates if the section is expanded or not by default, and can be configured with the following options:
 
 - **`Always`**: The widget is perpetually accessible.
 - **`Script`**: When the script returns **`true`**, the widget becomes accessible; otherwise, it remains inaccessible. Here's the script's context:

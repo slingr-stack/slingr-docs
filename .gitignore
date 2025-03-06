@@ -5,3 +5,5 @@ public
 .netlify
 .hugo_build.lock
 .idea/
+.codebuddy/
+.codebuddy/**
