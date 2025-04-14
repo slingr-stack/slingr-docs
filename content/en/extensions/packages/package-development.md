@@ -668,7 +668,7 @@ Keep in mind that when you are referencing a service, the name is the name of th
 
 #### Store persistent data
 
-If your package needs to store data persistently, you will need to use the [app storage](https://platform-docs.slingr.io/app-development-js-api-storage.html). In this key-value storage you can save JSON documents or simple values, find them by keys, update or remove them. Elements can be stored encrypted as well. Here are some examples:
+If your package needs to store data persistently, you will need to use the [app storage](https://platform-docs.slingr.io/dev-reference/scripting/sys-storage/). In this key-value storage you can save JSON documents or simple values, find them by keys, update or remove them. Elements can be stored encrypted as well. Here are some examples:
 
 ```js
 // store a user token
@@ -777,7 +777,7 @@ The key is to add an element to the object `listeners` where the key will be the
 - `label`: human-friendly name of the listener.
 - `type`: it can be `service`,`job` and `data`.
 - `options`: this will depend on the type of listener. In the following sections we provide more details about that.
-- `callback`: this is the function that will be executed when the listener is triggered. To see more information about what's in the `event` parameter, look at the [listener's action documentation](https://platform-docs.slingr.io/app-development-model-listeners.html#action).
+- `callback`: this is the function that will be executed when the listener is triggered. To see more information about what's in the `event` parameter, look at the [listener's action documentation](https://platform-docs.slingr.io/dev-reference/data-model-and-logic/listeners/#action).
 
 Next we will briefly describe the different types of listeners.
 

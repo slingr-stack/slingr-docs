@@ -166,7 +166,7 @@ Widgets can respond to UI messages, especially for refreshing data or applying f
 
 ### Refresh and filter
 
-Sending a refresh message updates the widget based on its default settings. You can also send a filter parameter to apply specific filters to the query fetching data. The filter can be a [query]({{{<ref "/dev-reference/scripting/sys-data.md">}}) object or query map.
+Sending a refresh message updates the widget based on its default settings. You can also send a filter parameter to apply specific filters to the query fetching data. The filter can be a [query]({{<ref "/dev-reference/scripting/sys-data.md">}}) object or query map.
 
 To apply filters, set the **`widgetContainer`** with objects detailing the container's **`name`** and the **`filter`** to be applied to each widget. The parameter can also include **`title`** to update the widget title.
 
@@ -205,4 +205,4 @@ sys.ui.sendMessage({
   ]
 });
 
-``` 
+```

@@ -60,7 +60,8 @@ These settings define how the listing behaves.
 
 **`Record Filters`:** Defines which records are listed. Only records matching the given expression will appear in the table widget view.
 
-**`Script`:** Returns a query parameter or queryMap. The query map object is used to filter records. See the [Query Language]({{{<ref "/dev-reference/queries/query-language.md">}}) documentation for query map usage.
+**`Script`:** Returns a query parameter or queryMap. The query map object is used to filter records. See the [Query Language]({{< ref "/dev-reference/queries/query-language.md" >}})
+documentation for query map usage.
 
 **`Size`:** The maximum number of records to fetch when the view loads or when clicking "More" to fetch additional records.
 
@@ -169,9 +170,9 @@ sys.ui.sendMessage({
         name: 'salesPerDepartment',
         filter: query
     }
-  ]   
+  ]
 });
-``` 
+```
 <br>
 
 ## **Example**
