@@ -776,6 +776,7 @@ The key is to add an element to the object `listeners` where the key will be the
 
 - `label`: human-friendly name of the listener.
 - `type`: it can be `service`,`job` and `data`.
+- `queue`: in which queue you want the job to run. Optional. We recommend only to use the system queues.
 - `options`: this will depend on the type of listener. In the following sections we provide more details about that.
 - `callback`: this is the function that will be executed when the listener is triggered. To see more information about what's in the `event` parameter, look at the [listener's action documentation](https://platform-docs.slingr.io/dev-reference/data-model-and-logic/listeners/#action).
 
