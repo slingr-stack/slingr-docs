@@ -52,6 +52,10 @@ For certain event types (such as **`Data`**), you can decide whether the listene
 
 For instance, if this flag isn't enabled and the listener pertains to a record creation, the operation won't conclude until the listener's execution is finished. Therefore, you should enable this flag when the listener's execution might surpass an acceptable time frame for the ongoing operation.
 
+### Queue
+
+When the listener is configured to run in the background, you can indicate in which queue you want it to run. The `mix` queue is the default one.
+
 ## **Avoid Triggering UI events**
 
 Enabling this flag ensures that when the listener is triggered in the background, it bypasses sending notifications to the UI. This feature proves valuable in avoiding additional overhead during execution. A typical use case is executing a listener for batch processing, where notifying end users about data changes isn't necessary.

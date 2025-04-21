@@ -69,10 +69,10 @@ The **`Visible`** options are:
   return record.field('type').val() == 'a';
   ```
   <br>
-  
+
   ---
 
-- **`Never`**: the action will be hidden. 
+- **`Never`**: the action will be hidden.
 
 ### Preconditions
 
@@ -102,7 +102,7 @@ Preconditions can be established in two ways:
   return record.field('type').val() == 'a' && sys.context.getCurrentUser().containsGroup('test');
   ```
   <br>
-  
+
   ---
 
 ### Result as response
@@ -136,6 +136,10 @@ This flag can be overridden for a specific call through the REST API or JavaScri
 When this flag is not enabled, calls to the action will wait for its completion and return the action's result.
 
 For more information on actions in the REST API and JavaScript API, refer to the documentation.
+
+### Queue
+
+When the action is configured to run in the background, you can indicate in which queue you want it to run. The `mix` queue is the default one.
 
 ### Avoid triggering UI events
 
@@ -182,7 +186,7 @@ The action's core script is executed when the action is invoked. It runs when th
   return total;
   ```
   <br>
-  
+
   ---
 
 ### Custom validations
@@ -212,13 +216,13 @@ Here is the script context for these custom validations:
   ```js
   [
     {
-      path: 'addressLine', 
-      code: 'invalid', 
+      path: 'addressLine',
+      code: 'invalid',
       message: 'Not a valid address when running this action'
     },
     {
-      path: 'zipCode', 
-      code: 'invalid', 
+      path: 'zipCode',
+      code: 'invalid',
       message: 'Wrong zip code'
     }
   ]
@@ -247,7 +251,7 @@ Here is the script context for these custom validations:
   return errors;
   ```
   <br>
-  
+
   ---
 
 ## **Parameters**
@@ -315,7 +319,7 @@ If multiple records are selected, the script is executed only once. You can dete
   action.field('sendTo').val(sys.context.getCurrentUser().email());
   ```
   <br>
-  
+
 ---
 
 #### On action change
@@ -343,7 +347,7 @@ You can identify the parameter that triggered the event by utilizing the **`modi
   }
   ```
   <br>
-  
+
 ---
 
 #### After action executed
@@ -378,6 +382,6 @@ Furthermore, if the action is dispatched to the background for execution, a **`j
   });
   ```
   <br>
-  
+
 ---
 
