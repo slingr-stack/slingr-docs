@@ -30,10 +30,6 @@ Here are the settings you can control for each queue:
 - *Max number of threads*: this is the limit of threads that will be executed concurrently.
 - *Sleep time*: how often we will check for new jobs.
 
-{{< notes type="important">}}
-Keep in mind that if you add a new queue or you change the settings of any existing queue, in order to apply those changes it is not enough to push changes. You need to *redeploy your app* from the app monitor.
-{{< /notes >}}
-
 {{< notes type="tip">}}
 Keep in mind that when you have jobs that are executed over many records (like an action executed in many records) the system might create "chunks" and split the work across different threads. So, even when you see just one job running there might be several threads busy.
 {{< /notes >}}
