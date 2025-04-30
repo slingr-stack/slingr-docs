@@ -1,0 +1,174 @@
+params:
+  - name: record
+    type: sys.data.Record
+    description: |
+      The data record associated with the view that contains the table.
+  - name: options
+    type:
+    description: |
+      The script receives a parameter called `options`, which includes filtering, sorting, and pagination settings.
+
+      Structure:
+      ```json
+      {
+        "filters": {
+          "<column_name>": "<value>"
+        },
+        "sorting": {
+          "column": "<column_name>",
+          "direction": "asc" | "desc"
+        },
+        "pagination": {
+          "size": <page_size>,
+          "offset": <offset>
+        }
+      }
+      ```
+returnType: "Object { header: Array, body: Array, pagination?: Object }"
+returnDescription: |
+  The returned object contains the full structure of the table, consisting of the header, body, and optional pagination details.
+
+  ###### Header
+  The `header` is an array of rows, where each row is an array of header column objects. Each object includes the following properties:
+  
+  | Property   | Description |
+  |------------|-------------|
+  | `name`     | The unique identifier used to reference the header column. |
+  | `label`    | The displayed text in the header column. |
+  | `value`    | *(Optional)* HTML content that overrides the `label`. |
+  | `css`      | CSS styles to apply to the header cell. |
+  | `sortable` | *(Optional)* Boolean that enables sorting when true. |
+
+  ###### Body
+  The `body` consists of an array of row objects. Each row can have one of the following formats:
+  
+  - **Basic row structure:**
+    ```json
+    { "header1": "value1", "header2": "value2", "headerN": "valueN" }
+    ```
+  
+  - **More complex row structure (with CSS):**
+    ```json
+    {
+      "header1": { "value": "value1", "css": "font-weight: bold;" },
+      "header2": { "value": "value2", "css": "color: red;" }
+    }
+    ```
+  
+  - **Full row structure (with unique ID):**
+    ```json
+    {
+      "id": "<row_id>",
+      "cells": {
+        "header1": { "value": "value1", "css": "font-weight: bold;" },
+        "header2": { "value": "value2", "css": "color: red;" }
+      }
+    }
+    ```
+
+  ###### Pagination
+  If pagination is enabled, the object should include:
+  
+  ```json
+  {
+    "pagination": {
+      "totalRecords": <totalRecords>
+    }
+  }
+  ```
+samples:
+  - title: Example of defining a dynamic table with headers and body rows
+    code: |
+      return {
+        header: [
+          {
+            name: "id",
+            label: "ID",
+            css: "font-weight: bold; text-align: center",
+            sortable: true,
+          },
+          {
+            name: "name",
+            label: "Name",
+            css: "font-weight: bold; text-align: center",
+            sortable: true,
+          },
+          { name: "age", label: "Age", css: "font-weight: bold; text-align: center" },
+          {
+            name: "country",
+            label: "Country",
+            css: "font-weight: bold; text-align: center",
+          },
+          {
+            name: "email",
+            label: "Email",
+            css: "font-weight: bold; text-align: center",
+          },
+          {
+            name: "phone",
+            label: "Phone",
+            css: "font-weight: bold; text-align: center",
+          },
+          {
+            name: "status",
+            label: "Status",
+            css: "font-weight: bold; text-align: center",
+          },
+          {
+            name: "signup_date",
+            label: "Signup Date",
+            css: "font-weight: bold; text-align: center",
+          },
+        ],
+        body: [
+          {
+            id: "uniqueID",
+            cells: {
+              id: "1",
+              name: "Alice",
+              age: {
+                value: "<small>30</small>",
+                css: {
+                  "font-weight": "bold",
+                  "text-align": "right",
+                },
+              },
+              country: "USA",
+              email: "alice@example.com",
+              phone: "+12345678901",
+              status: "Active",
+              signup_date: "2022-05-13",
+            },
+          },
+          {
+            id: "uniqueID2",
+            cells: {
+              id: "2",
+              name: "Bob",
+              age: { value: "40", css: "text-align: right" },
+              country: "USA",
+              email: "bob@example.com",
+              phone: "+12345678902",
+              status: "Inactive",
+              signup_date: "2021-08-23",
+            },
+          },
+          {
+            id: "3",
+            cells: {
+              id: "3",
+              name: "Charlie",
+              age: {
+                value: "<slingr-icon name='book'></slingr-icon>",
+                css: "text-align: right",
+              },
+              country: "UK",
+              email: "charlie@example.com",
+              phone: "+12345678903",
+              status: "Active",
+              signup_date: "2023-01-11",
+            },
+          },
+        ],
+      };
+      ℹ️ This is an example using mock data. Filtering, sorting, and pagination will not work unless you manually implement the necessary algorithms.
