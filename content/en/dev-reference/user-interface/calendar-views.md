@@ -237,13 +237,17 @@ on the **`Edit`** action in the listing's action column.
 
 ## **Filters**
 
-### Global filters
+### Indexed filters
 
-When the **`Allow Global Filters`** flag is enabled, the UI permits users to filter cards on the board by the fields specified in **`Global Filter Fields`**.
+If indexed filters are configured, a search box above the listing that facilitates filtering fields using the text index feature. For example, with a [text index]({{<ref "/dev-reference/data-model-and-logic/entities#text-index">}}) this filter will finds words in the configured fields of the filter.
+
+### Field Filters
+
+Users can filter cards on the board based on the fields specified.
 
 #### Override label
 
-When **`Allow Global Filters`** is enabled, within **`Global Filter Fields`**, a flag called **`Override Label`** allows overriding the default filter label (which is the field label).
+The **`Override Label`** flag is available on **`Field Filters`**, allowing for the customization of the filter label (by default, the label corresponds to the field label).
 
 ### Quick Filters
 

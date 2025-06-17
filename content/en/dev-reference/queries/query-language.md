@@ -478,35 +478,25 @@ If you wish to reduce the number of requests to the server, you can retrieve a r
 >}}
 <br>
 
-### Global search
+### Indexed filters
 
 {{< callout type="warning" >}}
-This is only allowed for entities with global search enabled.
+This is only allowed for entities with indexed filters created.
 {{< /callout >}}
 
-When querying using the global search feature, it will attempt to match the provided string in any field within the entity, rather than targeting a specific field. For example:
+When querying using indexed filter feature, it will attempt to match the provided string in any of the fields provided in the index. For example:
 
 {{< query_sample
   id="22"
-  description="Finds records where any field contains 'lacinia' or 'erat'"
+  description="Finds records where fields name or description contains 'Technology'"
   entity="companies"
-  jsQueryMap="{ _globalSearch: 'lacinia erat' }"
-  jsQueryBuilder=".globalSearch('lacinia erat')"
-  restApi="_globalSearch=lacinia erat"
+  jsQueryMap="{_indexedFilter: 'nameDescription', _indexedFilterQuery: 'Technology'}"
+  jsQueryBuilder=".indexedFilter('nameDescription', 'Technology')"
+  restApi="_indexedFilter=nameDescription&_indexedFilterQuery=Technology"
 >}}
 <br>
 
-Note that to match the entire phrase, you should enclose it with double quotes:
-
-{{< query_sample
-  id="23"
-  description="finds record where any field has the tense 'lacinia erat'"
-  entity="companies"
-  jsQueryMap="{ _globalSearch: '\"lacinia erat\"' }"
-  jsQueryBuilder=".globalSearch('\"lacinia erat\"')"
-  restApi="_globalSearch=\"lacinia erat\""
->}}
-<br>
+Note that to match the entire phrase, you should enclose it with double quotes.
 
 Please be aware that all searches are case-insensitive.
 

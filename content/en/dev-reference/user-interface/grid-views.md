@@ -419,24 +419,22 @@ The configuration of sub-grids is identical to that of the main view. There's on
 
 ## **Filters**
 
-### Global filters
+### Indexed filters
 
-If the **`Allow Global Filters`** flag is enabled, the user interface allows users to filter records in the grid based on the fields indicated in **`Global Filter Fields`**.
-
-#### Override label
-
-When **`Allow Global Filters`** is enabled, the **`Global Filter Fields`** section includes an **`Override Label`** flag, which allows overriding the default filter label (which is the field label).
-
-#### Enable global search
-
-Enabling this option displays a search box above the listing that facilitates filtering fields using the global search feature. This feature finds words in any field of the record.
-
-This option is only available if the entity has global search enabled.
+If indexed filters are configured, a search box above the listing that facilitates filtering fields using the text index feature. For example, with a [text index]({{<ref "/dev-reference/data-model-and-logic/entities#text-index">}}) this filter will finds words in the configured fields of the filter.
 
 ### Quick filters
 
 Quick filters provide an effortless way to further filter the collection of records by clicking or unclicking buttons. Refer to [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}) for additional information.
 You can have quick filters separately or groups of quick filters. Groups can be configured in order to select only one button within groups. When you click a button of a group, other group buttons are deselected.
+
+### Field filters
+
+The user interface allows users to filter records in the grid based on the fields configured.
+
+#### Override label
+
+When **`Allow Global Filters`** is enabled, the **`Global Filter Fields`** section includes an **`Override Label`** flag, which allows overriding the default filter label (which is the field label).
 
 ## **Permissions**
 
