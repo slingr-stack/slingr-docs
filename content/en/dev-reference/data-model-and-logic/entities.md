@@ -120,17 +120,18 @@ Each index encompasses the following properties:
   - **`Normal`**: Regular indexes.
   - **`Relationship`**: Created for fields applied to relationships, users, groups, or files. Comprises ID and label indexes.
   - **`Compound`**: Generated when multiple fields are selected.
+  - **`text`**: For text search queries on database. [More info.]({{<ref "/dev-reference/data-model-and-logic/entities#text-index">}}).
 - **`Status`**: Denotes the present index creation status. While you can create the index in the builder, it won't manifest in the database until changes are pushed or synced. During index creation, potential issues might arise, and the status helps ensure successful creation.
 - **`Unique`**: This flag indicates whether index values must be unique. If duplicate values exist in existing records, index creation will fail.
 - **`Fields`**: Lists the fields forming the index. Remember that in queries, all indexed fields must be queried to utilize the index effectively.
 
 Adding or removing indexes results in the construction or removal of indexes, which can be time-consuming for entities with numerous records. It's important to note that indexes entail overhead during record creation, update, and deletion, as they need to be updated. Hence, make sure to only generate indexes when they are genuinely essential.
 
-### Global search
+### Text index
 
-Enabling the **`Allow Global Search`** flag initiates index creation, thereby enabling efficient word-based querying across all fields of the record. This feature significantly enhances the ability to search across the contents of various fields.
+Text indexes enables enables text search queries on fields that contain string content. In other words, efficient word-based querying across selected fields of the record. This feature significantly enhances the ability to search across the contents of various fields.
 
-[For more details on how Global Search operates, refer to this documentation]({{<ref "/dev-reference/queries/query-language.md#global-search">}}).
+[For more details on how text indexes operates, refer to this documentation]({{<ref "/dev-reference/queries/query-language.md#indexed-filters">}}).
 
 ### Record validations
 

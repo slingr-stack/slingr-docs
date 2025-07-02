@@ -386,20 +386,23 @@ This action empowers users to delete records. When enabled, a **`Delete`** butto
 
 ## **Filters**
 
-### Global Filters
+### Indexed filters
 
-If the **`Allow Global Filters`** flag is enabled, users can filter cards on the board based on the fields specified in **`Global Filter Fields`**.
+If indexed filters are configured, a search box above the listing that facilitates filtering fields using the text index feature. For example, with a [text index]({{<ref "/dev-reference/data-model-and-logic/entities#text-index">}}) this filter will finds words in the configured fields of the filter.
+
+### Field Filters
+
+Users can filter cards on the board based on the fields specified.
 
 #### Override label
 
-When **`Allow Global Filters`** is enabled, the **`Override Label`** flag is available on **`Global Filter Fields`**, allowing for the customization of the filter label (by default, the label corresponds to the field label).
-
-For entities with enabled global search, it is possible to activate the **`Allow Global Search`** flag.
+The **`Override Label`** flag is available on **`Field Filters`**, allowing for the customization of the filter label (by default, the label corresponds to the field label).
 
 ### Quick filters
 
 Quick filters enable effortless card filtering through the simple act of clicking or unclicking buttons. For more information, consult [Expressions]({{<ref "/dev-reference/metadata-management/metadata-common/expressions.md">}}).
 You can have quick filters separately or groups of quick filters. Groups can be configured in order to select only one button within groups. When you click a button of a group, other group buttons are deselected.
+
 
 ## **Permissions**
 

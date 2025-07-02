@@ -15,6 +15,14 @@ weight: 158
 The Slingr team regularly updates the platform new features, bug fixes, and improvements. Some of those changes can affect the compatibility with your app.
 It is important that developers pay attention to these changes.
 
+### **Release 464**
+
+#### Global search deprecation
+
+- **Change notice**: former global search will be removed.
+- **Developer actions**: Replace global search flag of views by creating a text index and creating and indexed filter on views
+- **Date of change**: these changes are planned for **release 465**
+
 ### **Release 446**
 
 #### Nested views deprecation
