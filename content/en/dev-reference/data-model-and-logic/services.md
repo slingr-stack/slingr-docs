@@ -42,7 +42,7 @@ This represents the initial status of the service when it is first pushed or syn
 
 All configured services offer properties that can be valuable for developers. These properties are organized under the **`svc.<serviceName>`** namespace, where **`serviceName`** corresponds to the name of the service. While some properties are service-specific, there are also a couple of generic properties:
 
-### Name 
+### Name
 
 This is the internal name of the service, used in the JavaScript API.
 
@@ -104,7 +104,7 @@ try {
       sys.logs.info('Record ID: '+data.company.id());
       sys.logs.info('User email: '+data.currentUserEmail);
     }
-  }); 
+  });
   sys.logs.info("Pdf response: "+JSON.stringify(response));
 } catch(e) {
    sys.logs.error('Error when try to generate a pdf file: '+sys.exceptions.getMessage(e));
@@ -114,8 +114,8 @@ try {
 
 When callbacks are supported, two parameters are available at the end:
 
-- **`callbackData`**: This is an object that you can send and will be returned when the callback is processed. This is important because, in the function processing the callback, you won't have access to any variables outside the function scope. For instance, in the code above, you won't be able to reference the **`userName`** variable because it exists outside the callback function. This limitation arises because callback execution is asynchronous, resulting in a different context compared to regular JavaScript code. Keep this in mind when working with callbacks.
-
+- **`callbackData`**: This is an object that you can send and will be returned when the callback is processed. This is important because, in the function processing the callback, you won't have access to any variables outside the function scope. For instance, in the code above, you won't be able to reference the **`userName`** variable because it exists outside the callback function. This limitation arises because callback execution is asynchronous, resulting in a different context compared to regular JavaScript code. Keep this in mind when working with callbacks. There are some reserved keys:
+  - **`queue`**: if you indicate a queue name, that queue will be used to process the callback. It is optional, where the default `mix` queue will be use if not specified.
 - **`callbacks`**: This is a map where you can register listeners for various callbacks. In the example above, it's listening only for the **`responseArrived`** callback, but certain services, like Mandrill, can trigger multiple callbacks based on different events. Functions within this callback have two parameters:
   - **`event`**: This parameter contains event information, identical to the event data available in listeners. Please refer to the service's documentation for details on service-specific events.
   - **`data`**: This parameter holds the callback data that was sent when the function was initially called.
