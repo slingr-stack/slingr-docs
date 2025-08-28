@@ -15,7 +15,7 @@ weight: 60
 
 ## **sys.dataCache**
 
-This package contains methods to handle app cache optimized for handling application data.
+This package contains methods to handle app cache optimized for handling application data. Cache is useful when fast performance is needed when reading app information. This should be carefully used since app heap memory can be affected when a lot of information is stored in cache. Records can be stored as records format or a json object in the cache.
 
 ### clear(entityName)
 
@@ -41,7 +41,7 @@ Name|Type|Required|Description
 ---|---|---|---
 entityName|string|yes|Name of the entity
 indexes| string[]|no|Array of index names
-options|object|no|These parameters are used to sort results. <br> - **`sortBy`**: Indicates which field should be considered when sorting. <br> - **`sortType`**: Options are "**`asc`**" or "**`desc`**."
+options|object|no|These parameters are used to sort results. <br> - **`sortBy`**: Indicates which field should be considered when sorting. <br> - **`sortType`**: Options are "**`asc`**" or "**`desc`**." <br> - **`returnRecord`**: Options are "**`true`**" or "**`false`**. Default value is false
 
 #### Returns
 
@@ -59,7 +59,7 @@ entityName|string|yes|Name of the entity
 key|string|yes|The key
 value|any|yes|The value
 indexes|string[]|no|Array of index names
-options|object|no|These parameters are used to sort results. <br> - **`sortBy`**: Indicates which field should be considered when sorting. <br> - **`sortType`**: Options are "**`asc`**" or "**`desc`**."
+options|object|no|These parameters are used to sort results. <br> - **`sortBy`**: Indicates which field should be considered when sorting. <br> - **`sortType`**: Options are "**`asc`**" or "**`desc`**."  <br> - **`returnRecord`**: Options are "**`true`**" or "**`false`**. Default value is false
 
 #### Returns
 
@@ -77,6 +77,7 @@ entityName|string|yes|Name of the entity
 key|string|yes|The key
 value|any|yes|The value
 indexes|string[]|no|Array of index names
+returnRecord|boolean|no|To store records as json or record wrapper in app cache.
 
 #### Returns
 
