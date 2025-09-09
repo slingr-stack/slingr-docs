@@ -50,7 +50,7 @@ key|string|yes|The key
 
 ### remove(mapName, key)
 
-Removes a key-value pair from the specified cache map. Returns the removed value, if any.
+Removes a key-value pair from the specified cache map. Returns the removed value, if any. If the application has many instances running, then other instances will be notified to execute the remove command with the same parameter passed here.
 
 #### Parameters
 
@@ -65,7 +65,7 @@ key|string|yes|The key
 
 ### clear(mapName)
 
-Clears all entries from the specified cache map.
+Clears all entries from the specified cache map. If the application has many instances running, then other instances will be notified to execute the clear command with the same parameter passed here.
 
 #### Parameters
 
