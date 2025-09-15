@@ -23,7 +23,7 @@ Records cached locally in each instance of the application. So be aware that if 
 
 ### clear(entityName)
 
-Clears data cache for a given entity or all cache if no entity is provided. It will notify all the instances of your application to clear the cache
+Clears data cache for a given entity or all cache if no entity is provided. If the application has many instances running, then other instances will be notified to execute the clear command with the same parameter passed here
 
 #### Parameters
 
@@ -53,7 +53,7 @@ options|object|no|These parameters are used to sort results. <br> - **`sortBy`**
 
 ### find(entityName, queryMap, indexes, options)
 
-Finds cached data of an entity given a field and value. Loads the entity if not cached. If indexes are provided, then app data is indexed on load.
+Finds cached data of an entity given a query. Loads the entity if not cached. If indexes are provided, then app data is indexed on load.
 
 #### Parameters
 
@@ -70,7 +70,7 @@ options|object|no|These parameters are used to sort results. <br> - **`sortBy`**
 
 ### findOne(entityName, queryMap, indexes)
 
-Finds the first cached record of an entity matching a field and value. If not cached, the entity will be loaded. If indexes are provided, then app data is indexed on load. Returns null if not found.
+Finds the first cached record of an entity matching query. If not cached, the entity will be loaded. If indexes are provided, then app data is indexed on load. Returns null if not found.
 
 #### Parameters
 

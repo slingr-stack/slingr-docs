@@ -783,7 +783,7 @@ log(recordsRemoved+' records removed!');
 ```
 <br>
 
-###  executeAction(entityName, queryMap, actionName, params)
+###  executeAction(entityName, queryMap, actionName, params, options)
 
 Executes an action in the background over the records returned by the query.
 
@@ -795,8 +795,7 @@ entityName|string|yes|The name of the entity
 queryMap|object|yes|The query map object used to filter records. Check the [Query language documentation]({{<ref "/dev-reference/queries/query-language.md">}}) for the query map version.
 actionName|string|yes|The name of the action to be executed.
 params|object|no|If the action has parameters you should put them here. The format is the same used by the REST API.
-options|object|no|If the action has options you should put them here. For example, use async: false if you don't want it to run in the background.
-
+options|object|no| Options in order to execute action in background. Parameters: <br> - **`executeInBackground`** : boolean. <br> - **`queue`** : string. Not required.
 
 ##### Returns
 
@@ -819,14 +818,14 @@ log('completed!');
 <br>
 
 ``` javascript
-// executes the action 'logSomething' over 10 company records of type 'a', sending a parameter
-var jobId = sys.data.executeAction('companies', {type: 'a', _size: 10}, 'logSomething', {param1: 'a', param2: 'b'});
+// executes the action 'logSomething' over 10 company records of type 'a', sending a parameter. Executes action in a background job asigned to the light queue
+var jobId = sys.data.executeAction('companies', {type: 'a', _size: 10}, 'logSomething', {param1: 'a', param2: 'b'},{executeInBackground:true,queue:'light'});
 sys.jobs.waitForJob(jobId, 'FINISHED', 60*1000);
 log('completed!');
 ```
 <br>
 
-###  executeAction(queryBuilder, actionName, body)
+###  executeAction(queryBuilder, actionName, body, options)
 
 Executes an action in the background or synchronously over the records returned by the query
 
@@ -837,8 +836,7 @@ Executes an action in the background or synchronously over the records returned 
 queryBuilder|[sys.data.Query](#sysdataquery)|yes|The query builder object used to filter records. Check the [Query language documentation]({{<ref "/dev-reference/queries/query-language.md">}}) for the query builder version.
 actionName|string|yes|The name of the action to be executed.
 body|object|no|If the action has parameters you should put them here. The format is the same used by the REST API.
-options|object|no|If the action has options you should put them here. For example, use async: false if you don't want it to run in the background.
-
+options|object|no| Options in order to execute action in background. Parameters: <br> - **`executeInBackground`** : boolean. <br> - **`queue`** : string. Not required.
 
 ##### Returns
 
@@ -1636,7 +1634,7 @@ log('new: '+company.isNew());
 ```
 <br>
 
-###  action(actionName, params)
+###  action(actionName, params, options)
 
 This function executes the specified action over the record. The record must be saved into the database before executing an action.
 
@@ -1654,6 +1652,7 @@ The response will vary based on the action's configuration. There are two possib
 |---|---|---|---|
 actionName|string|yes|The name of the action to execute.
 params|object|no|If the action has parameters you should put them here. The format is the same used by the REST API.
+options|object|no| Options in order to execute action in background. Parameters: <br> - **`executeInBackground`** : boolean. <br> - **`queue`** : string. Not required.
 
 ##### Returns
 
@@ -1670,8 +1669,8 @@ log('completed!');
 <br>
 
 ``` javascript
-// executes the action 'logSomething' over a company with parameters
-var company = sys.data.findOne('companies', {name: 'Blogpad'});
+// executes the action 'logSomething' over a company with parameters. It executes it in the background and assing the job to the mix queue
+var company = sys.data.findOne('companies', {name: 'Blogpad'},{executeInBackground:true, queue:'mix'});
 company.action('logSomething', {param1: 'a', param2: 'b'});
 log('completed!');
 

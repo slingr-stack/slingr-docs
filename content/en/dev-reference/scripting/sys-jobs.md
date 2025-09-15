@@ -287,17 +287,87 @@ try {
 ```
 <br>
 
+###  waitForJobs(jobId, desiredStatus, maxTimeToWait)
+
+The **`waitForJobs`** function is used to pause execution and wait for some specific job to reach a desired status. It will return when the job reaches one of the specified statuses, or it will throw a timeout exception if the maximum wait time is exceeded.
+
+##### Parameters
+
+Name|Type|Required|Description
+---|---|---|---
+jobId|array|yes|The unique identifier of the job for which you want to wait.
+desiredStaus|string or string[]|yes|An array of one or more valid statuses that you want the job to reach before continuing execution.<br> Valid statuses include: **`PENDING`**, **`RUNNING`**, **`FINISHED`**, **`STOPPING`**, **`STOPPED`**, **`CANCELING`**, and **`CANCELED`**. The function will return as soon as the job reaches any of the specified statuses in the array.
+maxTimeToWait|number|yes|The maximum amount of time, in some suitable time unit, that you are willing to wait for the job to reach one of the statuses specified in **`desiredStatus`**. If the job takes longer than this specified time, a timeout exception will be thrown.
+
+##### Exceptions
+
+**badRequest**
+
+This exception is raised if either the **`jobId`** or **`desiredStatus`** provided are invalid.
+
+**notFound**
+
+This exception occurs when no job is found with the given ID.
+
+**timeOut**
+
+This exception is raised if the job takes longer than the **`maxTimeToWait`** parameter specifies to reach one of the desired statuses specified in **`desiredStatus`**.
+
+##### Samples
+
 ``` javascript
-// executes an action in the background and waits until it is finished or stopped
-var jobId = sys.data.executeAction('companies', {}, 'logSomething', {param1: 'a', param2: 'b'});
+// executes an action in the background and waits for its completion
+var job1 = sys.data.executeAction('companies', {}, 'logSomething', {param1: 'a', param2: 'b'});
+var job2 = sys.data.executeAction('companies', {}, 'logSomething', {param1: 'a', param2: 'b'});
+
 try {
-  sys.jobs.waitForJob(jobId, ['FINISHED', 'STOPPED'], 60000);
+  sys.jobs.waitForJobs([job1,job2], 'FINISHED', 60000);
   log('job finished!!!');
 } catch (e) {
   if (sys.exceptions.getCode(e) == 'timeout') {
     log('timeout execution the job');
   }
 }
+```
+<br>
+
+### executeInJob(items, queue, callback, step)
+
+The **`executeInJob`** function allows you to process large arrays of items in a background job. The job is placed into the specified job queue. 
+If step is provided items are divided in chunks according to the step and items size. If not provided chunks will be calculated according to the amount of items and available threads for the job queue. This allows for asynchronous and parallel processing of tasks.
+
+##### Parameters
+
+Name|Type|Required|Description
+---|---|---|---
+items|array|yes|An array of items to be processed in chunks.
+queue|string|yes|The name of the job queue in which the background jobs will be placed. Default value will be "mix"
+callback|function|yes|A function to be executed for each item. This function will receive the current item as a parameter.
+step|number|no|The number of items to include in each chunk.
+
+##### Exceptions
+
+**badRequest**
+
+This exception is raised if any of the required parameters are missing or invalid (e.g., `step` is not a positive number, `queue` is not defined, or `callback` is not a function).
+
+##### Samples
+
+```javascript
+var items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+sys.jobs.executeInJob(items, 'default', function(item) {
+    sys.logs.info('Processing item: ' + item);
+});
+
+```
+
+```javascript
+var items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// predefined chunk size
+sys.jobs.executeInJob(items, 'default', function(item) {
+    sys.logs.info('Processing item: ' + item);
+}, 2);
 ```
 <br>
 

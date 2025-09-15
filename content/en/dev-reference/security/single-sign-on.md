@@ -2,7 +2,6 @@
 title: "Sign Up and Single Sign On"
 description: "Explanation of what are identity providers. Description of each supported identity provider. Description of the App Sign Up."
 date: 2020-11-16T13:59:39+01:00
-lastmod: 2020-11-16T13:59:39+01:00
 draft: false
 images: []
 menu:
@@ -58,7 +57,7 @@ In the tree of the builder, on the SSO option, you can see the Slingr identity p
 
 ![Slingr identity provider](/images/vendor/slingr-identity-provider/builder/slingr-identity-provider-on-list.png)
 
-Inside, you have some fields like label, name, icon, and type. In the last place, you can see the flag to enable the Sign-Up. This flag allows you to configure a Create View, then will be shown in the Sign-Up view in the runtime and the group that the new user will have.
+Inside, you have some fields like label, name, icon, and type. In the last place, you can see the flag to enable the Sign-Up. This flag allows you to configure a Create View,  then will be shown in the Sign-Up view in the runtime and the group that the new user will have.
 
 ![Slingr identity provider configuration form](/images/vendor/slingr-identity-provider/builder/slingr-identity-provider-configuration-form.png)
 
@@ -75,29 +74,29 @@ Any new user created will be automatically assigned to this group as the Primary
 1. Create under the entity Users a Record View and assign it the type Create.
 2. In the view fields, delete the field Send Welcome Email.
 3. Go to Identity Provider Slingr and configure the created view.
-   - For example, if you want an email to be sent to activate the user and enter a password after activated,
-     - Delete only the field Authorization -> Generate Password.
-     - In the before show event, you configure:
+   * For example, if you want an email to be sent to activate the user and enter a password after activated,
+     * Delete only the field Authorization -> Generate Password.
+     * In the before show event, you configure:
    ```js
-   record.field("sendWelcomeEmail").val(true);
-   record.field("authentication.generatePassword").val(true);
-   ```
-   - If you do not want an email to be sent and in the registration, and the user enters his password.
-     - Delete only the field Authorization -> Generate Password.
-     - In the before show event, you configure:
+          record.field('sendWelcomeEmail').val(true);
+          record.field('authentication.generatePassword').val(true);
+    ```
+   * If you do not want an email to be sent and in the registration, and the user enters his password.
+     * Delete only the field Authorization -> Generate Password.
+     * In the before show event, you configure:
    ```js
-   record.field("sendWelcomeEmail").val(false);
-   record.field("authentication.generatePassword").val(false);
-   ```
-   - If you want the user to register but not activate his account and activate it manually after resetting his password.
-     - Delete only the field Authorization -> Generate Password.
-     - In the before show event, you configure:
+          record.field('sendWelcomeEmail').val(false);
+          record.field('authentication.generatePassword').val(false);
+    ```
+   * If you want the user to register but not activate his account and activate it manually after resetting his password.
+     * Delete only the field Authorization -> Generate Password.
+     * In the before show event, you configure:
    ```js
-   record.field("sendWelcomeEmail").val(false);
-   record.field("authentication.generatePassword").val(true);
-   ```
+          record.field('sendWelcomeEmail').val(false);
+          record.field('authentication.generatePassword').val(true);
+    ```
 4. After configuring app settings in Slingr and applying the changes,
-   a "Sign Up" button will automatically appear on the login page of the app.
+a "Sign Up" button will automatically appear on the login page of the app.
 
 ![Sign Up access](/images/vendor/event-planner/sign-up/login-signup.png)
 
@@ -155,6 +154,7 @@ This flag allows generating a redirection after a successful login.
 It can redirect to a view, an external page or a html from the public files.
 The user token will be sent as header and as query param to maintain a context.
 
+
 <br>
 
 ---
@@ -211,13 +211,13 @@ To create a new Microsoft Entra app, follow these steps:
 1. Sign in into [Microsoft Entra](https://entra.microsoft.com/) portal.
 2. In the side menu, collapse `Applications` and click on `App registrations`.
 3. Set a name for the app and in the `Supported account types` section, select the following option:
-   - **Accounts in any organizational directory and personal Microsoft accounts**
+    - **Accounts in any organizational directory and personal Microsoft accounts**
 4. Click on `Register`
 5. Once created, in the app overview, go to **Authentication**.
 6. Add a platform configuration by clicking on `Add a platform`.
 7. Select **Single-page application**, then configure the OAuth2 redirect URI in the required input and check the following options:
-   - **Access tokens (used for implicit flows)**
-   - **ID tokens (used for implicit and hybrid flows)**
+    - **Access tokens (used for implicit flows)**
+    - **ID tokens (used for implicit and hybrid flows)**
 8. Click on **Configure**.
 
 ### Application ID
@@ -345,155 +345,149 @@ For custom mapping, a script context is provided. Parameters include `idpAttribu
 
 If you decide to provide a custom mapping, here is the context of the script:
 
-##### Parameters
+  ##### Parameters
 
 | Name          | Type   | Description                                                                                                                                                                                                                  |
-| ------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | idpAttributes | object | This object contains all the attributes coming from the SAML identity provider. For example if the identity providers sends an attribute with name firstName, you should be able to access it using idpAttributes.firstName. |
 
 ##### Returns
 
-**`object`** - The script should return an object with the following attributes:
+  **`object`** - The script should return an object with the following attributes:
 
-- **`userId`**: immutable ID from identity provider. This will be set as the external ID of the user for this identity provider.
-- **`userEmail`**: email of the user in the identity provider.
-- **`userFirstName`**: first name of the user in the identity provider.
-- **`userLastName`**: last name of the user in the identity provider.
-- **`userGroups`**: groups that user belongs to in the identity provider. It is a list of group names separated by comma.
+  - **`userId`**: immutable ID from identity provider. This will be set as the external ID of the user for this identity provider.
+  - **`userEmail`**: email of the user in the identity provider.
+  - **`userFirstName`**: first name of the user in the identity provider.
+  - **`userLastName`**: last name of the user in the identity provider.
+  - **`userGroups`**: groups that user belongs to in the identity provider. It is a list of group names separated by comma.
 
-##### Samples
+  ##### Samples
 
-```js
-// this is a mapping script where some values are encoded in Base64
-var Base64 = {
-  _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
-  check: function (s) {
-    var endsWith = function (s, suffix) {
-      return s.indexOf(suffix, this.length - suffix.length) !== -1;
-    };
-    var base64Matcher = new RegExp(
-      "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})([=]{1,2})?$"
-    );
-    return endsWith(s, "=") && base64Matcher.test(s);
-  },
-  encode: function (input) {
-    var output = "";
-    var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
-    var i = 0;
-    input = Base64._utf8_encode(input);
-    while (i < input.length) {
-      chr1 = input.charCodeAt(i++);
-      chr2 = input.charCodeAt(i++);
-      chr3 = input.charCodeAt(i++);
-      enc1 = chr1 >> 2;
-      enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
-      enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
-      enc4 = chr3 & 63;
-      if (isNaN(chr2)) {
-        enc3 = enc4 = 64;
-      } else if (isNaN(chr3)) {
-        enc4 = 64;
+  ```js
+  // this is a mapping script where some values are encoded in Base64
+  var Base64 = {
+      _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+      check: function(s) {
+          var endsWith = function(s, suffix) {
+              return s.indexOf(suffix, this.length - suffix.length) !== -1;
+          };
+          var base64Matcher = new RegExp("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})([=]{1,2})?$");
+          return endsWith(s, '=') && base64Matcher.test(s);
+      },
+      encode: function(input) {
+          var output = "";
+          var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
+          var i = 0;
+          input = Base64._utf8_encode(input);
+          while (i < input.length) {
+              chr1 = input.charCodeAt(i++);
+              chr2 = input.charCodeAt(i++);
+              chr3 = input.charCodeAt(i++);
+              enc1 = chr1 >> 2;
+              enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+              enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+              enc4 = chr3 & 63;
+              if (isNaN(chr2)) {
+                  enc3 = enc4 = 64;
+              } else if (isNaN(chr3)) {
+                  enc4 = 64;
+              }
+              output = output + this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) + this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+          }
+          return output;
+      },
+      decode: function(input) {
+          var output = "";
+          var chr1, chr2, chr3;
+          var enc1, enc2, enc3, enc4;
+          var i = 0;
+          input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+          while (i < input.length) {
+              enc1 = this._keyStr.indexOf(input.charAt(i++));
+              enc2 = this._keyStr.indexOf(input.charAt(i++));
+              enc3 = this._keyStr.indexOf(input.charAt(i++));
+              enc4 = this._keyStr.indexOf(input.charAt(i++));
+              chr1 = (enc1 << 2) | (enc2 >> 4);
+              chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+              chr3 = ((enc3 & 3) << 6) | enc4;
+              output = output + String.fromCharCode(chr1);
+              if (enc3 != 64) {
+                  output = output + String.fromCharCode(chr2);
+              }
+              if (enc4 != 64) {
+                  output = output + String.fromCharCode(chr3);
+              }
+          }
+          output = Base64._utf8_decode(output);
+          return output;
+      },
+      _utf8_encode: function(string) {
+          string = string.replace(/\r\n/g, "\n");
+          var utftext = "";
+          for (var n = 0; n < string.length; n++) {
+              var c = string.charCodeAt(n);
+              if (c < 128) {
+                  utftext += String.fromCharCode(c);
+              }
+              else if ((c > 127) && (c < 2048)) {
+                  utftext += String.fromCharCode((c >> 6) | 192);
+                  utftext += String.fromCharCode((c & 63) | 128);
+              }
+              else {
+                  utftext += String.fromCharCode((c >> 12) | 224);
+                  utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+                  utftext += String.fromCharCode((c & 63) | 128);
+              }
+          }
+          return utftext;
+      },
+      _utf8_decode: function(utftext) {
+          var string = "";
+          var i = 0;
+          var c = c1 = c2 = 0;
+          while (i < utftext.length) {
+              c = utftext.charCodeAt(i);
+              if (c < 128) {
+                  string += String.fromCharCode(c);
+                  i++;
+              }
+              else if ((c > 191) && (c < 224)) {
+                  c2 = utftext.charCodeAt(i + 1);
+                  string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+                  i += 2;
+              }
+              else {
+                  c2 = utftext.charCodeAt(i + 1);
+                  c3 = utftext.charCodeAt(i + 2);
+                  string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+                  i += 3;
+              }
+          }
+          return string;
       }
-      output =
-        output +
-        this._keyStr.charAt(enc1) +
-        this._keyStr.charAt(enc2) +
-        this._keyStr.charAt(enc3) +
-        this._keyStr.charAt(enc4);
-    }
-    return output;
-  },
-  decode: function (input) {
-    var output = "";
-    var chr1, chr2, chr3;
-    var enc1, enc2, enc3, enc4;
-    var i = 0;
-    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-    while (i < input.length) {
-      enc1 = this._keyStr.indexOf(input.charAt(i++));
-      enc2 = this._keyStr.indexOf(input.charAt(i++));
-      enc3 = this._keyStr.indexOf(input.charAt(i++));
-      enc4 = this._keyStr.indexOf(input.charAt(i++));
-      chr1 = (enc1 << 2) | (enc2 >> 4);
-      chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
-      chr3 = ((enc3 & 3) << 6) | enc4;
-      output = output + String.fromCharCode(chr1);
-      if (enc3 != 64) {
-        output = output + String.fromCharCode(chr2);
-      }
-      if (enc4 != 64) {
-        output = output + String.fromCharCode(chr3);
-      }
-    }
-    output = Base64._utf8_decode(output);
-    return output;
-  },
-  _utf8_encode: function (string) {
-    string = string.replace(/\r\n/g, "\n");
-    var utftext = "";
-    for (var n = 0; n < string.length; n++) {
-      var c = string.charCodeAt(n);
-      if (c < 128) {
-        utftext += String.fromCharCode(c);
-      } else if (c > 127 && c < 2048) {
-        utftext += String.fromCharCode((c >> 6) | 192);
-        utftext += String.fromCharCode((c & 63) | 128);
-      } else {
-        utftext += String.fromCharCode((c >> 12) | 224);
-        utftext += String.fromCharCode(((c >> 6) & 63) | 128);
-        utftext += String.fromCharCode((c & 63) | 128);
-      }
-    }
-    return utftext;
-  },
-  _utf8_decode: function (utftext) {
-    var string = "";
-    var i = 0;
-    var c = (c1 = c2 = 0);
-    while (i < utftext.length) {
-      c = utftext.charCodeAt(i);
-      if (c < 128) {
-        string += String.fromCharCode(c);
-        i++;
-      } else if (c > 191 && c < 224) {
-        c2 = utftext.charCodeAt(i + 1);
-        string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
-        i += 2;
-      } else {
-        c2 = utftext.charCodeAt(i + 1);
-        c3 = utftext.charCodeAt(i + 2);
-        string += String.fromCharCode(
-          ((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63)
-        );
-        i += 3;
-      }
-    }
-    return string;
-  },
-};
+  };
 
-var attributes = {};
-attributes["userId"] = idpAttributes["userId"];
-if (Base64.check(idpAttributes["userFirstName"])) {
-  attributes["userFirstName"] = Base64.decode(idpAttributes["userFirstName"]);
-} else {
-  attributes["userFirstName"] = idpAttributes["userFirstName"];
-}
-if (Base64.check(idpAttributes["userLastName"])) {
-  attributes["userLastName"] = Base64.decode(idpAttributes["userLastName"]);
-} else {
-  attributes["userLastName"] = idpAttributes["userLastName"];
-}
-attributes["userEmail"] = idpAttributes["userEmail"];
-attributes["userGroups"] = "Default";
-return attributes;
-```
-
+  var attributes = {};
+  attributes['userId'] = idpAttributes['userId'];
+  if (Base64.check(idpAttributes['userFirstName'])) {
+      attributes['userFirstName'] = Base64.decode(idpAttributes['userFirstName']);
+  } else {
+      attributes['userFirstName'] = idpAttributes['userFirstName'];
+  }
+  if (Base64.check(idpAttributes['userLastName'])) {
+      attributes['userLastName'] = Base64.decode(idpAttributes['userLastName']);
+  } else {
+      attributes['userLastName'] = idpAttributes['userLastName'];
+  }
+  attributes['userEmail'] = idpAttributes['userEmail'];
+  attributes['userGroups'] = 'Default';
+  return attributes;
+  ```
   <br>
 
----
+  ---
 
-## **OAuth 2.0**
+## **OAuth**
 
 OAuth is an open-standard authorization protocol that allows secure third-party access to a user's resources without sharing their credentials (see [OAuth 2.0](https://auth0.com/intro-to-iam/what-is-oauth-2)).
 
@@ -501,8 +495,26 @@ OAuth is widely used in web and mobile applications, enabling users to grant you
 
 ### OAuth redirect URI
 
-The OAuth redirect URI is the URL you need to configure in your service account settings. The standard format is:
+The OAuth redirect URI is the URI you need to configure in your service account settings. The standard format is:
 **`https://<appName>.slingrs.io/<environment>/runtime/api/sso/<providerName>/consumer`**.
+
+### Authorization URL
+
+The Authorization URL is the endpoint where users are directed for authentication. It typically follows a structure like **`https://<provider>.com/oauth/authorize`**, though the exact URL may vary depending on the provider.
+
+### Access token URL
+
+The Access Token URL is the endpoint used to obtain access tokens after the user has completed authentication. This URL generally follows a structure like **`https://<provider>.com/oauth/token`**, although the specific URL may vary by provider.
+
+When making a request to the Authorization URL, the following parameters are typically required:
+
+- **`response_type`**: Specifies the type of response desired (e.g., code, token).
+- **`client_id`**: The unique identifier for your application.
+- **`redirect_uri`**: The URI to which the user will be redirected after authentication.
+- **`scope`**: The permissions that your application is requesting from the user.
+- **`state`**: A unique string to maintain state between the request and callback (used for preventing CSRF attacks).
+
+Ensure to consult the provider's documentation for any additional required parameters specific to their implementation."
 
 ### Client ID
 
@@ -516,95 +528,6 @@ When you register an application, a unique and permanent secret is automatically
 
 The scope parameter defines the permissions requested by the application from the user during OAuth authentication and may vary by provider.
 
-### Authorization URL
-
-The Authorization URL is the endpoint where users are directed for authentication. It typically follows a structure like **`https://<provider>.com/oauth/authorize`**, though the exact URL may vary depending on the provider.
-
-### Access token retrieval method
-
-This feature allows you to choose between URL or Script. When the URL method is selected, the platform will handle the access token retrieval automatically, it will try to fetch the access token value for the URL configured in the `Access Token URL`. You should keep in mind that this will only work if your provider accepts the following parameters: `grant_type` (which must be equal to `authorization_code`), `code`, `client_id`, `redirect_uri`, and `client_secret` (which is optional). Additionally, the provider must return the access token with the key name `access_token`. Otherwise, if your provider implements custom logic and requires extra parameters or headers, the Script method must be chosen, and you will have to implement the access token retrieval manually.
-
-### Access token URL
-
-The Access Token URL is the endpoint used to obtain access tokens after the user has completed authentication. This URL generally follows a structure like **`https://<provider>.com/oauth/token`**, although the specific URL may vary by provider.
-
-When making a request to the Authorization URL, the following parameters are typically required:
-
-- **`grant_type`**: This parameter specifies the type of grant being used.
-- **`client_id`**: The unique identifier for your application.
-- **`redirect_uri`**: The URL to which the user will be redirected after authentication.
-- **`code`**: The code received as a parameter as part of the authorization flow.
-
-Ensure to consult the provider's documentation for any additional required parameters specific to their implementation."
-
-### Access token script
-
-This section will be available when the `Script` option has been chosen under the `Access Token Retrieval Method.` You will need to obtain the access token manually and return it under the key name `accessToken` (see [HTTP Service](https://github.com/slingr-stack/http-service) and [HTTP Package](https://github.com/slingr-stack/http-package)). The `code` obtained as part of the authorization flow will be provided as a parameter, also you will be able to access the configuration defined for the provided under the `config` parameter. For example:
-
-```js
-const accessTokenResponse = pkg.http.post({
-  url: config.tokenUrl,
-  params: {
-    grant_type: "authorization_code",
-    client_id: config.clientId,
-    redirect_uri: config.oauthRedirectUri,
-    code: code,
-  },
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-if (!accessTokenResponse || !accessTokenResponse.access_token)
-  throw "Error obtaining access_token";
-return {
-  accessToken: accessTokenResponse.access_token,
-};
-```
-
-### User mapping script
-
-In the User mapping script, three parameters are received: `accessToken`, `config`, and `userRecord`.
-
-- **`accessToken`**: This parameter is the access token received from the user's authentication process.
-- **`config`**: This is a JSON object that contains all the configuration settings defined for the identity provider, including `client_id`, `client_secret`, `scope`, `oauthRedirectUri` (which corresponds to the OAuth redirect URI), and `token_url` (which corresponds to the Access Token URL).
-- **`userRecord`**: This parameter represents the user being authenticated.
-
-A call should be made to the provider's API to retrieve the user's data (see [HTTP Service](https://github.com/slingr-stack/http-service) and [HTTP Package](https://github.com/slingr-stack/http-package)). The script should first check if the user already exists by searching for their email. If the user exists, return their record along with the associated firstName and lastName. If the user does not exist, the developer must ensure that the fields `firstName`, `lastName`, and `email` are filled out; otherwise, the user record cannot be saved, as these fields are required. Finally, the script must return the userRecord.
-
-```js
-const userDataResponse = pkg.http.get({
-  url: 'https://api.example.com/user' // Replace with the actual API endpoint,
-  body: {
-    fields: ['firstName', 'lastName', 'email'] // Replace with the actual API implementation
-  }
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization : `Bearer ${accessToken}`
-  }
-});
-if (!userDataResponse || !userDataResponse.user) throw('Error obtaining user data')
-// fill out userRecord
-let email;
-if (userDataResponse.user.emailAddress) {
-  email = userDataResponse.user.emailAddress;
-  if (email) {
-    const userRegistered = sys.data.findOne('sys.users', {email: email});
-    if (userRegistered) {
-      return userRegistered;
-    }
-  }
-}
-const firstName = userDataResponse.user.firstName || 'Default first name';
-const lastName = userDataResponse.user.lastName || 'Default last name';
-if (!email) throw('Missing required fields: email') // you might throw an exception for firstName and lastName
-userRecord.field('firstName').val(firstName); // Required
-userRecord.field('lastName').val(lastName) // Required
-userRecord.field('email').val(email); // Required
-userRecord.field('currentlyWorkingOn').val("Google"); // Optional
-sys.data.save(userRecord);
-return userRecord;
-```
-
 ### Default user group
 
 Any new user created will be automatically assigned to this group as the Primary group.
@@ -615,6 +538,68 @@ This flag allows generating a redirection after a successful login.
 It can redirect to a view, an external page or a html from the public files.
 The user token will be sent as header and as query param to maintain a context.
 
+### Oauth user handler script
+
+In the OAuth User Handler Script, three parameters are received: `code`, `config`, and `userRecord`.
+
+- **`code`**: This parameter is the code received from the user's authorization process.
+- **`config`**: This is a JSON object that contains all the configuration settings defined for the identity provider, including `client_id`, `client_secret`, `scope`, `oauthRedirectUri` (which corresponds to the OAuth redirect URI), and `token_url` (which corresponds to the Access Token URL).
+- **`userRecord`**: This parameter represents the user being authenticated.
+
+As the first step, the script must obtain the `access_token` by making a call to the API defined by the provider, using the required parameters. This process may vary from provider to provider. Once the `access_token` is obtained, a call can be made to the provider's API to retrieve the user's data. The script should first check if the user already exists by searching for their email. If the user exists, return their record along with the associated firstName and lastName. If the user does not exist, the developer must ensure that the fields `firstName`, `lastName`, and `email` are filled out; otherwise, the user record cannot be saved, as these fields are required. Finally, the script must return the userRecord.
+
+##### Samples
+
+  ```js
+    // get access token
+  const accessTokenResponse = svc.http.post({
+    url: config.tokenUrl,
+    params: {
+      grant_type: 'authorization_code',
+      client_id: config.clientId,
+      redirect_uri: config.oauthRedirectUri,
+      code: code
+    },
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  if (!accessTokenResponse || !accessTokenResponse.access_token) throw('Error obtaining access_token')
+  // get user data
+  const userDataResponse = svc.http.post({
+    url: 'https://shopify.com/87175397693/account/customer/api/2024-10/graphql',
+    params: {
+      query: 'query { customer { id firstName lastName emailAddress {emailAddress} } }'
+    },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization : accessTokenResponse.access_token
+    }
+  });
+  if (!userDataResponse || !userDataResponse.data || !userDataResponse.data.customer) throw('Error obtaining customer data')
+  // fill out userRecord
+  let email;
+  if (userDataResponse.data.customer.emailAddress) {
+    email = userDataResponse.data.customer.emailAddress.emailAddress;
+    if (email) {
+      const userRegistered = sys.data.findOne('sys.users', {email: email});
+      if (userRegistered) {
+        return userRegistered;
+      }
+    }
+  }
+  const firstName = userDataResponse.data.customer.firstName || 'Default first name';
+  const lastName = userDataResponse.data.customer.lastName || 'Default last name';
+  if (!email) throw('Missing required fields: email') // you might throw an exception for firstName and lastName
+  userRecord.field('firstName').val(firstName);
+  userRecord.field('lastName').val(lastName)
+  userRecord.field('firstName').val(firstName);                              // Required
+  userRecord.field('lastName').val(lastName);                              // Required
+  userRecord.field('email').val(email);                                           // Required
+  userRecord.field('currentlyWorkingOn').val("Google");              // Optional
+  sys.data.save(userRecord);
+  return userRecord;
+  ```
   <br>
 
----
+  ---
