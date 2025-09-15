@@ -571,7 +571,7 @@ When performing queries using a semantic index, additional parameters can be con
   id="101"
   description="Finds records whose meaning is similar to the embedding provided"
   entity="products"
-  jsQueryMap="{_vectorSearchLimit:10, _numCandidates:200, _queryScoring: 0.8, _taskType: ' 'SEMANTIC_SIMILARITY'}"
+  jsQueryMap="{_vectorSearchLimit:10, _numCandidates:200, _queryScoring: 0.8, _taskType: 'SEMANTIC_SIMILARITY'}"
   jsQueryBuilder=".semanticFilter('productSemanticIndex', 'latest smartphone technology').semanticSearchParams(10, 200, 0.8, 'SEMANTIC_SIMILARITY')"
   restApi="_vectorSearchLimit=10&_numCandidates=200&_queryScoring=0.8&_taskType=SEMANTIC_SIMILARITY&_indexedFilter=productSemanticIndex&_indexedFilterQuery=latest smartphone technology"
 >}}
