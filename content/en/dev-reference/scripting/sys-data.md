@@ -1854,7 +1854,7 @@ let relatedCompanies = sys.data.find('companies', {
   while (relatedCompanies.hasNext()) {
     let r = relatedCompanies.next();
     let id = r.id();
-    if (id != recordId && !ids.includes(r.id)) {
+    if (id != recordId && !ids.includes(r.id())) {
       ids.push(id);
     }
   }
