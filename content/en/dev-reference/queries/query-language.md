@@ -484,6 +484,8 @@ If you wish to reduce the number of requests to the server, you can retrieve a r
 This is only allowed for entities with indexed filters created.
 {{< /callout >}}
 
+#### Text index
+
 When querying using indexed filter feature, it will attempt to match the provided string in any of the fields provided in the index. For example:
 
 {{< query_sample
@@ -499,6 +501,86 @@ When querying using indexed filter feature, it will attempt to match the provide
 Note that to match the entire phrase, you should enclose it with double quotes.
 
 Please be aware that all searches are case-insensitive.
+
+#### Semantic index
+
+When querying using a semantic index, the system compares the **vector embedding** of your query against the embeddings stored for each record in the index. Instead of looking for exact matches, semantic search finds records with **similar meaning** to your query.
+
+The query provided can be a text where an embedding will be generated for it or can be an embedding vector
+
+For example:
+
+{{< query_sample
+  id="101"
+  description="Finds records whose meaning is similar to 'latest smartphone technology' in the configured fields"
+  entity="products"
+  jsQueryMap="{_indexedFilter: 'productSemanticIndex', _indexedFilterQuery: 'latest smartphone technology'}"
+  jsQueryBuilder=".semanticFilter('productSemanticIndex', 'latest smartphone technology')"
+  restApi="_indexedFilter=productSemanticIndex&_indexedFilterQuery=latest smartphone technology"
+>}}
+
+{{< query_sample
+  id="102"
+  description="Finds records whose meaning is similar to the embedding provided"
+  entity="products"
+  jsQueryMap="{_indexedFilter: 'productSemanticIndex', _indexedFilterEmbedding: [-0.1,0.2]}"
+  jsQueryBuilder=".semanticFilter('productSemanticIndex', [-0.1,0.2])"
+  restApi="_indexedFilter=productSemanticIndex&_indexedFilterEmbedding=[-0.1,0.2]"
+>}}
+<br>
+
+The **similarity score** between the query and a record is calculated based on the configured **Query Scoring** threshold for the index.  
+- **Higher threshold** → More relevant but fewer matches.  
+- **Lower threshold** → Broader matches but may include less relevant results.  
+
+Records are returned sorted by matching score unless another criteria is specified.
+
+### Semantic Search Parameters
+
+When performing queries using a semantic index, additional parameters can be configured to control how results are retrieved and scored. These parameters can be set via the **`.semanticSearchParams()`** method.
+
+#### Parameters
+
+- **`vectorSearchLimit`** (`number`):  
+  Specifies the maximum number of records to retrieve in the vector search stage. This limits the number of matches returned.  
+
+- **`numCandidates`** (`number`):  
+  The number of approximate vectors to analyze during the search.  
+  - Suggested value: `vectorSearchLimit * 20`  
+  - Increasing this value may improve accuracy but can increase query time.  
+
+- **`queryScoring`** (`number`):  
+  The similarity threshold used to filter results. Values range from `0` (low similarity) to `1` (high similarity).  
+  - Recommended range: `0.7` to `0.85` for optimal relevance.  
+
+- **`taskType`** (`string`):  
+  Specifies the embedding task type for the query vector. Influences how the model interprets the query.  
+  - Valid values:  
+    - `SEMANTIC_SIMILARITY`  
+    - `RETRIEVAL_DOCUMENT`  
+    - `RETRIEVAL_QUERY`  
+    - `QUESTION_ANSWERING`  
+    - `FACT_VERIFICATION`  
+    - `CLASSIFICATION`  
+    - `CLUSTERING`  
+  [See Google’s task type documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/task-types).  
+
+#### Example Usage
+
+{{< query_sample
+  id="101"
+  description="Finds records whose meaning is similar to the embedding provided"
+  entity="products"
+  jsQueryMap="{_vectorSearchLimit:10, _numCandidates:200, _queryScoring: 0.8, _taskType: 'SEMANTIC_SIMILARITY'}"
+  jsQueryBuilder=".semanticFilter('productSemanticIndex', 'latest smartphone technology').semanticSearchParams(10, 200, 0.8, 'SEMANTIC_SIMILARITY')"
+  restApi="_vectorSearchLimit=10&_numCandidates=200&_queryScoring=0.8&_taskType=SEMANTIC_SIMILARITY&_indexedFilter=productSemanticIndex&_indexedFilterQuery=latest smartphone technology"
+>}}
+
+#### Task types
+
+When a semantic index is created, it can be assigned a **Default Task Type** for both embeddings and queries. This influences how the embedding model interprets text (for example: search-optimized, classification-optimized, etc.).  
+[See Google’s task type documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/task-types).
+<br>
 
 ### Format
 

@@ -1826,6 +1826,42 @@ try {
 ```
 <br>
 
+###  embedding(semanticIndex)
+
+This function returns the vector embedding associated to an index. This embedding can be use on vector search as the query.
+
+#### Parameters
+
+| Name  | Type  | Required | Description |
+|---|---|---|---|
+semanticIndex|string|yes|The semantic index associated to the required embedding.
+
+##### Samples
+
+``` javascript
+var company = sys.data.findOne('companies',{});
+
+//query using existing embedding of the record to find similar companies by semantic similarity
+let relatedCompanies = sys.data.find('companies', {
+    _indexedFilter: 'semantic',
+    _indexedFilterEmbedding: company.embedding('semantic')
+    _vectorSearchLimit: 3,
+    _numCandidates: 200,
+    _queryScoring:0.72
+  });
+  let recordId = company.id();
+  let ids = [];
+  while (relatedCompanies.hasNext()) {
+    let r = relatedCompanies.next();
+    let id = r.id();
+    if (id != recordId && !ids.includes(r.id())) {
+      ids.push(id);
+    }
+  }
+  return ids;
+```
+<br>
+
 ## **sys.data.Wrapper**
 
 Whenever you need to access or manipulate the value of a field using the JavaScript API, you will interact with a wrapper. You should never create a wrapper manually. Instead, objects of this type are created by methods such as [`sys.data.Record.field()`](#👉-fieldpath)
