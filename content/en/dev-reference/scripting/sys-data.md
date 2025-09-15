@@ -1827,6 +1827,17 @@ try {
 ```
 <br>
 
+###  embedding(semanticIndex)
+
+This function returns the vector embedding associated to an index. This embedding can be use on vector search as the query.
+
+#### Parameters
+
+| Name  | Type  | Required | Description |
+|---|---|---|---|
+semanticIndex|string|yes|The semantic index associated to the required embedding.
+
+
 ## **sys.data.Wrapper**
 
 Whenever you need to access or manipulate the value of a field using the JavaScript API, you will interact with a wrapper. You should never create a wrapper manually. Instead, objects of this type are created by methods such as [`sys.data.Record.field()`](#👉-fieldpath)
