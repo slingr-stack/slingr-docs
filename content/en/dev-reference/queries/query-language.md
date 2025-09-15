@@ -563,7 +563,7 @@ When performing queries using a semantic index, additional parameters can be con
     - `FACT_VERIFICATION`  
     - `CLASSIFICATION`  
     - `CLUSTERING`  
-  [See Google’s task type documentation](PLACEHOLDER_FOR_LINK).  
+  [See Google’s task type documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/task-types).  
 
 #### Example Usage
 
@@ -579,7 +579,7 @@ When performing queries using a semantic index, additional parameters can be con
 #### Task types
 
 When a semantic index is created, it can be assigned a **Default Task Type** for both embeddings and queries. This influences how the embedding model interprets text (for example: search-optimized, classification-optimized, etc.).  
-[See Google’s task type documentation](PLACEHOLDER_FOR_LINK).
+[See Google’s task type documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/task-types).
 <br>
 
 ### Format
