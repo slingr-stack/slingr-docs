@@ -388,7 +388,7 @@ This action empowers users to delete records. When enabled, a **`Delete`** butto
 
 ### Indexed filters
 
-If indexed filters are configured, a search box above the listing that facilitates filtering fields using the selected index. For example, with a [text index]({{<ref "/dev-reference/data-model-and-logic/entities#text-index">}}) this filter will finds words in the configured fields of the filter. For semantic search it will try to match records by semantic similarity
+If indexed filters are configured, a search box above the listing that facilitates filtering fields using the selected index. For example, with a [text index]({{<ref "/dev-reference/data-model-and-logic/entities#text-index">}}) this filter will find words in the configured fields of the filter. For semantic search it will try to match records by semantic similarity
 
 ### Field Filters
 
