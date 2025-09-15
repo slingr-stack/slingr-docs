@@ -471,7 +471,7 @@ log('job id: ' + job.label());
 
 ###  embeddingsBatchProcessing(inputs,callback)
 
-This will trigger a background job to embedd a list of intpus. It will trigger a batch embedding generation on Vertex AI API and then it will execute a callback on the outputs. 
+This will trigger a background job to embed a list of inputs. It will trigger a batch embedding generation on Vertex AI API and then it will execute a callback on the outputs. 
 
 [See Google’s batch embeddings inputs and outputs](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/batch-prediction-genai-embeddings). Context can be passed in inputs and used when executing the callback.
 
