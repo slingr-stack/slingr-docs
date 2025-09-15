@@ -15,11 +15,15 @@ weight: 63
 
 ## **sys.dataCache**
 
-This package contains methods to handle app cache optimized for handling application data. Cache is useful when fast performance is needed when reading app information. This should be carefully used since app heap memory can be affected when a lot of information is stored in cache. Records can be stored as records format or a json object in the cache.
+This package contains methods to handle app cache optimized for handling application data. Cache is useful when fast performance is needed when reading app information. This should be carefully used since app heap memory can be affected when a lot of information is stored in cache. Records can be stored as records format or a json object in the cache. 
+
+{{< notes type="important" >}}
+Records cached locally in each instance of the application. So be aware that if you are updating cached records, you will need to call sys.dataCache.clear(entityName) in order to clear the cache of all the app instances.
+{{< /notes >}}
 
 ### clear(entityName)
 
-Clears data cache for a given entity or all cache if no entity is provided.
+Clears data cache for a given entity or all cache if no entity is provided. It will notify all the instances of your application to clear the cache
 
 #### Parameters
 
@@ -47,7 +51,7 @@ options|object|no|These parameters are used to sort results. <br> - **`sortBy`**
 
 **`sys.data.Record[]`** - Array of records
 
-### find(entityName, key, value, indexes, options)
+### find(entityName, queryMap, indexes, options)
 
 Finds cached data of an entity given a field and value. Loads the entity if not cached. If indexes are provided, then app data is indexed on load.
 
@@ -56,8 +60,7 @@ Finds cached data of an entity given a field and value. Loads the entity if not 
 Name|Type|Required|Description
 ---|---|---|---
 entityName|string|yes|Name of the entity
-key|string|yes|The key
-value|any|yes|The value
+queryMap|object|no|The query map object used to filter records.
 indexes|string[]|no|Array of index names
 options|object|no|These parameters are used to sort results. <br> - **`sortBy`**: Indicates which field should be considered when sorting. <br> - **`sortType`**: Options are "**`asc`**" or "**`desc`**."  <br> - **`returnRecord`**: Options are "**`true`**" or "**`false`**. Default value is false
 
@@ -65,7 +68,7 @@ options|object|no|These parameters are used to sort results. <br> - **`sortBy`**
 
 **`sys.data.Record[]`** - Array of records
 
-### findOne(entityName, key, value, indexes)
+### findOne(entityName, queryMap, indexes)
 
 Finds the first cached record of an entity matching a field and value. If not cached, the entity will be loaded. If indexes are provided, then app data is indexed on load. Returns null if not found.
 
@@ -74,8 +77,7 @@ Finds the first cached record of an entity matching a field and value. If not ca
 Name|Type|Required|Description
 ---|---|---|---
 entityName|string|yes|Name of the entity
-key|string|yes|The key
-value|any|yes|The value
+queryMap|object|no|The query map object used to filter records.
 indexes|string[]|no|Array of index names
 returnRecord|boolean|no|To store records as json or record wrapper in app cache.
 

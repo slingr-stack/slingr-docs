@@ -17,6 +17,10 @@ weight: 60
 
 This package contains methods to handle app cache across all app instances. Cache is useful when fast performance is needed when reading app information. This should be carefully used since app heap memory can be affected when a lot of information is stored in cache.
 
+{{< notes type="important" >}}
+Data is cached locally in each instance of the application. So be aware that if you are updating cached data, you will need to call sys.cache.clear() in order to clear the cache of all the app instances. It's important you implement your cache in a way it is consistent in all your instances.
+{{< /notes >}}
+
 ### put(mapName, key, value)
 
 Puts a key-value pair into a specified cache map. Returns the previous value associated with the key, or null.
@@ -65,7 +69,7 @@ key|string|yes|The key
 
 ### clear(mapName)
 
-Clears all entries from the specified cache map.
+Clears all entries from the specified cache map. It will notify all the instances of your application to clear the cache
 
 #### Parameters
 
