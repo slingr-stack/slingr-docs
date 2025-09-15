@@ -1837,6 +1837,31 @@ This function returns the vector embedding associated to an index. This embeddin
 |---|---|---|---|
 semanticIndex|string|yes|The semantic index associated to the required embedding.
 
+##### Samples
+
+``` javascript
+var company = sys.data.findOne('companies',{});
+
+//query using existing embedding of the record to find similar companies by semantic similarity
+let relatedCompanies = sys.data.find('companies', {
+    _indexedFilter: 'semantic',
+    _indexedFilterEmbedding: company.embedding('semantic')
+    _vectorSearchLimit: 3,
+    _numCandidates: 200,
+    _queryScoring:0.72
+  });
+  let recordId = company.id();
+  let ids = [];
+  while (relatedCompanies.hasNext()) {
+    let r = relatedCompanies.next();
+    let id = r.id();
+    if (id != recordId && !ids.includes(r.id)) {
+      ids.push(id);
+    }
+  }
+  return ids;
+```
+<br>
 
 ## **sys.data.Wrapper**
 
