@@ -133,6 +133,29 @@ Text indexes enables enables text search queries on fields that contain string c
 
 [For more details on how text indexes operates, refer to this documentation]({{<ref "/dev-reference/queries/query-language.md#indexed-filters">}}).
 
+### Semantic Index
+
+A **Semantic Index** enables vector-based search capabilities, allowing the system to find records based on meaning rather than exact keyword matches. When configured, this index stores vector embeddings for selected fields, making it possible to execute semantic queries that return results based on contextual similarity.
+
+Once a semantic index is created, **embeddings** will be generated for existing records in a background job, using the fields you configured for indexing. This ensures that searches can match conceptually related terms, even if the exact words differ.
+
+Semantic indexes can be created in the **`Indexes`** section of an entity by selecting the **Semantic** type.
+
+Each semantic index includes the following properties:
+
+- **`Name`**: The name of the index in the database, automatically generated and immutable.  
+- **`Fields`**: The list of fields used to generate embeddings. These fields should contain relevant text for semantic search.  
+- **`Default Task Type`**: Defines the type of embeddings generated for both stored records and incoming queries. Task types influence how the model interprets text. [See Google’s task type documentation](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/task-types).  
+- **`Query Scoring`**: Determines the similarity threshold (0 to 1) for filtering results.  
+  - **0** → Low similarity requirement (broad matching).  
+  - **1** → High similarity requirement (strict matching).  
+  - **Recommended range**: `0.7` to `0.85` for optimal relevance.  
+- **`Status`**: Shows the current state of the index (e.g., **Creating**, **Ready**, **Error**). Background embedding generation may take time for large datasets.  
+
+> **Performance note:** Creating or updating a semantic index can be resource-intensive for entities with many records, as all affected embeddings must be generated or updated.
+
+[For more details on how text indexes operates, refer to this documentation]({{<ref "/dev-reference/queries/query-language.md#semantic-index">}}).
+
 ### Record validations
 
 Record validations empower you to execute intricate validations encompassing all fields within a record. Moreover, they facilitate interaction with external services, capabilities that are beyond the scope of field-level rules.
