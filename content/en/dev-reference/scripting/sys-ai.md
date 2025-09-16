@@ -43,7 +43,7 @@ let record = sys.data.findOne('library',{});
 let array = [{"content":"horror book","recordId":record.id(), "id":0}]
 
 // trigger background job to process embeddings in a batch. 
-let jobId = sys.jobs.embeddingsBatchProcessing(array, function(prediction) {
+let jobId = sys.ai.embeddingsBatchProcessing(array, function(prediction) {
   // get library from context
   let library = sys.data.findOne('library',{id: prediction.instance.recordId})
 
