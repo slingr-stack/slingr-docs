@@ -2,7 +2,7 @@
 title: "Managing apps"
 description: "Explains how to create and manage apps in Slingr."
 date: 2020-11-16T13:59:39+01:00
-lastmod: 2023-11-30T13:59:39+01:00
+lastmod: 2025-10-03T11:57:00+01:00
 draft: false
 images: []
 menu:
@@ -104,9 +104,10 @@ you need them.
 
 ![App environment details](/images/vendor/platform-ref/managing-apps/app_environment_details_1.png)
 
-- **`Status`**: Indicates in which status the environment is. If the value is different than **`Deployed`**,
-  it could be that some maintenance work is going on (for example, the platform is being upgraded) or
-  there is a problem, and you should contact support.
+- **`Status`**: This card shows the current runtime health and lifecycle of the environment. It now displays:
+  - Deployment status (as it does today). If the value is different than **`Deployed`**, it could be that some maintenance work is going on (for example, the platform is being upgraded) or there is a problem and you should contact support.
+  - Sleep status: one of **`awake`**, **`putting to sleep`**, **`sleeping`**, or **`waking up`**.
+  - Auto-sleep policy enabled: **`True`**/**`False`**.
 
 - **`Version`**: This is the current version your app is running on. We periodically release new updates
   to the platform, and we automatically update apps when that's possible. You can set the upgrade strategy for your apps.
@@ -139,6 +140,27 @@ you need them.
   you can use your domain as well, for example, **`myapp.com`**. To do that, you need to
   own the domain and have a valid SSL certificate. Just click on **`Set your domain`**, and you will
   be asked to enter the domain and SSL certificate information. Upon creation you will be provided with an external IP to be configured on your domain provider.
+
+### Manage environment sleep status
+
+In order to optimize the usage of cluster resources, app admins can manage the sleep status of each environment from the **Status** card through the **`Manage status`** link.
+
+When you click this link, a modal opens. Its options depend on the current sleep status of the environment:
+
+- Status: **`awake`**
+  - Auto-sleep: **`True`**/**`False`** (toggle). Disabled by default. If enabled, the environment will be put to sleep after reaching a certain threshold of inactivity (5 days exactly). Activity refers to user logins.
+
+- Status: **`putting to sleep`**
+  - The **`Manage status`** link is not available while the environment is transitioning.
+
+- Status: **`sleeping`**
+  - A button to wake up the environment is available.
+
+- Status: **`waking up`**
+  - The **`Manage status`** link is not available while the environment is transitioning.
+
+
+![Enable auto sleep modal](/images/vendor/platform-ref/managing-apps/app_enable_auto_sleep_modal.png)
 
 There are a few cases that need changes in settings that deserve more attention:
 
