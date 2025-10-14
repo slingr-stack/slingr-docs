@@ -18,17 +18,15 @@ The `sys.db` namespace provides low-level access to the application's underlying
 
 Use this API only when you explicitly need raw MongoDB behavior or performance characteristics. For most application logic you should prefer the high-level [`sys.data`]({{<ref "/dev-reference/scripting/sys-data.md">}}) API.
 
-Important notes:
-- Operations here are executed directly against MongoDB collections.
-- No business logic or hooks are applied. You are responsible for data integrity, security, and consistency.
-- Documents returned are plain JSON objects representing the stored MongoDB documents for that entity.
+**Important notes:**
+- Operations run directly against MongoDB collections.
+- You are responsible for data consistency and security.
+- Returned documents are plain JSON objects representing the actual stored structure.
 
+## Document structure
 
-## Database record representation
+Each entity document contains:
 
-When accessing records via `sys.db`, you interact with the raw MongoDB documents stored for each entity. In addition to your own fields, documents include system-managed fields. All business data must live under the `data` object.
-
-System fields
 - `_id`: Unique identifier of the document (MongoDB ObjectId or string, depending on configuration).
 - `label`: Human-friendly label of the record, used in UIs and logs.
 - `__label_lower_case__`: The record label in lowercase, used for case-insensitive searches and internal optimizations.
@@ -43,7 +41,6 @@ System fields
   - `_id`: The entity identifier.
   - `name`: The entity name (collection name in the app context).
 
-Full example (projects)
 ```json
 {
   "_id": "5506fc44c2eee3b1a702695c",
@@ -52,67 +49,66 @@ Full example (projects)
       "_id": "5506fc43c2eee3b1a7026944",
       "label": "ABC",
       "entityId": "5506fc3cc2eee3b1a7025c16",
-      "availableFields": {
-        "active": true,
-        "type": "COMPANY_TYPE1",
-        "address": { "state": "CO" }
-      }
+      "availableFields": { "active": true }
     },
     "name": "Secure Connection Project",
-    "description": "Create a super secure connection between planets",
     "numberOfPeople": 15,
     "budget": 4500,
-    "status": "DONE",
-    "closedBy": {
-      "_id": "5506fc3cc2eee3b1a7025c07",
-      "label": "User1 Test1",
-      "entityId": "5eab2ed43db32570fd47f2a2",
-      "availableFields": {}
-    },
-    "pendingTasks": 0
+    "status": "DONE"
   },
   "label": "Secure Connection Project",
   "__label_lower_case__": "secure connection project",
-  "entity": {
-    "_id": "5506fc3cc2eee3b1a7025c18",
-    "name": "projects"
-  }
+  "entity": { "_id": "5506fc3cc2eee3b1a7025c18", "name": "projects" }
 }
 ```
 
-Notes
-- Always query and update business fields under `data`, e.g., `{"data.status": "DONE"}` or `{ $set: { "data.numberOfPeople": 10 } }`.
-- System fields (`label`, `__label_lower_case__`, `entity`) are needed to support the app UI and internal operations.
-- Relationship fields store lightweight references plus optionally copied fields in `availableFields`. Do not assume `availableFields` is always present or complete.
-- Respect this structure to avoid invalid records and unexpected behavior in the app runtime.
+### Notes
+- Always query and update **under `data`**, e.g. `{ "data.status": "DONE" }`.
+- You can update `label` and `__label_lower_case__`.
+- The `entity` field **cannot be modified**.
+
+## Type handling
+
+`sys.db` accepts regular JavaScript types and automatically converts them to proper MongoDB types based on the entity field metadata.
+
+- **Numbers** (integer, long, money, decimal, percentage): JavaScript `Number`
+- **Dates**:
+  - `date`: string `YYYY-MM-DD`
+  - `dateTime`, `dateRecordCreated`, `dateRecordModified`: JavaScript `Date` or ISO string
+  - `dateMonthDay`: string `MM-DD`
+  - `dateYearMonth`: string `YYYY-MM`
+  - `time`: string `HH:mm`
+- **HTML**: `{ plain: string (plain text only, without the HTML tags), value: string (actual HTML code) }`
+- **Relationship**: `{ _id, label, entityId, availableFields? }`
+- **Group**: `{ _id: groupId }`
+- **GeoPoint**: `{ type: "Point", coordinates: [lon, lat] }`
+- **Nested fields**: object, e.g. `{ fieldA: 1, fieldB: 2, _label: 'NestedFieldLabel' }`
 
 
-## Cursors returned by sys.db.query
+## Cursors returned by sys.db.find
 
-Some methods return a wrapped cursor that supports synchronous-style iteration:
-- `hasNext()` → boolean: Whether more documents are available.
-- `next()` → object: Returns the next document.
-- `toArray()` → object[]: Returns all remaining documents.
-- `count()` → number: Count of documents that match the query.
-- `close()` → void: Closes the cursor and frees resources.
+Methods that return cursors allow synchronous-style iteration:
 
-Example usage:
-```javascript
+- `hasNext()` → boolean
+- `next()` → object
+- `toArray()` → object[]
+- `count()` → number
+- `close()` → void
+
+**Example:**
+```js
 let cursor = sys.db.find(
   "projects",
-  { $or: [{ "data.status": "DONE" }, { "data.numberOfPeople": { $gte: 10 } }] },
+  { $or: [{ "data.status": "DONE" }, { "data.pendingTasks": { $gte: 1 } }] },
   { sort: { "data.name": 1 }, limit: 10 }
 );
 
 while (cursor.hasNext()) {
-  let user = cursor.next();
-  // process user
+  const doc = cursor.next();
 }
 
-// Or fetch all at once
-const usersArray = cursor.toArray();
+const all = cursor.toArray();
 ```
-
 
 ## API Reference
 
@@ -173,8 +169,6 @@ Parameters
 - `entityName` (string, required)
 - `mongoPipeline` (object[], required): MongoDB aggregation stages.
 
-Returns
-- `object[]`: Aggregation result documents.
 
 Sample
 ```javascript
@@ -182,10 +176,6 @@ let results = sys.db.aggregate("projects", [
   { $match: { "data.status": "DONE" } },
   { $group: { _id: "$data.company._id", totalBudget: { $sum: "$data.budget" } } }
 ]);
-
-for (let result of results) {
-  // each result has _id = company id and totalBudget for DONE projects
-}
 ```
 
 ---
@@ -237,10 +227,6 @@ const result = sys.db.insert("projects", projectDoc);
 // result.insertedId contains the new _id
 ```
 
-Notes
-- If `_id` is omitted, MongoDB will create one.
-- Hooks and validations are not executed. System fields are handled automatically by the platform and their calculation is optimized to avoid extra overhead.
-
 ---
 
 ### insertMany(entityName, records, options)
@@ -290,40 +276,29 @@ const result = sys.db.insertMany("projects", docs, { ordered: false });
 ---
 
 ### update(entityName, record, options)
-Updates a single existing document identified by its `_id`. The provided `record` must include `_id`. Fields present in `record` will be set; depending on implementation this may be a partial update or a replacement (check your platform behavior). If you need full MongoDB update operators, use `updateMany` or `bulkWrite`.
 
-Parameters
-- `entityName` (string, required)
-- `record` (object, required): Must include `_id`.
-- `options` (object, optional): MongoDB options like `upsert`, `writeConcern`.
+Updates a single document **by `_id`**.
 
-Returns
-- `object`: `{ matchedCount, modifiedCount, upsertedId }`
+- This method only applies `$set` on provided fields.
+- Allowed keys: `data.*`, `label`, `__label_lower_case__`.
+- You **cannot** replace `data` or modify `entity`.
 
-Sample
-```javascript
-const updatedProject = {
-  _id: "5506fc44c2eee3b1a702695c",
-  data: {
-    name: "Secure Connection Project",
-    description: "Create a super secure connection between planets",
-    numberOfPeople: 16, // updated
-    budget: 5000, // updated
-    status: "DONE",
-    pendingTasks: 0
-  },
-  label: "Secure Connection Project",
-  __label_lower_case__: "secure connection project",
-  entity: { name: "projects" }
-};
-const result = sys.db.update("projects", updatedProject);
+**Options:** `upsert`, `writeConcern`, `collation`, `arrayFilters`.
+
+```js
+const res = sys.db.update("allFields", {
+  _id: "68ed4f4abdcaf340063e16b5",
+  label: "New label",
+  __label_lower_case__: "new label",
+  "data.integer": 999
+});
 ```
 
 ---
 
 ### updateMany(entityName, mongoUpdateQuery, options)
-Updates multiple documents using a standard MongoDB update query object of the form `{ filter, update }`.
 
+Updates multiple documents using a standard MongoDB update query object of the form `{ filter, update }`.
 Parameters
 - `entityName` (string, required)
 - `mongoUpdateQuery` (object, required): `{ filter: <MongoDB filter>, update: <update ops> }`
