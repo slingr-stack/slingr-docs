@@ -46,9 +46,9 @@
     "@hyas/images": "^0.2.2",
     "auto-changelog": "^2.5",
     "autoprefixer": "^10.4",
-    "bootstrap": "^5.3.7",
+    "bootstrap": "^5.3.8",
     "clipboard": "^2.0",
-    "eslint": "^9.33",
+    "eslint": "^9.37",
     "exec-bin": "^1.0.0",
     "flexsearch": "^0.7.21",
     "highlight.js": "^11.11",
@@ -64,7 +64,7 @@
     "postcss-cli": "^11.0",
     "purgecss-whitelister": "^2.4",
     "shx": "^0.4.0",
-    "stylelint": "^16.23",
+    "stylelint": "^16.25",
     "stylelint-config-standard-scss": "^15.0"
   },
   "otherDependencies": {
