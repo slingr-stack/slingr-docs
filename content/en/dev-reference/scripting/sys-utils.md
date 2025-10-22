@@ -97,7 +97,7 @@ This function enables you to process a Freemarker template. [You can find more i
 Name|Type|Required|Description
 ---|---|---|---
 template|string|yes|The Freemarker template
-options|object|no|**`Options`** to process the template. The available options are: <br> - **`unescapeHtml`**: Use this option if you want to unescape the resulting string after processing the template. <br> - **`model`**: These are the objects you want to merge into your template.
+options|object|no|**`Options`** to process the template. The available options are: <br> - **`unescapeHtml`**: Use this option if you want to unescape the resulting string after processing the template. <br> - **`model`**: These are the objects you want to merge into your template. <br> - **`throwErrors`**: Default value is false. If false, it will return empty and just log in monitor. If true an error that can be handled is thrown
 
 ##### Returns
 
