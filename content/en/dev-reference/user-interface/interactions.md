@@ -22,6 +22,43 @@ An interaction belongs to a specific view and allows you to define scripts that 
  Interactions are momentaneously only supported in [**Flex record views**]({{<ref "/dev-reference/user-interface/flex-views/flex-record-views">}}) and [**Flex action views**]({{<ref "/dev-reference/user-interface/flex-views/flex-action-views">}}). Next platform versions will support regular views as well.
 {{< /notes >}}
 
+## **Nested Interactions**
+
+Nested interactions allow you to add one level of interaction nesting depth within another interaction. This feature enables more complex UI workflows where a child interaction can access and process data from its parent interaction and return results back.
+
+### Adding nested interactions
+
+Nested interactions can be added to a parent interaction in two ways:
+
+- **From a menu widget**: When the parent interaction uses a flex layout, you can add a nested interaction directly from a menu widget within the interaction's layout.
+- **From the menu property**: When using a regular layout, you can configure the menu property to include a nested interaction.
+
+### Behavior and configuration
+
+Nested interactions work similarly to regular interactions with all the same configuration options available:
+
+- **Parameters**: Define fields that will be prompted when the nested interaction is executed
+- **Permissions**: Control which groups can execute the nested interaction
+- **Events**: Configure scripts for before show, on interaction change, and after interaction executed
+- **Custom validations**: Implement complex validation logic
+- **Interaction script**: Define the operations to be performed when executed
+
+### Key characteristics
+
+The main difference between nested interactions and regular interactions is that nested interactions have access to their parent interaction's context:
+
+- **Access to parent data**: Nested interactions can read and process data from the parent interaction
+- **Data flow**: Changes made in the nested interaction can be returned back to the parent interaction
+- **Scope**: Nested interactions are limited to one level of nesting depth - you cannot nest interactions within nested interactions
+
+### Use cases
+
+Nested interactions are particularly useful for:
+
+- **Multi-step workflows**: Breaking down complex operations into logical sub-steps
+- **Conditional operations**: Providing additional interaction options based on parent interaction state
+- **Data validation and processing**: Performing specialized operations on parent interaction data before final submission
+
 ## **Interaction settings**
 
 ### Label
