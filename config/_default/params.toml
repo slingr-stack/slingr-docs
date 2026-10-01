@@ -10,33 +10,33 @@ description = "Slingr Documentation"
 # docsVersion = "0.3"
 
 ## Open Graph
-images = ["doks.png"]
+images = ["slingr-docs-og.png"]
 ogLocale = "en_US"
-domainTLD = "doks.netlify.app"
-titleHome = "Doks Theme"
+domainTLD = "platform-docs.slingr.io"
+titleHome = "Slingr Docs"
 
 ## Twitter Cards
-twitterSite = "@getdoks"
-twitterCreator = "@henkverlinde"
+twitterSite = ""
+twitterCreator = ""
 
 ## JSON-LD
 # schemaType = "Person"
 schemaType = "Organization"
-schemaName = "Doks"
-schemaAuthor = "Henk Verlinde"
-schemaAuthorTwitter = "https://twitter.com/henkverlinde"
-schemaAuthorLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
-schemaAuthorGitHub = "https://github.com/h-enk"
+schemaName = "Slingr"
+schemaAuthor = "Slingr"
+schemaAuthorTwitter = ""
+schemaAuthorLinkedIn = "https://www.linkedin.com/company/slingr"
+schemaAuthorGitHub = "https://github.com/slingr-stack"
 schemaLocale = "en-US"
-schemaLogo = "logo-doks.png"
-schemaLogoWidth = 512
-schemaLogoHeight = 512
-schemaImage = "doks.png"
-schemaImageWidth = 1280
-schemaImageHeight = 640
-schemaTwitter = "https://twitter.com/getdoks"
-schemaLinkedIn = ""
-schemaGitHub = "https://github.com/h-enk/doks"
+schemaLogo = "images/vendor/slingr-mark.png"
+schemaLogoWidth = 400
+schemaLogoHeight = 400
+schemaImage = "slingr-docs-og.png"
+schemaImageWidth = 1200
+schemaImageHeight = 630
+schemaTwitter = ""
+schemaLinkedIn = "https://www.linkedin.com/company/slingr"
+schemaGitHub = "https://github.com/slingr-stack"
 schemaSection = "blog"
 
 ## Sitelinks Search Box
